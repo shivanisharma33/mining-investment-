@@ -2,25 +2,67 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111111;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #C6112F;
+  --color-primary-hover: #A30E26;
+  --shadow-red-glow: 0 2px 8px rgba(198, 17, 47, 0.15);
+  --shadow-pink-glow: 0 2px 8px rgba(198, 17, 47, 0.10);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
+
+/* Text Reveal Animation */
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-text-reveal {
+  display: inline-block;
+  opacity: 0;
+  animation: textReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.delay-0 { animation-delay: 0ms; }
+.delay-1 { animation-delay: 120ms; }
+.delay-2 { animation-delay: 240ms; }
+.delay-3 { animation-delay: 360ms; }
+.delay-4 { animation-delay: 500ms; }
+.delay-5 { animation-delay: 650ms; }
+.delay-6 { animation-delay: 800ms; }
+.delay-7 { animation-delay: 1000ms; }
+.delay-8 { animation-delay: 1200ms; }
