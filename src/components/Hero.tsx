@@ -7,7 +7,7 @@ export default function Hero() {
   const { lang, t } = useLanguage();
 
   return (
-    <section className="relative flex-grow flex items-start justify-center overflow-hidden" style={{ height: 'calc(100vh - 96px)' }}>
+    <section className="relative flex-grow flex items-center justify-center overflow-hidden min-h-screen pt-24 pb-12">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
       {/* Background Image */}
@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1100px] w-full text-center flex flex-col items-center px-4 sm:px-6 md:px-12 pt-[10vh] sm:pt-[12vh] md:pt-[14vh] pb-8">
+      <div className="relative z-10 max-w-[1100px] w-full text-center flex flex-col items-center px-4 sm:px-6 md:px-12 pt-8 pb-8">
         {/* Top Subtitle */}
         <p className="text-primary text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.25em] uppercase mb-4 sm:mb-6 md:mb-8 leading-relaxed max-w-xs sm:max-w-none mx-auto animate-fade-in-up delay-0">
           {t("hero-eyebrow", "Canada's Only Tier I Global Mining Investment Conference")}
@@ -38,7 +38,7 @@ export default function Hero() {
               </span>
             </div>
           ) : (
-            <div className="whitespace-nowrap overflow-hidden">
+            <div className="flex flex-wrap justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full">
               <span className="animate-text-reveal delay-1">The</span>{" "}
               <span className="animate-text-reveal delay-2">Mining</span>{" "}
               <span className="animate-text-reveal delay-3">Investment</span>{" "}

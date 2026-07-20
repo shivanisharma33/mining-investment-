@@ -119,12 +119,12 @@ export default function ProgramsGrid() {
         {filteredPrograms.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col sm:flex-row w-full min-h-[320px] lg:min-h-[360px] rounded-none group relative border-none"
+            className="flex flex-col sm:flex-row w-full h-auto sm:h-[320px] lg:h-[360px] rounded-none group relative border-none"
           >
             {item.imageOnLeft ? (
               <>
                 {/* Image Block (Left Half) */}
-                <div className="w-full sm:w-1/2 h-[260px] sm:h-auto relative overflow-hidden bg-neutral-900 shrink-0 rounded-none">
+                <div className="w-full sm:w-1/2 h-[280px] sm:h-full relative overflow-hidden bg-neutral-900 shrink-0 rounded-none">
                   <img
                     src={item.image}
                     alt={item.imageAlt}
@@ -203,7 +203,7 @@ export default function ProgramsGrid() {
                 </div>
 
                 {/* Image Block (Right Half) */}
-                <div className="w-full sm:w-1/2 h-[260px] sm:h-auto relative overflow-hidden bg-neutral-900 rounded-none order-1 sm:order-2 shrink-0">
+                <div className="w-full sm:w-1/2 h-[280px] sm:h-full relative overflow-hidden bg-neutral-900 rounded-none order-1 sm:order-2 shrink-0">
                   <img
                     src={item.image}
                     alt={item.imageAlt}

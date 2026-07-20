@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
@@ -85,24 +86,24 @@ export default function Footer() {
 
             <ul className="space-y-3 text-xs sm:text-sm font-bold text-neutral-700">
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/student" className="hover:text-[#C6112F] transition-colors">
                   {t("footer-link-student-sponsor", "Student Sponsorship")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/sheco" className="hover:text-[#C6112F] transition-colors">
                   {t("footer-link-sheco", "SHE-CO")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/student" className="hover:text-[#C6112F] transition-colors">
                   {t("footer-link-student-volunteer", "Student Volunteer")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/newsflash" className="hover:text-[#C6112F] transition-colors">
                   {t("nav-newsflash", "THE Newsflash")}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -116,24 +117,24 @@ export default function Footer() {
 
             <ul className="space-y-3 text-xs sm:text-sm font-bold text-neutral-700">
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/about" className="hover:text-[#C6112F] transition-colors">
                   {t("nav-about-event", "About THE Event")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/about" className="hover:text-[#C6112F] transition-colors">
                   {t("footer-link-registration", "Registration Information")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/travel" className="hover:text-[#C6112F] transition-colors">
                   {t("nav-travel", "Travel & Accommodations")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/partnership" className="hover:text-[#C6112F] transition-colors">
                   {t("footer-link-our-sponsors", "Our Sponsors")}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -147,24 +148,24 @@ export default function Footer() {
 
             <ul className="space-y-3 text-xs sm:text-sm font-bold text-neutral-700">
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/student" className="hover:text-[#C6112F] transition-colors">
                   {t("footer-link-student-sponsor", "Student Sponsorship")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/sheco" className="hover:text-[#C6112F] transition-colors">
                   {t("footer-link-sheco", "SHE-CO")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
-                  {t("footer-link-student-volunteer", "Student Volunteer")}
-                </a>
+                <Link href="/media" className="hover:text-[#C6112F] transition-colors">
+                  {t("nav-media", "Recent Media")}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-[#C6112F] transition-colors">
+                <Link href="/newsflash" className="hover:text-[#C6112F] transition-colors">
                   {t("nav-newsflash", "THE Newsflash")}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

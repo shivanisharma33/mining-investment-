@@ -6,14 +6,14 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function FeaturedEventCountdown() {
   const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({
-    days: "300",
-    hours: "20",
-    minutes: "44",
-    seconds: "36",
+    days: "0",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
   });
 
   useEffect(() => {
-    const targetDate = new Date("2027-06-03T09:00:00").getTime();
+    const targetDate = new Date("2027-06-01T09:00:00").getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -33,6 +33,8 @@ export default function FeaturedEventCountdown() {
           minutes: String(m).padStart(2, "0"),
           seconds: String(s).padStart(2, "0"),
         });
+      } else {
+        setTimeLeft({ days: "0", hours: "00", minutes: "00", seconds: "00" });
       }
     };
 
@@ -83,7 +85,7 @@ export default function FeaturedEventCountdown() {
                     <circle cx="16.5" cy="13" r="0.8" fill="currentColor" />
                   </svg>
                 </div>
-                <span>{t("feat-event-date", "3-6 JUNE 2027")}</span>
+                <span>{t("feat-event-date", "1-3 JUNE 2027")}</span>
               </div>
 
               <div className="flex items-center gap-3 text-[#1a1f2c] font-extrabold text-sm sm:text-base tracking-wide">
