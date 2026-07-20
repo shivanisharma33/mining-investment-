@@ -55,8 +55,8 @@ export default function Footer() {
               .
             </p>
 
-            <a
-              href="#"
+            <Link
+              href="/register"
               className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider px-6 py-3 rounded-lg uppercase inline-flex items-center gap-2.5 shadow-md hover:shadow-lg transition-all"
             >
               <span>{t("nav-register", "REGISTER HERE")}</span>
@@ -74,7 +74,7 @@ export default function Footer() {
                   d="M10.5 8.5L14 12L10.5 15.5M14 12H8.5"
                 />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Column 2: INITIATIVES */}

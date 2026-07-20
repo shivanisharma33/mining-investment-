@@ -320,7 +320,7 @@ export default function Navbar() {
 
           {/* REGISTER HERE Button */}
           <Link
-            href="#"
+            href="/register"
             className="px-5 py-2.5 xl:px-6 xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[11px] xl:text-xs font-extrabold tracking-wider uppercase inline-flex items-center gap-1.5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
           >
             <span>{t("nav-register", "REGISTER HERE")}</span>
