@@ -168,6 +168,7 @@ const translations: Record<Language, Record<string, string>> = {
     "footer-link-student-volunteer": "Student Volunteer",
     "footer-link-registration": "Registration Information",
     "footer-link-our-sponsors": "Our Sponsors",
+    "footer-follow-us": "FOLLOW US",
     "footer-disclaimer-text": "This website, the events, information and materials pertaining to and associated with THE Mining Investment Event, are not and should not be construed as an offer to buy or sell, or as a solicitation of an offer to buy or sell, sponsor, advocate, endorse, promote or be construed as making any recommendation or providing investment or other advice for any regulated products, securities or investments.",
 
     // Navbar dropdown descriptions
@@ -523,6 +524,7 @@ const translations: Record<Language, Record<string, string>> = {
     "footer-link-student-volunteer": "Bénévoles Étudiants",
     "footer-link-registration": "Informations d'Inscription",
     "footer-link-our-sponsors": "Nos Commanditaires",
+    "footer-follow-us": "SUIVEZ-NOUS",
     "footer-disclaimer-text": "Ce site Web, les événements, les informations et les documents relatifs à L'Événement d'Investissement Minier ne constituent pas et ne doivent pas être interprétés comme une offre d'achat ou de vente.",
 
     // Navbar dropdown descriptions
