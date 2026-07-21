@@ -96,7 +96,7 @@ export default function EventHighlightsMedia() {
             {/* Top Item: Tall Vertical Executive Photo */}
             <div className="group relative w-full h-[360px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
               <img
-                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
+                src="./image 31.avif"
                 alt="Executive delegates networking reception"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
@@ -115,7 +115,7 @@ export default function EventHighlightsMedia() {
 
               <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
                 <img
-                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
+                  src="./image 26 copy.avif"
                   alt="Delegates group at evening reception"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -146,8 +146,8 @@ export default function EventHighlightsMedia() {
 
               <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
                 <img
-                  src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80"
-                  alt="Delegates group at evening reception"
+                src="./image 26 copy.avif"
+                   alt="Delegates group at evening reception"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
