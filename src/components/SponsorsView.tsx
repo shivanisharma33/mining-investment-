@@ -5,7 +5,7 @@ import React, { useState, useMemo } from "react";
 export interface SponsorItem {
   name: string;
   website: string;
-  image: string;
+  image?: string;
   tier: "presenting" | "platinum" | "gold" | "silver" | "copper" | "media" | "government";
 }
 
@@ -915,7 +915,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
 
                 <div className="w-full h-24 flex items-center justify-center mb-4 p-2 bg-neutral-50/50 rounded-xl border border-neutral-100 group-hover:bg-white transition-colors">
                   <img
-                    src={sponsor.image}
+                    src={sponsor.image || ""}
                     alt={sponsor.name}
                     className="max-h-full max-w-full object-contain filter group-hover:brightness-105 transition-all"
                     onError={(e) => {

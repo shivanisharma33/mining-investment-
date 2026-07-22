@@ -18,9 +18,9 @@ export default function Home() {
       <main className="flex flex-col flex-grow w-full">
         <Hero />
         <StatsAndGlimpse />
+        <FeaturedEventCountdown />
         <WhyAttend />
         <ProgramsGrid />
-        <FeaturedEventCountdown />
         <FeaturedPartners />
         <CanadaPremierForum />
         <GlobalCommunity />

@@ -146,13 +146,45 @@ const programsDropdown = [
   },
 ];
 
+/* Past Years dropdown sub-items */
+const pastYearsDropdown = [
+  {
+    titleKey: "nav-past-editions",
+    titleDefault: "Past Editions",
+    descKey: "nav-past-editions-desc",
+    descDefault: "View overview and summaries of our past editions",
+    href: "/past-editions",
+    isExternal: false,
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      </svg>
+    ),
+  },
+  {
+    titleKey: "nav-snapshot-report",
+    titleDefault: "THE Snapshot Report",
+    descKey: "nav-snapshot-report-desc",
+    descDefault: "Read the official event snapshot report",
+    href: "https://online.flippingbook.com/view/213558062/",
+    isExternal: true,
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+      </svg>
+    ),
+  },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [programsOpen, setProgramsOpen] = useState(false);
+  const [pastYearsOpen, setPastYearsOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
+  const [mobilePastYearsOpen, setMobilePastYearsOpen] = useState(false);
   const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
@@ -167,8 +199,7 @@ export default function Navbar() {
     { name: t("nav-home", "HOME"), href: "/", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
     { name: t("nav-about", "ABOUT"), href: "/about", active: false, hasDropdown: true, dropdownType: "about", isExternal: false },
     { name: t("nav-programs", "PROGRAMS"), href: "/student", active: false, hasDropdown: true, dropdownType: "programs", isExternal: false },
-    { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
-    { name: t("nav-snapshot", "THE SNAPSHOT REPORT"), href: "https://online.flippingbook.com/view/213558062/", active: false, hasDropdown: false, dropdownType: "none", isExternal: true },
+    { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", active: false, hasDropdown: true, dropdownType: "past-years", isExternal: false },
     { name: t("nav-gallery", "GALLERY"), href: "/media", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
   ];
 
@@ -200,10 +231,12 @@ export default function Navbar() {
               onMouseEnter={() => {
                 if (link.dropdownType === "about") setAboutOpen(true);
                 if (link.dropdownType === "programs") setProgramsOpen(true);
+                if (link.dropdownType === "past-years") setPastYearsOpen(true);
               }}
               onMouseLeave={() => {
                 if (link.dropdownType === "about") setAboutOpen(false);
                 if (link.dropdownType === "programs") setProgramsOpen(false);
+                if (link.dropdownType === "past-years") setPastYearsOpen(false);
               }}
             >
               {link.isExternal ? (
@@ -227,7 +260,9 @@ export default function Navbar() {
                   {link.hasDropdown && (
                     <svg
                       className={`w-3 h-3 transition-transform duration-200 ${
-                        (link.dropdownType === "about" && aboutOpen) || (link.dropdownType === "programs" && programsOpen)
+                        (link.dropdownType === "about" && aboutOpen) ||
+                        (link.dropdownType === "programs" && programsOpen) ||
+                        (link.dropdownType === "past-years" && pastYearsOpen)
                           ? "rotate-180 text-[#C6112F]"
                           : ""
                       }`}
@@ -303,6 +338,61 @@ export default function Navbar() {
                           </div>
                         </Link>
                       ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Past Years Mega Menu Dropdown */}
+              {link.dropdownType === "past-years" && pastYearsOpen && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
+                  <div className="bg-white rounded-xl border border-neutral-200 shadow-2xl p-4 min-w-[340px] animate-fadeIn">
+                    <div className="absolute top-3 left-4 right-4 h-[2px] bg-[#C6112F] rounded-full" />
+                    <div className="flex flex-col gap-1 mt-2">
+                      {pastYearsDropdown.map((item) => {
+                        if (item.isExternal) {
+                          return (
+                            <a
+                              key={item.titleKey}
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-[#fef2f2] transition-colors duration-200 group/item"
+                            >
+                              <div className="w-10 h-10 rounded-lg bg-[#f4f7fa] border border-neutral-200 flex items-center justify-center text-neutral-600 group-hover/item:bg-[#C6112F] group-hover/item:text-white group-hover/item:border-[#C6112F] transition-all duration-200 shrink-0 mt-0.5">
+                                {item.icon}
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="text-sm font-bold text-[#1a1f2c] group-hover/item:text-[#C6112F] transition-colors">
+                                  {t(item.titleKey, item.titleDefault)}
+                                </span>
+                                <span className="text-xs text-neutral-500 leading-relaxed mt-0.5">
+                                  {t(item.descKey, item.descDefault)}
+                                </span>
+                              </div>
+                            </a>
+                          );
+                        }
+                        return (
+                          <Link
+                            key={item.titleKey}
+                            href={item.href}
+                            className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-[#fef2f2] transition-colors duration-200 group/item"
+                          >
+                            <div className="w-10 h-10 rounded-lg bg-[#f4f7fa] border border-neutral-200 flex items-center justify-center text-neutral-600 group-hover/item:bg-[#C6112F] group-hover/item:text-white group-hover/item:border-[#C6112F] transition-all duration-200 shrink-0 mt-0.5">
+                              {item.icon}
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-sm font-bold text-[#1a1f2c] group-hover/item:text-[#C6112F] transition-colors">
+                                {t(item.titleKey, item.titleDefault)}
+                              </span>
+                              <span className="text-xs text-neutral-500 leading-relaxed mt-0.5">
+                                {t(item.descKey, item.descDefault)}
+                              </span>
+                            </div>
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -388,13 +478,16 @@ export default function Navbar() {
                       onClick={() => {
                         if (link.dropdownType === "about") setMobileAboutOpen(!mobileAboutOpen);
                         if (link.dropdownType === "programs") setMobileProgramsOpen(!mobileProgramsOpen);
+                        if (link.dropdownType === "past-years") setMobilePastYearsOpen(!mobilePastYearsOpen);
                       }}
                       className="w-full flex items-center justify-between py-2.5 text-sm font-extrabold tracking-wider uppercase text-neutral-800 hover:text-[#C6112F] transition-colors"
                     >
                       <span>{link.name}</span>
                       <svg
                         className={`w-4 h-4 transition-transform duration-200 ${
-                          (link.dropdownType === "about" && mobileAboutOpen) || (link.dropdownType === "programs" && mobileProgramsOpen)
+                          (link.dropdownType === "about" && mobileAboutOpen) ||
+                          (link.dropdownType === "programs" && mobileProgramsOpen) ||
+                          (link.dropdownType === "past-years" && mobilePastYearsOpen)
                             ? "rotate-180 text-[#C6112F]"
                             : ""
                         }`}
@@ -434,6 +527,38 @@ export default function Navbar() {
                             <span>{t(item.titleKey, item.titleDefault)}</span>
                           </Link>
                         ))}
+                      </div>
+                    )}
+                    {link.dropdownType === "past-years" && mobilePastYearsOpen && (
+                      <div className="pl-4 flex flex-col gap-1 mb-2 border-l-2 border-[#C6112F]/20">
+                        {pastYearsDropdown.map((item) => {
+                          if (item.isExternal) {
+                            return (
+                              <a
+                                key={item.titleKey}
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 hover:text-[#C6112F] transition-colors"
+                              >
+                                <span className="text-[#C6112F]">{item.icon}</span>
+                                <span>{t(item.titleKey, item.titleDefault)}</span>
+                              </a>
+                            );
+                          }
+                          return (
+                            <Link
+                              key={item.titleKey}
+                              href={item.href}
+                              onClick={() => setIsOpen(false)}
+                              className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 hover:text-[#C6112F] transition-colors"
+                            >
+                              <span className="text-[#C6112F]">{item.icon}</span>
+                              <span>{t(item.titleKey, item.titleDefault)}</span>
+                            </Link>
+                          );
+                        })}
                       </div>
                     )}
                   </>

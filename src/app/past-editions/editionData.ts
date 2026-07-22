@@ -450,16 +450,17 @@ export interface RawSpeaker {
   category: "gov" | "exec" | "fin" | "mod";
   days: number[];
   image?: string;
+  year?: number;
 }
 
 const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", number[], string?][] = [
   ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020309526-QX5SYHPDA2F9W66H4L8Z/Keith+Bradbury.png?format=750w"],
   ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=750w"],
   ["Kody Boils", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=750w"],
-  ["Orin Baranowsky", "Chief Financial Officer", "NexGold Mining", "exec", [2,4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154751377-H84R1XD7U3BXAZV8CUFN/Orin%2BBaranowsky.jpg?format=750w"],
-  ["Stephen Soock", "VP, Investor Relations & Development", "Heliostar Metals", "exec", [2,4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152031110-VWUNS91VR3AXA9DB7GEL/stephen+soockpng.png?format=750w"],
+  ["Orin Baranowsky", "Chief Financial Officer", "NexGold Mining", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154751377-H84R1XD7U3BXAZV8CUFN/Orin%2BBaranowsky.jpg?format=750w"],
+  ["Stephen Soock", "VP, Investor Relations & Development", "Heliostar Metals", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152031110-VWUNS91VR3AXA9DB7GEL/stephen+soockpng.png?format=750w"],
   ["Kiran Patankar", "President & CEO", "Maple Gold Mines", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152192018-P0QD9TACY3UWLQNIBOB6/Kiran+Patankar.jpeg?format=750w"],
-  ["Rana Vig", "President & CEO", "Blue Lagoon Resources", "exec", [2,4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152153453-R8IKXYPPMUT66Q4SM11X/RanaVig.webp?format=750w"],
+  ["Rana Vig", "President & CEO", "Blue Lagoon Resources", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152153453-R8IKXYPPMUT66Q4SM11X/RanaVig.webp?format=750w"],
   ["Trey Wasser", "CEO & Director", "Dryden Gold", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152087328-3IEDUWQAZN7FRHOYN72Q/Trey+Wasser.jpeg?format=750w"],
   ["Matt Manson", "President, CEO & Director", "Radisson Mining Resources", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152105728-3L0X4W8DGX5XWVEAL52Q/Matt+Manson.jpeg?format=750w"],
   ["Adrian Day", "Founder", "Adrian Day Asset Management", "fin", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152125012-7SK02444ZFZPGYTDHGZ2/Adrian+Day.png?format=750w"],
@@ -473,7 +474,7 @@ const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", 
   ["Nicholas Van Dyk", "Chief Financial Officer", "NorthIsle Copper & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152289756-MJRXGJP73508HW8MZFPA/Nicholas+Van+Dyk.jpeg?format=750w"],
   ["Guy Goulet", "Chief Executive Officer", "Cerro de Pasco Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152903562-UT8YIE0I4C4GF4KXIU5E/1587480594080.jpg?format=750w"],
   ["Craig Hallworth", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152320287-2BX2RIBDR1GGODOY785X/Craig+Hallworth.png?format=750w"],
-  ["Dr. Nicole Adshead-Bell", "Moderator", "Independent", "mod", [3,4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152336983-B62UFIKOO4UWHP3ZMXMZ/Nicole+Adshead-Bell.jpg?format=750w"],
+  ["Dr. Nicole Adshead-Bell", "Moderator", "Independent", "mod", [3, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152336983-B62UFIKOO4UWHP3ZMXMZ/Nicole+Adshead-Bell.jpg?format=750w"],
   ["Thomas Bachand", "Moderator", "Banque Nationale", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152353737-EAEERWWF6KV4FMPJ1B76/Thomas+Bachand.jpeg?format=750w"],
   ["Shawn Khunkhun", "President", "Contango Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152369364-3RKA28ISR7CDCP87UQRM/Shawn+Khunkhun.webp?format=750w"],
   ["Robert Bruggeman", "President & CEO", "Outcrop Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152435695-QIR2I2IER6SDI2XN09AR/Robert+Bruggeman.jpeg?format=750w"],

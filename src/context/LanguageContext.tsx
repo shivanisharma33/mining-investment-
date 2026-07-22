@@ -26,7 +26,11 @@ const translations: Record<Language, Record<string, string>> = {
     "nav-partnership": "Partnership",
     "nav-speakers": "Speakers",
     "nav-past-years": "Past Years",
+    "nav-past-editions": "Past Editions",
+    "nav-past-editions-desc": "View overview and summaries of our past editions",
     "nav-snapshot": "THE SnapShot Report",
+    "nav-snapshot-report": "THE Snapshot Report",
+    "nav-snapshot-report-desc": "Read the official event snapshot report",
     "nav-gallery": "Gallery",
     "nav-register": "Register Here",
 
@@ -382,7 +386,11 @@ const translations: Record<Language, Record<string, string>> = {
     "nav-partnership": "Partenariat",
     "nav-speakers": "Conférenciers",
     "nav-past-years": "Années Précédentes",
+    "nav-past-editions": "Éditions Précédentes",
+    "nav-past-editions-desc": "Voir l'aperçu et les résumés de nos éditions précédentes",
     "nav-snapshot": "Rapport SnapShot",
+    "nav-snapshot-report": "Le Rapport SnapShot",
+    "nav-snapshot-report-desc": "Lire le rapport officiel de l'événement",
     "nav-gallery": "Galerie",
     "nav-register": "Inscrivez-vous",
 
