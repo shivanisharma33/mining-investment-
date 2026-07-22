@@ -1,12 +1,24 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { SPEAKERS, RawSpeaker } from "@/app/past-editions/editionData";
+import React, { useState, useMemo, useEffect } from "react";
+import { SPEAKERS, SPEAKERS_2025, SPEAKERS_2024, RawSpeaker } from "@/app/past-editions/editionData";
 
-export default function SpeakersView() {
+export default function SpeakersView({ year = 2026 }: { year?: number }) {
+  const [selectedYear, setSelectedYear] = useState<number>(year);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
-  const [dayFilter, setDayFilter] = useState("");
+
+  useEffect(() => {
+    if (year) {
+      setSelectedYear(year);
+    }
+  }, [year]);
+
+  const speakersList = useMemo(() => {
+    if (selectedYear === 2024) return SPEAKERS_2024 || [];
+    if (selectedYear === 2025) return SPEAKERS_2025 || [];
+    return SPEAKERS;
+  }, [selectedYear]);
 
   const getCategoryStyles = (category: string) => {
     switch (category) {
@@ -38,22 +50,9 @@ export default function SpeakersView() {
     }
   };
 
-  const getDayColor = (day: number) => {
-    switch (day) {
-      case 2:
-        return "bg-[#C6112F]";
-      case 3:
-        return "bg-[#0B7A66]";
-      case 4:
-        return "bg-[#D97706]";
-      default:
-        return "bg-neutral-600";
-    }
-  };
-
   const getInitials = (name: string) => {
     const cleaned = name
-      .replace(/^(The Hon\.|The Honourable|Grand Chief|Dr\.)\s+/i, "")
+      .replace(/^(The Hon.|The Honourable|Grand Chief|Dr.)s+/i, "")
       .split(" ")
       .filter(Boolean);
     if (cleaned.length === 0) return "";
@@ -62,28 +61,54 @@ export default function SpeakersView() {
     return (first + last).toUpperCase();
   };
 
-  // Filter speakers based on states
   const filteredSpeakers = useMemo(() => {
-    return SPEAKERS.filter((s) => {
+    return speakersList.filter((s) => {
       const matchesSearch =
         searchTerm.trim() === "" ||
         `${s.name} ${s.title} ${s.organization}`
           .toLowerCase()
           .includes(searchTerm.trim().toLowerCase());
       const matchesCategory = categoryFilter === "" || s.category === categoryFilter;
-      const matchesDay =
-        dayFilter === "" || s.days.includes(parseInt(dayFilter, 10));
 
-      return matchesSearch && matchesCategory && matchesDay;
+      return matchesSearch && matchesCategory;
     });
-  }, [searchTerm, categoryFilter, dayFilter]);
+  }, [speakersList, searchTerm, categoryFilter]);
 
   const uniqueOrgs = useMemo(() => {
-    return new Set(SPEAKERS.map((s) => s.organization)).size;
-  }, []);
+    return new Set(speakersList.map((s) => s.organization)).size;
+  }, [speakersList]);
 
   return (
-    <div className="w-full text-left">
+    <div className="w-full text-left font-sans">
+      {/* Edition Filter Toggle */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/90 shadow-md">
+        <div className="flex items-center gap-3">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse shrink-0" />
+          <span className="text-xs font-black tracking-widest uppercase text-neutral-500 whitespace-nowrap">
+            Speaker Edition:
+          </span>
+          <div className="flex gap-2">
+            {[2026, 2025, 2024].map((y) => (
+              <button
+                key={y}
+                onClick={() => setSelectedYear(y)}
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${
+                  selectedYear === y
+                    ? "bg-[#C6112F] text-white shadow-md"
+                    : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                }`}
+              >
+                {y} Speakers
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <span className="text-xs font-bold text-neutral-500">
+          Showing {filteredSpeakers.length} of {speakersList.length} Official {selectedYear} Speakers
+        </span>
+      </div>
+
       {/* 3 Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         <div className="bg-white border border-neutral-200/90 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
@@ -95,7 +120,7 @@ export default function SpeakersView() {
           </div>
           <div>
             <span className="text-2xl font-black text-neutral-900 block leading-tight">
-              {SPEAKERS.length}
+              {speakersList.length}
             </span>
             <span className="text-xs text-neutral-500 font-semibold">Featured Speakers</span>
           </div>
@@ -104,84 +129,59 @@ export default function SpeakersView() {
         <div className="bg-white border border-neutral-200/90 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
           <div className="w-12 h-12 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <rect x="4" y="4" width="16" height="16" rx="2" />
-              <path d="M4 9h16M9 9v11" />
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path d="M8 2v4M16 2v4M3 9h18" />
             </svg>
           </div>
           <div>
             <span className="text-2xl font-black text-neutral-900 block leading-tight">
-              {uniqueOrgs}
+              4 Days
             </span>
-            <span className="text-xs text-neutral-500 font-semibold">Represented Organizations</span>
+            <span className="text-xs text-neutral-500 font-semibold">Live Conference</span>
           </div>
         </div>
 
         <div className="bg-white border border-neutral-200/90 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
           <div className="w-12 h-12 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <rect x="4" y="5" width="16" height="15" rx="2" />
-              <path d="M4 9.5h16M8 3v4M16 3v4" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
           <div>
-            <span className="text-2xl font-black text-neutral-900 block leading-tight">4</span>
-            <span className="text-xs text-neutral-500 font-semibold">Days of Programming</span>
+            <span className="text-2xl font-black text-neutral-900 block leading-tight">
+              {uniqueOrgs}+
+            </span>
+            <span className="text-xs text-neutral-500 font-semibold">Organisations</span>
           </div>
         </div>
       </div>
 
-      {/* Controls Bar: Search & Select Filters */}
-      <div className="flex flex-wrap items-center gap-3 mb-6">
-        {/* Search input */}
-        <div className="flex-1 min-w-[260px] relative">
-          <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <circle cx="11" cy="11" r="6.5" />
-            <path d="M20 20l-4-4" />
-          </svg>
+      {/* Filter Controls Row */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-8 bg-neutral-50/70 p-4 rounded-2xl border border-neutral-200/80">
+        <div className="flex-1 relative">
           <input
-            type="search"
+            type="text"
+            placeholder="Search by name, title or organization..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search speaker, title or organization..."
-            className="w-full bg-white border border-neutral-300 rounded-xl py-2.5 pl-10 pr-4 text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 transition-all shadow-2xs"
+            className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-medium text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 shadow-2xs"
           />
         </div>
 
-        {/* Category dropdown */}
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="bg-white border border-neutral-300 rounded-xl py-2.5 px-3 text-xs font-semibold text-neutral-700 focus:outline-none focus:border-[#C6112F] cursor-pointer shadow-2xs"
+          className="bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold text-neutral-900 focus:outline-none focus:border-[#C6112F] shadow-2xs cursor-pointer"
         >
           <option value="">All Categories</option>
-          <option value="gov">Government & Keynotes</option>
-          <option value="exec">Company Executives</option>
-          <option value="fin">Finance & Institutions</option>
-          <option value="mod">Moderators & Media</option>
-        </select>
-
-        {/* Day dropdown */}
-        <select
-          value={dayFilter}
-          onChange={(e) => setDayFilter(e.target.value)}
-          className="bg-white border border-neutral-300 rounded-xl py-2.5 px-3 text-xs font-semibold text-neutral-700 focus:outline-none focus:border-[#C6112F] cursor-pointer shadow-2xs"
-        >
-          <option value="">All Days</option>
-          <option value="2">June 2 — Producers & Developers</option>
-          <option value="3">June 3 — Critical Metals</option>
-          <option value="4">June 4 — Explorers & Developers</option>
+          <option value="gov">Keynotes & Government</option>
+          <option value="exec">Corporate Executives</option>
+          <option value="fin">Finance & Investors</option>
+          <option value="mod">Moderators</option>
         </select>
       </div>
 
-      {/* Results Count */}
-      <div className="flex items-center justify-between mb-6 pb-3 border-b border-neutral-200 text-xs sm:text-sm text-neutral-500 font-medium">
-        <span>
-          Showing <strong className="text-neutral-900">{filteredSpeakers.length}</strong> of{" "}
-          <strong className="text-neutral-900">{SPEAKERS.length}</strong> speakers
-        </span>
-      </div>
-
-      {/* Speakers Grid */}
+      {/* Speakers Cards Grid */}
       {filteredSpeakers.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredSpeakers.map((speaker, idx) => {
@@ -192,20 +192,36 @@ export default function SpeakersView() {
                 className="bg-white border border-neutral-200/90 rounded-2xl p-6 text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Initials Avatar */}
-                  <div
-                    className={`w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center font-black text-xl text-white shadow-md bg-gradient-to-br ${styles.avGrad} border-4 border-white ring-2 ring-neutral-200 group-hover:ring-[#C6112F]/40 transition-all`}
-                  >
-                    {getInitials(speaker.name)}
-                  </div>
+                  {/* Speaker Photo / Avatar */}
+                  {speaker.image ? (
+                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4">
+                      <img
+                        src={speaker.image}
+                        alt={speaker.name}
+                        className="w-full h-full rounded-full object-cover shadow-md border-4 border-white ring-2 ring-neutral-200 group-hover:ring-[#C6112F]/50 group-hover:scale-105 transition-all"
+                        onError={(e) => {
+                          (e.target as HTMLElement).style.display = "none";
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 flex items-center justify-center font-black text-2xl text-white shadow-md bg-gradient-to-br ${styles.avGrad} border-4 border-white ring-2 ring-neutral-200 group-hover:ring-[#C6112F]/40 transition-all`}
+                    >
+                      {getInitials(speaker.name)}
+                    </div>
+                  )}
+
                   {/* Name */}
                   <h3 className="text-sm sm:text-base font-extrabold text-neutral-900 tracking-tight mb-1 group-hover:text-[#C6112F] transition-colors">
                     {speaker.name}
                   </h3>
-                  {/* Role Title */}
-                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium leading-relaxed mb-2 min-h-[32px] flex items-center justify-center">
+
+                  {/* Title / Role */}
+                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium leading-relaxed mb-2 min-h-[28px] flex items-center justify-center">
                     {speaker.title}
                   </div>
+
                   {/* Company/Org */}
                   <div className="text-xs font-bold text-[#C6112F] mb-4">
                     {speaker.organization}
@@ -219,31 +235,18 @@ export default function SpeakersView() {
                   >
                     {styles.label}
                   </span>
-                  {speaker.days.map((day) => (
-                    <span
-                      key={day}
-                      className={`text-[9px] font-black tracking-wider px-2 py-0.5 rounded-full text-white shadow-2xs ${getDayColor(
-                        day
-                      )}`}
-                    >
-                      JUN {day}
-                    </span>
-                  ))}
                 </div>
               </article>
             );
           })}
         </div>
       ) : (
-        /* Empty State */
-        <div className="text-center py-16 px-4 border border-dashed border-neutral-300 rounded-2xl bg-neutral-50/50">
-          <h4 className="text-base font-bold text-neutral-800 mb-1">No speakers found</h4>
-          <p className="text-xs text-neutral-500 font-medium">
-            Try a different search term or clear your filters.
+        <div className="text-center py-16 bg-neutral-50 rounded-2xl border border-neutral-200">
+          <p className="text-neutral-500 font-semibold text-sm">
+            No speakers matched your search criteria.
           </p>
         </div>
       )}
     </div>
   );
 }
-

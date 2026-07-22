@@ -7,8 +7,10 @@ import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import AgendaView from "@/components/AgendaView";
+import AgendaPdfViewer from "@/components/AgendaPdfViewer";
 import SpeakersView from "@/components/SpeakersView";
 import SponsorsView from "@/components/SponsorsView";
+import CompaniesView from "@/components/CompaniesView";
 import { useLanguage } from "@/context/LanguageContext";
 
 const years = [2026, 2025, 2024, 2023];
@@ -637,7 +639,8 @@ export default function PastEditionsPage() {
   const [activeTab, setActiveTab] = useState<string>("companies");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // Participating Companies Filters State
+  // Agenda Mode State (PDF Viewer vs Interactive)
+  const [agendaMode, setAgendaMode] = useState<"pdf" | "interactive">("pdf");
   const [companySearch, setCompanySearch] = useState<string>("");
   const [sectorFilter, setSectorFilter] = useState<string>("");
   const [countryFilter, setCountryFilter] = useState<string>("");
@@ -804,256 +807,7 @@ export default function PastEditionsPage() {
                         Connect with leading mining companies, investors, technology providers, and service partners driving the future of the mining industry.
                       </p>
 
-                      {/* 4 Stat Cards Grid */}
-                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                        <div className="bg-white border border-neutral-200/90 rounded-xl p-5 flex items-center gap-4 shadow-xs hover:shadow-md transition-shadow">
-                          <div className="w-12 h-12 rounded-xl bg-[#FCDDE1] flex items-center justify-center shrink-0">
-                            <svg className="w-6 h-6 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <circle cx="9" cy="8" r="3.2" />
-                              <path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6S13.9 16 14.5 19" />
-                              <circle cx="16.5" cy="9" r="2.6" />
-                              <path d="M16 14.6c2.4.1 4 1.6 4.5 4.4" />
-                            </svg>
-                          </div>
-                          <div>
-                            <span className="text-xl sm:text-2xl font-black text-neutral-900 block leading-tight">{rawCompaniesData.length}+</span>
-                            <span className="text-xs text-neutral-500 font-medium">Companies</span>
-                          </div>
-                        </div>
-
-                        <div className="bg-white border border-neutral-200/90 rounded-xl p-5 flex items-center gap-4 shadow-xs hover:shadow-md transition-shadow">
-                          <div className="w-12 h-12 rounded-xl bg-[#FCDDE1] flex items-center justify-center shrink-0">
-                            <svg className="w-6 h-6 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <circle cx="12" cy="12" r="9" />
-                              <path d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18" />
-                            </svg>
-                          </div>
-                          <div>
-                            <span className="text-xl sm:text-2xl font-black text-neutral-900 block leading-tight">{countryOptions.length}+</span>
-                            <span className="text-xs text-neutral-500 font-medium">Countries</span>
-                          </div>
-                        </div>
-
-                        <div className="bg-white border border-neutral-200/90 rounded-xl p-5 flex items-center gap-4 shadow-xs hover:shadow-md transition-shadow">
-                          <div className="w-12 h-12 rounded-xl bg-[#FCDDE1] flex items-center justify-center shrink-0">
-                            <svg className="w-6 h-6 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l1.8 5.5L19 10l-5.2 1.5L12 17l-1.8-5.5L5 10l5.2-1.5z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" />
-                            </svg>
-                          </div>
-                          <div>
-                            <span className="text-xl sm:text-2xl font-black text-neutral-900 block leading-tight">{sectorOptions.length}+</span>
-                            <span className="text-xs text-neutral-500 font-medium">Sectors</span>
-                          </div>
-                        </div>
-
-                        <div className="bg-white border border-neutral-200/90 rounded-xl p-5 flex items-center gap-4 shadow-xs hover:shadow-md transition-shadow">
-                          <div className="w-12 h-12 rounded-xl bg-[#FCDDE1] flex items-center justify-center shrink-0">
-                            <svg className="w-6 h-6 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <circle cx="12" cy="12" r="9" />
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18M3 12h18M4.5 7.5h15M4.5 16.5h15" />
-                            </svg>
-                          </div>
-                          <div>
-                            <span className="text-xl sm:text-2xl font-black text-neutral-900 block leading-tight">Global</span>
-                            <span className="text-xs text-neutral-500 font-medium">Network</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Controls Bar: Search & Select Filters */}
-                      <div className="flex flex-wrap items-center gap-3 mb-6">
-                        {/* Search input */}
-                        <div className="flex-1 min-w-[240px] relative">
-                          <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                            <circle cx="11" cy="11" r="6.5" />
-                            <path d="M20 20l-4-4" />
-                          </svg>
-                          <input
-                            type="search"
-                            value={companySearch}
-                            onChange={(e) => setCompanySearch(e.target.value)}
-                            placeholder="Search company name, ticker, keyword or country..."
-                            className="w-full bg-white border border-neutral-300 rounded-lg py-2.5 pl-10 pr-4 text-xs sm:text-sm text-neutral-800 placeholder-neutral-400 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 transition-all"
-                          />
-                        </div>
-
-                        {/* Sector dropdown */}
-                        <select
-                          value={sectorFilter}
-                          onChange={(e) => setSectorFilter(e.target.value)}
-                          className="bg-white border border-neutral-300 rounded-lg py-2.5 px-3 text-xs font-semibold text-neutral-700 focus:outline-none focus:border-[#C6112F] cursor-pointer"
-                        >
-                          <option value="">All Sectors</option>
-                          {sectorOptions.map((sec) => (
-                            <option key={sec} value={sec}>{sec}</option>
-                          ))}
-                        </select>
-
-                        {/* Country dropdown */}
-                        <select
-                          value={countryFilter}
-                          onChange={(e) => setCountryFilter(e.target.value)}
-                          className="bg-white border border-neutral-300 rounded-lg py-2.5 px-3 text-xs font-semibold text-neutral-700 focus:outline-none focus:border-[#C6112F] cursor-pointer"
-                        >
-                          <option value="">All Countries</option>
-                          {countryOptions.map((cou) => (
-                            <option key={cou} value={cou}>{cou}</option>
-                          ))}
-                        </select>
-
-                        {/* Type dropdown */}
-                        <select
-                          value={typeFilter}
-                          onChange={(e) => setTypeFilter(e.target.value)}
-                          className="bg-white border border-neutral-300 rounded-lg py-2.5 px-3 text-xs font-semibold text-neutral-700 focus:outline-none focus:border-[#C6112F] cursor-pointer"
-                        >
-                          <option value="">All Company Types</option>
-                          <option value="Producer">Producer</option>
-                          <option value="Developer">Developer</option>
-                          <option value="Explorer">Explorer</option>
-                        </select>
-
-                        {/* Sort dropdown */}
-                        <select
-                          value={sortFilter}
-                          onChange={(e) => setSortFilter(e.target.value)}
-                          className="bg-white border border-neutral-300 rounded-lg py-2.5 px-3 text-xs font-semibold text-neutral-700 focus:outline-none focus:border-[#C6112F] cursor-pointer"
-                        >
-                          <option value="">Sort By</option>
-                          <option value="az">Name A–Z</option>
-                          <option value="za">Name Z–A</option>
-                          <option value="country">Country</option>
-                        </select>
-                      </div>
-
-                      {/* Results Row & View Mode Toggle */}
-                      <div className="flex items-center justify-between mb-6 pb-3 border-b border-neutral-200">
-                        <div className="text-xs sm:text-sm text-neutral-500 font-medium">
-                          {filteredCompanies.length > 0 ? (
-                            <span>
-                              Showing <strong className="text-neutral-800">1 – {Math.min(visibleLimit, filteredCompanies.length)}</strong> of{" "}
-                              <strong className="text-neutral-800">{filteredCompanies.length}</strong> companies
-                            </span>
-                          ) : (
-                            <span>Showing <strong className="text-neutral-800">0</strong> companies</span>
-                          )}
-                        </div>
-
-                        {/* Grid / List Mode Toggle */}
-                        <div className="flex items-center border border-neutral-300 rounded-lg overflow-hidden">
-                          <button
-                            onClick={() => setViewMode("grid")}
-                            className={`p-2 transition-colors ${viewMode === "grid" ? "bg-[#FCDDE1] text-[#C6112F]" : "bg-white text-neutral-500 hover:text-neutral-900"}`}
-                            title="Grid View"
-                          >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <rect x="4" y="4" width="7" height="7" rx="1" />
-                              <rect x="13" y="4" width="7" height="7" rx="1" />
-                              <rect x="4" y="13" width="7" height="7" rx="1" />
-                              <rect x="13" y="13" width="7" height="7" rx="1" />
-                            </svg>
-                          </button>
-                          <button
-                            onClick={() => setViewMode("list")}
-                            className={`p-2 transition-colors ${viewMode === "list" ? "bg-[#FCDDE1] text-[#C6112F]" : "bg-white text-neutral-500 hover:text-neutral-900"}`}
-                            title="List View"
-                          >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" d="M5 6h14M5 12h14M5 18h14" />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-
-                      {/* Companies Display Container */}
-                      {filteredCompanies.length > 0 ? (
-                        <>
-                          <div
-                            className={
-                              viewMode === "grid"
-                                ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
-                                : "flex flex-col gap-3"
-                            }
-                          >
-                            {filteredCompanies.slice(0, visibleLimit).map((comp, idx) => (
-                              <div
-                                key={idx}
-                                className={`bg-white border border-neutral-200/90 rounded-xl transition-all hover:shadow-lg hover:border-neutral-300 group flex ${viewMode === "grid"
-                                  ? "flex-col p-6 text-center justify-between"
-                                  : "flex-row items-center justify-between p-4"
-                                  }`}
-                              >
-                                {/* Logo Badge */}
-                                <div className={viewMode === "grid" ? "h-14 flex items-center justify-center mb-3" : "w-36 shrink-0"}>
-                                  <CompanyLogoImage name={comp.name} email={comp.email} />
-                                </div>
-
-                                {/* Title & Metadata */}
-                                <div className={viewMode === "grid" ? "mb-4" : "flex-1 px-4 text-left"}>
-                                  <h3 className="text-sm sm:text-base font-extrabold text-neutral-900 mb-1 leading-snug">
-                                    {comp.name}
-                                  </h3>
-
-                                  {/* Stock Ticker */}
-                                  <div className="text-[11px] font-bold text-[#C6112F] mb-2 tracking-wide uppercase">
-                                    {comp.ticker}
-                                  </div>
-
-                                  <div className="flex items-center justify-center gap-3 text-xs text-neutral-500 font-medium flex-wrap">
-                                    <span className="flex items-center gap-1">
-                                      <svg className="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                        <rect x="4" y="4" width="16" height="16" rx="2" />
-                                        <path d="M4 9h16M9 9v11" />
-                                      </svg>
-                                      {comp.sector}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                      <svg className="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                        <path d="M12 21s-6.5-5.3-6.5-10A6.5 6.5 0 0 1 12 4.5 6.5 6.5 0 0 1 18.5 11c0 4.7-6.5 10-6.5 10z" />
-                                        <circle cx="12" cy="11" r="2.3" />
-                                      </svg>
-                                      {comp.country}
-                                    </span>
-                                  </div>
-                                </div>
-
-                                {/* Contact Email / View Profile Link */}
-                                <a
-                                  href={comp.email ? `mailto:${comp.email}` : "#"}
-                                  className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-[#C6112F] hover:underline pt-3 border-t border-neutral-100 group-hover:gap-2.5 transition-all"
-                                >
-                                  <span>View Profile</span>
-                                  <svg className="w-4 h-4 stroke-current" fill="none" strokeWidth="2" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
-                                  </svg>
-                                </a>
-                              </div>
-                            ))}
-                          </div>
-
-                          {/* View All Logos Button */}
-                          {visibleLimit < filteredCompanies.length && (
-                            <div className="flex justify-center mt-10">
-                              <button
-                                onClick={() => setVisibleLimit(filteredCompanies.length)}
-                                className="bg-[#C6112F] hover:bg-[#a80e27] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all flex items-center gap-2.5 cursor-pointer transform hover:-translate-y-0.5"
-                              >
-                                <span>VIEW ALL LOGOS ({filteredCompanies.length} COMPANIES)</span>
-                                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                                </svg>
-                              </button>
-                            </div>
-                          )}
-                        </>
-                      ) : (
-                        /* Empty State */
-                        <div className="text-center py-16 px-4 border border-dashed border-neutral-300 rounded-xl bg-neutral-50/50">
-                          <h4 className="text-base font-bold text-neutral-800 mb-1">No companies found</h4>
-                          <p className="text-xs text-neutral-500 font-medium">Try a different search term or clear your filters.</p>
-                        </div>
-                      )}
+                      <CompaniesView initialYear={viewingEdition || 2026} />
                     </div>
                   ) : activeTab === "brochures" ? (
                     /* ════════ BROCHURES TAB VIEW ════════ */
@@ -1114,43 +868,12 @@ export default function PastEditionsPage() {
                         </div>
                       </div>
 
-                      {/* Official Unmodified PDF Document Viewer */}
-                      <div className="w-full bg-[#f8fafc] border border-neutral-200/90 rounded-2xl overflow-hidden shadow-lg p-2 sm:p-4 mb-8">
-                        <iframe
-                          src={`/AGENDA_june_2026.pdf#page=${brochurePage}&toolbar=1&navpanes=1&scrollbar=1`}
-                          className="w-full h-[750px] sm:h-[900px] rounded-xl border border-neutral-300/80 shadow-md bg-white"
-                          title="Official Event Agenda & Brochure PDF"
-                        />
-                      </div>
-
-                      {/* 2 Main Action Buttons Row */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-                        <a
-                          href="/AGENDA_june_2026.pdf"
-                          download="AGENDA_June_1-4_2026.pdf"
-                          className="w-full py-4 px-6 bg-[#C6112F] hover:bg-[#a80e27] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-3 cursor-pointer transform hover:-translate-y-0.5"
-                        >
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                          </svg>
-                          <span>DOWNLOAD OFFICIAL AGENDA (PDF)</span>
-                        </a>
-
-                        <button
-                          onClick={() => {
-                            if (typeof window !== "undefined") {
-                              navigator.clipboard.writeText(window.location.href);
-                              alert("Brochure link copied to clipboard!");
-                            }
-                          }}
-                          className="w-full py-4 px-6 bg-white border border-neutral-300 hover:bg-neutral-50 text-neutral-800 text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-xl shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-3 cursor-pointer transform hover:-translate-y-0.5"
-                        >
-                          <svg className="w-5 h-5 text-neutral-700" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                          </svg>
-                          <span>SHARE BROCHURE</span>
-                        </button>
-                      </div>
+                      {/* Agenda & Brochure PDF Viewer Component */}
+                      <AgendaPdfViewer
+                        pdfUrl={`/documents/${viewingEdition || 2026}-brochure.pdf`}
+                        year={viewingEdition || 2026}
+                        fileName={`${viewingEdition || 2026}-brochure.pdf`}
+                      />
 
                       {/* 5 Feature Highlight Cards */}
                       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-xs">
@@ -1211,16 +934,54 @@ export default function PastEditionsPage() {
                   ) : activeTab === "agenda" ? (
                     /* ════════ AGENDA TAB VIEW ════════ */
                     <div className="w-full">
-                      <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                        {viewingEdition} EDITION
-                      </span>
-                      <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
-                        Event Agenda {viewingEdition}
-                      </h1>
+                      <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+                        <div>
+                          <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
+                            {viewingEdition} EDITION
+                          </span>
+                          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-2">
+                            Event Agenda {viewingEdition}
+                          </h1>
+                        </div>
+                        {/* View Mode Switcher */}
+                        <div className="flex items-center bg-neutral-100 p-1.5 rounded-xl border border-neutral-200 gap-1">
+                          <button
+                            onClick={() => setAgendaMode("pdf")}
+                            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
+                              agendaMode === "pdf"
+                                ? "bg-[#0f1117] text-white shadow-sm"
+                                : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                            }`}
+                          >
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                            <span>PDF Viewer</span>
+                          </button>
+                          <button
+                            onClick={() => setAgendaMode("interactive")}
+                            className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
+                              agendaMode === "interactive"
+                                ? "bg-[#0f1117] text-white shadow-sm"
+                                : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                            }`}
+                          >
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <span>Interactive Schedule</span>
+                          </button>
+                        </div>
+                      </div>
                       <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
                         Four days of keynotes, corporate presentations, panels, and networking bringing together producers, developers, and explorers from across the industry.
                       </p>
-                      <AgendaView year={viewingEdition} />
+
+                      {agendaMode === "pdf" ? (
+                        <AgendaPdfViewer year={viewingEdition} pdfUrl={`/documents/${viewingEdition}-agenda.pdf`} />
+                      ) : (
+                        <AgendaView year={viewingEdition} />
+                      )}
                     </div>
                   ) : activeTab === "speakers" ? (
                     /* ════════ SPEAKERS TAB VIEW ════════ */
@@ -1234,7 +995,7 @@ export default function PastEditionsPage() {
                       <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
                         Ministers, ambassadors, CEOs, investors and analysts taking the stage across four days in Quebec City.
                       </p>
-                      <SpeakersView />
+                      <SpeakersView year={viewingEdition || 2026} />
                     </div>
                   ) : activeTab === "sponsors" ? (
                     /* ════════ SPONSORS TAB VIEW ════════ */
@@ -1268,7 +1029,11 @@ export default function PastEditionsPage() {
 
                       {/* Subtitle Description */}
                       <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-6">
-                        The premier global mining investment event bringing together investors, mining companies, governments and industry leaders.
+                        {viewingEdition === 2024
+                          ? "THE Mining Investment Event 2024 brought together mining executives, institutional investors, government delegates, and sector analysts in Québec City for four days of strategic capital allocation."
+                          : viewingEdition === 2025
+                          ? "THE Mining Investment Event 2025 connected global capital with opportunity across the mining value chain in Québec City."
+                          : "The premier global mining investment event bringing together investors, mining companies, governments and industry leaders."}
                       </p>
 
                       {/* Date & Location Row */}
@@ -1278,7 +1043,15 @@ export default function PastEditionsPage() {
                             <rect x="3" y="4" width="18" height="16" rx="2" />
                             <path strokeLinecap="round" d="M16 2v4M8 2v4M3 9h18" />
                           </svg>
-                          <span>3-6 JUNE 2027</span>
+                          <span>
+                            {viewingEdition === 2025
+                              ? "JUNE 3 – 6, 2025"
+                              : viewingEdition === 2024
+                              ? "JUNE 4 – 7, 2024"
+                              : viewingEdition === 2023
+                              ? "JUNE 19 – 21, 2023"
+                              : "JUNE 1 – 4, 2026"}
+                          </span>
                         </div>
 
                         <div className="flex items-center gap-2">
@@ -1294,7 +1067,7 @@ export default function PastEditionsPage() {
                       <div className="py-6 border-y border-neutral-200/90 grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8 text-left">
                         <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80">
                           <span className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-none mb-2">
-                            300+
+                            {viewingEdition === 2024 ? "250+" : "300+"}
                           </span>
                           <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
                             PARTICIPATING COMPANIES
@@ -1303,7 +1076,7 @@ export default function PastEditionsPage() {
 
                         <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80">
                           <span className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-none mb-2">
-                            50+
+                            {viewingEdition === 2024 ? "45+" : "50+"}
                           </span>
                           <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
                             SPEAKERS
@@ -1312,7 +1085,7 @@ export default function PastEditionsPage() {
 
                         <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80">
                           <span className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-none mb-2">
-                            50+
+                            {viewingEdition === 2024 ? "40+" : "50+"}
                           </span>
                           <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
                             COUNTRIES
@@ -1321,7 +1094,7 @@ export default function PastEditionsPage() {
 
                         <div className="flex flex-col items-start">
                           <span className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-none mb-2">
-                            500+
+                            {viewingEdition === 2024 ? "450+" : "500+"}
                           </span>
                           <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
                             ATTENDEES

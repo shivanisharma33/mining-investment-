@@ -449,116 +449,832 @@ export interface RawSpeaker {
   organization: string;
   category: "gov" | "exec" | "fin" | "mod";
   days: number[];
+  image?: string;
 }
 
-const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", number[]][] = [
-  ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2]],
-  ["Kateri Champagne-Jourdain", "Minister of Natural Resources and Forests", "Government of Québec", "gov", [2]],
-  ["The Hon. Jagrup Brar", "Minister of Mining and Critical Minerals", "Government of British Columbia", "gov", [2]],
-  ["Pete Hoekstra", "U.S. Ambassador to Canada", "United States of America", "gov", [2]],
-  ["Grand Chief Pierre Picard", "Welcoming Address", "Wendat Nation", "gov", [2]],
-  ["Jocelyn Douhéret", "Directeur Général des politiques et du développement minier", "Government of Québec", "gov", [3]],
-  ["The Honourable Kody Blois", "Parliamentary Secretary to the Prime Minister", "Government of Canada", "gov", [4]],
-  ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4]],
-  ["Joanne Jobin", "CEO & Founder", "THE Event", "mod", [2, 3, 4]],
-  ["Robin Kozar", "Managing Director, Mining Research", "Ventum Capital Markets", "mod", [2]],
-  ["Surya Sankarasubramanian", "Mining Analyst, Research", "Ventum Capital Markets", "mod", [2, 3]],
-  ["Taylor Combaluzier", "Managing Director, Mining Analyst", "Ventum Capital Markets", "mod", [3]],
-  ["Mary Zhang", "Director", "National Bank Capital Markets", "mod", [2]],
-  ["Lyndsay Malchuk", "Global On-Camera Capital Markets Reporter", "Apaton Media", "mod", [3, 4]],
-  ["Gary Baschuk", "Co-head, Mining & Sr. Geologist", "PearTree", "mod", [4]],
-  ["Anthony Vacarro", "Moderator", "The Northern Miner", "mod", [2]],
-  ["Dr. Nicole Adshead-Bell", "Moderator", "Independent", "mod", [3, 4]],
-  ["Phillips S. Baker", "Panel Moderator", "Independent", "mod", [3]],
-  ["Angie Stockley", "Moderator", "SAAF Exploration", "mod", [4]],
-  ["Nicole Hoeller", "Communications", "Nikli Communications", "mod", [3, 4]],
-  ["Adrian Day", "Founder", "Adrian Day Asset Management", "fin", [4]],
-  ["Ehren Cory", "Chief Executive Officer", "Canada Infrastructure Bank", "fin", [2]],
-  ["Karanjit Bhugra", "President", "Ventum Financial", "fin", [2]],
-  ["Michael Gentile", "Portfolio Manager", "BAM Asset Management", "fin", [2]],
-  ["Caroline Donally", "Managing Director", "Sprott Resources Streaming & Royalty", "fin", [2]],
-  ["Thomas Bachand", "Moderator", "Banque Nationale", "fin", [3]],
-  ["Amyot Choquette", "Directeur principal, investissements", "Investissement Québec", "fin", [3]],
-  ["Sylvain Lépine", "Directeur général", "NQ Investissement minier", "fin", [3]],
-  ["André Laferrière", "Directeur aux investissements", "SIDEX", "fin", [3]],
-  ["Ahmed Hassani", "Associé senior, capital-investissement", "La Caisse", "fin", [3]],
-  ["Terry Salman", "Chief Executive Officer", "Salman Partners", "fin", [3]],
-  ["Jean Robitaille", "EVP, Chief Strategy & Technology Officer", "Agnico Eagle Mines", "exec", [2]],
-  ["Renaud Adams", "President & CEO", "IAMGOLD Corporation", "exec", [2]],
-  ["Daniella Dimitrov", "Chief Strategy & Risk Officer", "Equinox Gold", "exec", [2, 4]],
-  ["Jason Banducci", "VP, Corporate Development & IR", "Hemlo Mining", "exec", [2]],
-  ["Patrick Downey", "President & CEO", "Orezone Gold", "exec", [2]],
-  ["Alain Zubinsky", "Fireside Speaker", "CAUR Technologies", "exec", [2]],
-  ["Melanie Lalonde", "Fireside Speaker", "HATCH", "exec", [2]],
-  ["Juan Carlos Sandoval", "Chief Financial Officer", "Andean Precious Metals", "exec", [2]],
-  ["Paul Begin", "Chief Financial Officer", "Collective Mining", "exec", [2]],
-  ["Sean Roosen", "Chairman & CEO", "Osisko Development", "exec", [2]],
-  ["Nic Earner", "Managing Director & CEO", "Alkane Resources", "exec", [2]],
-  ["Ann Wilkinson", "VP, Investor Relations", "Mineros S.A.", "exec", [2]],
-  ["Caroline Arsenault", "VP, Corporate Communications", "Troilus Mining", "exec", [2]],
-  ["Drew Clark", "President, CEO & Founder", "Summit Royalties", "exec", [2]],
-  ["Darren Cooke", "Chief Executive Officer", "Firefly Metals", "exec", [2, 4]],
-  ["Keith Boyle", "Chief Executive Officer", "New Found Gold", "exec", [2, 4]],
-  ["Stephen Soock", "VP, Investor Relations & Development", "Heliostar Metals", "exec", [2, 4]],
-  ["Kimberly Ann", "Founder, CEO, President & Executive Chair", "Lahontan Gold", "exec", [2]],
-  ["Dan Wilton", "CEO & Director", "First Mining Gold", "exec", [2]],
-  ["Darren Blasutti", "Chief Executive Officer", "Minera Alamos", "exec", [2]],
-  ["Orin Baranowsky", "Chief Financial Officer", "NexGold Mining", "exec", [2, 4]],
-  ["Salvatore Curcio", "Chief Financial Officer", "STLLR Gold", "exec", [2]],
-  ["Raúl Álvarez", "Director, Exploration & Technical Services", "Orvana Minerals", "exec", [2]],
-  ["David Ball", "VP, Corporate Development", "Cerrado Gold", "exec", [2]],
-  ["Rana Vig", "President & CEO", "Blue Lagoon Resources", "exec", [2, 4]],
-  ["Toby Spittle", "Copper Trader", "Glencore", "exec", [3]],
-  ["David D'Onofrio", "Chief Executive Officer", "White Gold Corp", "exec", [3, 4]],
-  ["Peter Lekich", "Director, Capital Markets & Corporate Development", "New Pacific Metals", "exec", [3]],
-  ["Olivier Caza-lapointe", "Investor Relations", "PMET Resources", "exec", [3]],
-  ["Nicholas Van Dyk", "Chief Financial Officer", "NorthIsle Copper & Gold", "exec", [3]],
-  ["Robert Bruggeman", "President & CEO", "Outcrop Silver & Gold", "exec", [3]],
-  ["Shawn Khunkhun", "President", "Contango Silver & Gold", "exec", [3]],
-  ["Duncan Roy", "VP, Investor Relations", "Power Metallic Mines", "exec", [3]],
-  ["Guy Goulet", "Chief Executive Officer", "Cerro de Pasco Resources", "exec", [3]],
-  ["Jose Garcia", "President, CEO & Co-Founder", "Silver X Mining", "exec", [3]],
-  ["Greg Crowe", "President & CEO", "Silver One Resources", "exec", [3]],
-  ["Jonathan Hill", "Interim VP, Exploration", "Lavras Gold", "exec", [3]],
-  ["Alicia Milne", "President & CEO", "Q2 Metals", "exec", [3]],
-  ["Troy Boisjoli", "CEO & Director", "Atha Energy", "exec", [3]],
-  ["Peter Espig", "Chief Executive Officer", "Nicola Mining", "exec", [3]],
-  ["Mohamed Cisse", "Chief Executive Officer", "Avanti Gold", "exec", [3]],
-  ["Martin Turenne", "President & CEO", "FPX Nickel", "exec", [3]],
-  ["Melissa Mackie", "Director, Investor Relations & Communications", "Gunnison Copper", "exec", [3]],
-  ["Joseph Carrabba", "Panelist", "North American Niobium", "exec", [3]],
-  ["Jeremy Neimi", "Panelist", "Juno Corp", "exec", [3]],
-  ["Jon Wiesblatt", "Panelist", "Trident Resources", "exec", [3]],
-  ["Amandip Singh", "VP, Corporate Development", "West Point Gold", "exec", [3]],
-  ["Jean-Marc Lulin", "President & CEO", "Azimut Exploration", "exec", [3]],
-  ["Mathieu Savard", "President & CEO", "Vior Gold", "exec", [3]],
-  ["Gordon Robb", "Chief Executive Officer", "ES Gold", "exec", [3]],
-  ["Brian Penny", "Chief Executive Officer", "Wallbridge Mining", "exec", [3]],
-  ["Kiril Mugerman", "President & CEO", "GEOMEGA Resources", "exec", [3]],
-  ["Shaun Heinrichs", "President & CEO", "1911 Gold", "exec", [4]],
-  ["Louis Archambeault", "Interim Chair", "Valkea Resources", "exec", [4]],
-  ["Luke Norman", "Founder & Chairman", "US Gold Corp", "exec", [4]],
-  ["Kiran Patankar", "President & CEO", "Maple Gold Mines", "exec", [4]],
-  ["Matt Manson", "President, CEO & Director", "Radisson Mining Resources", "exec", [4]],
-  ["Graham Downs", "President & CEO", "Cascadia Metals", "exec", [4]],
-  ["Brock Colterjohn", "President & CEO", "Onyx Gold", "exec", [4]],
-  ["Colin Jourdie", "Panelist", "Selkirk Copper", "exec", [4]],
-  ["Brad Rourke", "Chairman", "Scottie Resources", "exec", [4]],
-  ["Harrison Pokrandt", "VP, Exploration", "Scorpio Gold", "exec", [4]],
-  ["Mark Ruus", "Chief Financial Officer", "Spanish Mountain Gold", "exec", [4]],
-  ["Nick Kwong", "President & CEO", "Cygnus Metals", "exec", [4]],
-  ["Nolan Peterson", "Panelist", "Atlas Salt", "exec", [4]],
-  ["Farzad Nader", "Panelist", "Red Paramount Iron", "exec", [4]],
-  ["Pascal Hamelin", "Chief Executive Officer", "Abcourt Mines", "exec", [4]],
-  ["Brian Miller", "CEO, Director & Co-Founder", "Astra Exploration", "exec", [4]],
-  ["Trey Wasser", "CEO & Director", "Dryden Gold", "exec", [4]],
-  ["David Christie", "President & COO", "Globex Mining Enterprises", "exec", [4]],
+const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", number[], string?][] = [
+  ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020309526-QX5SYHPDA2F9W66H4L8Z/Keith+Bradbury.png?format=750w"],
+  ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=750w"],
+  ["Kody Boils", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=750w"],
+  ["Orin Baranowsky", "Chief Financial Officer", "NexGold Mining", "exec", [2,4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154751377-H84R1XD7U3BXAZV8CUFN/Orin%2BBaranowsky.jpg?format=750w"],
+  ["Stephen Soock", "VP, Investor Relations & Development", "Heliostar Metals", "exec", [2,4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152031110-VWUNS91VR3AXA9DB7GEL/stephen+soockpng.png?format=750w"],
+  ["Kiran Patankar", "President & CEO", "Maple Gold Mines", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152192018-P0QD9TACY3UWLQNIBOB6/Kiran+Patankar.jpeg?format=750w"],
+  ["Rana Vig", "President & CEO", "Blue Lagoon Resources", "exec", [2,4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152153453-R8IKXYPPMUT66Q4SM11X/RanaVig.webp?format=750w"],
+  ["Trey Wasser", "CEO & Director", "Dryden Gold", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152087328-3IEDUWQAZN7FRHOYN72Q/Trey+Wasser.jpeg?format=750w"],
+  ["Matt Manson", "President, CEO & Director", "Radisson Mining Resources", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152105728-3L0X4W8DGX5XWVEAL52Q/Matt+Manson.jpeg?format=750w"],
+  ["Adrian Day", "Founder", "Adrian Day Asset Management", "fin", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152125012-7SK02444ZFZPGYTDHGZ2/Adrian+Day.png?format=750w"],
+  ["Angie Stockley", "Moderator", "SAAF Exploration", "mod", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152139934-OX277RDRXB0N19CLA62L/Angie+Stockley.jpeg?format=750w"],
+  ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154321498-HRRWVXWAPTI4B28ZB95H/person-icon-person-icon-17.jpg?format=750w"],
+  ["The Honourable Kody Blois", "Parliamentary Secretary to the Prime Minister", "Government of Canada", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152804896-BAYM70NN1UJXLTLZVCTH/Blois-Kody-1024x682.jpg?format=750w"],
+  ["Terry Salman", "Chief Executive Officer", "Salman Partners", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152865058-OHGA6KGQIOMQJHPDWNOZ/Terry-Salman-bio.jpg?format=750w"],
+  ["Jon Wiesblatt", "Panelist", "Trident Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152251014-SJ6PK3OGF73YI0AMCU5P/jon-wiesblatt.jpg?format=750w"],
+  ["Peter Espig", "Chief Executive Officer", "Nicola Mining", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152260885-BO5UNNG0V7GXP8HOWWO8/Peter+Espig.jpeg?format=750w"],
+  ["Joseph Carrabba", "Panelist", "North American Niobium", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152273641-ZX8VGN8PGH8ACOPCAQ3O/Joseph+Carrabbajpg.webp?format=750w"],
+  ["Nicholas Van Dyk", "Chief Financial Officer", "NorthIsle Copper & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152289756-MJRXGJP73508HW8MZFPA/Nicholas+Van+Dyk.jpeg?format=750w"],
+  ["Guy Goulet", "Chief Executive Officer", "Cerro de Pasco Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152903562-UT8YIE0I4C4GF4KXIU5E/1587480594080.jpg?format=750w"],
+  ["Craig Hallworth", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152320287-2BX2RIBDR1GGODOY785X/Craig+Hallworth.png?format=750w"],
+  ["Dr. Nicole Adshead-Bell", "Moderator", "Independent", "mod", [3,4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152336983-B62UFIKOO4UWHP3ZMXMZ/Nicole+Adshead-Bell.jpg?format=750w"],
+  ["Thomas Bachand", "Moderator", "Banque Nationale", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152353737-EAEERWWF6KV4FMPJ1B76/Thomas+Bachand.jpeg?format=750w"],
+  ["Shawn Khunkhun", "President", "Contango Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152369364-3RKA28ISR7CDCP87UQRM/Shawn+Khunkhun.webp?format=750w"],
+  ["Robert Bruggeman", "President & CEO", "Outcrop Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152435695-QIR2I2IER6SDI2XN09AR/Robert+Bruggeman.jpeg?format=750w"],
+  ["Peter Lekich", "Director, Capital Markets & Corporate Development", "New Pacific Metals", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152400695-KX6U5I2OW2G43E9GVDN6/Peter+Lekich.jpeg?format=750w"],
+  ["Phillips S. Baker", "Panel Moderator", "Independent", "mod", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152417703-UHGRZRTEPTOB0CLW96R2/Philip+S+Baker.jpeg?format=750w"],
+  ["Pete Hoekstra", "U.S. Ambassador to Canada", "United States of America", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153031756-KN0U3M0NY8U5WAWV2VNS/C._Piet_Hoekstra.jpg?format=750w"],
+  ["Neil B. Jacobson", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154332594-N1M6PZIYE1QH8HV8R7HC/person-icon-person-icon-17.jpg?format=750w"],
+  ["The Hon. Jagrup Brar", "Minister of Mining and Critical Minerals", "Government of British Columbia", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153106640-XBB2RYRPB52P16L7HBS6/images.jpg?format=750w"],
+  ["Anthony Vaccaro", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152496454-F5ZIJUJDW8WOOZJYN6DO/Anthony-V.webp?format=750w"],
+  ["Matt Gordon", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152557029-40KJWI0JISGP1NPIR9LA/Matt+Gordon.webp?format=750w"],
+  ["Erhen Cory", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152570884-7IWX1PCRB0WV89P0V5WN/Ehren+Cory.png?format=750w"],
+  ["Melanie Lalonde", "Fireside Speaker", "HATCH", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152588562-WBBCXU8B07GDRSMOJ5VB/Melanie+Lalonde.jpeg?format=750w"],
+  ["Alain Zubinsky", "Fireside Speaker", "CAUR Technologies", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154388298-JGQKIBZOPZML1N50IRYC/person-icon-person-icon-17.jpg?format=750w"],
+  ["Jean Robitalle", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152619513-RXNE5B7DMFP5MS2TC7XN/Jean+Robitialle.+jpeg.jpeg?format=750w"],
+  ["Kateri Chamagne-Jourdain", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153163108-MAGJ09R669W36K87R14L/champagne-jourdain-flourish.webp?format=750w"],
+  ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153239106-275B133ALL4V6JUO5RSF/1743299125281.jpg?format=750w"]
 ];
 
-export const SPEAKERS = rawSpeakersData.map(([name, title, organization, category, days]) => ({
+export const SPEAKERS = rawSpeakersData.map(([name, title, organization, category, days, image]) => ({
   name,
   title,
   organization,
   category,
   days,
+  image,
 }));
+
+
+export const SPEAKERS_2025: RawSpeaker[] = [
+  {
+    "name": "Nichole Adshead-Bell",
+    "title": "Speaker & Industry Expert",
+    "organization": "Cupel Advisory",
+    "category": "mod",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Neil Adshead",
+    "title": "Speaker & Industry Expert",
+    "organization": "Commodity Discovery Fund",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Phillips S. Baker",
+    "title": "Speaker & Industry Expert",
+    "organization": "Mining Executive",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Rob Curtis",
+    "title": "Speaker & Industry Expert",
+    "organization": "EMR Capital",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Daniella Dimitrov",
+    "title": "Speaker & Industry Expert",
+    "organization": "Calibre Mining",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Lisa Davis",
+    "title": "Speaker & Industry Expert",
+    "organization": "PearTree Securities",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "David Garofalo",
+    "title": "Speaker & Industry Expert",
+    "organization": "Gold Royalty Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Matt Gordon",
+    "title": "Speaker & Industry Expert",
+    "organization": "Crux Investor",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Michael Gentile",
+    "title": "Speaker & Industry Expert",
+    "organization": "Bastion Asset Management",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Peter Grandich",
+    "title": "Speaker & Industry Expert",
+    "organization": "Trinity Financial Sports & Management",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Ed Ho",
+    "title": "Speaker & Industry Expert",
+    "organization": "Energy Transition",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Armand MacKenzie",
+    "title": "Speaker & Industry Expert",
+    "organization": "First Phosphate",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Angelina Mehta",
+    "title": "Speaker & Industry Expert",
+    "organization": "Rio Tinto",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "David Rhodes",
+    "title": "Speaker & Industry Expert",
+    "organization": "Endeavour Financial",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Sean Roosen",
+    "title": "Speaker & Industry Expert",
+    "organization": "Osisko Development Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Alexis Segal",
+    "title": "Speaker & Industry Expert",
+    "organization": "Glencore Canada",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Elian Terner",
+    "title": "Speaker & Industry Expert",
+    "organization": "National Bank Financial Markets",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Keith Spence",
+    "title": "Speaker & Industry Expert",
+    "organization": "Global Mining Capital",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Jamie Strauss",
+    "title": "Speaker & Industry Expert",
+    "organization": "Digbee Limited",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Anthony Vaccaro",
+    "title": "Speaker & Industry Expert",
+    "organization": "Northern Miner Group",
+    "category": "mod",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Maria Smirnova",
+    "title": "Speaker & Industry Expert",
+    "organization": "Sprott Asset Management",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Gary Stanley",
+    "title": "Speaker & Industry Expert",
+    "organization": "Former Director Critical Metals US Government",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Heather Taylor",
+    "title": "Speaker & Industry Expert",
+    "organization": "Osisko Gold Royalties",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Michael F. White",
+    "title": "Speaker & Industry Expert",
+    "organization": "IBK Capital Corp.",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Rob Weir",
+    "title": "Speaker & Industry Expert",
+    "organization": "Lithium Royalty Corp",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Alexandra Woodyer Sherron",
+    "title": "Speaker & Industry Expert",
+    "organization": "Empress Royalty Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  },
+  {
+    "name": "Matthew Zolnowski",
+    "title": "Speaker & Industry Expert",
+    "organization": "Greyfriars LLC",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2025
+  }
+];
+
+
+export const SPEAKERS_2024: RawSpeaker[] = [
+  {
+    "name": "Terence Ortslan",
+    "title": "Speaker & Panelist",
+    "organization": "TSO Associates",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Frank E. Holmes",
+    "title": "Speaker & Panelist",
+    "organization": "U.S. Global Investors",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Maria Smirnova",
+    "title": "Speaker & Panelist",
+    "organization": "Sprott Asset Management",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Nadine Miller",
+    "title": "Speaker & Panelist",
+    "organization": "JDS Operational Technologies",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Ed Ho",
+    "title": "Speaker & Panelist",
+    "organization": "Energy Transition",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Daniella Dimitrov",
+    "title": "Speaker & Panelist",
+    "organization": "Mining Executive & Corporate Director",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Elian Terner",
+    "title": "Speaker & Panelist",
+    "organization": "National Bank Financial Markets",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Gary Stanley",
+    "title": "Speaker & Panelist",
+    "organization": "Former Director Critical Metals US Government",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Robert Wares",
+    "title": "Speaker & Panelist",
+    "organization": "Osisko Metals Incorporated",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Phillips S. Baker",
+    "title": "Speaker & Panelist",
+    "organization": "The Silver Institute",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Alexandra Woodyer Sherron",
+    "title": "Speaker & Panelist",
+    "organization": "Empress Royalty Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Rob Curtis",
+    "title": "Speaker & Panelist",
+    "organization": "EMR Capital",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "David Rhodes",
+    "title": "Speaker & Panelist",
+    "organization": "Endeavour Financial",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Michael Gentile",
+    "title": "Speaker & Panelist",
+    "organization": "Bastion Asset Management",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Tamara Brown",
+    "title": "Speaker & Panelist",
+    "organization": "Oberon Capital",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Peter Marrone",
+    "title": "Speaker & Panelist",
+    "organization": "Allied Gold Corporation",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Nichole Adshead-Bell",
+    "title": "Speaker & Panelist",
+    "organization": "Cupel Advisory",
+    "category": "mod",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "David Garofalo",
+    "title": "Speaker & Panelist",
+    "organization": "Gold Royalty Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Sean Roosen",
+    "title": "Speaker & Panelist",
+    "organization": "Osisko Development Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Mathieu Savard",
+    "title": "Speaker & Panelist",
+    "organization": "Osisko Mining Inc.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Lisa Davis",
+    "title": "Speaker & Panelist",
+    "organization": "PearTree Securities",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Matthew Zolnowski",
+    "title": "Speaker & Panelist",
+    "organization": "Greyfriars LLC",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Jamie Strauss",
+    "title": "Speaker & Panelist",
+    "organization": "Digbee Limited",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "John Passalacqua",
+    "title": "Speaker & Panelist",
+    "organization": "First Phosphate",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Neil Adshead",
+    "title": "Speaker & Panelist",
+    "organization": "Commodity Discovery Fund",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Heather Taylor",
+    "title": "Speaker & Panelist",
+    "organization": "Osisko Gold Royalties",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Jose Vizquerra",
+    "title": "Speaker & Panelist",
+    "organization": "O3 Mining Inc.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Pierre Fitzgibbon",
+    "title": "Speaker & Panelist",
+    "organization": "Quebec Minister of Economy Innovation & Energy",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Armand MacKenzie",
+    "title": "Speaker & Panelist",
+    "organization": "First Phosphate",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Iggy Tan",
+    "title": "Speaker & Panelist",
+    "organization": "Lithium Universe Ltd.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Rob Weir",
+    "title": "Speaker & Panelist",
+    "organization": "Lithium Royalty Corp",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Peter Grandich",
+    "title": "Speaker & Panelist",
+    "organization": "Trinity Financial Sports & Management",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Alexis Segal",
+    "title": "Speaker & Panelist",
+    "organization": "Glencore Canada",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Sylvain Lèpine",
+    "title": "Speaker & Panelist",
+    "organization": "NQ Investissement",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Grand Chief Mandy Gull-Masty",
+    "title": "Speaker & Panelist",
+    "organization": "Cree First Nation of Waswanipi",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Ian Morrisette",
+    "title": "Speaker & Panelist",
+    "organization": "Quebec Deputy Minister of Mines & Forestry",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Maïté Blanchette Vézina",
+    "title": "Speaker & Panelist",
+    "organization": "Quebec Minister of Mines & Forestry",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Jean-François Béland",
+    "title": "Speaker & Panelist",
+    "organization": "Investissement Québec",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "David M. Cole",
+    "title": "Speaker & Panelist",
+    "organization": "EMX Royalty Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Amyot Choquette",
+    "title": "Speaker & Panelist",
+    "organization": "IQ Ressources Québec",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Geneviève Morinville",
+    "title": "Speaker & Panelist",
+    "organization": "Winsome Resources",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Matt Gordon",
+    "title": "Speaker & Panelist",
+    "organization": "Crux Investor",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Anthony Vaccaro",
+    "title": "Speaker & Panelist",
+    "organization": "Northern Miner Group",
+    "category": "mod",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  }
+];
