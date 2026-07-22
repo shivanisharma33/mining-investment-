@@ -6,6 +6,9 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
+import AgendaView from "@/components/AgendaView";
+import SpeakersView from "@/components/SpeakersView";
+import SponsorsView from "@/components/SponsorsView";
 import { useLanguage } from "@/context/LanguageContext";
 
 const years = [2026, 2025, 2024, 2023];
@@ -631,7 +634,7 @@ export default function PastEditionsPage() {
 
   // State: null means main Past Editions directory page
   const [viewingEdition, setViewingEdition] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<string>("overview");
+  const [activeTab, setActiveTab] = useState<string>("companies");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Participating Companies Filters State
@@ -640,8 +643,8 @@ export default function PastEditionsPage() {
   const [countryFilter, setCountryFilter] = useState<string>("");
   const [typeFilter, setTypeFilter] = useState<string>("");
   const [sortFilter, setSortFilter] = useState<string>("");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [visibleLimit, setVisibleLimit] = useState<number>(52);
+  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
+  const [visibleLimit, setVisibleLimit] = useState<number>(rawCompaniesData.length);
 
   // Brochure Viewer State
   const [brochurePage, setBrochurePage] = useState<number>(1);
@@ -728,8 +731,8 @@ export default function PastEditionsPage() {
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left ${isSelected
-                                ? "bg-[#FCDDE1] text-[#8A1224] border-l-4 border-[#C6112F] shadow-xs"
-                                : "text-neutral-600 hover:bg-neutral-100/90 hover:text-neutral-900"
+                              ? "bg-[#FCDDE1] text-[#8A1224] border-l-4 border-[#C6112F] shadow-xs"
+                              : "text-neutral-600 hover:bg-neutral-100/90 hover:text-neutral-900"
                               }`}
                           >
                             <span className={isSelected ? "text-[#C6112F]" : "text-neutral-500"}>
@@ -977,8 +980,8 @@ export default function PastEditionsPage() {
                               <div
                                 key={idx}
                                 className={`bg-white border border-neutral-200/90 rounded-xl transition-all hover:shadow-lg hover:border-neutral-300 group flex ${viewMode === "grid"
-                                    ? "flex-col p-6 text-center justify-between"
-                                    : "flex-row items-center justify-between p-4"
+                                  ? "flex-col p-6 text-center justify-between"
+                                  : "flex-row items-center justify-between p-4"
                                   }`}
                               >
                                 {/* Logo Badge */}
@@ -1205,6 +1208,48 @@ export default function PastEditionsPage() {
                         </div>
                       </div>
                     </div>
+                  ) : activeTab === "agenda" ? (
+                    /* ════════ AGENDA TAB VIEW ════════ */
+                    <div className="w-full">
+                      <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
+                        {viewingEdition} EDITION
+                      </span>
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
+                        Event Agenda {viewingEdition}
+                      </h1>
+                      <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
+                        Four days of keynotes, corporate presentations, panels, and networking bringing together producers, developers, and explorers from across the industry.
+                      </p>
+                      <AgendaView year={viewingEdition} />
+                    </div>
+                  ) : activeTab === "speakers" ? (
+                    /* ════════ SPEAKERS TAB VIEW ════════ */
+                    <div className="w-full">
+                      <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
+                        {viewingEdition} EDITION
+                      </span>
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
+                        Event Speakers {viewingEdition}
+                      </h1>
+                      <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
+                        Ministers, ambassadors, CEOs, investors and analysts taking the stage across four days in Quebec City.
+                      </p>
+                      <SpeakersView />
+                    </div>
+                  ) : activeTab === "sponsors" ? (
+                    /* ════════ SPONSORS TAB VIEW ════════ */
+                    <div className="w-full">
+                      <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
+                        {viewingEdition} EDITION
+                      </span>
+                      <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
+                        Event Sponsors {viewingEdition}
+                      </h1>
+                      <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
+                        We thank our sponsors and partners for their generous support in making the Mining Investment Event a global success.
+                      </p>
+                      <SponsorsView year={viewingEdition} />
+                    </div>
                   ) : (
                     /* ════════ DEFAULT OVERVIEW TAB VIEW ════════ */
                     <div>
@@ -1424,8 +1469,8 @@ export default function PastEditionsPage() {
                       key={year}
                       onClick={() => setViewingEdition(year)}
                       className={`text-base sm:text-lg font-bold transition-all duration-200 cursor-pointer ${isSelected
-                          ? "bg-white text-[#C6112F] px-6 py-2 rounded-lg shadow-md font-extrabold scale-105"
-                          : "text-white opacity-95 hover:opacity-100 px-3 py-2"
+                        ? "bg-white text-[#C6112F] px-6 py-2 rounded-lg shadow-md font-extrabold scale-105"
+                        : "text-white opacity-95 hover:opacity-100 px-3 py-2"
                         }`}
                     >
                       {year}
@@ -1559,8 +1604,8 @@ export default function PastEditionsPage() {
                             <div className="relative flex items-center justify-center h-6">
                               <div
                                 className={`w-5 h-5 rounded-full transition-all duration-200 ${isFirst
-                                    ? "bg-[#C6112F] border-2 border-[#C6112F] ring-4 ring-[#C6112F]/20 shadow-sm"
-                                    : "bg-white border-2 border-[#78828e] group-hover:border-[#C6112F] group-hover:bg-[#C6112F]"
+                                  ? "bg-[#C6112F] border-2 border-[#C6112F] ring-4 ring-[#C6112F]/20 shadow-sm"
+                                  : "bg-white border-2 border-[#78828e] group-hover:border-[#C6112F] group-hover:bg-[#C6112F]"
                                   }`}
                               />
                             </div>

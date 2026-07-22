@@ -4,10 +4,10 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
-import SpeakersView from "@/components/SpeakersView";
+import SponsorsView from "@/components/SponsorsView";
 import { useLanguage } from "@/context/LanguageContext";
 
-export default function SpeakersPage() {
+export default function SponsorsPage() {
   const { t } = useLanguage();
 
   return (
@@ -32,61 +32,36 @@ export default function SpeakersPage() {
                 {t("nav-home", "Home")}
               </a>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-neutral-400">{t("nav-programs", "Programs")}</span>
+              <span className="text-neutral-400">{t("nav-past-years", "Past Edition")}</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">Speakers</span>
+              <span className="text-white font-semibold">Sponsors</span>
             </div>
             <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase block mb-3">
-              2026 KEYNOTE & INDUSTRY EXPERTS
+              GLOBAL MINING LEADERSHIP & PARTNERS
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
-              THE <span className="text-[#C6112F]">Speakers</span>
+              Our <span className="text-[#C6112F]">Sponsors</span>
             </h1>
             <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
           </div>
         </section>
 
-        {/* ═══════ SPEAKERS LISTING ═══════ */}
+        {/* ═══════ SPONSORS VIEW CONTENT ═══════ */}
         <section className="relative w-full py-14 sm:py-18 md:py-22">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              2026 EDITION FEATURED STAGE
+              SUPPORT & INDUSTRY PARTNERSHIPS
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
-              Event Speakers & Keynotes
+              THE Event Sponsors & Partners
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
-              Ministers, ambassadors, CEOs, investors, and leading analysts taking the stage across four days of high-impact sessions in Quebec City.
+              We thank our world-class sponsors and partners for their generous support in making the Mining Investment Event a premier global platform for collaboration, innovation, and sustainable capital growth.
             </p>
 
-            {/* Dynamic searchable and filterable speakers component */}
-            <SpeakersView />
-
-            {/* Speaking Slot Inquiries CTA Box */}
-            <div className="mt-16 bg-[#0f1117] text-white rounded-3xl p-8 sm:p-12 text-center border border-[#C6112F]/30 shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#C6112F]/15 via-transparent to-transparent pointer-events-none" />
-              <div className="relative z-10 max-w-2xl mx-auto">
-                <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-3 block">
-                  JOIN THE STAGE
-                </span>
-                <h4 className="text-2xl sm:text-3xl font-black mb-3 text-white tracking-tight">
-                  Interested in Speaking Opportunities?
-                </h4>
-                <p className="text-neutral-300 text-xs sm:text-sm max-w-xl mx-auto mb-8 leading-relaxed font-medium">
-                  Speaking slots at THE Event provide unrivalled visibility before accredited investors, corporate leaders, and global mining executives.
-                </p>
-                <a
-                  href="mailto:jchoi@irinc.ca?subject=Speaking Inquiry"
-                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-[#C6112F] text-white text-xs font-extrabold tracking-[0.15em] uppercase hover:bg-[#a50e27] transition-all duration-300 shadow-xl shadow-[#C6112F]/25 hover:scale-105"
-                >
-                  <span>Inquire About Speaking Slots</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+            {/* Shared Sponsors Component */}
+            <SponsorsView year={2026} />
           </div>
         </section>
 
