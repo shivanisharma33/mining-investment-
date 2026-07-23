@@ -205,9 +205,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-[#C6112F]/80 ${
-        scrolled ? "shadow-md h-20 sm:h-22" : "h-24"
-      }`}
+      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-20 sm:h-22" : "h-24"
+        }`}
     >
       <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-full flex items-center justify-between">
         {/* Logo */}
@@ -252,20 +251,18 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 ${
-                    link.active ? "text-[#C6112F]" : "text-neutral-900 hover:text-[#C6112F]"
-                  }`}
+                  className={`relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 ${link.active ? "text-[#C6112F]" : "text-neutral-900 hover:text-[#C6112F]"
+                    }`}
                 >
                   <span>{link.name}</span>
                   {link.hasDropdown && (
                     <svg
-                      className={`w-3 h-3 transition-transform duration-200 ${
-                        (link.dropdownType === "about" && aboutOpen) ||
-                        (link.dropdownType === "programs" && programsOpen) ||
-                        (link.dropdownType === "past-years" && pastYearsOpen)
+                      className={`w-3 h-3 transition-transform duration-200 ${(link.dropdownType === "about" && aboutOpen) ||
+                          (link.dropdownType === "programs" && programsOpen) ||
+                          (link.dropdownType === "past-years" && pastYearsOpen)
                           ? "rotate-180 text-[#C6112F]"
                           : ""
-                      }`}
+                        }`}
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2.5"
@@ -276,9 +273,8 @@ export default function Navbar() {
                   )}
                   {/* Animated Underline Effect */}
                   <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-[#C6112F] transition-all duration-300 ${
-                      link.active ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
+                    className={`absolute bottom-0 left-0 h-[2px] bg-[#C6112F] transition-all duration-300 ${link.active ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
                   />
                 </Link>
               )}
@@ -416,17 +412,15 @@ export default function Navbar() {
             />
             {/* EN Label */}
             <span
-              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${
-                lang === "EN" ? "text-white" : "text-[#C6112F]"
-              }`}
+              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${lang === "EN" ? "text-white" : "text-[#C6112F]"
+                }`}
             >
               EN
             </span>
             {/* FR Label */}
             <span
-              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${
-                lang === "FR" ? "text-white" : "text-[#C6112F]"
-              }`}
+              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${lang === "FR" ? "text-white" : "text-[#C6112F]"
+                }`}
             >
               FR
             </span>
@@ -484,13 +478,12 @@ export default function Navbar() {
                     >
                       <span>{link.name}</span>
                       <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          (link.dropdownType === "about" && mobileAboutOpen) ||
-                          (link.dropdownType === "programs" && mobileProgramsOpen) ||
-                          (link.dropdownType === "past-years" && mobilePastYearsOpen)
+                        className={`w-4 h-4 transition-transform duration-200 ${(link.dropdownType === "about" && mobileAboutOpen) ||
+                            (link.dropdownType === "programs" && mobileProgramsOpen) ||
+                            (link.dropdownType === "past-years" && mobilePastYearsOpen)
                             ? "rotate-180 text-[#C6112F]"
                             : ""
-                        }`}
+                          }`}
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2.5"
@@ -576,9 +569,8 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors block ${
-                      link.active ? "text-[#C6112F]" : "text-neutral-800 hover:text-[#C6112F]"
-                    }`}
+                    className={`py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors block ${link.active ? "text-[#C6112F]" : "text-neutral-800 hover:text-[#C6112F]"
+                      }`}
                   >
                     {link.name}
                   </Link>
@@ -592,17 +584,15 @@ export default function Navbar() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setLang("EN")}
-                className={`px-3 py-1 rounded-full text-xs font-bold ${
-                  lang === "EN" ? "bg-[#C6112F] text-white" : "bg-neutral-100 text-neutral-700"
-                }`}
+                className={`px-3 py-1 rounded-full text-xs font-bold ${lang === "EN" ? "bg-[#C6112F] text-white" : "bg-neutral-100 text-neutral-700"
+                  }`}
               >
                 EN
               </button>
               <button
                 onClick={() => setLang("FR")}
-                className={`px-3 py-1 rounded-full text-xs font-bold ${
-                  lang === "FR" ? "bg-[#C6112F] text-white" : "bg-neutral-100 text-neutral-700"
-                }`}
+                className={`px-3 py-1 rounded-full text-xs font-bold ${lang === "FR" ? "bg-[#C6112F] text-white" : "bg-neutral-100 text-neutral-700"
+                  }`}
               >
                 FR
               </button>

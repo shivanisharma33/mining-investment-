@@ -6,790 +6,922 @@ export interface SponsorItem {
   name: string;
   website: string;
   image?: string;
-  tier: "presenting" | "platinum" | "gold" | "silver" | "copper" | "media" | "government";
+  tier: "presenting" | "platinum" | "gold" | "silver" | "copper" | "media" | "government" | "green" | "sustainable";
 }
 
 const SPONSORS_2026: SponsorItem[] = [
+  // Platinum Partners
   {
-    "name": "Government of Québec",
-    "tier": "platinum",
-    "image": "/sponsors/2026/sponsor_special_1.png",
-    "website": "https://www.quebec.ca"
+    name: "Glencore",
+    website: "https://www.glencore.com",
+    tier: "platinum",
+    image: "/sponsors/2026/glencore.svg",
   },
   {
-    "name": "Laurentian Bank Securities",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/7bef5867-7f22-43cd-92f1-87a63d2e7a20/Laurentian+Bank+Securities?format=750w",
-    "website": "https://vmbl.ca"
+    name: "National Bank Financial Markets",
+    website: "https://nbfm.ca",
+    tier: "platinum",
+    image: "/sponsors/2026/national_bank_financial_markets.png",
   },
   {
-    "name": "National Bank Financial Markets",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/32710a8b-b7cb-44bf-92a8-0a601abab945/fr+National+Bank.logo?format=750w",
-    "website": "https://nbfm.ca"
+    name: "Ventum Financial",
+    website: "https://ventumfinancial.com",
+    tier: "platinum",
+    image: "/sponsors/2026/ventum_financial.png",
   },
   {
-    "name": "Glencore Canada",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/eef56d14-571d-4299-8058-b2352b9cf3b0/Glencore+Logo?format=750w",
-    "website": "https://www.glencore.com"
+    name: "Agnico Eagle",
+    website: "https://www.agnicoeagle.com",
+    tier: "platinum",
+    image: "/sponsors/2026/agnico_eagle.ico",
+  },
+  // Gold Partners
+  {
+    name: "Altitude Capital Partners",
+    website: "https://altitudecapitalpartners.ca/",
+    tier: "gold",
+    image: "/altitude.png",
   },
   {
-    "name": "First Phosphate Corp.",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/a2d714b0-76ef-43bb-8e49-da998a92f7c4/First+Phosphate+logo?format=750w",
-    "website": "https://firstphosphate.com"
+    name: "Invest Yukon",
+    website: "https://investyukon.ca",
+    tier: "gold",
+    image: "/Invest_Yukon.png",
   },
   {
-    "name": "Agnico Eagle Mines Limited",
-    "tier": "gold",
-    "website": "https://www.agnicoeagle.com"
+    name: "MAXIT Capital",
+    website: "https://www.maxitcapital.com/",
+    tier: "gold",
   },
   {
-    "name": "O3 Mining Inc.",
-    "tier": "gold",
-    "website": "https://o3mining.com"
+    name: "PearTree Canada",
+    website: "https://peartreecanada.com",
+    tier: "gold",
+    image: "/sponsors/2026/peartree_canada.png",
   },
   {
-    "name": "IBK Capital Corp.",
-    "tier": "gold",
-    "website": "https://ibkcapital.com"
+    name: "THE MONEY CHANNEL NEW YORK CITY",
+    website: "https://www.moneychannelnyc.com/",
+    tier: "gold",
+    image: "/sponsors/2026/the_money_channel_new_york_city.svg",
+  },
+  // Silver Partners
+  {
+    name: "Atrium Research",
+    website: "https://atriumresearch.ca",
+    tier: "silver",
+    image: "/sponsors/2026/atrium_research.ico",
   },
   {
-    "name": "Kinterra Capital",
-    "tier": "gold",
-    "website": "https://kinterracapital.com"
+    name: "Canadian Securities Exchange (CSE)",
+    website: "https://thecse.com",
+    tier: "silver",
+    image: "/sponsors/2026/canadian_securities_exchange_cse.png",
   },
   {
-    "name": "Osisko Mining / Development",
-    "tier": "gold",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152619513-RXNE5B7DMFP5MS2TC7XN/Jean+Robitialle.+jpeg.jpeg?format=750w",
-    "website": "https://osiskodev.com"
+    name: "Caur Technologies",
+    website: "https://caur.ca",
+    tier: "silver",
   },
   {
-    "name": "Canadian Securities Exchange (CSE)",
-    "tier": "silver",
-    "website": "https://thecse.com"
+    name: "Crux Investor",
+    website: "https://cruxinvestor.com",
+    tier: "silver",
+    image: "/sponsors/2026/crux_investor.svg",
   },
   {
-    "name": "PearTree Canada",
-    "tier": "silver",
-    "website": "https://peartreecanada.com"
+    name: "Hatch",
+    website: "https://www.hatch.com",
+    tier: "silver",
+    image: "/sponsors/2026/hatch.png",
   },
   {
-    "name": "Osisko Gold Royalties",
-    "tier": "silver",
-    "website": "https://osiskogr.com"
+    name: "IAMGOLD",
+    website: "https://www.iamgold.com",
+    tier: "silver",
+    image: "/sponsors/2026/iamgold.ico",
   },
   {
-    "name": "Stifel",
-    "tier": "silver",
-    "website": "https://www.stifel.com"
+    name: "Government of Newfoundland & Labrador",
+    website: "https://www.gov.nl.ca",
+    tier: "silver",
+    image: "/sponsors/2026/government_of_newfoundland_labrador.svg",
   },
   {
-    "name": "TMX Group",
-    "tier": "silver",
-    "website": "https://www.tmx.com"
+    name: "North American Niobium",
+    website: "https://northamericanniobium.com",
+    tier: "silver",
+    image: "/sponsors/2026/north_american_niobium.png",
   },
   {
-    "name": "IR.INC",
-    "tier": "silver",
-    "website": "https://irinc.ca"
+    name: "OR Royalties (Osisko Royalties)",
+    website: "https://osiskogr.com",
+    tier: "silver",
+    image: "/sponsors/2026/or_royalties_osisko_royalties.svg",
   },
   {
-    "name": "MI3 Financial Communications Inc.",
-    "tier": "silver",
-    "website": "https://mi3.ca"
+    name: "Red Cloud Securities",
+    website: "https://redcloudfs.com",
+    tier: "silver",
+    image: "/sponsors/2026/red_cloud_securities.png",
   },
   {
-    "name": "VRIFY Technology",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/8a9b493b-a8de-475a-85fe-87ec50acd64d/vrify_logo_2023_logo-black.jpg?format=750w",
-    "website": "https://vrify.com"
+    name: "Stifel",
+    website: "https://www.stifel.com",
+    tier: "silver",
+    image: "/sponsors/2026/stifel.svg",
   },
   {
-    "name": "Caur Technologies",
-    "tier": "silver",
-    "website": "https://caur.ca"
+    name: "TMX Group",
+    website: "https://www.tmx.com",
+    tier: "silver",
+    image: "/sponsors/2026/tmx_group.png",
+  },
+  // Copper Partners
+  {
+    name: "Alliance Global Partners",
+    website: "https://allianceg.com",
+    tier: "copper",
+    image: "/sponsors/2026/alliance_global_partners.ico",
   },
   {
-    "name": "Crux Investor",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/4c151119-c45b-4f3b-b930-14cf54873e36/64ddea86f448fb2c08808739_cruxinvestor-open-graph.jpg?format=750w",
-    "website": "https://cruxinvestor.com"
+    name: "Apaton Finance",
+    website: "https://apatonfinance.com",
+    tier: "copper",
+    image: "/sponsors/2026/apaton_finance.ico",
   },
   {
-    "name": "Alliance Advisors",
-    "tier": "copper",
-    "website": "https://allianceadvisors.com"
+    name: "Brooks & Nelson",
+    website: "https://brooksandnelson.com",
+    tier: "copper",
+    image: "/sponsors/2026/brooks_nelson.png",
   },
   {
-    "name": "Amex Exploration",
-    "tier": "copper",
-    "website": "https://amexexploration.com"
+    name: "Cassels",
+    website: "https://cassels.com",
+    tier: "copper",
+    image: "/sponsors/2026/cassels.ico",
   },
   {
-    "name": "Brooks & Nelson",
-    "tier": "copper",
-    "website": "https://brooksandnelson.com"
+    name: "Centre des congrès de Québec",
+    website: "https://www.convention.qc.ca",
+    tier: "copper",
+    image: "/sponsors/2026/centre_des_congr_s_de_qu_bec.png",
   },
   {
-    "name": "Cassels",
-    "tier": "copper",
-    "website": "https://cassels.com"
+    name: "INFOR FINANCIAL INC.",
+    website: "https://inforfg.com/",
+    tier: "copper",
   },
   {
-    "name": "CDPQ (La Caisse)",
-    "tier": "copper",
-    "website": "https://www.cdpq.com"
+    name: "La Caisse (CDPQ)",
+    website: "https://www.cdpq.com",
+    tier: "copper",
+    image: "/sponsors/2026/la_caisse_cdpq.svg",
   },
   {
-    "name": "Centre des congrès de Québec",
-    "tier": "copper",
-    "website": "https://www.convention.qc.ca"
+    name: "MNP",
+    website: "https://www.mnp.ca",
+    tier: "copper",
   },
   {
-    "name": "Digbee Limited",
-    "tier": "copper",
-    "website": "https://digbee.com"
+    name: "Mercury Group",
+    website: "https://mercurygroup.ca",
+    tier: "copper",
+    image: "/sponsors/2026/mercury_group.png",
   },
   {
-    "name": "Domco Group",
-    "tier": "copper",
-    "website": "https://domcogroup.ca"
+    name: "PAL Airlines",
+    website: "https://www.palairlines.ca",
+    tier: "copper",
+    image: "/sponsors/2026/pal_airlines.png",
   },
   {
-    "name": "Generation IACP",
-    "tier": "copper",
-    "website": "https://generationiacp.com"
+    name: "Outside the Box Capital",
+    website: "https://outsidethebox.capital",
+    tier: "copper",
+    image: "/sponsors/2026/outside_the_box_capital.png",
   },
   {
-    "name": "Global Business Reports (GBR)",
-    "tier": "copper",
-    "website": "https://www.gbreports.com"
+    name: "Velocity Trade",
+    website: "https://velocitytrade.com",
+    tier: "copper",
+    image: "/sponsors/2026/velocity_trade.png",
   },
   {
-    "name": "Infor Financial Group",
-    "tier": "copper",
-    "website": "https://inforfinancial.com"
+    name: "VRIFY",
+    website: "https://vrify.com",
+    tier: "copper",
+    image: "/sponsors/2026/vrify.png",
+  },
+  // Media & Partners
+  {
+    name: "B Tv",
+    website: "https://www.b-tv.com/",
+    tier: "media",
   },
   {
-    "name": "Outside The Box Capital",
-    "tier": "copper",
-    "website": "https://outsidethebox.capital"
+    name: "Canadian Mining Journal",
+    website: "https://www.canadianminingjournal.com",
+    tier: "media",
+    image: "/sponsors/2026/canadian_mining_journal.png",
   },
   {
-    "name": "The Northern Miner",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/539da435-47b4-447f-9325-670c0aa24c1b/tnm_logo_tag_c-scaled.jpg?format=750w",
-    "website": "https://www.northernminer.com"
+    name: "CEO.CA",
+    website: "https://ceo.ca",
+    tier: "media",
+    image: "/sponsors/2026/ceo_ca.png",
   },
   {
-    "name": "BTV (Business Television)",
-    "tier": "media",
-    "website": "https://btonline.com"
+    name: "GBR (Global Business Reports)",
+    website: "https://www.gbreports.com",
+    tier: "media",
+    image: "/sponsors/2026/gbr_global_business_reports.ico",
   },
   {
-    "name": "Resource World Magazine",
-    "tier": "media",
-    "website": "https://resourceworld.com"
+    name: "ITG (Investment Technology Group)",
+    website: "https://itg.com",
+    tier: "media",
+    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/befa98c2-1fed-4ebe-861f-0f70e03f5f92/Independent_Trading_Group__ITG___Inc__Independent_Trading_Group.jpg?format=750w",
   },
   {
-    "name": "CEO.CA",
-    "tier": "media",
-    "website": "https://ceo.ca"
+    name: "Launch Pad Productions",
+    website: "https://www.launchpadproductions.ca/",
+    tier: "media",
   },
   {
-    "name": "Kitco News",
-    "tier": "media",
-    "website": "https://www.kitco.com"
+    name: "MiningIR",
+    website: "https://miningir.com",
+    tier: "media",
+    image: "/sponsors/2026/miningir.png",
   },
   {
-    "name": "Market One Media",
-    "tier": "media",
-    "website": "https://marketonemedia.com"
+    name: "InvestorBrandNetwork (IBN)",
+    website: "https://www.ibn.fm",
+    tier: "media",
+    image: "/sponsors/2026/investorbrandnetwork_ibn.svg",
   },
   {
-    "name": "Junior Mining Network",
-    "tier": "media",
-    "website": "https://juniorminingnetwork.com"
+    name: "Mining Discovery",
+    website: "https://miningdiscovery.com",
+    tier: "media",
+    image: "/sponsors/2026/mining_discovery.webp",
   },
   {
-    "name": "Mining Discovery",
-    "tier": "media",
-    "website": "https://miningdiscovery.com"
+    name: "Mining Hub",
+    website: "https://mininghub.com",
+    tier: "media",
+    image: "/sponsors/2026/mining_hub.svg",
   },
   {
-    "name": "MiningIR",
-    "tier": "media",
-    "website": "https://miningir.com"
+    name: "Newsfile",
+    website: "https://www.newsfilecorp.com",
+    tier: "media",
+    image: "/sponsors/2026/newsfile.png",
   },
   {
-    "name": "Newsfile Corp.",
-    "tier": "media",
-    "website": "https://www.newsfilecorp.com"
+    name: "Market One Media",
+    website: "https://www.marketonemedia.com",
+    tier: "media",
   },
   {
-    "name": "The Prospector News",
-    "tier": "media",
-    "website": "https://theprospectornews.com"
+    name: "Podcast Miner",
+    website: "https://podcastminer.com",
+    tier: "media",
   },
   {
-    "name": "VID Conferences",
-    "tier": "media",
-    "website": "https://vidconferences.com"
-  }
+    name: "NP Promotion",
+    website: "https://nppromo.ca/",
+    tier: "media",
+  },
+  {
+    name: "RCTV",
+    website: "https://rctv.ca",
+    tier: "media",
+  },
+  {
+    name: "Refined Substance",
+    website: "https://refinedsubstance.com",
+    tier: "media",
+    image: "/sponsors/2026/refined_substance.png",
+  },
+  {
+    name: "The Northern Miner",
+    website: "https://www.northernminer.com",
+    tier: "media",
+    image: "/sponsors/2026/the_northern_miner.png",
+  },
+  {
+    name: "The Prospector News",
+    website: "https://theprospectornews.com",
+    tier: "media",
+    image: "/sponsors/2026/the_prospector_news.png",
+  },
+  {
+    name: "Resource World Magazine",
+    website: "https://resourceworld.com",
+    tier: "media",
+    image: "/sponsors/2026/resource_world_magazine.ico",
+  },
+  {
+    name: "XPAV Expert'Ease",
+    website: "https://xpav.ca",
+    tier: "media",
+    image: "/sponsors/2026/xpav_expert_ease.png",
+  },
+  {
+    name: "VID (Research and the Investor)",
+    website: "https://vidconferences.com",
+    tier: "media",
+    image: "/sponsors/2026/vid_research_and_the_investor.png",
+  },
+  // Special Participation
+  {
+    name: "Québec",
+    website: "https://www.quebec.ca",
+    tier: "government",
+    image: "/sponsors/2026/qu_bec.png",
+  },
 ];
 
 const SPONSORS_2025: SponsorItem[] = [
+  // Special Sponsor
   {
-    "name": "Agnico Eagle",
-    "website": "https://www.agnicoeagle.com",
-    "tier": "presenting",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/5a7feddc-6117-4605-8462-fbb16da1c728/AGNICO_EAGLE-Colour-Standard.png?format=750w"
+    name: "Government of Québec",
+    website: "https://www.quebec.ca",
+    tier: "government",
+    image: "/sponsors/2026/qu_bec.png",
+  },
+  // Platinum Sponsors
+  {
+    name: "Laurentian Bank Securities",
+    website: "https://www.lb-securities.ca",
+    tier: "platinum",
+    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/7bef5867-7f22-43cd-92f1-87a63d2e7a20/Laurentian+Bank+Securities?format=750w",
   },
   {
-    "name": "Glencore",
-    "website": "https://www.glencore.com",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/eef56d14-571d-4299-8058-b2352b9cf3b0/Glencore+Logo?format=750w"
+    name: "National Bank Financial Markets",
+    website: "https://nbfm.ca",
+    tier: "platinum",
+    image: "/sponsors/2026/national_bank_financial_markets.png",
+  },
+  // Gold Sponsors
+  {
+    name: "First Phosphate",
+    website: "https://firstphosphate.com",
+    tier: "gold",
+    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/a2d714b0-76ef-43bb-8e49-da998a92f7c4/First+Phosphate+logo?format=750w",
   },
   {
-    "name": "National Bank Financial Markets",
-    "website": "https://nbfm.ca",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/32710a8b-b7cb-44bf-92a8-0a601abab945/fr+National+Bank.logo?format=750w"
+    name: "Glencore",
+    website: "https://www.glencore.com",
+    tier: "gold",
+    image: "/sponsors/2026/glencore.svg",
   },
   {
-    "name": "Ventum Financial",
-    "website": "https://ventumfinancial.com",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "IBK Capital Corp.",
+    website: "https://www.ibkcapital.com",
+    tier: "gold",
+  },
+  // Green Sponsor
+  {
+    name: "Kinterra Capital",
+    website: "https://kinterracapital.com",
+    tier: "green",
+  },
+  // Sustainable Sponsor
+  {
+    name: "Osisko Gold Royalties",
+    website: "https://osiskogr.com",
+    tier: "sustainable",
+    image: "/sponsors/2026/or_royalties_osisko_royalties.svg",
+  },
+  // Silver Sponsors
+  {
+    name: "Canadian Securities Exchange (CSE)",
+    website: "https://thecse.com",
+    tier: "silver",
+    image: "/sponsors/2026/canadian_securities_exchange_cse.png",
   },
   {
-    "name": "Altitude Capital Partners",
-    "website": "https://www.altitudecapitalpartners.com",
-    "tier": "gold",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Crux Investor",
+    website: "https://cruxinvestor.com",
+    tier: "silver",
+    image: "/sponsors/2026/crux_investor.svg",
   },
   {
-    "name": "Invest Yukon",
-    "website": "https://investyukon.ca",
-    "tier": "gold",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/4c151119-c45b-4f3b-b930-14cf54873e36/64ddea86f448fb2c08808739_cruxinvestor-open-graph.jpg?format=750w"
+    name: "IR.INC Capital Market Advisory",
+    website: "https://ir.inc",
+    tier: "silver",
   },
   {
-    "name": "MAXIT Capital",
-    "website": "https://maxitcapital.com",
-    "tier": "gold",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "MI3 Financial Communications",
+    website: "https://mi3financial.com",
+    tier: "silver",
   },
   {
-    "name": "PearTree Canada",
-    "website": "https://peartreecanada.com",
-    "tier": "gold",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "PearTree Financial",
+    website: "https://www.peartreefinancial.com",
+    tier: "silver",
+    image: "/sponsors/2026/peartree_canada.png",
   },
   {
-    "name": "Atrium Research",
-    "website": "https://atriumresearch.ca",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/7691234a-b33b-4f14-b084-c0c5d18caa32/atrium_purple_short+copy.png?format=750w"
+    name: "Stifel",
+    website: "https://www.stifel.com",
+    tier: "silver",
+    image: "/sponsors/2026/stifel.svg",
   },
   {
-    "name": "Canadian Securities Exchange (CSE)",
-    "website": "https://thecse.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "VRIFY",
+    website: "https://vrify.com",
+    tier: "silver",
+    image: "/sponsors/2026/vrify.png",
   },
   {
-    "name": "Caur Technologies",
-    "website": "https://caur.ca",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "TMX Group",
+    website: "https://www.tmx.com",
+    tier: "silver",
+    image: "/sponsors/2026/tmx_group.png",
+  },
+  // Copper Sponsors
+  {
+    name: "Alliance Advisors",
+    website: "https://allianceadvisors.com",
+    tier: "copper",
+    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/0d7baea8-eb9b-4960-a83c-9daf1de7a223/Alliance+Advisors+Logo?format=750w",
   },
   {
-    "name": "Crux Investor",
-    "website": "https://cruxinvestor.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/4c151119-c45b-4f3b-b930-14cf54873e36/64ddea86f448fb2c08808739_cruxinvestor-open-graph.jpg?format=750w"
+    name: "Brooks & Nelson",
+    website: "https://brooksandnelson.com",
+    tier: "copper",
+    image: "/sponsors/2026/brooks_nelson.png",
   },
   {
-    "name": "Hatch",
-    "website": "https://www.hatch.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "CDPQ",
+    website: "https://www.cdpq.com",
+    tier: "copper",
+    image: "/sponsors/2026/la_caisse_cdpq.svg",
   },
   {
-    "name": "IAMGOLD",
-    "website": "https://www.iamgold.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Cassels",
+    website: "https://cassels.com",
+    tier: "copper",
+    image: "/sponsors/2026/cassels.ico",
   },
   {
-    "name": "Newfoundland & Labrador",
-    "website": "https://www.gov.nl.ca",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Centre des congrès de Québec",
+    website: "https://www.convention.qc.ca",
+    tier: "copper",
+    image: "/sponsors/2026/centre_des_congr_s_de_qu_bec.png",
   },
   {
-    "name": "North American Niobium",
-    "website": "https://northamericanniobium.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Digbee",
+    website: "https://digbee.com",
+    tier: "copper",
   },
   {
-    "name": "OR Royalties (Osisko Royalties)",
-    "website": "https://osiskogr.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Infor Financial",
+    website: "https://inforfinancial.com",
+    tier: "copper",
   },
   {
-    "name": "Red Cloud Securities",
-    "website": "https://redcloudfs.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Outside the Box Capital",
+    website: "https://outsidethebox.capital",
+    tier: "copper",
+    image: "/sponsors/2026/outside_the_box_capital.png",
+  },
+  // Media & Partners
+  {
+    name: "BTV – Business Television",
+    website: "https://www.b-tv.com",
+    tier: "media",
   },
   {
-    "name": "Stifel",
-    "website": "https://www.stifel.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/ec91c7d6-bc3e-4066-8ef8-a4bfea66cec8/Stifel+Logo?format=750w"
+    name: "Canadian Mining Magazine",
+    website: "https://canadianminingmagazine.com",
+    tier: "media",
   },
   {
-    "name": "TMX Group",
-    "website": "https://www.tmx.com",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/7b34fea3-b1ba-40d8-81b8-8aeef8543ab9/TMX-Newsfile_POS_RGB.png?format=750w"
+    name: "CEO.CA",
+    website: "https://ceo.ca",
+    tier: "media",
+    image: "/sponsors/2026/ceo_ca.png",
   },
   {
-    "name": "Alliance Global Partners",
-    "website": "https://allianceg.com",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/0d7baea8-eb9b-4960-a83c-9daf1de7a223/Alliance+Advisors+Logo?format=750w"
+    name: "Kitco News",
+    website: "https://www.kitco.com",
+    tier: "media",
   },
   {
-    "name": "Apaton Finance",
-    "website": "https://apatonfinance.com",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Market One Media",
+    website: "https://www.marketonemedia.com",
+    tier: "media",
   },
   {
-    "name": "Brooks & Nelson",
-    "website": "https://brooksandnelson.com",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/564c5c1c-7cf0-4b9a-baa8-8c1935f3f1d4/Brooks+%26+Nelson+Logo?format=750w"
+    name: "Junior Mining Hub",
+    website: "https://juniormininghub.com",
+    tier: "media",
   },
   {
-    "name": "Cassels",
-    "website": "https://cassels.com",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Mining Discovery",
+    website: "https://miningdiscovery.com",
+    tier: "media",
+    image: "/sponsors/2026/mining_discovery.webp",
   },
   {
-    "name": "Centre des congrès de Québec",
-    "website": "https://www.convention.qc.ca",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/66b22e39-7b0f-4438-bb71-2aa6eaf99e27/Qu%C3%A9bec+City+Convention+Centre.jpg?format=750w"
+    name: "Mining Network",
+    website: "https://miningnetwork.com",
+    tier: "media",
   },
   {
-    "name": "CEO.CA",
-    "website": "https://ceo.ca",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Mining IR",
+    website: "https://miningir.com",
+    tier: "media",
+    image: "/sponsors/2026/miningir.png",
   },
   {
-    "name": "ITG",
-    "website": "https://itg.com",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/befa98c2-1fed-4ebe-861f-0f70e03f5f92/Independent_Trading_Group__ITG___Inc__Independent_Trading_Group.jpg?format=750w"
+    name: "The Northern Miner",
+    website: "https://www.northernminer.com",
+    tier: "media",
+    image: "/sponsors/2026/the_northern_miner.png",
   },
   {
-    "name": "La Caisse (CDPQ)",
-    "website": "https://www.cdpq.com",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Newsfile",
+    website: "https://www.newsfilecorp.com",
+    tier: "media",
+    image: "/sponsors/2026/newsfile.png",
   },
   {
-    "name": "MNP",
-    "website": "https://www.mnp.ca",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "The Prospector News",
+    website: "https://theprospectornews.com",
+    tier: "media",
+    image: "/sponsors/2026/the_prospector_news.png",
   },
   {
-    "name": "Mercury Group",
-    "website": "https://mercurygroup.ca",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "VID (Focused on the Investor)",
+    website: "https://vidconferences.com",
+    tier: "media",
+    image: "/sponsors/2026/vid_research_and_the_investor.png",
   },
   {
-    "name": "Outside the Box Capital",
-    "website": "https://outsidethebox.capital",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    name: "Invercio",
+    website: "https://invercio.com",
+    tier: "media",
   },
-  {
-    "name": "PAL Airlines",
-    "website": "https://www.palairlines.ca",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "Velocity Trade",
-    "website": "https://velocitytrade.com",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "VRIFY",
-    "website": "https://vrify.com",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/8a9b493b-a8de-475a-85fe-87ec50acd64d/vrify_logo_2023_logo-black.jpg?format=750w"
-  },
-  {
-    "name": "Canadian Mining Journal",
-    "website": "https://www.canadianminingjournal.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "GBR (Global Business Reports)",
-    "website": "https://www.gbreports.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "InvestorBrandNetwork (IBN)",
-    "website": "https://www.ibn.fm",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "Market One Media",
-    "website": "https://www.marketonemedia.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "Mining Discovery",
-    "website": "https://miningdiscovery.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/46f34380-0bce-477d-9ba6-57d068388427/Mining+Discovery+logo+%232.png?format=750w"
-  },
-  {
-    "name": "Mining Hub",
-    "website": "https://mininghub.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/46f34380-0bce-477d-9ba6-57d068388427/Mining+Discovery+logo+%232.png?format=750w"
-  },
-  {
-    "name": "MiningIR",
-    "website": "https://miningir.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "Newsfile",
-    "website": "https://www.newsfilecorp.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/7b34fea3-b1ba-40d8-81b8-8aeef8543ab9/TMX-Newsfile_POS_RGB.png?format=750w"
-  },
-  {
-    "name": "Podcast Miner",
-    "website": "https://podcastminer.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "RCTV",
-    "website": "https://rctv.ca",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "Refined Substance",
-    "website": "https://refinedsubstance.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "Resource World Magazine",
-    "website": "https://resourceworld.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "The Northern Miner",
-    "website": "https://www.northernminer.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/539da435-47b4-447f-9325-670c0aa24c1b/tnm_logo_tag_c-scaled.jpg?format=750w"
-  },
-  {
-    "name": "The Prospector News",
-    "website": "https://theprospectornews.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "VID",
-    "website": "https://vidconferences.com",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  },
-  {
-    "name": "Government of Québec",
-    "website": "https://www.quebec.ca",
-    "tier": "government",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
-  }
 ];
 
 const SPONSORS_2024: SponsorItem[] = [
+  // Special Sponsor
   {
-    "name": "Government of Québec",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w",
-    "website": "https://www.quebec.ca"
+    name: "Government of Québec",
+    website: "https://www.quebec.ca",
+    tier: "government",
+    image: "/sponsors/2026/qu_bec.png",
+  },
+  // Platinum Sponsors
+  {
+    name: "Laurentian Bank Securities",
+    website: "https://www.lb-securities.ca",
+    tier: "platinum",
+    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/7bef5867-7f22-43cd-92f1-87a63d2e7a20/Laurentian+Bank+Securities?format=750w",
   },
   {
-    "name": "Laurentian Bank Securities",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/7bef5867-7f22-43cd-92f1-87a63d2e7a20/Laurentian+Bank+Securities?format=750w",
-    "website": "https://vmbl.ca"
+    name: "National Bank Financial Markets",
+    website: "https://nbfm.ca",
+    tier: "platinum",
+    image: "/sponsors/2026/national_bank_financial_markets.png",
+  },
+  // Gold Sponsors
+  {
+    name: "First Phosphate",
+    website: "https://firstphosphate.com",
+    tier: "gold",
+    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/a2d714b0-76ef-43bb-8e49-da998a92f7c4/First+Phosphate+logo?format=750w",
   },
   {
-    "name": "National Bank Financial Markets",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/32710a8b-b7cb-44bf-92a8-0a601abab945/fr+National+Bank.logo?format=750w",
-    "website": "https://nbfm.ca"
+    name: "Glencore",
+    website: "https://www.glencore.com",
+    tier: "gold",
+    image: "/sponsors/2026/glencore.svg",
   },
   {
-    "name": "IBK Capital Corp.",
-    "tier": "platinum",
-    "website": "https://ibkcapital.com"
+    name: "IBK Capital Corp.",
+    website: "https://www.ibkcapital.com",
+    tier: "gold",
   },
   {
-    "name": "Kinterra Capital",
-    "tier": "platinum",
-    "website": "https://kinterracapital.com"
+    name: "Kinterra Capital",
+    website: "https://kinterracapital.com",
+    tier: "gold",
   },
   {
-    "name": "O3 Mining Inc.",
-    "tier": "platinum",
-    "website": "https://o3mining.com"
+    name: "O3 Mining",
+    website: "https://o3mining.com",
+    tier: "gold",
   },
   {
-    "name": "Osisko Mining / Development",
-    "tier": "platinum",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152619513-RXNE5B7DMFP5MS2TC7XN/Jean+Robitialle.+jpeg.jpeg?format=750w",
-    "website": "https://osiskodev.com"
+    name: "Osisko Mining",
+    website: "https://osiskomining.com",
+    tier: "gold",
+  },
+  // Silver Sponsors
+  {
+    name: "Osisko Gold Royalties",
+    website: "https://osiskogr.com",
+    tier: "silver",
+    image: "/sponsors/2026/or_royalties_osisko_royalties.svg",
   },
   {
-    "name": "First Phosphate Corp.",
-    "tier": "gold",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/a2d714b0-76ef-43bb-8e49-da998a92f7c4/First+Phosphate+logo?format=750w",
-    "website": "https://firstphosphate.com"
+    name: "Canadian Securities Exchange (CSE)",
+    website: "https://thecse.com",
+    tier: "silver",
+    image: "/sponsors/2026/canadian_securities_exchange_cse.png",
   },
   {
-    "name": "Glencore Canada",
-    "tier": "gold",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/eef56d14-571d-4299-8058-b2352b9cf3b0/Glencore+Logo?format=750w",
-    "website": "https://www.glencore.com"
+    name: "PearTree Financial",
+    website: "https://peartreefinancial.com",
+    tier: "silver",
+    image: "/sponsors/2026/peartree_canada.png",
   },
   {
-    "name": "Osisko Gold Royalties",
-    "tier": "silver",
-    "website": "https://osiskogr.com"
+    name: "IR.INC",
+    website: "https://ir.inc",
+    tier: "silver",
   },
   {
-    "name": "Canadian Securities Exchange (CSE)",
-    "tier": "silver",
-    "website": "https://thecse.com"
+    name: "Stifel",
+    website: "https://www.stifel.com",
+    tier: "silver",
+    image: "/sponsors/2026/stifel.svg",
   },
   {
-    "name": "PearTree Canada",
-    "tier": "silver",
-    "website": "https://peartreecanada.com"
+    name: "MI3 Financial Communications",
+    website: "https://mi3financial.com",
+    tier: "silver",
   },
   {
-    "name": "IR.INC",
-    "tier": "silver",
-    "website": "https://irinc.ca"
+    name: "TMX Group",
+    website: "https://www.tmx.com",
+    tier: "silver",
+    image: "/sponsors/2026/tmx_group.png",
+  },
+  // Copper Sponsors
+  {
+    name: "Alliance Advisors",
+    website: "https://allianceadvisors.com",
+    tier: "copper",
+    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/0d7baea8-eb9b-4960-a83c-9daf1de7a223/Alliance+Advisors+Logo?format=750w",
   },
   {
-    "name": "Stifel",
-    "tier": "silver",
-    "website": "https://www.stifel.com"
+    name: "AMEX Exploration",
+    website: "https://amexexploration.com",
+    tier: "copper",
   },
   {
-    "name": "MI3 Financial Communications Inc.",
-    "tier": "silver",
-    "website": "https://mi3.ca"
+    name: "Cassels",
+    website: "https://cassels.com",
+    tier: "copper",
+    image: "/sponsors/2026/cassels.ico",
   },
   {
-    "name": "TMX Group",
-    "tier": "silver",
-    "website": "https://www.tmx.com"
+    name: "Brooks & Nelson",
+    website: "https://brooksandnelson.com",
+    tier: "copper",
+    image: "/sponsors/2026/brooks_nelson.png",
   },
   {
-    "name": "VRIFY Technology",
-    "tier": "silver",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/8a9b493b-a8de-475a-85fe-87ec50acd64d/vrify_logo_2023_logo-black.jpg?format=750w",
-    "website": "https://vrify.com"
+    name: "CDPQ",
+    website: "https://www.cdpq.com",
+    tier: "copper",
+    image: "/sponsors/2026/la_caisse_cdpq.svg",
   },
   {
-    "name": "Alliance Advisors",
-    "tier": "copper",
-    "website": "https://allianceadvisors.com"
+    name: "Centre des congrès de Québec",
+    website: "https://www.convention.qc.ca",
+    tier: "copper",
+    image: "/sponsors/2026/centre_des_congr_s_de_qu_bec.png",
   },
   {
-    "name": "Amex Exploration",
-    "tier": "copper",
-    "website": "https://amexexploration.com"
+    name: "Crux Investor",
+    website: "https://cruxinvestor.com",
+    tier: "copper",
+    image: "/sponsors/2026/crux_investor.svg",
   },
   {
-    "name": "Brooks & Nelson",
-    "tier": "copper",
-    "website": "https://brooksandnelson.com"
+    name: "Digbee",
+    website: "https://digbee.com",
+    tier: "copper",
   },
   {
-    "name": "Cassels",
-    "tier": "copper",
-    "website": "https://cassels.com"
+    name: "Domco Group of Canada",
+    website: "https://domco.ca",
+    tier: "copper",
   },
   {
-    "name": "CDPQ (La Caisse)",
-    "tier": "copper",
-    "website": "https://www.cdpq.com"
+    name: "Generation IACP",
+    website: "https://generationiacp.com",
+    tier: "copper",
   },
   {
-    "name": "Centre des congrès de Québec",
-    "tier": "copper",
-    "website": "https://www.convention.qc.ca"
+    name: "GBR (Global Business Reports)",
+    website: "https://www.gbreports.com",
+    tier: "copper",
   },
   {
-    "name": "Crux Investor",
-    "tier": "copper",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/4c151119-c45b-4f3b-b930-14cf54873e36/64ddea86f448fb2c08808739_cruxinvestor-open-graph.jpg?format=750w",
-    "website": "https://cruxinvestor.com"
+    name: "Infor Financial",
+    website: "https://inforfinancial.com",
+    tier: "copper",
   },
   {
-    "name": "Digbee Limited",
-    "tier": "copper",
-    "website": "https://digbee.com"
+    name: "Outside the Box Capital",
+    website: "https://outsidethebox.capital",
+    tier: "copper",
+    image: "/sponsors/2026/outside_the_box_capital.png",
   },
   {
-    "name": "Domco",
-    "tier": "copper",
-    "website": "https://domcogroup.ca"
+    name: "VRIFY",
+    website: "https://vrify.com",
+    tier: "copper",
+    image: "/sponsors/2026/vrify.png",
+  },
+  // Media & Partners
+  {
+    name: "BTV – Business Television",
+    website: "https://www.b-tv.com",
+    tier: "media",
   },
   {
-    "name": "Generation IACP",
-    "tier": "copper",
-    "website": "https://generationiacp.com"
+    name: "Canadian Mining Magazine",
+    website: "https://canadianminingmagazine.com",
+    tier: "media",
   },
   {
-    "name": "GBR (Global Business Reports)",
-    "tier": "copper",
-    "website": "https://www.gbreports.com"
+    name: "CEO.CA",
+    website: "https://ceo.ca",
+    tier: "media",
+    image: "/sponsors/2026/ceo_ca.png",
   },
   {
-    "name": "Infor Financial Group",
-    "tier": "copper",
-    "website": "https://inforfinancial.com"
+    name: "Ellis Martin Report",
+    website: "https://ellismartinreport.com",
+    tier: "media",
   },
   {
-    "name": "Outside The Box Capital",
-    "tier": "copper",
-    "website": "https://outsidethebox.capital"
+    name: "Kitco News",
+    website: "https://www.kitco.com",
+    tier: "media",
   },
   {
-    "name": "BTV (Business Television)",
-    "tier": "media",
-    "website": "https://btonline.com"
+    name: "Market One Media",
+    website: "https://www.marketonemedia.com",
+    tier: "media",
   },
   {
-    "name": "Resource World Magazine",
-    "tier": "media",
-    "website": "https://resourceworld.com"
+    name: "Mining Discovery",
+    website: "https://miningdiscovery.com",
+    tier: "media",
+    image: "/sponsors/2026/mining_discovery.webp",
   },
   {
-    "name": "CEO.CA",
-    "tier": "media",
-    "website": "https://ceo.ca"
+    name: "Mining IR",
+    website: "https://miningir.com",
+    tier: "media",
+    image: "/sponsors/2026/miningir.png",
   },
   {
-    "name": "EUR Media",
-    "tier": "media",
-    "website": "https://eurmedia.ca"
+    name: "The Northern Miner",
+    website: "https://www.northernminer.com",
+    tier: "media",
+    image: "/sponsors/2026/the_northern_miner.png",
   },
   {
-    "name": "Kitco News",
-    "tier": "media",
-    "website": "https://www.kitco.com"
+    name: "Newsfile",
+    website: "https://www.newsfilecorp.com",
+    tier: "media",
+    image: "/sponsors/2026/newsfile.png",
   },
   {
-    "name": "Market One Media",
-    "tier": "media",
-    "website": "https://marketonemedia.com"
+    name: "The Prospector News",
+    website: "https://theprospectornews.com",
+    tier: "media",
+    image: "/sponsors/2026/the_prospector_news.png",
   },
   {
-    "name": "Junior Mining Network",
-    "tier": "media",
-    "website": "https://juniorminingnetwork.com"
+    name: "VID Media",
+    website: "https://vidmedia.ca",
+    tier: "media",
   },
   {
-    "name": "Mining Discovery",
-    "tier": "media",
-    "website": "https://miningdiscovery.com"
+    name: "Junior Mining Network",
+    website: "https://www.juniorminingnetwork.com",
+    tier: "media",
   },
   {
-    "name": "MiningIR",
-    "tier": "media",
-    "website": "https://miningir.com"
+    name: "Mining Hub",
+    website: "https://mininghub.com",
+    tier: "media",
   },
   {
-    "name": "Newsfile Corp.",
-    "tier": "media",
-    "website": "https://www.newsfilecorp.com"
+    name: "Invercio",
+    website: "https://invercio.com",
+    tier: "media",
   },
-  {
-    "name": "The Northern Miner",
-    "tier": "media",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/539da435-47b4-447f-9325-670c0aa24c1b/tnm_logo_tag_c-scaled.jpg?format=750w",
-    "website": "https://www.northernminer.com"
-  },
-  {
-    "name": "The Prospector News",
-    "tier": "media",
-    "website": "https://theprospectornews.com"
-  },
-  {
-    "name": "VID Conferences",
-    "tier": "media",
-    "website": "https://vidconferences.com"
-  }
 ];
+
+const SPONSORS_2023: SponsorItem[] = SPONSORS_2024;
+
+function SponsorLogo({ sponsor }: { sponsor: SponsorItem }) {
+  const [hasError, setHasError] = useState(false);
+
+  // Generate initials
+  const initials = useMemo(() => {
+    return sponsor.name
+      .split(/\s+/)
+      .filter((w) => w.length > 0)
+      .slice(0, 2)
+      .map((w) => w[0].toUpperCase())
+      .join("");
+  }, [sponsor.name]);
+
+  if (!sponsor.image || hasError) {
+    return (
+      <div className="w-full h-full flex items-center justify-center rounded-xl bg-gradient-to-br from-neutral-50 to-neutral-100/50 border border-neutral-100 group-hover:from-neutral-100 group-hover:to-white transition-all duration-300">
+        <span className="text-lg font-black tracking-wider text-neutral-400 group-hover:text-[#C6112F] transition-colors select-none">
+          {initials}
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={sponsor.image}
+      alt={sponsor.name}
+      className="max-h-full max-w-full object-contain filter group-hover:brightness-105 transition-all"
+      onError={() => setHasError(true)}
+    />
+  );
+}
 
 export default function SponsorsView({ year = 2026 }: { year?: number }) {
   const [selectedYear, setSelectedYear] = useState<number>(year);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  const filterOptions = [
-    { id: "all", label: "All Sponsors" },
-    { id: "presenting", label: "Presenting Sponsor" },
-    { id: "platinum", label: "Platinum Sponsors" },
-    { id: "gold", label: "Gold Sponsors" },
-    { id: "silver", label: "Silver Sponsors" },
-    { id: "copper", label: "Copper Sponsors" },
-    { id: "media", label: "Media Partners" },
-    { id: "government", label: "Government / Special" },
-  ];
-
+  const filterOptions = useMemo(() => {
+    const baseOptions = [
+      { id: "all", label: "All Sponsors" },
+      { id: "platinum", label: "Platinum Sponsors" },
+      { id: "gold", label: "Gold Sponsors" },
+      { id: "silver", label: "Silver Sponsors" },
+      { id: "copper", label: "Copper Sponsors" },
+      { id: "media", label: "Media Partners" },
+      { id: "government", label: selectedYear === 2025 ? "Special Sponsors" : "Government / Special" },
+    ];
+    
+    const activeList =
+      selectedYear === 2026
+        ? SPONSORS_2026
+        : selectedYear === 2025
+        ? SPONSORS_2025
+        : selectedYear === 2024
+        ? SPONSORS_2024
+        : SPONSORS_2023;
+    const hasPresenting = activeList.some((s) => s.tier === "presenting");
+    const hasGreen = activeList.some((s) => s.tier === "green");
+    const hasSustainable = activeList.some((s) => s.tier === "sustainable");
+    
+    const options = [...baseOptions];
+    
+    if (hasPresenting) {
+      options.splice(1, 0, { id: "presenting", label: "Presenting Sponsor" });
+    }
+    if (hasGreen) {
+      options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "green", label: "Green Sponsors" });
+    }
+    if (hasSustainable) {
+      options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "sustainable", label: "Sustainable Sponsors" });
+    }
+    
+    return options;
+  }, [selectedYear]);
+ 
   const filteredSponsors = useMemo(() => {
-    if (selectedCategory === "all") return SPONSORS_2025;
-    return SPONSORS_2025.filter((s) => s.tier === selectedCategory);
-  }, [selectedCategory]);
+    const list =
+      selectedYear === 2026
+        ? SPONSORS_2026
+        : selectedYear === 2025
+        ? SPONSORS_2025
+        : selectedYear === 2024
+        ? SPONSORS_2024
+        : SPONSORS_2023;
+    if (selectedCategory === "all") return list;
+    return list.filter((s) => s.tier === selectedCategory);
+  }, [selectedYear, selectedCategory]);
+
+  const handleYearChange = (year: number) => {
+    setSelectedYear(year);
+    setSelectedCategory("all");
+  };
 
   const getTierBadgeStyle = (tier: string) => {
     switch (tier) {
@@ -799,12 +931,16 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
         return "bg-amber-500/10 text-amber-800 border-amber-500/30";
       case "gold":
         return "bg-yellow-500/10 text-yellow-800 border-yellow-500/30";
+      case "green":
+        return "bg-emerald-500/10 text-emerald-800 border-emerald-500/30";
+      case "sustainable":
+        return "bg-teal-500/10 text-teal-800 border-teal-500/30";
       case "silver":
         return "bg-slate-500/10 text-slate-800 border-slate-500/30";
       case "copper":
         return "bg-orange-500/10 text-orange-800 border-orange-500/30";
       case "government":
-        return "bg-emerald-500/10 text-emerald-800 border-emerald-500/30";
+        return "bg-indigo-500/10 text-indigo-800 border-indigo-500/30";
       case "media":
       default:
         return "bg-purple-500/10 text-purple-800 border-purple-500/30";
@@ -819,12 +955,16 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
         return "Platinum Sponsor";
       case "gold":
         return "Gold Sponsor";
+      case "green":
+        return "Green Sponsor";
+      case "sustainable":
+        return "Sustainable Sponsor";
       case "silver":
         return "Silver Sponsor";
       case "copper":
         return "Copper Sponsor";
       case "government":
-        return "Government / Special";
+        return selectedYear === 2025 ? "Special Sponsor" : "Government / Special";
       case "media":
       default:
         return "Media Partner";
@@ -833,7 +973,6 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
 
   return (
     <div className="w-full text-left font-sans">
-      {/* Year Filter Controls */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/90 shadow-md">
         <div className="flex items-center gap-3">
           <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse shrink-0" />
@@ -842,7 +981,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
           </span>
           <div className="flex gap-2">
             <button
-              onClick={() => setSelectedYear(2026)}
+              onClick={() => handleYearChange(2026)}
               className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === 2026
                   ? "bg-[#C6112F] text-white shadow-md"
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
@@ -851,7 +990,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
               2026 Sponsors
             </button>
             <button
-              onClick={() => setSelectedYear(2025)}
+              onClick={() => handleYearChange(2025)}
               className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === 2025
                   ? "bg-[#C6112F] text-white shadow-md"
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
@@ -863,42 +1002,42 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
         </div>
 
         <span className="text-xs font-bold text-neutral-500">
-          Showing {selectedYear === 2025 ? filteredSponsors.length : 50}+ Official Sponsors
+          Showing {filteredSponsors.length} Official Sponsors
         </span>
       </div>
 
-      {/* Tier Category Filters Row */}
-      {selectedYear === 2025 && (
-        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar">
-          {filterOptions.map((opt) => {
-            const isSelected = selectedCategory === opt.id;
-            return (
-              <button
-                key={opt.id}
-                onClick={() => setSelectedCategory(opt.id)}
-                className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wide uppercase transition-all whitespace-nowrap shrink-0 border ${isSelected
-                    ? "bg-[#C6112F] text-white border-[#C6112F] shadow-md scale-105"
-                    : "bg-white text-neutral-600 border-neutral-200/90 hover:bg-neutral-100 hover:text-neutral-900"
-                  }`}
-              >
-                {opt.label}
-              </button>
-            );
-          })}
+      <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-8 no-scrollbar">
+        {filterOptions.map((opt) => {
+          const isSelected = selectedCategory === opt.id;
+          return (
+            <button
+              key={opt.id}
+              onClick={() => setSelectedCategory(opt.id)}
+              className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wide uppercase transition-all whitespace-nowrap shrink-0 border ${isSelected
+                  ? "bg-[#C6112F] text-white border-[#C6112F] shadow-md scale-105"
+                  : "bg-white text-neutral-600 border-neutral-200/90 hover:bg-neutral-100 hover:text-neutral-900"
+                }`}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <div>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="flex-grow h-[1px] bg-neutral-200" />
+          <b className="text-xs sm:text-sm font-extrabold text-[#C6112F] tracking-[0.25em] uppercase whitespace-nowrap">
+            OFFICIAL {selectedYear} SPONSORS & PARTNERS
+          </b>
+          <div className="flex-grow h-[1px] bg-neutral-200" />
         </div>
-      )}
 
-      {/* ════════ 2025 SPONSORS GRID ════════ */}
-      {selectedYear === 2025 ? (
-        <div>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="flex-grow h-[1px] bg-neutral-200" />
-            <b className="text-xs sm:text-sm font-extrabold text-[#C6112F] tracking-[0.25em] uppercase whitespace-nowrap">
-              OFFICIAL 2025 SPONSORS & PARTNERS
-            </b>
-            <div className="flex-grow h-[1px] bg-neutral-200" />
+        {filteredSponsors.length === 0 ? (
+          <div className="text-center py-16 bg-neutral-50 rounded-2xl border border-neutral-200/60">
+            <p className="text-neutral-500 text-sm font-bold">No sponsors found in this category.</p>
           </div>
-
+        ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
             {filteredSponsors.map((sponsor, idx) => (
               <div
@@ -914,14 +1053,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
                 </span>
 
                 <div className="w-full h-24 flex items-center justify-center mb-4 p-2 bg-neutral-50/50 rounded-xl border border-neutral-100 group-hover:bg-white transition-colors">
-                  <img
-                    src={sponsor.image || ""}
-                    alt={sponsor.name}
-                    className="max-h-full max-w-full object-contain filter group-hover:brightness-105 transition-all"
-                    onError={(e) => {
-                      (e.target as HTMLElement).style.display = "none";
-                    }}
-                  />
+                  <SponsorLogo sponsor={sponsor} />
                 </div>
 
                 <div className="w-full">
@@ -945,48 +1077,9 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
               </div>
             ))}
           </div>
-        </div>
-      ) : (
-        /* ════════ 2026 SPONSORS TIERS ════════ */
-        <div>
-          <div className="flex items-center gap-4 mb-6">
-            <div className="flex-grow h-[1px] bg-neutral-200" />
-            <b className="text-xs sm:text-sm font-extrabold text-[#C6112F] tracking-[0.25em] uppercase whitespace-nowrap">
-              OFFICIAL 2026 SPONSOR TIERS
-            </b>
-            <div className="flex-grow h-[1px] bg-neutral-200" />
-          </div>
+        )}
+      </div>
 
-          <div className="bg-neutral-50/60 border border-neutral-200 rounded-2xl overflow-hidden mb-6 grid grid-cols-1 lg:grid-cols-12 shadow-2xs hover:border-[#C6112F]/30 transition-all">
-            <div className="lg:col-span-2 bg-gradient-to-br from-[#FEF3C7] to-[#FDE68A] text-[#78350F] p-6 text-center flex flex-col items-center justify-center gap-2 border-b lg:border-b-0 lg:border-r border-[#FCD34D]">
-              <b className="text-xs font-black tracking-wider leading-tight uppercase">
-                PLATINUM<br />SPONSOR
-              </b>
-            </div>
-            <div className="lg:col-span-3 p-6 flex flex-col justify-center items-center text-center bg-white border-b lg:border-b-0 lg:border-r border-neutral-200">
-              <div className="text-[#e65400] text-4xl font-extrabold tracking-tighter leading-none select-none font-sans mb-1">
-                BHP
-              </div>
-              <span className="text-xs font-bold text-neutral-900">BHP Group</span>
-            </div>
-            <div className="lg:col-span-5 p-6 flex items-center text-xs sm:text-sm text-neutral-600 leading-relaxed font-medium">
-              BHP is a leading global resources company committed to creating long-term value.
-            </div>
-            <div className="lg:col-span-2 p-6 flex items-center justify-center">
-              <a
-                href="https://www.bhp.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center py-2.5 px-4 bg-[#C6112F] hover:bg-[#A30E26] text-white text-xs font-extrabold tracking-wider uppercase rounded-xl transition-all shadow-md shadow-[#C6112F]/15"
-              >
-                VISIT WEBSITE ↗
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Sponsors Call To Action Banner */}
       <div className="bg-[#0f1117] text-white border border-[#C6112F]/30 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center gap-6 shadow-2xl mt-10 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-[#C6112F]/15 via-transparent to-transparent pointer-events-none" />
         <div className="w-14 h-14 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shrink-0 shadow-lg shadow-[#C6112F]/30 relative z-10">

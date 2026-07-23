@@ -639,6 +639,13 @@ export default function PastEditionsPage() {
   const [activeTab, setActiveTab] = useState<string>("companies");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
+  const handleSelectEdition = (year: number | null) => {
+    setViewingEdition(year);
+    if (year === 2025 && activeTab === "agenda") {
+      setActiveTab("companies");
+    }
+  };
+
   // Agenda Mode State (PDF Viewer vs Interactive)
   const [agendaMode, setAgendaMode] = useState<"pdf" | "interactive">("pdf");
   const [companySearch, setCompanySearch] = useState<string>("");
@@ -702,7 +709,7 @@ export default function PastEditionsPage() {
                   </Link>
                   <span>&lt;</span>
                   <button
-                    onClick={() => setViewingEdition(null)}
+                    onClick={() => handleSelectEdition(null)}
                     className="hover:text-[#C6112F] transition-colors uppercase cursor-pointer"
                   >
                     {isFr ? "ÉDITION PRÉCÉDENTE" : "PAST EDITION"}
@@ -712,7 +719,7 @@ export default function PastEditionsPage() {
                 </nav>
 
                 <button
-                  onClick={() => setViewingEdition(null)}
+                  onClick={() => handleSelectEdition(null)}
                   className="text-xs font-bold text-[#C6112F] hover:underline flex items-center gap-1 group"
                 >
                   <span className="transform group-hover:-translate-x-0.5 transition-transform">&larr; {isFr ? "Retour aux éditions" : "Back to all editions"}</span>
@@ -727,24 +734,26 @@ export default function PastEditionsPage() {
                   <div>
                     {/* Menu Item List */}
                     <div className="space-y-2 mb-6">
-                      {sidebarTabs.map((tab) => {
-                        const isSelected = activeTab === tab.id;
-                        return (
-                          <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left ${isSelected
-                              ? "bg-[#FCDDE1] text-[#8A1224] border-l-4 border-[#C6112F] shadow-xs"
-                              : "text-neutral-600 hover:bg-neutral-100/90 hover:text-neutral-900"
-                              }`}
-                          >
-                            <span className={isSelected ? "text-[#C6112F]" : "text-neutral-500"}>
-                              {tab.icon}
-                            </span>
-                            <span>{tab.label}</span>
-                          </button>
-                        );
-                      })}
+                      {sidebarTabs
+                        .filter((tab) => !(tab.id === "agenda" && viewingEdition === 2025))
+                        .map((tab) => {
+                          const isSelected = activeTab === tab.id;
+                          return (
+                            <button
+                              key={tab.id}
+                              onClick={() => setActiveTab(tab.id)}
+                              className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left ${isSelected
+                                ? "bg-[#FCDDE1] text-[#8A1224] border-l-4 border-[#C6112F] shadow-xs"
+                                : "text-neutral-600 hover:bg-neutral-100/90 hover:text-neutral-900"
+                                }`}
+                            >
+                              <span className={isSelected ? "text-[#C6112F]" : "text-neutral-500"}>
+                                {tab.icon}
+                              </span>
+                              <span>{tab.label}</span>
+                            </button>
+                          );
+                        })}
                     </div>
                   </div>
 
@@ -1113,21 +1122,21 @@ export default function PastEditionsPage() {
 
                       {/* Two Large Action Buttons Row */}
                       <div className="flex flex-col sm:flex-row items-center gap-4 mb-12">
-                        <a
-                          href="https://online.flippingbook.com/view/213558062/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full sm:w-auto px-8 py-3.5 bg-[#C6112F] hover:bg-[#a80e27] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase rounded-lg shadow-md hover:shadow-lg transition-all text-center transform hover:-translate-y-0.5"
+                        <button
+                          onClick={() => setActiveTab("brochures")}
+                          className="w-full sm:w-auto px-8 py-3.5 bg-[#C6112F] hover:bg-[#a80e27] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase rounded-lg shadow-md hover:shadow-lg transition-all text-center transform hover:-translate-y-0.5 cursor-pointer"
                         >
                           VIEW BROCHURE
-                        </a>
+                        </button>
 
-                        <a
-                          href="/register"
-                          className="w-full sm:w-auto px-8 py-3.5 bg-white border border-[#333] hover:bg-neutral-50 text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-wider uppercase rounded-lg shadow-sm hover:shadow-md transition-all text-center transform hover:-translate-y-0.5"
-                        >
-                          SEE AGENDA
-                        </a>
+                        {viewingEdition !== 2025 && (
+                          <button
+                            onClick={() => setActiveTab("agenda")}
+                            className="w-full sm:w-auto px-8 py-3.5 bg-white border border-[#333] hover:bg-neutral-50 text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-wider uppercase rounded-lg shadow-sm hover:shadow-md transition-all text-center transform hover:-translate-y-0.5 cursor-pointer"
+                          >
+                            SEE AGENDA
+                          </button>
+                        )}
                       </div>
 
                       {/* About THE EVENT Section */}
@@ -1240,7 +1249,7 @@ export default function PastEditionsPage() {
                   return (
                     <button
                       key={year}
-                      onClick={() => setViewingEdition(year)}
+                      onClick={() => handleSelectEdition(year)}
                       className={`text-base sm:text-lg font-bold transition-all duration-200 cursor-pointer ${isSelected
                         ? "bg-white text-[#C6112F] px-6 py-2 rounded-lg shadow-md font-extrabold scale-105"
                         : "text-white opacity-95 hover:opacity-100 px-3 py-2"
@@ -1362,7 +1371,7 @@ export default function PastEditionsPage() {
                         return (
                           <button
                             key={year}
-                            onClick={() => setViewingEdition(year)}
+                            onClick={() => handleSelectEdition(year)}
                             className="group flex flex-col items-center cursor-pointer focus:outline-none"
                           >
                             {/* Year Label Text */}
@@ -1401,7 +1410,7 @@ export default function PastEditionsPage() {
                     return (
                       <div
                         key={card.year}
-                        onClick={() => setViewingEdition(card.year)}
+                        onClick={() => handleSelectEdition(card.year)}
                         className="group bg-white rounded-2xl border border-neutral-200/90 overflow-hidden flex flex-col justify-between cursor-pointer transition-all duration-300 shadow-sm hover:shadow-xl hover:border-[#C6112F] hover:-translate-y-1"
                       >
                         {/* Top Photo */}
