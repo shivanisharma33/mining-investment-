@@ -10,25 +10,32 @@ export default function Hero() {
     <section className="relative flex-grow flex items-center justify-center overflow-hidden min-h-screen pt-24 pb-12">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
-      {/* Background Image */}
-      <img
-        src="/Mining Investment Post 2.avif"
-        alt="Background"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      {/* Background Video */}
+      <div className="absolute inset-0 w-full h-full bg-neutral-900">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/fwdboardmemberphotos/Mining%20investment%20video%20.mov" type="video/quicktime" />
+          <source src="/fwdboardmemberphotos/Mining%20investment%20video%20.mov" type="video/mp4" />
+        </video>
+      </div>
 
-      {/* Subtle Dark Overlay for text readability */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Dark Overlay for optimal text readability */}
+      <div className="absolute inset-0 bg-black/45 bg-gradient-to-b from-black/55 via-black/40 to-black/55 z-10" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-[1100px] w-full text-center flex flex-col items-center px-4 sm:px-6 md:px-12 pt-8 pb-8">
+      <div className="relative z-20 max-w-[1100px] w-full text-center flex flex-col items-center px-4 sm:px-6 md:px-12 pt-8 pb-8">
         {/* Top Subtitle */}
-        <p className="text-primary text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.25em] uppercase mb-4 sm:mb-6 md:mb-8 leading-relaxed max-w-xs sm:max-w-none mx-auto animate-fade-in-up delay-0">
+        <p className="text-primary text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.25em] uppercase mb-4 sm:mb-6 md:mb-8 leading-relaxed max-w-xs sm:max-w-none mx-auto animate-fade-in-up delay-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
           {t("hero-eyebrow", "Canada's Only Tier I Global Mining Investment Conference")}
         </p>
 
         {/* Main Title - 2 Lines in French */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.18] mb-6 md:mb-8 drop-shadow-lg text-center">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.18] mb-6 md:mb-8 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] text-center">
           {lang === "FR" ? (
             <div className="flex flex-col items-center">
               <span className="block animate-text-reveal delay-1">L&apos;Événement</span>
@@ -38,7 +45,7 @@ export default function Hero() {
               </span>
             </div>
           ) : (
-            <div className="flex flex-wrap justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full">
+            <div className="flex flex-row justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full whitespace-nowrap">
               <span className="animate-text-reveal delay-1">The</span>{" "}
               <span className="animate-text-reveal delay-2">Mining</span>{" "}
               <span className="animate-text-reveal delay-3">Investment</span>{" "}
@@ -48,7 +55,7 @@ export default function Hero() {
         </h1>
 
         {/* Subheading / Description */}
-        <p className="text-white/90 text-xs sm:text-sm md:text-base lg:text-lg max-w-[720px] mx-auto font-normal leading-relaxed mb-10 md:mb-12 animate-fade-in-up delay-5">
+        <p className="text-white/95 text-xs sm:text-sm md:text-base lg:text-lg max-w-[720px] mx-auto font-normal leading-relaxed mb-10 md:mb-12 animate-fade-in-up delay-5 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">
           {t("hero-subtitle", "Meet investors, discover projects, secure partnerships and shape the future of mining.")}
         </p>
 

@@ -1356,47 +1356,6 @@ export default function PastEditionsPage() {
                     </div>
                   </div>
                 </div>
-
-                {/* Bottom Interactive Metallic Year Timeline Navigation Bar */}
-                <div className="mt-12 md:mt-16 w-full max-w-[1100px] mx-auto bg-gradient-to-b from-[#ffffff] via-[#f3f5f8] to-[#d4d9df] border border-[#a2aab4] rounded-2xl py-6 px-6 sm:px-12 shadow-[0_6px_16px_rgba(0,0,0,0.08),inset_0_1.5px_1px_rgba(255,255,255,0.95)]">
-                  <div className="relative w-full">
-
-                    {/* Connecting Horizontal Line passing through center of dots */}
-                    <div className="absolute bottom-[11px] left-[12.5%] right-[12.5%] h-[2px] bg-[#8a94a0] z-0" />
-
-                    {/* Year Nodes Grid */}
-                    <div className="relative z-10 grid grid-cols-4 items-center justify-items-center">
-                      {years.map((year, idx) => {
-                        const isFirst = idx === 0; // 2026
-                        return (
-                          <button
-                            key={year}
-                            onClick={() => handleSelectEdition(year)}
-                            className="group flex flex-col items-center cursor-pointer focus:outline-none"
-                          >
-                            {/* Year Label Text */}
-                            <span
-                              className={`text-xl sm:text-2xl lg:text-3xl font-extrabold tracking-tight mb-3 transition-all duration-200 ${isFirst ? "text-[#C6112F]" : "text-neutral-900 group-hover:text-[#C6112F]"
-                                }`}
-                            >
-                              {year}
-                            </span>
-
-                            {/* Node Bullet Circle */}
-                            <div className="relative flex items-center justify-center h-6">
-                              <div
-                                className={`w-5 h-5 rounded-full transition-all duration-200 ${isFirst
-                                  ? "bg-[#C6112F] border-2 border-[#C6112F] ring-4 ring-[#C6112F]/20 shadow-sm"
-                                  : "bg-white border-2 border-[#78828e] group-hover:border-[#C6112F] group-hover:bg-[#C6112F]"
-                                  }`}
-                              />
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
               </div>
             </section>
 
