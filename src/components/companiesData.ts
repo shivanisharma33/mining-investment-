@@ -3614,11 +3614,867 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "year": 2024
   },
   {
-    "name": "Winsome Resources Limited",
-    "ticker": "TSX / TSX-V / CSE",
+    name: "Winsome Resources Limited",
+    ticker: "TSX / TSX-V / CSE",
+    type: "EXPLORER",
+    location: "CANADA / GLOBAL",
+    commodities: "Au, Cu",
+    year: 2024
+  },
+  {
+    "name": "Agnico Eagle Mines Limited",
+    "ticker": "TSX: AEM • NYSE: AEM",
+    "type": "PRODUCER",
+    "location": "GLOBAL",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Amex Exploration Inc.",
+    "ticker": "TSX-V: AMX • OTCQX: AMXEF",
     "type": "EXPLORER",
-    "location": "CANADA / GLOBAL",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Archer Exploration Corp.",
+    "ticker": "CSE: RCHR",
+    "type": "EXPLORER",
+    "location": "CANADA",
+    "commodities": "Ni, Cu",
+    "year": 2023
+  },
+  {
+    "name": "Arizona Sonoran Copper Company Inc.",
+    "ticker": "TSX: ASCU • OTCQX: ASCUF",
+    "type": "DEVELOPER",
+    "location": "USA/AZ",
+    "commodities": "Cu",
+    "year": 2023
+  },
+  {
+    "name": "Baselode Energy Corp.",
+    "ticker": "TSX-V: FIND • OTCQB: BSENF",
+    "type": "EXPLORER",
+    "location": "CANADA/SK",
+    "commodities": "U",
+    "year": 2023
+  },
+  {
+    "name": "Bonterra Resources Inc.",
+    "ticker": "TSX: BTR • OTCQX: BONFX",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Brunswick Exploration Inc.",
+    "ticker": "TSX-V: BWR",
+    "type": "EXPLORER",
+    "location": "CANADA",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "Canada Nickel Company Inc.",
+    "ticker": "TSX-V: CNC • OTCQX: CNIKF",
+    "type": "DEVELOPER",
+    "location": "CANADA/ON",
+    "commodities": "Ni",
+    "year": 2023
+  },
+  {
+    "name": "Cartier Resources Inc.",
+    "ticker": "TSX-V: ECR",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Doré Copper Mining Corp.",
+    "ticker": "TSX-V: DCMC • OTCQX: DRCMF",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "Cu, Au",
+    "year": 2023
+  },
+  {
+    "name": "Emerita Resources Corp.",
+    "ticker": "TSX: EMO • OTCQF: EMOTF",
+    "type": "EXPLORER",
+    "location": "SPAIN",
+    "commodities": "Zn, Pb, Cu, Ag",
+    "year": 2023
+  },
+  {
+    "name": "Empress Royalty Corp.",
+    "ticker": "TSX-V: EMPR • OTCQX: EMPYF",
+    "type": "ROYALTY",
+    "location": "GLOBAL",
+    "commodities": "Au, Ag",
+    "year": 2023
+  },
+  {
+    "name": "EMX Royalty Corp.",
+    "ticker": "TSX-V: EMX • NYSE: EMX",
+    "type": "ROYALTY",
+    "location": "GLOBAL",
     "commodities": "Au, Cu",
-    "year": 2024
+    "year": 2023
+  },
+  {
+    "name": "EU Gold Mining Inc.",
+    "ticker": "Private",
+    "type": "EXPLORER",
+    "location": "EUROPE",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Exiro Minerals Corp.",
+    "ticker": "Private",
+    "type": "EXPLORER",
+    "location": "CANADA",
+    "commodities": "Ni, Cu, Co, PGE",
+    "year": 2023
+  },
+  {
+    "name": "Exploits Discovery Corp.",
+    "ticker": "CSE: NFLD • OTCQB: NFLDF",
+    "type": "EXPLORER",
+    "location": "CANADA/NL",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Fireweed Metals Corp.",
+    "ticker": "TSX-V: FWZ • OTCQB: FWEDF",
+    "type": "DEVELOPER",
+    "location": "CANADA/YT",
+    "commodities": "Zn, Pb, Ag, W",
+    "year": 2023
+  },
+  {
+    "name": "First Mining Gold Corp.",
+    "ticker": "TSX: FF • OTCQX: FFMGF",
+    "type": "DEVELOPER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "First Phosphate Corp.",
+    "ticker": "CSE: PHOS",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "P",
+    "year": 2023
+  },
+  {
+    "name": "Fury Gold Mines Limited",
+    "ticker": "TSX-V: FURY • NYSE: FURY",
+    "type": "EXPLORER",
+    "location": "CANADA/NU, QC, BC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Generation Mining Limited",
+    "ticker": "TSX: GENM • OTCQB: GENMF",
+    "type": "DEVELOPER",
+    "location": "CANADA/ON",
+    "commodities": "Pd, Cu, Pt",
+    "year": 2023
+  },
+  {
+    "name": "Go Metals Corp.",
+    "ticker": "CSE: GOCO",
+    "type": "EXPLORER",
+    "location": "CANADA/QC, YT",
+    "commodities": "Ni, Cu, Co",
+    "year": 2023
+  },
+  {
+    "name": "Gold Royalty Corp.",
+    "ticker": "NYSE: GROY",
+    "type": "ROYALTY",
+    "location": "GLOBAL",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Goliath Resources Limited",
+    "ticker": "TSX-V: GOT • OTCQB: GOTRF",
+    "type": "EXPLORER",
+    "location": "CANADA/BC",
+    "commodities": "Au, Ag",
+    "year": 2023
+  },
+  {
+    "name": "Harfang Exploration Inc.",
+    "ticker": "TSX-V: HAR",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Hecla Mining Company",
+    "ticker": "NYSE: HL",
+    "type": "PRODUCER",
+    "location": "USA, CANADA",
+    "commodities": "Ag, Au",
+    "year": 2023
+  },
+  {
+    "name": "Hycroft Mining Corp.",
+    "ticker": "NASDAQ: HYMC",
+    "type": "DEVELOPER",
+    "location": "USA/NV",
+    "commodities": "Au, Ag",
+    "year": 2023
+  },
+  {
+    "name": "Ion Energy Ltd.",
+    "ticker": "TSX-V: ION • OTCQB: IONGF",
+    "type": "EXPLORER",
+    "location": "MONGOLIA",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "Jaguar Mining Inc.",
+    "ticker": "TSX: JAG • OTCQX: JAGGF",
+    "type": "PRODUCER",
+    "location": "BRAZIL",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Juggernaut Exploration Inc.",
+    "ticker": "TSX-V: JUGR",
+    "type": "EXPLORER",
+    "location": "CANADA/BC",
+    "commodities": "Au, Ag",
+    "year": 2023
+  },
+  {
+    "name": "Kirkland Lake Discoveries Corp.",
+    "ticker": "TSX-V: KLDC",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Lavras Gold Corp.",
+    "ticker": "TSX-V: LGC • OTCQB: LGCFF",
+    "type": "EXPLORER",
+    "location": "BRAZIL",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Li-FT Power Ltd.",
+    "ticker": "CSE: LIFT",
+    "type": "EXPLORER",
+    "location": "CANADA/NWT, QC",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "LithiumBank Resources Corp.",
+    "ticker": "TSX: LBNK • OTCQX: LBNKF",
+    "type": "DEVELOPER",
+    "location": "CANADA/AB, SK",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "Lomiko Metals Inc.",
+    "ticker": "TSX-V: LMR • OTCQB: LMRMF",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "C",
+    "year": 2023
+  },
+  {
+    "name": "Maple Gold Mines Ltd.",
+    "ticker": "TSX-V: MGM • OTCQB: MGMLF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Midland Exploration Inc.",
+    "ticker": "TSX-V: MD",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au, Base Metals",
+    "year": 2023
+  },
+  {
+    "name": "Mundoro Capital Ltd.",
+    "ticker": "TSX-V: MUN • OTCQB: MUNMF",
+    "type": "EXPLORER",
+    "location": "EUROPE, USA",
+    "commodities": "Cu, Au",
+    "year": 2023
+  },
+  {
+    "name": "Nickel Creek Platinum Corp.",
+    "ticker": "TSX: NCP • OTCQB: NCPCF",
+    "type": "DEVELOPER",
+    "location": "CANADA/YT",
+    "commodities": "Ni, Cu, Co, Pt, Pd",
+    "year": 2023
+  },
+  {
+    "name": "Northern Superior Resources Inc.",
+    "ticker": "TSX-V: SUP • OTCQB: NSUPF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC, ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "NorthWest Copper Corp.",
+    "ticker": "TSX-V: NWST • OTCQX: NWCCF",
+    "type": "DEVELOPER",
+    "location": "CANADA/BC",
+    "commodities": "Cu, Au",
+    "year": 2023
+  },
+  {
+    "name": "Nouveau Monde Graphite Inc.",
+    "ticker": "TSX-V: NOU • NYSE: NMG",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "C",
+    "year": 2023
+  },
+  {
+    "name": "Nuvau Minerals Corp.",
+    "ticker": "Private",
+    "type": "EXPLORER",
+    "location": "CANADA",
+    "commodities": "Au, Cu",
+    "year": 2023
+  },
+  {
+    "name": "O3 Mining Inc.",
+    "ticker": "TSX-V: OIII • OTCQX: OIIIF",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "OMAI Gold Mines Corp.",
+    "ticker": "TSX-V: OMG • OTCQB: OMGGF",
+    "type": "EXPLORER",
+    "location": "GUYANA",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Orford Mining Corporation",
+    "ticker": "TSX-V: ORM",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au, Ni, Cu",
+    "year": 2023
+  },
+  {
+    "name": "Osisko Development Corp.",
+    "ticker": "TSX-V: ODV • NYSE: ODV",
+    "type": "DEVELOPER",
+    "location": "CANADA/BC, USA/UT",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Osisko Metals Incorporated",
+    "ticker": "TSX-V: OM • OTCQX: OMZNF",
+    "type": "DEVELOPER",
+    "location": "CANADA/NWT, QC",
+    "commodities": "Zn, Pb, Cu",
+    "year": 2023
+  },
+  {
+    "name": "Osisko Mining Inc.",
+    "ticker": "TSX: OSK",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Palladium One Mining Inc.",
+    "ticker": "TSX-V: PDM • OTCQB: NKORF",
+    "type": "EXPLORER",
+    "location": "CANADA/ON, FINLAND",
+    "commodities": "Pd, Pt, Ni, Cu",
+    "year": 2023
+  },
+  {
+    "name": "Paramount Gold Nevada Corp.",
+    "ticker": "NYSE: PZG",
+    "type": "DEVELOPER",
+    "location": "USA/NV, OR",
+    "commodities": "Au, Ag",
+    "year": 2023
+  },
+  {
+    "name": "Patriot Battery Metals Inc.",
+    "ticker": "TSX-V: PMET • OTCQX: PMETF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC, NWT",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "Power Nickel Inc.",
+    "ticker": "TSX-V: PNPN • OTCQB: CMETF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Ni, Cu, Co, PGE",
+    "year": 2023
+  },
+  {
+    "name": "Prospector Metals Corp.",
+    "ticker": "TSX-V: PPP • OTCQB: PMCOF",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au, Cu",
+    "year": 2023
+  },
+  {
+    "name": "QC Copper & Gold Inc.",
+    "ticker": "TSX-V: QCCU • OTCQB: QCCUF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Cu, Au",
+    "year": 2023
+  },
+  {
+    "name": "Quebec Nickel Corp.",
+    "ticker": "CSE: QNI • OTCQB: QNICF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Ni, Cu, Co, PGE",
+    "year": 2023
+  },
+  {
+    "name": "Rackla Metals Inc.",
+    "ticker": "TSX-V: RAK",
+    "type": "EXPLORER",
+    "location": "CANADA/YT",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Red Pine Exploration Inc.",
+    "ticker": "TSX-V: RPX • OTCQB: RDEXF",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Ridgeline Minerals Corp.",
+    "ticker": "TSX-V: RDG • OTCQB: RDGMF",
+    "type": "EXPLORER",
+    "location": "USA/NV",
+    "commodities": "Au, Ag",
+    "year": 2023
+  },
+  {
+    "name": "Sayona Mining Limited",
+    "ticker": "ASX: SAY • OTCQB: SYAXF",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC, AUSTRALIA",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "Signal Gold Inc.",
+    "ticker": "TSX: SGNL • OTCQB: SGNLF",
+    "type": "DEVELOPER",
+    "location": "CANADA/NS, NL",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Sirios Resources Inc.",
+    "ticker": "TSX-V: SOI",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Skyharbour Resources Ltd.",
+    "ticker": "TSX-V: SYH • OTCQX: SYHBF",
+    "type": "EXPLORER",
+    "location": "CANADA/SK",
+    "commodities": "U",
+    "year": 2023
+  },
+  {
+    "name": "Stelmine Canada Ltd.",
+    "ticker": "TSX-V: STH • OTCQB: STHFF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Steppe Gold Ltd.",
+    "ticker": "TSX: STGO • OTCQX: STPGF",
+    "type": "PRODUCER",
+    "location": "MONGOLIA",
+    "commodities": "Au, Ag",
+    "year": 2023
+  },
+  {
+    "name": "Stillwater Critical Minerals Corp.",
+    "ticker": "TSX-V: PGE • OTCQB: PGEZF",
+    "type": "EXPLORER",
+    "location": "USA/MT, CANADA/YT",
+    "commodities": "Ni, Cu, Co, PGE",
+    "year": 2023
+  },
+  {
+    "name": "Strategic Resources Inc.",
+    "ticker": "TSX-V: SR",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC, FINLAND",
+    "commodities": "V, Ti, Fe",
+    "year": 2023
+  },
+  {
+    "name": "Talisker Resources Ltd.",
+    "ticker": "TSX: TSK • OTCQX: TSKFF",
+    "type": "DEVELOPER",
+    "location": "CANADA/BC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Thunder Gold Corp.",
+    "ticker": "TSX-V: TGOL",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Troilus Gold Corp.",
+    "ticker": "TSX: TLG • OTCQX: CHXMF",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "Au, Cu",
+    "year": 2023
+  },
+  {
+    "name": "Vanadiumcorp Resource Inc.",
+    "ticker": "TSX-V: VRB",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "V, Fe, Ti",
+    "year": 2023
+  },
+  {
+    "name": "Vanstar Mining Resources Inc.",
+    "ticker": "TSX-V: VSR • OTCQX: VMNGF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Vision Lithium Inc.",
+    "ticker": "TSX-V: VLI • OTCQB: ABEPF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC, ON",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "Wallbridge Mining Company",
+    "ticker": "TSX: WM • OTCQX: WLBMF",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC, ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Wesdome Gold Mines Ltd.",
+    "ticker": "TSX: WDO • OTCQX: WDOFF",
+    "type": "PRODUCER",
+    "location": "CANADA/ON, QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "West Red Lake Gold Mines Ltd.",
+    "ticker": "TSX-V: WRLG",
+    "type": "DEVELOPER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Western Copper and Gold Corp.",
+    "ticker": "TSX: WRN • NYSE: WRN",
+    "type": "DEVELOPER",
+    "location": "CANADA/YT",
+    "commodities": "Cu, Au, Ag, Mo",
+    "year": 2023
+  },
+  {
+    "name": "Winsome Resources Limited",
+    "ticker": "ASX: WR1",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "Astra Exploration Inc.",
+    "ticker": "TSX-V: ASTR • OTCQB: ATEPF",
+    "type": "EXPLORER",
+    "location": "CHILE",
+    "commodities": "Au, Ag",
+    "year": 2023
+  },
+  {
+    "name": "Argo Gold Inc.",
+    "ticker": "CSE: ARQ",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Beauce Gold Fields Inc.",
+    "ticker": "TSX-V: BGF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Calisto Cobre Resources Corp.",
+    "ticker": "Private",
+    "type": "EXPLORER",
+    "location": "CANADA",
+    "commodities": "Cu",
+    "year": 2023
+  },
+  {
+    "name": "Canadian Copper Inc.",
+    "ticker": "CSE: CCI",
+    "type": "EXPLORER",
+    "location": "CANADA/NB",
+    "commodities": "Cu",
+    "year": 2023
+  },
+  {
+    "name": "Comet Lithium Corp.",
+    "ticker": "TSX-V: CLIC",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Li",
+    "year": 2023
+  },
+  {
+    "name": "Copperzone Resources Limited",
+    "ticker": "Private",
+    "type": "EXPLORER",
+    "location": "ZAMBIA",
+    "commodities": "Cu",
+    "year": 2023
+  },
+  {
+    "name": "Delta Resources Limited",
+    "ticker": "TSX-V: DLTA • OTCQB: DTARF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC, ON",
+    "commodities": "Au, Cu, Zn",
+    "year": 2023
+  },
+  {
+    "name": "Dryden Gold Corp.",
+    "ticker": "Private",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "E2Gold Inc.",
+    "ticker": "TSX-V: ETU • OTCQB: ETUGF",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "EDM Resources Inc.",
+    "ticker": "TSX-V: EDM",
+    "type": "EXPLORER",
+    "location": "CANADA/NS",
+    "commodities": "Zn, Pb",
+    "year": 2023
+  },
+  {
+    "name": "Electro Metals & Mining",
+    "ticker": "Private",
+    "type": "EXPLORER",
+    "location": "CANADA",
+    "commodities": "Cu, Ni",
+    "year": 2023
+  },
+  {
+    "name": "Focus Graphite Inc.",
+    "ticker": "TSX-V: FMS • OTCQB: FCSMF",
+    "type": "DEVELOPER",
+    "location": "CANADA/QC",
+    "commodities": "C",
+    "year": 2023
+  },
+  {
+    "name": "Fokus Mining Corporation",
+    "ticker": "TSX-V: FKM • OTCQB: FKMCF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Green Battery Minerals Inc.",
+    "ticker": "TSX-V: GEM • OTCQB: GBMIF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "C",
+    "year": 2023
+  },
+  {
+    "name": "iMetal Resources Inc.",
+    "ticker": "TSX-V: IMR • OTCQB: IMRFF",
+    "type": "EXPLORER",
+    "location": "CANADA/ON, QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Leopard Lake Gold Corp.",
+    "ticker": "CSE: LP",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Medaro Gold Resources Corp.",
+    "ticker": "TSX-V: MEDA",
+    "type": "EXPLORER",
+    "location": "CANADA/QC, ON",
+    "commodities": "Li, U",
+    "year": 2023
+  },
+  {
+    "name": "Magna Mining Inc.",
+    "ticker": "TSX-V: NICU",
+    "type": "DEVELOPER",
+    "location": "CANADA/ON",
+    "commodities": "Ni, Cu, PGM",
+    "year": 2023
+  },
+  {
+    "name": "Metals Energy Corp.",
+    "ticker": "TSX-V: MERG",
+    "type": "EXPLORER",
+    "location": "CANADA/MB, ON",
+    "commodities": "Ni, Cu, Co",
+    "year": 2023
+  },
+  {
+    "name": "Platinex Inc.",
+    "ticker": "CSE: PTX",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Puma Exploration Inc.",
+    "ticker": "TSX-V: PUMA • OTCQB: PUMXF",
+    "type": "EXPLORER",
+    "location": "CANADA/NB",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Quebec Precious Metals Corp.",
+    "ticker": "TSX-V: QPM • OTCQB: CJCFF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Quimbaya Gold Inc.",
+    "ticker": "CSE: QIM",
+    "type": "EXPLORER",
+    "location": "COLOMBIA",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Radisson Mining Resources",
+    "ticker": "TSX-V: RDS • OTCQB: RMRDF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Renforth Resources Inc.",
+    "ticker": "CSE: RFR • OTCQB: RFHRF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Ni, Cu, Co, Zn",
+    "year": 2023
+  },
+  {
+    "name": "Steadright Critical Minerals Inc.",
+    "ticker": "CSE: SCM",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Ni, Cu",
+    "year": 2023
+  },
+  {
+    "name": "Vior Inc.",
+    "ticker": "TSX-V: VIO • OTCQB: VIORF",
+    "type": "EXPLORER",
+    "location": "CANADA/QC",
+    "commodities": "Au",
+    "year": 2023
+  },
+  {
+    "name": "Xplore Resources Corp.",
+    "ticker": "TSX-V: XPLR",
+    "type": "EXPLORER",
+    "location": "CANADA/ON",
+    "commodities": "Au, Li",
+    "year": 2023
   }
 ];

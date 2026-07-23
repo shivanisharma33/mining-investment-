@@ -21,7 +21,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "National Bank Financial Markets",
     website: "https://nbfm.ca",
     tier: "platinum",
-    image: "/sponsors/2026/national_bank_financial_markets.png",
+    image: "/sponsor image/logo-capitalmarkets.svg",
   },
   {
     name: "Ventum Financial",
@@ -82,6 +82,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Caur Technologies",
     website: "https://caur.ca",
     tier: "silver",
+    image: "/sponsor image/cour.jpg",
   },
   {
     name: "Crux Investor",
@@ -99,7 +100,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "IAMGOLD",
     website: "https://www.iamgold.com",
     tier: "silver",
-    image: "/sponsors/2026/iamgold.ico",
+    image: "/sponsor image/IAMGOLD-Logo-N.png",
   },
   {
     name: "Government of Newfoundland & Labrador",
@@ -172,6 +173,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "INFOR FINANCIAL INC.",
     website: "https://inforfg.com/",
     tier: "copper",
+    image: "/sponsor image/inforfg-logo-f.png",
   },
   {
     name: "La Caisse (CDPQ)",

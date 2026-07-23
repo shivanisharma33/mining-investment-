@@ -47,6 +47,20 @@ export default function CompaniesView({
 
   return (
     <div className="w-full text-left font-sans">
+      {/* ════════ MAP DIRECTORY IFRAME ════════ */}
+      <div className="w-full mb-8 bg-white rounded-2xl overflow-hidden shadow-xl border border-neutral-200/90 p-2 relative z-10">
+        <iframe
+          src="https://mininghub.com/custom-map/the-mining-investment-event"
+          width="100%"
+          height="600px"
+          frameBorder="0"
+          allowFullScreen={true}
+          allow="fullscreen"
+          className="w-full rounded-xl"
+          style={{ height: "600px", border: "0" }}
+        ></iframe>
+      </div>
+
       {/* ════════ TOOLBAR: YEAR SELECTOR & SEARCH ════════ */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/90 shadow-md">
         {/* Year Selector */}

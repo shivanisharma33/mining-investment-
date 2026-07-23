@@ -52,6 +52,7 @@ const advisoryBoard = [
     role: "Advisory Board Member · Former MP of Labrador",
     bio: "Yvonne Rumbolt-Jones is a senior public policy and governance leader with more than thirty years of experience advancing sustainable development, Indigenous partnerships, and community–industry relations in Northern and Arctic Canada. A former Member of Parliament for Labrador, Member of the House of Assembly, Cabinet Minister, and Leader of the Liberal Party of Newfoundland and Labrador, she has built a distinguished career at the intersection of government, Indigenous communities, and the mining and energy sectors.\n\nThroughout her public service, Yvonne championed the inclusion of women and Indigenous peoples in resource development. As Parliamentary Secretary for Natural Resources, she contributed to Canada's Critical Minerals Strategy, supporting Indigenous equity participation, community-benefit frameworks, and responsible mining and energy development in northern and Arctic regions.",
     expandable: true,
+    image: "/fwdboardmemberphotos/yvonne jones.jpg",
   },
   {
     initials: "DD",
@@ -59,6 +60,7 @@ const advisoryBoard = [
     role: "Advisory Board Member · Chief Strategy & Risk Officer, Equinox Gold Corp.",
     bio: "Daniella has more than 25 years of experience in building, leading and operating businesses in mining and financial services in various strategy, finance, operations, corporate development and governance roles. Daniella's previous roles include President and CEO, Interim CEO, CFO of multi mine gold/copper producers and a $2B+ mine developer, partner at a mining investment bank.\n\nDaniella was chosen as one of the Top 100 Global Inspirational Women in Mining for 2016, was a Canada Board Diversity Council – 2016 Diversity 50 Candidate and has the National Association of Corporate Directors (NACD) Directorship Certification.",
     expandable: true,
+    image: "/fwdboardmemberphotos/Daniella-Dimitrov.jpg",
   },
   {
     initials: "DS",
@@ -66,6 +68,7 @@ const advisoryBoard = [
     role: "Advisory Board Member · CEO & Founder, XV Solutions",
     bio: "Daniele is an international mining industry executive with a technical background in geology and over 30 years of experience in mineral exploration, team building, and corporate leadership across public companies, M&A transitions, and not-for-profits. She is a co-founder of Warrior Gold Inc., taking it from private to public.\n\nShe currently serves as Secretary and Director of the Ontario Prospectors Association, helping to rebuild its governance, leadership, and strategic direction.",
     expandable: true,
+    image: "/fwdboardmemberphotos/daniele spethmann.jpg",
   },
   {
     initials: "AS",
@@ -73,6 +76,7 @@ const advisoryBoard = [
     role: "Advisory Board Member · President & CCO, SSAF Exploration",
     bio: "Angie Stockley is an accomplished executive with over 25 years' experience in corporate development, strategic communications, go-to-market strategy, investor relations, partnership development, M&A activity and change management. Her current focus is predominantly in the mining sector, coupled with extensive expertise in tech, enterprise SaaS and the public sector.\n\nIn the mining sector, Angie's roles include serving as President, Chief Commercial Officer (CCO) and Director at Blue Ice Gold; and President and CCO at SSAF Exploration.",
     expandable: true,
+    image: "/fwdboardmemberphotos/angie-stockley-.webp",
   },
   {
     initials: "JC",
@@ -80,6 +84,7 @@ const advisoryBoard = [
     role: "Advisory Board Member · Executive Director, ICEMD",
     bio: "Jenny-Lou Campbell is Anishinaabe-Kwe and a proud member of Serpent River First Nation. She grew up in the Ontario mining communities of Elliot Lake and Marathon. Her career in mining has taken her to Hemlo Ontario, Thompson Manitoba, and Sudbury Ontario.\n\nCurrently as the Executive Director of the Indigenous Centre of Excellence for Mineral Development (ICEMD), Jenny is leading efforts to support First Nation participation in the mining sector.",
     expandable: true,
+    image: "/fwdboardmemberphotos/jenny-lou-campbell.jpg",
   },
   {
     initials: "SV",
@@ -87,6 +92,7 @@ const advisoryBoard = [
     role: "Advisory Board Member · Regional Director, Mining and Metals for Eastern Canada at Hatch",
     bio: "Stéfanie Vo is a senior process engineer with two decades of experience in consulting engineering, specializing in mineral processing and process optimization. Her career includes more than four years on-site at an iron ore concentrator. She currently serves as Regional Director, Mining and Metals for Eastern Canada at Hatch, and contributes to the Board of Directors for CIM's Canadian Mineral Processors (CMP) Society.",
     expandable: false,
+    image: "/fwdboardmemberphotos/stefanie vo.jpg",
   },
 ];
 
@@ -94,7 +100,7 @@ const advisoryBoard = [
 function TeamCard({
   member,
 }: {
-  member: { initials: string; name: string; role: string; bio: string; expandable: boolean };
+  member: { initials: string; name: string; role: string; bio: string; expandable: boolean; image?: string };
 }) {
   const [expanded, setExpanded] = useState(false);
   const { t } = useLanguage();
@@ -105,9 +111,17 @@ function TeamCard({
     <div className="group bg-white border border-neutral-200 rounded-xl p-6 sm:p-8 hover:border-[#C6112F]/30 hover:shadow-lg transition-all duration-300">
       {/* Avatar + Name */}
       <div className="flex items-start gap-4 mb-4">
-        <div className="w-14 h-14 rounded-full bg-[#0f1117] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-lg shrink-0 group-hover:border-[#C6112F] transition-colors">
-          {member.initials}
-        </div>
+        {member.image ? (
+          <img
+            src={member.image}
+            alt={member.name}
+            className="w-14 h-14 rounded-full border-2 border-[#C6112F]/30 object-cover shrink-0 group-hover:border-[#C6112F] transition-colors"
+          />
+        ) : (
+          <div className="w-14 h-14 rounded-full bg-[#0f1117] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-lg shrink-0 group-hover:border-[#C6112F] transition-colors">
+            {member.initials}
+          </div>
+        )}
         <div>
           <h3 className="text-lg font-black text-[#1a1f2c] tracking-tight leading-tight">
             {member.name}
