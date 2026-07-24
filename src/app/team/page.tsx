@@ -26,7 +26,8 @@ const coreTeam: TeamMember[] = [
     organization: "IR.INC & VID Media",
     bio: "Joanne is a seasoned Capital Markets and Communications executive with over 25 years of dedicated experience. She is the Principal and Founder of IR.INC, Capital Markets Advisory, VID Media Incorporated and THE Mining Investment Event of the North. She began her career in the fledgling investor relations industry in 1987 with Barrick Gold, where she helped develop its early IR and marketing programs.\n\nSince then, she has worked in the natural resources sector and managed the investor relations, corporate affairs and communications programs for a number of publicly traded companies, including J.P. Morgan & Co. (Canada), Canadian Tire Corporation, and Meridian Credit Union. Ms. Jobin has held senior IRO positions in several companies, including IAMGOLD, Yamana Gold, Noront Resources, Excellon Resources, Schwazze, and Jaguar Mining.\n\nIR.INC is an Advisory firm dedicated to providing capital markets and IR advice to select natural resource and financial industry clients. VID Media is focused on providing companies with an unparalleled direct investor experience through its unique flagship products including VID Town Hall Forums. THE Mining Investment Event of the North is Canada's only Tier 1 Mining Investment Conference, held annually in Quebec City, hosting 800+ participants including issuers, investors, financial institutions, sponsors and governments of all levels.",
     expandable: true,
-    image: "/ChatGPT Image Jul 24, 2026, 04_48_34 PM.png",
+    // image: "/ChatGPT Image Jul 24, 2026, 04_48_34 PM.png",
+    image: "/ChatGPT Image Jul 24, 2026, 04_48_40 PM.png",
     category: "executive",
   },
   {
@@ -36,9 +37,13 @@ const coreTeam: TeamMember[] = [
     organization: "THE Mining Investment EVENT",
     bio: "Jennifer Choi serves as Vice President of Operations at THE Mining Investment Event, overseeing all operational aspects of Canada's premier mining investment conference. For registration and event inquiries, Jennifer can be reached directly at jchoi@irinc.ca or +1-905-515-3508.",
     expandable: false,
-    image: "/ChatGPT Image Jul 24, 2026, 04_48_40 PM.png",
+    // image: "/ChatGPT Image Jul 24, 2026, 04_48_40 PM.png",
     category: "executive",
   },
+
+
+
+  
   {
     initials: "SS",
     name: "Sydney Schuch",
@@ -46,6 +51,7 @@ const coreTeam: TeamMember[] = [
     organization: "IR INC & VID Media",
     bio: "Sydney is the Manager, Production Services at IR INC and VID Media, where she oversees production operations and leads the social media team for THE Mining Investment Event. With a background in media, communications, and public affairs, she brings a structured, detail-oriented approach to managing complex projects and stakeholder-driven initiatives.\n\nShe is a graduate of the University of Western Ontario, holding a BA in Political Science and Media Information (2024), and is currently pursuing a Graduate Certificate in Government Relations at Seneca Polytechnic.\n\nAlongside her professional work, Sydney is actively engaged in public service. She volunteers with her local MPP's office and serves as an administrative assistant to the executive team at the Caledonia Royal Canadian Legion.",
     expandable: true,
+     image: "/ChatGPT Image Jul 24, 2026, 04_48_34 PM.png",
     category: "executive",
   },
   {
