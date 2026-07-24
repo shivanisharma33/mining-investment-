@@ -41,7 +41,7 @@ export default function CanadaPremierForum() {
               ) : (
                 <>
                   THE Mining Investment Event is an invitation-only gathering that brings together the world's most influential mining companies, investors, institutions and government authorities{" "}
-                   in the historic setting of<br className="hidden sm:inline" /> Québec City.
+                  in the historic setting of<br className="hidden sm:inline" /> Québec City.
                 </>
               )}
             </p>
@@ -120,7 +120,7 @@ export default function CanadaPremierForum() {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-              
+
               {/* Bottom Image Tag */}
               <div className="absolute bottom-4 left-4 z-20 text-white">
                 <span className="text-[10px] font-black tracking-[0.2em] uppercase bg-[#C6112F] px-3 py-1 rounded-full">

@@ -93,11 +93,10 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
               <button
                 key={y}
                 onClick={() => setSelectedYear(y)}
-                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${
-                  selectedYear === y
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === y
                     ? "bg-[#C6112F] text-white shadow-md"
                     : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                }`}
+                  }`}
               >
                 {y} Speakers
               </button>

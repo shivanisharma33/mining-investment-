@@ -10,11 +10,10 @@ const flights = [
   { city: "Toronto", time: "1.5 hrs" },
   { city: "Montreal", time: "45 mins" },
   { city: "Vancouver", time: "5 hrs" },
-  { city: "New York", time: "2.5 hrs" },
+  { city: "NY", time: "2.5 hrs" },
   { city: "London", time: "8.5 hrs" },
   { city: "Paris", time: "7.5 hrs" },
 ];
-
 
 export default function TravelPage() {
   const { t } = useLanguage();
@@ -28,7 +27,7 @@ export default function TravelPage() {
       ),
       title: t("travel-hilton-title", "Hilton Québec"),
       desc: t("travel-hilton-desc", "Experience luxury and convenience at the Hilton Hotel in Quebec City, perfectly positioned just steps away from the Quebec City Convention Centre. Indulge in exquisite dining, unwind with a cocktail at the lounge, or rejuvenate in the state-of-the-art fitness centre."),
-      note: t("travel-hilton-note", "Entry into THE Event and special hotel discount rates are restricted to registered participants only."),
+      note: t("travel-hilton-note", "Discounted block rates available for registered participants only. You are responsible for coordinating all your own travel and lodging arrangements."),
       link: "https://www.hilton.com/en/hotels/yqbhihh-hilton-quebec/",
       linkText: t("travel-hilton-link", "View Hotel Website ↗"),
     },
@@ -38,10 +37,10 @@ export default function TravelPage() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M5 4h14a2 2 0 012 2v10a2 2 0 01-2 2h-1.5L19 21h-2l-1.5-3h-7L7 21H5l1.5-3H5a2 2 0 01-2-2V6a2 2 0 012-2zm0 4h14M8 14h2m4 0h2" />
         </svg>
       ),
-      title: t("travel-train-title", "Train Travel (VIA Rail)"),
-      desc: t("travel-train-desc", "Estimated train times to Quebec City:\n• From Toronto: 8 hrs (transfer at Montreal)\n• From Montreal: 3 hrs\n\nThe train station in Quebec City is just 5 minutes by taxi to most major hotels. Book your tickets online at VIA Rail."),
+      title: t("travel-train-title", "Train Travel to Quebec (YQB)"),
+      desc: t("travel-train-desc", "Estimated train travel times:\n• From Toronto: 8 hrs (with a transfer at Montreal to QC)\n• From Montreal: 3 hrs\n\nThe train station in Quebec City is 5 mins by taxi to most major hotels."),
       link: "https://www.viarail.ca/en/travel-info/booking/buy-train-ticket",
-      linkText: t("travel-train-link", "Book Train Ticket ↗"),
+      linkText: t("travel-train-link", "Book Ticket at Via Rail ↗"),
     },
     {
       icon: (
@@ -49,11 +48,11 @@ export default function TravelPage() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6H8.25L5.25 9H3.75A1.5 1.5 0 002.25 10.5v3.75a1.5 1.5 0 001.5 1.5h16.5a1.5 1.5 0 001.5-1.5V10.5A1.5 1.5 0 0018.75 9H18L15.75 6zm-9 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm11.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
         </svg>
       ),
-      title: t("travel-limo-title", "Limousine A1"),
-      desc: t("travel-limo-desc", "With over 40 years of experience in transportation management and coordination, Limousine A1 is the leading limousine carrier in the province of Quebec. Their team of professionals provides a personalized transportation experience, seamless logistics, and a courteous attitude.\n\nTel: 418-523-5059\nEmail: res@limousinequebec.com"),
-      note: t("travel-limo-note", "Entry into THE Event and special discount rates are restricted to registered participants only."),
+      title: t("travel-limo-title", "Limousine A1 (Private Transportation)"),
+      desc: t("travel-limo-desc", "If you wish to book private transportation, we invite you to contact Limousine A1 directly to arrange. With over 40 years of experience, Limousine A1 provides personalized transportation and seamless logistics in Quebec.\n\nTel: 418-523-5059\nEmail: res@limousinequebec.com"),
+      note: t("travel-limo-note", "Restricted to registered participants only."),
       link: "http://www.limousinequebec.com/",
-      linkText: t("travel-limo-link", "View Limousine A1 ↗"),
+      linkText: t("travel-limo-link", "Arrange Private Transportation ↗"),
     },
     {
       icon: (
@@ -62,7 +61,7 @@ export default function TravelPage() {
         </svg>
       ),
       title: t("travel-discount-title", "Delegate Discount Program"),
-      desc: t("travel-discount-desc", "Our venue partner, The Québec City Convention Centre, is proud to offer delegates of THE Event exclusive offers and discounts at select restaurants, attractions and boutiques throughout Quebec City.\n\nYou will be able to take advantage of the offers through presentation of your THE Event badge. Scan QR code on-site for more details."),
+      desc: t("travel-discount-desc", "Our venue partner, The Québec City Convention Centre, offers delegates of THE Event exclusive discounts at select restaurants, attractions and boutiques throughout Quebec City.\n\nPlease check with individual properties regarding cancellation policy, deposit requirement, and taxes/fees."),
     },
   ];
 
@@ -96,103 +95,247 @@ export default function TravelPage() {
           </div>
         </section>
 
-        {/* ═══════ VENUE + AIR TRAVEL (2-col) ═══════ */}
-        <section className="relative w-full bg-white py-16 sm:py-20 md:py-24">
+        {/* ═══════ TOP TRAVEL & ACCOMMODATIONS INTRO ═══════ */}
+        <section className="relative w-full bg-white py-14 sm:py-18 md:py-20">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              {t("travel-venue-label", "VENUE")}
+              {t("travel-venue-label", "TRAVEL & ACCOMMODATIONS")}
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
-              {t("travel-venue-title-1", "Welcome to")} <span className="text-[#C6112F]">{t("travel-venue-title-2", "Québec City")}</span>
+              {t("travel-main-heading", "Travel & Accommodations")}
             </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[800px] mb-10">
-              {t("travel-venue-desc", "Welcome to THE Mining Investment EVENT, taking place 1-3 June 2027 at the Centre des congrès de Québec (“QCC”). Discounted block rates available for registered participants only. You are responsible for coordinating all your own travel and lodging arrangements.")}
-            </p>
+            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
-            {/* Venue + Air Travel — side by side */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-              {/* Convention Centre */}
-              <div className="bg-[#f8fafc] border border-neutral-200 rounded-xl p-6 sm:p-8 flex flex-col">
-                <div className="w-14 h-14 rounded-2xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-black text-[#1a1f2c] mb-3">
-                  {t("travel-convention-title", "Québec City Convention Centre")}
-                </h3>
-                <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
-                <p className="text-neutral-600 text-sm leading-relaxed flex-1">
-                  {t("travel-convention-desc", "Welcome to the Quebec City Convention Centre, where elegance meets innovation. Nestled within the charming historic district of Old Quebec, this world-class facility seamlessly blends modern amenities with the rich tapestry of Quebecois culture.")}
+            {/* Prominent Top Announcement Notice */}
+            <div className="bg-[#f8fafc] border border-neutral-200/90 rounded-2xl p-6 sm:p-8 md:p-10 mb-12 shadow-2xs">
+              <h3 className="text-xl sm:text-2xl font-black text-[#1a1f2c] mb-3">
+                {t(
+                  "travel-event-welcome",
+                  "Welcome to THE Mining Investment EVENT, taking place Tuesday, June 2 to Thursday, June 4, 2026 at the Centre des congrès de Québec (“QCC”)"
+                )}
+              </h3>
+              <div className="w-12 h-[2.5px] bg-[#C6112F] mb-4" />
+
+              <a
+                href="https://www.convention.qc.ca/en/about/ceo-message/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-base sm:text-lg font-extrabold text-[#C6112F] hover:underline inline-flex items-center gap-1.5 mb-3"
+              >
+                <span>{t("travel-about-qcc", "About the Centre des congrès de Québec")}</span>
+                <span className="text-sm">↗</span>
+              </a>
+
+              <div className="space-y-2 text-neutral-700 text-sm sm:text-base font-medium leading-relaxed">
+                <p className="flex items-start gap-2">
+                  <span className="text-[#C6112F] font-bold">•</span>
+                  <span>{t("travel-notice-1", "Discounted block rates available for registered participants only.")}</span>
                 </p>
-                <p className="text-[#C6112F] text-xs font-semibold mt-4">
-                  {t("travel-convention-note", "Please Note: Entry into THE Event and special hotel discount rates are restricted to registered participants only.")}
+                <p className="flex items-start gap-2">
+                  <span className="text-[#C6112F] font-bold">•</span>
+                  <span>
+                    {t(
+                      "travel-notice-2",
+                      "You are responsible for coordinating all your own travel and lodging arrangements. Please check with individual properties regarding cancellation policy, deposit requirement, and taxes/fees."
+                    )}
+                  </span>
                 </p>
+              </div>
+            </div>
+
+            {/* Convention Centre Card */}
+            <div className="bg-[#f8fafc] border border-neutral-200 rounded-2xl p-6 sm:p-8 flex flex-col mb-12">
+              <div className="w-14 h-14 rounded-2xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] mb-5">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-black text-[#1a1f2c] mb-3">
                 <a
-                  href="https://www.convention.qc.ca/en/"
+                  href="https://www.convention.qc.ca/en/about/ceo-message/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 text-[#C6112F] text-sm font-bold hover:underline inline-flex items-center gap-1"
+                  className="hover:text-[#C6112F] transition-colors"
                 >
-                  {t("travel-convention-link", "View Convention Centre ↗")}
+                  {t("travel-convention-title", "About the Centre des congrès de Québec ↗")}
                 </a>
-              </div>
+              </h3>
+              <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+              <p className="text-neutral-600 text-sm leading-relaxed flex-1 font-medium">
+                {t("travel-convention-desc", "Welcome to the Centre des congrès de Québec, where elegance meets innovation. Nestled within the charming historic district of Old Quebec, this world-class facility seamlessly blends modern amenities with the rich tapestry of Quebecois culture.")}
+              </p>
+              <p className="text-[#C6112F] text-xs font-semibold mt-4">
+                {t("travel-convention-note", "Please Note: Discounted block rates available for registered participants only. You are responsible for coordinating all your own travel and lodging arrangements.")}
+              </p>
+              <a
+                href="https://www.convention.qc.ca/en/about/ceo-message/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 text-[#C6112F] text-sm font-bold hover:underline inline-flex items-center gap-1"
+              >
+                {t("travel-convention-link", "View Convention Centre ↗")}
+              </a>
+            </div>
 
-              {/* Air Travel */}
-              <div className="bg-[#f8fafc] border border-neutral-200 rounded-xl p-6 sm:p-8 flex flex-col">
-                <div className="w-14 h-14 rounded-2xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] mb-5">
-                  <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                  </svg>
+            {/* 3 Transportation Cards Grid with Public Travel Images */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Air Travel Card with travle-1.webp */}
+              <div className="bg-white border border-neutral-200/90 rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
+                <div className="w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-neutral-900 mb-4 relative shrink-0">
+                  <img
+                    src="/travle-1.webp"
+                    alt="Air Travel to Quebec YQB"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/20">
+                    AIR TRAVEL
+                  </div>
                 </div>
-                <h3 className="text-xl font-black text-[#1a1f2c] mb-3">
-                  {t("travel-air-title", "Air Travel to Quebec (YQB)")}
-                </h3>
-                <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
-                <p className="text-neutral-600 text-sm font-bold mb-3">
-                  {t("travel-air-easy", "Traveling to Quebec City is easy!")}
-                </p>
-                <p className="text-neutral-500 text-xs font-semibold tracking-wider uppercase mb-2">
-                  {t("travel-air-times", "Estimated flight times:")}
-                </p>
 
-                <div className="grid grid-cols-2 gap-2 mb-4">
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] shrink-0">
+                    <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-black text-[#1a1f2c] leading-snug">
+                    {t("travel-air-title", "Air Travel direct to Quebec (YQB) estimated times")}
+                  </h3>
+                </div>
+                <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+
+                <div className="grid grid-cols-2 gap-1.5 mb-3.5">
                   {flights.map((f) => (
                     <div
                       key={f.city}
-                      className="flex items-center justify-between bg-white border border-neutral-200 rounded-lg px-3 py-2"
+                      className="flex items-center justify-between bg-[#f8fafc] border border-neutral-200/80 rounded-lg px-2.5 py-1"
                     >
-                      <span className="text-neutral-700 text-sm font-medium">{f.city}</span>
-                      <span className="text-[#C6112F] text-sm font-bold">{f.time}</span>
+                      <span className="text-neutral-700 text-[11px] font-medium">{f.city}</span>
+                      <span className="text-[#C6112F] text-[11px] font-bold">{f.time}</span>
                     </div>
                   ))}
                 </div>
 
-                <p className="text-neutral-600 text-sm leading-relaxed flex-1">
-                  {t("travel-air-desc", "All major carriers fly to Toronto or Montreal with quick connections to YQB. Jean Lesage International airport is a 20 minute taxi ride to/from the Chateau Frontenac.")}
+                <p className="text-neutral-600 text-xs leading-relaxed font-medium flex-1 mb-2">
+                  {t(
+                    "travel-air-carrier-note",
+                    "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB. Some carriers fly direct to YQB, Please check with your carrier of choice. Jean Lesage International airport in Quebec City is a 20 minute taxi ride to/from The Chateau Frontenac."
+                  )}
                 </p>
                 <a
                   href="https://www.aeroportdequebec.com/en/flights-and-destinations/destinations-served"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 text-[#C6112F] text-sm font-bold hover:underline inline-flex items-center gap-1"
+                  className="mt-3 text-[#C6112F] text-xs font-bold hover:underline inline-flex items-center gap-1"
                 >
-                  {t("travel-air-link", "View YQB Destinations ↗")}
+                  {t("travel-air-link-btn", "Check YQB destinations ↗")}
+                </a>
+              </div>
+
+              {/* Train Travel Card with travle-2.webp */}
+              <div className="bg-white border border-neutral-200/90 rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
+                <div className="w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-neutral-900 mb-4 relative shrink-0">
+                  <img
+                    src="/travle-2.webp"
+                    alt="Train Travel VIA Rail Quebec"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/20">
+                    TRAIN TRAVEL
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] shrink-0">
+                    <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 4h14a2 2 0 012 2v10a2 2 0 01-2 2h-1.5L19 21h-2l-1.5-3h-7L7 21H5l1.5-3H5a2 2 0 01-2-2V6a2 2 0 01-2-2zm0 4h14M8 14h2m4 0h2" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-black text-[#1a1f2c] leading-snug">
+                    {t("travel-train-title", "Train Travel to Quebec (YQB) estimated times:")}
+                  </h3>
+                </div>
+                <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+
+                <div className="space-y-1.5 text-xs font-medium text-neutral-700 mb-3 bg-[#f8fafc] border border-neutral-200/80 p-2.5 rounded-lg">
+                  <p className="flex justify-between items-center text-[11px]">
+                    <span>• From Toronto:</span>
+                    <span className="font-bold text-[#C6112F]">8 hrs (transfer at Montreal)</span>
+                  </p>
+                  <p className="flex justify-between items-center border-t border-neutral-200/60 pt-1.5 text-[11px]">
+                    <span>• From Montreal:</span>
+                    <span className="font-bold text-[#C6112F]">3 hrs</span>
+                  </p>
+                </div>
+
+                <p className="text-neutral-600 text-xs leading-relaxed font-medium flex-1 mb-2">
+                  {t("travel-train-taxi-note", "The train station in Quebec City is 5 mins by taxi to most major hotels.")}
+                </p>
+                <a
+                  href="https://www.viarail.ca/en/travel-info/booking/buy-train-ticket"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 text-[#C6112F] text-xs font-bold hover:underline inline-flex items-center gap-1"
+                >
+                  {t("travel-train-btn", "Book tickets online at Via Rail ↗")}
+                </a>
+              </div>
+
+              {/* Private Transportation Card with travle-3.webp */}
+              <div className="bg-white border border-neutral-200/90 rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
+                <div className="w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-neutral-900 mb-4 relative shrink-0">
+                  <img
+                    src="/travle-4.webp"
+                    alt="Private Transportation Limousine A1"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/20">
+                    PRIVATE TRANSPORT
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] shrink-0">
+                    <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6H8.25L5.25 9H3.75A1.5 1.5 0 002.25 10.5v3.75a1.5 1.5 0 001.5 1.5h16.5a1.5 1.5 0 001.5-1.5V10.5A1.5 1.5 0 0018.75 9H18L15.75 6zm-9 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm11.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-sm sm:text-base font-black text-[#1a1f2c] leading-snug">
+                    {t("travel-limo-heading", "Private Transportation")}
+                  </h3>
+                </div>
+                <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+                <p className="text-neutral-600 text-xs leading-relaxed font-medium flex-1 mb-2">
+                  {t(
+                    "travel-limo-text",
+                    "If wish to book private transportation, we invite you to contact Limousine A1 directly to arrange."
+                  )}
+                </p>
+                <div className="mt-2.5 p-2.5 bg-[#f8fafc] border border-neutral-200/80 rounded-lg text-xs font-semibold text-neutral-800 space-y-0.5">
+                  <p>Tel: <a href="tel:4185235059" className="text-[#C6112F] hover:underline">418-523-5059</a></p>
+                  <p>Email: <a href="mailto:res@limousinequebec.com" className="text-[#C6112F] hover:underline">res@limousinequebec.com</a></p>
+                </div>
+                <a
+                  href="http://www.limousinequebec.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 text-[#C6112F] text-xs font-bold hover:underline inline-flex items-center gap-1"
+                >
+                  {t("travel-limo-btn", "Contact Limousine A1 ↗")}
                 </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═══════ ACCOMMODATIONS & TRANSPORT ═══════ */}
-        <section className="relative w-full bg-[#f4f7fa] py-16 sm:py-20 md:py-24">
+        {/* ═══════ ACCOMMODATIONS ═══════ */}
+        <section className="relative w-full bg-white py-16 sm:py-20 md:py-24">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              {t("travel-services-label", "SERVICES")}
+              {t("travel-services-label", "HOTELS & DISCOUNTS")}
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
-              {t("travel-services-title", "Accommodations & Transport")}
+              {t("travel-services-title", "Accommodations & Hotel Discounts")}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-10" />
 
@@ -200,14 +343,14 @@ export default function TravelPage() {
               {localizedAccommodations.map((item) => (
                 <div
                   key={item.title}
-                  className="group bg-white border border-neutral-200 rounded-xl p-6 sm:p-8 hover:border-[#C6112F]/30 hover:shadow-lg transition-all duration-300 flex flex-col"
+                  className="group bg-white border border-neutral-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 hover:-translate-y-1 flex flex-col"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] mb-5 group-hover:bg-[#C6112F] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#C6112F]/20 transition-all duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] mb-4 group-hover:bg-[#C6112F] group-hover:text-white group-hover:shadow-md group-hover:shadow-[#C6112F]/20 transition-all duration-300">
                     {item.icon}
                   </div>
-                  <h3 className="text-lg font-black text-[#1a1f2c] mb-2">{item.title}</h3>
+                  <h3 className="text-base font-black text-[#1a1f2c] mb-2">{item.title}</h3>
                   <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
-                  <p className="text-neutral-600 text-sm leading-relaxed whitespace-pre-line flex-1">{item.desc}</p>
+                  <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed whitespace-pre-line flex-1 font-medium">{item.desc}</p>
                   {item.note && (
                     <p className="text-[#C6112F] text-xs font-semibold mt-3">{item.note}</p>
                   )}
@@ -216,7 +359,7 @@ export default function TravelPage() {
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 text-[#C6112F] text-sm font-bold hover:underline inline-flex items-center gap-1"
+                      className="mt-3 text-[#C6112F] text-xs sm:text-sm font-bold hover:underline inline-flex items-center gap-1"
                     >
                       {item.linkText}
                     </a>

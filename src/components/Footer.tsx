@@ -141,7 +141,7 @@ export default function Footer() {
 
                 {/* YouTube */}
                 <a
-                  href="https://youtube.com"
+                  href="https://youtube.com/@vidconferences?si=VVEfWLrZyKUbjTEY"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
