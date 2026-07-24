@@ -33,7 +33,7 @@ export default function CanadaPremierForum() {
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
             <p className="text-neutral-700 text-xs sm:text-sm leading-relaxed mb-6 max-w-[500px] font-medium">
-              {lang === "fr" ? (
+              {lang === "FR" ? (
                 t(
                   "forum-desc",
                   "THE Mining Investment Event est un rassemblement sur invitation uniquement qui réunit les sociétés minières, les investisseurs, les institutions et les autorités gouvernementales les plus influents au monde dans le cadre historique de la ville de Québec."
