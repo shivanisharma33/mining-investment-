@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
-import { SPEAKERS, SPEAKERS_2025, SPEAKERS_2024, RawSpeaker } from "@/app/past-editions/editionData";
+import { SPEAKERS, SPEAKERS_2025, SPEAKERS_2024, SPEAKERS_2023, RawSpeaker } from "@/app/past-editions/editionData";
 
 export default function SpeakersView({ year = 2026 }: { year?: number }) {
   const [selectedYear, setSelectedYear] = useState<number>(year);
@@ -15,6 +15,7 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
   }, [year]);
 
   const speakersList = useMemo(() => {
+    if (selectedYear === 2023) return SPEAKERS_2023 || [];
     if (selectedYear === 2024) return SPEAKERS_2024 || [];
     if (selectedYear === 2025) return SPEAKERS_2025 || [];
     return SPEAKERS;

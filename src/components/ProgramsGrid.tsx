@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 const categories = ["ALL", "EDUCATION", "LEADERSHIP", "INSTITUTIONAL", "DIALOGUE"];
@@ -19,7 +20,7 @@ export default function ProgramsGrid() {
         "Offering a one-of-a-kind exposure to the mining industry for up to 50 university and college students passionate about geology, finance and engineering."
       ),
       cta: t("prog-edu-cta", "EXPLORE PROGRAM"),
-      link: "#",
+      link: "/student",
       image:
         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
       imageAlt: "Students collaborating in library",
@@ -34,7 +35,7 @@ export default function ProgramsGrid() {
         "Fostering industry-wide progress through ESG innovation and diversity, highlighting the achievements of women in the global mining sector."
       ),
       cta: t("prog-lead-cta", "LEARN MORE"),
-      link: "#",
+      link: "/sheco",
       image:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
       imageAlt: "Smiling professional woman in office",
@@ -49,7 +50,7 @@ export default function ProgramsGrid() {
         "Tailored opportunities designed to maximize visibility and engagement with the world's most influential mining companies and investors."
       ),
       cta: t("prog-inst-cta", "PARTNERSHIP INFO"),
-      link: "#",
+      link: "/sponsors",
       image:
         "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
       imageAlt: "Team presentation meeting in loft office",
@@ -58,13 +59,13 @@ export default function ProgramsGrid() {
     {
       id: "dialogue",
       category: t("prog-dial-cat", "D I A L O G U E"),
-      title: t("prog-dial-title", "THE Salon Explore Co Lounge"),
+      title: t("prog-dial-title", "Core Shack"),
       description: t(
         "prog-dial-desc",
         "An intimate networking experience designed to connect Canada's exploration community with elite international investors."
       ),
       cta: t("prog-dial-cta", "MEET SPEAKERS"),
-      link: "#",
+      link: "/agenda",
       image:
         "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
       imageAlt: "Conference stage microphone",
@@ -76,10 +77,10 @@ export default function ProgramsGrid() {
     activeTab === "ALL"
       ? programs
       : programs.filter(
-          (p) =>
-            p.category.replace(/\s+/g, "") === activeTab ||
-            p.id === activeTab.toLowerCase()
-        );
+        (p) =>
+          p.category.replace(/\s+/g, "") === activeTab ||
+          p.id === activeTab.toLowerCase()
+      );
 
   return (
     <section className="relative w-full bg-white py-14 sm:py-18 overflow-hidden">
@@ -91,7 +92,7 @@ export default function ProgramsGrid() {
         <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
           {t("programs-tag", "FEATURED INITIATIVES")}
         </span>
-        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] tracking-tight mb-3">
+        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
           {t("programs-title", "Key Event Programs")}
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-8" />
@@ -102,11 +103,10 @@ export default function ProgramsGrid() {
             <button
               key={cat}
               onClick={() => setActiveTab(cat)}
-              className={`px-4 sm:px-5 py-2 rounded-full text-xs font-extrabold tracking-wider transition-all duration-300 ${
-                activeTab === cat
+              className={`px-4 sm:px-5 py-2 rounded-full text-xs font-extrabold tracking-wider transition-all duration-300 ${activeTab === cat
                   ? "bg-[#C6112F] text-white shadow-md scale-105"
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200 hover:text-neutral-900"
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -119,12 +119,12 @@ export default function ProgramsGrid() {
         {filteredPrograms.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col sm:flex-row w-full h-auto sm:h-[320px] lg:h-[360px] rounded-none group relative border-none"
+            className="flex flex-col sm:flex-row w-full h-auto sm:min-h-[380px] lg:min-h-[420px] rounded-none group relative border-none"
           >
             {item.imageOnLeft ? (
               <>
                 {/* Image Block (Left Half) */}
-                <div className="w-full sm:w-1/2 h-[280px] sm:h-full relative overflow-hidden bg-neutral-900 shrink-0 rounded-none">
+                <div className="w-full sm:w-1/2 h-[260px] sm:h-full relative overflow-hidden bg-neutral-900 shrink-0 rounded-none">
                   <img
                     src={item.image}
                     alt={item.imageAlt}
@@ -133,7 +133,7 @@ export default function ProgramsGrid() {
                 </div>
 
                 {/* Clean Origami Text Block (Right Half) */}
-                <div className="w-full sm:w-1/2 p-6 sm:p-10 md:p-12 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none group-hover:bg-[#e4e4e4] transition-colors duration-300">
+                <div className="w-full sm:w-1/2 p-6 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none group-hover:bg-[#e4e4e4] transition-colors duration-300">
                   {/* Origami Faceted Polygon Background */}
                   <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 400">
@@ -142,34 +142,34 @@ export default function ProgramsGrid() {
                   </div>
 
                   <div className="relative z-10">
-                    <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-2 block">
+                    <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
                       {item.category}
                     </span>
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#1a1f2c] leading-tight mb-3">
+                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] leading-snug mb-2.5">
                       {item.title}
                     </h3>
-                    <div className="w-12 h-[2px] bg-[#C6112F] mb-4" />
-                    <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium mb-6 max-w-[480px]">
+                    <div className="w-12 h-[2px] bg-[#C6112F] mb-3" />
+                    <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Red Text Link with Arrow matching reference image */}
-                  <div className="relative z-10 pt-2">
-                    <a
+                  {/* Red Text Link with Arrow */}
+                  <div className="relative z-10 pt-2 mt-auto">
+                    <Link
                       href={item.link}
                       className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
                     >
                       <span>{item.cta}</span>
                       <span className="text-base leading-none">➔</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </>
             ) : (
               <>
                 {/* Clean Origami Text Block First (Left Half) */}
-                <div className="w-full sm:w-1/2 p-6 sm:p-10 md:p-12 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none order-2 sm:order-1 group-hover:bg-[#e4e4e4] transition-colors duration-300">
+                <div className="w-full sm:w-1/2 p-6 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none order-2 sm:order-1 group-hover:bg-[#e4e4e4] transition-colors duration-300">
                   {/* Origami Faceted Polygon Background */}
                   <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 400">
@@ -178,32 +178,32 @@ export default function ProgramsGrid() {
                   </div>
 
                   <div className="relative z-10">
-                    <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-2 block">
+                    <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
                       {item.category}
                     </span>
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#1a1f2c] leading-tight mb-3">
+                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] leading-snug mb-2.5">
                       {item.title}
                     </h3>
-                    <div className="w-12 h-[2px] bg-[#C6112F] mb-4" />
-                    <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium mb-6 max-w-[480px]">
+                    <div className="w-12 h-[2px] bg-[#C6112F] mb-3" />
+                    <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Red Text Link with Arrow matching reference image */}
-                  <div className="relative z-10 pt-2">
-                    <a
+                  {/* Red Text Link with Arrow */}
+                  <div className="relative z-10 pt-2 mt-auto">
+                    <Link
                       href={item.link}
                       className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
                     >
                       <span>{item.cta}</span>
                       <span className="text-base leading-none">➔</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
                 {/* Image Block (Right Half) */}
-                <div className="w-full sm:w-1/2 h-[280px] sm:h-full relative overflow-hidden bg-neutral-900 rounded-none order-1 sm:order-2 shrink-0">
+                <div className="w-full sm:w-1/2 h-[260px] sm:h-full relative overflow-hidden bg-neutral-900 rounded-none order-1 sm:order-2 shrink-0">
                   <img
                     src={item.image}
                     alt={item.imageAlt}

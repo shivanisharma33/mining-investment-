@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function GetInTouchCTA() {
@@ -28,7 +29,7 @@ export default function GetInTouchCTA() {
           <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
             {t("cta-tag", "HAVE A QUESTION?")}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#1a1f2c] tracking-tight mb-2">
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
             {t("cta-title", "Get in Touch")}
           </h2>
           <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
@@ -52,8 +53,8 @@ export default function GetInTouchCTA() {
           </p>
 
           {/* Red Action Button */}
-          <a
-            href="#"
+          <Link
+            href="/register"
             className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-7 py-3.5 rounded-lg uppercase inline-flex items-center gap-2.5 shadow-md hover:shadow-lg transition-all"
           >
             <span>{t("nav-register", "REGISTER HERE")}</span>
@@ -71,7 +72,7 @@ export default function GetInTouchCTA() {
                 d="M10.5 8.5L14 12L10.5 15.5M14 12H8.5"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

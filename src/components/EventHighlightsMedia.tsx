@@ -16,13 +16,13 @@ export default function EventHighlightsMedia() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           {/* Left Column: Text Header */}
           <div className="flex flex-col items-start text-left max-w-[520px]">
-            <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("highlights-tag", "MEDIA")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-2">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
               {t("highlights-title", "Event Highlights")}
             </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-3" />
+            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
             <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium">
               {t(
                 "highlights-desc",

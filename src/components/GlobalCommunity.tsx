@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function GlobalCommunity() {
@@ -57,24 +58,24 @@ export default function GlobalCommunity() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
           {/* Left Column: Title & Action Button */}
           <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("map-tag", "GLOBAL PRESENCE")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-[#1a1f2c] tracking-tight mb-2 leading-[1.2]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
               {t("map-title", "Where the World's Mining Converges")}
             </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
+            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
             <p className="text-neutral-600 text-xs sm:text-sm font-medium leading-relaxed mb-6 max-w-[420px]">
               {t("map-desc", "Explore the international network of companies, investors, and delegations gathering in Québec City.")}
             </p>
 
-            <a
-              href="#"
-              className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider uppercase px-7 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all"
+            <Link
+              href="/companies"
+              className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider uppercase px-7 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all inline-block"
             >
               {t("map-cta", "VIEW GLOBAL PARTICIPATION")}
-            </a>
+            </Link>
           </div>
 
           {/* Right Column: 3D Dotted Red World Map Graphic Image */}

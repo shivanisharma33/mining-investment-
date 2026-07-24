@@ -884,7 +884,7 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Gary Stanley",
-    "title": "Speaker & Panelist",
+    "title": "Government Delegate & Keynote",
     "organization": "Former Director Critical Metals US Government",
     "category": "gov",
     "days": [
@@ -983,7 +983,7 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Nichole Adshead-Bell",
-    "title": "Speaker & Panelist",
+    "title": "Session Moderator",
     "organization": "Cupel Advisory",
     "category": "mod",
     "days": [
@@ -1104,7 +1104,7 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Pierre Fitzgibbon",
-    "title": "Speaker & Panelist",
+    "title": "Government Delegate & Keynote",
     "organization": "Quebec Minister of Economy Innovation & Energy",
     "category": "gov",
     "days": [
@@ -1181,7 +1181,7 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Grand Chief Mandy Gull-Masty",
-    "title": "Speaker & Panelist",
+    "title": "Government Delegate & Keynote",
     "organization": "Cree First Nation of Waswanipi",
     "category": "gov",
     "days": [
@@ -1192,7 +1192,7 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Ian Morrisette",
-    "title": "Speaker & Panelist",
+    "title": "Government Delegate & Keynote",
     "organization": "Quebec Deputy Minister of Mines & Forestry",
     "category": "gov",
     "days": [
@@ -1203,7 +1203,7 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Maïté Blanchette Vézina",
-    "title": "Speaker & Panelist",
+    "title": "Government Delegate & Keynote",
     "organization": "Quebec Minister of Mines & Forestry",
     "category": "gov",
     "days": [
@@ -1214,20 +1214,9 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Jean-François Béland",
-    "title": "Speaker & Panelist",
-    "organization": "Investissement Québec",
+    "organization": "Investissement Quebec",
     "category": "fin",
-    "days": [
-      2,
-      3
-    ],
-    "year": 2024
-  },
-  {
-    "name": "David M. Cole",
     "title": "Speaker & Panelist",
-    "organization": "EMX Royalty Corp.",
-    "category": "exec",
     "days": [
       2,
       3
@@ -1236,20 +1225,9 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Amyot Choquette",
-    "title": "Speaker & Panelist",
     "organization": "IQ Ressources Québec",
     "category": "fin",
-    "days": [
-      2,
-      3
-    ],
-    "year": 2024
-  },
-  {
-    "name": "Geneviève Morinville",
     "title": "Speaker & Panelist",
-    "organization": "Winsome Resources",
-    "category": "exec",
     "days": [
       2,
       3
@@ -1258,9 +1236,31 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Matt Gordon",
-    "title": "Speaker & Panelist",
     "organization": "Crux Investor",
     "category": "fin",
+    "title": "Speaker & Panelist",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Angelina Mehta",
+    "organization": "Rio Tinto",
+    "category": "exec",
+    "title": "Speaker & Panelist",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  },
+  {
+    "name": "Geneviève Morinville",
+    "organization": "Winsome Resources",
+    "category": "exec",
+    "title": "Speaker & Panelist",
     "days": [
       2,
       3
@@ -1269,13 +1269,447 @@ export const SPEAKERS_2024: RawSpeaker[] = [
   },
   {
     "name": "Anthony Vaccaro",
-    "title": "Speaker & Panelist",
     "organization": "Northern Miner Group",
     "category": "mod",
+    "title": "Session Moderator",
     "days": [
       2,
       3
     ],
     "year": 2024
+  },
+  {
+    "name": "Michael F. White",
+    "organization": "IBK Capital Corp",
+    "category": "fin",
+    "title": "Speaker & Panelist",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2024
+  }
+
+];
+
+
+export const SPEAKERS_2023: RawSpeaker[] = [
+  {
+    "name": "Peter Marrone",
+    "title": "Corporate Director",
+    "organization": "Industry Expert",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Nathalie Camden",
+    "title": "Associate Deputy Minister of Mines",
+    "organization": "Ministry of Natural Resources & Forests",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Emmett Marsh",
+    "title": "Associate Deputy Minister of Mines",
+    "organization": "Ministry of Natural Resources & Forests",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Minister Maïté Blanchette Vézina",
+    "title": "Minister",
+    "organization": "Ministry of Natural Resources & Forests",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Tony Brisson, P.Geo",
+    "title": "President & CEO",
+    "organization": "SOQUEM Inc.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Elian Terner",
+    "title": "Managing Director & Head, Global Mining Investment Banking",
+    "organization": "National Bank Financial",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Rick Rule",
+    "title": "President & CEO",
+    "organization": "Rule Investment Media",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Frank E. Holmes",
+    "title": "CEO & CIO",
+    "organization": "U.S. Global Investors / HIVE Blockchain",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Egizio Bianchini",
+    "title": "Head of Metals & Mining Investment Banking",
+    "organization": "Stifel GMP",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Lisa Davis LL.B, ICD.D",
+    "title": "CEO",
+    "organization": "PearTree Securities",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Jeff Stibbard P.Eng.",
+    "title": "Founder & Chief Executive Officer",
+    "organization": "JDS Group of Companies",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Michael F. White",
+    "title": "President & CEO",
+    "organization": "IBK Capital Corp.",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Gordon J. Bogden, P.Eng, ICD.D",
+    "title": "Senior Advisor & Advisory Board Chair",
+    "organization": "Origin Merchant Partners",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Daniella Dimitrov",
+    "title": "Corporate Director",
+    "organization": "Mining Executive",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Gary Stanley",
+    "title": "Director, Office of Critical Minerals & Metals",
+    "organization": "U.S. Department of Commerce",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Robbie Diamond",
+    "title": "Founder, President & CEO",
+    "organization": "SAFE Critical Metals",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Glenn Nolan",
+    "title": "VP Indigenous Enterprises",
+    "organization": "Ring of Fire Metals",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Cindy Valence, MBA, PACI",
+    "title": "Executive Vice President & Chief Sustainability Officer",
+    "organization": "Industry Executive",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Michel Brutti",
+    "title": "President & Founder",
+    "organization": "Clear Skies Investment Management",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Hannah Ellix",
+    "title": "Associate Partner",
+    "organization": "McKinsey & Company, Mining & Metals",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Angelina Mehta",
+    "title": "GM JV-Aluminum",
+    "organization": "Rio Tinto",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Maria Smirnova, MBA, CFA",
+    "title": "Senior Portfolio Manager & CIO",
+    "organization": "Sprott Asset Management",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Nadine Miller",
+    "title": "Executive",
+    "organization": "JDS Operational Technologies",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Terence Ortslan",
+    "title": "Resource Policies & Strategies",
+    "organization": "TSO Research",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "John Passalacqua",
+    "title": "CEO & Director",
+    "organization": "First Phosphate Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Matt Gordon",
+    "title": "Investor",
+    "organization": "Crux Investor",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Kaeli Gattens",
+    "title": "Director of ESG",
+    "organization": "JDS Group of Companies",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Ed Ho, MSc. CFA",
+    "title": "Executive",
+    "organization": "Energy Transition",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Caroline Donally",
+    "title": "Managing Partner",
+    "organization": "Sprott Resource Streaming & Royalty",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Mark Selby",
+    "title": "Founder",
+    "organization": "Canada Nickel Company",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Anthony Vaccaro",
+    "title": "President",
+    "organization": "The Northern Miner Group",
+    "category": "mod",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Keith Spence",
+    "title": "CEO & Partner",
+    "organization": "Global Mining Capital",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Joe Mazumdar",
+    "title": "Editor/Publisher/Analyst",
+    "organization": "Exploration Insights",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Robert Wares",
+    "title": "CEO",
+    "organization": "Osisko Metals Incorporated",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Jean-François Béland",
+    "title": "Vice-President, Ressources Québec",
+    "organization": "Investissement Quebec",
+    "category": "fin",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Alexandra Woodyer Sherron",
+    "title": "CEO & President",
+    "organization": "Empress Royalty Corp.",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Patrick Beauchesne",
+    "title": "President & Chief Executive Officer",
+    "organization": "Société du Plan Nord",
+    "category": "gov",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
+  },
+  {
+    "name": "Seth Forman",
+    "title": "President",
+    "organization": "Socialsuite",
+    "category": "exec",
+    "days": [
+      2,
+      3
+    ],
+    "year": 2023
   }
 ];

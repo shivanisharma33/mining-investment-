@@ -9,6 +9,7 @@ const tiers: TierKey[] = ["PLATINUM", "GOLD", "SILVER", "COPPER", "MEDIA"];
 
 const partnerData: Record<TierKey, string[]> = {
   PLATINUM: [
+    "/sponsors/2026/mining_discovery.webp",
     "/sponsers/Platinum%20Partners/5.png",
     "/sponsers/Platinum%20Partners/7.png",
     "/sponsers/Platinum%20Partners/8.png",
@@ -117,13 +118,13 @@ export default function FeaturedPartners() {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
         <div className="text-center mb-10">
-          <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+          <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
             {t("partners-tag", "FEATURED")}
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#1a1f2c] tracking-tight mb-2">
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
             {t("partners-title", "Featured Partners")} <span className="capitalize">({activeTier.toLowerCase()})</span>
           </h2>
-          <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
+          <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-6" />
           <p className="text-neutral-600 text-xs sm:text-sm max-w-[540px] mx-auto leading-relaxed font-medium">
             {t("partners-sub", "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters.")}
           </p>
@@ -182,8 +183,8 @@ export default function FeaturedPartners() {
                     key={`${logoPath}-${idx}`}
                     className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl bg-white flex items-center justify-center p-4 transition-all duration-500 transform ${
                       isCenter
-                        ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-xl scale-105 z-20"
-                        : "h-26 sm:h-28 border border-neutral-200/90 shadow-2xs opacity-90 hover:opacity-100"
+                        ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-none scale-105 z-20"
+                        : "h-26 sm:h-28 border border-neutral-200/80 shadow-none opacity-90 hover:opacity-100"
                     }`}
                   >
                     <img

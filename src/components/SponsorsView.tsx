@@ -830,7 +830,226 @@ const SPONSORS_2024: SponsorItem[] = [
   },
 ];
 
-const SPONSORS_2023: SponsorItem[] = SPONSORS_2024;
+const SPONSORS_2023: SponsorItem[] = [
+  {
+    "name": "Government of Québec",
+    "website": "https://www.quebec.ca",
+    "tier": "government",
+    "image": "/sponsors/2026/qu_bec.png"
+  },
+  {
+    "name": "Laurentian Bank Securities",
+    "website": "https://www.lb-securities.ca",
+    "tier": "presenting"
+  },
+  {
+    "name": "National Bank Financial Markets",
+    "website": "https://nbfm.ca",
+    "tier": "platinum",
+    "image": "/sponsor image/logo-capitalmarkets.svg"
+  },
+  {
+    "name": "BMO",
+    "website": "https://www.bmo.com",
+    "tier": "gold"
+  },
+  {
+    "name": "IBK Capital Corp.",
+    "website": "https://www.ibkcapital.com",
+    "tier": "gold"
+  },
+  {
+    "name": "Maple Gold Mines",
+    "website": "https://maplegoldmines.com",
+    "tier": "gold"
+  },
+  {
+    "name": "O3 Mining",
+    "website": "https://o3mining.com",
+    "tier": "gold"
+  },
+  {
+    "name": "Troilus Gold",
+    "website": "https://www.troilusgold.com",
+    "tier": "gold"
+  },
+  {
+    "name": "JDS Group of Companies",
+    "website": "https://www.jdsmining.ca/",
+    "tier": "gold"
+  },
+  {
+    "name": "PearTree Financial",
+    "website": "https://www.peartreefinancial.com",
+    "tier": "silver",
+    "image": "/sponsors/2026/peartree_canada.png"
+  },
+  {
+    "name": "Stifel",
+    "website": "https://www.stifel.com",
+    "tier": "silver",
+    "image": "/stifel.svg"
+  },
+  {
+    "name": "GMP Securities",
+    "website": "https://www.gmpsecurities.com",
+    "tier": "silver"
+  },
+  {
+    "name": "TMX Group",
+    "website": "https://www.tmx.com",
+    "tier": "silver",
+    "image": "/sponsors/2026/tmx_group.png"
+  },
+  {
+    "name": "MI3 Financial Communications",
+    "website": "https://mi3financial.com",
+    "tier": "silver"
+  },
+  {
+    "name": "Invest Yukon",
+    "website": "https://investyukon.ca",
+    "tier": "silver",
+    "image": "/Invest_Yukon.png"
+  },
+  {
+    "name": "Socialsuite",
+    "website": "https://www.socialsuitehq.com",
+    "tier": "sustainable"
+  },
+  {
+    "name": "CDPQ",
+    "website": "https://www.cdpq.com",
+    "tier": "copper",
+    "image": "/sponsors/2026/la_caisse_cdpq.svg"
+  },
+  {
+    "name": "Cassels",
+    "website": "https://cassels.com",
+    "tier": "copper",
+    "image": "/sponsors/2026/cassels.ico"
+  },
+  {
+    "name": "Infor Financial",
+    "website": "https://inforfinancial.com",
+    "tier": "copper"
+  },
+  {
+    "name": "Crux Investor",
+    "website": "https://cruxinvestor.com",
+    "tier": "copper",
+    "image": "/sponsors/2026/crux_investor.svg"
+  },
+  {
+    "name": "AMEX Exploration",
+    "website": "https://amexexploration.com",
+    "tier": "copper"
+  },
+  {
+    "name": "Generation IACP",
+    "website": "https://generationiacp.com",
+    "tier": "copper"
+  },
+  {
+    "name": "Alliance Advisors",
+    "website": "https://allianceadvisors.com",
+    "tier": "copper"
+  },
+  {
+    "name": "Brooks & Nelson",
+    "website": "https://brooksandnelson.com",
+    "tier": "copper",
+    "image": "/sponsors/2026/brooks_nelson.png"
+  },
+  {
+    "name": "Amvest Capital",
+    "website": "https://amvestcapital.com",
+    "tier": "copper"
+  },
+  {
+    "name": "Outside the Box Capital",
+    "website": "https://outsidethebox.capital",
+    "tier": "copper",
+    "image": "/sponsors/2026/outside_the_box_capital.png"
+  },
+  {
+    "name": "VRIFY",
+    "website": "https://vrify.com",
+    "tier": "copper",
+    "image": "/sponsors/2026/vrify.png"
+  },
+  {
+    "name": "GBR (Global Business Reports)",
+    "website": "https://www.gbreports.com",
+    "tier": "copper",
+    "image": "/sponsors/2026/gbr_global_business_reports.ico"
+  },
+  {
+    "name": "BTV – Business Television",
+    "website": "https://www.b-tv.com",
+    "tier": "media"
+  },
+  {
+    "name": "Kitco News",
+    "website": "https://www.kitco.com",
+    "tier": "media"
+  },
+  {
+    "name": "The Northern Miner",
+    "website": "https://www.northernminer.com",
+    "tier": "media",
+    "image": "/sponsors/2026/the_northern_miner.png"
+  },
+  {
+    "name": "Newsfile",
+    "website": "https://www.newsfilecorp.com",
+    "tier": "media",
+    "image": "/sponsors/2026/newsfile.png"
+  },
+  {
+    "name": "XPAV Expert'Ease",
+    "website": "https://xpav.ca",
+    "tier": "media",
+    "image": "/sponsors/2026/xpav_expert_ease.png"
+  },
+  {
+    "name": "Québec City Business Destination",
+    "website": "https://www.quebeccite.com",
+    "tier": "media"
+  },
+  {
+    "name": "The Prospector News",
+    "website": "https://theprospectornews.com",
+    "tier": "media",
+    "image": "/sponsors/2026/the_prospector_news.png"
+  },
+  {
+    "name": "LFG Equities",
+    "website": "https://lfgequities.com/",
+    "tier": "media"
+  },
+  {
+    "name": "Mining Network",
+    "website": "https://miningnetwork.co.uk/",
+    "tier": "media"
+  },
+  {
+    "name": "Resource World Magazine",
+    "website": "https://resourceworld.com",
+    "tier": "media",
+    "image": "/sponsors/2026/resource_world_magazine.ico"
+  },
+  {
+    "name": "Simply Better Marketing",
+    "website": "https://simplybettermarketing.com",
+    "tier": "media"
+  },
+  {
+    "name": "Women in Mining Canada",
+    "website": "https://womeninmining.ca",
+    "tier": "media"
+  }
+];
 
 function SponsorLogo({ sponsor }: { sponsor: SponsorItem }) {
   const [hasError, setHasError] = useState(false);
@@ -999,6 +1218,24 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
                 }`}
             >
               2025 Sponsors
+            </button>
+            <button
+              onClick={() => handleYearChange(2024)}
+              className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === 2024
+                  ? "bg-[#C6112F] text-white shadow-md"
+                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                }`}
+            >
+              2024 Sponsors
+            </button>
+            <button
+              onClick={() => handleYearChange(2023)}
+              className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === 2023
+                  ? "bg-[#C6112F] text-white shadow-md"
+                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                }`}
+            >
+              2023 Sponsors
             </button>
           </div>
         </div>

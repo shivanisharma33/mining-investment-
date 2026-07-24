@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 function AnimatedNumber({ target, suffix }: { target: string; suffix: string }) {
@@ -136,22 +137,35 @@ export default function StatsAndGlimpse() {
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
 
       {/* Stats Bar */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        <div className="border border-neutral-200/90 hover:border-[#C6112F]/40 transition-all duration-300 rounded-2xl bg-white p-5 sm:p-7 md:p-8 shadow-xs">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 lg:gap-0">
+      <div className="relative z-10 max-w-[1280px] w-full mx-auto px-4 sm:px-6 md:px-8">
+        <div className="relative overflow-hidden rounded-3xl bg-white border border-neutral-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(198,17,47,0.08)] transition-all duration-500 p-6 sm:p-8 md:p-9">
+          {/* Subtle background red glow */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(198,17,47,0.05)_0%,transparent_70%)] pointer-events-none rounded-full" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-[radial-gradient(circle,rgba(198,17,47,0.05)_0%,transparent_70%)] pointer-events-none rounded-full" />
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 sm:gap-8 lg:gap-0 relative z-10">
             {stats.map((stat, i) => (
               <div
                 key={i}
-                className={`group flex flex-col items-center text-center gap-1.5 cursor-default transition-all duration-300 ${
-                  i < stats.length - 1 ? "lg:border-r lg:border-neutral-200 lg:px-1" : "lg:px-1"
+                className={`group flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl hover:bg-neutral-50/90 transition-all duration-300 cursor-default ${
+                  i < stats.length - 1 ? "lg:border-r lg:border-neutral-200/70" : ""
                 }`}
               >
-                <div className="mb-0.5 group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
+                {/* Icon Box */}
+                <div className="w-12 h-12 rounded-2xl bg-neutral-100/90 group-hover:bg-[#C6112F]/10 text-neutral-800 group-hover:text-[#C6112F] flex items-center justify-center transition-all duration-300 shadow-2xs mb-3 group-hover:scale-110">
+                  {stat.icon}
+                </div>
+
+                {/* Animated Number */}
                 <AnimatedNumber target={stat.number} suffix={stat.suffix} />
-                <div className="text-[#C6112F] font-extrabold text-[11px] sm:text-xs tracking-wider uppercase leading-snug">
+
+                {/* Main Label */}
+                <div className="mt-2 text-neutral-900 font-extrabold text-[11px] sm:text-xs tracking-wider uppercase leading-snug">
                   {stat.label}
                 </div>
-                <div className="text-[#C6112F] font-bold text-[11px] sm:text-xs leading-none">
+
+                {/* Sublabel Tag Pill */}
+                <div className="inline-block mt-1.5 px-2.5 py-0.5 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-extrabold text-[10px] uppercase tracking-wider">
                   {stat.sublabel}
                 </div>
               </div>
@@ -165,13 +179,13 @@ export default function StatsAndGlimpse() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
           {/* Left Column: Text & Connected Action Buttons */}
           <div className="flex-1 flex flex-col items-start text-left max-w-[560px] lg:max-w-[520px]">
-            <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("welcome-tag", "WELCOME")}
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-[38px] font-black text-neutral-900 leading-[1.2] mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
               {t("glimpse-title", "A Glimpse Inside THE Event")}
             </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-5" />
+            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
             <p className="text-neutral-700 text-xs sm:text-sm leading-relaxed mb-8 font-medium">
               {t("glimpse-desc", "Step inside Canada's only Tier 1 global mining investment conference — where senior producers, emerging developers, institutional capital and the next generation of industry leaders converge under one roof.")}
@@ -179,14 +193,14 @@ export default function StatsAndGlimpse() {
 
             {/* Connected Dual Pill Button Bar */}
             <div className="inline-flex items-center border border-neutral-300 rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
-              <a
-                href="#"
+              <Link
+                href="/about"
                 className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase transition-colors"
               >
                 {t("discover-event", "DISCOVER THE EVENT")}
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/register"
                 className="bg-[#dedede] hover:bg-[#d4d4d4] text-neutral-900 text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase flex items-center gap-2 border-l border-neutral-300 transition-colors"
               >
                 <span>{t("nav-register", "REGISTER NOW")}</span>
@@ -204,7 +218,7 @@ export default function StatsAndGlimpse() {
                     d="M10.5 8.5L14 12L10.5 15.5M14 12H8.5"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -229,27 +243,7 @@ export default function StatsAndGlimpse() {
                 />
               </video>
 
-              {/* Dark overlay tint for typography legibility */}
-              <div className="absolute inset-0 bg-black/35 pointer-events-none group-hover:bg-black/25 transition-colors duration-500" />
-
-              {/* Overlay Text inside Video */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-4 sm:p-6 text-center pointer-events-none z-10 select-none">
-                <span
-                  className="text-lg sm:text-2xl md:text-3xl font-extrabold uppercase tracking-widest text-transparent"
-                  style={{
-                    WebkitTextStroke: "1.5px #ffffff",
-                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.8))",
-                  }}
-                >
-                  CANADA&apos;S ONLY
-                </span>
-                <h3 className="text-2xl sm:text-4xl md:text-5xl font-black italic text-white tracking-wide my-1 drop-shadow-[0_4px_8px_rgba(0,0,0,0.9)]">
-                  TIER 1 GLOBAL
-                </h3>
-                <span className="text-xs sm:text-base md:text-xl font-extrabold uppercase tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-                  MINING INVESTMENT CONFERENCE
-                </span>
-              </div>
+              
             </div>
           </div>
         </div>

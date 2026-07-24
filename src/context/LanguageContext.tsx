@@ -97,7 +97,7 @@ const translations: Record<Language, Record<string, string>> = {
     "prog-inst-desc": "Tailored opportunities designed to maximize visibility and engagement with the world's most influential mining companies and investors.",
     "prog-inst-cta": "PARTNERSHIP INFO",
     "prog-dial-cat": "DIALOGUE",
-    "prog-dial-title": "THE Salon Explore Co Lounge",
+    "prog-dial-title": "Core Shack",
     "prog-dial-desc": "An intimate networking experience designed to connect Canada's exploration community with elite international investors.",
     "prog-dial-cta": "MEET SPEAKERS",
 
@@ -457,7 +457,7 @@ const translations: Record<Language, Record<string, string>> = {
     "prog-inst-desc": "Opportunités sur mesure conçues pour maximiser la visibilité auprès des sociétés minières et investisseurs influents.",
     "prog-inst-cta": "INFO PARTENARIAT",
     "prog-dial-cat": "DIALOGUE",
-    "prog-dial-title": "Le Salon ExplorCo Lounge",
+    "prog-dial-title": "Core Shack",
     "prog-dial-desc": "Une expérience de réseautage intime pour connecter la communauté d'exploration du Canada aux investisseurs mondiaux.",
     "prog-dial-cta": "RENCONTRER LES CONFÉRENCIERS",
 

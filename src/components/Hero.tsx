@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
@@ -30,22 +31,22 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-20 max-w-[1100px] w-full text-center flex flex-col items-center px-4 sm:px-6 md:px-12 pt-8 pb-8">
         {/* Top Subtitle */}
-        <p className="text-primary text-[10px] sm:text-xs md:text-sm font-extrabold tracking-[0.25em] uppercase mb-4 sm:mb-6 md:mb-8 leading-relaxed max-w-xs sm:max-w-none mx-auto animate-fade-in-up delay-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+        <p className="text-white text-[11px] sm:text-xs md:text-sm font-extrabold tracking-[0.25em] uppercase mb-2 sm:mb-3 md:mb-4 leading-relaxed max-w-xs sm:max-w-none mx-auto text-center animate-fade-in-up delay-0">
           {t("hero-eyebrow", "Canada's Only Tier I Global Mining Investment Conference")}
         </p>
 
         {/* Main Title - 2 Lines in French */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.18] mb-6 md:mb-8 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] text-center">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.18] mb-3 md:mb-4 text-center">
           {lang === "FR" ? (
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center text-center">
               <span className="block animate-text-reveal delay-1">L&apos;Événement</span>
-              <span className="block mt-1 sm:mt-2 text-primary drop-shadow-md">
+              <span className="block mt-1 sm:mt-2 text-primary">
                 <span className="animate-text-reveal delay-2">d&apos;Investissement</span>{" "}
                 <span className="animate-text-reveal delay-3">Minier</span>
               </span>
             </div>
           ) : (
-            <div className="flex flex-row justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full whitespace-nowrap">
+            <div className="flex flex-row justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full whitespace-nowrap text-center">
               <span className="animate-text-reveal delay-1">The</span>{" "}
               <span className="animate-text-reveal delay-2">Mining</span>{" "}
               <span className="animate-text-reveal delay-3">Investment</span>{" "}
@@ -55,15 +56,22 @@ export default function Hero() {
         </h1>
 
         {/* Subheading / Description */}
-        <p className="text-white/95 text-xs sm:text-sm md:text-base lg:text-lg max-w-[720px] mx-auto font-normal leading-relaxed mb-10 md:mb-12 animate-fade-in-up delay-5 drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">
-          {t("hero-subtitle", "Meet investors, discover projects, secure partnerships and shape the future of mining.")}
+        <p className="text-white/95 text-xs sm:text-sm md:text-base lg:text-lg max-w-[740px] mx-auto text-center font-normal leading-relaxed mb-6 md:mb-8 animate-fade-in-up delay-5">
+          {lang === "FR" ? (
+            t("hero-subtitle", "Rencontrer des investisseurs, découvrir des projets, sécuriser des partenariats et façonner l'avenir minier.")
+          ) : (
+            <>
+              Meet investors, discover projects, secure partnerships
+              <br className="hidden sm:inline" /> and shape the future of mining.
+            </>
+          )}
         </p>
 
         {/* Double-Button Group */}
         <div className="inline-flex flex-col sm:flex-row rounded-lg border border-white/20 overflow-hidden shadow-lg max-w-full animate-fade-in-up delay-7">
           {/* Left Button - Register Now */}
-          <a
-            href="#"
+          <Link
+            href="/register"
             className="bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 transition-all duration-300 border-b sm:border-b-0 sm:border-r border-white/20 shrink-0"
           >
             <span>{t("hero-register", "REGISTER NOW")}</span>
@@ -81,11 +89,11 @@ export default function Hero() {
                 d="M14 12H8m6 0l-3-3m3 3l-3 3"
               />
             </svg>
-          </a>
+          </Link>
 
           {/* Right Button - View Program */}
-          <a
-            href="#"
+          <Link
+            href="/agenda"
             className="bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 transition-all duration-300 shrink-0 backdrop-blur-sm"
           >
             <span>{t("hero-program", "VIEW PROGRAM")}</span>
@@ -103,7 +111,7 @@ export default function Hero() {
                 d="M14 12H8m6 0l-3-3m3 3l-3 3"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

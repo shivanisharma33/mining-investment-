@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function CanadaPremierForum() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   const bullets = [
     t("forum-bullet-1", "Privately arranged 1-on-1 meetings between mining companies and international investors"),
@@ -26,13 +27,23 @@ export default function CanadaPremierForum() {
             <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("forum-tag", "THE CONFERENCE")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-extrabold text-[#1a1f2c] leading-[1.2] mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
               {t("forum-title", "Canada's Premier Mining Forum")}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
             <p className="text-neutral-700 text-xs sm:text-sm leading-relaxed mb-6 max-w-[500px] font-medium">
-              {t("forum-desc", "THE Mining Investment Event is an invitation-only gathering that brings together the world's most influential mining companies, investors, institutions and government authorities in the historic setting of Québec City.")}
+              {lang === "fr" ? (
+                t(
+                  "forum-desc",
+                  "THE Mining Investment Event est un rassemblement sur invitation uniquement qui réunit les sociétés minières, les investisseurs, les institutions et les autorités gouvernementales les plus influents au monde dans le cadre historique de la ville de Québec."
+                )
+              ) : (
+                <>
+                  THE Mining Investment Event is an invitation-only gathering that brings together the world's most influential mining companies, investors, institutions and government authorities{" "}
+                   in the historic setting of<br className="hidden sm:inline" /> Québec City.
+                </>
+              )}
             </p>
 
             {/* Pink Tint Highlight Callout Box */}
@@ -53,23 +64,20 @@ export default function CanadaPremierForum() {
                     <span className="text-[#C6112F] text-[9px] mt-1 shrink-0">◆</span>
                     <span>{bullet}</span>
                   </div>
-                  {idx === 1 && (
-                    <span className="w-2 h-2 rounded-full bg-[#C6112F] shrink-0 ml-2" />
-                  )}
                 </div>
               ))}
             </div>
 
-            {/* Connected Dual Pill Action Buttons */}
-            <div className="inline-flex items-center border border-neutral-400 rounded-lg overflow-hidden shadow-sm">
-              <a
-                href="#"
+            {/* Dual Connected Pill Action Buttons */}
+            <div className="inline-flex items-center border border-neutral-300 rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
+              <Link
+                href="/about"
                 className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3 sm:py-3.5 uppercase transition-colors"
               >
                 {t("forum-about-btn", "ABOUT THE EVENT")}
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                href="/register"
                 className="bg-[#dedede] hover:bg-[#d0d0d0] text-neutral-900 text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3 sm:py-3.5 uppercase flex items-center gap-2 border-l border-neutral-400 transition-colors"
               >
                 <span>{t("nav-register", "REGISTER NOW")}</span>
@@ -87,30 +95,46 @@ export default function CanadaPremierForum() {
                     d="M10.5 8.5L14 12L10.5 15.5M14 12H8.5"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
 
-          {/* Right Column: Stacked Images with Red Perimeter Borders */}
-          <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-end pl-4 sm:pl-8 py-6">
-            {/* Red Accent Frame Box Behind Bottom Left */}
-            <div className="absolute left-0 sm:left-2 bottom-0 w-36 sm:w-44 h-36 sm:h-44 border-[2px] border-[#C6112F] rounded-2xl z-0 pointer-events-none" />
+          {/* Right Column: Adorable Multi-Layered Image Composition */}
+          <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-end py-6 pr-2 sm:pr-6">
+            {/* Top-Right Floating Glassmorphism Badge */}
+            <div className="absolute -top-3 right-2 sm:top-0 sm:right-6 z-30 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-neutral-200 shadow-md flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse" />
+              <span className="text-[11px] sm:text-xs font-black text-[#1a1f2c] tracking-wider uppercase">
+                QUÉBEC CITY • CANADA
+              </span>
+            </div>
 
-            {/* Main Reception Attendees Image Card */}
-            <div className="relative z-10 rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_35px_rgba(0,0,0,0.15)] w-full max-w-[500px] aspect-[4/3] bg-neutral-900">
+            {/* Background Soft Red Glow Ambient Circle */}
+            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none z-0" />
+
+            {/* Primary Hero Image Card */}
+            <div className="relative z-10 rounded-3xl overflow-hidden border border-neutral-200/90 shadow-[0_20px_45px_rgba(0,0,0,0.08)] w-full max-w-[460px] aspect-[4/3] bg-neutral-900 group">
               <img
                 src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80"
                 alt="Conference delegates networking"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+              
+              {/* Bottom Image Tag */}
+              <div className="absolute bottom-4 left-4 z-20 text-white">
+                <span className="text-[10px] font-black tracking-[0.2em] uppercase bg-[#C6112F] px-3 py-1 rounded-full">
+                  TIER 1 GLOBAL FORUM
+                </span>
+              </div>
             </div>
 
-            {/* Overlapping Small Student Delegates Image Card */}
-            <div className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-[44%] sm:w-[48%] rounded-xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_30px_rgba(0,0,0,0.25)] aspect-[4/3] bg-white">
+            {/* Overlapping Accent Card with Clean White Frame */}
+            <div className="absolute -bottom-4 left-0 sm:-bottom-6 sm:-left-2 z-20 w-[46%] sm:w-[48%] rounded-2xl overflow-hidden border-4 border-white shadow-[0_15px_35px_rgba(0,0,0,0.14)] aspect-[4/3] bg-white group/small hover:scale-105 transition-transform duration-300 cursor-pointer">
               <img
                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"
                 alt="Student delegates group"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover/small:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
