@@ -513,6 +513,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/nichole.jpg",
     "year": 2025
   },
   {
@@ -524,6 +525,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/neil.jpg",
     "year": 2025
   },
   {
@@ -535,6 +537,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/philips.jpg",
     "year": 2025
   },
   {
@@ -546,6 +549,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/rob.jpg",
     "year": 2025
   },
   {
@@ -557,6 +561,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/Daniella-Dimitrov.jpg",
     "year": 2025
   },
   {
@@ -568,6 +573,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/liisa.jpg",
     "year": 2025
   },
   {
@@ -579,6 +585,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/david.jpg",
     "year": 2025
   },
   {
@@ -590,6 +597,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+        "image": "/fwdboardmemberphotos/matt.jpg",
     "year": 2025
   },
   {
@@ -601,6 +609,8 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    
+    "image": "/fwdboardmemberphotos/micheal.jpg",
     "year": 2025
   },
   {
@@ -612,6 +622,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+     "image": "/fwdboardmemberphotos/peter.jpg",
     "year": 2025
   },
   {
@@ -623,6 +634,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/ed.jpg",
     "year": 2025
   },
   {
@@ -634,6 +646,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+      "image": "/fwdboardmemberphotos/armand.jpg",
     "year": 2025
   },
   {
@@ -645,6 +658,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/angella.jpg",
     "year": 2025
   },
   {
@@ -656,6 +670,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/david2.jpg",
     "year": 2025
   },
   {
@@ -667,6 +682,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/sean.jpg",
     "year": 2025
   },
   {
@@ -678,6 +694,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/alexis.jpg",
     "year": 2025
   },
   {
@@ -689,6 +706,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/elian.jpg",
     "year": 2025
   },
   {
@@ -700,6 +718,8 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    
+    "image": "/fwdboardmemberphotos/keith.jpg",
     "year": 2025
   },
   {
@@ -722,6 +742,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/anthony.jpg",
     "year": 2025
   },
   {
@@ -733,6 +754,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+        "image": "/fwdboardmemberphotos/maria.jpg",
     "year": 2025
   },
   {
@@ -744,6 +766,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/gary.jpg",
     "year": 2025
   },
   {
@@ -755,6 +778,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/heather.jpg",
     "year": 2025
   },
   {
@@ -766,6 +790,8 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    
+    "image": "/fwdboardmemberphotos/micheal2.jpg",
     "year": 2025
   },
   {
@@ -777,6 +803,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/rob.jpg",
     "year": 2025
   },
   {
@@ -788,6 +815,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/alexandra.jpg",
     "year": 2025
   },
   {
@@ -799,6 +827,7 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
+    "image": "/fwdboardmemberphotos/matt.jpg",
     "year": 2025
   }
 ];
@@ -836,7 +865,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/maria.jpg"
   },
   {
     "name": "Nadine Miller",
@@ -858,7 +888,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/ed.jpg"
   },
   {
     "name": "Daniella Dimitrov",
@@ -869,7 +900,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/Daniella-Dimitrov.jpg"
   },
   {
     "name": "Elian Terner",
@@ -880,7 +912,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/elian.jpg"
   },
   {
     "name": "Gary Stanley",
@@ -891,7 +924,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/gary.jpg"
   },
   {
     "name": "Robert Wares",
@@ -913,7 +947,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/philips.jpg"
   },
   {
     "name": "Alexandra Woodyer Sherron",
@@ -924,7 +959,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/alexandra.jpg"
   },
   {
     "name": "Rob Curtis",
@@ -935,7 +971,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/rob.jpg"
   },
   {
     "name": "David Rhodes",
@@ -946,7 +983,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/david2.jpg"
   },
   {
     "name": "Michael Gentile",
@@ -957,7 +995,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/micheal.jpg"
   },
   {
     "name": "Tamara Brown",
@@ -979,7 +1018,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/peter.jpg"
   },
   {
     "name": "Nichole Adshead-Bell",
@@ -990,7 +1030,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/nichole.jpg"
   },
   {
     "name": "David Garofalo",
@@ -1001,7 +1042,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/david.jpg"
   },
   {
     "name": "Sean Roosen",
@@ -1012,7 +1054,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/sean.jpg"
   },
   {
     "name": "Mathieu Savard",
@@ -1034,7 +1077,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/liisa.jpg"
   },
   {
     "name": "Matthew Zolnowski",
@@ -1045,7 +1089,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/matt.jpg"
   },
   {
     "name": "Jamie Strauss",
@@ -1056,7 +1101,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/jamie.jpg"
   },
   {
     "name": "John Passalacqua",
@@ -1078,7 +1124,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/neil.jpg"
   },
   {
     "name": "Heather Taylor",
@@ -1089,7 +1136,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/heather.jpg"
   },
   {
     "name": "Jose Vizquerra",
@@ -1122,7 +1170,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/armand.jpg"
   },
   {
     "name": "Iggy Tan",
@@ -1144,7 +1193,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/rob.jpg"
   },
   {
     "name": "Peter Grandich",
@@ -1155,7 +1205,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/peter.jpg"
   },
   {
     "name": "Alexis Segal",
@@ -1166,7 +1217,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/alexis.jpg"
   },
   {
     "name": "Sylvain Lèpine",
@@ -1243,7 +1295,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/matt.jpg"
   },
   {
     "name": "Angelina Mehta",
@@ -1254,7 +1307,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/angella.jpg"
   },
   {
     "name": "Geneviève Morinville",
@@ -1276,7 +1330,8 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/anthony.jpg"
   },
   {
     "name": "Michael F. White",
@@ -1287,9 +1342,9 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024
+    "year": 2024,
+    "image": "/fwdboardmemberphotos/micheal2.jpg"
   }
-
 ];
 
 

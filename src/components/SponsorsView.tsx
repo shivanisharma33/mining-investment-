@@ -365,7 +365,7 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "National Bank Financial Markets",
     website: "https://nbfm.ca",
     tier: "platinum",
-    image: "/sponsors/2026/national_bank_financial_markets.png",
+    image: "/sponsor image/logo-capitalmarkets.svg",
   },
   // Gold Sponsors
   {
@@ -384,12 +384,14 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "IBK Capital Corp.",
     website: "https://www.ibkcapital.com",
     tier: "gold",
+    image: "https://www.google.com/s2/favicons?domain=ibkcapital.com&sz=128",
   },
   // Green Sponsor
   {
     name: "Kinterra Capital",
     website: "https://kinterracapital.com",
     tier: "green",
+    image: "https://www.google.com/s2/favicons?domain=kinterracapital.com&sz=128",
   },
   // Sustainable Sponsor
   {
@@ -415,11 +417,13 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "IR.INC Capital Market Advisory",
     website: "https://ir.inc",
     tier: "silver",
+    image: "https://www.google.com/s2/favicons?domain=ir.inc&sz=128",
   },
   {
     name: "MI3 Financial Communications",
     website: "https://mi3financial.com",
     tier: "silver",
+    image: "https://www.google.com/s2/favicons?domain=mi3financial.com&sz=128",
   },
   {
     name: "PearTree Financial",
@@ -480,11 +484,13 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "Digbee",
     website: "https://digbee.com",
     tier: "copper",
+    image: "https://www.google.com/s2/favicons?domain=digbee.com&sz=128",
   },
   {
     name: "Infor Financial",
     website: "https://inforfinancial.com",
     tier: "copper",
+    image: "https://www.google.com/s2/favicons?domain=inforfinancial.com&sz=128",
   },
   {
     name: "Outside the Box Capital",
@@ -497,11 +503,13 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "BTV – Business Television",
     website: "https://www.b-tv.com",
     tier: "media",
+    image: "https://www.google.com/s2/favicons?domain=b-tv.com&sz=128",
   },
   {
     name: "Canadian Mining Magazine",
     website: "https://canadianminingmagazine.com",
     tier: "media",
+    image: "https://www.google.com/s2/favicons?domain=canadianminingmagazine.com&sz=128",
   },
   {
     name: "CEO.CA",
@@ -513,16 +521,19 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "Kitco News",
     website: "https://www.kitco.com",
     tier: "media",
+    image: "https://www.google.com/s2/favicons?domain=kitco.com&sz=128",
   },
   {
     name: "Market One Media",
     website: "https://www.marketonemedia.com",
     tier: "media",
+    image: "https://www.google.com/s2/favicons?domain=marketonemedia.com&sz=128",
   },
   {
     name: "Junior Mining Hub",
     website: "https://juniormininghub.com",
     tier: "media",
+    image: "https://www.google.com/s2/favicons?domain=juniormininghub.com&sz=128",
   },
   {
     name: "Mining Discovery",
@@ -532,8 +543,9 @@ const SPONSORS_2025: SponsorItem[] = [
   },
   {
     name: "Mining Network",
-    website: "https://miningnetwork.com",
+    website: "https://miningnetwork.co.uk",
     tier: "media",
+    image: "https://www.google.com/s2/favicons?domain=miningnetwork.co.uk&sz=128",
   },
   {
     name: "Mining IR",
@@ -569,6 +581,7 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "Invercio",
     website: "https://invercio.com",
     tier: "media",
+    image: "https://www.google.com/s2/favicons?domain=invercio.com&sz=128",
   },
 ];
 
@@ -591,7 +604,7 @@ const SPONSORS_2024: SponsorItem[] = [
     name: "National Bank Financial Markets",
     website: "https://nbfm.ca",
     tier: "platinum",
-    image: "/sponsors/2026/national_bank_financial_markets.png",
+    image: "/sponsor image/logo-capitalmarkets.svg",
   },
   // Gold Sponsors
   {
