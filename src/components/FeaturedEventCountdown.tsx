@@ -52,13 +52,13 @@ export default function FeaturedEventCountdown() {
   ];
 
   return (
-    <section className="relative w-full bg-[#f8fafc] py-16 sm:py-20 md:py-24 overflow-hidden border-y border-neutral-200/80">
-      {/* Background Giant Watermark Text: COMING SOON */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden opacity-[0.06] z-0">
-        <span className="text-[90px] sm:text-[140px] md:text-[180px] lg:text-[210px] font-black tracking-[0.2em] leading-none text-neutral-900 uppercase">
+    <section className="relative w-full bg-white py-16 sm:py-20 md:py-24 overflow-hidden border-y border-neutral-200/80">
+      {/* Background Watermark Text: COMING SOON (Stacked behind countdown) */}
+      <div className="absolute top-28 sm:top-32 left-0 right-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden opacity-[0.06] z-0">
+        <span className="text-[100px] sm:text-[160px] md:text-[210px] lg:text-[250px] font-black tracking-[0.18em] leading-[0.8] text-neutral-900 uppercase">
           COMING
         </span>
-        <span className="text-[90px] sm:text-[140px] md:text-[180px] lg:text-[210px] font-black tracking-[0.2em] leading-none text-neutral-900 uppercase -mt-4 sm:-mt-8">
+        <span className="text-[100px] sm:text-[160px] md:text-[210px] lg:text-[250px] font-black tracking-[0.18em] leading-[0.8] text-neutral-900 uppercase">
           SOON
         </span>
       </div>
@@ -71,7 +71,7 @@ export default function FeaturedEventCountdown() {
         <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1a1f2c] tracking-tight uppercase mb-3">
           {t("feat-event-title", "THE MINING INVESTMENT EVENT 2027")}
         </h2>
-        <div className="w-16 h-[3px] bg-[#C6112F] mx-auto rounded-full mb-10" />
+        <div className="w-16 h-[2.5px] bg-[#C6112F] mx-auto rounded-full mb-10" />
 
         {/* Live Digital Countdown Timer Row */}
         <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 mb-10">
@@ -79,7 +79,7 @@ export default function FeaturedEventCountdown() {
             <React.Fragment key={i}>
               <div className="flex flex-col items-center">
                 {/* Small Top Label */}
-                <span className="text-[9px] sm:text-xs font-black tracking-[0.2em] text-neutral-800 uppercase mb-2">
+                <span className="text-[9px] sm:text-xs font-black tracking-[0.2em] text-neutral-900 uppercase mb-2">
                   {unit.label}
                 </span>
 
@@ -138,12 +138,12 @@ export default function FeaturedEventCountdown() {
           </p>
         </div>
 
-        {/* 6 Action Buttons Grid (2 Rows of 3 Buttons) */}
+        {/* 6 Action Buttons Grid (2 Rows of 3 Buttons - Exact Mockup Alignment) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto">
           {/* Row 1 */}
           <Link
             href="/agenda"
-            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300/80 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
           >
             <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -162,7 +162,7 @@ export default function FeaturedEventCountdown() {
 
           <Link
             href="/brochure"
-            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300/80 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
           >
             <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
@@ -173,7 +173,7 @@ export default function FeaturedEventCountdown() {
           {/* Row 2 */}
           <Link
             href="/issuers"
-            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300/80 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
           >
             <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21" />
@@ -183,7 +183,7 @@ export default function FeaturedEventCountdown() {
 
           <Link
             href="/speakers"
-            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300/80 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
           >
             <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
@@ -193,7 +193,7 @@ export default function FeaturedEventCountdown() {
 
           <Link
             href="/sponsors"
-            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300/80 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
           >
             <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21" />

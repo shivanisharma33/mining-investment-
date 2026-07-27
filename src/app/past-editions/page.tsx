@@ -15,7 +15,7 @@ const editionCards = [
     titleFr: "La plus grande édition à ce jour",
     desc: "Uniting global leaders for impactful conversations and investments.",
     descFr: "Rassembler les dirigeants mondiaux pour des conversations et des investissements impactants.",
-    image: "/Mining Investment Post 2.avif",
+    image: "/news/edition_2026.png",
     isGrayscale: false,
   },
   {
@@ -24,8 +24,8 @@ const editionCards = [
     titleFr: "Propulser l'investissement mondial",
     desc: "Connecting capital with opportunity across the mining value chain.",
     descFr: "Connecter le capital aux opportunités dans toute la chaîne de valeur minière.",
-    image: "/image%2015%20(2).avif",
-    isGrayscale: true,
+    image: "/news/edition_2025.png",
+    isGrayscale: false,
   },
   {
     year: 2024,
@@ -33,8 +33,8 @@ const editionCards = [
     titleFr: "Focus sur les minéraux critiques",
     desc: "Exploring the future of critical minerals and sustainable growth.",
     descFr: "Explorer l'avenir des minéraux critiques et de la croissance durable.",
-    image: "/Mining Investment Post 3.avif",
-    isGrayscale: true,
+    image: "/news/critical_minerals.png",
+    isGrayscale: false,
   },
   {
     year: 2023,
@@ -42,8 +42,8 @@ const editionCards = [
     titleFr: "Bâtir de nouveaux partenariats",
     desc: "Strengthening relationships that drive the mining industry forward.",
     descFr: "Renforcer les relations qui font progresser l'industrie minière.",
-    image: "/Mining Investment Post (1) 2.avif",
-    isGrayscale: true,
+    image: "/news/banner_1.png",
+    isGrayscale: false,
   },
 ];
 

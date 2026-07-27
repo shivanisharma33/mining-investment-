@@ -50,7 +50,7 @@ export default function ProgramsGrid() {
         "Tailored opportunities designed to maximize visibility and engagement with the world's most influential mining companies and investors."
       ),
       cta: t("prog-inst-cta", "PARTNERSHIP INFO"),
-      link: "/sponsors",
+      link: "/partnership",
       image:
         "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
       imageAlt: "Team presentation meeting in loft office",
