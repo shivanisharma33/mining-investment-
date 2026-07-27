@@ -80,9 +80,9 @@ const SPONSORS_2026: SponsorItem[] = [
   },
   {
     name: "Caur Technologies",
-    website: "https://caur.ca",
+    website: "https://caurtech.com",
     tier: "silver",
-    image: "/sponsor image/cour.jpg",
+    image: "bg_banner.jpg"
   },
   {
     name: "Crux Investor",
@@ -1078,6 +1078,7 @@ function SponsorLogo({ sponsor }: { sponsor: SponsorItem }) {
     <img
       src={sponsor.image}
       alt={sponsor.name}
+      referrerPolicy="no-referrer"
       className="max-h-full max-w-full object-contain filter group-hover:brightness-105 transition-all"
       onError={() => setHasError(true)}
     />

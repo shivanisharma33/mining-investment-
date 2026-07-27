@@ -159,7 +159,7 @@ export default function CompaniesView({
                   <td className="py-3.5 px-3 sm:px-6 align-middle">
                     <div className="flex items-center gap-2.5 sm:gap-3.5">
                       <div className="shrink-0 transform group-hover:scale-105 transition-transform duration-200">
-                        <CompanyLogoImage name={company.name} email={company.email} />
+                        <CompanyLogoImage name={company.name} email={company.email} logo={company.logo} />
                       </div>
                       <span className="text-neutral-900 font-extrabold text-xs sm:text-sm leading-snug group-hover:text-[#C6112F] transition-colors break-words">
                         {company.name}

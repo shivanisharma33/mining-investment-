@@ -8,6 +8,7 @@ export interface CompanyItem {
   email?: string;
   website?: string;
   year?: number;
+  logo?: string;
 }
 
 export const PARTICIPATING_COMPANIES: CompanyItem[] = [
@@ -99,7 +100,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "USA/AZ, NV",
     "commodities": "Au, Ag",
     "email": "info@arizonagoldsilver.com",
-    "year": 2026
+    "year": 2026,
+    "logo": "/arizona-logo.png"
   },
   {
     "name": "ARIZONA METALS CORP.",
@@ -109,7 +111,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "USA/AZ",
     "commodities": "Au,Cu,Zn",
     "email": "info@arizonametals.com",
-    "year": 2026
+    "year": 2026,
+    "logo": "/arizona-logo.png"
   },
   {
     "name": "ASTRA EXPLORATION INC",

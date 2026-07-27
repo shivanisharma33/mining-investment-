@@ -9,29 +9,60 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function RegisterPage() {
   const { t, lang } = useLanguage();
 
-  const [formData, setFormData] = useState({
-    name: "",
+  const [activeTrack, setActiveTrack] = useState<"investor" | "company">("investor");
+
+  // Detailed Investor Registration Form State
+  const [investorFormData, setInvestorFormData] = useState({
+    companyName: "",
+    firstName: "",
+    lastName: "",
+    businessTitle: "",
+    city: "",
+    country: "",
     email: "",
-    type: "investor",
-    message: "",
+    phone: "",
+    aum: "",
+    investorType: "Institutional Investor",
+    newsletterOptIn: true,
+  });
+
+  // Company Registration Form State
+  const [companyFormData, setCompanyFormData] = useState({
+    companyName: "",
+    marketCap: "",
+    ticker: "",
+    commodity: "",
+    projectStage: "Explorer",
+    location: "",
+    email: "",
+    newsletterOptIn: true,
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleInvestorSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", type: "investor", message: "" });
-    }, 4000);
+  };
+
+  const handleCompanySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
+  const scrollToForm = (track: "investor" | "company") => {
+    setActiveTrack(track);
+    const formElement = document.getElementById("registration-form-section");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-white">
-        {/* ═══════ HERO ═══════ */}
+      <main className="flex flex-col flex-grow w-full bg-white font-sans">
+        {/* ═══════ HERO SECTION ═══════ */}
         <section className="relative w-full bg-[#0f1117] overflow-hidden">
           <div
             className="absolute inset-0 opacity-[0.04]"
@@ -49,7 +80,7 @@ export default function RegisterPage() {
               <span className="text-[#C6112F]">›</span>
               <span className="text-neutral-500">{t("nav-about", "About")}</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white">{t("footer-link-registration", "Registration Information")}</span>
+              <span className="text-white font-semibold">{t("footer-link-registration", "Registration Information")}</span>
             </div>
 
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
@@ -57,13 +88,13 @@ export default function RegisterPage() {
                 <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-3 block">
                   {t("register-save-date-label", "SAVE THE DATE — INVITATION ONLY")}
                 </span>
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
-                  Registration <span className="text-[#C6112F]">Information</span>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
+                  Registration <span className="text-[#C6112F]">Portal</span>
                 </h1>
-                <div className="w-20 h-[3px] bg-[#C6112F] mt-6" />
+                <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
               </div>
 
-              {/* Date & Location Pill Badge */}
+              {/* Date & Location Badge */}
               <div className="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 sm:p-6 max-w-md shrink-0">
                 <div className="flex items-center gap-3 text-xs font-bold text-[#C6112F] uppercase tracking-wider mb-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -75,7 +106,7 @@ export default function RegisterPage() {
                 <div className="text-xl sm:text-2xl font-black text-white">
                   June 1–3, 2027
                 </div>
-                <p className="text-neutral-300 text-xs mt-2 leading-relaxed font-light">
+                <p className="text-neutral-300 text-xs mt-2 leading-relaxed font-normal">
                   {t(
                     "register-save-date-sub",
                     "Canada's invitation-only Tier 1 Conference for mining companies, accredited investors, family offices, institutions, and funds."
@@ -86,10 +117,10 @@ export default function RegisterPage() {
           </div>
         </section>
 
-        {/* ═══════ DUAL REGISTRATION TRACK CARDS ═══════ */}
-        <section className="relative w-full py-16 sm:py-20 md:py-24 bg-[#f8f9fa]">
+        {/* ═══════ DUAL TRACK SELECTION CARDS ═══════ */}
+        <section className="relative w-full py-14 sm:py-18 bg-[#f8f9fa]">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
                 CHOOSE YOUR PARTICIPATION TRACK
               </span>
@@ -101,7 +132,9 @@ export default function RegisterPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Investor Track Card */}
-              <div className="group bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-2xl hover:border-[#C6112F]/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+              <div className={`group bg-white border rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${
+                activeTrack === "investor" ? "border-[#C6112F] ring-2 ring-[#C6112F]/20 shadow-xl" : "border-neutral-200 hover:border-[#C6112F]/40"
+              }`}>
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#C6112F]" />
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -120,16 +153,15 @@ export default function RegisterPage() {
                   <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-8">
                     {t(
                       "register-investor-desc",
-                      "Register as an accredited investor, family office, institution, or fund to access privately arranged meetings with over 100 of Canada's leading mining companies. Gain exclusive access to keynote speakers, panel discussions, and networking events throughout the three-day conference."
+                      "Register as an accredited investor, family office, institution, or fund to access privately arranged meetings with over 100 of Canada's leading mining companies."
                     )}
                   </p>
 
-                  {/* Highlights checklist */}
                   <div className="space-y-3 mb-8">
                     {[
-                      lang === "FR" ? "1-on-1 Rencontres Privées" : "1-on-1 Private Executive Meetings",
-                      lang === "FR" ? "Accès aux Conférences & Ministers" : "Keynote & Ministerial Session Access",
-                      lang === "FR" ? "Réceptions VIP & Réseautage" : "VIP Receptions & Networking Dinners",
+                      "1-on-1 Private Executive Meetings",
+                      "Keynote & Ministerial Session Access",
+                      "VIP Receptions & Networking Dinners",
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3 text-xs sm:text-sm font-bold text-neutral-800">
                         <span className="w-5 h-5 rounded-full bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center text-xs shrink-0">
@@ -141,16 +173,20 @@ export default function RegisterPage() {
                   </div>
                 </div>
 
-                <a
-                  href="#inquiry-form"
-                  className="w-full py-4 rounded-2xl bg-[#1a1f2c] group-hover:bg-[#C6112F] text-white text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md group-hover:shadow-lg"
+                <button
+                  onClick={() => scrollToForm("investor")}
+                  className={`w-full py-4 rounded-2xl text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md ${
+                    activeTrack === "investor" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
+                  }`}
                 >
                   {t("register-investor-cta", "Register as Investor")}
-                </a>
+                </button>
               </div>
 
               {/* Mining Company Track Card */}
-              <div className="group bg-white border border-neutral-200 rounded-3xl p-8 sm:p-10 shadow-sm hover:shadow-2xl hover:border-[#C6112F]/40 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+              <div className={`group bg-white border rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${
+                activeTrack === "company" ? "border-[#C6112F] ring-2 ring-[#C6112F]/20 shadow-xl" : "border-neutral-200 hover:border-[#C6112F]/40"
+              }`}>
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#1a1f2c] group-hover:bg-[#C6112F] transition-colors" />
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -169,16 +205,15 @@ export default function RegisterPage() {
                   <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-8">
                     {t(
                       "register-company-desc",
-                      "Register your mining company to showcase your projects and connect with a curated audience of international investors, family offices, and institutional funds. Sponsorship opportunities are available — contact Jennifer Choi directly for sponsorship packages."
+                      "Register your mining company to showcase your projects and connect with a curated audience of international investors, family offices, and institutional funds."
                     )}
                   </p>
 
-                  {/* Highlights checklist */}
                   <div className="space-y-3 mb-8">
                     {[
-                      lang === "FR" ? "Présentation d'Entreprise Minière" : "Corporate Project Showcase",
-                      lang === "FR" ? "Auditoire d'Investisseurs Accrédités" : "Curated Accredited Investor Audience",
-                      lang === "FR" ? "Opportunités de Commandite" : "Tier 1 Sponsorship Opportunities",
+                      "Corporate Project Showcase",
+                      "Curated Accredited Investor Audience",
+                      "Tier 1 Sponsorship Opportunities",
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3 text-xs sm:text-sm font-bold text-neutral-800">
                         <span className="w-5 h-5 rounded-full bg-[#1a1f2c]/10 text-[#1a1f2c] flex items-center justify-center text-xs shrink-0">
@@ -190,19 +225,466 @@ export default function RegisterPage() {
                   </div>
                 </div>
 
-                <a
-                  href="#inquiry-form"
-                  className="w-full py-4 rounded-2xl bg-[#1a1f2c] group-hover:bg-[#C6112F] text-white text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md group-hover:shadow-lg"
+                <button
+                  onClick={() => scrollToForm("company")}
+                  className={`w-full py-4 rounded-2xl text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md ${
+                    activeTrack === "company" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
+                  }`}
                 >
                   {t("register-company-cta", "Register a Company")}
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═══════ IMPORTANT NOTICE & POLICY SECTION ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 bg-white border-t border-b border-neutral-200">
+        {/* ═══════ INTERACTIVE REGISTRATION FORM SECTION ═══════ */}
+        <section id="registration-form-section" className="relative w-full py-16 sm:py-20 md:py-24 bg-white border-t border-neutral-200">
+          <div className="max-w-[860px] mx-auto px-4 sm:px-6 md:px-8">
+            {/* Form Track Switcher Tabs */}
+            <div className="flex justify-center gap-3 mb-10">
+              <button
+                onClick={() => setActiveTrack("investor")}
+                className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
+                  activeTrack === "investor"
+                    ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
+                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                }`}
+              >
+                Investor Registration Form
+              </button>
+              <button
+                onClick={() => setActiveTrack("company")}
+                className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
+                  activeTrack === "company"
+                    ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
+                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                }`}
+              >
+                Company Registration Form
+              </button>
+            </div>
+
+            <div className="bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#0f1117] via-[#C6112F] to-[#0f1117]" />
+
+              {submitted ? (
+                <div className="text-center py-12">
+                  <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-6 text-3xl font-black shadow-lg">
+                    ✓
+                  </div>
+                  <h3 className="text-3xl font-black text-[#1a1f2c] mb-3">
+                    Registration Received!
+                  </h3>
+                  <p className="text-neutral-600 text-sm max-w-lg mx-auto mb-8 leading-relaxed font-medium">
+                    Thank you for completing your {activeTrack === "investor" ? "Investor" : "Company"} registration form. Our credentials team will review your information and issue official invitation details shortly.
+                  </p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="px-8 py-3.5 rounded-xl bg-[#0f1117] text-white text-xs font-extrabold uppercase tracking-widest hover:bg-[#C6112F] transition-all"
+                  >
+                    Submit Another Application
+                  </button>
+                </div>
+              ) : activeTrack === "investor" ? (
+                /* ═══════ INVESTOR REGISTRATION FORM ═══════ */
+                <div>
+                  <div className="text-center mb-10">
+                    <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+                      ACCREDITED DELEGATE APPLICATION
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] tracking-tight">
+                      Investor Registration Form
+                    </h3>
+                    <div className="w-12 h-[3px] bg-[#C6112F] mx-auto mt-3 rounded-full" />
+                  </div>
+
+                  <form onSubmit={handleInvestorSubmit} className="space-y-6">
+                    {/* Company Name */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        Company Name
+                      </label>
+                      <input
+                        type="text"
+                        value={investorFormData.companyName}
+                        onChange={(e) =>
+                          setInvestorFormData({ ...investorFormData, companyName: e.target.value })
+                        }
+                        placeholder="e.g. Apex Capital Partners"
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                      />
+                    </div>
+
+                    {/* Name: First Name & Last Name (Required) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          First Name <span className="text-[#C6112F] font-bold">(required)</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={investorFormData.firstName}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, firstName: e.target.value })
+                          }
+                          placeholder="e.g. Sarah"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Last Name <span className="text-[#C6112F] font-bold">(required)</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={investorFormData.lastName}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, lastName: e.target.value })
+                          }
+                          placeholder="e.g. Jenkins"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Business Title */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        Business Title
+                      </label>
+                      <input
+                        type="text"
+                        value={investorFormData.businessTitle}
+                        onChange={(e) =>
+                          setInvestorFormData({ ...investorFormData, businessTitle: e.target.value })
+                        }
+                        placeholder="e.g. Managing Director, Mining & Resources"
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                      />
+                    </div>
+
+                    {/* City & Country */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          City
+                        </label>
+                        <input
+                          type="text"
+                          value={investorFormData.city}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, city: e.target.value })
+                          }
+                          placeholder="e.g. Toronto"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Country
+                        </label>
+                        <input
+                          type="text"
+                          value={investorFormData.country}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, country: e.target.value })
+                          }
+                          placeholder="e.g. Canada"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Email (Required) & Phone */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Email <span className="text-[#C6112F] font-bold">(required)</span>
+                        </label>
+                        <input
+                          type="email"
+                          required
+                          value={investorFormData.email}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, email: e.target.value })
+                          }
+                          placeholder="e.g. sarah@firm.com"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Phone
+                        </label>
+                        <input
+                          type="tel"
+                          value={investorFormData.phone}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, phone: e.target.value })
+                          }
+                          placeholder="e.g. +1 (416) 555-0192"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Assets Under Management & Investor Type */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Assets Under Management
+                        </label>
+                        <select
+                          value={investorFormData.aum}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, aum: e.target.value })
+                          }
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-bold outline-none transition-all bg-white cursor-pointer"
+                        >
+                          <option value="">Select AUM Range</option>
+                          <option value="Under $10M">Under $10 Million</option>
+                          <option value="$10M - $50M">$10 Million – $50 Million</option>
+                          <option value="$50M - $250M">$50 Million – $250 Million</option>
+                          <option value="$250M - $1B">$250 Million – $1 Billion</option>
+                          <option value="Over $1B">Over $1 Billion</option>
+                          <option value="HNWI / Personal">HNWI / Personal Accredited Investor</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Investor Type
+                        </label>
+                        <select
+                          value={investorFormData.investorType}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, investorType: e.target.value })
+                          }
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-bold outline-none transition-all bg-white cursor-pointer"
+                        >
+                          <option value="Institutional Investor">Institutional Investor</option>
+                          <option value="Family Office">Family Office</option>
+                          <option value="High Net Worth Individual (HNWI)">High Net Worth Individual (HNWI)</option>
+                          <option value="Fund / Portfolio Manager">Fund / Portfolio Manager</option>
+                          <option value="Sovereign Wealth Fund">Sovereign Wealth Fund</option>
+                          <option value="Mining Analyst / Investment Banker">Mining Analyst / Investment Banker</option>
+                          <option value="Retail / Accredited Investor">Retail / Accredited Investor</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Sign up for news and updates checkbox */}
+                    <div className="pt-2">
+                      <label className="flex items-center gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={investorFormData.newsletterOptIn}
+                          onChange={(e) =>
+                            setInvestorFormData({
+                              ...investorFormData,
+                              newsletterOptIn: e.target.checked,
+                            })
+                          }
+                          className="w-4 h-4 text-[#C6112F] rounded border-neutral-300 focus:ring-[#C6112F]"
+                        />
+                        <span className="text-xs sm:text-sm font-semibold text-neutral-700">
+                          Sign up for news and updates
+                        </span>
+                      </label>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      className="w-full py-4 rounded-2xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-black tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/25 hover:scale-[1.01] transition-all duration-300"
+                    >
+                      Complete Investor Registration
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                /* ═══════ MINING COMPANY REGISTRATION FORM ═══════ */
+                <div>
+                  <div className="text-center mb-6">
+                    <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+                      ISSUER & MINING COMPANY APPLICATION
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] tracking-tight">
+                      Company Registration
+                    </h3>
+                    <div className="w-12 h-[3px] bg-[#C6112F] mx-auto mt-3 rounded-full" />
+                  </div>
+
+                  {/* Please Note Callout Notice */}
+                  <div className="bg-[#fdf2f4] border-l-4 border-[#C6112F] p-4 sm:p-5 rounded-r-2xl mb-8">
+                    <h4 className="text-xs font-black uppercase text-[#C6112F] tracking-wider mb-1.5">
+                      Please Note*
+                    </h4>
+                    <p className="text-xs text-neutral-800 leading-relaxed font-medium mb-2">
+                      You must register your attendance prior to THE Event. You must receive an official invitation prior to THE Event in order to receive your badge at the door.
+                    </p>
+                    <p className="text-xs font-black text-[#C6112F]">
+                      Walk-ins will not be accepted.
+                    </p>
+                  </div>
+
+                  <form onSubmit={handleCompanySubmit} className="space-y-6">
+                    {/* Company Name & Market Cap */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Company Name
+                        </label>
+                        <input
+                          type="text"
+                          value={companyFormData.companyName}
+                          onChange={(e) =>
+                            setCompanyFormData({ ...companyFormData, companyName: e.target.value })
+                          }
+                          placeholder="e.g. Apex Gold & Copper Inc."
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Market Cap
+                        </label>
+                        <input
+                          type="text"
+                          value={companyFormData.marketCap}
+                          onChange={(e) =>
+                            setCompanyFormData({ ...companyFormData, marketCap: e.target.value })
+                          }
+                          placeholder="e.g. $250 Million CAD"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Primary Exchange/Ticker & Commodity */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Primary Exchange/Ticker
+                        </label>
+                        <input
+                          type="text"
+                          value={companyFormData.ticker}
+                          onChange={(e) =>
+                            setCompanyFormData({ ...companyFormData, ticker: e.target.value })
+                          }
+                          placeholder="e.g. TSX: APX / NYSE: APX"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Commodity
+                        </label>
+                        <input
+                          type="text"
+                          value={companyFormData.commodity}
+                          onChange={(e) =>
+                            setCompanyFormData({ ...companyFormData, commodity: e.target.value })
+                          }
+                          placeholder="e.g. Gold, Copper, Lithium"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Project Stage & Location */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Project Stage
+                        </label>
+                        <select
+                          value={companyFormData.projectStage}
+                          onChange={(e) =>
+                            setCompanyFormData({ ...companyFormData, projectStage: e.target.value })
+                          }
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-bold outline-none transition-all bg-white cursor-pointer"
+                        >
+                          <option value="Explorer">Explorer</option>
+                          <option value="Developer">Developer</option>
+                          <option value="Producer">Producer</option>
+                          <option value="Royalty">Royalty</option>
+                          <option value="Project Generator">Project Generator</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                          Location
+                        </label>
+                        <input
+                          type="text"
+                          value={companyFormData.location}
+                          onChange={(e) =>
+                            setCompanyFormData({ ...companyFormData, location: e.target.value })
+                          }
+                          placeholder="e.g. Quebec, Canada"
+                          className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Email (required) */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        Email <span className="text-[#C6112F] font-bold">(required)</span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={companyFormData.email}
+                        onChange={(e) =>
+                          setCompanyFormData({ ...companyFormData, email: e.target.value })
+                        }
+                        placeholder="e.g. contact@company.com"
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                      />
+                    </div>
+
+                    {/* Sign up for news and updates */}
+                    <div className="pt-2">
+                      <label className="flex items-center gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={companyFormData.newsletterOptIn}
+                          onChange={(e) =>
+                            setCompanyFormData({
+                              ...companyFormData,
+                              newsletterOptIn: e.target.checked,
+                            })
+                          }
+                          className="w-4 h-4 text-[#C6112F] rounded border-neutral-300 focus:ring-[#C6112F]"
+                        />
+                        <span className="text-xs sm:text-sm font-semibold text-neutral-700">
+                          Sign up for news and updates
+                        </span>
+                      </label>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      className="w-full py-4 rounded-2xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-black tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/25 hover:scale-[1.01] transition-all duration-300"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════ POLICIES & SPONSOR CONTACT ═══════ */}
+        <section className="relative w-full py-12 sm:py-16 bg-white border-t border-neutral-200">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="bg-[#0f1117] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-neutral-800 relative overflow-hidden">
               <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
@@ -238,142 +720,6 @@ export default function RegisterPage() {
                     <span>jchoi@irinc.ca ↗</span>
                   </a>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════ INTERACTIVE REGISTRATION INQUIRY FORM ═══════ */}
-        <section id="inquiry-form" className="relative w-full py-16 sm:py-20 md:py-24 bg-[#f8f9fa]">
-          <div className="max-w-[800px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center mb-12">
-              <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-                OFFICIAL INQUIRY FORM
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] tracking-tight">
-                Submit Your Registration Inquiry
-              </h2>
-              <p className="text-neutral-500 text-sm mt-2">
-                Our team will review your application and send official invitation credentials.
-              </p>
-              <div className="w-16 h-[3px] bg-[#C6112F] mx-auto mt-4 rounded-full" />
-            </div>
-
-            <div className="bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-10 shadow-xl">
-              {submitted ? (
-                <div className="text-center py-10">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 text-2xl font-black">
-                    ✓
-                  </div>
-                  <h3 className="text-2xl font-black text-[#1a1f2c] mb-2">Inquiry Received!</h3>
-                  <p className="text-neutral-600 text-sm max-w-md mx-auto">
-                    Thank you for submitting your registration details. A representative from IR.INC & VID Media will be in contact shortly.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider mb-2">
-                      {t("register-form-name", "Full Name")} *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="e.g. Sarah Jenkins"
-                      className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-800 text-sm outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider mb-2">
-                      {t("register-form-email", "Email Address")} *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="e.g. sarah@firm.com"
-                      className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-800 text-sm outline-none transition-all"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider mb-2">
-                      {t("register-form-type-default", "Registration Type")} *
-                    </label>
-                    <select
-                      value={formData.type}
-                      onChange={(e) => setFormData({ ...formData, type: e.target.value })}
-                      className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-800 text-sm outline-none transition-all bg-white"
-                    >
-                      <option value="investor">{t("register-form-type-investor", "Accredited Investor / Fund")}</option>
-                      <option value="company">{t("register-form-type-company", "Mining Company / Issuer")}</option>
-                      <option value="sponsor">{t("register-form-type-sponsor", "Sponsor / Partner")}</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-neutral-700 uppercase tracking-wider mb-2">
-                      {t("register-form-message", "Message or Inquiry Details")}
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Please include your organization name, role, or specific questions..."
-                      className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-800 text-sm outline-none transition-all resize-none"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full py-4 rounded-2xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/25 hover:scale-[1.01] transition-all duration-300"
-                  >
-                    {t("register-form-submit", "Submit Registration")}
-                  </button>
-                </form>
-              )}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════ TIER 1 SPONSORSHIP PROMOTION ═══════ */}
-        <section className="relative w-full py-16 bg-white border-t border-neutral-200">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="bg-neutral-50 border border-neutral-200 rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div>
-                <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-3">
-                  {t("register-sponsor-label", "SPONSORSHIP")}
-                </span>
-                <h3 className="text-2xl font-black text-[#1a1f2c] mb-2">
-                  {t("register-sponsor-title", "Tier 1 Conference Partnership")}
-                </h3>
-                <p className="text-neutral-600 text-sm max-w-xl">
-                  {t(
-                    "register-sponsor-body",
-                    "Our sponsors PDF outlines the full range of partnership opportunities available. To become a partner or to learn more about our sponsors program, contact us today."
-                  )}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-4 shrink-0">
-                <a
-                  href="https://www.themininginvestmentevent.com/s/THE-Event-SPONSORS-2025-May-16pdf.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 py-3.5 rounded-xl bg-[#C6112F] text-white text-xs font-bold tracking-[0.15em] uppercase shadow-md hover:bg-[#a50e27] transition-all"
-                >
-                  {t("register-sponsor-cta-pdf", "View Sponsors PDF")}
-                </a>
-                <a
-                  href="/partnership"
-                  className="px-6 py-3.5 rounded-xl border border-neutral-300 text-neutral-800 hover:border-[#C6112F] hover:text-[#C6112F] text-xs font-bold tracking-[0.15em] uppercase transition-all"
-                >
-                  {t("register-sponsor-cta-info", "Tier 1 Partnership Info")}
-                </a>
               </div>
             </div>
           </div>
