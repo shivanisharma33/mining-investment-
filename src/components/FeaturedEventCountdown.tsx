@@ -7,14 +7,14 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function FeaturedEventCountdown() {
   const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({
-    days: "0",
-    hours: "00",
-    minutes: "00",
-    seconds: "00",
+    days: "300",
+    hours: "20",
+    minutes: "44",
+    seconds: "36",
   });
 
   useEffect(() => {
-    const targetDate = new Date("2027-06-01T09:00:00").getTime();
+    const targetDate = new Date("2027-06-03T09:00:00").getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -46,134 +46,160 @@ export default function FeaturedEventCountdown() {
 
   const timerUnits = [
     { label: t("timer-days", "DAYS"), value: timeLeft.days },
-    { label: t("timer-hrs", "HRS"), value: timeLeft.hours },
-    { label: t("timer-min", "MIN"), value: timeLeft.minutes },
-    { label: t("timer-sec", "SEC"), value: timeLeft.seconds },
+    { label: t("timer-hrs", "HOURS"), value: timeLeft.hours },
+    { label: t("timer-min", "MINUTES"), value: timeLeft.minutes },
+    { label: t("timer-sec", "SECONDS"), value: timeLeft.seconds },
   ];
 
   return (
-    <section className="relative w-full bg-[#f0f4f8] py-12 sm:py-16 overflow-hidden">
-      {/* Bottom Accent Red Border Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
+    <section className="relative w-full bg-[#f8fafc] py-16 sm:py-20 md:py-24 overflow-hidden border-y border-neutral-200/80">
+      {/* Background Giant Watermark Text: COMING SOON */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden opacity-[0.06] z-0">
+        <span className="text-[90px] sm:text-[140px] md:text-[180px] lg:text-[210px] font-black tracking-[0.2em] leading-none text-neutral-900 uppercase">
+          COMING
+        </span>
+        <span className="text-[90px] sm:text-[140px] md:text-[180px] lg:text-[210px] font-black tracking-[0.2em] leading-none text-neutral-900 uppercase -mt-4 sm:-mt-8">
+          SOON
+        </span>
+      </div>
 
-      <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10 lg:gap-12">
-          {/* Left Column: Event Details & Action Buttons */}
-          <div className="flex-1 flex flex-col items-start text-left">
-            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
-              {t("feat-event-tag", "FEATURED EVENT")}
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
-              {t("feat-event-title", "THE MINING INVESTMENT EVENT")}
-            </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        {/* Top Tag & Title */}
+        <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block mb-2">
+          {t("feat-event-tag", "FEATURED EVENT")}
+        </span>
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1a1f2c] tracking-tight uppercase mb-3">
+          {t("feat-event-title", "THE MINING INVESTMENT EVENT 2027")}
+        </h2>
+        <div className="w-16 h-[3px] bg-[#C6112F] mx-auto rounded-full mb-10" />
 
-            {/* Date and Location */}
-            <div className="space-y-3 mb-7">
-              <div className="flex items-center gap-3 text-[#1a1f2c] font-extrabold text-sm sm:text-base tracking-wide">
-                <div className="w-8 h-8 rounded-md bg-white border border-neutral-300 flex items-center justify-center shrink-0 shadow-2xs">
-                  <svg
-                    className="w-5 h-5 text-neutral-900"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <rect x="3" y="4" width="18" height="16" rx="2" />
-                    <path strokeLinecap="round" d="M16 2v4M8 2v4M3 9h18" />
-                    <circle cx="7.5" cy="13" r="0.8" fill="currentColor" />
-                    <circle cx="12" cy="13" r="0.8" fill="currentColor" />
-                    <circle cx="16.5" cy="13" r="0.8" fill="currentColor" />
-                  </svg>
-                </div>
-                <span>{t("feat-event-date", "1-3 JUNE 2027")}</span>
-              </div>
+        {/* Live Digital Countdown Timer Row */}
+        <div className="flex items-center justify-center gap-2 sm:gap-4 md:gap-6 mb-10">
+          {timerUnits.map((unit, i) => (
+            <React.Fragment key={i}>
+              <div className="flex flex-col items-center">
+                {/* Small Top Label */}
+                <span className="text-[9px] sm:text-xs font-black tracking-[0.2em] text-neutral-800 uppercase mb-2">
+                  {unit.label}
+                </span>
 
-              <div className="flex items-center gap-3 text-[#1a1f2c] font-extrabold text-sm sm:text-base tracking-wide">
-                <div className="w-8 h-8 rounded-md bg-white border border-neutral-300 flex items-center justify-center shrink-0 shadow-2xs">
-                  <svg
-                    className="w-5 h-5 text-neutral-900"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 21s-6-5.686-6-10a6 6 0 1112 0c0 4.314-6 10-6 10z"
-                    />
-                    <circle cx="12" cy="11" r="2" />
-                  </svg>
-                </div>
-                <span>{t("feat-event-loc", "QUÉBEC CITY, CANADA")}</span>
-              </div>
-            </div>
-
-            {/* Connected Pill Buttons */}
-            <div className="inline-flex items-center border border-neutral-300 rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
-              <Link
-                href="/register"
-                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase transition-colors"
-              >
-                {t("nav-register", "REGISTER NOW")}
-              </Link>
-              <Link
-                href="/agenda"
-                className="bg-[#dedede] hover:bg-[#d4d4d4] text-neutral-900 text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase flex items-center gap-2 border-l border-neutral-300 transition-colors"
-              >
-                <span>{t("feat-event-agenda", "VIEW AGENDA")}</span>
-                <svg
-                  className="w-4 h-4 text-neutral-900 shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="1.8" />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M10.5 8.5L14 12L10.5 15.5M14 12H8.5"
-                  />
-                </svg>
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Column: Live Event Digital Countdown Timer */}
-          <div className="flex items-center gap-2 sm:gap-3.5 md:gap-4">
-            {timerUnits.map((unit, i) => (
-              <React.Fragment key={i}>
-                <div className="flex flex-col items-center">
-                  {/* Digital Display Box */}
-                  <div className="relative w-16 sm:w-20 md:w-24 h-16 sm:h-20 bg-[#0f1117] border border-neutral-800 rounded-xl flex items-center justify-center shadow-md overflow-hidden group">
-                    {/* Top Red Accent Indicator Line */}
-                    <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-[#C6112F]" />
-
-                    {/* Digital Monospace Number */}
-                    <span className="font-mono text-xl sm:text-2xl md:text-[34px] font-black text-white tracking-wider tabular-nums drop-shadow-[0_2px_10px_rgba(198,17,47,0.35)]">
-                      {unit.value}
-                    </span>
-                  </div>
-
-                  {/* Unit Label Underneath */}
-                  <span className="text-[10px] sm:text-xs font-black tracking-[0.2em] text-neutral-600 uppercase mt-2.5">
-                    {unit.label}
+                {/* Crimson Red Digital Box */}
+                <div className="w-16 sm:w-24 md:w-28 h-14 sm:h-20 md:h-22 bg-gradient-to-b from-[#a80d26] via-[#C6112F] to-[#8a091e] border border-white/20 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-[#C6112F]/25 relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-wider tabular-nums drop-shadow-md">
+                    {unit.value}
                   </span>
                 </div>
+              </div>
 
-                {/* Pulsing Digital Colon Separator */}
-                {i < timerUnits.length - 1 && (
-                  <div className="flex flex-col justify-center pb-6">
-                    <span className="font-mono text-lg sm:text-2xl font-black text-[#C6112F] animate-pulse select-none">
-                      :
-                    </span>
-                  </div>
-                )}
-              </React.Fragment>
-            ))}
+              {/* Pulsing Colon Separator */}
+              {i < timerUnits.length - 1 && (
+                <div className="flex flex-col justify-center pt-5">
+                  <span className="text-xl sm:text-3xl font-black text-[#C6112F] animate-pulse select-none">
+                    :
+                  </span>
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+
+        {/* Date and Location Bar */}
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm sm:text-base font-extrabold text-[#1a1f2c] mb-10">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <span>{t("feat-event-date", "3-6 JUNE 2027")}</span>
           </div>
+
+          <span className="text-neutral-300 font-normal">|</span>
+
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            <span>{t("feat-event-loc", "QUÉBEC CITY, CANADA")}</span>
+          </div>
+        </div>
+
+        {/* Subtitle & Description */}
+        <div className="max-w-2xl mx-auto mb-10">
+          <h3 className="text-xl sm:text-3xl font-extrabold text-[#1a1f2c] mb-2">
+            Where Global Mining Leaders Connect
+          </h3>
+          <div className="w-14 h-[2px] bg-[#C6112F] mx-auto rounded-full mb-4" />
+          <p className="text-neutral-600 text-xs sm:text-sm font-medium leading-relaxed">
+            A premier gathering of investors, mining companies, government, innovators and industry experts driving the future of mining.
+          </p>
+        </div>
+
+        {/* 6 Action Buttons Grid (2 Rows of 3 Buttons) */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-3xl mx-auto">
+          {/* Row 1 */}
+          <Link
+            href="/agenda"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+          >
+            <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+            </svg>
+            <span>VIEW AGENDA</span>
+          </Link>
+
+          <Link
+            href="/register"
+            className="w-full bg-[#a80d26] hover:bg-[#8a091e] text-white rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center transition-all shadow-md hover:scale-105"
+          >
+            <span>REGISTER NOW</span>
+          </Link>
+
+          <Link
+            href="/brochure"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+          >
+            <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+            <span>BROCHURE</span>
+          </Link>
+
+          {/* Row 2 */}
+          <Link
+            href="/issuers"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+          >
+            <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21" />
+            </svg>
+            <span>PARTICIPANT COMPANIES</span>
+          </Link>
+
+          <Link
+            href="/speakers"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+          >
+            <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+            <span>OUR SPEAKER</span>
+          </Link>
+
+          <Link
+            href="/sponsors"
+            className="w-full bg-[#e5e7eb] hover:bg-[#d1d5db] text-neutral-900 border border-neutral-300 rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+          >
+            <svg className="w-4 h-4 text-neutral-800 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21" />
+            </svg>
+            <span>OUR SPONSOR</span>
+          </Link>
         </div>
       </div>
     </section>

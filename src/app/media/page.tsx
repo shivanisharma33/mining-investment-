@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
@@ -205,12 +206,38 @@ export default function MediaPage() {
               <span className="text-[#C6112F]">{t("media-gallery-title-2", "Pictures & Press")}</span>
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[700px] mb-12">
+            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[700px] mb-8">
               {t(
                 "media-gallery-desc",
                 "Explore recent coverage, photography, and media from THE Mining Investment Event. For media inquiries and press accreditation, please contact our team directly."
               )}
             </p>
+
+            {/* ═══════════════ NEWS PAGE FEATURED BANNER ═══════════════ */}
+            <div className="mb-12 w-full bg-gradient-to-r from-neutral-900 via-[#161a23] to-neutral-900 rounded-3xl p-6 sm:p-8 border border-[#C6112F]/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+              <div className="relative z-10 max-w-xl text-left">
+                <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
+                  INDUSTRY PRESS & NEWS
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-2">
+                  Official Event <span className="text-[#C6112F]">News & Press Hub</span>
+                </h3>
+                <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed">
+                  Read full press releases, keynote highlights, issuer updates, and market coverage on our dedicated News page.
+                </p>
+              </div>
+              <div className="relative z-10 shrink-0">
+                <Link
+                  href="/news"
+                  className="inline-flex items-center gap-2 bg-[#C6112F] hover:bg-[#a50e27] text-white px-6 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase shadow-lg shadow-[#C6112F]/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+                >
+                  <span>EXPLORE NEWS PAGE</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
 
             {/* Grid – 3-col on desktop, 2-col on tablet, 1-col on mobile */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

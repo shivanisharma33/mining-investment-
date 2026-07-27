@@ -180,6 +180,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/news" className="hover:text-[#C6112F] transition-colors">
+                  {t("nav-news", "News")}
+                </Link>
+              </li>
+              <li>
                 <Link href="/newsflash" className="hover:text-[#C6112F] transition-colors">
                   {t("nav-newsflash", "THE Newsflash")}
                 </Link>

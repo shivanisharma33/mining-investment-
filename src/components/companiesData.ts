@@ -4587,14 +4587,5 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Li",
     "year": 2025
-  },
-  {
-    "name": "WINSOME RESOURCES LIMITED",
-    "marker": "",
-    "ticker": "ASX: WR1; OTCQB: WRSLF",
-    "type": "EXPLORER",
-    "location": "CANADA/QC",
-    "commodities": "Li",
-    "year": 2026
   }
 ];

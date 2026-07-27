@@ -1361,17 +1361,6 @@ export const SPEAKERS_2023: RawSpeaker[] = [
     "year": 2023
   },
   {
-    "name": "Nathalie Camden",
-    "title": "Associate Deputy Minister of Mines",
-    "organization": "Ministry of Natural Resources & Forests",
-    "category": "gov",
-    "days": [
-      2,
-      3
-    ],
-    "year": 2023
-  },
-  {
     "name": "Emmett Marsh",
     "title": "Associate Deputy Minister of Mines",
     "organization": "Ministry of Natural Resources & Forests",

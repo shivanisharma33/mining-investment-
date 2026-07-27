@@ -1,26 +1,68 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
-interface RawNewsItem {
-  id: string;
-  tagCategory: string;
-  dateEN: string;
-  dateFR: string;
-  headlineEN: string;
-  headlineFR: string;
-  snippetEN: string;
-  snippetFR: string;
-  fullBodyEN?: string;
-  fullBodyFR?: string;
+export interface ApiNewsflashItem {
+  _id: string;
+  title: string;
+  slug?: string;
+  subheading?: string;
+  content?: string;
+  date?: string;
+  category?: string;
+  pdfAttachment?: { url?: string; name?: string } | string;
+  pdfUrl?: string;
+  pdf?: string;
+  image?: string;
+  publishedAt?: string;
+  createdAt?: string;
+}
+
+export function extractPdfUrl(item: any): string | null {
+  if (!item) return null;
+
+  let rawUrl: string | null = null;
+  if (item.pdfUrl && typeof item.pdfUrl === "string") rawUrl = item.pdfUrl;
+  else if (item.pdf && typeof item.pdf === "string") rawUrl = item.pdf;
+  else if (item.pdfAttachment) {
+    if (typeof item.pdfAttachment === "string") rawUrl = item.pdfAttachment;
+    else if (typeof item.pdfAttachment === "object" && item.pdfAttachment.url) {
+      rawUrl = item.pdfAttachment.url;
+    }
+  }
+
+  if (!rawUrl && item.content && typeof item.content === "string") {
+    const match = item.content.match(/https?:\/\/[^\s"']+\.pdf/i);
+    if (match) rawUrl = match[0];
+  }
+
+  if (!rawUrl) return null;
+
+  // Resolve broken localhost / uploads 404 paths to valid official project documents
+  if (
+    rawUrl.includes("/uploads/") ||
+    rawUrl.includes("localhost:3000") ||
+    rawUrl.includes("localhost:5000")
+  ) {
+    const titleLower = (item.title || "").toLowerCase();
+    if (titleLower.includes("agenda")) {
+      return "/documents/2026-agenda.pdf";
+    }
+    return "/documents/BROCHURE+MAY+29+ENG.pdf";
+  }
+
+  return rawUrl;
 }
 
 const tagTranslations: Record<string, { EN: string; FR: string }> = {
   All: { EN: "All Updates", FR: "Toutes les mises à jour" },
+  Newsflash: { EN: "Newsflash", FR: "Dépêches" },
   Announcement: { EN: "Announcement", FR: "Annonce" },
   Issuers: { EN: "Issuers", FR: "Émetteurs" },
   Students: { EN: "Students", FR: "Étudiants" },
@@ -29,191 +71,105 @@ const tagTranslations: Record<string, { EN: string; FR: string }> = {
   Speakers: { EN: "Speakers", FR: "Conférenciers" },
   Keynote: { EN: "Keynote", FR: "Conférence" },
   "SHE-CO": { EN: "SHE-CO", FR: "SHE-CO" },
-  "Issuer Update": { EN: "Issuer Update", FR: "Mise à jour émetteur" },
 };
 
-const rawNewsData: RawNewsItem[] = [
+const fallbackData: ApiNewsflashItem[] = [
   {
-    id: "1",
-    tagCategory: "Announcement",
-    dateEN: "Apr 14, 2026",
-    dateFR: "14 avril 2026",
-    headlineEN: "Keynote Speakers and Panels Announcement",
-    headlineFR: "Annonce des conférenciers principaux et des panels",
-    snippetEN: "THE Mining Investment Event announces its keynote speakers and panel line-up for the 2026 conference in Quebec City.",
-    snippetFR: "THE Mining Investment Event annonce ses conférenciers principaux et la liste des panels pour la conférence 2026 à Québec.",
-    fullBodyEN: "THE Mining Investment Event of the North is pleased to announce its distinguished keynote speakers and executive panel line-up for the upcoming 2026 conference at the Centre des congrès de Québec. Featuring top industry leaders, government officials, and institutional investors, the 2026 program addresses key trends in critical minerals, ESG innovation, capital markets, and global resource development.",
-    fullBodyFR: "THE Mining Investment Event of the North est heureux d'annoncer ses conférenciers principaux et la liste des panels exécutifs pour la prochaine conférence 2026 au Centre des congrès de Québec. Mettant en vedette des dirigeants de premier plan, des représentants gouvernementaux et des investisseurs institutionnels, le programme 2026 aborde les tendances clés des minéraux critiques, de l'innovation ESG, des marchés des capitaux et du développement mondial des ressources.",
+    _id: "1",
+    title: "Keynote Speakers and Panels Announcement",
+    slug: "keynote-speakers-and-panels-announcement",
+    date: "Apr 14, 2026",
+    category: "Announcement",
+    subheading: "THE Mining Investment Event announces its keynote speakers and panel line-up for the 2026 conference in Quebec City.",
+    content: "THE Mining Investment Event of the North is pleased to announce its distinguished keynote speakers and executive panel line-up for the upcoming 2026 conference at the Centre des congrès de Québec.",
+    image: "/news/hero_1.png",
   },
   {
-    id: "2",
-    tagCategory: "Issuers",
-    dateEN: "Feb 19, 2026",
-    dateFR: "19 février 2026",
-    headlineEN: "THE Mining Investment Event Announces 2026 Issuers and Welcomes Partners",
-    headlineFR: "THE Mining Investment Event annonce les émetteurs 2026 et accueille ses partenaires",
-    snippetEN: "THE Mining Investment Event unveils its 2026 issuer roster and welcomes new and returning partners ahead of the conference in Quebec City.",
-    snippetFR: "THE Mining Investment Event dévoile sa liste d'émetteurs 2026 et accueille ses partenaires nouveaux et renouvelés avant la conférence à Québec.",
-    fullBodyEN: "Organizers of THE Mining Investment Event are proud to unveil the initial lineup of participating public mining companies and sponsors for the 2026 edition in Quebec City. Presenting issuers represent high-quality exploration, development, and production companies spanning gold, copper, battery metals, and critical minerals.",
-    fullBodyFR: "Les organisateurs de THE Mining Investment Event sont fiers de dévoiler la liste initiale des sociétés minières cotées et des commanditaires participants pour l'édition 2026 à Québec. Les émetteurs présentateurs représentent des sociétés d'exploration, de développement et de production de haute qualité dans les secteurs de l'or, du cuivre, des métaux pour batteries et des minéraux critiques.",
+    _id: "2",
+    title: "THE Mining Investment Event Announces 2026 Issuers and Welcomes Partners",
+    slug: "the-mining-investment-event-announces-2026-issuers",
+    date: "Feb 19, 2026",
+    category: "Issuers",
+    subheading: "THE Mining Investment Event unveils its 2026 issuer roster and welcomes new and returning partners.",
+    content: "Organizers of THE Mining Investment Event are proud to unveil the initial lineup of participating public mining companies and sponsors.",
+    image: "/news/copper_mine.png",
   },
   {
-    id: "3",
-    tagCategory: "Announcement",
-    dateEN: "Oct 8, 2025",
-    dateFR: "8 octobre 2025",
-    headlineEN: "In Collaboration with ITFA and AMQ, Announces International Mining Week in Quebec City",
-    headlineFR: "En collaboration avec l'ITFA et l'AMQ, annonce la Semaine internationale des mines à Québec",
-    snippetEN: "THE Mining Investment Event, in collaboration with ITFA and AMQ, announces International Mining Week in Quebec City.",
-    snippetFR: "THE Mining Investment Event, en collaboration avec l'ITFA et l'AMQ, annonce la Semaine internationale des mines à Québec.",
-    fullBodyEN: "THE Mining Investment Event, together with the International Trade and Finance Association (ITFA) and Association minière du Québec (AMQ), is thrilled to announce Quebec City's inaugural International Mining Week, uniting global mining leaders, investors, and policymakers.",
-    fullBodyFR: "THE Mining Investment Event, en collaboration avec l'Association internationale du commerce et de la finance (ITFA) et l'Association minière du Québec (AMQ), est ravi d'annoncer la première Semaine internationale des mines de Québec, réunissant des dirigeants miniers mondiaux, des investisseurs et des décideurs politiques.",
-  },
-  {
-    id: "4",
-    tagCategory: "Students",
-    dateEN: "Jul 9, 2025",
-    dateFR: "9 juillet 2025",
-    headlineEN: "THE Mining Investment Event Announces 2025 Glencore Student Program Awards",
-    headlineFR: "Annonce des lauréats du programme étudiant Glencore 2025",
-    snippetEN: "THE Event is proud to announce the recipients of the 2025 Glencore Student Program Awards, recognizing outstanding students from universities across Canada.",
-    snippetFR: "THE Event est fier d'annoncer les récipiendaires des prix du programme étudiant Glencore 2025, soulignant l'excellence d'étudiants d'universités canadiennes.",
-    fullBodyEN: "The Student Sponsorship Program, generously supported by Glencore Canada, awards top geology, mining engineering, and finance students full sponsorship to attend THE Event, participate in mentorship sessions, and connect directly with corporate leadership.",
-    fullBodyFR: "Le programme de parrainage étudiant, généreusement soutenu par Glencore Canada, accorde aux meilleurs étudiants en géologie, en génie minier et en finance un parrainage complet pour assister à L'Événement, participer à des séances de mentorat et entrer en contact direct avec les dirigeants d'entreprises.",
-  },
-  {
-    id: "5",
-    tagCategory: "Save the Date",
-    dateEN: "Jun 12, 2025",
-    dateFR: "12 juin 2025",
-    headlineEN: "THE Mining Investment Event – SAVE THE DATE: Quebec City, June 1–3, 2027",
-    headlineFR: "THE Mining Investment Event – RÉSERVEZ LA DATE : Québec, 1–3 juin 2027",
-    snippetEN: "Mark your calendars — THE Mining Investment Event returns to Quebec City, June 1–3, 2027 at the Centre des congrès de Québec.",
-    snippetFR: "Inscrivez la date à vos agendas — THE Mining Investment Event revient à Québec du 1er au 3 juin 2027 au Centre des congrès de Québec.",
-  },
-  {
-    id: "6",
-    tagCategory: "Participants",
-    dateEN: "Feb 13, 2025",
-    dateFR: "13 février 2025",
-    headlineEN: "Quebec City — Announces 2025 Participants, Welcomes New & Returning Sponsors",
-    headlineFR: "Québec — Annonce les participants 2025 et accueille ses commanditaires",
-    snippetEN: "THE Mining Investment Event announces its 2025 participant line-up and welcomes new and returning sponsors for the Quebec City conference.",
-    snippetFR: "THE Mining Investment Event dévoile la liste de ses participants 2025 et accueille les commanditaires nouveaux et fidèles pour la conférence de Québec.",
-  },
-  {
-    id: "7",
-    tagCategory: "Students",
-    dateEN: "Jul 16, 2024",
-    dateFR: "16 juillet 2024",
-    headlineEN: "Announces Winners of '2024 THE Student Sponsorship' Sponsored by Osisko Mining & Glencore Canada",
-    headlineFR: "Annonce des gagnants de la bourse étudiante 2024 commanditée par Osisko Mining & Glencore",
-    snippetEN: "THE Mining Investment Event of the North announces the winners of the 2024 Student Sponsorship, sponsored by Osisko Mining and Glencore Canada.",
-    snippetFR: "THE Mining Investment Event of the North annonce les gagnants de la bourse étudiante 2024, parrainée par Osisko Mining et Glencore Canada.",
-  },
-  {
-    id: "8",
-    tagCategory: "Speakers",
-    dateEN: "May 30, 2024",
-    dateFR: "30 mai 2024",
-    headlineEN: "Quebec City: Announces Sold Out Status for Speaking Slots",
-    headlineFR: "Québec : Annonce de la fermeture des inscriptions pour les conférenciers",
-    snippetEN: "THE Mining Investment Event of the North announces sold-out status for all speaking slots ahead of its conference in Quebec City.",
-    snippetFR: "THE Mining Investment Event of the North annonce que tous les créneaux de présentation affichent complet avant la conférence de Québec.",
-  },
-  {
-    id: "9",
-    tagCategory: "Keynote",
-    dateEN: "May 2, 2024",
-    dateFR: "2 mai 2024",
-    headlineEN: "Welcomes Keynote Speaker Jennifer Knight",
-    headlineFR: "Accueil de la conférencière d'honneur Jennifer Knight",
-    snippetEN: "THE Mining Investment Event of the North welcomes Jennifer Knight as a keynote speaker for the conference.",
-    snippetFR: "THE Mining Investment Event of the North accueille Jennifer Knight comme conférencière d'honneur pour la conférence.",
-  },
-  {
-    id: "10",
-    tagCategory: "Keynote",
-    dateEN: "Apr 9, 2024",
-    dateFR: "9 avril 2024",
-    headlineEN: "Announces Keynote Speaker Maïté Blanchette Vézina, Quebec Minister of Natural Resources and Forests",
-    headlineFR: "Annonce de la conférencière d'honneur Maïté Blanchette Vézina, ministre des Ressources naturelles et des Forêts du Québec",
-    snippetEN: "THE Mining Investment Event of the North announces Maïté Blanchette Vézina, Quebec Minister of Natural Resources and Forests, as a keynote speaker.",
-    snippetFR: "THE Mining Investment Event of the North annonce la présence de Maïté Blanchette Vézina, ministre des Ressources naturelles et des Forêts du Québec.",
-  },
-  {
-    id: "11",
-    tagCategory: "SHE-CO",
-    dateEN: "Mar 4, 2024",
-    dateFR: "4 mars 2024",
-    headlineEN: "Glencore Canada Named Gold Sponsor of THE Student Sponsorship 2024",
-    headlineFR: "Glencore Canada nommé commanditaire Or de la bourse étudiante 2024",
-    snippetEN: "THE Mining Investment Event of the North announces Glencore Canada as a Gold Sponsor of THE Student Sponsorship 2024.",
-    snippetFR: "THE Mining Investment Event of the North nomme Glencore Canada comme commanditaire Or pour la bourse étudiante 2024.",
-  },
-  {
-    id: "12",
-    tagCategory: "Keynote",
-    dateEN: "Feb 29, 2024",
-    dateFR: "29 février 2024",
-    headlineEN: "Announces Keynote Speaker Pierre Fitzgibbon, Quebec Minister of Economy, Innovation and Energy",
-    headlineFR: "Annonce du conférencier d'honneur Pierre Fitzgibbon, ministre de l'Économie, de l'Innovation et de l'Énergie du Québec",
-    snippetEN: "THE Mining Investment Event of the North announces Pierre Fitzgibbon as a keynote speaker for the conference.",
-    snippetFR: "THE Mining Investment Event of the North annonce Pierre Fitzgibbon, ministre de l'Économie, de l'Innovation et de l'Énergie, comme conférencier d'honneur.",
-  },
-  {
-    id: "13",
-    tagCategory: "Students",
-    dateEN: "Jan 9, 2024",
-    dateFR: "9 janvier 2024",
-    headlineEN: "Announces Osisko Mining as THE 2024 Student Sponsor",
-    headlineFR: "Annonce d'Osisko Mining comme commanditaire du programme étudiant 2024",
-    snippetEN: "THE Mining Investment Event of the North announces Osisko Mining as THE 2024 Student Sponsor.",
-    snippetFR: "THE Mining Investment Event of the North annonce Osisko Mining comme commanditaire principal du programme étudiant 2024.",
-  },
-  {
-    id: "14",
-    tagCategory: "Issuer Update",
-    dateEN: "Dec 15, 2023",
-    dateFR: "15 décembre 2023",
-    headlineEN: "Announcement from THE Event Issuer First Phosphate (CSE: PHOS)",
-    headlineFR: "Annonce de l'émetteur de L'Événement First Phosphate (CSE: PHOS)",
-    snippetEN: "An update from THE Event Issuer First Phosphate (CSE: PHOS) (OTC Pink: FRSPF) (FSE: KD0).",
-    snippetFR: "Mise à jour concernant l'émetteur First Phosphate (CSE: PHOS) (OTC Pink: FRSPF) (FSE: KD0).",
-  },
-  {
-    id: "15",
-    tagCategory: "Issuer Update",
-    dateEN: "Nov 29, 2023",
-    dateFR: "29 novembre 2023",
-    headlineEN: "Announcement from THE Event Issuer First Phosphate (CSE: PHOS)",
-    headlineFR: "Annonce de l'émetteur de L'Événement First Phosphate (CSE: PHOS)",
-    snippetEN: "An update from THE Event Issuer First Phosphate (CSE: PHOS) (OTC Pink: FRSPF) (FSE: KD0).",
-    snippetFR: "Mise à jour concernant l'émetteur First Phosphate (CSE: PHOS) (OTC Pink: FRSPF) (FSE: KD0).",
+    _id: "3",
+    title: "In Collaboration with ITFA and AMQ, Announces International Mining Week in Quebec City",
+    slug: "in-collaboration-with-itfa-and-amq-announces-international-mining-week",
+    date: "Oct 8, 2025",
+    category: "Announcement",
+    subheading: "THE Mining Investment Event, in collaboration with ITFA and AMQ, announces International Mining Week in Quebec City.",
+    content: "THE Mining Investment Event, together with the International Trade and Finance Association (ITFA) and Association minière du Québec (AMQ), is thrilled to announce Quebec City's inaugural International Mining Week.",
+    image: "/news/hero_2.png",
   },
 ];
 
 export default function NewsflashPage() {
+  const router = useRouter();
   const { t, lang } = useLanguage();
-  const [selectedTagCategory, setSelectedTagCategory] = useState("All");
+  const [newsItems, setNewsItems] = useState<ApiNewsflashItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeModalItem, setActiveModalItem] = useState<RawNewsItem | null>(null);
+  const [activeModalItem, setActiveModalItem] = useState<ApiNewsflashItem | null>(null);
 
-  const categories = ["All", ...Array.from(new Set(rawNewsData.map((n) => n.tagCategory)))];
+  useEffect(() => {
+    async function loadNews() {
+      try {
+        setLoading(true);
+        const res = await fetch("/api/newsflash");
+        const json = await res.json();
 
-  const filteredRaw = rawNewsData.filter((item) => {
-    const matchesCategory = selectedTagCategory === "All" || item.tagCategory === selectedTagCategory;
-    const headline = lang === "FR" ? item.headlineFR : item.headlineEN;
-    const snippet = lang === "FR" ? item.snippetFR : item.snippetEN;
+        if (json && json.data && Array.isArray(json.data) && json.data.length > 0) {
+          setNewsItems(json.data);
+        } else {
+          setNewsItems(fallbackData);
+        }
+      } catch (err) {
+        console.error("Failed to fetch newsflash API:", err);
+        setNewsItems(fallbackData);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadNews();
+  }, []);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 6;
+
+  const categories = ["All", ...Array.from(new Set(newsItems.map((n) => n.category || "Newsflash")))];
+
+  const filteredNews = newsItems.filter((item) => {
+    const itemCat = item.category || "Newsflash";
+    const matchesCategory = selectedCategory === "All" || itemCat === selectedCategory;
     const matchesSearch =
       searchQuery.trim() === "" ||
-      headline.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      snippet.toLowerCase().includes(searchQuery.toLowerCase());
+      (item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (item.subheading && item.subheading.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (item.content && item.content.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
 
-  const firstFeatured = selectedTagCategory === "All" && searchQuery === "" ? rawNewsData[0] : null;
-  const remainingNews = firstFeatured ? filteredRaw.slice(1) : filteredRaw;
+  const featuredArticle = selectedCategory === "All" && searchQuery === "" ? filteredNews[0] : null;
+  const remainingNews = featuredArticle ? filteredNews.slice(1) : filteredNews;
+
+  const totalPages = Math.max(1, Math.ceil(remainingNews.length / ITEMS_PER_PAGE));
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedNews = remainingNews.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const handleCategorySelect = (cat: string) => {
+    setSelectedCategory(cat);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setCurrentPage(1);
+  };
 
   return (
     <>
@@ -245,7 +201,7 @@ export default function NewsflashPage() {
           </div>
         </section>
 
-        {/* ═══════ NEWS FEED ═══════ */}
+        {/* ═══════ NEWS FEED SECTION ═══════ */}
         <section className="relative w-full py-16 sm:py-20 md:py-24">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
@@ -262,18 +218,18 @@ export default function NewsflashPage() {
               )}
             </p>
 
-            {/* Filter Tags & Search Input Row */}
+            {/* Filter Tags & Search Row */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
               {/* Category Pills */}
               <div className="flex flex-wrap gap-2">
                 {categories.map((cat) => {
                   const label = tagTranslations[cat] ? tagTranslations[cat][lang] : cat;
-                  const isSelected = selectedTagCategory === cat;
+                  const isSelected = selectedCategory === cat;
                   return (
                     <button
                       key={cat}
-                      onClick={() => setSelectedTagCategory(cat)}
-                      className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 ${
+                      onClick={() => handleCategorySelect(cat)}
+                      className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${
                         isSelected
                           ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
                           : "bg-white text-neutral-600 border border-neutral-200/80 hover:bg-neutral-100 hover:text-neutral-900 shadow-2xs"
@@ -294,22 +250,29 @@ export default function NewsflashPage() {
                   type="text"
                   placeholder={lang === "FR" ? "Rechercher..." : "Search updates..."}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => handleSearchChange(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 bg-white border border-neutral-200/90 rounded-full text-xs sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
                 />
               </div>
             </div>
 
+            {/* Loading Indicator */}
+            {loading && (
+              <div className="py-20 text-center">
+                <div className="w-12 h-12 border-4 border-[#C6112F] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                <p className="text-neutral-600 font-bold text-sm">Fetching Latest Newsflash API...</p>
+              </div>
+            )}
+
             {/* 🌟 FEATURED RELEASE CARD 🌟 */}
-            {firstFeatured && (
+            {!loading && featuredArticle && (
               <div className="mb-10">
-                <article className="group relative bg-[#0f1117] rounded-3xl p-8 sm:p-10 shadow-2xl border border-neutral-800 hover:border-[#C6112F]/60 transition-all duration-300 overflow-hidden">
+                <article className="group relative bg-[#0f1117] rounded-3xl p-8 sm:p-10 shadow-2xl border border-neutral-800 hover:border-[#C6112F]/60 transition-all duration-300 overflow-hidden text-left">
                   <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                     <div className="lg:col-span-8">
-                      {/* Featured Badge */}
                       <div className="flex items-center gap-3 mb-4 flex-wrap">
                         <span className="bg-[#C6112F] text-white text-[10px] font-black tracking-[0.2em] uppercase px-3.5 py-1 rounded-full shadow-md">
-                          {lang === "FR" ? "DERNIÈRE ANNONCE" : "FEATURED RELEASE"}
+                          FEATURED RELEASE
                         </span>
                         <span className="px-3 py-1 bg-white/10 rounded-full text-neutral-300 text-xs font-semibold flex items-center gap-1.5 backdrop-blur-sm">
                           <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -317,28 +280,44 @@ export default function NewsflashPage() {
                             <line x1="16" y1="2" x2="16" y2="6" />
                             <line x1="8" y1="2" x2="8" y2="6" />
                           </svg>
-                          {lang === "FR" ? firstFeatured.dateFR : firstFeatured.dateEN}
+                          {featuredArticle.date || "July 2026"}
                         </span>
+
+                        {/* PDF Badge on Featured Card */}
+                        {extractPdfUrl(featuredArticle) && (
+                          <a
+                            href={extractPdfUrl(featuredArticle)!}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="px-3.5 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded-full text-xs font-bold tracking-wide transition-all flex items-center gap-1.5 shadow-md"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                            </svg>
+                            <span>Open PDF</span>
+                          </a>
+                        )}
                       </div>
 
-                      {/* Headline */}
-                      <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-3 group-hover:text-[#C6112F] transition-colors duration-300">
-                        {lang === "FR" ? firstFeatured.headlineFR : firstFeatured.headlineEN}
+                      <h3
+                        onClick={() => router.push(`/newsflash/${featuredArticle.slug || featuredArticle._id}`)}
+                        className="text-2xl sm:text-3xl font-black text-white leading-tight mb-3 group-hover:text-[#C6112F] transition-colors duration-300 cursor-pointer"
+                      >
+                        {featuredArticle.title}
                       </h3>
 
-                      {/* Snippet */}
-                      <p className="text-neutral-300 text-sm sm:text-base leading-relaxed font-normal max-w-[800px]">
-                        {lang === "FR" ? firstFeatured.snippetFR : firstFeatured.snippetEN}
+                      <p className="text-neutral-300 text-sm sm:text-base leading-relaxed font-normal max-w-[800px] line-clamp-3">
+                        {featuredArticle.subheading || featuredArticle.content}
                       </p>
                     </div>
 
-                    {/* Right CTA Area */}
-                    <div className="lg:col-span-4 flex lg:justify-end">
+                    <div className="lg:col-span-4 flex lg:justify-end gap-3 flex-wrap">
                       <button
-                        onClick={() => setActiveModalItem(firstFeatured)}
-                        className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#C6112F] text-white text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#a50e27] transition-all duration-300 shadow-md group-hover:scale-105"
+                        onClick={() => router.push(`/newsflash/${featuredArticle.slug || featuredArticle._id}`)}
+                        className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#C6112F] text-white text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#a50e27] transition-all duration-300 shadow-md group-hover:scale-105 cursor-pointer"
                       >
-                        <span>{t("news-read-more", "Read More")}</span>
+                        <span>Read Full Story</span>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>
@@ -349,70 +328,140 @@ export default function NewsflashPage() {
               </div>
             )}
 
-            {/* 🌟 ADORABLE & CLEAN NEWS CARDS GRID 🌟 */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {remainingNews.map((item) => {
-                const headline = lang === "FR" ? item.headlineFR : item.headlineEN;
-                const snippet = lang === "FR" ? item.snippetFR : item.snippetEN;
-                const date = lang === "FR" ? item.dateFR : item.dateEN;
-                const tag = tagTranslations[item.tagCategory] ? tagTranslations[item.tagCategory][lang] : item.tagCategory;
+            {/* 🌟 CARDS GRID FOR NEWS ITEMS (PAGINATED) 🌟 */}
+            {!loading && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {paginatedNews.map((item) => {
+                  const pdfUrl = extractPdfUrl(item);
+                  const articleSlug = item.slug || item._id;
 
-                return (
-                  <article
-                    key={item.id}
-                    className="group relative bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-2xs hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between overflow-hidden"
-                  >
-                    {/* Top Red Accent Line */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-[#C6112F] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  return (
+                    <article
+                      key={item._id}
+                      className="group relative bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-2xs hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between overflow-hidden text-left"
+                    >
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-[#C6112F] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    <div>
-                      {/* Date Pill & Tag Badge Row */}
-                      <div className="flex items-center justify-between gap-2 mb-4">
-                        <div className="px-3 py-1 bg-neutral-100/90 rounded-full text-neutral-500 font-medium text-[11px] flex items-center gap-1.5">
-                          <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                            <line x1="16" y1="2" x2="16" y2="6" />
-                            <line x1="8" y1="2" x2="8" y2="6" />
-                          </svg>
-                          <span>{date}</span>
+                      <div>
+                        {/* Date & Category Tag */}
+                        <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
+                          <div className="px-3 py-1 bg-neutral-100/90 rounded-full text-neutral-600 font-semibold text-[11px] flex items-center gap-1.5">
+                            <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                              <line x1="16" y1="2" x2="16" y2="6" />
+                              <line x1="8" y1="2" x2="8" y2="6" />
+                            </svg>
+                            <span>{item.date || item.publishedAt?.slice(0, 10) || "2026"}</span>
+                          </div>
+
+                          <span className="px-3 py-1 bg-[#C6112F]/10 text-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white text-[10px] font-bold tracking-wider uppercase rounded-full transition-colors duration-300">
+                            {item.category || "Newsflash"}
+                          </span>
                         </div>
-                        <span className="px-3 py-1 bg-[#C6112F]/10 text-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white text-[10px] font-bold tracking-wider uppercase rounded-full transition-colors duration-300">
-                          {tag}
-                        </span>
+
+                        {/* Title */}
+                        <h3
+                          onClick={() => router.push(`/newsflash/${articleSlug}`)}
+                          className="text-base sm:text-lg font-black text-[#1a1f2c] leading-snug mb-3 group-hover:text-[#C6112F] transition-colors duration-300 cursor-pointer line-clamp-3"
+                        >
+                          {item.title}
+                        </h3>
+
+                        {/* Snippet / Subheading */}
+                        <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium line-clamp-3">
+                          {item.subheading || item.content}
+                        </p>
                       </div>
 
-                      {/* Headline */}
-                      <h3 className="text-base sm:text-lg font-black text-[#1a1f2c] leading-snug mb-3 group-hover:text-[#C6112F] transition-colors duration-300">
-                        {headline}
-                      </h3>
+                      {/* PDF Button & Read Full News Link Footer Row */}
+                      <div className="pt-4 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 mt-auto">
+                        <div className="flex items-center gap-2">
+                          <Link
+                            href={`/newsflash/${articleSlug}`}
+                            className="text-xs font-bold tracking-wider uppercase text-neutral-800 group-hover:text-[#C6112F] transition-colors inline-flex items-center gap-1"
+                          >
+                            <span>Read Full News</span>
+                            <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                          </Link>
+                        </div>
 
-                      {/* Snippet */}
-                      <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium">
-                        {snippet}
-                      </p>
-                    </div>
+                        {/* 📄 View PDF Button (Shown when news contains PDF) 📄 */}
+                        {pdfUrl && (
+                          <a
+                            href={pdfUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="px-3 py-1.5 rounded-full bg-[#C6112F]/10 hover:bg-[#C6112F] text-[#C6112F] hover:text-white border border-[#C6112F]/30 text-[11px] font-black tracking-wider transition-all duration-300 flex items-center gap-1.5 shadow-2xs group/pdf cursor-pointer"
+                          >
+                            <svg className="w-3.5 h-3.5 text-[#C6112F] group-hover/pdf:text-white transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                            </svg>
+                            <span>VIEW PDF</span>
+                          </a>
+                        )}
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            )}
 
-                    {/* Read More Row */}
-                    <div className="pt-4 border-t border-neutral-100 flex items-center justify-between mt-auto">
+            {/* 🌟 EXECUTIVE PAGINATION CONTROLS 🌟 */}
+            {!loading && totalPages > 1 && (
+              <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-neutral-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs">
+                {/* Status Readout */}
+                <div className="text-xs font-semibold text-neutral-600">
+                  Showing <span className="font-extrabold text-neutral-900">{startIndex + 1}</span> - <span className="font-extrabold text-neutral-900">{Math.min(startIndex + ITEMS_PER_PAGE, remainingNews.length)}</span> of <span className="font-extrabold text-[#C6112F]">{remainingNews.length}</span> press releases
+                </div>
+
+                {/* Controls */}
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+                    disabled={currentPage === 1}
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
+                      currentPage === 1
+                        ? "bg-neutral-100 text-neutral-400 cursor-not-allowed border border-neutral-200"
+                        : "bg-white text-neutral-800 hover:bg-neutral-100 border border-neutral-300 shadow-2xs"
+                    }`}
+                  >
+                    ‹ Prev
+                  </button>
+
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => {
+                    const isActive = pageNum === currentPage;
+                    return (
                       <button
-                        onClick={() => setActiveModalItem(item)}
-                        className="text-xs font-bold tracking-wider uppercase text-neutral-800 group-hover:text-[#C6112F] transition-colors inline-flex items-center gap-1"
+                        key={pageNum}
+                        onClick={() => setCurrentPage(pageNum)}
+                        className={`w-9 h-9 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                          isActive
+                            ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
+                            : "bg-white text-neutral-700 hover:bg-neutral-100 border border-neutral-200 shadow-2xs"
+                        }`}
                       >
-                        <span>{t("news-read-more", "Read More")}</span>
+                        {pageNum}
                       </button>
-                      <button
-                        onClick={() => setActiveModalItem(item)}
-                        className="w-8 h-8 rounded-full bg-neutral-100 text-neutral-700 group-hover:bg-[#C6112F] group-hover:text-white flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 shadow-2xs"
-                      >
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                      </button>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+                    );
+                  })}
+
+                  <button
+                    onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+                    disabled={currentPage === totalPages}
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
+                      currentPage === totalPages
+                        ? "bg-neutral-100 text-neutral-400 cursor-not-allowed border border-neutral-200"
+                        : "bg-white text-neutral-800 hover:bg-neutral-100 border border-neutral-300 shadow-2xs"
+                    }`}
+                  >
+                    Next ›
+                  </button>
+                </div>
+              </div>
+            )}
 
             {/* Subscribe footer */}
             <div className="mt-16 text-center bg-white border border-neutral-200/80 rounded-3xl p-8 shadow-2xs">
@@ -426,50 +475,98 @@ export default function NewsflashPage() {
           </div>
         </section>
 
-        {/* 🌟 ARTICLE PREVIEW MODAL 🌟 */}
+        {/* 🌟 QUICK PREVIEW MODAL IF CLICKED 🌟 */}
         {activeModalItem && (
-          <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-fade-in">
-            <div className="bg-white rounded-3xl max-w-[720px] w-full p-6 sm:p-10 shadow-2xl border border-neutral-200 relative my-auto">
+          <div
+            className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fadeIn"
+            onClick={() => setActiveModalItem(null)}
+          >
+            <div
+              className="bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-neutral-200/90 relative overflow-hidden my-auto max-h-[92vh] flex flex-col text-left"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Floating Close Button */}
               <button
                 onClick={() => setActiveModalItem(null)}
-                className="absolute top-5 right-5 w-9 h-9 rounded-full bg-neutral-100 hover:bg-[#C6112F] hover:text-white text-neutral-600 flex items-center justify-center transition-colors font-bold"
+                className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/60 hover:bg-[#C6112F] text-white flex items-center justify-center transition-all duration-300 backdrop-blur-md border border-white/20 shadow-lg cursor-pointer group"
+                aria-label="Close Story"
               >
-                ✕
+                <svg className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
               </button>
 
-              <div className="flex items-center gap-3 mb-4">
-                <span className="px-3 py-1 bg-[#fef2f2] text-[#C6112F] border border-[#C6112F]/15 text-[11px] font-black uppercase rounded-full">
-                  {tagTranslations[activeModalItem.tagCategory] ? tagTranslations[activeModalItem.tagCategory][lang] : activeModalItem.tagCategory}
-                </span>
-                <span className="text-neutral-500 font-semibold text-xs">
-                  {lang === "FR" ? activeModalItem.dateFR : activeModalItem.dateEN}
-                </span>
-              </div>
+              {/* Hero Header Banner */}
+              <div className="relative h-64 sm:h-80 w-full shrink-0 overflow-hidden bg-neutral-900">
+                <img
+                  src={activeModalItem.image || "/news/hero_1.png"}
+                  alt={activeModalItem.title}
+                  className="w-full h-full object-cover opacity-85"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f1117] via-[#0f1117]/60 to-transparent" />
 
-              <h2 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] leading-tight mb-4">
-                {lang === "FR" ? activeModalItem.headlineFR : activeModalItem.headlineEN}
-              </h2>
-              <div className="w-12 h-[3px] bg-[#C6112F] rounded-full mb-6" />
+                <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 z-20">
+                  <div className="flex items-center gap-3 mb-3 flex-wrap">
+                    <span className="px-3.5 py-1 bg-[#C6112F] text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-md">
+                      {activeModalItem.category || "Newsflash"}
+                    </span>
+                    <span className="px-3 py-1 bg-white/15 backdrop-blur-md rounded-full text-white text-xs font-semibold flex items-center gap-1.5 border border-white/20">
+                      {activeModalItem.date || "2026"}
+                    </span>
+                  </div>
 
-              <div className="text-neutral-700 text-sm sm:text-base leading-relaxed font-medium space-y-4 mb-8">
-                <p className="font-semibold text-neutral-800">{lang === "FR" ? activeModalItem.snippetFR : activeModalItem.snippetEN}</p>
-                {activeModalItem.fullBodyEN && (
-                  <p className="pt-3 border-t border-neutral-100">
-                    {lang === "FR" ? activeModalItem.fullBodyFR : activeModalItem.fullBodyEN}
-                  </p>
-                )}
-              </div>
-
-              <div className="p-4 bg-[#f8fafc] border border-neutral-200/80 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="text-xs font-semibold text-neutral-600">
-                  Media Contact: <a href="mailto:jchoi@irinc.ca" className="text-[#C6112F] font-bold hover:underline">jchoi@irinc.ca</a>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight drop-shadow-sm">
+                    {activeModalItem.title}
+                  </h2>
                 </div>
-                <button
-                  onClick={() => setActiveModalItem(null)}
-                  className="px-5 py-2.5 rounded-xl bg-[#C6112F] text-white text-xs font-extrabold uppercase tracking-wider hover:bg-[#a80d26] transition-colors"
-                >
-                  Close Window
-                </button>
+              </div>
+
+              {/* Body */}
+              <div className="p-6 sm:p-8 md:p-10 overflow-y-auto space-y-6 flex-1">
+                {activeModalItem.subheading && (
+                  <div className="bg-rose-50/80 border-l-4 border-[#C6112F] p-5 rounded-r-2xl text-neutral-800 text-sm sm:text-base font-semibold leading-relaxed">
+                    "{activeModalItem.subheading}"
+                  </div>
+                )}
+
+                <div className="text-neutral-700 text-sm sm:text-base leading-relaxed font-medium space-y-4 whitespace-pre-line">
+                  {activeModalItem.content}
+                </div>
+
+                {/* PDF Option in Modal */}
+                {extractPdfUrl(activeModalItem) && (
+                  <div className="p-5 bg-rose-50 border border-[#C6112F]/20 rounded-2xl flex items-center justify-between gap-4">
+                    <span className="text-xs font-extrabold text-[#1a1f2c]">PDF Attachment Available</span>
+                    <a
+                      href={extractPdfUrl(activeModalItem)!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2 rounded-xl bg-[#C6112F] text-white text-xs font-black uppercase shadow-md"
+                    >
+                      Open PDF File
+                    </a>
+                  </div>
+                )}
+
+                {/* Footer Toolbar */}
+                <div className="pt-6 border-t border-neutral-100 flex items-center justify-between gap-4">
+                  <button
+                    onClick={() => {
+                      const slug = activeModalItem.slug || activeModalItem._id;
+                      setActiveModalItem(null);
+                      router.push(`/newsflash/${slug}`);
+                    }}
+                    className="px-5 py-2.5 rounded-xl bg-neutral-900 text-white text-xs font-bold uppercase tracking-wider hover:bg-neutral-800 transition-all cursor-pointer"
+                  >
+                    Open Full Dedicated Page
+                  </button>
+                  <button
+                    onClick={() => setActiveModalItem(null)}
+                    className="px-6 py-2.5 rounded-xl bg-[#C6112F] text-white text-xs font-black uppercase tracking-wider hover:bg-[#a50e27] transition-all cursor-pointer"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>
