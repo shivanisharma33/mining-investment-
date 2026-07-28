@@ -24,14 +24,17 @@ interface ApiNewsflashItem {
 }
 
 function extractPdfUrl(item: any): string | null {
-  if (!item) return "/documents/2026-brochure.pdf";
+  if (!item) return null;
 
   let rawUrl: string | null = null;
-  if (item.pdfUrl && typeof item.pdfUrl === "string") rawUrl = item.pdfUrl.trim();
-  else if (item.pdf && typeof item.pdf === "string") rawUrl = item.pdf.trim();
-  else if (item.pdfAttachment) {
-    if (typeof item.pdfAttachment === "string") rawUrl = item.pdfAttachment.trim();
-    else if (typeof item.pdfAttachment === "object" && item.pdfAttachment.url) {
+  if (item.pdfUrl && typeof item.pdfUrl === "string" && item.pdfUrl.trim()) {
+    rawUrl = item.pdfUrl.trim();
+  } else if (item.pdf && typeof item.pdf === "string" && item.pdf.trim()) {
+    rawUrl = item.pdf.trim();
+  } else if (item.pdfAttachment) {
+    if (typeof item.pdfAttachment === "string" && item.pdfAttachment.trim()) {
+      rawUrl = item.pdfAttachment.trim();
+    } else if (typeof item.pdfAttachment === "object" && item.pdfAttachment.url && typeof item.pdfAttachment.url === "string") {
       rawUrl = item.pdfAttachment.url.trim();
     }
   }
@@ -41,30 +44,26 @@ function extractPdfUrl(item: any): string | null {
     if (match) rawUrl = match[0];
   }
 
-  const titleLower = (item.title || "").toLowerCase();
+  // Only return a PDF URL if one was attached from the backend
+  if (!rawUrl) return null;
 
-  // If URL is missing, points to local/upload path that fails in deployment, or uses encoded + paths
-  if (
-    !rawUrl ||
-    rawUrl.includes("localhost") ||
-    rawUrl.includes("127.0.0.1") ||
-    rawUrl.includes("/uploads/") ||
-    rawUrl.includes("uploads/") ||
-    rawUrl.includes("mining-investment-backend.vercel.app") ||
-    rawUrl.includes("BROCHURE+MAY+29+ENG.pdf")
-  ) {
-    if (titleLower.includes("agenda") || titleLower.includes("programme") || titleLower.includes("horaire")) {
-      return "/documents/2026-agenda.pdf";
-    }
-    return "/documents/2026-brochure.pdf";
-  }
-
-  // If relative path without leading slash, add slash
-  if (!rawUrl.startsWith("http://") && !rawUrl.startsWith("https://") && !rawUrl.startsWith("/")) {
-    return "/" + rawUrl;
+  // Convert localhost / relative backend paths to live backend server URL
+  if (rawUrl.startsWith("http://localhost:5000") || rawUrl.startsWith("http://localhost:3000") || rawUrl.startsWith("http://127.0.0.1:5000")) {
+    rawUrl = rawUrl.replace(/^http:\/\/(localhost|127\.0\.0\.1):(5000|3000)/, "https://mining-investment-backend.vercel.app");
+  } else if (rawUrl.startsWith("/uploads/")) {
+    rawUrl = `https://mining-investment-backend.vercel.app${rawUrl}`;
+  } else if (rawUrl.startsWith("uploads/")) {
+    rawUrl = `https://mining-investment-backend.vercel.app/${rawUrl}`;
+  } else if (!rawUrl.startsWith("http://") && !rawUrl.startsWith("https://") && !rawUrl.startsWith("/")) {
+    rawUrl = "/" + rawUrl;
   }
 
   return rawUrl;
+}
+
+// Opens a PDF in Google Docs Viewer so it displays inline instead of downloading
+function openPdfUrl(rawUrl: string): string {
+  return `https://docs.google.com/viewer?url=${encodeURIComponent(rawUrl)}&embedded=false`;
 }
 
 export default function SingleNewsflashPage() {
@@ -275,7 +274,7 @@ export default function SingleNewsflashPage() {
 
                     {pdfUrl && (
                       <a
-                        href={pdfUrl}
+                        href={openPdfUrl(pdfUrl)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black uppercase tracking-wider transition-all shadow-md hover:scale-105"
@@ -319,16 +318,16 @@ export default function SingleNewsflashPage() {
                         Official PDF Press Document Attached
                       </h4>
                       <p className="text-xs text-neutral-600 font-medium">
-                        Click below to download or view the official press release PDF file.
+                        Click below to view the official press release PDF file.
                       </p>
                     </div>
                     <a
-                      href={pdfUrl}
+                      href={openPdfUrl(pdfUrl!)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-6 py-3 rounded-xl bg-[#C6112F] text-white text-xs font-black uppercase tracking-wider hover:bg-[#a50e27] transition-all shadow-md shrink-0"
                     >
-                      Download PDF File
+                      View PDF
                     </a>
                   </div>
                 )}

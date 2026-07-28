@@ -25,14 +25,17 @@ export interface ApiNewsflashItem {
 }
 
 export function extractPdfUrl(item: any): string | null {
-  if (!item) return "/documents/2026-brochure.pdf";
+  if (!item) return null;
 
   let rawUrl: string | null = null;
-  if (item.pdfUrl && typeof item.pdfUrl === "string") rawUrl = item.pdfUrl.trim();
-  else if (item.pdf && typeof item.pdf === "string") rawUrl = item.pdf.trim();
-  else if (item.pdfAttachment) {
-    if (typeof item.pdfAttachment === "string") rawUrl = item.pdfAttachment.trim();
-    else if (typeof item.pdfAttachment === "object" && item.pdfAttachment.url) {
+  if (item.pdfUrl && typeof item.pdfUrl === "string" && item.pdfUrl.trim()) {
+    rawUrl = item.pdfUrl.trim();
+  } else if (item.pdf && typeof item.pdf === "string" && item.pdf.trim()) {
+    rawUrl = item.pdf.trim();
+  } else if (item.pdfAttachment) {
+    if (typeof item.pdfAttachment === "string" && item.pdfAttachment.trim()) {
+      rawUrl = item.pdfAttachment.trim();
+    } else if (typeof item.pdfAttachment === "object" && item.pdfAttachment.url && typeof item.pdfAttachment.url === "string") {
       rawUrl = item.pdfAttachment.url.trim();
     }
   }
@@ -42,30 +45,26 @@ export function extractPdfUrl(item: any): string | null {
     if (match) rawUrl = match[0];
   }
 
-  const titleLower = (item.title || "").toLowerCase();
+  // Only return a PDF URL if one was attached from the backend
+  if (!rawUrl) return null;
 
-  // If URL is missing, points to local/upload path that fails in deployment, or uses encoded + paths
-  if (
-    !rawUrl ||
-    rawUrl.includes("localhost") ||
-    rawUrl.includes("127.0.0.1") ||
-    rawUrl.includes("/uploads/") ||
-    rawUrl.includes("uploads/") ||
-    rawUrl.includes("mining-investment-backend.vercel.app") ||
-    rawUrl.includes("BROCHURE+MAY+29+ENG.pdf")
-  ) {
-    if (titleLower.includes("agenda") || titleLower.includes("programme") || titleLower.includes("horaire")) {
-      return "/documents/2026-agenda.pdf";
-    }
-    return "/documents/2026-brochure.pdf";
-  }
-
-  // If relative path without leading slash, add slash
-  if (!rawUrl.startsWith("http://") && !rawUrl.startsWith("https://") && !rawUrl.startsWith("/")) {
-    return "/" + rawUrl;
+  // Convert localhost / relative backend paths to live backend server URL
+  if (rawUrl.startsWith("http://localhost:5000") || rawUrl.startsWith("http://localhost:3000") || rawUrl.startsWith("http://127.0.0.1:5000")) {
+    rawUrl = rawUrl.replace(/^http:\/\/(localhost|127\.0\.0\.1):(5000|3000)/, "https://mining-investment-backend.vercel.app");
+  } else if (rawUrl.startsWith("/uploads/")) {
+    rawUrl = `https://mining-investment-backend.vercel.app${rawUrl}`;
+  } else if (rawUrl.startsWith("uploads/")) {
+    rawUrl = `https://mining-investment-backend.vercel.app/${rawUrl}`;
+  } else if (!rawUrl.startsWith("http://") && !rawUrl.startsWith("https://") && !rawUrl.startsWith("/")) {
+    rawUrl = "/" + rawUrl;
   }
 
   return rawUrl;
+}
+
+// Opens a PDF in Google Docs Viewer so it displays inline instead of downloading
+function openPdfUrl(rawUrl: string): string {
+  return `https://docs.google.com/viewer?url=${encodeURIComponent(rawUrl)}&embedded=false`;
 }
 
 const tagTranslations: Record<string, { EN: string; FR: string }> = {
@@ -237,11 +236,10 @@ export default function NewsflashPage() {
                     <button
                       key={cat}
                       onClick={() => handleCategorySelect(cat)}
-                      className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${
-                        isSelected
+                      className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${isSelected
                           ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
                           : "bg-white text-neutral-600 border border-neutral-200/80 hover:bg-neutral-100 hover:text-neutral-900 shadow-2xs"
-                      }`}
+                        }`}
                     >
                       {label}
                     </button>
@@ -294,7 +292,7 @@ export default function NewsflashPage() {
                         {/* PDF Badge on Featured Card */}
                         {extractPdfUrl(featuredArticle) && (
                           <a
-                            href={extractPdfUrl(featuredArticle)!}
+                            href={openPdfUrl(extractPdfUrl(featuredArticle)!)}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
@@ -398,7 +396,7 @@ export default function NewsflashPage() {
                         {/* 📄 View PDF Button (Shown when news contains PDF) 📄 */}
                         {pdfUrl && (
                           <a
-                            href={pdfUrl}
+                            href={openPdfUrl(pdfUrl)}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
@@ -430,11 +428,10 @@ export default function NewsflashPage() {
                   <button
                     onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                     disabled={currentPage === 1}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
-                      currentPage === 1
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${currentPage === 1
                         ? "bg-neutral-100 text-neutral-400 cursor-not-allowed border border-neutral-200"
                         : "bg-white text-neutral-800 hover:bg-neutral-100 border border-neutral-300 shadow-2xs"
-                    }`}
+                      }`}
                   >
                     ‹ Prev
                   </button>
@@ -445,11 +442,10 @@ export default function NewsflashPage() {
                       <button
                         key={pageNum}
                         onClick={() => setCurrentPage(pageNum)}
-                        className={`w-9 h-9 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                          isActive
+                        className={`w-9 h-9 rounded-xl text-xs font-black transition-all cursor-pointer ${isActive
                             ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
                             : "bg-white text-neutral-700 hover:bg-neutral-100 border border-neutral-200 shadow-2xs"
-                        }`}
+                          }`}
                       >
                         {pageNum}
                       </button>
@@ -459,11 +455,10 @@ export default function NewsflashPage() {
                   <button
                     onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                     disabled={currentPage === totalPages}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
-                      currentPage === totalPages
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${currentPage === totalPages
                         ? "bg-neutral-100 text-neutral-400 cursor-not-allowed border border-neutral-200"
                         : "bg-white text-neutral-800 hover:bg-neutral-100 border border-neutral-300 shadow-2xs"
-                    }`}
+                      }`}
                   >
                     Next ›
                   </button>
@@ -536,14 +531,14 @@ export default function NewsflashPage() {
                 <div className="space-y-3.5 text-neutral-700 text-sm sm:text-base leading-relaxed font-medium">
                   {activeModalItem.content
                     ? activeModalItem.content
-                        .split(/\n+/)
-                        .map((p) => p.trim())
-                        .filter(Boolean)
-                        .map((paragraph, idx) => (
-                          <p key={idx} className="leading-relaxed">
-                            {paragraph}
-                          </p>
-                        ))
+                      .split(/\n+/)
+                      .map((p) => p.trim())
+                      .filter(Boolean)
+                      .map((paragraph, idx) => (
+                        <p key={idx} className="leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))
                     : null}
                 </div>
 
@@ -552,12 +547,12 @@ export default function NewsflashPage() {
                   <div className="p-5 bg-rose-50 border border-[#C6112F]/20 rounded-2xl flex items-center justify-between gap-4">
                     <span className="text-xs font-extrabold text-[#1a1f2c]">PDF Attachment Available</span>
                     <a
-                      href={extractPdfUrl(activeModalItem)!}
+                      href={openPdfUrl(extractPdfUrl(activeModalItem)!)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-5 py-2 rounded-xl bg-[#C6112F] text-white text-xs font-black uppercase shadow-md"
                     >
-                      Open PDF File
+                      View PDF
                     </a>
                   </div>
                 )}

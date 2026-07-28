@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
+import FeaturedPartners from "@/components/FeaturedPartners";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface RawNewsItem {
@@ -571,12 +572,13 @@ function EventByTheNumbers() {
     return () => observer.disconnect();
   }, [hasFlippedOnScroll]);
 
+  const Y_AXIS_MAX = 1450;
   const yearlyData = [
-    { year: 2022, total: 250, investors: 61, delegates: 189, heightPct: 28, yoy: "+0%" },
-    { year: 2023, total: 600, investors: 200, delegates: 400, heightPct: 48, yoy: "+140%" },
-    { year: 2024, total: 800, investors: 260, delegates: 540, heightPct: 65, yoy: "+33%" },
-    { year: 2025, total: 1045, investors: 300, delegates: 745, heightPct: 82, yoy: "+31%" },
-    { year: 2026, total: 1400, investors: 350, delegates: 1050, heightPct: 98, yoy: "+38%", highlight: "38% Y-O-Y" },
+    { year: 2022, total: 250, investors: 61, delegates: 189, heightPct: Math.round((250 / Y_AXIS_MAX) * 100), yoy: "+0%" },
+    { year: 2023, total: 600, investors: 200, delegates: 400, heightPct: Math.round((600 / Y_AXIS_MAX) * 100), yoy: "+140%" },
+    { year: 2024, total: 800, investors: 260, delegates: 540, heightPct: Math.round((800 / Y_AXIS_MAX) * 100), yoy: "+33%" },
+    { year: 2025, total: 1045, investors: 300, delegates: 745, heightPct: Math.round((1045 / Y_AXIS_MAX) * 100), yoy: "+31%" },
+    { year: 2026, total: 1400, investors: 350, delegates: 1050, heightPct: Math.round((1400 / Y_AXIS_MAX) * 100), yoy: "+38%", highlight: "38% Y-O-Y" },
   ];
 
   const selectedYear = yearlyData[selectedYearIndex];
@@ -721,10 +723,10 @@ function EventByTheNumbers() {
             </div>
 
             {/* Stacked Bars Container with Gridlines & Y-Axis */}
-            <div className="relative h-60 pt-6 pb-2 pl-8 pr-2 flex items-end justify-between gap-3 border-b border-neutral-200">
+            <div className="relative h-96 pt-6 pb-2 pl-8 pr-2 flex items-end justify-between gap-3 border-b border-neutral-200">
               {/* Background Gridlines */}
               <div className="absolute inset-0 pl-8 pr-2 pointer-events-none flex flex-col justify-between py-2">
-                {[1600, 1200, 800, 400, 0].map((val) => (
+                {[1400, 1000, 600, 200, 0].map((val) => (
                   <div key={val} className="w-full flex items-center gap-2">
                     <span className="text-[9px] font-bold text-neutral-400 w-5 text-right shrink-0">
                       {val}
@@ -818,7 +820,7 @@ function EventByTheNumbers() {
           </div>
 
           {/* Donut Chart Container with SVG 3D Depth & Orbiting Satellites */}
-          <div className="bg-white rounded-2xl border border-neutral-200/90 p-6 shadow-2xs flex flex-col sm:flex-row items-center justify-around gap-6">
+          <div className="bg-white rounded-2xl border border-neutral-200/90 p-6 shadow-2xs flex flex-col items-center justify-center gap-6">
             {/* Ultra-Realistic 3D SVG Donut Chart Callout */}
             <div
               ref={donutRef}
@@ -836,11 +838,11 @@ function EventByTheNumbers() {
               </div>
 
               {/* Concentric Pulse Circles (Circle-on-Circle Animation) */}
-              <div className="absolute w-32 h-32 rounded-full border-2 border-rose-300/30 animate-ping pointer-events-none opacity-40" />
-              <div className="absolute w-36 h-36 rounded-full border border-[#C6112F]/20 animate-pulse pointer-events-none opacity-40" />
+              <div className="absolute w-40 h-40 rounded-full border-2 border-rose-300/30 animate-ping pointer-events-none opacity-40" />
+              <div className="absolute w-44 h-44 rounded-full border border-[#C6112F]/20 animate-pulse pointer-events-none opacity-40" />
 
               {/* Vector SVG 3D Donut Chart */}
-              <div className="relative w-52 h-52 flex items-center justify-center">
+              <div className="relative w-[220px] h-[220px] flex items-center justify-center">
                 <svg className="w-full h-full -rotate-90 transform overflow-visible" viewBox="0 0 160 160">
                   <defs>
                     <filter id="donutShadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -894,32 +896,32 @@ function EventByTheNumbers() {
                 </svg>
 
                 {/* Upright Glassmorphic Center Hole Dial */}
-                <div className="absolute w-28 h-28 bg-white/95 backdrop-blur-md rounded-full flex flex-col items-center justify-center shadow-[inset_0_2px_6px_rgba(0,0,0,0.06),0_8px_20px_rgba(0,0,0,0.08)] text-center p-2 border border-neutral-200/90 z-20 group cursor-pointer transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center gap-1.5 mb-1 bg-neutral-100/90 px-2 py-0.5 rounded-full border border-neutral-200/80 shadow-2xs">
+                <div className="absolute w-28 h-28 bg-white/95 backdrop-blur-md rounded-full flex flex-col items-center justify-center shadow-[inset_0_2px_6px_rgba(0,0,0,0.06),0_8px_20px_rgba(0,0,0,0.08)] text-center px-2 py-2 border border-neutral-200/90 z-20 group cursor-pointer transition-all duration-300 hover:scale-105">
+                  <div className="flex items-center gap-1.5 mb-2 bg-neutral-100/90 px-3 py-1 rounded-full border border-neutral-200/80 shadow-2xs">
                     <span
-                      className="w-2 h-2 rounded-full animate-ping"
+                      className="w-2.5 h-2.5 rounded-full animate-ping"
                       style={{ backgroundColor: currentDisplayLegend.color }}
                     />
-                    <span className="text-[9px] font-black tracking-wider uppercase text-neutral-700">
+                    <span className="text-xs font-black tracking-wider uppercase text-neutral-700">
                       {currentDisplayLegend.percent}
                     </span>
                   </div>
 
                   <span
-                    className="text-2xl font-black leading-none mb-0.5 tracking-tight transition-colors duration-300"
+                    className="text-4xl font-black leading-none mb-1 tracking-tight transition-colors duration-300"
                     style={{ color: currentDisplayLegend.color }}
                   >
                     {currentDisplayLegend.percent}
                   </span>
-                  <span className="text-[9px] font-extrabold text-neutral-800 uppercase tracking-tighter line-clamp-1 px-1">
+                  <span className="text-xs font-extrabold text-neutral-800 uppercase tracking-tight leading-tight text-center px-2">
                     {currentDisplayLegend.name}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Interactive Color Legend */}
-            <div className="flex flex-col gap-2 text-xs font-bold text-neutral-700 w-full sm:w-auto">
+            {/* Interactive Color Legend — grid row below chart */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full text-xs font-bold text-neutral-700">
               {legendItems.map((item) => {
                 const isActive = currentDisplayLegend.name === item.name;
                 return (
@@ -1180,6 +1182,11 @@ export default function NewsPage() {
           <FeaturedPartnersBanner />
         </section>
 
+        {/* ═══════ SECTION 2B: SPONSORS TIER GRID ═══════ */}
+        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <FeaturedPartners />
+        </section>
+
         {/* ═══════ SECTION 3: THE LATEST - MINING (EXACT MOCKUP MATCH) ═══════ */}
         <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
           <LatestMiningSection setActiveModalItem={setActiveModalItem} />
@@ -1190,140 +1197,6 @@ export default function NewsPage() {
           <EventByTheNumbers />
         </section>
 
-        {/* ═══════ SECTION 5: ALL PRESS & RELEASES ═══════ */}
-        <section className="relative w-full pt-8">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              {t("news-latest-label", "LATEST STORIES")}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] tracking-tight mb-3">
-              Industry <span className="text-[#C6112F]">News & Press</span>
-            </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-8" />
-
-            {/* Filter Tags & Search Input Row */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-              <div className="flex flex-wrap gap-2">
-                {categories.map((cat) => {
-                  const label = tagTranslations[cat] ? tagTranslations[cat][lang] : cat;
-                  const isSelected = selectedTagCategory === cat;
-                  return (
-                    <button
-                      key={cat}
-                      onClick={() => setSelectedTagCategory(cat)}
-                      className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${isSelected
-                        ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
-                        : "bg-white text-neutral-600 border border-neutral-200/80 hover:bg-neutral-100 hover:text-neutral-900 shadow-2xs"
-                        }`}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="relative w-full md:w-72 shrink-0">
-                <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                </svg>
-                <input
-                  type="text"
-                  placeholder={lang === "FR" ? "Rechercher..." : "Search news..."}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-white border border-neutral-200/90 rounded-full text-xs sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
-                />
-              </div>
-            </div>
-
-            {/* Articles Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredRaw.map((item) => {
-                const headline = lang === "FR" ? item.headlineFR : item.headlineEN;
-                const snippet = lang === "FR" ? item.snippetFR : item.snippetEN;
-                const date = lang === "FR" ? item.dateFR : item.dateEN;
-                const tag = tagTranslations[item.tagCategory] ? tagTranslations[item.tagCategory][lang] : item.tagCategory;
-
-                return (
-                  <article
-                    key={item.id}
-                    onClick={() => setActiveModalItem(item)}
-                    className="group cursor-pointer bg-white rounded-2xl border border-neutral-200/90 p-6 shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-                  >
-                    <div>
-                      {item.image && (
-                        <div className="w-full h-44 rounded-xl overflow-hidden mb-4 bg-neutral-100">
-                          <img
-                            src={item.image}
-                            alt={headline}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                      )}
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <span className="bg-[#C6112F]/10 text-[#C6112F] text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md">
-                          {tag}
-                        </span>
-                        <span className="text-neutral-400 text-xs font-semibold">{date}</span>
-                      </div>
-                      <h3 className="text-lg font-bold text-neutral-900 leading-snug mb-2 group-hover:text-[#C6112F] transition-colors">
-                        {headline}
-                      </h3>
-                      <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-4">
-                        {snippet}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-[#C6112F]">
-                      <span>Read Story</span>
-                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Modal for full story */}
-        {activeModalItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
-            <div className="bg-white rounded-3xl max-w-2xl w-full p-8 shadow-2xl relative border border-neutral-100 max-h-[90vh] overflow-y-auto">
-              <button
-                onClick={() => setActiveModalItem(null)}
-                className="absolute top-6 right-6 w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 text-neutral-600 flex items-center justify-center transition-colors cursor-pointer"
-              >
-                ✕
-              </button>
-
-              <span className="bg-[#C6112F]/10 text-[#C6112F] text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-md inline-block mb-3">
-                {activeModalItem.tagCategory}
-              </span>
-              <p className="text-xs font-semibold text-neutral-400 mb-2">
-                {lang === "FR" ? activeModalItem.dateFR : activeModalItem.dateEN}
-              </p>
-              <h2 className="text-2xl font-black text-neutral-900 leading-tight mb-4">
-                {lang === "FR" ? activeModalItem.headlineFR : activeModalItem.headlineEN}
-              </h2>
-              <div className="w-12 h-1 bg-[#C6112F] rounded-full mb-6" />
-              <div className="space-y-3.5 text-neutral-700 text-sm sm:text-base leading-relaxed">
-                {((lang === "FR"
-                  ? activeModalItem.fullBodyFR || activeModalItem.snippetFR
-                  : activeModalItem.fullBodyEN || activeModalItem.snippetEN) || "")
-                  .split(/\n+/)
-                  .map((p) => p.trim())
-                  .filter(Boolean)
-                  .map((paragraph, idx) => (
-                    <p key={idx} className="leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* ═══════ SECTION 6: ADVERTISING & SUBSCRIPTION (EXACT MOCKUP MATCH) ═══════ */}
         <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
