@@ -130,7 +130,7 @@ export default function SingleNewsflashPage() {
 
   const pdfUrl = article ? extractPdfUrl(article) : null;
   const pageUrl = typeof window !== "undefined" ? window.location.href : "";
-  const shareTitle = article?.title || "THE Mining Investment Event Newsflash";
+  const shareTitle = article?.title || "THE Mining Investment Event Press Release";
 
   const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
   const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareTitle)}`;
@@ -164,14 +164,14 @@ export default function SingleNewsflashPage() {
               <svg className="w-4 h-4 text-[#C6112F] group-hover:-translate-x-0.5 transition-transform" fill="none" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
               </svg>
-              <span>Back to All Newsflash</span>
+              <span>Back to All Press Releases</span>
             </button>
 
             {/* Breadcrumb Navigation */}
             <nav className="flex items-center gap-2 text-xs font-semibold text-neutral-500 flex-wrap">
               <a href="/" className="hover:text-[#C6112F] transition-colors">{t("nav-home", "Home")}</a>
               <span>&lt;</span>
-              <a href="/newsflash" className="hover:text-[#C6112F] transition-colors">{t("nav-newsflash", "THE Newsflash")}</a>
+              <a href="/newsflash" className="hover:text-[#C6112F] transition-colors">{t("nav-newsflash", "THE Press Release")}</a>
               <span>&lt;</span>
               <span className="text-neutral-900 font-extrabold truncate max-w-[200px]">
                 {article?.title || "Article"}
@@ -191,7 +191,7 @@ export default function SingleNewsflashPage() {
                 onClick={() => router.push("/newsflash")}
                 className="px-6 py-2.5 bg-[#C6112F] text-white rounded-xl text-xs font-bold uppercase tracking-wider shadow-md cursor-pointer"
               >
-                Return to Newsflash
+                Return to Press Releases
               </button>
             </div>
           ) : (
@@ -359,7 +359,7 @@ export default function SingleNewsflashPage() {
                       onClick={() => router.push("/newsflash")}
                       className="px-6 py-2.5 rounded-xl bg-neutral-100 text-neutral-800 hover:bg-neutral-200 text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer"
                     >
-                      All Newsflash
+                      All Press Releases
                     </button>
                   </div>
                 </div>

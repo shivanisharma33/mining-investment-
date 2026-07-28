@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
-import FeaturedPartners from "@/components/FeaturedPartners";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface RawNewsItem {
@@ -259,184 +258,484 @@ const bannerSlides = [
   },
 ];
 
-function FeaturedPartnersBanner() {
-  const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
-
-  const prevBanner = () => {
-    setCurrentBannerIndex((prev) => (prev === 0 ? bannerSlides.length - 1 : prev - 1));
-  };
-
-  const nextBanner = () => {
-    setCurrentBannerIndex((prev) => (prev === bannerSlides.length - 1 ? 0 : prev + 1));
-  };
-
-  const currentBanner = bannerSlides[currentBannerIndex];
+function SponsorsSection() {
+  const tiers = [
+    {
+      key: "SPECIAL",
+      label: "Special Participation",
+      color: "#1a3a7a",
+      accentBg: "bg-blue-100",
+      logoH: "h-16",
+      logos: [
+        "/sponsors/2026/qu_bec.png",
+      ],
+    },
+    {
+      key: "PLATINUM",
+      label: "Platinum Partners",
+      color: "#8B6914",
+      accentBg: "bg-amber-100",
+      logoH: "h-16",
+      logos: [
+        "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
+        "/sponsors/2026/glencore.svg",
+        "/sponsors/2026/national_bank_financial_markets.png",
+        "/sponsors/2026/ventum_financial.png",
+        "/sponsors/2026/sponsor_platinum_10.png",
+        "/sponsors/2026/sponsor_platinum_12.png",
+        "/sponsors/2026/sponsor_platinum_29.png",
+      ],
+    },
+    {
+      key: "GOLD",
+      label: "Gold Partners",
+      color: "#B8860B",
+      accentBg: "bg-yellow-100",
+      logoH: "h-14",
+      logos: [
+        "/sponsors/2026/peartree_canada.png",
+        "/sponsors/2026/the_money_channel_new_york_city.svg",
+        "/sponsors/2026/sponsor_gold_13.png",
+        "/sponsors/2026/sponsor_gold_15.png",
+        "/sponsors/2026/sponsor_gold_28.png",
+        "/sponsors/2026/sponsor_gold_34.png",
+        "/sponsors/2026/sponsor_gold_42.png",
+        "/sponsors/2026/sponsor_2026_1_252x130.png",
+        "/sponsors/2026/sponsor_2026_2_282x45.png",
+        "/sponsors/2026/sponsor_2026_3_434x150.png",
+        "/sponsors/2026/sponsor_2026_4_260x93.png",
+        "/sponsors/2026/sponsor_2026_5_580x114.png",
+      ],
+    },
+    {
+      key: "SILVER",
+      label: "Silver Partners",
+      color: "#6B7280",
+      accentBg: "bg-neutral-200",
+      logoH: "h-12",
+      logos: [
+        "/sponsors/2026/atrium_research.ico",
+        "/sponsors/2026/canadian_securities_exchange_cse.png",
+        "/sponsors/2026/crux_investor.svg",
+        "/sponsors/2026/iamgold.ico",
+        "/sponsors/2026/government_of_newfoundland_labrador.svg",
+        "/sponsors/2026/or_royalties_osisko_royalties.svg",
+        "/sponsors/2026/hatch.png",
+        "/sponsors/2026/red_cloud_securities.png",
+        "/sponsors/2026/stifel.svg",
+        "/sponsors/2026/tmx_group.png",
+        "/sponsors/2026/sponsor_silver_5.png",
+        "/sponsors/2026/sponsor_silver_6.png",
+        "/sponsors/2026/sponsor_silver_9.png",
+        "/sponsors/2026/sponsor_silver_11.png",
+        "/sponsors/2026/sponsor_silver_16.png",
+        "/sponsors/2026/sponsor_silver_30.png",
+        "/sponsors/2026/sponsor_silver_31.png",
+        "/sponsors/2026/sponsor_silver_32.png",
+        "/sponsors/2026/sponsor_silver_33.png",
+        "/sponsors/2026/sponsor_silver_38.png",
+        "/sponsors/2026/sponsor_silver_41.png",
+        "/sponsors/2026/sponsor_silver_44.png",
+        "/sponsors/2026/sponsor_silver_46.png",
+      ],
+    },
+    {
+      key: "COPPER",
+      label: "Copper Partners",
+      color: "#B45309",
+      accentBg: "bg-orange-100",
+      logoH: "h-12",
+      logos: [
+        "/sponsors/2026/alliance_global_partners.ico",
+        "/sponsors/2026/brooks_nelson.png",
+        "/sponsors/2026/cassels.ico",
+        "/sponsors/2026/centre_des_congr_s_de_qu_bec.png",
+        "/sponsors/2026/la_caisse_cdpq.svg",
+        "/sponsors/2026/mercury_group.png",
+        "/sponsors/2026/outside_the_box_capital.png",
+        "/sponsors/2026/pal_airlines.png",
+        "/sponsors/2026/velocity_trade.png",
+        "/sponsors/2026/vrify.png",
+        "/sponsors/2026/sponsor_copper_2.png",
+        "/sponsors/2026/sponsor_copper_3.png",
+        "/sponsors/2026/sponsor_copper_4.png",
+        "/sponsors/2026/sponsor_copper_7.png",
+        "/sponsors/2026/sponsor_copper_8.png",
+        "/sponsors/2026/sponsor_copper_14.png",
+        "/sponsors/2026/sponsor_copper_39.png",
+        "/sponsors/2026/sponsor_copper_40.png",
+        "/sponsors/2026/sponsor_copper_43.png",
+        "/sponsors/2026/sponsor_copper_45.png",
+        "/sponsors/2026/sponsor_copper_51.png",
+      ],
+    },
+    {
+      key: "MEDIA",
+      label: "Media Partners",
+      color: "#C6112F",
+      accentBg: "bg-rose-100",
+      logoH: "h-10",
+      logos: [
+        "/sponsors/2026/sponsor_media_17.png",
+        "/sponsors/2026/sponsor_media_19.png",
+        "/sponsors/2026/sponsor_media_35.png",
+        "/sponsors/2026/sponsor_media_48.png",
+        "/sponsors/2026/sponsor_media_27.png",
+        "/sponsors/2026/sponsor_media_21.png",
+        "/sponsors/2026/miningir.png",
+        "/sponsors/2026/sponsor_media_22.png",
+        "/sponsors/2026/sponsor_media_23.png",
+        "/sponsors/2026/sponsor_media_36.png",
+        "/sponsors/2026/sponsor_media_25.png",
+        "/sponsors/2026/sponsor_media_53.png",
+        "/sponsors/2026/sponsor_media_52.png",
+        "/sponsors/2026/sponsor_media_49.png",
+        "/sponsors/2026/sponsor_media_37.png",
+      ],
+    },
+  ];
 
   return (
-    <div className="w-full flex flex-col items-center">
-      {/* Header text from mockup */}
-      <span className="text-[#C6112F] font-bold text-xs sm:text-sm tracking-[0.25em] uppercase text-center block mb-2">
-        FEATURED
-      </span>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] text-center mb-3 tracking-tight">
-        Featured Partners
-      </h2>
-      <div className="w-16 h-[3px] bg-[#C6112F] mx-auto rounded-full mb-4" />
-      <p className="text-neutral-600 text-xs sm:text-sm text-center font-medium max-w-xl mx-auto mb-10 leading-relaxed">
-        A spotlight on the partners powering THE Mining Investment Event.
-        <br />
-        Switch tiers to explore each circle of supporters.
-      </p>
-
-      {/* Banner Carousel Container with Side Arrows */}
-      <div className="w-full flex items-center justify-between gap-3 sm:gap-6">
-        {/* Left Circular Arrow */}
-        <button
-          onClick={prevBanner}
-          aria-label="Previous Partner Banner"
-          className="w-10 h-10 rounded-full border-2 border-[#C6112F] text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-xs shrink-0 z-10"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-          </svg>
-        </button>
-
-        {/* Center Full Image Banner Box */}
-        <div className="w-full bg-[#e5e7eb] border border-neutral-300/80 rounded-2xl sm:rounded-3xl shadow-sm relative overflow-hidden flex items-center justify-center h-[260px] sm:h-[340px] md:h-[380px] group transition-all">
-          <img
-            src={currentBanner.image}
-            alt={currentBanner.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-
-          <div className="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-10 sm:right-10 text-white z-10 text-left">
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-[#C6112F] bg-white/95 px-3 py-1 rounded-md inline-block mb-2 shadow-sm">
-              {currentBanner.subtitle}
-            </span>
-            <h3 className="text-xl sm:text-3xl font-black text-white leading-tight drop-shadow-sm">
-              {currentBanner.title}
-            </h3>
-          </div>
-        </div>
-
-        {/* Right Circular Arrow */}
-        <button
-          onClick={nextBanner}
-          aria-label="Next Partner Banner"
-          className="w-10 h-10 rounded-full border-2 border-[#C6112F] text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-xs shrink-0 z-10"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </button>
+    <div className="w-full">
+      {/* Section Header */}
+      <div className="text-center mb-10">
+        <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+          FEATURED
+        </span>
+        <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] tracking-tight mb-3">
+          Our Sponsors &amp; <span className="text-[#C6112F]">Partners</span>
+        </h2>
+        <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
+        <p className="text-neutral-500 text-sm font-medium max-w-xl mx-auto">
+          A spotlight on the partners powering THE Mining Investment Event.
+        </p>
       </div>
 
-      {/* Pagination Indicator Dots */}
-      <div className="flex justify-center items-center gap-2.5 mt-8">
-        {bannerSlides.map((slide, idx) => (
-          <button
-            key={slide.id}
-            onClick={() => setCurrentBannerIndex(idx)}
-            aria-label={`Go to banner ${idx + 1}`}
-            className={`transition-all duration-300 cursor-pointer ${idx === currentBannerIndex
-              ? "w-3 h-3 rounded-full bg-[#C6112F] scale-110"
-              : "w-2.5 h-2.5 rounded-full bg-neutral-300 hover:bg-neutral-400"
-              }`}
-          />
+      {/* Single Unified Card */}
+      <div className="bg-white rounded-3xl border border-neutral-200/90 shadow-sm p-6 sm:p-10 flex flex-col gap-8">
+        {tiers.map((tier, tIdx) => (
+          <div key={tier.key}>
+            {/* Tier Divider Label */}
+            <div className="flex items-center gap-3 mb-5">
+              <span
+                className={`${tier.accentBg} text-[10px] font-black uppercase tracking-[0.22em] px-3 py-1 rounded-full`}
+                style={{ color: tier.color }}
+              >
+                {tier.label}
+              </span>
+              <div className="flex-1 h-[1px] bg-neutral-200 rounded-full" />
+            </div>
+
+            {/* Logo Row — flex wrap so all logos flow naturally */}
+            <div className="flex flex-wrap gap-3 items-center">
+              {tier.logos.map((logo, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-center bg-neutral-50 border border-neutral-100 rounded-xl p-3 hover:shadow-md hover:-translate-y-0.5 hover:border-neutral-300 transition-all duration-200"
+                  style={{ minWidth: "100px", maxWidth: "160px", flex: "1 1 100px" }}
+                >
+                  <img
+                    src={logo}
+                    alt={`${tier.label} ${idx + 1}`}
+                    className={`${tier.logoH} max-w-full object-contain`}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Separator between tiers (not after last) */}
+            {tIdx < tiers.length - 1 && (
+              <div className="mt-8 border-b border-dashed border-neutral-200" />
+            )}
+          </div>
         ))}
       </div>
     </div>
   );
 }
 
-const latestMiningArticles = [
+// ─────────────────────────────────────────────────────────────
+// SECTION DATA
+// ─────────────────────────────────────────────────────────────
+
+/* 1. GOVERNMENTS */
+const governmentsArticles = [
   {
-    id: "mining-1",
-    category: "GOLD",
-    title: "Major Gold Discovery Reported in Northern Ontario",
-    date: "May 20, 2025",
+    id: "gov-1",
+    category: "CANADA",
+    title: "Ottawa Unveils $3B Critical Minerals Strategy for 2026",
+    date: "Jun 18, 2025",
     readTime: "5 min read",
-    snippet: "The discovery could add significant ounces to Canada's resource base and attract new investment into the region.",
-    image: "/news/gold_discovery.png",
+    snippet: "The federal government's landmark strategy targets lithium, nickel and cobalt supply chains to reduce reliance on foreign imports.",
+    image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200",
     featured: true,
   },
   {
-    id: "mining-2",
-    category: "COPPER",
-    title: "New Copper Project Advances in Chile",
-    date: "May 20, 2025",
-    readTime: "5 min read",
-    snippet: "Feasibility studies confirm robust economic returns for greenfield copper deposit.",
-    image: "/news/copper_mine.png",
+    id: "gov-2",
+    category: "USA",
+    title: "U.S. DOE Releases New Permitting Fast-Track for Mining Projects",
+    date: "Jun 10, 2025",
+    readTime: "4 min read",
+    snippet: "Washington accelerates environmental review timelines to boost domestic production of battery metals.",
+    image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=800",
   },
   {
-    id: "mining-3",
-    category: "BASE METALS",
-    title: "Mining M&A Activity Picks Up in Q2",
-    date: "May 20, 2025",
-    readTime: "5 min read",
-    snippet: "Consolidation trends drive strategic acquisitions across North American exploration companies.",
-    image: "/news/mining_ma.png",
+    id: "gov-3",
+    category: "EUROPE",
+    title: "EU Critical Raw Materials Act: First Benchmarks Published",
+    date: "May 30, 2025",
+    readTime: "6 min read",
+    snippet: "Brussels sets binding targets to source 10% of strategic minerals domestically by 2030 under the new CRMA framework.",
+    image: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?q=80&w=800",
   },
   {
-    id: "mining-4",
-    category: "GOLD",
-    title: "Silver Market Sees Strong Momentum",
-    date: "May 20, 2025",
-    readTime: "5 min read",
-    snippet: "Industrial demand and precious metal safe-haven inflows push silver prices higher.",
-    image: "/news/silver_market.png",
+    id: "gov-4",
+    category: "AFRICA",
+    title: "DRC Reforms Mining Code to Attract Foreign Direct Investment",
+    date: "May 18, 2025",
+    readTime: "4 min read",
+    snippet: "Kinshasa announces royalty restructuring and streamlined licensing to revitalize its copper-cobalt sector.",
+    image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800",
   },
   {
-    id: "mining-5",
-    category: "CRITICAL MINERALS",
-    title: "Critical Minerals Key to Energy Transition",
-    date: "May 20, 2025",
-    readTime: "5 min read",
-    snippet: "Policy support strengthens North American supply chain independence for lithium, nickel & cobalt.",
-    image: "/news/critical_minerals.png",
+    id: "gov-5",
+    category: "ASIA-PACIFIC",
+    title: "Australia's NAIF Commits A$500M to Northern Territory Resources",
+    date: "May 8, 2025",
+    readTime: "3 min read",
+    snippet: "Northern Australia Infrastructure Facility backs new road and port infrastructure to unlock remote mineral deposits.",
+    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=800",
   },
 ];
 
-function LatestMiningSection({
-  setActiveModalItem,
+/* 2. COMPANY ARTICLES */
+const companyArticles = [
+  {
+    id: "co-1",
+    category: "GOLD",
+    title: "Agnico Eagle Posts Record Q2 Production from LaRonde Complex",
+    date: "Jun 15, 2025",
+    readTime: "5 min read",
+    snippet: "Agnico Eagle reports 920,000 oz of gold production in Q2, driven by exceptional mill throughput at its flagship Quebec operations.",
+    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=1200",
+    featured: true,
+  },
+  {
+    id: "co-2",
+    category: "COPPER",
+    title: "Teck Resources Advances QB3 Expansion Amid Strong Copper Prices",
+    date: "Jun 8, 2025",
+    readTime: "4 min read",
+    snippet: "Teck secures board approval for QB3 feasibility study as copper trades near $4.50/lb.",
+    image: "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=800",
+  },
+  {
+    id: "co-3",
+    category: "OIL & GAS",
+    title: "Suncor Energy Delivers Strong Free Cash Flow in H1 2025",
+    date: "May 27, 2025",
+    readTime: "5 min read",
+    snippet: "Canada's largest oil sands producer reports $4.1B in free cash flow and raises its annual dividend by 8%.",
+    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=800",
+  },
+  {
+    id: "co-4",
+    category: "CRITICAL MINERALS",
+    title: "Patriot Battery Metals Closes C$150M Strategic Investment",
+    date: "May 14, 2025",
+    readTime: "4 min read",
+    snippet: "The Shaakichiuwaanaan lithium project advances as Patriot secures funding from a major Asian battery manufacturer.",
+    image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=800",
+  },
+  {
+    id: "co-5",
+    category: "SILVER",
+    title: "First Majestic Silver Reports Highest-Ever Monthly Silver Production",
+    date: "May 5, 2025",
+    readTime: "3 min read",
+    snippet: "San Dimas and Santa Elena mines combine for a record 3.7M oz Ag equivalent in April 2025.",
+    image: "https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=800",
+  },
+];
+
+/* 3. COMPANY INTERVIEWS (PAYING) */
+const companyInterviews = [
+  {
+    id: "int-1",
+    category: "CEO INTERVIEW",
+    title: "Exclusive: Glencore CEO on Copper's Role in the Energy Transition",
+    date: "Jun 20, 2025",
+    readTime: "12 min read",
+    snippet: "Gary Nagle discusses Glencore's long-term copper strategy, ESG targets and why the metal remains central to global decarbonization.",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200",
+    featured: true,
+    sponsored: true,
+  },
+  {
+    id: "int-2",
+    category: "CFO INTERVIEW",
+    title: "Agnico Eagle CFO on Capital Allocation and Dividend Growth",
+    date: "Jun 12, 2025",
+    readTime: "10 min read",
+    snippet: "A deep dive into Agnico Eagle's balance sheet strength and its approach to returning value to shareholders in 2025.",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800",
+    sponsored: true,
+  },
+  {
+    id: "int-3",
+    category: "EXPLORATION",
+    title: "Patriot Battery Metals: Building the Next Tier-1 Lithium Asset",
+    date: "May 29, 2025",
+    readTime: "8 min read",
+    snippet: "President & CEO Blair Way explains the resource expansion strategy at Shaakichiuwaanaan and what institutional investors should know.",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+    sponsored: true,
+  },
+  {
+    id: "int-4",
+    category: "OIL & GAS",
+    title: "Suncor Energy President on Oil Sands Innovation and Net-Zero Goals",
+    date: "May 20, 2025",
+    readTime: "9 min read",
+    snippet: "How Suncor is applying AI and carbon capture technology to reduce oil sands emissions while maintaining production growth.",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800",
+    sponsored: true,
+  },
+  {
+    id: "int-5",
+    category: "PRODUCTION",
+    title: "Teck Resources COO on Scaling QB2 and the Road to QB3",
+    date: "May 10, 2025",
+    readTime: "7 min read",
+    snippet: "Chief Operating Officer Jonathan Price outlines the operational ramp-up at Quebrada Blanca and the timeline for the next phase expansion.",
+    image: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=800",
+    sponsored: true,
+  },
+];
+
+/* 4. CONFERENCES */
+const conferencesArticles = [
+  {
+    id: "conf-1",
+    category: "MINING",
+    title: "THE Mining Investment Event 2026 — Quebec City, June 2–4",
+    date: "Jun 2, 2026",
+    readTime: "3 min read",
+    snippet: "Canada's premier mining capital markets conference returns to the Centre des congrès de Québec with 1,400+ delegates, 350+ investors and 300+ mining companies.",
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200",
+    featured: true,
+  },
+  {
+    id: "conf-2",
+    category: "OIL & GAS",
+    title: "ADIPEC 2025 — Abu Dhabi International Petroleum Exhibition",
+    date: "Nov 4, 2025",
+    readTime: "4 min read",
+    snippet: "The world's largest oil and gas gathering convenes 180,000+ professionals to discuss energy security, decarbonization and investment.",
+    image: "https://images.unsplash.com/photo-1561625116-5f8675632053?q=80&w=800",
+  },
+  {
+    id: "conf-3",
+    category: "MINING",
+    title: "PDAC 2026 — Prospectors & Developers Association of Canada",
+    date: "Mar 1, 2026",
+    readTime: "3 min read",
+    snippet: "PDAC 2026 opens in Toronto with record exhibitor registrations and a dedicated Critical Minerals Investment Corridor.",
+    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800",
+  },
+  {
+    id: "conf-4",
+    category: "OIL & GAS",
+    title: "CERAWeek 2026 — Energy Capital Markets Forum, Houston",
+    date: "Mar 9, 2026",
+    readTime: "4 min read",
+    snippet: "S&P Global's flagship energy summit gathers 8,000+ executives to debate oil prices, LNG markets and the speed of the energy transition.",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+  },
+  {
+    id: "conf-5",
+    category: "MINING",
+    title: "Mining Indaba 2026 — Africa's Foremost Mining Investment Forum",
+    date: "Feb 2, 2026",
+    readTime: "3 min read",
+    snippet: "Cape Town hosts 8,500+ delegates from 100 countries as Africa's critical minerals sector attracts unprecedented investor attention.",
+    image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800",
+  },
+];
+
+// ─────────────────────────────────────────────────────────────
+// REUSABLE SECTION TEMPLATE
+// ─────────────────────────────────────────────────────────────
+type SectionArticle = {
+  id: string;
+  category: string;
+  title: string;
+  date: string;
+  readTime: string;
+  snippet: string;
+  image: string;
+  featured?: boolean;
+  sponsored?: boolean;
+};
+
+function NewsSection({
+  sectionLabel,
+  title,
+  titleAccent,
+  icon,
+  categories,
+  articles,
+  ctaLabel,
+  accentNote,
 }: {
-  setActiveModalItem: (item: any) => void;
+  sectionLabel: string;
+  title: string;
+  titleAccent: string;
+  icon: React.ReactNode;
+  categories: string[];
+  articles: SectionArticle[];
+  ctaLabel: string;
+  accentNote?: string;
 }) {
   const router = useRouter();
-  const [selectedMiningCat, setSelectedMiningCat] = useState("ALL");
+  const [selectedCat, setSelectedCat] = useState("ALL");
 
-  const categories = ["ALL", "GOLD", "COPPER", "CRITICAL MINERALS", "BASE METALS", "EXPLORATION"];
-
-  const filteredArticles = latestMiningArticles.filter((art) => {
-    if (selectedMiningCat === "ALL") return true;
-    return art.category === selectedMiningCat;
-  });
-
-  const featuredArticle = filteredArticles.find((a) => a.featured) || filteredArticles[0];
-  const gridArticles = filteredArticles.filter((a) => a.id !== (featuredArticle?.id || "")).slice(0, 4);
+  const filtered = articles.filter((a) => selectedCat === "ALL" || a.category === selectedCat);
+  const featured = filtered.find((a) => a.featured) || filtered[0];
+  const grid = filtered.filter((a) => a.id !== (featured?.id || "")).slice(0, 4);
 
   return (
     <div className="w-full flex flex-col">
-      {/* Header Row from Mockup */}
+      {/* ── Header Row ── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-neutral-300">
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] uppercase tracking-tight">
-          THE LATEST - MINING
-        </h2>
+        <div className="flex flex-col gap-1">
+          <span className="text-[#C6112F] text-[10px] font-black tracking-[0.25em] uppercase">
+            {sectionLabel}
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] uppercase tracking-tight flex items-center gap-2.5">
+            {title}&nbsp;<span className="text-[#C6112F]">{titleAccent}</span>
+            <span className="flex items-center">{icon}</span>
+          </h2>
+          {accentNote && (
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#C6112F] bg-rose-50 border border-[#C6112F]/20 px-2.5 py-0.5 rounded-full w-fit mt-0.5">
+              ★ {accentNote}
+            </span>
+          )}
+        </div>
 
         {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           {categories.map((cat) => {
-            const isSelected = selectedMiningCat === cat;
+            const isSelected = selectedCat === cat;
             return (
               <button
                 key={cat}
-                onClick={() => setSelectedMiningCat(cat)}
-                className={`text-xs font-extrabold tracking-wider uppercase transition-all cursor-pointer ${isSelected
-                  ? "px-3.5 py-1 rounded-full text-[#C6112F] border border-[#C6112F] bg-rose-50 shadow-2xs"
-                  : "text-neutral-600 hover:text-[#C6112F] px-2 py-1"
-                  }`}
+                onClick={() => setSelectedCat(cat)}
+                className={`text-xs font-extrabold tracking-wider uppercase transition-all cursor-pointer ${
+                  isSelected
+                    ? "px-3.5 py-1 rounded-full text-[#C6112F] border border-[#C6112F] bg-rose-50 shadow-2xs"
+                    : "text-neutral-500 hover:text-[#C6112F] px-2 py-1"
+                }`}
               >
                 {cat}
               </button>
@@ -445,83 +744,96 @@ function LatestMiningSection({
         </div>
       </div>
 
-      {/* Featured Highlight Card (Top Row - Split Layout) */}
-      {featuredArticle && (
+      {/* ── Featured Card ── */}
+      {featured && (
         <div className="my-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200/90 shadow-xs hover:shadow-md transition-all">
-          <div className="md:col-span-5 w-full h-64 sm:h-72 md:h-80 rounded-xl overflow-hidden bg-neutral-200 shrink-0">
+          <div className="md:col-span-5 w-full h-64 sm:h-72 md:h-80 rounded-xl overflow-hidden bg-neutral-200 shrink-0 relative">
             <img
-              src={featuredArticle.image}
-              alt={featuredArticle.title}
+              src={featured.image}
+              alt={featured.title}
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
             />
+            <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-full shadow-md">
+              {featured.category}
+            </span>
+            {featured.sponsored && (
+              <span className="absolute top-3 right-3 bg-neutral-900/80 text-white text-[9px] font-black tracking-wider uppercase px-2.5 py-1 rounded-full backdrop-blur-sm">
+                SPONSORED
+              </span>
+            )}
           </div>
 
           <div className="md:col-span-7 flex flex-col justify-center text-left">
+            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-2 block">
+              {featured.category}
+            </span>
             <h3
-              onClick={() => router.push(`/news/${featuredArticle.id}`)}
+              onClick={() => router.push(`/news/${featured.id}`)}
               className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1f2430] tracking-tight leading-tight mb-2 hover:text-[#C6112F] cursor-pointer transition-colors"
             >
-              {featuredArticle.title}
+              {featured.title}
             </h3>
-
             <div className="w-14 h-[3px] bg-[#C6112F] rounded-full my-3" />
-
             <span className="text-[#C6112F] text-xs font-bold mb-3 block">
-              {featuredArticle.date} &nbsp;.&nbsp; {featuredArticle.readTime}
+              {featured.date}&nbsp;·&nbsp;{featured.readTime}
             </span>
-
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-6 font-medium max-w-xl">
-              {featuredArticle.snippet}
+              {featured.snippet}
             </p>
-
-            <div>
-              <button
-                onClick={() => router.push(`/news/${featuredArticle.id}`)}
-                className="text-[#C6112F] text-xs font-black tracking-widest uppercase hover:underline inline-flex items-center gap-1.5 cursor-pointer"
-              >
-                <span>READ MORE</span>
-                <span>&gt;</span>
-              </button>
-            </div>
+            <button
+              onClick={() => router.push(`/news/${featured.id}`)}
+              className="text-[#C6112F] text-xs font-black tracking-widest uppercase hover:underline inline-flex items-center gap-1.5 cursor-pointer w-fit"
+            >
+              <span>READ MORE</span><span>&gt;</span>
+            </button>
           </div>
         </div>
       )}
 
-      {/* 4-Column Grid Below */}
+      {/* ── 4-Column Grid ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-        {gridArticles.map((item) => (
+        {grid.map((item) => (
           <article
             key={item.id}
             onClick={() => router.push(`/news/${item.id}`)}
             className="group cursor-pointer flex flex-col justify-between text-left"
           >
             <div>
-              <div className="w-full h-44 sm:h-48 rounded-xl overflow-hidden mb-3 bg-neutral-200 border border-neutral-200/80">
+              <div className="w-full h-44 sm:h-48 rounded-xl overflow-hidden mb-3 bg-neutral-200 border border-neutral-200/80 relative">
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
                 />
+                <span className="absolute top-2 left-2 bg-[#C6112F]/90 text-white text-[9px] font-black tracking-wider uppercase px-2 py-0.5 rounded-full">
+                  {item.category}
+                </span>
+                {item.sponsored && (
+                  <span className="absolute top-2 right-2 bg-neutral-900/70 text-white text-[8px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded-full">
+                    AD
+                  </span>
+                )}
               </div>
-              <h4 className="text-base sm:text-lg font-extrabold text-[#1f2430] leading-snug mb-2 group-hover:text-[#C6112F] transition-colors">
+              <h4 className="text-base sm:text-lg font-extrabold text-[#1f2430] leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-3">
                 {item.title}
               </h4>
             </div>
-
             <span className="text-[#C6112F] text-xs font-bold mt-2">
-              {item.date} &nbsp;.&nbsp; {item.readTime}
+              {item.date}&nbsp;·&nbsp;{item.readTime}
             </span>
           </article>
         ))}
       </div>
 
-      {/* Bottom Center Button & Divider Line */}
+      {/* ── Bottom CTA ── */}
       <div className="flex flex-col items-center pt-4 pb-8 border-b border-neutral-300">
         <button
-          onClick={() => setSelectedMiningCat("ALL")}
+          onClick={() => setSelectedCat("ALL")}
           className="bg-[#C6112F] hover:bg-[#a50e27] text-white px-8 py-3.5 rounded-lg text-xs font-black tracking-widest uppercase shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95"
         >
-          VIEW ALL MINING NEWS
+          {ctaLabel}
         </button>
       </div>
     </div>
@@ -597,61 +909,120 @@ function EventByTheNumbers() {
         A global platform connecting investors, companies, and leaders driving the future of mining and resource investment.
       </p>
 
-      {/* Top Stats Bar Container (5 Key Numbers) */}
-      <div className="w-full bg-gradient-to-r from-neutral-50 via-white to-neutral-50 border border-neutral-300/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-sm grid grid-cols-2 md:grid-cols-5 gap-6 items-center justify-items-center divide-y md:divide-y-0 md:divide-x divide-neutral-200/90 mb-10">
-        {/* Stat 1 */}
-        <div className="w-full flex flex-col items-center justify-center p-3 text-center group cursor-pointer">
-          <div className="w-12 h-12 rounded-2xl bg-rose-50/80 border border-[#C6112F]/20 flex items-center justify-center text-[#C6112F] shadow-2xs group-hover:bg-[#C6112F] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-            </svg>
+      {/* Top Stats Bar Container (7 Key Cards matching provided design) */}
+      <div className="w-full bg-white border border-neutral-200/90 rounded-3xl p-4 sm:p-6 md:p-8 shadow-xs mb-10 overflow-x-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 min-w-[700px] lg:min-w-0">
+          {/* Card 1: 350 INVESTORS */}
+          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
+            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+            </div>
+            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">350</span>
+            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
+              INVESTORS
+            </span>
+            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
+              ATTENDING
+            </span>
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#1f2430] mt-3 mb-1 group-hover:text-[#C6112F] transition-colors">15+</span>
-          <span className="text-[#C6112F] text-[10px] font-extrabold tracking-widest uppercase">YEARS OF EXCELLENCE</span>
-        </div>
 
-        {/* Stat 2 */}
-        <div className="w-full flex flex-col items-center justify-center p-3 text-center pt-6 md:pt-3 group cursor-pointer">
-          <div className="w-12 h-12 rounded-2xl bg-rose-50/80 border border-[#C6112F]/20 flex items-center justify-center text-[#C6112F] shadow-2xs group-hover:bg-[#C6112F] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-            </svg>
+          {/* Card 2: 200+ MINING COMPANIES */}
+          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
+            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875A1.125 1.125 0 013.75 18.4v-4.25m16.5 0a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25m16.5 0v3.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25v-3.25" />
+              </svg>
+            </div>
+            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">200+</span>
+            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
+              MINING COMPANIES
+            </span>
+            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
+              PARTICIPATING
+            </span>
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#1f2430] mt-3 mb-1 group-hover:text-[#C6112F] transition-colors">500+</span>
-          <span className="text-[#C6112F] text-[10px] font-extrabold tracking-widest uppercase">INVESTORS ATTENDING</span>
-        </div>
 
-        {/* Stat 3 */}
-        <div className="w-full flex flex-col items-center justify-center p-3 text-center pt-6 md:pt-3 group cursor-pointer">
-          <div className="w-12 h-12 rounded-2xl bg-rose-50/80 border border-[#C6112F]/20 flex items-center justify-center text-[#C6112F] shadow-2xs group-hover:bg-[#C6112F] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875A1.125 1.125 0 013.75 18.4v-4.25m16.5 0a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25m16.5 0v3.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25v-3.25" />
-            </svg>
+          {/* Card 3: 143 1-ON-1 USERS */}
+          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
+            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+              </svg>
+            </div>
+            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">143</span>
+            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
+              1-ON-1 USERS
+            </span>
+            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
+              MEETING
+            </span>
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#1f2430] mt-3 mb-1 group-hover:text-[#C6112F] transition-colors">300+</span>
-          <span className="text-[#C6112F] text-[10px] font-extrabold tracking-widest uppercase">MINING COMPANIES PARTICIPATING</span>
-        </div>
 
-        {/* Stat 4 */}
-        <div className="w-full flex flex-col items-center justify-center p-3 text-center pt-6 md:pt-3 group cursor-pointer">
-          <div className="w-12 h-12 rounded-2xl bg-rose-50/80 border border-[#C6112F]/20 flex items-center justify-center text-[#C6112F] shadow-2xs group-hover:bg-[#C6112F] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
-            </svg>
+          {/* Card 4: 65 PRESENTATIONS */}
+          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
+            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h16.5m-16.5 0L12 10.5m8.25-7.5v11.25A2.25 2.25 0 0118 16.5h-2.25m-6 3.75h6m-3-3.75v3.75" />
+              </svg>
+            </div>
+            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">65</span>
+            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
+              PRESENTATIONS
+            </span>
+            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
+              DELIVERED
+            </span>
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#1f2430] mt-3 mb-1 group-hover:text-[#C6112F] transition-colors">50+</span>
-          <span className="text-[#C6112F] text-[10px] font-extrabold tracking-widest uppercase">COUNTRIES REPRESENTED</span>
-        </div>
 
-        {/* Stat 5 */}
-        <div className="w-full flex flex-col items-center justify-center p-3 text-center pt-6 md:pt-3 group cursor-pointer">
-          <div className="w-12 h-12 rounded-2xl bg-rose-50/80 border border-[#C6112F]/20 flex items-center justify-center text-[#C6112F] shadow-2xs group-hover:bg-[#C6112F] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25V9m10.5 0a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 9m15 0v11.25A2.25 2.25 0 0117.25 22.5H6.75A2.25 2.25 0 014.5 20.25V9" />
-            </svg>
+          {/* Card 5: 17 PANELS & KEYNOTES */}
+          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
+            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+              </svg>
+            </div>
+            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">17</span>
+            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
+              PANELS &amp; KEYNOTES
+            </span>
+            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
+              HELD
+            </span>
           </div>
-          <span className="text-3xl sm:text-4xl font-black text-[#1f2430] mt-3 mb-1 group-hover:text-[#C6112F] transition-colors">12,000+</span>
-          <span className="text-[#C6112F] text-[10px] font-extrabold tracking-widest uppercase">MEETINGS HELD</span>
+
+          {/* Card 6: 60+ SPONSORS & PARTNERS */}
+          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
+            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+              </svg>
+            </div>
+            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">60+</span>
+            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
+              SPONSORS &amp; PARTNERS
+            </span>
+            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
+              SUPPORTING
+            </span>
+          </div>
+
+          {/* Card 7: 3,500 MEETINGS */}
+          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
+            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+              </svg>
+            </div>
+            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">3,500</span>
+            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
+              MEETINGS
+            </span>
+            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
+              HELD
+            </span>
+          </div>
         </div>
       </div>
 
@@ -973,176 +1344,215 @@ function EventByTheNumbers() {
 function AdvertisingSubscriptionSection() {
   return (
     <div className="w-full flex flex-col text-left">
-      {/* Header from mockup */}
+      {/* Header */}
       <span className="text-[#C6112F] font-bold text-xs sm:text-sm tracking-[0.25em] uppercase block mb-2">
-        ADVERTISING & SUBSCRIPTION
+        ADVERTISING &amp; SUBSCRIPTION
       </span>
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] tracking-tight mb-3">
-        THE News - Your Source for all Things Resource
+        THE News — Your Source for all Things Resource
       </h2>
       <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-3" />
-      <p className="text-neutral-600 text-xs sm:text-sm font-medium max-w-xl mb-10 leading-relaxed">
+      <p className="text-neutral-600 text-xs sm:text-sm font-medium max-w-2xl mb-10 leading-relaxed">
         Promote your brand, share your story and connect with a global audience of resource industry leaders, investors and decision makers.
       </p>
 
       {/* Cards Layout */}
-      <div className="flex flex-col gap-6">
-        {/* Top Row: 3 Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1: BASIC ANNUAL SUBSCRIPTION */}
-          <div className="bg-[#f0f2f5] border border-neutral-300 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-center shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 transition-all">
-            <div>
-              <span className="text-[#C6112F] text-xs font-bold tracking-widest uppercase mb-4 block">
-                BASIC ANNUAL SUBSCRIPTION
-              </span>
-              <div className="text-3xl sm:text-4xl font-black text-[#C6112F] mb-1">
-                $1,200
-              </div>
-              <span className="text-neutral-600 text-xs font-bold mb-6 block">
-                / 12 months
-              </span>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Card 1: BASIC ANNUAL SUBSCRIPTION */}
+        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+          <div>
+            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
+              BASIC ANNUAL SUBSCRIPTION
+            </span>
+            <div className="flex items-baseline gap-1 mb-6 border-b border-neutral-100 pb-4">
+              <span className="text-3xl sm:text-4xl font-black text-[#1f2430]">$1,200.00</span>
+              <span className="text-neutral-500 text-xs font-bold">/ 12 months</span>
             </div>
 
-            <p className="text-neutral-600 text-xs leading-relaxed font-medium">
-              Delivered to your in-box monthly with the latest resource news, from around the world or access the website as needed.
-            </p>
+            {/* Bullet Points */}
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Delivered to your in-box monthly with the latest resource news from around the world.</span>
+              </li>
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Access the website as needed.</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Card 2: CORPORATE SUBSCRIPTION */}
-          <div className="bg-[#f0f2f5] border border-neutral-300 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-center shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 transition-all">
-            <div>
-              <span className="text-[#C6112F] text-xs font-bold tracking-widest uppercase mb-4 block">
-                CORPORATE SUBSCRIPTION
-              </span>
-              <div className="text-3xl sm:text-4xl font-black text-[#C6112F] mb-1">
-                $3,000
-              </div>
-              <span className="text-neutral-600 text-xs font-bold mb-4 block">
-                / 12 months
-              </span>
-              <div className="w-12 h-[2px] bg-[#C6112F] mx-auto my-4" />
-            </div>
-
-            <p className="text-neutral-600 text-xs leading-relaxed font-medium">
-              Your latest PR's & interviews distributed for 12 months Up to 6 press releases & 6 interviews
-            </p>
-          </div>
-
-          {/* Card 3: SPONSOR LOGO */}
-          <div className="bg-[#f0f2f5] border border-neutral-300 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-center shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 transition-all">
-            <div>
-              <span className="text-[#C6112F] text-xs font-bold tracking-widest uppercase mb-4 block">
-                SPONSOR LOGO
-              </span>
-
-              <div className="mb-3">
-                <div className="text-2xl sm:text-3xl font-black text-[#C6112F] leading-tight">
-                  $1,500
-                </div>
-                <span className="text-neutral-600 text-xs font-bold">
-                  / 3-month rotating banner
-                </span>
-              </div>
-
-              <div className="mb-4">
-                <div className="text-2xl sm:text-3xl font-black text-[#C6112F] leading-tight">
-                  $2,500
-                </div>
-                <span className="text-neutral-600 text-xs font-bold">
-                  / 6-month rotating banner
-                </span>
-              </div>
-
-              <div className="w-12 h-[2px] bg-[#C6112F] mx-auto my-3" />
-            </div>
-
-            <p className="text-neutral-600 text-xs leading-relaxed font-medium">
-              Your logo prominently featured as a sponsor of THE News with a clickable link to your website.
-            </p>
-          </div>
+          <a
+            href="mailto:jchoi@irinc.ca?subject=Basic%20Annual%20Subscription%20Inquiry"
+            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
+          >
+            BUY NOW
+          </a>
         </div>
 
-        {/* Bottom Row: 2 Cards (Matching 2-column width on mockup) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:w-2/3 md:max-w-4xl">
-          {/* Card 4: VID INTERVIEWS */}
-          <div className="bg-[#f0f2f5] border border-neutral-300 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-center shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 transition-all">
-            <div>
-              <span className="text-[#C6112F] text-xs font-bold tracking-widest uppercase mb-4 block">
-                VID INTERVIEWS
-              </span>
+        {/* Card 2: CORPORATE SUBSCRIPTION */}
+        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+          <div>
+            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
+              CORPORATE SUBSCRIPTION
+            </span>
+            <div className="flex items-baseline gap-1 mb-6 border-b border-neutral-100 pb-4">
+              <span className="text-3xl sm:text-4xl font-black text-[#1f2430]">$3,000</span>
+              <span className="text-neutral-500 text-xs font-bold">/ 12 months</span>
+            </div>
 
-              <div className="mb-2">
-                <div className="text-2xl sm:text-3xl font-black text-[#C6112F] leading-tight">
-                  $3,000
-                </div>
-                <span className="text-neutral-600 text-xs font-bold">
-                  / interview
-                </span>
+            {/* Bullet Points */}
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Your latest PR's &amp; interviews distributed for 12 months.</span>
+              </li>
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Up to 6 press releases &amp; 6 interviews included.</span>
+              </li>
+            </ul>
+          </div>
+
+          <a
+            href="mailto:jchoi@irinc.ca?subject=Corporate%20Subscription%20Inquiry"
+            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
+          >
+            BUY NOW
+          </a>
+        </div>
+
+        {/* Card 3: SPONSOR LOGO */}
+        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+          <div>
+            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
+              SPONSOR LOGO
+            </span>
+
+            <div className="space-y-2 mb-6 border-b border-neutral-100 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-600 text-xs font-bold">6-month</span>
+                <span className="text-2xl font-black text-[#1f2430]">$1,500</span>
               </div>
-
-              <div className="mb-2">
-                <div className="text-2xl sm:text-3xl font-black text-[#C6112F] leading-tight">
-                  $6,000
-                </div>
-                <span className="text-neutral-600 text-xs font-bold">
-                  / 3 interviews
-                </span>
-              </div>
-
-              <div className="mb-4">
-                <div className="text-2xl sm:text-3xl font-black text-[#C6112F] leading-tight">
-                  $9,000
-                </div>
-                <span className="text-neutral-600 text-xs font-bold">
-                  / 4 interviews
-                </span>
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-600 text-xs font-bold">12-month</span>
+                <span className="text-2xl font-black text-[#1f2430]">$2,500</span>
               </div>
             </div>
 
-            <p className="text-neutral-600 text-xs leading-relaxed font-medium pt-2">
-              Moderated intro - 15 minutes each, Edited, sent across THE Event social platforms, included in THE News for up to 1 year. Used for quarterly updates, press releases/announcements.
-            </p>
+            {/* Bullet Points */}
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Your logo prominently featured as a sponsor of THE News.</span>
+              </li>
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Clickable link directing to your website.</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Card 5: ADVERTISING */}
-          <div className="bg-[#f0f2f5] border border-neutral-300 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-center shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 transition-all">
-            <div>
-              <span className="text-[#C6112F] text-xs font-bold tracking-widest uppercase mb-4 block">
-                ADVERTISING
-              </span>
+          <a
+            href="mailto:jchoi@irinc.ca?subject=Sponsor%20Logo%20Inquiry"
+            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
+          >
+            BUY NOW
+          </a>
+        </div>
 
-              <div className="mb-2">
-                <div className="text-2xl sm:text-3xl font-black text-[#C6112F] leading-tight">
-                  $1,000
-                </div>
-                <span className="text-neutral-600 text-xs font-bold">
-                  / 3-month rotating banner
-                </span>
+        {/* Card 4: VID INTERVIEWS */}
+        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+          <div>
+            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
+              VID INTERVIEWS
+            </span>
+
+            <div className="space-y-1.5 mb-6 border-b border-neutral-100 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-600 text-xs font-bold">1 interview</span>
+                <span className="text-2xl font-black text-[#1f2430]">$3,000</span>
               </div>
-
-              <div className="mb-2">
-                <div className="text-2xl sm:text-3xl font-black text-[#C6112F] leading-tight">
-                  $3,000
-                </div>
-                <span className="text-neutral-600 text-xs font-bold">
-                  / 6-month rotating banner
-                </span>
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-600 text-xs font-bold">3 interviews</span>
+                <span className="text-2xl font-black text-[#1f2430]">$6,000</span>
               </div>
-
-              <div className="mb-4">
-                <div className="text-2xl sm:text-3xl font-black text-[#C6112F] leading-tight">
-                  $5,000
-                </div>
-                <span className="text-neutral-600 text-xs font-bold">
-                  / 12-month rotating banner
-                </span>
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-600 text-xs font-bold">4 interviews</span>
+                <span className="text-2xl font-black text-[#1f2430]">$9,000</span>
               </div>
             </div>
 
-            <p className="text-neutral-600 text-xs leading-relaxed font-medium pt-2">
-              We provide the specs you provide us with artwork to publish. Maximum of four companies per rotation.
-            </p>
+            {/* Bullet Points */}
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Moderated intro — 15 minutes each.</span>
+              </li>
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Edited and sent across THE Event social platforms.</span>
+              </li>
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Included in THE News for up to 1 year.</span>
+              </li>
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Used for quarterly updates, press releases &amp; announcements.</span>
+              </li>
+            </ul>
           </div>
+
+          <a
+            href="mailto:jchoi@irinc.ca?subject=VID%20Interviews%20Inquiry"
+            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
+          >
+            BUY NOW
+          </a>
+        </div>
+
+        {/* Card 5: ADVERTISING */}
+        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+          <div>
+            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
+              ADVERTISING
+            </span>
+
+            <div className="space-y-1.5 mb-6 border-b border-neutral-100 pb-4">
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-600 text-xs font-bold">3-month rotating banner</span>
+                <span className="text-2xl font-black text-[#1f2430]">$1,000</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-600 text-xs font-bold">6-month rotating banner</span>
+                <span className="text-2xl font-black text-[#1f2430]">$3,000</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-neutral-600 text-xs font-bold">12-month rotating banner</span>
+                <span className="text-2xl font-black text-[#1f2430]">$5,000</span>
+              </div>
+            </div>
+
+            {/* Bullet Points */}
+            <ul className="space-y-3 mb-8">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>We provide the specs, you provide us with artwork to publish.</span>
+              </li>
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
+                <span>Maximum of four companies per rotation.</span>
+              </li>
+            </ul>
+          </div>
+
+          <a
+            href="mailto:jchoi@irinc.ca?subject=Advertising%20Banner%20Inquiry"
+            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
+          >
+            BUY NOW
+          </a>
         </div>
       </div>
     </div>
@@ -1177,19 +1587,79 @@ export default function NewsPage() {
           <HeroNewsSlider setActiveModalItem={setActiveModalItem} lang={lang} />
         </section>
 
-        {/* ═══════ SECTION 2: FEATURED PARTNERS BANNER (EXACT MOCKUP MATCH) ═══════ */}
+        {/* ═══════ SECTION 2: SPONSORS & PARTNERS GRID ═══════ */}
         <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <FeaturedPartnersBanner />
+          <SponsorsSection />
         </section>
 
-        {/* ═══════ SECTION 2B: SPONSORS TIER GRID ═══════ */}
+        {/* ═══════ SECTION 3: GOVERNMENTS ═══════ */}
         <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <FeaturedPartners />
+          <NewsSection
+            sectionLabel="THE LATEST"
+            title="Governments"
+            titleAccent="— General"
+            icon={
+              <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M9 8h1m-1 4h1m4-4h1m-1 4h1M3 7l9-4 9 4M4 7v14M20 7v14M9 21V8m6 13V8" />
+              </svg>
+            }
+            categories={["ALL", "CANADA", "USA", "EUROPE", "AFRICA", "ASIA-PACIFIC"]}
+            articles={governmentsArticles}
+            ctaLabel="VIEW ALL GOVERNMENT NEWS"
+          />
         </section>
 
-        {/* ═══════ SECTION 3: THE LATEST - MINING (EXACT MOCKUP MATCH) ═══════ */}
+        {/* ═══════ SECTION 4: COMPANY ARTICLES ═══════ */}
         <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <LatestMiningSection setActiveModalItem={setActiveModalItem} />
+          <NewsSection
+            sectionLabel="COMPANY NEWS"
+            title="Company Articles"
+            titleAccent="— General"
+            icon={
+              <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 21H5a2 2 0 01-2-2V7l5-5h11a2 2 0 012 2v15a2 2 0 01-2 2z" />
+                <polyline strokeLinecap="round" strokeLinejoin="round" points="14 2 14 8 20 8" />
+              </svg>
+            }
+            categories={["ALL", "GOLD", "COPPER", "CRITICAL MINERALS", "SILVER", "OIL & GAS"]}
+            articles={companyArticles}
+            ctaLabel="VIEW ALL COMPANY ARTICLES"
+          />
+        </section>
+
+        {/* ═══════ SECTION 5: COMPANY INTERVIEWS ═══════ */}
+        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <NewsSection
+            sectionLabel="EXCLUSIVE CONTENT"
+            title="Company Interviews"
+            titleAccent="— Paying"
+            accentNote="Sponsored Content"
+            icon={
+              <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+              </svg>
+            }
+            categories={["ALL", "CEO INTERVIEW", "CFO INTERVIEW", "EXPLORATION", "PRODUCTION", "OIL & GAS"]}
+            articles={companyInterviews}
+            ctaLabel="VIEW ALL INTERVIEWS"
+          />
+        </section>
+
+        {/* ═══════ SECTION 6: CONFERENCES ═══════ */}
+        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <NewsSection
+            sectionLabel="EVENTS & CONFERENCES"
+            title="Conferences"
+            titleAccent="— Mining & Oil & Gas"
+            icon={
+              <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            }
+            categories={["ALL", "MINING", "OIL & GAS"]}
+            articles={conferencesArticles}
+            ctaLabel="VIEW ALL CONFERENCES"
+          />
         </section>
 
         {/* ═══════ SECTION 4: THE EVENT BY THE NUMBERS (EXACT MOCKUP MATCH) ═══════ */}
@@ -1211,3 +1681,4 @@ export default function NewsPage() {
     </>
   );
 }
+

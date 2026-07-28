@@ -58,13 +58,25 @@ const aboutDropdown = [
   },
   {
     titleKey: "nav-newsflash",
-    titleDefault: "THE Newsflash",
+    titleDefault: "THE Press Release",
     descKey: "nav-newsflash-desc",
-    descDefault: "Newsletter and industry updates",
+    descDefault: "Press releases and official announcements",
     href: "/newsflash",
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+      </svg>
+    ),
+  },
+  {
+    titleKey: "nav-imw",
+    titleDefault: "International Mining Week",
+    descKey: "nav-imw-desc",
+    descDefault: "One week of infinite mining opportunities in Quebec City",
+    href: "/imw",
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
       </svg>
     ),
   },

@@ -19,7 +19,9 @@ const translations: Record<Language, Record<string, string>> = {
     "nav-team": "THE Team",
     "nav-travel": "Travel & Accommodations",
     "nav-media": "Recent Media",
-    "nav-newsflash": "THE Newsflash",
+    "nav-newsflash": "THE Press Release",
+    "nav-imw": "International Mining Week",
+    "nav-imw-desc": "One week of infinite mining opportunities in Quebec City",
     "nav-programs": "Programs",
     "nav-student": "The Student Sponsorship Program",
     "nav-sheco": "SHE-Co Initiative",
@@ -287,15 +289,15 @@ const translations: Record<Language, Record<string, string>> = {
     "media-bottom-text": "For full media gallery access, recent press coverage, and media accreditation inquiries:",
     "media-bottom-cta": "Contact for Media Access",
 
-    // Newsflash page
+    // Press Release page
     "news-hero-title-1": "THE",
-    "news-hero-title-2": "Newsflash",
-    "news-latest-label": "LATEST UPDATES",
+    "news-hero-title-2": "Press Release",
+    "news-latest-label": "LATEST PRESS RELEASES",
     "news-section-title-1": "Stay Informed with",
-    "news-section-title-2": "THE Newsflash",
-    "news-section-desc": "The latest news, announcements and updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates.",
+    "news-section-title-2": "THE Press Releases",
+    "news-section-desc": "The latest press releases, announcements and official updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates.",
     "news-read-more": "Read More",
-    "news-subscribe-text": "For more information and to subscribe to THE Newsflash, contact",
+    "news-subscribe-text": "For more information and to subscribe to THE Press Releases, contact",
     "news-filter-all": "All",
 
     // Student Sponsorship Page
@@ -647,15 +649,15 @@ const translations: Record<Language, Record<string, string>> = {
     "media-bottom-text": "Pour l'accès à la galerie complète, la couverture médiatique récente et les demandes d'accréditation :",
     "media-bottom-cta": "Contacter pour Accès Médias",
 
-    // Newsflash page
+    // Press Release page
     "news-hero-title-1": "THE",
-    "news-hero-title-2": "Newsflash",
-    "news-latest-label": "DERNIÈRES MISES À JOUR",
+    "news-hero-title-2": "Communiqués de Presse",
+    "news-latest-label": "DERNIERS COMMUNIQUÉS DE PRESSE",
     "news-section-title-1": "Restez Informé avec",
-    "news-section-title-2": "THE Newsflash",
-    "news-section-desc": "Les dernières nouvelles, annonces et mises à jour de L'Événement d'Investissement Minier. Abonnez-vous pour rester au courant de la programmation, des annonces de conférenciers et des mises à jour des initiatives.",
+    "news-section-title-2": "THE Communiqués de Presse",
+    "news-section-desc": "Les derniers communiqués de presse, annonces et mises à jour de L'Événement d'Investissement Minier. Abonnez-vous pour rester au courant de la programmation, des annonces de conférenciers et des mises à jour des initiatives.",
     "news-read-more": "Lire Plus",
-    "news-subscribe-text": "Pour plus d'informations et pour vous abonner à THE Newsflash, contactez",
+    "news-subscribe-text": "Pour plus d'informations et pour vous abonner aux communiqués de presse, contactez",
     "news-filter-all": "Tous",
 
     // Student Sponsorship Page

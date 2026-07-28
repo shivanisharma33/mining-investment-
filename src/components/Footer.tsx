@@ -186,7 +186,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/newsflash" className="hover:text-[#C6112F] transition-colors">
-                  {t("nav-newsflash", "THE Newsflash")}
+                  {t("nav-newsflash", "THE Press Release")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/imw" className="hover:text-[#C6112F] transition-colors">
+                  {t("nav-imw", "International Mining Week")}
                 </Link>
               </li>
             </ul>
@@ -248,7 +253,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/newsflash" className="hover:text-[#C6112F] transition-colors">
-                  {t("nav-newsflash", "THE Newsflash")}
+                  {t("nav-newsflash", "THE Press Release")}
                 </Link>
               </li>
             </ul>

@@ -211,10 +211,10 @@ export default function NewsflashPage() {
               <span className="text-[#C6112F]">›</span>
               <span className="text-neutral-500">{t("nav-about", "About")}</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white">{t("nav-newsflash", "THE Newsflash")}</span>
+              <span className="text-white">{t("nav-newsflash", "THE Press Release")}</span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
-              {t("news-hero-title-1", "THE")} <span className="text-[#C6112F]">{t("news-hero-title-2", "Newsflash")}</span>
+              {t("news-hero-title-1", "THE")} <span className="text-[#C6112F]">{t("news-hero-title-2", "Press Release")}</span>
             </h1>
             <div className="w-20 h-[3px] bg-[#C6112F] mt-6" />
           </div>
@@ -224,16 +224,16 @@ export default function NewsflashPage() {
         <section className="relative w-full py-16 sm:py-20 md:py-24">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              {t("news-latest-label", "LATEST UPDATES")}
+              {t("news-latest-label", "LATEST PRESS RELEASES")}
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
-              {t("news-section-title-1", "Stay Informed with")} <span className="text-[#C6112F]">{t("news-section-title-2", "THE Newsflash")}</span>
+              {t("news-section-title-1", "Stay Informed with")} <span className="text-[#C6112F]">{t("news-section-title-2", "THE Press Releases")}</span>
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[700px] mb-10 font-medium">
               {t(
                 "news-section-desc",
-                "The latest news, announcements and updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates."
+                "The latest press releases, announcements and official updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates."
               )}
             </p>
 
