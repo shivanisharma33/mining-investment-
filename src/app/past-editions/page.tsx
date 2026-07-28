@@ -116,12 +116,12 @@ export default function PastEditionsPage() {
       <main className="min-h-screen bg-white text-neutral-900 font-sans antialiased overflow-x-hidden pt-20 sm:pt-24">
         {/* Hero Section */}
         <section className="relative w-full bg-white pt-2 pb-8 md:pt-4 md:pb-10 overflow-hidden border-b border-neutral-100">
-          <div className="max-w-[1320px] mx-auto px-6 md:px-12 relative z-10">
+          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column - Content */}
               <div className="lg:col-span-6 flex flex-col items-start text-left">
                 {/* Breadcrumb */}
-                <nav className="flex items-center gap-1.5 text-[11px] md:text-xs font-bold tracking-[0.15em] text-neutral-500 uppercase mb-4">
+                <nav className="flex flex-wrap items-center gap-1.5 text-[10px] xs:text-[11px] md:text-xs font-bold tracking-[0.15em] text-neutral-500 uppercase mb-4">
                   <Link href="/" className="hover:text-[#C6112F] transition-colors">
                     HOME
                   </Link>
@@ -137,17 +137,17 @@ export default function PastEditionsPage() {
                 </span>
 
                 {/* Main Headline */}
-                <h1 className="text-3xl sm:text-4xl lg:text-[44px] leading-[1.15] font-black text-neutral-900 tracking-tight mb-3 max-w-[540px]">
+                <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-[44px] leading-[1.15] font-black text-neutral-900 tracking-tight mb-3 max-w-[540px]">
                   {isFr
                     ? "Explorez des Années d'Excellence en Investissement Minier"
                     : "Explore Years of Mining Investment Excellence"}
                 </h1>
 
                 {/* Decorative Red Line */}
-                <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mb-4" />
+                <div className="w-16 sm:w-20 h-[3px] bg-[#C6112F] rounded-full mb-4" />
 
                 {/* Description Subtext */}
-                <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed mb-6 max-w-[480px]">
+                <p className="text-neutral-600 text-xs sm:text-sm md:text-base font-medium leading-relaxed mb-6 max-w-[480px]">
                   {isFr
                     ? "Revivez chaque édition à travers les programmes, les conférenciers, les entreprises participantes, les brochures et les commanditaires."
                     : "Relive every edition through agendas, speakers, participating companies, brochures and sponsors."}
@@ -162,7 +162,7 @@ export default function PastEditionsPage() {
                     placeholder={
                       isFr ? "Rechercher l'année de l'édition..." : "Search Edition Year..."
                     }
-                    className="w-full bg-[#f8fafc] text-neutral-800 text-sm sm:text-base font-medium placeholder-neutral-400 border border-neutral-300 rounded-full py-3.5 pl-6 pr-14 shadow-inner focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 transition-all"
+                    className="w-full bg-[#f8fafc] text-neutral-800 text-xs sm:text-base font-medium placeholder-neutral-400 border border-neutral-300 rounded-full py-3 sm:py-3.5 pl-5 sm:pl-6 pr-12 sm:pr-14 shadow-inner focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 transition-all"
                   />
                   <button
                     type="button"
@@ -170,7 +170,7 @@ export default function PastEditionsPage() {
                     className="absolute right-3.5 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-[#C6112F] transition-colors p-1"
                   >
                     <svg
-                      className="w-5 h-5 stroke-current"
+                      className="w-4 h-4 sm:w-5 sm:h-5 stroke-current"
                       fill="none"
                       strokeWidth="2.2"
                       viewBox="0 0 24 24"
@@ -188,7 +188,7 @@ export default function PastEditionsPage() {
               {/* Right Column - Dotted Globe Image */}
               <div className="lg:col-span-6 flex justify-center lg:justify-end relative">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,17,47,0.08),transparent_65%)] pointer-events-none rounded-full" />
-                <div className="relative w-[320px] sm:w-[420px] md:w-[460px] lg:w-[480px] aspect-square flex items-center justify-center">
+                <div className="relative w-full max-w-[280px] xs:max-w-[340px] sm:w-[420px] md:w-[460px] lg:w-[480px] aspect-square flex items-center justify-center">
                   <Image
                     src="/image%2034.png"
                     alt="Mining Investment Event Globe"
@@ -205,17 +205,17 @@ export default function PastEditionsPage() {
 
         {/* Editions Grid & Impact Section */}
         <section className="pt-8 pb-12 md:pt-10 md:pb-16 bg-white">
-          <div className="max-w-[1320px] mx-auto px-6 md:px-12">
+          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-12">
             {/* Section Heading above Year Cards */}
             <div className="mb-8 text-left">
               <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
                 {isFr ? "ÉDITIONS ARCHIVÉES" : "ARCHIVED EDITIONS"}
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
+              <h2 className="text-2xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
                 {isFr ? "Explorez Nos Éditions Précédentes" : "Explore Our Past Editions"}
               </h2>
               <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
-              <p className="text-neutral-600 text-sm sm:text-base font-medium max-w-[680px] leading-relaxed">
+              <p className="text-neutral-600 text-xs sm:text-base font-medium max-w-[680px] leading-relaxed">
                 {isFr
                   ? "Sélectionnez une année ci-dessous pour consulter les ordres du jour, les conférenciers, les brochures, les entreprises et les commanditaires."
                   : "Select a year below to explore complete agendas, speakers, event brochures, participating companies, and sponsors."}
@@ -232,7 +232,7 @@ export default function PastEditionsPage() {
                     className="group bg-white rounded-2xl border border-neutral-200/90 overflow-hidden flex flex-col justify-between cursor-pointer transition-all duration-300 shadow-sm hover:shadow-xl hover:border-[#C6112F] hover:-translate-y-1"
                   >
                     {/* Top Photo */}
-                    <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-neutral-100">
+                    <div className="relative w-full h-44 sm:h-52 overflow-hidden bg-neutral-100">
                       <Image
                         src={card.image}
                         alt={card.year.toString()}
@@ -243,7 +243,7 @@ export default function PastEditionsPage() {
                     </div>
 
                     {/* Card Content Body */}
-                    <div className="p-6 flex flex-col items-start text-left flex-grow justify-between">
+                    <div className="p-5 sm:p-6 flex flex-col items-start text-left flex-grow justify-between">
                       <div>
                         {/* Year */}
                         <span className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight mb-2 block">
@@ -251,12 +251,12 @@ export default function PastEditionsPage() {
                         </span>
 
                         {/* Title */}
-                        <h3 className="text-lg sm:text-xl font-bold text-[#C6112F] leading-snug mb-3">
+                        <h3 className="text-base sm:text-xl font-bold text-[#C6112F] leading-snug mb-2 sm:mb-3">
                           {isFr ? card.titleFr : card.title}
                         </h3>
 
                         {/* Description */}
-                        <p className="text-neutral-600 text-xs sm:text-sm font-medium leading-relaxed mb-6">
+                        <p className="text-neutral-600 text-xs sm:text-sm font-medium leading-relaxed mb-5 sm:mb-6">
                           {isFr ? card.descFr : card.desc}
                         </p>
                       </div>
@@ -285,12 +285,12 @@ export default function PastEditionsPage() {
             </div>
 
             {/* Impact Stats Container */}
-            <div className="w-full bg-gradient-to-b from-[#ffffff] via-[#fcfdfe] to-[#f4f7fa] border border-neutral-300/80 rounded-2xl p-6 sm:p-8 md:p-10 shadow-sm text-left mb-10">
-              <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase mb-8 block">
+            <div className="w-full bg-gradient-to-b from-[#ffffff] via-[#fcfdfe] to-[#f4f7fa] border border-neutral-300/80 rounded-2xl p-5 sm:p-8 md:p-10 shadow-sm text-left mb-10">
+              <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase mb-6 sm:mb-8 block">
                 {isFr ? "NOTRE IMPACT AU FIL DES ANS" : "OUR IMPACT OVER THE YEARS"}
               </span>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-0">
+              <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-0">
                 {impactStats.map((stat, idx) => {
                   const isLast = idx === impactStats.length - 1;
                   return (
@@ -300,15 +300,15 @@ export default function PastEditionsPage() {
                         } ${idx !== 0 ? "lg:pl-8" : ""}`}
                     >
                       {/* Icon */}
-                      <div className="mb-4 text-neutral-900 transform group-hover:scale-110 transition-transform duration-200">{stat.icon}</div>
+                      <div className="mb-3 sm:mb-4 text-neutral-900 transform group-hover:scale-110 transition-transform duration-200">{stat.icon}</div>
 
                       {/* Value */}
-                      <span className="text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 tracking-tight leading-none mb-3">
+                      <span className="text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 tracking-tight leading-none mb-2 sm:mb-3">
                         {stat.value}
                       </span>
 
                       {/* Label */}
-                      <span className="text-[11px] sm:text-xs font-extrabold tracking-[0.15em] text-[#C6112F] uppercase">
+                      <span className="text-[10px] xs:text-[11px] sm:text-xs font-extrabold tracking-[0.15em] text-[#C6112F] uppercase">
                         {isFr ? stat.labelFr : stat.label}
                       </span>
                     </div>
@@ -318,7 +318,7 @@ export default function PastEditionsPage() {
             </div>
 
             {/* 4 Photo Thumbnails Gallery Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
               {[
                 "/Mining Investment Post 2.avif",
                 "/image%2015%20(2).avif",
@@ -343,7 +343,7 @@ export default function PastEditionsPage() {
             <div className="flex justify-center">
               <Link
                 href="/media"
-                className="bg-[#C6112F] hover:bg-[#a80d26] border border-[#a80d26] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-8 py-3.5 rounded-lg shadow-md hover:shadow-lg inline-flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5"
+                className="w-full sm:w-auto justify-center bg-[#C6112F] hover:bg-[#a80d26] border border-[#a80d26] text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider px-6 sm:px-8 py-3.5 rounded-lg shadow-md hover:shadow-lg inline-flex items-center gap-3 transition-all duration-300 transform hover:-translate-y-0.5 text-center"
               >
                 <span>{isFr ? "VOIR TOUTES LES ÉDITIONS" : "EXPLORE ALL EDITION"}</span>
                 <svg

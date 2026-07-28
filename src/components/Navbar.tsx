@@ -185,7 +185,7 @@ export default function Navbar() {
       className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-20 sm:h-22" : "h-24"
         }`}
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-full flex items-center justify-between">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 flex items-center group">
           <Image
@@ -194,7 +194,7 @@ export default function Navbar() {
             width={240}
             height={90}
             priority
-            className="object-contain h-16 sm:h-20 md:h-[76px] max-h-[80%] w-auto group-hover:scale-105 transition-transform duration-300"
+            className="object-contain h-12 xs:h-16 sm:h-20 md:h-[76px] max-h-[80%] w-auto group-hover:scale-105 transition-transform duration-300"
           />
         </Link>
 
@@ -235,10 +235,10 @@ export default function Navbar() {
                   {link.hasDropdown && (
                     <svg
                       className={`w-3 h-3 transition-transform duration-200 ${(link.dropdownType === "about" && aboutOpen) ||
-                          (link.dropdownType === "programs" && programsOpen) ||
-                          (link.dropdownType === "past-years" && pastYearsOpen)
-                          ? "rotate-180 text-[#C6112F]"
-                          : ""
+                        (link.dropdownType === "programs" && programsOpen) ||
+                        (link.dropdownType === "past-years" && pastYearsOpen)
+                        ? "rotate-180 text-[#C6112F]"
+                        : ""
                         }`}
                       fill="none"
                       stroke="currentColor"
@@ -456,10 +456,10 @@ export default function Navbar() {
                       <span>{link.name}</span>
                       <svg
                         className={`w-4 h-4 transition-transform duration-200 ${(link.dropdownType === "about" && mobileAboutOpen) ||
-                            (link.dropdownType === "programs" && mobileProgramsOpen) ||
-                            (link.dropdownType === "past-years" && mobilePastYearsOpen)
-                            ? "rotate-180 text-[#C6112F]"
-                            : ""
+                          (link.dropdownType === "programs" && mobileProgramsOpen) ||
+                          (link.dropdownType === "past-years" && mobilePastYearsOpen)
+                          ? "rotate-180 text-[#C6112F]"
+                          : ""
                           }`}
                         fill="none"
                         stroke="currentColor"

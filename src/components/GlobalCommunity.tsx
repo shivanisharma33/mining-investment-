@@ -95,11 +95,11 @@ export default function GlobalCommunity() {
           {communityStats.map((stat, i) => (
             <div
               key={i}
-              className="border border-[#C6112F]/60 rounded-2xl p-5 sm:p-6 bg-white shadow-2xs flex items-center gap-4 hover:border-[#C6112F] transition-all duration-300"
+              className="border border-[#C6112F]/60 rounded-2xl p-4 sm:p-6 bg-white shadow-2xs flex items-center gap-3.5 sm:gap-4 hover:border-[#C6112F] transition-all duration-300"
             >
               {stat.icon}
               <div className="flex flex-col text-left leading-none">
-                <span className="text-2xl sm:text-3xl font-black text-neutral-900 leading-none mb-1">
+                <span className="text-xl xs:text-2xl sm:text-3xl font-black text-neutral-900 leading-none mb-1">
                   {stat.number}
                 </span>
                 <span className="text-[#C6112F] font-bold text-[10px] sm:text-xs tracking-wider uppercase leading-tight">

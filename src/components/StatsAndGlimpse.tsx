@@ -40,7 +40,7 @@ function AnimatedNumber({ target, suffix }: { target: string; suffix: string }) 
   const formatted = count.toLocaleString();
 
   return (
-    <div ref={ref} className="text-3xl sm:text-4xl md:text-[40px] font-black text-neutral-900 leading-none tracking-tight">
+    <div ref={ref} className="text-2xl xs:text-3xl sm:text-4xl md:text-[40px] font-black text-neutral-900 leading-none tracking-tight">
       {formatted}
       <span>{suffix}</span>
     </div>
@@ -242,8 +242,6 @@ export default function StatsAndGlimpse() {
                   type="video/quicktime"
                 />
               </video>
-
-              
             </div>
           </div>
         </div>

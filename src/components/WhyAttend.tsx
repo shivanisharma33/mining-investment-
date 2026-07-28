@@ -37,9 +37,9 @@ export default function WhyAttend() {
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Stacked Images with Red Perimeter Borders & Hover Zoom */}
-          <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-start pl-4 sm:pl-8 py-6">
+          <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-start pl-3 sm:pl-8 py-6">
             {/* Red Accent Frame Box Behind Bottom Left */}
-            <div className="absolute left-0 sm:left-2 bottom-0 w-36 sm:w-44 h-36 sm:h-44 border-[2px] border-[#C6112F] rounded-2xl z-0 pointer-events-none opacity-80" />
+            <div className="absolute left-1 sm:left-2 bottom-0 w-36 sm:w-44 h-36 sm:h-44 border-[2px] border-[#C6112F] rounded-2xl z-0 pointer-events-none opacity-80" />
 
             {/* Main Handshake Image Card */}
             <div className="relative z-10 rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_35px_rgba(0,0,0,0.12)] w-full max-w-[480px] aspect-[4/3] bg-neutral-100 group">
@@ -51,7 +51,7 @@ export default function WhyAttend() {
             </div>
 
             {/* Overlapping Small Clock Image Card */}
-            <div className="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-[42%] sm:w-[46%] rounded-xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_30px_rgba(0,0,0,0.2)] aspect-[4/3] bg-white group hover:scale-105 transition-transform duration-300">
+            <div className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-[42%] sm:w-[46%] rounded-xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_30px_rgba(0,0,0,0.2)] aspect-[4/3] bg-white group hover:scale-105 transition-transform duration-300">
               <img
                 src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80"
                 alt="Desk clock and analytics"

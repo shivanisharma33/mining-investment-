@@ -32,18 +32,18 @@ export default function EventHighlightsMedia() {
           </div>
 
           {/* Right Column: 3 Media Stat Metrics matching reference screenshot */}
-          <div className="flex items-center gap-6 sm:gap-10 md:gap-14 pt-2 lg:pt-0 shrink-0">
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-10 md:gap-14 pt-2 lg:pt-0 shrink-0">
             {/* Stat 1: 500+ PHOTOS */}
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
-                <svg className="w-6 h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
                   <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 15l-5-5L5 21" />
                 </svg>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-2xl sm:text-3xl font-black text-neutral-900 leading-none">
+                <span className="text-xl sm:text-3xl font-black text-neutral-900 leading-none">
                   500+
                 </span>
                 <span className="text-[#C6112F] font-extrabold text-[10px] sm:text-xs tracking-wider uppercase mt-1">
@@ -53,14 +53,14 @@ export default function EventHighlightsMedia() {
             </div>
 
             {/* Stat 2: 50+ SPEAKERS */}
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
-                <svg className="w-6 h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-2xl sm:text-3xl font-black text-neutral-900 leading-none">
+                <span className="text-xl sm:text-3xl font-black text-neutral-900 leading-none">
                   50+
                 </span>
                 <span className="text-[#C6112F] font-extrabold text-[10px] sm:text-xs tracking-wider uppercase mt-1">
@@ -70,15 +70,15 @@ export default function EventHighlightsMedia() {
             </div>
 
             {/* Stat 3: 3 DAYS OF EVENTS */}
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
-                <svg className="w-6 h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                   <rect x="3" y="4" width="18" height="16" rx="2" />
                   <path strokeLinecap="round" d="M16 2v4M8 2v4M3 9h18" />
                 </svg>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-2xl sm:text-3xl font-black text-neutral-900 leading-none">
+                <span className="text-xl sm:text-3xl font-black text-neutral-900 leading-none">
                   3
                 </span>
                 <span className="text-[#C6112F] font-extrabold text-[10px] sm:text-xs tracking-wider uppercase mt-1">
@@ -94,7 +94,7 @@ export default function EventHighlightsMedia() {
           {/* Column 1 (Left Side) */}
           <div className="flex flex-col gap-5 sm:gap-6">
             {/* Top Item: Tall Vertical Executive Photo */}
-            <div className="group relative w-full h-[360px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+            <div className="group relative w-full h-[260px] xs:h-[320px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
               <img
                 src="./image 31.avif"
                 alt="Executive delegates networking reception"
@@ -163,7 +163,7 @@ export default function EventHighlightsMedia() {
             </div>
 
             {/* Bottom Item: Tall Vertical Executive Photo */}
-            <div className="group relative w-full h-[360px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+            <div className="group relative w-full h-[260px] xs:h-[320px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
               <img
                 src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
                 alt="Executive delegates networking reception"

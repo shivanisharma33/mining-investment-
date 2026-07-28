@@ -202,7 +202,7 @@ export default function AgendaPdfViewer({
       <div className="bg-white rounded-2xl border border-neutral-200/90 shadow-xl overflow-hidden p-1.5 sm:p-3">
         <iframe
           src={`${pdfUrl}#page=${currentPage}&zoom=${zoomLevel}&toolbar=0&navpanes=0&scrollbar=1`}
-          className="w-full h-[750px] sm:h-[920px] rounded-xl border border-neutral-200"
+          className="w-full h-[420px] xs:h-[540px] sm:h-[750px] md:h-[920px] rounded-xl border border-neutral-200"
           title={`${year} Agenda Document`}
         />
       </div>

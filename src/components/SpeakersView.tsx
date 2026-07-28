@@ -183,7 +183,7 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
 
       {/* Speakers Cards Grid */}
       {filteredSpeakers.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {filteredSpeakers.map((speaker, idx) => {
             const styles = getCategoryStyles(speaker.category);
             return (

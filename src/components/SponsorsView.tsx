@@ -1364,7 +1364,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
             <p className="text-neutral-500 text-sm font-bold">No sponsors found in this category.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
             {filteredSponsors.map((sponsor, idx) => (
               <div
                 key={idx}

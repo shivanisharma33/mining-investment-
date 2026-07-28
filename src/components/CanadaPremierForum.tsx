@@ -69,16 +69,16 @@ export default function CanadaPremierForum() {
             </div>
 
             {/* Dual Connected Pill Action Buttons */}
-            <div className="inline-flex items-center border border-neutral-300 rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
+            <div className="flex flex-col sm:inline-flex sm:flex-row w-full sm:w-auto items-stretch sm:items-center border border-neutral-300 rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
               <Link
                 href="/about"
-                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3 sm:py-3.5 uppercase transition-colors"
+                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-5 sm:px-7 py-3 sm:py-3.5 uppercase transition-colors text-center"
               >
                 {t("forum-about-btn", "ABOUT THE EVENT")}
               </Link>
               <Link
                 href="/register"
-                className="bg-[#dedede] hover:bg-[#d0d0d0] text-neutral-900 text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3 sm:py-3.5 uppercase flex items-center gap-2 border-l border-neutral-400 transition-colors"
+                className="bg-[#dedede] hover:bg-[#d0d0d0] text-neutral-900 text-xs sm:text-[13px] font-extrabold tracking-wider px-5 sm:px-7 py-3 sm:py-3.5 uppercase flex items-center justify-center gap-2 border-t sm:border-t-0 sm:border-l border-neutral-400 transition-colors"
               >
                 <span>{t("nav-register", "REGISTER NOW")}</span>
                 <svg
@@ -102,9 +102,9 @@ export default function CanadaPremierForum() {
           {/* Right Column: Adorable Multi-Layered Image Composition */}
           <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-end py-6 pr-2 sm:pr-6">
             {/* Top-Right Floating Glassmorphism Badge */}
-            <div className="absolute -top-3 right-2 sm:top-0 sm:right-6 z-30 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-neutral-200 shadow-md flex items-center gap-2.5">
+            <div className="absolute -top-3 right-2 sm:top-0 sm:right-6 z-30 bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-neutral-200 shadow-md flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse" />
-              <span className="text-[11px] sm:text-xs font-black text-[#1a1f2c] tracking-wider uppercase">
+              <span className="text-[10px] sm:text-xs font-black text-[#1a1f2c] tracking-wider uppercase">
                 QUÉBEC CITY • CANADA
               </span>
             </div>
@@ -123,14 +123,14 @@ export default function CanadaPremierForum() {
 
               {/* Bottom Image Tag */}
               <div className="absolute bottom-4 left-4 z-20 text-white">
-                <span className="text-[10px] font-black tracking-[0.2em] uppercase bg-[#C6112F] px-3 py-1 rounded-full">
+                <span className="text-[9px] sm:text-[10px] font-black tracking-[0.2em] uppercase bg-[#C6112F] px-3 py-1 rounded-full">
                   TIER 1 GLOBAL FORUM
                 </span>
               </div>
             </div>
 
             {/* Overlapping Accent Card with Clean White Frame */}
-            <div className="absolute -bottom-4 left-0 sm:-bottom-6 sm:-left-2 z-20 w-[46%] sm:w-[48%] rounded-2xl overflow-hidden border-4 border-white shadow-[0_15px_35px_rgba(0,0,0,0.14)] aspect-[4/3] bg-white group/small hover:scale-105 transition-transform duration-300 cursor-pointer">
+            <div className="absolute -bottom-4 left-1 sm:-bottom-6 sm:-left-2 z-20 w-[46%] sm:w-[48%] rounded-2xl overflow-hidden border-4 border-white shadow-[0_15px_35px_rgba(0,0,0,0.14)] aspect-[4/3] bg-white group/small hover:scale-105 transition-transform duration-300 cursor-pointer">
               <img
                 src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"
                 alt="Student delegates group"

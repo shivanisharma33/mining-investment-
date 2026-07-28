@@ -55,20 +55,20 @@ export default function FeaturedEventCountdown() {
     <section className="relative w-full bg-white py-16 sm:py-20 md:py-24 overflow-hidden border-y border-neutral-200/80">
       {/* Background Watermark Text: COMING SOON (Stacked behind countdown) */}
       <div className="absolute top-28 sm:top-32 left-0 right-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden opacity-[0.06] z-0">
-        <span className="text-[100px] sm:text-[160px] md:text-[210px] lg:text-[250px] font-black tracking-[0.18em] leading-[0.8] text-neutral-900 uppercase">
+        <span className="text-[50px] xs:text-[80px] sm:text-[160px] md:text-[210px] lg:text-[250px] font-black tracking-[0.18em] leading-[0.8] text-neutral-900 uppercase">
           COMING
         </span>
-        <span className="text-[100px] sm:text-[160px] md:text-[210px] lg:text-[250px] font-black tracking-[0.18em] leading-[0.8] text-neutral-900 uppercase">
+        <span className="text-[50px] xs:text-[80px] sm:text-[160px] md:text-[210px] lg:text-[250px] font-black tracking-[0.18em] leading-[0.8] text-neutral-900 uppercase">
           SOON
         </span>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-3 sm:px-6 text-center">
         {/* Top Tag & Title */}
         <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block mb-2">
           {t("feat-event-tag", "FEATURED EVENT")}
         </span>
-        <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-[#1a1f2c] tracking-tight uppercase mb-3">
+        <h2 className="text-xl xs:text-2xl sm:text-4xl md:text-5xl font-black text-[#1a1f2c] tracking-tight uppercase mb-3">
           {t("feat-event-title", "THE MINING INVESTMENT EVENT 2027")}
         </h2>
         <div className="w-16 h-[2.5px] bg-[#C6112F] mx-auto rounded-full mb-10" />

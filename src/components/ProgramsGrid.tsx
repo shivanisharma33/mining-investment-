@@ -124,7 +124,7 @@ export default function ProgramsGrid() {
             {item.imageOnLeft ? (
               <>
                 {/* Image Block (Left Half) */}
-                <div className="w-full sm:w-1/2 h-[260px] sm:h-full relative overflow-hidden bg-neutral-900 shrink-0 rounded-none">
+                <div className="w-full sm:w-1/2 h-[200px] xs:h-[240px] sm:h-full relative overflow-hidden bg-neutral-900 shrink-0 rounded-none">
                   <img
                     src={item.image}
                     alt={item.imageAlt}
@@ -133,7 +133,7 @@ export default function ProgramsGrid() {
                 </div>
 
                 {/* Clean Origami Text Block (Right Half) */}
-                <div className="w-full sm:w-1/2 p-6 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none group-hover:bg-[#e4e4e4] transition-colors duration-300">
+                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none group-hover:bg-[#e4e4e4] transition-colors duration-300">
                   {/* Origami Faceted Polygon Background */}
                   <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 400">
@@ -169,7 +169,7 @@ export default function ProgramsGrid() {
             ) : (
               <>
                 {/* Clean Origami Text Block First (Left Half) */}
-                <div className="w-full sm:w-1/2 p-6 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none order-2 sm:order-1 group-hover:bg-[#e4e4e4] transition-colors duration-300">
+                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none order-2 sm:order-1 group-hover:bg-[#e4e4e4] transition-colors duration-300">
                   {/* Origami Faceted Polygon Background */}
                   <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 400">
@@ -203,7 +203,7 @@ export default function ProgramsGrid() {
                 </div>
 
                 {/* Image Block (Right Half) */}
-                <div className="w-full sm:w-1/2 h-[260px] sm:h-full relative overflow-hidden bg-neutral-900 rounded-none order-1 sm:order-2 shrink-0">
+                <div className="w-full sm:w-1/2 h-[200px] xs:h-[240px] sm:h-full relative overflow-hidden bg-neutral-900 rounded-none order-1 sm:order-2 shrink-0">
                   <img
                     src={item.image}
                     alt={item.imageAlt}

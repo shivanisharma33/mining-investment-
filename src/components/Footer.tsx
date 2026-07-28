@@ -37,18 +37,18 @@ export default function Footer() {
             </span>
             <div className="w-14 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
-            <p className="text-neutral-700 text-xs sm:text-sm font-medium leading-relaxed mb-6 max-w-[380px]">
+            <p className="text-neutral-700 text-xs sm:text-sm font-medium leading-relaxed mb-6 max-w-[380px] break-words">
               {t("cta-desc-prefix", "For more information about 'THE Event' programming or registration, please contact")}{" "}
               <a
                 href="mailto:jchoi@irinc.ca"
-                className="underline font-bold text-neutral-900 hover:text-[#C6112F] transition-colors"
+                className="underline font-bold text-neutral-900 hover:text-[#C6112F] transition-colors break-all"
               >
                 jchoi@irinc.ca
               </a>{" "}
               {t("cta-desc-or", "or call")}{" "}
               <a
                 href="tel:+19055153508"
-                className="underline font-bold text-neutral-900 hover:text-[#C6112F] transition-colors"
+                className="underline font-bold text-neutral-900 hover:text-[#C6112F] transition-colors whitespace-nowrap"
               >
                 +1-905-515-3508
               </a>

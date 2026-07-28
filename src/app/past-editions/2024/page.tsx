@@ -87,8 +87,8 @@ export default function PastEdition2024Page() {
           {/* Outer Container Card */}
           <div className="bg-white border border-neutral-200/90 rounded-2xl shadow-sm overflow-hidden mb-8">
             {/* Breadcrumb Header Bar */}
-            <div className="px-6 sm:px-8 py-4 border-b border-neutral-200/80 bg-white flex items-center justify-between">
-              <nav className="flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider text-neutral-500 uppercase">
+            <div className="px-4 sm:px-8 py-3.5 sm:py-4 border-b border-neutral-200/80 bg-white flex flex-wrap items-center justify-between gap-2">
+              <nav className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] xs:text-xs sm:text-sm font-bold tracking-wider text-neutral-500 uppercase">
                 <Link href="/" className="hover:text-[#C6112F] transition-colors">
                   HOME
                 </Link>
@@ -105,7 +105,7 @@ export default function PastEdition2024Page() {
 
               <Link
                 href="/past-editions"
-                className="text-xs font-bold text-[#C6112F] hover:underline flex items-center gap-1 group"
+                className="text-[11px] sm:text-xs font-bold text-[#C6112F] hover:underline flex items-center gap-1 group ml-auto sm:ml-0"
               >
                 <span className="transform group-hover:-translate-x-0.5 transition-transform">
                   &larr; {isFr ? "Retour aux éditions" : "Back to all editions"}
@@ -113,32 +113,53 @@ export default function PastEdition2024Page() {
               </Link>
             </div>
 
+            {/* Mobile Sub-Navigation Horizontal Scrollable Pill Bar (Mobile Only) */}
+            <div className="lg:hidden px-4 py-3 bg-[#fdfefe] border-b border-neutral-200/80 flex items-center gap-2 overflow-x-auto shrink-0 shadow-2xs">
+              {sidebarTabs.map((tab) => {
+                const isSelected = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${isSelected
+                        ? "bg-[#C6112F] text-white shadow-xs"
+                        : "bg-white border border-neutral-200 text-neutral-700 hover:bg-neutral-100"
+                      }`}
+                  >
+                    <span className={isSelected ? "text-white" : "text-[#C6112F]"}>
+                      {tab.icon}
+                    </span>
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
             {/* Two-Column Grid: Left Sidebar & Right Detail Section */}
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[700px]">
-              {/* ═══════════════ LEFT SIDEBAR ═══════════════ */}
-              <div className="lg:col-span-3 border-r border-neutral-200/80 bg-[#fdfefe] p-6 flex flex-col items-stretch">
+              {/* ═══════════════ LEFT SIDEBAR (Desktop Only) ═══════════════ */}
+              <div className="hidden lg:flex lg:col-span-3 border-r border-neutral-200/80 bg-[#fdfefe] p-6 flex-col items-stretch">
                 <div>
                   {/* Menu Item List */}
                   <div className="space-y-2 mb-6">
                     {sidebarTabs.map((tab) => {
-                        const isSelected = activeTab === tab.id;
-                        return (
-                          <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id)}
-                            className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left cursor-pointer ${
-                              isSelected
-                                ? "bg-[#FCDDE1] text-[#8A1224] border-l-4 border-[#C6112F] shadow-xs"
-                                : "text-neutral-600 hover:bg-neutral-100/90 hover:text-neutral-900"
+                      const isSelected = activeTab === tab.id;
+                      return (
+                        <button
+                          key={tab.id}
+                          onClick={() => setActiveTab(tab.id)}
+                          className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left cursor-pointer ${isSelected
+                              ? "bg-[#FCDDE1] text-[#8A1224] border-l-4 border-[#C6112F] shadow-xs"
+                              : "text-neutral-600 hover:bg-neutral-100/90 hover:text-neutral-900"
                             }`}
-                          >
-                            <span className={isSelected ? "text-[#C6112F]" : "text-neutral-500"}>
-                              {tab.icon}
-                            </span>
-                            <span>{tab.label}</span>
-                          </button>
-                        );
-                      })}
+                        >
+                          <span className={isSelected ? "text-[#C6112F]" : "text-neutral-500"}>
+                            {tab.icon}
+                          </span>
+                          <span>{tab.label}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -182,7 +203,7 @@ export default function PastEdition2024Page() {
               </div>
 
               {/* ═══════════════ RIGHT MAIN CONTENT AREA ═══════════════ */}
-              <div className="lg:col-span-9 p-6 sm:p-8 md:p-10 flex flex-col justify-between text-left">
+              <div className="lg:col-span-9 p-4 xs:p-6 sm:p-8 md:p-10 flex flex-col justify-between text-left">
                 {activeTab === "companies" ? (
                   <div>
                     <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
@@ -323,11 +344,10 @@ export default function PastEdition2024Page() {
                       <div className="flex items-center bg-neutral-100 p-1.5 rounded-xl border border-neutral-200 gap-1">
                         <button
                           onClick={() => setAgendaMode("pdf")}
-                          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
-                            agendaMode === "pdf"
+                          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${agendaMode === "pdf"
                               ? "bg-[#0f1117] text-white shadow-sm"
                               : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
-                          }`}
+                            }`}
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -336,11 +356,10 @@ export default function PastEdition2024Page() {
                         </button>
                         <button
                           onClick={() => setAgendaMode("interactive")}
-                          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
-                            agendaMode === "interactive"
+                          className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${agendaMode === "interactive"
                               ? "bg-[#0f1117] text-white shadow-sm"
                               : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
-                          }`}
+                            }`}
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

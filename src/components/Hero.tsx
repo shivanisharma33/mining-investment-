@@ -25,18 +25,21 @@ export default function Hero() {
         </video>
       </div>
 
-      {/* Dark Overlay for optimal text readability */}
-      <div className="absolute inset-0 bg-black/45 bg-gradient-to-b from-black/55 via-black/40 to-black/55 z-10" />
+      {/* Dark Base Overlay for optimal text readability */}
+      <div className="absolute inset-0 bg-black/40 bg-gradient-to-b from-black/50 via-black/35 to-black/50 z-10" />
+
+      {/* Centered Crimson Red Radial Spotlight Overlay - Very Soft & Subtle */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(198,17,47,0.16)_0%,rgba(198,17,47,0.05)_45%,transparent_70%)] z-10 pointer-events-none mix-blend-screen" />
 
       {/* Content */}
       <div className="relative z-20 max-w-[1100px] w-full text-center flex flex-col items-center px-4 sm:px-6 md:px-12 pt-8 pb-8">
         {/* Top Subtitle */}
-        <p className="text-white text-[11px] sm:text-xs md:text-sm font-extrabold tracking-[0.25em] uppercase mb-2 sm:mb-3 md:mb-4 leading-relaxed max-w-xs sm:max-w-none mx-auto text-center animate-fade-in-up delay-0">
+        <p className="text-white text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-2 sm:mb-3 md:mb-4 leading-relaxed max-w-xs sm:max-w-none mx-auto text-center animate-fade-in-up delay-0">
           {t("hero-eyebrow", "Canada's Only Tier I Global Mining Investment Conference")}
         </p>
 
         {/* Main Title - 2 Lines in French */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.18] mb-3 md:mb-4 text-center">
+        <h1 className="text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.18] mb-3 md:mb-4 text-center">
           {lang === "FR" ? (
             <div className="flex flex-col items-center text-center">
               <span className="block animate-text-reveal delay-1">L&apos;Événement</span>
@@ -46,7 +49,7 @@ export default function Hero() {
               </span>
             </div>
           ) : (
-            <div className="flex flex-row justify-center gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full whitespace-nowrap text-center">
+            <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-x-1.5 xs:gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full text-center sm:whitespace-nowrap">
               <span className="animate-text-reveal delay-1">The</span>{" "}
               <span className="animate-text-reveal delay-2">Mining</span>{" "}
               <span className="animate-text-reveal delay-3">Investment</span>{" "}
@@ -68,11 +71,11 @@ export default function Hero() {
         </p>
 
         {/* Double-Button Group */}
-        <div className="inline-flex flex-col sm:flex-row rounded-lg border border-white/20 overflow-hidden shadow-lg max-w-full animate-fade-in-up delay-7">
+        <div className="flex flex-col sm:inline-flex sm:flex-row rounded-lg border border-white/20 overflow-hidden shadow-lg w-full sm:w-auto max-w-full animate-fade-in-up delay-7">
           {/* Left Button - Register Now */}
           <Link
             href="/register"
-            className="bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 transition-all duration-300 border-b sm:border-b-0 sm:border-r border-white/20 shrink-0"
+            className="bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-extrabold tracking-wider px-5 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 transition-all duration-300 border-b sm:border-b-0 sm:border-r border-white/20 shrink-0"
           >
             <span>{t("hero-register", "REGISTER NOW")}</span>
             <svg
@@ -94,7 +97,7 @@ export default function Hero() {
           {/* Right Button - View Program */}
           <Link
             href="/agenda"
-            className="bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 transition-all duration-300 shrink-0 backdrop-blur-sm"
+            className="bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-extrabold tracking-wider px-5 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 transition-all duration-300 shrink-0 backdrop-blur-sm"
           >
             <span>{t("hero-program", "VIEW PROGRAM")}</span>
             <svg

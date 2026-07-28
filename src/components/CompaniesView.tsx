@@ -52,19 +52,19 @@ export default function CompaniesView({
         <iframe
           src="https://mininghub.com/custom-map/the-mining-investment-event"
           width="100%"
-          height="600px"
+          height="600"
           frameBorder="0"
           allowFullScreen={true}
           allow="fullscreen"
-          className="w-full rounded-xl"
-          style={{ height: "600px", border: "0" }}
+          className="w-full rounded-xl h-[380px] xs:h-[450px] sm:h-[550px] md:h-[600px]"
+          style={{ border: "0" }}
         ></iframe>
       </div>
 
       {/* ════════ TOOLBAR: YEAR SELECTOR & SEARCH ════════ */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/90 shadow-md">
         {/* Year Selector */}
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
           <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse shrink-0" />
           <label className="text-xs font-black tracking-widest uppercase text-neutral-500 whitespace-nowrap">
             Edition Filter:
@@ -72,7 +72,7 @@ export default function CompaniesView({
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(Number(e.target.value))}
-            className="bg-neutral-50 border border-neutral-300 rounded-xl py-2.5 px-4 text-xs sm:text-sm font-extrabold text-neutral-900 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 cursor-pointer shadow-2xs transition-all hover:border-[#C6112F]"
+            className="bg-neutral-50 border border-neutral-300 rounded-xl py-2 sm:py-2.5 px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-neutral-900 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 cursor-pointer shadow-2xs transition-all hover:border-[#C6112F] w-full xs:w-auto"
           >
             <option value={2026}>2026 Participating Companies</option>
             <option value={2025}>2025 Participating Companies</option>
@@ -113,7 +113,7 @@ export default function CompaniesView({
       </div>
 
       {/* ════════ META STATS COUNTER ════════ */}
-      <div className="flex items-center justify-between mb-4 px-1 text-xs sm:text-sm font-semibold text-neutral-600">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 px-1 text-xs sm:text-sm font-semibold text-neutral-600">
         <span className="flex items-center gap-2">
           <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />
           Showing <strong className="text-neutral-900 font-extrabold">{filteredCompanies.length}</strong> of{" "}
@@ -127,8 +127,8 @@ export default function CompaniesView({
       </div>
 
       {/* ════════ FULLY VISIBLE TABLE (NO SLIDER) ════════ */}
-      <div className="w-full bg-white border border-neutral-200/90 rounded-2xl overflow-hidden shadow-xl">
-        <table className="w-full text-left border-collapse table-fixed">
+      <div className="w-full bg-white border border-neutral-200/90 rounded-2xl overflow-hidden shadow-xl overflow-x-auto">
+        <table className="w-full text-left border-collapse min-w-[640px] sm:min-w-full table-fixed">
           <thead>
             <tr className="bg-[#0F1117] text-white text-[11px] sm:text-xs uppercase font-black tracking-widest border-b border-neutral-800 relative">
               <th className="py-4 px-3 sm:px-6 w-[34%] sm:w-[32%] text-neutral-200">
