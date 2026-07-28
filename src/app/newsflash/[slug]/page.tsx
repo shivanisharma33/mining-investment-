@@ -47,6 +47,18 @@ function extractPdfUrl(item: any): string | null {
   // Only return a PDF URL if one was attached from the backend
   if (!rawUrl) return null;
 
+  // Hide PDF button for dummy / placeholder URLs from backend
+  const lower = rawUrl.toLowerCase();
+  if (
+    lower.includes("example.com") ||
+    lower.includes("dummy") ||
+    lower.includes("placeholder") ||
+    lower.includes("test.pdf") ||
+    lower.includes("sample.pdf")
+  ) {
+    return null;
+  }
+
   // Convert localhost / relative backend paths to live backend server URL
   if (rawUrl.startsWith("http://localhost:5000") || rawUrl.startsWith("http://localhost:3000") || rawUrl.startsWith("http://127.0.0.1:5000")) {
     rawUrl = rawUrl.replace(/^http:\/\/(localhost|127\.0\.0\.1):(5000|3000)/, "https://mining-investment-backend.vercel.app");
