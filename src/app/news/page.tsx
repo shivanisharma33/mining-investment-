@@ -1308,11 +1308,19 @@ export default function NewsPage() {
                 {lang === "FR" ? activeModalItem.headlineFR : activeModalItem.headlineEN}
               </h2>
               <div className="w-12 h-1 bg-[#C6112F] rounded-full mb-6" />
-              <p className="text-neutral-700 text-sm sm:text-base leading-relaxed whitespace-pre-line">
-                {lang === "FR"
+              <div className="space-y-3.5 text-neutral-700 text-sm sm:text-base leading-relaxed">
+                {((lang === "FR"
                   ? activeModalItem.fullBodyFR || activeModalItem.snippetFR
-                  : activeModalItem.fullBodyEN || activeModalItem.snippetEN}
-              </p>
+                  : activeModalItem.fullBodyEN || activeModalItem.snippetEN) || "")
+                  .split(/\n+/)
+                  .map((p) => p.trim())
+                  .filter(Boolean)
+                  .map((paragraph, idx) => (
+                    <p key={idx} className="leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+              </div>
             </div>
           </div>
         )}
