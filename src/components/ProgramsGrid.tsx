@@ -22,8 +22,8 @@ export default function ProgramsGrid() {
       cta: t("prog-edu-cta", "EXPLORE PROGRAM"),
       link: "/student",
       image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80",
-      imageAlt: "Students collaborating in library",
+        "/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-1.jpg",
+      imageAlt: "Students at Mining Investment Event",
       imageOnLeft: true,
     },
     {
@@ -37,8 +37,8 @@ export default function ProgramsGrid() {
       cta: t("prog-lead-cta", "LEARN MORE"),
       link: "/sheco",
       image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
-      imageAlt: "Smiling professional woman in office",
+        "/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-5.jpg",
+      imageAlt: "SHE-Co Initiative delegates",
       imageOnLeft: true,
     },
     {
@@ -52,8 +52,8 @@ export default function ProgramsGrid() {
       cta: t("prog-inst-cta", "PARTNERSHIP INFO"),
       link: "/partnership",
       image:
-        "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
-      imageAlt: "Team presentation meeting in loft office",
+        "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-8.jpg",
+      imageAlt: "Partnership presentation at Mining Investment Event",
       imageOnLeft: false,
     },
     {
@@ -67,8 +67,8 @@ export default function ProgramsGrid() {
       cta: t("prog-dial-cta", "MEET SPEAKERS"),
       link: "/agenda",
       image:
-        "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80",
-      imageAlt: "Conference stage microphone",
+        "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-6.jpg",
+      imageAlt: "Core Shack networking session",
       imageOnLeft: false,
     },
   ];
@@ -104,8 +104,8 @@ export default function ProgramsGrid() {
               key={cat}
               onClick={() => setActiveTab(cat)}
               className={`px-4 sm:px-5 py-2 rounded-full text-xs font-extrabold tracking-wider transition-all duration-300 ${activeTab === cat
-                  ? "bg-[#C6112F] text-white shadow-md scale-105"
-                  : "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700 hover:text-neutral-900 dark:hover:text-white"
+                ? "bg-[#C6112F] text-white shadow-md scale-105"
+                : "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700 hover:text-neutral-900 dark:hover:text-white"
                 }`}
             >
               {cat}
@@ -114,8 +114,8 @@ export default function ProgramsGrid() {
         </div>
       </div>
 
-      {/* 2x2 100% Full Width Edge-to-Edge Grid Container */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 rounded-none overflow-hidden border-none shadow-none">
+      {/* 2x2 100% Full Width Edge-to-Edge Grid Container — no gaps */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 rounded-none overflow-hidden border-none shadow-none gap-0">
         {filteredPrograms.map((item) => (
           <div
             key={item.id}
@@ -129,6 +129,8 @@ export default function ProgramsGrid() {
                     src={item.image}
                     alt={item.imageAlt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-none"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
 
@@ -208,6 +210,8 @@ export default function ProgramsGrid() {
                     src={item.image}
                     alt={item.imageAlt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-none"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </>

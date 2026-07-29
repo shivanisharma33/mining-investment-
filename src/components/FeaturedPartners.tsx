@@ -139,11 +139,10 @@ export default function FeaturedPartners() {
               <button
                 key={tier}
                 onClick={() => handleTabChange(tier)}
-                className={`px-5 sm:px-7 py-2.5 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
-                  isActive
+                className={`px-5 sm:px-7 py-2.5 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all duration-300 cursor-pointer ${isActive
                     ? "bg-[#C6112F] text-white shadow-md scale-105"
                     : "bg-white dark:bg-[#131b2e] text-neutral-700 dark:text-slate-200 hover:bg-neutral-100 dark:hover:bg-[#1e293b] hover:text-neutral-900 dark:hover:text-white border border-neutral-200/80 dark:border-[#233049] shadow-2xs"
-                }`}
+                  }`}
               >
                 {tier}
               </button>
@@ -182,11 +181,10 @@ export default function FeaturedPartners() {
                 return (
                   <div
                     key={`${logoPath}-${idx}`}
-                    className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl bg-white flex items-center justify-center p-4 transition-all duration-500 transform ${
-                      isCenter
+                    className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl bg-white flex items-center justify-center p-4 transition-all duration-500 transform ${isCenter
                         ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-none scale-105 z-20"
                         : "h-26 sm:h-28 border border-neutral-200/80 dark:border-[#233049] shadow-none opacity-90 hover:opacity-100"
-                    }`}
+                      }`}
                   >
                     <img
                       src={logoPath}

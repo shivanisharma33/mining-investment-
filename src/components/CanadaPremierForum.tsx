@@ -115,9 +115,11 @@ export default function CanadaPremierForum() {
             {/* Primary Hero Image Card */}
             <div className="relative z-10 rounded-3xl overflow-hidden border border-neutral-200/90 shadow-[0_20px_45px_rgba(0,0,0,0.08)] w-full max-w-[460px] aspect-[4/3] bg-neutral-900 group">
               <img
-                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80"
-                alt="Conference delegates networking"
+                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-4.jpg"
+                alt="Conference delegates networking at Mining Investment Event"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 
@@ -132,9 +134,11 @@ export default function CanadaPremierForum() {
             {/* Overlapping Accent Card with Clean Frame */}
             <div className="absolute -bottom-4 left-1 sm:-bottom-6 sm:-left-2 z-20 w-[46%] sm:w-[48%] rounded-2xl overflow-hidden border-4 border-white dark:border-[#131b2e] shadow-[0_15px_35px_rgba(0,0,0,0.14)] aspect-[4/3] bg-white dark:bg-[#131b2e] group/small hover:scale-105 transition-transform duration-300 cursor-pointer">
               <img
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80"
-                alt="Student delegates group"
+                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-20.jpg"
+                alt="Delegates group at Mining Investment Event"
                 className="w-full h-full object-cover group-hover/small:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

@@ -301,28 +301,30 @@ function BannerSliderSection() {
         <button
           onClick={prevSlide}
           aria-label="Previous Banner"
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-md shrink-0 cursor-pointer z-20"
+          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-md shrink-0 cursor-pointer z-20"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
         </button>
 
-        {/* Banner Display Box matching exact mockup proportions */}
-        <div className="relative w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] overflow-hidden shadow-lg bg-neutral-900 aspect-[21/9] sm:aspect-[24/9] group">
+        {/* Banner Display Box with decreased height */}
+        <div className="relative w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] overflow-hidden shadow-lg bg-neutral-900 h-40 sm:h-52 md:h-56 group">
           <img
             src={current.image}
             alt={current.title}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-10 text-left">
-            <span className="text-[#C6112F] bg-white/90 dark:bg-[#131b2e]/90 text-[10px] sm:text-xs font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-2 shadow-2xs">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-7 text-left">
+            <span className="text-[#C6112F] bg-white/90 dark:bg-[#131b2e]/90 text-[9px] sm:text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-1.5 shadow-2xs">
               FEATURED EVENT
             </span>
-            <h3 className="text-xl sm:text-3xl font-extrabold text-white leading-snug drop-shadow-md">
+            <h3 className="text-lg sm:text-2xl font-extrabold text-white leading-snug drop-shadow-md">
               {current.title}
             </h3>
-            <p className="text-neutral-200 text-xs sm:text-sm font-medium mt-1 drop-shadow-sm max-w-2xl">
+            <p className="text-neutral-200 text-xs font-medium mt-0.5 drop-shadow-sm max-w-2xl line-clamp-1">
               {current.subtitle}
             </p>
           </div>
@@ -332,9 +334,9 @@ function BannerSliderSection() {
         <button
           onClick={nextSlide}
           aria-label="Next Banner"
-          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-md shrink-0 cursor-pointer z-20"
+          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-md shrink-0 cursor-pointer z-20"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </button>
@@ -348,8 +350,8 @@ function BannerSliderSection() {
             onClick={() => setCurrentIndex(idx)}
             aria-label={`Go to banner ${idx + 1}`}
             className={`transition-all duration-300 cursor-pointer ${idx === currentIndex
-                ? "w-3.5 h-3.5 rounded-full bg-[#C6112F] scale-110 shadow-sm"
-                : "w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-slate-700 hover:bg-[#C6112F]/60"
+              ? "w-3.5 h-3.5 rounded-full bg-[#C6112F] scale-110 shadow-sm"
+              : "w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-slate-700 hover:bg-[#C6112F]/60"
               }`}
           />
         ))}
@@ -527,27 +529,8 @@ function SponsorsSection() {
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
         <p className="text-neutral-500 dark:text-slate-300 text-sm font-medium max-w-xl mx-auto">
-          A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore supporters.
+          A spotlight on the partners powering THE Mining Investment Event.
         </p>
-      </div>
-
-      {/* Tier Selector Tabs Bar */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-10">
-        {tierKeys.map((tier) => {
-          const isActive = tier === activeTier;
-          return (
-            <button
-              key={tier}
-              onClick={() => handleTabChange(tier)}
-              className={`px-5 sm:px-6 py-2.5 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all duration-300 cursor-pointer ${isActive
-                  ? "bg-[#C6112F] text-white shadow-md scale-105"
-                  : "bg-white dark:bg-[#131b2e] text-neutral-700 dark:text-slate-200 hover:bg-neutral-100 dark:hover:bg-[#1e293b] hover:text-neutral-900 dark:hover:text-white border border-neutral-200/80 dark:border-[#233049] shadow-2xs"
-                }`}
-            >
-              {tier === "ALL" ? "ALL SPONSORS" : tier}
-            </button>
-          );
-        })}
       </div>
 
       {/* Partner Logos Physical Track Slider Row — Home Page Style (One by One) */}
@@ -582,8 +565,8 @@ function SponsorsSection() {
                 <div
                   key={`${logoPath}-${idx}`}
                   className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl bg-white flex items-center justify-center p-4 transition-all duration-500 transform ${isCenter
-                      ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-none scale-105 z-20"
-                      : "h-26 sm:h-28 border border-neutral-200/80 dark:border-[#233049] shadow-none opacity-90 hover:opacity-100"
+                    ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-none scale-105 z-20"
+                    : "h-26 sm:h-28 border border-neutral-200/80 dark:border-[#233049] shadow-none opacity-90 hover:opacity-100"
                     }`}
                 >
                   <img
@@ -1001,8 +984,8 @@ function NewsSection({
                   key={cat}
                   onClick={() => setSelectedCat(cat)}
                   className={`text-xs font-extrabold tracking-wider uppercase transition-all cursor-pointer ${isSelected
-                      ? "px-3.5 py-1 rounded-full text-[#C6112F] border border-[#C6112F] bg-rose-50 shadow-2xs"
-                      : "text-neutral-500 hover:text-[#C6112F] px-2 py-1"
+                    ? "px-3.5 py-1 rounded-full text-[#C6112F] border border-[#C6112F] bg-rose-50 shadow-2xs"
+                    : "text-neutral-500 hover:text-[#C6112F] px-2 py-1"
                     }`}
                 >
                   {cat}
@@ -1738,8 +1721,8 @@ function AdvertisingSubscriptionSection() {
                     key={opt.val}
                     onClick={() => setSponsorLogoOption(opt.val)}
                     className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
-                        ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
-                        : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
+                      ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
+                      : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
                       }`}
                   >
                     <div className="flex items-center gap-2.5">
@@ -1796,8 +1779,8 @@ function AdvertisingSubscriptionSection() {
                     key={opt.val}
                     onClick={() => setVidInterviewOption(opt.val)}
                     className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
-                        ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
-                        : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
+                      ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
+                      : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
                       }`}
                   >
                     <div className="flex items-center gap-2.5">
@@ -1862,8 +1845,8 @@ function AdvertisingSubscriptionSection() {
                     key={opt.val}
                     onClick={() => setAdvertisingOption(opt.val)}
                     className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
-                        ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
-                        : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
+                      ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
+                      : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
                       }`}
                   >
                     <div className="flex items-center gap-2.5">
@@ -1971,11 +1954,11 @@ function SectionPressReleaseView({
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none">
-            THE <span className="text-[#C6112F]">{data.title}</span> Press Releases
+            THE <span className="text-[#C6112F]">{data.title}</span>
           </h1>
           <div className="w-20 h-[3px] bg-[#C6112F] mt-5 rounded-full" />
           <p className="text-neutral-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mt-4 leading-relaxed">
-            Official press releases, sector announcements, and investment updates from {data.title}.
+            Official sector announcements and investment updates from {data.title}.
           </p>
         </div>
       </section>
@@ -1990,8 +1973,8 @@ function SectionPressReleaseView({
                 key={cat}
                 onClick={() => setSelectedCat(cat)}
                 className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${selectedCat === cat
-                    ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
-                    : "bg-white dark:bg-[#131b2e] text-neutral-600 dark:text-slate-300 border border-neutral-200/80 dark:border-slate-700 hover:bg-neutral-100 dark:hover:bg-slate-800 shadow-2xs"
+                  ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
+                  : "bg-white dark:bg-[#131b2e] text-neutral-600 dark:text-slate-300 border border-neutral-200/80 dark:border-slate-700 hover:bg-neutral-100 dark:hover:bg-slate-800 shadow-2xs"
                   }`}
               >
                 {cat}
@@ -2045,7 +2028,7 @@ function SectionPressReleaseView({
                       onClick={() => goToDetail(featured)}
                       className="px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105"
                     >
-                      READ PRESS RELEASE ↗
+                      READ MORE ↗
                     </button>
                     <span className="text-neutral-400 text-xs font-medium">
                       {featured.date} · {featured.readTime}
@@ -2120,6 +2103,243 @@ function SectionPressReleaseView({
             ← BACK TO THE NEWS OVERVIEW
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function YouTubeConferencesSection({
+  articles,
+  onViewAll,
+}: {
+  articles: SectionArticle[];
+  onViewAll: () => void;
+}) {
+  const router = useRouter();
+  const [activeTab, setActiveTab] = useState("ALL");
+
+  const filtered = articles.filter(
+    (a) => activeTab === "ALL" || a.category === activeTab
+  );
+
+  const featured = filtered.find((a) => a.featured) || filtered[0];
+  const grid = filtered.filter((a) => a.id !== (featured?.id || "")).slice(0, 4);
+
+  return (
+    <div className="w-full flex flex-col">
+      {/* ── YouTube Section Header Bar ── */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-neutral-200/90 dark:border-slate-800">
+        <div className="flex flex-col gap-1 text-left">
+          <span className="text-[#C6112F] text-[10px] font-black tracking-[0.25em] uppercase flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
+            EVENTS &amp; CONFERENCES
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] dark:text-white uppercase tracking-tight flex items-center gap-2">
+            Upcoming Conferences
+            {/* YouTube Red Play Button Badge */}
+            <span className="inline-flex items-center justify-center bg-[#C6112F] text-white px-2.5 py-0.5 rounded-lg text-xs font-black tracking-widest lowercase shadow-xs">
+              <svg className="w-3.5 h-3.5 mr-1 fill-current" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              YouTube
+            </span>
+          </h2>
+        </div>
+
+        {/* YouTube Category Chips / Filters */}
+        <div className="flex flex-wrap items-center gap-2">
+          {["ALL", "MINING", "OIL & GAS"].map((cat) => {
+            const isSelected = activeTab === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveTab(cat)}
+                className={`text-xs font-bold px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                  isSelected
+                    ? "bg-[#1f2430] dark:bg-white text-white dark:text-[#1f2430] shadow-xs"
+                    : "bg-neutral-100 dark:bg-slate-800/80 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700"
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ── Featured Video Layout (YouTube Desktop Main Video Style) ── */}
+      {featured && (
+        <div className="my-8 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white dark:bg-[#131b2e] p-5 sm:p-7 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xs hover:shadow-md transition-all">
+          {/* YouTube Video Player / Thumbnail (16:9 aspect-video) */}
+          <div
+            onClick={() => router.push(`/news/${featured.id}`)}
+            className="lg:col-span-7 relative w-full aspect-video rounded-2xl overflow-hidden bg-black group cursor-pointer shadow-md"
+          >
+            <img
+              src={featured.image}
+              alt={featured.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+              onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800"; }}
+            />
+            {/* Dark Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 group-hover:bg-black/30 transition-colors" />
+
+            {/* YouTube Red Play Icon Button in Center */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#C6112F]/90 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-[#C6112F] transition-all">
+                <svg className="w-7 h-7 sm:w-8 sm:h-8 fill-current ml-1" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Top Left Live / Category Badge */}
+            <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md shadow-md flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              {featured.category}
+            </span>
+
+            {/* Bottom Right Duration Badge (YouTube Style) */}
+            <span className="absolute bottom-3 right-3 bg-black/85 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded shadow-xs backdrop-blur-xs">
+              HD · {featured.readTime}
+            </span>
+          </div>
+
+          {/* YouTube Video Info Details */}
+          <div className="lg:col-span-5 flex flex-col justify-between text-left py-1">
+            <div>
+              {/* Channel / Event Avatar Row */}
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-full bg-[#C6112F] text-white font-black text-xs flex items-center justify-center shadow-2xs shrink-0">
+                  TMIE
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold text-[#1f2430] dark:text-white flex items-center gap-1">
+                    THE Mining Event Official
+                    <svg className="w-3.5 h-3.5 text-[#C6112F] fill-current" viewBox="0 0 24 24">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z"/>
+                    </svg>
+                  </span>
+                  <span className="text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
+                    12.4K subscribers · Verified Channel
+                  </span>
+                </div>
+              </div>
+
+              {/* Title */}
+              <h3
+                onClick={() => router.push(`/news/${featured.id}`)}
+                className="text-xl sm:text-2xl font-extrabold text-[#1f2430] dark:text-white leading-tight mb-3 hover:text-[#C6112F] cursor-pointer transition-colors line-clamp-2"
+              >
+                {featured.title}
+              </h3>
+
+              <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 font-medium line-clamp-3">
+                {featured.snippet}
+              </p>
+            </div>
+
+            {/* Video Stats & Watch Action */}
+            <div className="pt-4 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
+              <span className="text-neutral-500 dark:text-slate-400 text-xs font-semibold">
+                {featured.date} · 2.4K views
+              </span>
+
+              <button
+                onClick={() => router.push(`/news/${featured.id}`)}
+                className="px-4 py-2 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-wider uppercase transition-all shadow-2xs cursor-pointer flex items-center gap-1.5 group-hover:scale-105"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                WATCH NOW
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── YouTube Grid Cards (16:9 Video Cards) ── */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
+        {grid.map((item) => (
+          <article
+            key={item.id}
+            onClick={() => router.push(`/news/${item.id}`)}
+            className="flex flex-col bg-white dark:bg-[#131b2e] border border-neutral-200/80 dark:border-[#233049] hover:border-[#C6112F]/60 rounded-2xl overflow-hidden shadow-2xs hover:shadow-lg transition-all duration-300 group cursor-pointer"
+          >
+            {/* Video 16:9 Thumbnail Box */}
+            <div className="relative w-full aspect-video bg-neutral-900 overflow-hidden shrink-0">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800"; }}
+              />
+              {/* Dark Hover Overlay */}
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
+
+              {/* YouTube Play Icon on Hover */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="w-10 h-10 rounded-xl bg-[#C6112F] text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                  <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Category Badge Top Left */}
+              <span className="absolute top-2 left-2 bg-[#C6112F] text-white text-[8px] font-black tracking-wider uppercase px-2 py-0.5 rounded shadow-2xs">
+                {item.category}
+              </span>
+
+              {/* YouTube Duration Badge Bottom Right */}
+              <span className="absolute bottom-2 right-2 bg-black/85 text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded backdrop-blur-xs">
+                {item.readTime}
+              </span>
+            </div>
+
+            {/* Video Meta Info Footer */}
+            <div className="p-4 flex flex-col justify-between flex-grow">
+              <div className="flex items-start gap-2.5 mb-2">
+                {/* Channel Icon Avatar */}
+                <div className="w-7 h-7 rounded-full bg-[#1f2430] text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  TM
+                </div>
+                <h4 className="text-xs sm:text-sm font-bold text-[#1f2430] dark:text-white leading-snug group-hover:text-[#C6112F] transition-colors line-clamp-2">
+                  {item.title}
+                </h4>
+              </div>
+
+              <div className="pl-9 flex flex-col gap-0.5 text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
+                <span className="flex items-center gap-1 text-neutral-600 dark:text-slate-300 font-semibold">
+                  THE Mining Event
+                  <svg className="w-3 h-3 text-[#C6112F] fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z"/>
+                  </svg>
+                </span>
+                <span>{item.date} · 1.1K views</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {/* ── Bottom YouTube Red CTA Button ── */}
+      <div className="flex flex-col items-center pt-8 pb-4">
+        <button
+          onClick={() => {
+            if (onViewAll) {
+              onViewAll();
+              window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+            }
+          }}
+          className="bg-[#C6112F] hover:bg-[#a50e27] text-white px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95 flex items-center gap-2"
+        >
+          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          VIEW ALL CONFERENCES &amp; VIDEOS
+        </button>
       </div>
     </div>
   );
@@ -2251,18 +2471,10 @@ export default function NewsPage() {
             />
           </section>
 
-          {/* ═══════ SECTION 6: UPCOMING CONFERENCES ═══════ */}
+          {/* ═══════ SECTION 6: UPCOMING CONFERENCES (YOUTUBE UI STYLE) ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-            <NewsSection
-              sectionLabel="EVENTS & CONFERENCES"
-              title="Upcoming Conferences"
-              icon={
-                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              }
+            <YouTubeConferencesSection
               articles={conferencesArticles}
-              ctaLabel="VIEW ALL CONFERENCES"
               onViewAll={() => setExpandedSection({ title: "Upcoming Conferences", sectionLabel: "EVENTS & CONFERENCES", articles: conferencesArticles })}
             />
           </section>

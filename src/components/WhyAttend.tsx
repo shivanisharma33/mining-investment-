@@ -44,18 +44,22 @@ export default function WhyAttend() {
             {/* Main Handshake Image Card */}
             <div className="relative z-10 rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_35px_rgba(0,0,0,0.12)] w-full max-w-[480px] aspect-[4/3] bg-neutral-100 group">
               <img
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1000&q=80"
+                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-2.jpg"
                 alt="Business agreement handshake"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 
             {/* Overlapping Small Clock Image Card */}
             <div className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-[42%] sm:w-[46%] rounded-xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_30px_rgba(0,0,0,0.2)] aspect-[4/3] bg-white group hover:scale-105 transition-transform duration-300">
               <img
-                src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80"
+                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-18.jpg"
                 alt="Desk clock and analytics"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>

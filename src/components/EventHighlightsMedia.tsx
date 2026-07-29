@@ -96,9 +96,11 @@ export default function EventHighlightsMedia() {
             {/* Top Item: Tall Vertical Executive Photo */}
             <div className="group relative w-full h-[260px] xs:h-[320px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
               <img
-                src="./image 31.avif"
+                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-10.jpg"
                 alt="Executive delegates networking reception"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
@@ -107,17 +109,21 @@ export default function EventHighlightsMedia() {
             <div className="grid grid-cols-2 gap-4 sm:gap-5">
               <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                  src="/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-3.jpg"
                   alt="Student delegates collaborating"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
                 />
               </div>
 
               <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
                 <img
-                  src="./image 26 copy.avif"
+                  src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-12.jpg"
                   alt="Delegates group at evening reception"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
                 />
               </div>
             </div>
@@ -125,9 +131,11 @@ export default function EventHighlightsMedia() {
             {/* Bottom Wide Banner: Close-up Microphone */}
             <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
               <img
-                src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80"
-                alt="Stage microphone close-up"
+                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-13.jpg"
+                alt="Stage presentation speaker"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -138,17 +146,21 @@ export default function EventHighlightsMedia() {
             <div className="grid grid-cols-2 gap-4 sm:gap-5">
               <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
                 <img
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                  alt="Student delegates collaborating"
+                  src="/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-8.jpg"
+                  alt="Student delegates at panel discussion"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
                 />
               </div>
 
               <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
                 <img
-                src="./image 26 copy.avif"
-                   alt="Delegates group at evening reception"
+                  src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-15.jpg"
+                  alt="Conference audience delegates"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
                 />
               </div>
             </div>
@@ -156,18 +168,22 @@ export default function EventHighlightsMedia() {
             {/* Middle Wide Banner: Close-up Microphone */}
             <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
               <img
-                src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80"
-                alt="Stage microphone close-up"
+                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-16.jpg"
+                alt="Keynote presentation audience"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
               />
             </div>
 
             {/* Bottom Item: Tall Vertical Executive Photo */}
             <div className="group relative w-full h-[260px] xs:h-[320px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
               <img
-                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
-                alt="Executive delegates networking reception"
+                src="/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-12.jpg"
+                alt="Students networking at Mining Investment Event"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
