@@ -133,18 +133,6 @@ const programsDropdown = [
       </svg>
     ),
   },
-  {
-    titleKey: "nav-golf",
-    titleDefault: "Iconic Golf Day (Le Tournoi Doré)",
-    descKey: "nav-golf-desc",
-    descDefault: "Exclusive networking golf event at La Tempête",
-    href: "/golf",
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M12 3v18M12 3l7 4-7 4" />
-      </svg>
-    ),
-  },
 ];
 
 /* Past Years dropdown sub-items */

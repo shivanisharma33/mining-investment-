@@ -200,6 +200,27 @@ export default function FeaturedEventCountdown() {
             </svg>
             <span>OUR SPONSOR</span>
           </Link>
+
+          {/* Row 3 */}
+          <Link
+            href="/golf"
+            className="w-full bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+          >
+            <svg className="w-4 h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M12 3v18M12 3l7 4-7 4" />
+            </svg>
+            <span>ICONIC GOLF DAY</span>
+          </Link>
+
+          <Link
+            href="/"
+            className="w-full bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-5 py-3.5 text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-2xs group"
+          >
+            <svg className="w-4 h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
+            </svg>
+            <span>MINING INVESTMENT</span>
+          </Link>
         </div>
       </div>
     </section>
