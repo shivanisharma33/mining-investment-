@@ -409,94 +409,94 @@ export default function SingleNewsDetailPage() {
             {/* Article Content Container */}
             <div className="p-6 sm:p-10 md:p-12 space-y-8">
 
-                {/* Lead Quote Callout */}
-                {snippet && (
-                  <div className="bg-rose-50/90 border-l-4 border-[#C6112F] p-6 rounded-r-2xl text-neutral-800 text-base sm:text-lg font-semibold leading-relaxed shadow-2xs">
-                    "{snippet}"
-                  </div>
-                )}
-
-                {/* Main Body Text */}
-                <div className="space-y-3.5 text-neutral-700 text-base sm:text-lg leading-relaxed font-normal">
-                  {bodyText
-                    ? bodyText
-                        .split(/\n+/)
-                        .map((p) => p.trim())
-                        .filter(Boolean)
-                        .map((paragraph, idx) => (
-                          <p key={idx} className="leading-relaxed">
-                            {paragraph}
-                          </p>
-                        ))
-                    : null}
+              {/* Lead Quote Callout */}
+              {snippet && (
+                <div className="bg-rose-50/90 border-l-4 border-[#C6112F] p-6 rounded-r-2xl text-neutral-800 text-base sm:text-lg font-semibold leading-relaxed shadow-2xs">
+                  "{snippet}"
                 </div>
+              )}
 
-                {/* Media Contact Footer */}
-                <div className="pt-8 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="text-xs font-semibold text-neutral-600">
-                    Media Contact: <a href="mailto:jchoi@irinc.ca" className="text-[#C6112F] font-bold hover:underline">jchoi@irinc.ca</a>
-                  </div>
-                  <button
-                    onClick={() => router.push("/news")}
-                    className="px-6 py-2.5 rounded-xl bg-neutral-900 text-white text-xs font-extrabold uppercase tracking-wider hover:bg-neutral-800 transition-all shadow-xs cursor-pointer"
-                  >
-                    All News Stories
-                  </button>
-                </div>
+              {/* Main Body Text */}
+              <div className="space-y-3.5 text-neutral-700 text-base sm:text-lg leading-relaxed font-normal">
+                {bodyText
+                  ? bodyText
+                    .split(/\n+/)
+                    .map((p) => p.trim())
+                    .filter(Boolean)
+                    .map((paragraph, idx) => (
+                      <p key={idx} className="leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))
+                  : null}
               </div>
-            </article>
 
-            {/* ═══════ RELATED STORIES RECOMMENDATIONS ═══════ */}
-            <div className="mt-16 text-left">
-              <span className="text-[#C6112F] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
-                MORE STORIES
-              </span>
-              <h3 className="text-2xl font-black text-neutral-900 mb-6">
-                Related Press Releases
-              </h3>
+              {/* Media Contact Footer */}
+              <div className="pt-8 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="text-xs font-semibold text-neutral-600">
+                  Media Contact: <a href="mailto:jchoi@irinc.ca" className="text-[#C6112F] font-bold hover:underline">jchoi@irinc.ca</a>
+                </div>
+                <button
+                  onClick={() => router.push("/news")}
+                  className="px-6 py-2.5 rounded-xl bg-neutral-900 text-white text-xs font-extrabold uppercase tracking-wider hover:bg-neutral-800 transition-all shadow-xs cursor-pointer"
+                >
+                  All News Stories
+                </button>
+              </div>
+            </div>
+          </article>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {relatedArticles.map((rel) => {
-                  const relTitle = lang === "FR" ? rel.headlineFR : rel.headlineEN;
-                  const relDate = lang === "FR" ? rel.dateFR : rel.dateEN;
+          {/* ═══════ RELATED STORIES RECOMMENDATIONS ═══════ */}
+          <div className="mt-16 text-left">
+            <span className="text-[#C6112F] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
+              MORE STORIES
+            </span>
+            <h3 className="text-2xl font-black text-neutral-900 mb-6">
+              Related Press Releases
+            </h3>
 
-                  return (
-                    <article
-                      key={rel.id}
-                      onClick={() => router.push(`/news/${rel.id}`)}
-                      className="group cursor-pointer bg-white border border-neutral-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-                    >
-                      <div>
-                        <div className="w-full h-36 rounded-xl overflow-hidden mb-3 bg-neutral-100">
-                          <img
-                            src={rel.image || "/news/hero_1.png"}
-                            alt={relTitle}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        <span className="text-[10px] font-bold text-[#C6112F] uppercase tracking-wider block mb-1">
-                          {rel.tagCategory}
-                        </span>
-                        <h4 className="text-sm font-extrabold text-neutral-900 group-hover:text-[#C6112F] transition-colors leading-snug line-clamp-2 mb-2">
-                          {relTitle}
-                        </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedArticles.map((rel) => {
+                const relTitle = lang === "FR" ? rel.headlineFR : rel.headlineEN;
+                const relDate = lang === "FR" ? rel.dateFR : rel.dateEN;
+
+                return (
+                  <article
+                    key={rel.id}
+                    onClick={() => router.push(`/news/${rel.id}`)}
+                    className="group cursor-pointer bg-white border border-neutral-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="w-full h-36 rounded-xl overflow-hidden mb-3 bg-neutral-100">
+                        <img
+                          src={rel.image || "/news/hero_1.png"}
+                          alt={relTitle}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       </div>
-                      <span className="text-[11px] font-semibold text-neutral-400">
-                        {relDate}
+                      <span className="text-[10px] font-bold text-[#C6112F] uppercase tracking-wider block mb-1">
+                        {rel.tagCategory}
                       </span>
-                    </article>
-                  );
-                })}
+                      <h4 className="text-sm font-extrabold text-neutral-900 group-hover:text-[#C6112F] transition-colors leading-snug line-clamp-2 mb-2">
+                        {relTitle}
+                      </h4>
+                    </div>
+                    <span className="text-[11px] font-semibold text-neutral-400">
+                      {relDate}
+                    </span>
+                  </article>
+                );
+              })}
             </div>
           </div>
 
-          </div>
+        </div>
 
-          <div className="mt-16">
-            <GetInTouchCTA />
-            <Footer />
-          </div>
-        </main>
-      </>
-    );
+        <div className="mt-16">
+          <GetInTouchCTA />
+          <Footer />
+        </div>
+      </main>
+    </>
+  );
 }

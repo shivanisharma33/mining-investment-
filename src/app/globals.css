@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #111111;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+}
+
+.dark {
+  --background: #090d16;
+  --foreground: #f1f5f9;
+  --card-bg: #131b2e;
+  --card-border: #233049;
+  color-scheme: dark;
 }
 
 @theme {
@@ -19,7 +31,162 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLOBAL DARK MODE OVERRIDES
+   These rules automatically override ALL hardcoded light-mode colors
+   site-wide when .dark is on <html>. Organized by category.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Body ── */
+.dark body {
+  background-color: #090d16;
+  color: #f1f5f9;
+}
+
+/* ── Inputs / Select / Textarea ── */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #131b2e !important;
+  color: #f1f5f9 !important;
+  border-color: #2b3a58 !important;
+}
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* ── Background Colors ── */
+.dark .bg-white {
+  background-color: #131b2e !important;
+}
+.dark :is(.bg-neutral-50, .bg-neutral-100, .bg-neutral-200) {
+  background-color: #0e1524 !important;
+}
+.dark :is([class*="bg-[#f8fafc]"], [class*="bg-[#f4f7fa]"], [class*="bg-[#f0f4f8]"], [class*="bg-[#f0f3f6]"], [class*="bg-[#edf0f3]"], [class*="bg-[#eaeaea]"]) {
+  background-color: #131b2e !important;
+}
+
+/* ── Border Colors ── */
+.dark :is(.border-neutral-100, .border-neutral-200, .border-neutral-300, .border-neutral-400) {
+  border-color: #233049 !important;
+}
+.dark :is(.border-white) {
+  border-color: #233049 !important;
+}
+
+/* ── Text Colors: Dark on Light → Light on Dark ── */
+.dark :is(.text-neutral-900, .text-neutral-800) {
+  color: #f8fafc !important;
+}
+.dark :is(.text-neutral-700, .text-neutral-600) {
+  color: #cbd5e1 !important;
+}
+.dark .text-neutral-500 {
+  color: #94a3b8 !important;
+}
+.dark .text-neutral-400 {
+  color: #7e8fa8 !important;
+}
+.dark :is(.text-neutral-300, .text-neutral-200) {
+  color: #cbd5e1 !important;
+}
+.dark .text-black {
+  color: #f1f5f9 !important;
+}
+
+/* ── Headings, paragraphs and generic text overrides ── */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #f8fafc;
+}
+.dark p {
+  color: #cbd5e1;
+}
+.dark a:not([class*="text-white"]):not([class*="text-[#C6112F]"]):not([class*="text-red"]) {
+  color: inherit;
+}
+
+/* ── Table overrides ── */
+.dark th {
+  background-color: #131b2e !important;
+  color: #f1f5f9 !important;
+  border-color: #233049 !important;
+}
+.dark td {
+  background-color: transparent !important;
+  color: #cbd5e1 !important;
+  border-color: #1e293b !important;
+}
+.dark tr:hover td {
+  background-color: #1a2238 !important;
+}
+
+/* ── Shadow adjustments ── */
+.dark :is(.shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl) {
+  --tw-shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+/* ── Dropdown / Mega-menu hover backgrounds ── */
+.dark .hover\:bg-neutral-100:hover {
+  background-color: #1a2238 !important;
+}
+
+/* ── SVG icons inside sections ── */
+.dark svg:not([class*="text-[#C6112F]"]):not([class*="text-white"]):not([class*="text-amber"]):not([class*="text-indigo"]):not([class*="fill-"]) {
+  color: inherit;
+}
+
+/* ── Span / Li / Label generic text ── */
+.dark span:not([class*="text-white"]):not([class*="text-[#C6112F]"]):not([class*="text-red"]):not([class*="text-amber"]):not([class*="text-green"]):not([class*="text-indigo"]) {
+  color: inherit;
+}
+.dark li {
+  color: #cbd5e1;
+}
+.dark label {
+  color: #e2e8f0;
+}
+
+/* ── Blockquote & accent backgrounds ── */
+.dark blockquote {
+  background-color: rgba(198, 17, 47, 0.08) !important;
+  border-color: #C6112F !important;
+}
+
+/* ── Sections with bg-white class – override their children too ── */
+.dark section.bg-white,
+.dark section[class*="bg-white"],
+.dark div[class*="bg-white"] {
+  background-color: #131b2e !important;
+}
+
+/* ── Dropdown hover bg for red-tinted hovers ── */
+.dark [class*="hover:bg-[#fef2f2]"]:hover {
+  background-color: rgba(198, 17, 47, 0.1) !important;
+}
+
+/* ── Placeholder text inside neutral-themed inputs ── */
+.dark [class*="placeholder:text-neutral"],
+.dark [class*="placeholder-neutral"] {
+  --tw-placeholder-opacity: 1;
+}
+
+/* ── Force white-bg cards to dark ── */
+.dark [class*="bg-white/"] {
+  background-color: rgba(19, 27, 46, 0.95) !important;
+}
+
+/* ── Footer SVG backdrop adjustment ── */
+.dark footer svg rect {
+  fill: #0b101c;
+}
+.dark footer svg polygon {
+  opacity: 0.06;
+}
+
 
 /* Text Reveal Animation */
 @keyframes textReveal {
@@ -66,3 +233,4 @@ body {
 .delay-6 { animation-delay: 800ms; }
 .delay-7 { animation-delay: 1000ms; }
 .delay-8 { animation-delay: 1200ms; }
+

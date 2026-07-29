@@ -83,7 +83,7 @@ export default function ProgramsGrid() {
       );
 
   return (
-    <section className="relative w-full bg-white py-14 sm:py-18 overflow-hidden">
+    <section className="relative w-full bg-white dark:bg-[#090d16] py-14 sm:py-18 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
 
@@ -92,7 +92,7 @@ export default function ProgramsGrid() {
         <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
           {t("programs-tag", "FEATURED INITIATIVES")}
         </span>
-        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
+        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
           {t("programs-title", "Key Event Programs")}
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-8" />
@@ -105,7 +105,7 @@ export default function ProgramsGrid() {
               onClick={() => setActiveTab(cat)}
               className={`px-4 sm:px-5 py-2 rounded-full text-xs font-extrabold tracking-wider transition-all duration-300 ${activeTab === cat
                   ? "bg-[#C6112F] text-white shadow-md scale-105"
-                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200 hover:text-neutral-900"
+                  : "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700 hover:text-neutral-900 dark:hover:text-white"
                 }`}
             >
               {cat}
@@ -133,9 +133,9 @@ export default function ProgramsGrid() {
                 </div>
 
                 {/* Clean Origami Text Block (Right Half) */}
-                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none group-hover:bg-[#e4e4e4] transition-colors duration-300">
+                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] dark:bg-[#131b2e] overflow-hidden rounded-none group-hover:bg-[#e4e4e4] dark:group-hover:bg-[#1a2238] transition-colors duration-300">
                   {/* Origami Faceted Polygon Background */}
-                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
+                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40 dark:opacity-10">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 400">
                       <polygon points="0,0 400,0 280,400 0,400" fill="#ffffff" />
                     </svg>
@@ -145,11 +145,11 @@ export default function ProgramsGrid() {
                     <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
                       {item.category}
                     </span>
-                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] leading-snug mb-2.5">
+                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] dark:text-white leading-snug mb-2.5">
                       {item.title}
                     </h3>
                     <div className="w-12 h-[2px] bg-[#C6112F] mb-3" />
-                    <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
+                    <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
                       {item.description}
                     </p>
                   </div>
@@ -169,9 +169,9 @@ export default function ProgramsGrid() {
             ) : (
               <>
                 {/* Clean Origami Text Block First (Left Half) */}
-                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] overflow-hidden rounded-none order-2 sm:order-1 group-hover:bg-[#e4e4e4] transition-colors duration-300">
+                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] dark:bg-[#131b2e] overflow-hidden rounded-none order-2 sm:order-1 group-hover:bg-[#e4e4e4] dark:group-hover:bg-[#1a2238] transition-colors duration-300">
                   {/* Origami Faceted Polygon Background */}
-                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40">
+                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40 dark:opacity-10">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 400">
                       <polygon points="0,0 400,0 400,400 120,400" fill="#ffffff" />
                     </svg>
@@ -181,11 +181,11 @@ export default function ProgramsGrid() {
                     <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
                       {item.category}
                     </span>
-                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] leading-snug mb-2.5">
+                    <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] dark:text-white leading-snug mb-2.5">
                       {item.title}
                     </h3>
                     <div className="w-12 h-[2px] bg-[#C6112F] mb-3" />
-                    <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
+                    <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
                       {item.description}
                     </p>
                   </div>

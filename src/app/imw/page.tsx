@@ -61,7 +61,7 @@ export default function InternationalMiningWeekPage() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-[#f8fafc]">
+      <main className="flex flex-col flex-grow w-full bg-[#f8fafc] dark:bg-[#090d16] transition-colors duration-300">
         {/* ═════════════════════════════════════════════════════════════
             HERO SECTION
         ═════════════════════════════════════════════════════════════ */}
@@ -170,10 +170,10 @@ export default function InternationalMiningWeekPage() {
         {/* ═════════════════════════════════════════════════════════════
             FOUNDING PARTNERS SECTION
         ═════════════════════════════════════════════════════════════ */}
-        <section className="relative w-full py-8 sm:py-12 bg-white border-b border-neutral-300">
+        <section className="relative w-full py-8 sm:py-12 bg-white dark:bg-[#090d16] border-b border-neutral-300 dark:border-slate-800 transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 text-center">
             {/* Title with red underline */}
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#1e293b] uppercase tracking-[0.15em]">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-[#1e293b] dark:text-white uppercase tracking-[0.15em]">
               FOUNDING PARTNERS
             </h2>
             <div className="w-12 h-[2.5px] bg-[#C6112F] mx-auto mt-2 mb-6 sm:mb-8 rounded-full" />
@@ -219,10 +219,10 @@ export default function InternationalMiningWeekPage() {
         {/* ═════════════════════════════════════════════════════════════
             EXPLORE THE WEEK SECTION
         ═════════════════════════════════════════════════════════════ */}
-        <section id="about-imw-section" className="relative w-full py-16 sm:py-24 bg-[#f8fafc]">
+        <section id="about-imw-section" className="relative w-full py-16 sm:py-24 bg-[#f8fafc] dark:bg-[#090d16] transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="mb-10 text-left">
-              <h2 className="text-xl sm:text-3xl font-extrabold text-[#1e293b] uppercase tracking-[0.15em]">
+              <h2 className="text-xl sm:text-3xl font-extrabold text-[#1e293b] dark:text-white uppercase tracking-[0.15em]">
                 EXPLORE THE WEEK
               </h2>
               <div className="w-14 h-[3px] bg-[#C6112F] mt-2.5 rounded-full" />
@@ -234,22 +234,22 @@ export default function InternationalMiningWeekPage() {
                 const content = (
                   <div
                     key={card.id}
-                    className="bg-[#edf0f3] border border-neutral-300/80 rounded-xl p-6 sm:p-7 flex items-start gap-4 shadow-2xs hover:bg-[#C6112F] hover:border-[#910A22] hover:shadow-xl transition-all duration-300 group cursor-pointer h-full"
+                    className="bg-[#edf0f3] dark:bg-[#131b2e] border border-neutral-300/80 dark:border-[#233049] rounded-xl p-6 sm:p-7 flex items-start gap-4 shadow-2xs hover:bg-[#C6112F] dark:hover:bg-[#C6112F] hover:border-[#910A22] hover:shadow-xl transition-all duration-300 group cursor-pointer h-full"
                   >
                     {/* Circle Icon Container */}
-                    <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-white border border-[#C6112F]/60 flex items-center justify-center shrink-0 shadow-2xs transition-colors">
-                      <svg className="w-6 h-6 text-neutral-800 group-hover:text-[#C6112F] transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-[#111827] dark:bg-[#1e293b] border border-[#C6112F]/60 flex items-center justify-center shrink-0 shadow-2xs transition-colors group-hover:bg-white">
+                      <svg className="w-6 h-6 text-white group-hover:text-[#C6112F] transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d={card.iconPath} />
                       </svg>
                     </div>
 
                     {/* Card Content */}
                     <div className="text-left">
-                      <h3 className="text-base sm:text-lg font-bold text-[#1e293b] group-hover:text-white transition-colors">
+                      <h3 className="text-base sm:text-lg font-bold text-[#1e293b] dark:text-white group-hover:text-white transition-colors">
                         {card.title}
                       </h3>
                       <div className="w-7 h-[2px] bg-[#C6112F] group-hover:bg-white my-2 transition-colors" />
-                      <p className="text-neutral-600 text-xs sm:text-sm font-normal group-hover:text-white/95 transition-colors leading-relaxed">
+                      <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-normal group-hover:text-white/95 transition-colors leading-relaxed">
                         {card.desc}
                       </p>
                     </div>

@@ -96,19 +96,19 @@ export default function TravelPage() {
         </section>
 
         {/* ═══════ TOP TRAVEL & ACCOMMODATIONS INTRO ═══════ */}
-        <section className="relative w-full bg-white py-14 sm:py-18 md:py-20">
+        <section className="relative w-full bg-white dark:bg-[#090d16] py-14 sm:py-18 md:py-20 transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("travel-venue-label", "TRAVEL & ACCOMMODATIONS")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
               {t("travel-main-heading", "Travel & Accommodations")}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
             {/* Prominent Top Announcement Notice */}
-            <div className="bg-[#f8fafc] border border-neutral-200/90 rounded-2xl p-6 sm:p-8 md:p-10 mb-12 shadow-2xs">
-              <h3 className="text-xl sm:text-2xl font-black text-[#1a1f2c] mb-3">
+            <div className="bg-slate-50 dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-2xl p-6 sm:p-8 md:p-10 mb-12 shadow-2xs">
+              <h3 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white mb-3">
                 {t(
                   "travel-event-welcome",
                   "Welcome to THE Mining Investment EVENT, taking place Tuesday, June 2 to Thursday, June 4, 2026 at the Centre des congrès de Québec (“QCC”)"
@@ -126,7 +126,7 @@ export default function TravelPage() {
                 <span className="text-sm">↗</span>
               </a>
 
-              <div className="space-y-2 text-neutral-700 text-sm sm:text-base font-medium leading-relaxed">
+              <div className="space-y-2 text-neutral-800 dark:text-slate-200 text-sm sm:text-base font-medium leading-relaxed">
                 <p className="flex items-start gap-2">
                   <span className="text-[#C6112F] font-bold">•</span>
                   <span>{t("travel-notice-1", "Discounted block rates available for registered participants only.")}</span>
@@ -144,13 +144,13 @@ export default function TravelPage() {
             </div>
 
             {/* Convention Centre Card */}
-            <div className="bg-[#f8fafc] border border-neutral-200 rounded-2xl p-6 sm:p-8 flex flex-col mb-12">
-              <div className="w-14 h-14 rounded-2xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] mb-5">
+            <div className="bg-slate-50 dark:bg-[#131b2e] border border-neutral-200 dark:border-[#233049] rounded-2xl p-6 sm:p-8 flex flex-col mb-12">
+              <div className="w-14 h-14 rounded-2xl bg-[#fef2f2] dark:bg-rose-950/50 border border-[#C6112F]/10 dark:border-[#C6112F]/30 flex items-center justify-center text-[#C6112F] mb-5">
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
                 </svg>
               </div>
-              <h3 className="text-xl font-black text-[#1a1f2c] mb-3">
+              <h3 className="text-xl font-black text-neutral-900 dark:text-white mb-3">
                 <a
                   href="https://www.convention.qc.ca/en/about/ceo-message/"
                   target="_blank"
@@ -161,7 +161,7 @@ export default function TravelPage() {
                 </a>
               </h3>
               <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
-              <p className="text-neutral-600 text-sm leading-relaxed flex-1 font-medium">
+              <p className="text-neutral-700 dark:text-slate-300 text-sm leading-relaxed flex-1 font-medium">
                 {t("travel-convention-desc", "Welcome to the Centre des congrès de Québec, where elegance meets innovation. Nestled within the charming historic district of Old Quebec, this world-class facility seamlessly blends modern amenities with the rich tapestry of Quebecois culture.")}
               </p>
               <p className="text-[#C6112F] text-xs font-semibold mt-4">
@@ -180,7 +180,7 @@ export default function TravelPage() {
             {/* 3 Transportation Cards Grid with Public Travel Images */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* Air Travel Card with travle-1.webp */}
-              <div className="bg-white border border-neutral-200/90 rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
+              <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
                 <div className="w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-neutral-900 mb-4 relative shrink-0">
                   <img
                     src="/travle-1.webp"
@@ -193,12 +193,12 @@ export default function TravelPage() {
                 </div>
 
                 <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] dark:bg-rose-950/50 border border-[#C6112F]/10 dark:border-[#C6112F]/30 flex items-center justify-center text-[#C6112F] shrink-0">
                     <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
                     </svg>
                   </div>
-                  <h3 className="text-sm sm:text-base font-black text-[#1a1f2c] leading-snug">
+                  <h3 className="text-sm sm:text-base font-black text-neutral-900 dark:text-white leading-snug">
                     {t("travel-air-title", "Air Travel direct to Quebec (YQB) estimated times")}
                   </h3>
                 </div>
@@ -208,15 +208,15 @@ export default function TravelPage() {
                   {flights.map((f) => (
                     <div
                       key={f.city}
-                      className="flex items-center justify-between bg-[#f8fafc] border border-neutral-200/80 rounded-lg px-2.5 py-1"
+                      className="flex items-center justify-between bg-slate-100 dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 rounded-lg px-2.5 py-1.5"
                     >
-                      <span className="text-neutral-700 text-[11px] font-medium">{f.city}</span>
-                      <span className="text-[#C6112F] text-[11px] font-bold">{f.time}</span>
+                      <span className="text-neutral-900 dark:text-slate-100 text-[11px] font-bold">{f.city}</span>
+                      <span className="text-[#C6112F] dark:text-[#ff4d6d] text-[11px] font-extrabold">{f.time}</span>
                     </div>
                   ))}
                 </div>
 
-                <p className="text-neutral-600 text-xs leading-relaxed font-medium flex-1 mb-2">
+                <p className="text-neutral-700 dark:text-slate-300 text-xs leading-relaxed font-medium flex-1 mb-2">
                   {t(
                     "travel-air-carrier-note",
                     "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB. Some carriers fly direct to YQB, Please check with your carrier of choice. Jean Lesage International airport in Quebec City is a 20 minute taxi ride to/from The Chateau Frontenac."
@@ -233,7 +233,7 @@ export default function TravelPage() {
               </div>
 
               {/* Train Travel Card with travle-2.webp */}
-              <div className="bg-white border border-neutral-200/90 rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
+              <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
                 <div className="w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-neutral-900 mb-4 relative shrink-0">
                   <img
                     src="/travle-2.webp"
@@ -246,29 +246,29 @@ export default function TravelPage() {
                 </div>
 
                 <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] dark:bg-rose-950/50 border border-[#C6112F]/10 dark:border-[#C6112F]/30 flex items-center justify-center text-[#C6112F] shrink-0">
                     <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M5 4h14a2 2 0 012 2v10a2 2 0 01-2 2h-1.5L19 21h-2l-1.5-3h-7L7 21H5l1.5-3H5a2 2 0 01-2-2V6a2 2 0 01-2-2zm0 4h14M8 14h2m4 0h2" />
                     </svg>
                   </div>
-                  <h3 className="text-sm sm:text-base font-black text-[#1a1f2c] leading-snug">
+                  <h3 className="text-sm sm:text-base font-black text-neutral-900 dark:text-white leading-snug">
                     {t("travel-train-title", "Train Travel to Quebec (YQB) estimated times:")}
                   </h3>
                 </div>
                 <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
 
-                <div className="space-y-1.5 text-xs font-medium text-neutral-700 mb-3 bg-[#f8fafc] border border-neutral-200/80 p-2.5 rounded-lg">
-                  <p className="flex justify-between items-center text-[11px]">
-                    <span>• From Toronto:</span>
-                    <span className="font-bold text-[#C6112F]">8 hrs (transfer at Montreal)</span>
+                <div className="space-y-1.5 text-xs font-medium mb-3 bg-slate-100 dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 p-2.5 rounded-lg">
+                  <p className="flex justify-between items-center text-[11px] text-neutral-900 dark:text-slate-100">
+                    <span className="font-semibold">• From Toronto:</span>
+                    <span className="font-extrabold text-[#C6112F] dark:text-[#ff4d6d]">8 hrs (transfer at Montreal)</span>
                   </p>
-                  <p className="flex justify-between items-center border-t border-neutral-200/60 pt-1.5 text-[11px]">
-                    <span>• From Montreal:</span>
-                    <span className="font-bold text-[#C6112F]">3 hrs</span>
+                  <p className="flex justify-between items-center border-t border-neutral-200/60 dark:border-slate-700/60 pt-1.5 text-[11px] text-neutral-900 dark:text-slate-100">
+                    <span className="font-semibold">• From Montreal:</span>
+                    <span className="font-extrabold text-[#C6112F] dark:text-[#ff4d6d]">3 hrs</span>
                   </p>
                 </div>
 
-                <p className="text-neutral-600 text-xs leading-relaxed font-medium flex-1 mb-2">
+                <p className="text-neutral-700 dark:text-slate-300 text-xs leading-relaxed font-medium flex-1 mb-2">
                   {t("travel-train-taxi-note", "The train station in Quebec City is 5 mins by taxi to most major hotels.")}
                 </p>
                 <a
@@ -282,7 +282,7 @@ export default function TravelPage() {
               </div>
 
               {/* Private Transportation Card with travle-3.webp */}
-              <div className="bg-white border border-neutral-200/90 rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
+              <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-2xl overflow-hidden p-5 sm:p-6 flex flex-col shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 group hover:-translate-y-1">
                 <div className="w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-neutral-900 mb-4 relative shrink-0">
                   <img
                     src="/travle-4.webp"
@@ -295,25 +295,25 @@ export default function TravelPage() {
                 </div>
 
                 <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] shrink-0">
+                  <div className="w-9 h-9 rounded-xl bg-[#fef2f2] dark:bg-rose-950/50 border border-[#C6112F]/10 dark:border-[#C6112F]/30 flex items-center justify-center text-[#C6112F] shrink-0">
                     <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6H8.25L5.25 9H3.75A1.5 1.5 0 002.25 10.5v3.75a1.5 1.5 0 001.5 1.5h16.5a1.5 1.5 0 001.5-1.5V10.5A1.5 1.5 0 0018.75 9H18L15.75 6zm-9 12a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm11.25 0a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                     </svg>
                   </div>
-                  <h3 className="text-sm sm:text-base font-black text-[#1a1f2c] leading-snug">
+                  <h3 className="text-sm sm:text-base font-black text-neutral-900 dark:text-white leading-snug">
                     {t("travel-limo-heading", "Private Transportation")}
                   </h3>
                 </div>
                 <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
-                <p className="text-neutral-600 text-xs leading-relaxed font-medium flex-1 mb-2">
+                <p className="text-neutral-700 dark:text-slate-300 text-xs leading-relaxed font-medium flex-1 mb-2">
                   {t(
                     "travel-limo-text",
                     "If wish to book private transportation, we invite you to contact Limousine A1 directly to arrange."
                   )}
                 </p>
-                <div className="mt-2.5 p-2.5 bg-[#f8fafc] border border-neutral-200/80 rounded-lg text-xs font-semibold text-neutral-800 space-y-0.5">
-                  <p>Tel: <a href="tel:4185235059" className="text-[#C6112F] hover:underline">418-523-5059</a></p>
-                  <p>Email: <a href="mailto:res@limousinequebec.com" className="text-[#C6112F] hover:underline">res@limousinequebec.com</a></p>
+                <div className="mt-2.5 p-2.5 bg-slate-100 dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 rounded-lg text-xs font-semibold text-neutral-900 dark:text-slate-100 space-y-0.5">
+                  <p>Tel: <a href="tel:4185235059" className="text-[#C6112F] dark:text-[#ff4d6d] hover:underline font-bold">418-523-5059</a></p>
+                  <p>Email: <a href="mailto:res@limousinequebec.com" className="text-[#C6112F] dark:text-[#ff4d6d] hover:underline font-bold">res@limousinequebec.com</a></p>
                 </div>
                 <a
                   href="http://www.limousinequebec.com/"
@@ -329,12 +329,12 @@ export default function TravelPage() {
         </section>
 
         {/* ═══════ ACCOMMODATIONS ═══════ */}
-        <section className="relative w-full bg-white py-16 sm:py-20 md:py-24">
+        <section className="relative w-full bg-white dark:bg-[#090d16] py-16 sm:py-20 md:py-24 transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("travel-services-label", "HOTELS & DISCOUNTS")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
               {t("travel-services-title", "Accommodations & Hotel Discounts")}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-10" />
@@ -343,14 +343,14 @@ export default function TravelPage() {
               {localizedAccommodations.map((item) => (
                 <div
                   key={item.title}
-                  className="group bg-white border border-neutral-200/90 rounded-2xl p-5 sm:p-6 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 hover:-translate-y-1 flex flex-col"
+                  className="group bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-2xl p-5 sm:p-6 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_12px_30px_rgba(198,17,47,0.08)] transition-all duration-500 hover:-translate-y-1 flex flex-col"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] mb-4 group-hover:bg-[#C6112F] group-hover:text-white group-hover:shadow-md group-hover:shadow-[#C6112F]/20 transition-all duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-[#fef2f2] dark:bg-rose-950/40 border border-[#C6112F]/10 dark:border-[#C6112F]/30 flex items-center justify-center text-[#C6112F] mb-4 group-hover:bg-[#C6112F] group-hover:text-white group-hover:shadow-md group-hover:shadow-[#C6112F]/20 transition-all duration-300">
                     {item.icon}
                   </div>
-                  <h3 className="text-base font-black text-[#1a1f2c] mb-2">{item.title}</h3>
+                  <h3 className="text-base font-black text-[#1a1f2c] dark:text-white mb-2">{item.title}</h3>
                   <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
-                  <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed whitespace-pre-line flex-1 font-medium">{item.desc}</p>
+                  <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed whitespace-pre-line flex-1 font-medium">{item.desc}</p>
                   {item.note && (
                     <p className="text-[#C6112F] text-xs font-semibold mt-3">{item.note}</p>
                   )}

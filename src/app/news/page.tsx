@@ -145,13 +145,7 @@ const heroSlides = [
   },
 ];
 
-function HeroNewsSlider({
-  setActiveModalItem,
-  lang,
-}: {
-  setActiveModalItem: (item: RawNewsItem) => void;
-  lang: string;
-}) {
+function HeroNewsSlider({ lang }: { lang: string }) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -258,24 +252,122 @@ const bannerSlides = [
   },
 ];
 
+function BannerSliderSection() {
+  const { lang, t } = useLanguage();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? bannerSlides.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % bannerSlides.length);
+  };
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % bannerSlides.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const current = bannerSlides[currentIndex];
+
+  return (
+    <div className="w-full text-center">
+      {/* Header from mockup */}
+      <div className="text-center mb-8">
+        <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase block mb-2">
+          FEATURED
+        </span>
+        <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
+          Featured Partners
+        </h2>
+        <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
+        <p className="text-neutral-500 dark:text-slate-300 text-xs sm:text-sm font-medium max-w-xl mx-auto leading-relaxed">
+          {t("partners-sub", "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters.")}
+        </p>
+      </div>
+
+      {/* Banner Carousel Slider with Side Arrows */}
+      <div
+        className="relative flex items-center justify-center gap-3 sm:gap-6 max-w-[1240px] mx-auto"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Left Arrow Button */}
+        <button
+          onClick={prevSlide}
+          aria-label="Previous Banner"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-md shrink-0 cursor-pointer z-20"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+
+        {/* Banner Display Box matching exact mockup proportions */}
+        <div className="relative w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] overflow-hidden shadow-lg bg-neutral-900 aspect-[21/9] sm:aspect-[24/9] group">
+          <img
+            src={current.image}
+            alt={current.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-10 text-left">
+            <span className="text-[#C6112F] bg-white/90 dark:bg-[#131b2e]/90 text-[10px] sm:text-xs font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-2 shadow-2xs">
+              FEATURED EVENT
+            </span>
+            <h3 className="text-xl sm:text-3xl font-extrabold text-white leading-snug drop-shadow-md">
+              {current.title}
+            </h3>
+            <p className="text-neutral-200 text-xs sm:text-sm font-medium mt-1 drop-shadow-sm max-w-2xl">
+              {current.subtitle}
+            </p>
+          </div>
+        </div>
+
+        {/* Right Arrow Button */}
+        <button
+          onClick={nextSlide}
+          aria-label="Next Banner"
+          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-md shrink-0 cursor-pointer z-20"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Red Pagination Indicator Dots matching mockup */}
+      <div className="flex justify-center items-center gap-3 pt-6">
+        {bannerSlides.map((b, idx) => (
+          <button
+            key={b.id}
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`Go to banner ${idx + 1}`}
+            className={`transition-all duration-300 cursor-pointer ${idx === currentIndex
+                ? "w-3.5 h-3.5 rounded-full bg-[#C6112F] scale-110 shadow-sm"
+                : "w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-slate-700 hover:bg-[#C6112F]/60"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SponsorsSection() {
-  const tiers = [
-    {
-      key: "SPECIAL",
-      label: "Special Participation",
-      color: "#1a3a7a",
-      accentBg: "bg-blue-100",
-      logoH: "h-16",
-      logos: [
-        "/sponsors/2026/qu_bec.png",
-      ],
-    },
-    {
-      key: "PLATINUM",
+  const { t } = useLanguage();
+  const [activeTier, setActiveTier] = useState<string>("ALL");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const tiersData: Record<string, { label: string; color: string; logos: string[] }> = {
+    PLATINUM: {
       label: "Platinum Partners",
       color: "#8B6914",
-      accentBg: "bg-amber-100",
-      logoH: "h-16",
       logos: [
         "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
         "/sponsors/2026/glencore.svg",
@@ -286,12 +378,9 @@ function SponsorsSection() {
         "/sponsors/2026/sponsor_platinum_29.png",
       ],
     },
-    {
-      key: "GOLD",
+    GOLD: {
       label: "Gold Partners",
       color: "#B8860B",
-      accentBg: "bg-yellow-100",
-      logoH: "h-14",
       logos: [
         "/sponsors/2026/peartree_canada.png",
         "/sponsors/2026/the_money_channel_new_york_city.svg",
@@ -307,12 +396,9 @@ function SponsorsSection() {
         "/sponsors/2026/sponsor_2026_5_580x114.png",
       ],
     },
-    {
-      key: "SILVER",
+    SILVER: {
       label: "Silver Partners",
       color: "#6B7280",
-      accentBg: "bg-neutral-200",
-      logoH: "h-12",
       logos: [
         "/sponsors/2026/atrium_research.ico",
         "/sponsors/2026/canadian_securities_exchange_cse.png",
@@ -335,16 +421,12 @@ function SponsorsSection() {
         "/sponsors/2026/sponsor_silver_33.png",
         "/sponsors/2026/sponsor_silver_38.png",
         "/sponsors/2026/sponsor_silver_41.png",
-        "/sponsors/2026/sponsor_silver_44.png",
         "/sponsors/2026/sponsor_silver_46.png",
       ],
     },
-    {
-      key: "COPPER",
+    COPPER: {
       label: "Copper Partners",
       color: "#B45309",
-      accentBg: "bg-orange-100",
-      logoH: "h-12",
       logos: [
         "/sponsors/2026/alliance_global_partners.ico",
         "/sponsors/2026/brooks_nelson.png",
@@ -369,19 +451,16 @@ function SponsorsSection() {
         "/sponsors/2026/sponsor_copper_51.png",
       ],
     },
-    {
-      key: "MEDIA",
+    MEDIA: {
       label: "Media Partners",
       color: "#C6112F",
-      accentBg: "bg-rose-100",
-      logoH: "h-10",
       logos: [
+        "/sponsors/2026/sponsor_media_21.png",
         "/sponsors/2026/sponsor_media_17.png",
         "/sponsors/2026/sponsor_media_19.png",
         "/sponsors/2026/sponsor_media_35.png",
         "/sponsors/2026/sponsor_media_48.png",
         "/sponsors/2026/sponsor_media_27.png",
-        "/sponsors/2026/sponsor_media_21.png",
         "/sponsors/2026/miningir.png",
         "/sponsors/2026/sponsor_media_22.png",
         "/sponsors/2026/sponsor_media_23.png",
@@ -393,62 +472,144 @@ function SponsorsSection() {
         "/sponsors/2026/sponsor_media_37.png",
       ],
     },
-  ];
+    SPECIAL: {
+      label: "Special Participation",
+      color: "#1a3a7a",
+      logos: [
+        "/sponsors/2026/qu_bec.png",
+      ],
+    },
+  };
+
+  const tierKeys = ["ALL", "PLATINUM", "GOLD", "SILVER", "COPPER", "MEDIA", "SPECIAL"];
+
+  // Get active logos
+  const currentLogos =
+    activeTier === "ALL"
+      ? Object.values(tiersData).flatMap((t) => t.logos)
+      : tiersData[activeTier]?.logos || [];
+
+  // Repeat logos 3 times for infinite loop track
+  const displayLogos = [...currentLogos, ...currentLogos, ...currentLogos];
+
+  useEffect(() => {
+    if (isPaused || currentLogos.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % currentLogos.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, [isPaused, currentLogos.length, activeTier]);
+
+  const handleTabChange = (tier: string) => {
+    setActiveTier(tier);
+    setCurrentIndex(0);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? currentLogos.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % currentLogos.length);
+  };
 
   return (
     <div className="w-full">
       {/* Section Header */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-8">
         <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-          FEATURED
+          SPONSORS &amp; PARTNERS
         </span>
-        <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] tracking-tight mb-3">
+        <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
           Our Sponsors &amp; <span className="text-[#C6112F]">Partners</span>
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
-        <p className="text-neutral-500 text-sm font-medium max-w-xl mx-auto">
-          A spotlight on the partners powering THE Mining Investment Event.
+        <p className="text-neutral-500 dark:text-slate-300 text-sm font-medium max-w-xl mx-auto">
+          A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore supporters.
         </p>
       </div>
 
-      {/* Single Unified Card */}
-      <div className="bg-white rounded-3xl border border-neutral-200/90 shadow-sm p-6 sm:p-10 flex flex-col gap-8">
-        {tiers.map((tier, tIdx) => (
-          <div key={tier.key}>
-            {/* Tier Divider Label */}
-            <div className="flex items-center gap-3 mb-5">
-              <span
-                className={`${tier.accentBg} text-[10px] font-black uppercase tracking-[0.22em] px-3 py-1 rounded-full`}
-                style={{ color: tier.color }}
-              >
-                {tier.label}
-              </span>
-              <div className="flex-1 h-[1px] bg-neutral-200 rounded-full" />
-            </div>
+      {/* Tier Selector Tabs Bar */}
+      <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-10">
+        {tierKeys.map((tier) => {
+          const isActive = tier === activeTier;
+          return (
+            <button
+              key={tier}
+              onClick={() => handleTabChange(tier)}
+              className={`px-5 sm:px-6 py-2.5 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all duration-300 cursor-pointer ${isActive
+                  ? "bg-[#C6112F] text-white shadow-md scale-105"
+                  : "bg-white dark:bg-[#131b2e] text-neutral-700 dark:text-slate-200 hover:bg-neutral-100 dark:hover:bg-[#1e293b] hover:text-neutral-900 dark:hover:text-white border border-neutral-200/80 dark:border-[#233049] shadow-2xs"
+                }`}
+            >
+              {tier === "ALL" ? "ALL SPONSORS" : tier}
+            </button>
+          );
+        })}
+      </div>
 
-            {/* Logo Row — flex wrap so all logos flow naturally */}
-            <div className="flex flex-wrap gap-3 items-center">
-              {tier.logos.map((logo, idx) => (
+      {/* Partner Logos Physical Track Slider Row — Home Page Style (One by One) */}
+      <div
+        className="relative flex items-center gap-4 sm:gap-6 max-w-[1240px] mx-auto"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Left Carousel Arrow Button */}
+        <button
+          onClick={handlePrev}
+          aria-label="Previous partner"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+        </button>
+
+        {/* Viewport Mask for 5 Card Display */}
+        <div className="w-full overflow-hidden py-4 px-1">
+          <div
+            className="flex items-center gap-4 sm:gap-6 transition-transform duration-700 ease-in-out"
+            style={{
+              transform: `translateX(calc(-${currentIndex} * (100% / 5 + 1rem)))`,
+            }}
+          >
+            {displayLogos.map((logoPath, idx) => {
+              const relativeIndex = (idx - currentIndex + displayLogos.length) % currentLogos.length;
+              const isCenter = relativeIndex === 2;
+              return (
                 <div
-                  key={idx}
-                  className="flex items-center justify-center bg-neutral-50 border border-neutral-100 rounded-xl p-3 hover:shadow-md hover:-translate-y-0.5 hover:border-neutral-300 transition-all duration-200"
-                  style={{ minWidth: "100px", maxWidth: "160px", flex: "1 1 100px" }}
+                  key={`${logoPath}-${idx}`}
+                  className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl bg-white flex items-center justify-center p-4 transition-all duration-500 transform ${isCenter
+                      ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-none scale-105 z-20"
+                      : "h-26 sm:h-28 border border-neutral-200/80 dark:border-[#233049] shadow-none opacity-90 hover:opacity-100"
+                    }`}
                 >
                   <img
-                    src={logo}
-                    alt={`${tier.label} ${idx + 1}`}
-                    className={`${tier.logoH} max-w-full object-contain`}
+                    src={logoPath}
+                    alt={`Sponsor Partner Logo ${idx + 1}`}
+                    className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-108"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = "/logo.png";
+                    }}
                   />
                 </div>
-              ))}
-            </div>
-
-            {/* Separator between tiers (not after last) */}
-            {tIdx < tiers.length - 1 && (
-              <div className="mt-8 border-b border-dashed border-neutral-200" />
-            )}
+              );
+            })}
           </div>
-        ))}
+        </div>
+
+        {/* Right Carousel Arrow Button */}
+        <button
+          onClick={handleNext}
+          aria-label="Next partner"
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
+        </button>
       </div>
     </div>
   );
@@ -663,6 +824,106 @@ const conferencesArticles = [
   },
 ];
 
+/* 5. MINING NEWS */
+const miningNewsArticles = [
+  {
+    id: "mining-1",
+    category: "CRITICAL MINERALS",
+    title: "Global Lithium Demand Surge Triggers C$1.2B Exploration Boom in Quebec",
+    date: "Jun 24, 2025",
+    readTime: "5 min read",
+    snippet: "James Bay lithium corridor sees record drilling results as automakers move to secure domestic battery raw materials supply chains.",
+    image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200",
+    featured: true,
+  },
+  {
+    id: "mining-2",
+    category: "GOLD & SILVER",
+    title: "Gold Rallies Near All-Time Highs as Mining Majors Expand Reserve Base",
+    date: "Jun 19, 2025",
+    readTime: "4 min read",
+    snippet: "Tier-1 gold producers step up brownfield development and strategic M&A to replace depleted oz reserves.",
+    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=800",
+  },
+  {
+    id: "mining-3",
+    category: "COPPER",
+    title: "South American Copper Mines Scale Production to Meet Global EV Growth",
+    date: "Jun 12, 2025",
+    readTime: "5 min read",
+    snippet: "Expanded processing mills at major Chilean deposits increase annual output by 18% in Q2.",
+    image: "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=800",
+  },
+  {
+    id: "mining-4",
+    category: "ESG & TECH",
+    title: "Zero-Emission Heavy Equipment Fleet Deployed at Ontario Underground Mine",
+    date: "May 28, 2025",
+    readTime: "4 min read",
+    snippet: "Battery-electric haul trucks cut underground diesel emissions by 90% while significantly boosting worker safety.",
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800",
+  },
+  {
+    id: "mining-5",
+    category: "EXPLORATION",
+    title: "High-Grade Nickel Discovery Announced in Western Australia",
+    date: "May 15, 2025",
+    readTime: "3 min read",
+    snippet: "Step-out drilling intercepts 42 meters at 3.2% Ni eq, extending deposit strike length by 800 meters.",
+    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+  },
+];
+
+/* 6. OIL & GAS NEWS */
+const oilGasNewsArticles = [
+  {
+    id: "oilgas-1",
+    category: "ENERGY TRANSITION",
+    title: "Canadian Energy Sector Invests C$4.5B in Large-Scale Carbon Capture",
+    date: "Jun 22, 2025",
+    readTime: "6 min read",
+    snippet: "Pathways Alliance advances trunkline pipeline construction to sequester up to 22 million tonnes of CO2 annually by 2030.",
+    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=1200",
+    featured: true,
+  },
+  {
+    id: "oilgas-2",
+    category: "LNG MARKETS",
+    title: "LNG Canada Phase 1 Ships First Commercial Cargo from Kitimat",
+    date: "Jun 16, 2025",
+    readTime: "5 min read",
+    snippet: "Landmark energy infrastructure project begins supplying clean natural gas exports directly to Asian utility buyers.",
+    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800",
+  },
+  {
+    id: "oilgas-3",
+    category: "OIL SANDS",
+    title: "Oil Sands Thermal In-Situ Efficiency Reaches Record Low Carbon Intensity",
+    date: "Jun 05, 2025",
+    readTime: "4 min read",
+    snippet: "Solvent-assisted SAGD technologies reduce steam-to-oil ratios, lowering operating costs and GHG emissions per barrel.",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800",
+  },
+  {
+    id: "oilgas-4",
+    category: "OFFSHORE",
+    title: "Deepwater Atlantic Exploration Drilling Yields New Light Crude Target",
+    date: "May 24, 2025",
+    readTime: "4 min read",
+    snippet: "Offshore Newfoundland discovery confirms high permeability reservoir with estimated 300 million barrels recoverable.",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800",
+  },
+  {
+    id: "oilgas-5",
+    category: "PIPELINES",
+    title: "Trans Mountain Pipeline Operating at 95% Capacity as Asia Shipments Surge",
+    date: "May 12, 2025",
+    readTime: "3 min read",
+    snippet: "Expanded pipeline network delivers Western Canadian Select crude to Pacific Rim refiners at record daily throughput.",
+    image: "https://images.unsplash.com/photo-1561625116-5f8675632053?q=80&w=800",
+  },
+];
+
 // ─────────────────────────────────────────────────────────────
 // REUSABLE SECTION TEMPLATE
 // ─────────────────────────────────────────────────────────────
@@ -687,22 +948,30 @@ function NewsSection({
   articles,
   ctaLabel,
   accentNote,
+  onViewAll,
+  onSelectArticle,
 }: {
   sectionLabel: string;
   title: string;
-  titleAccent: string;
+  titleAccent?: string;
   icon: React.ReactNode;
-  categories: string[];
+  categories?: string[];
   articles: SectionArticle[];
   ctaLabel: string;
   accentNote?: string;
+  onViewAll?: () => void;
+  onSelectArticle?: (article: SectionArticle) => void;
 }) {
   const router = useRouter();
   const [selectedCat, setSelectedCat] = useState("ALL");
 
-  const filtered = articles.filter((a) => selectedCat === "ALL" || a.category === selectedCat);
+  const filtered = articles.filter((a) => !categories || selectedCat === "ALL" || a.category === selectedCat);
   const featured = filtered.find((a) => a.featured) || filtered[0];
   const grid = filtered.filter((a) => a.id !== (featured?.id || "")).slice(0, 4);
+
+  const handleArticleClick = (item: SectionArticle) => {
+    router.push(`/news/${item.id}`);
+  };
 
   return (
     <div className="w-full flex flex-col">
@@ -712,9 +981,8 @@ function NewsSection({
           <span className="text-[#C6112F] text-[10px] font-black tracking-[0.25em] uppercase">
             {sectionLabel}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] uppercase tracking-tight flex items-center gap-2.5">
-            {title}&nbsp;<span className="text-[#C6112F]">{titleAccent}</span>
-            <span className="flex items-center">{icon}</span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] dark:text-white uppercase tracking-tight flex items-center gap-2.5">
+            {title}{titleAccent && <span className="text-[#C6112F]">&nbsp;{titleAccent}</span>}
           </h2>
           {accentNote && (
             <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-[#C6112F] bg-rose-50 border border-[#C6112F]/20 px-2.5 py-0.5 rounded-full w-fit mt-0.5">
@@ -723,35 +991,39 @@ function NewsSection({
           )}
         </div>
 
-        {/* Category Pills */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-          {categories.map((cat) => {
-            const isSelected = selectedCat === cat;
-            return (
-              <button
-                key={cat}
-                onClick={() => setSelectedCat(cat)}
-                className={`text-xs font-extrabold tracking-wider uppercase transition-all cursor-pointer ${
-                  isSelected
-                    ? "px-3.5 py-1 rounded-full text-[#C6112F] border border-[#C6112F] bg-rose-50 shadow-2xs"
-                    : "text-neutral-500 hover:text-[#C6112F] px-2 py-1"
-                }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
-        </div>
+        {/* Category Pills (rendered only if categories provided) */}
+        {categories && categories.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            {categories.map((cat) => {
+              const isSelected = selectedCat === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCat(cat)}
+                  className={`text-xs font-extrabold tracking-wider uppercase transition-all cursor-pointer ${isSelected
+                      ? "px-3.5 py-1 rounded-full text-[#C6112F] border border-[#C6112F] bg-rose-50 shadow-2xs"
+                      : "text-neutral-500 hover:text-[#C6112F] px-2 py-1"
+                    }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* ── Featured Card ── */}
       {featured && (
-        <div className="my-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-white p-6 sm:p-8 rounded-2xl border border-neutral-200/90 shadow-xs hover:shadow-md transition-all">
-          <div className="md:col-span-5 w-full h-64 sm:h-72 md:h-80 rounded-xl overflow-hidden bg-neutral-200 shrink-0 relative">
+        <div className="my-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-white dark:bg-[#131b2e] p-6 sm:p-8 rounded-2xl border border-neutral-200/90 dark:border-[#233049] shadow-xs hover:shadow-md transition-all">
+          <div
+            onClick={() => handleArticleClick(featured)}
+            className="md:col-span-5 w-full h-64 sm:h-72 md:h-80 rounded-xl overflow-hidden bg-neutral-200 dark:bg-slate-800 shrink-0 relative cursor-pointer group"
+          >
             <img
               src={featured.image}
               alt={featured.title}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
             />
             <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-full shadow-md">
@@ -769,8 +1041,8 @@ function NewsSection({
               {featured.category}
             </span>
             <h3
-              onClick={() => router.push(`/news/${featured.id}`)}
-              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1f2430] tracking-tight leading-tight mb-2 hover:text-[#C6112F] cursor-pointer transition-colors"
+              onClick={() => handleArticleClick(featured)}
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1f2430] dark:text-white tracking-tight leading-tight mb-2 hover:text-[#C6112F] cursor-pointer transition-colors"
             >
               {featured.title}
             </h3>
@@ -778,11 +1050,11 @@ function NewsSection({
             <span className="text-[#C6112F] text-xs font-bold mb-3 block">
               {featured.date}&nbsp;·&nbsp;{featured.readTime}
             </span>
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-6 font-medium max-w-xl">
+            <p className="text-neutral-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-medium max-w-xl">
               {featured.snippet}
             </p>
             <button
-              onClick={() => router.push(`/news/${featured.id}`)}
+              onClick={() => handleArticleClick(featured)}
               className="text-[#C6112F] text-xs font-black tracking-widest uppercase hover:underline inline-flex items-center gap-1.5 cursor-pointer w-fit"
             >
               <span>READ MORE</span><span>&gt;</span>
@@ -796,11 +1068,11 @@ function NewsSection({
         {grid.map((item) => (
           <article
             key={item.id}
-            onClick={() => router.push(`/news/${item.id}`)}
+            onClick={() => handleArticleClick(item)}
             className="group cursor-pointer flex flex-col justify-between text-left"
           >
             <div>
-              <div className="w-full h-44 sm:h-48 rounded-xl overflow-hidden mb-3 bg-neutral-200 border border-neutral-200/80 relative">
+              <div className="w-full h-44 sm:h-48 rounded-xl overflow-hidden mb-3 bg-neutral-200 dark:bg-slate-800 border border-neutral-200/80 dark:border-slate-700 relative">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -816,7 +1088,7 @@ function NewsSection({
                   </span>
                 )}
               </div>
-              <h4 className="text-base sm:text-lg font-extrabold text-[#1f2430] leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-3">
+              <h4 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-3">
                 {item.title}
               </h4>
             </div>
@@ -828,9 +1100,16 @@ function NewsSection({
       </div>
 
       {/* ── Bottom CTA ── */}
-      <div className="flex flex-col items-center pt-4 pb-8 border-b border-neutral-300">
+      <div className="flex flex-col items-center pt-4 pb-8 border-b border-neutral-300 dark:border-slate-800">
         <button
-          onClick={() => setSelectedCat("ALL")}
+          onClick={() => {
+            if (onViewAll) {
+              onViewAll();
+              window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+            } else {
+              setSelectedCat("ALL");
+            }
+          }}
           className="bg-[#C6112F] hover:bg-[#a50e27] text-white px-8 py-3.5 rounded-lg text-xs font-black tracking-widest uppercase shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95"
         >
           {ctaLabel}
@@ -1135,8 +1414,8 @@ function EventByTheNumbers() {
                     {/* 3D Metallic Glass Pillar Container */}
                     <div
                       className={`w-full max-w-[36px] sm:max-w-[42px] bg-gradient-to-t from-slate-400 via-slate-300 to-slate-200 rounded-t-lg relative flex flex-col justify-end overflow-hidden origin-bottom transition-all duration-700 ease-out shadow-sm group-hover:scale-105 group-hover:shadow-md border border-slate-300/80 ${isSelected
-                          ? "ring-2 ring-[#C6112F] shadow-[0_10px_25px_rgba(198,17,47,0.3)] scale-105"
-                          : ""
+                        ? "ring-2 ring-[#C6112F] shadow-[0_10px_25px_rgba(198,17,47,0.3)] scale-105"
+                        : ""
                         }`}
                       style={{
                         height: `${d.heightPct}%`,
@@ -1342,40 +1621,51 @@ function EventByTheNumbers() {
 }
 
 function AdvertisingSubscriptionSection() {
+  const [sponsorLogoOption, setSponsorLogoOption] = useState("6-month ($1,500)");
+  const [vidInterviewOption, setVidInterviewOption] = useState("1 interview ($3,000)");
+  const [advertisingOption, setAdvertisingOption] = useState("3-month ($1,000)");
+
   return (
     <div className="w-full flex flex-col text-left">
       {/* Header */}
       <span className="text-[#C6112F] font-bold text-xs sm:text-sm tracking-[0.25em] uppercase block mb-2">
         ADVERTISING &amp; SUBSCRIPTION
       </span>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] tracking-tight mb-3">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] dark:text-white tracking-tight mb-3">
         THE News — Your Source for all Things Resource
       </h2>
       <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-3" />
-      <p className="text-neutral-600 text-xs sm:text-sm font-medium max-w-2xl mb-10 leading-relaxed">
+      <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium max-w-2xl mb-10 leading-relaxed">
         Promote your brand, share your story and connect with a global audience of resource industry leaders, investors and decision makers.
       </p>
 
       {/* Cards Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Card 1: BASIC ANNUAL SUBSCRIPTION */}
-        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
               BASIC ANNUAL SUBSCRIPTION
             </span>
-            <div className="flex items-baseline gap-1 mb-6 border-b border-neutral-100 pb-4">
-              <span className="text-3xl sm:text-4xl font-black text-[#1f2430]">$1,200.00</span>
-              <span className="text-neutral-500 text-xs font-bold">/ 12 months</span>
+            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
+              <div className="flex items-center justify-between p-2.5 rounded-xl border bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-4 h-4 rounded-full border border-[#C6112F] bg-[#C6112F] flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                  </div>
+                  <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">12 months</span>
+                </div>
+                <span className="text-xl font-black text-[#1f2430] dark:text-white">$1,200.00</span>
+              </div>
             </div>
 
             {/* Bullet Points */}
             <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Delivered to your in-box monthly with the latest resource news from around the world.</span>
               </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Access the website as needed.</span>
               </li>
@@ -1391,23 +1681,30 @@ function AdvertisingSubscriptionSection() {
         </div>
 
         {/* Card 2: CORPORATE SUBSCRIPTION */}
-        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
               CORPORATE SUBSCRIPTION
             </span>
-            <div className="flex items-baseline gap-1 mb-6 border-b border-neutral-100 pb-4">
-              <span className="text-3xl sm:text-4xl font-black text-[#1f2430]">$3,000</span>
-              <span className="text-neutral-500 text-xs font-bold">/ 12 months</span>
+            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
+              <div className="flex items-center justify-between p-2.5 rounded-xl border bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-4 h-4 rounded-full border border-[#C6112F] bg-[#C6112F] flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                  </div>
+                  <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">12 months</span>
+                </div>
+                <span className="text-xl font-black text-[#1f2430] dark:text-white">$3,000</span>
+              </div>
             </div>
 
             {/* Bullet Points */}
             <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Your latest PR's &amp; interviews distributed for 12 months.</span>
               </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Up to 6 press releases &amp; 6 interviews included.</span>
               </li>
@@ -1423,30 +1720,48 @@ function AdvertisingSubscriptionSection() {
         </div>
 
         {/* Card 3: SPONSOR LOGO */}
-        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
               SPONSOR LOGO
             </span>
 
-            <div className="space-y-2 mb-6 border-b border-neutral-100 pb-4">
-              <div className="flex items-center justify-between">
-                <span className="text-neutral-600 text-xs font-bold">6-month</span>
-                <span className="text-2xl font-black text-[#1f2430]">$1,500</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-neutral-600 text-xs font-bold">12-month</span>
-                <span className="text-2xl font-black text-[#1f2430]">$2,500</span>
-              </div>
+            {/* Multiple Price Checkbox Selectors */}
+            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
+              {[
+                { label: "6-month", price: "$1,500", val: "6-month ($1,500)" },
+                { label: "12-month", price: "$2,500", val: "12-month ($2,500)" },
+              ].map((opt) => {
+                const isSelected = sponsorLogoOption === opt.val;
+                return (
+                  <div
+                    key={opt.val}
+                    onClick={() => setSponsorLogoOption(opt.val)}
+                    className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
+                        ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
+                        : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
+                      }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${isSelected ? "border-[#C6112F] bg-[#C6112F]" : "border-neutral-400 dark:border-slate-600 bg-white dark:bg-slate-800"
+                        }`}>
+                        {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      </div>
+                      <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
+                    </div>
+                    <span className="text-xl font-black text-[#1f2430] dark:text-white">{opt.price}</span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Bullet Points */}
             <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Your logo prominently featured as a sponsor of THE News.</span>
               </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Clickable link directing to your website.</span>
               </li>
@@ -1454,7 +1769,7 @@ function AdvertisingSubscriptionSection() {
           </div>
 
           <a
-            href="mailto:jchoi@irinc.ca?subject=Sponsor%20Logo%20Inquiry"
+            href={`mailto:jchoi@irinc.ca?subject=Sponsor%20Logo%20Inquiry%20-${encodeURIComponent(sponsorLogoOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
             BUY NOW
@@ -1462,42 +1777,57 @@ function AdvertisingSubscriptionSection() {
         </div>
 
         {/* Card 4: VID INTERVIEWS */}
-        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
               VID INTERVIEWS
             </span>
 
-            <div className="space-y-1.5 mb-6 border-b border-neutral-100 pb-4">
-              <div className="flex items-center justify-between">
-                <span className="text-neutral-600 text-xs font-bold">1 interview</span>
-                <span className="text-2xl font-black text-[#1f2430]">$3,000</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-neutral-600 text-xs font-bold">3 interviews</span>
-                <span className="text-2xl font-black text-[#1f2430]">$6,000</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-neutral-600 text-xs font-bold">4 interviews</span>
-                <span className="text-2xl font-black text-[#1f2430]">$9,000</span>
-              </div>
+            {/* Multiple Price Checkbox Selectors */}
+            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
+              {[
+                { label: "1 interview", price: "$3,000", val: "1 interview ($3,000)" },
+                { label: "3 interviews", price: "$6,000", val: "3 interviews ($6,000)" },
+                { label: "4 interviews", price: "$9,000", val: "4 interviews ($9,000)" },
+              ].map((opt) => {
+                const isSelected = vidInterviewOption === opt.val;
+                return (
+                  <div
+                    key={opt.val}
+                    onClick={() => setVidInterviewOption(opt.val)}
+                    className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
+                        ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
+                        : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
+                      }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${isSelected ? "border-[#C6112F] bg-[#C6112F]" : "border-neutral-400 dark:border-slate-600 bg-white dark:bg-slate-800"
+                        }`}>
+                        {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      </div>
+                      <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
+                    </div>
+                    <span className="text-xl font-black text-[#1f2430] dark:text-white">{opt.price}</span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Bullet Points */}
             <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Moderated intro — 15 minutes each.</span>
               </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Edited and sent across THE Event social platforms.</span>
               </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Included in THE News for up to 1 year.</span>
               </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Used for quarterly updates, press releases &amp; announcements.</span>
               </li>
@@ -1505,7 +1835,7 @@ function AdvertisingSubscriptionSection() {
           </div>
 
           <a
-            href="mailto:jchoi@irinc.ca?subject=VID%20Interviews%20Inquiry"
+            href={`mailto:jchoi@irinc.ca?subject=VID%20Interviews%20Inquiry%20-${encodeURIComponent(vidInterviewOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
             BUY NOW
@@ -1513,34 +1843,49 @@ function AdvertisingSubscriptionSection() {
         </div>
 
         {/* Card 5: ADVERTISING */}
-        <div className="bg-white border border-neutral-200/90 hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
+        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
               ADVERTISING
             </span>
 
-            <div className="space-y-1.5 mb-6 border-b border-neutral-100 pb-4">
-              <div className="flex items-center justify-between">
-                <span className="text-neutral-600 text-xs font-bold">3-month rotating banner</span>
-                <span className="text-2xl font-black text-[#1f2430]">$1,000</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-neutral-600 text-xs font-bold">6-month rotating banner</span>
-                <span className="text-2xl font-black text-[#1f2430]">$3,000</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-neutral-600 text-xs font-bold">12-month rotating banner</span>
-                <span className="text-2xl font-black text-[#1f2430]">$5,000</span>
-              </div>
+            {/* Multiple Price Checkbox Selectors */}
+            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
+              {[
+                { label: "3-month rotating banner", price: "$1,000", val: "3-month ($1,000)" },
+                { label: "6-month rotating banner", price: "$3,000", val: "6-month ($3,000)" },
+                { label: "12-month rotating banner", price: "$5,000", val: "12-month ($5,000)" },
+              ].map((opt) => {
+                const isSelected = advertisingOption === opt.val;
+                return (
+                  <div
+                    key={opt.val}
+                    onClick={() => setAdvertisingOption(opt.val)}
+                    className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
+                        ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
+                        : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
+                      }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${isSelected ? "border-[#C6112F] bg-[#C6112F]" : "border-neutral-400 dark:border-slate-600 bg-white dark:bg-slate-800"
+                        }`}>
+                        {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      </div>
+                      <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
+                    </div>
+                    <span className="text-xl font-black text-[#1f2430] dark:text-white">{opt.price}</span>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Bullet Points */}
             <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>We provide the specs, you provide us with artwork to publish.</span>
               </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 font-medium leading-snug">
+              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
                 <span>Maximum of four companies per rotation.</span>
               </li>
@@ -1548,7 +1893,7 @@ function AdvertisingSubscriptionSection() {
           </div>
 
           <a
-            href="mailto:jchoi@irinc.ca?subject=Advertising%20Banner%20Inquiry"
+            href={`mailto:jchoi@irinc.ca?subject=Advertising%20Banner%20Inquiry%20-${encodeURIComponent(advertisingOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
             BUY NOW
@@ -1559,11 +1904,232 @@ function AdvertisingSubscriptionSection() {
   );
 }
 
+interface ExpandedSectionData {
+  title: string;
+  sectionLabel: string;
+  articles: SectionArticle[];
+}
+
+
+
+function SectionPressReleaseView({
+  data,
+  onBack,
+}: {
+  data: ExpandedSectionData;
+  onBack: () => void;
+}) {
+  const router = useRouter();
+  const { lang, t } = useLanguage();
+  const [selectedCat, setSelectedCat] = useState("ALL");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const goToDetail = (item: SectionArticle) => {
+    router.push(`/news/${item.id}`);
+  };
+
+  const categories = ["ALL", ...Array.from(new Set(data.articles.map((a) => a.category)))];
+
+  const filtered = data.articles.filter((a) => {
+    const matchesCat = selectedCat === "ALL" || a.category === selectedCat;
+    const matchesSearch =
+      searchQuery.trim() === "" ||
+      a.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      a.snippet.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCat && matchesSearch;
+  });
+
+  const featured = selectedCat === "ALL" && searchQuery === "" ? filtered.find((a) => a.featured) || filtered[0] : null;
+  const grid = featured ? filtered.filter((a) => a.id !== featured.id) : filtered;
+
+  return (
+    <div className="w-full flex flex-col min-h-screen bg-[#f4f7fa] dark:bg-[#090d16] text-neutral-900 dark:text-white transition-colors duration-300">
+      {/* Hero Header matching Press Release Page */}
+      <section className="relative w-full bg-[#0f1117] text-white overflow-hidden pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 md:px-8">
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent pointer-events-none" />
+
+        <div className="relative z-10 max-w-[1240px] mx-auto text-left">
+          <button
+            onClick={onBack}
+            className="mb-6 px-4 py-2 rounded-full bg-white/10 hover:bg-[#C6112F] text-white text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border border-white/20 w-fit"
+          >
+            <span>←</span> <span>Back to THE News Overview</span>
+          </button>
+
+          <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-4">
+            <span className="hover:text-white cursor-pointer" onClick={onBack}>THE News</span>
+            <span className="text-[#C6112F]">›</span>
+            <span className="text-white">{data.title}</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none">
+            THE <span className="text-[#C6112F]">{data.title}</span> Press Releases
+          </h1>
+          <div className="w-20 h-[3px] bg-[#C6112F] mt-5 rounded-full" />
+          <p className="text-neutral-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mt-4 leading-relaxed">
+            Official press releases, sector announcements, and investment updates from {data.title}.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content Area matching Press Release Feed */}
+      <div className="max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 py-12 sm:py-16">
+        {/* Filter Tags & Search Row */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCat(cat)}
+                className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${selectedCat === cat
+                    ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
+                    : "bg-white dark:bg-[#131b2e] text-neutral-600 dark:text-slate-300 border border-neutral-200/80 dark:border-slate-700 hover:bg-neutral-100 dark:hover:bg-slate-800 shadow-2xs"
+                  }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Search Box */}
+          <div className="relative w-full md:w-72 shrink-0">
+            <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            <input
+              type="text"
+              placeholder={`Search ${data.title}...`}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-slate-700 rounded-full text-xs sm:text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
+            />
+          </div>
+        </div>
+
+        {/* Featured Release Card matching Press Release Page */}
+        {featured && (
+          <div className="mb-10 text-left">
+            <article className="group relative bg-[#0f1117] rounded-3xl p-6 sm:p-10 shadow-2xl border border-neutral-800 hover:border-[#C6112F]/60 transition-all duration-300 overflow-hidden">
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="lg:col-span-8">
+                  <div className="flex items-center gap-3 mb-4 flex-wrap">
+                    <span className="bg-[#C6112F] text-white text-[10px] font-black tracking-[0.2em] uppercase px-3.5 py-1 rounded-full shadow-md">
+                      FEATURED RELEASE
+                    </span>
+                    <span className="px-3 py-1 bg-white/10 rounded-full text-neutral-300 text-xs font-semibold">
+                      {featured.category}
+                    </span>
+                  </div>
+
+                  <h2
+                    onClick={() => goToDetail(featured)}
+                    className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4 group-hover:text-rose-300 transition-colors cursor-pointer"
+                  >
+                    {featured.title}
+                  </h2>
+
+                  <p className="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-medium max-w-3xl">
+                    {featured.snippet}
+                  </p>
+
+                  <div className="flex items-center gap-4 flex-wrap">
+                    <button
+                      onClick={() => goToDetail(featured)}
+                      className="px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105"
+                    >
+                      READ PRESS RELEASE ↗
+                    </button>
+                    <span className="text-neutral-400 text-xs font-medium">
+                      {featured.date} · {featured.readTime}
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  onClick={() => goToDetail(featured)}
+                  className="lg:col-span-4 h-64 sm:h-72 rounded-2xl overflow-hidden bg-neutral-800 relative cursor-pointer"
+                >
+                  <img
+                    src={featured.image}
+                    alt={featured.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
+                  />
+                </div>
+              </div>
+            </article>
+          </div>
+        )}
+
+        {/* Press Release Cards Grid matching Press Release Page */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          {grid.map((item) => (
+            <article
+              key={item.id}
+              onClick={() => goToDetail(item)}
+              className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/60 rounded-3xl p-6 flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+            >
+              <div>
+                <div className="w-full h-48 rounded-2xl overflow-hidden mb-4 bg-neutral-200 dark:bg-slate-800 relative">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
+                  />
+                  <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[9px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded-full shadow-md">
+                    {item.category}
+                  </span>
+                </div>
+
+                <h3 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-2">
+                  {item.title}
+                </h3>
+
+                <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-4 line-clamp-3">
+                  {item.snippet}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
+                <span className="text-neutral-500 dark:text-slate-400 text-xs font-bold">
+                  {item.date}
+                </span>
+                <span className="text-[#C6112F] text-xs font-extrabold group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                  READ ↗
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Back Button below */}
+        <div className="mt-14 flex justify-center">
+          <button
+            onClick={onBack}
+            className="px-8 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105"
+          >
+            ← BACK TO THE NEWS OVERVIEW
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function NewsPage() {
   const { t, lang } = useLanguage();
   const [selectedTagCategory, setSelectedTagCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeModalItem, setActiveModalItem] = useState<RawNewsItem | null>(null);
+  const [expandedSection, setExpandedSection] = useState<ExpandedSectionData | null>(null);
 
   const categories = ["All", ...Array.from(new Set(rawNewsData.map((n) => n.tagCategory)))];
 
@@ -1581,102 +2147,142 @@ export default function NewsPage() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-[#f4f7fa] pb-16 sm:pb-24">
-        {/* ═══════ HERO SLIDER SECTION ═══════ */}
-        <section className="relative w-full pt-28 sm:pt-36 pb-8 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <HeroNewsSlider setActiveModalItem={setActiveModalItem} lang={lang} />
-        </section>
+      {expandedSection ? (
+        <SectionPressReleaseView
+          data={expandedSection}
+          onBack={() => setExpandedSection(null)}
+        />
+      ) : (
+        <main className="flex flex-col flex-grow w-full bg-[#f4f7fa] dark:bg-[#090d16] pb-16 sm:pb-24 transition-colors duration-300">
+          {/* ═══════ HERO SLIDER SECTION ═══════ */}
+          <section className="relative w-full pt-28 sm:pt-36 pb-8 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <HeroNewsSlider lang={lang} />
+          </section>
 
-        {/* ═══════ SECTION 2: SPONSORS & PARTNERS GRID ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <SponsorsSection />
-        </section>
+          {/* ═══════ BANNER SLIDER SECTION ═══════ */}
+          <section className="relative w-full py-8 sm:py-12 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <BannerSliderSection />
+          </section>
 
-        {/* ═══════ SECTION 3: GOVERNMENTS ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <NewsSection
-            sectionLabel="THE LATEST"
-            title="Governments"
-            titleAccent="— General"
-            icon={
-              <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M9 8h1m-1 4h1m4-4h1m-1 4h1M3 7l9-4 9 4M4 7v14M20 7v14M9 21V8m6 13V8" />
-              </svg>
-            }
-            categories={["ALL", "CANADA", "USA", "EUROPE", "AFRICA", "ASIA-PACIFIC"]}
-            articles={governmentsArticles}
-            ctaLabel="VIEW ALL GOVERNMENT NEWS"
-          />
-        </section>
+          {/* ═══════ SECTION 2: SPONSORS & PARTNERS GRID ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <SponsorsSection />
+          </section>
 
-        {/* ═══════ SECTION 4: COMPANY ARTICLES ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <NewsSection
-            sectionLabel="COMPANY NEWS"
-            title="Company Articles"
-            titleAccent="— General"
-            icon={
-              <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 21H5a2 2 0 01-2-2V7l5-5h11a2 2 0 012 2v15a2 2 0 01-2 2z" />
-                <polyline strokeLinecap="round" strokeLinejoin="round" points="14 2 14 8 20 8" />
-              </svg>
-            }
-            categories={["ALL", "GOLD", "COPPER", "CRITICAL MINERALS", "SILVER", "OIL & GAS"]}
-            articles={companyArticles}
-            ctaLabel="VIEW ALL COMPANY ARTICLES"
-          />
-        </section>
+          {/* ═══════ SECTION 3: MINING NEWS (FIRST BELOW SPONSORS) ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <NewsSection
+              sectionLabel="RESOURCE SECTOR"
+              title="Mining News"
+              icon={
+                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                </svg>
+              }
+              articles={miningNewsArticles}
+              ctaLabel="VIEW ALL MINING NEWS"
+              onViewAll={() => setExpandedSection({ title: "Mining News", sectionLabel: "RESOURCE SECTOR", articles: miningNewsArticles })}
+            />
+          </section>
 
-        {/* ═══════ SECTION 5: COMPANY INTERVIEWS ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <NewsSection
-            sectionLabel="EXCLUSIVE CONTENT"
-            title="Company Interviews"
-            titleAccent="— Paying"
-            accentNote="Sponsored Content"
-            icon={
-              <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
-              </svg>
-            }
-            categories={["ALL", "CEO INTERVIEW", "CFO INTERVIEW", "EXPLORATION", "PRODUCTION", "OIL & GAS"]}
-            articles={companyInterviews}
-            ctaLabel="VIEW ALL INTERVIEWS"
-          />
-        </section>
+          {/* ═══════ SECTION 4: OIL & GAS NEWS ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <NewsSection
+              sectionLabel="ENERGY SECTOR"
+              title="Oil & Gas News"
+              icon={
+                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-4.386 8.25 8.25 0 003.001 0z" />
+                </svg>
+              }
+              articles={oilGasNewsArticles}
+              ctaLabel="VIEW ALL OIL & GAS NEWS"
+              onViewAll={() => setExpandedSection({ title: "Oil & Gas News", sectionLabel: "ENERGY SECTOR", articles: oilGasNewsArticles })}
+            />
+          </section>
 
-        {/* ═══════ SECTION 6: CONFERENCES ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <NewsSection
-            sectionLabel="EVENTS & CONFERENCES"
-            title="Conferences"
-            titleAccent="— Mining & Oil & Gas"
-            icon={
-              <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            }
-            categories={["ALL", "MINING", "OIL & GAS"]}
-            articles={conferencesArticles}
-            ctaLabel="VIEW ALL CONFERENCES"
-          />
-        </section>
+          {/* ═══════ SECTION 5: GOVERNMENTS ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <NewsSection
+              sectionLabel="THE LATEST"
+              title="Governments"
+              icon={
+                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M9 8h1m-1 4h1m4-4h1m-1 4h1M3 7l9-4 9 4M4 7v14M20 7v14M9 21V8m6 13V8" />
+                </svg>
+              }
+              articles={governmentsArticles}
+              ctaLabel="VIEW ALL GOVERNMENT NEWS"
+              onViewAll={() => setExpandedSection({ title: "Governments", sectionLabel: "THE LATEST", articles: governmentsArticles })}
+            />
+          </section>
 
-        {/* ═══════ SECTION 4: THE EVENT BY THE NUMBERS (EXACT MOCKUP MATCH) ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <EventByTheNumbers />
-        </section>
+          {/* ═══════ SECTION 6: COMPANY ARTICLES ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <NewsSection
+              sectionLabel="COMPANY NEWS"
+              title="Company Articles"
+              icon={
+                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 21H5a2 2 0 01-2-2V7l5-5h11a2 2 0 012 2v15a2 2 0 01-2 2z" />
+                  <polyline strokeLinecap="round" strokeLinejoin="round" points="14 2 14 8 20 8" />
+                </svg>
+              }
+              articles={companyArticles}
+              ctaLabel="VIEW ALL COMPANY ARTICLES"
+              onViewAll={() => setExpandedSection({ title: "Company Articles", sectionLabel: "COMPANY NEWS", articles: companyArticles })}
+            />
+          </section>
 
+          {/* ═══════ SECTION 5: COMPANY INTERVIEWS ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <NewsSection
+              sectionLabel="EXCLUSIVE CONTENT"
+              title="Company Interviews"
+              accentNote="Sponsored Content"
+              icon={
+                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+                </svg>
+              }
+              articles={companyInterviews}
+              ctaLabel="VIEW ALL INTERVIEWS"
+              onViewAll={() => setExpandedSection({ title: "Company Interviews", sectionLabel: "EXCLUSIVE CONTENT", articles: companyInterviews })}
+            />
+          </section>
 
-        {/* ═══════ SECTION 6: ADVERTISING & SUBSCRIPTION (EXACT MOCKUP MATCH) ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-          <AdvertisingSubscriptionSection />
-        </section>
+          {/* ═══════ SECTION 6: UPCOMING CONFERENCES ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <NewsSection
+              sectionLabel="EVENTS & CONFERENCES"
+              title="Upcoming Conferences"
+              icon={
+                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              }
+              articles={conferencesArticles}
+              ctaLabel="VIEW ALL CONFERENCES"
+              onViewAll={() => setExpandedSection({ title: "Upcoming Conferences", sectionLabel: "EVENTS & CONFERENCES", articles: conferencesArticles })}
+            />
+          </section>
 
-        <div className="mt-16">
-          <GetInTouchCTA />
-        </div>
-      </main>
+          {/* ═══════ SECTION 4: THE EVENT BY THE NUMBERS (EXACT MOCKUP MATCH) ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <EventByTheNumbers />
+          </section>
+
+          {/* ═══════ SECTION 6: ADVERTISING & SUBSCRIPTION (EXACT MOCKUP MATCH) ═══════ */}
+          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+            <AdvertisingSubscriptionSection />
+          </section>
+
+          <div className="mt-16">
+            <GetInTouchCTA />
+          </div>
+        </main>
+      )}
+
       <Footer />
     </>
   );

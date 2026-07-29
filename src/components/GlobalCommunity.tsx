@@ -10,7 +10,7 @@ export default function GlobalCommunity() {
   const communityStats = [
     {
       icon: (
-        <svg className="w-9 h-9 text-neutral-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <svg className="w-9 h-9 text-neutral-800 dark:text-slate-200 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5m-4 0h4" />
         </svg>
       ),
@@ -19,7 +19,7 @@ export default function GlobalCommunity() {
     },
     {
       icon: (
-        <svg className="w-9 h-9 text-neutral-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <svg className="w-9 h-9 text-neutral-800 dark:text-slate-200 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       ),
@@ -28,7 +28,7 @@ export default function GlobalCommunity() {
     },
     {
       icon: (
-        <svg className="w-9 h-9 text-neutral-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <svg className="w-9 h-9 text-neutral-800 dark:text-slate-200 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-5.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 14v6" />
@@ -39,7 +39,7 @@ export default function GlobalCommunity() {
     },
     {
       icon: (
-        <svg className="w-9 h-9 text-neutral-800 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <svg className="w-9 h-9 text-neutral-800 dark:text-slate-200 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
         </svg>
       ),
@@ -49,7 +49,7 @@ export default function GlobalCommunity() {
   ];
 
   return (
-    <section className="relative w-full bg-white py-14 sm:py-18 overflow-hidden">
+    <section className="relative w-full bg-white dark:bg-[#090d16] py-14 sm:py-18 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
 
@@ -61,12 +61,12 @@ export default function GlobalCommunity() {
             <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("map-tag", "GLOBAL PRESENCE")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
               {t("map-title", "Where the World's Mining Converges")}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
-            <p className="text-neutral-600 text-xs sm:text-sm font-medium leading-relaxed mb-6 max-w-[420px]">
+            <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed mb-6 max-w-[420px]">
               {t("map-desc", "Explore the international network of companies, investors, and delegations gathering in Québec City.")}
             </p>
 
@@ -95,11 +95,11 @@ export default function GlobalCommunity() {
           {communityStats.map((stat, i) => (
             <div
               key={i}
-              className="border border-[#C6112F]/60 rounded-2xl p-4 sm:p-6 bg-white shadow-2xs flex items-center gap-3.5 sm:gap-4 hover:border-[#C6112F] transition-all duration-300"
+              className="border border-[#C6112F]/60 rounded-2xl p-4 sm:p-6 bg-white dark:bg-[#131b2e] shadow-2xs flex items-center gap-3.5 sm:gap-4 hover:border-[#C6112F] transition-all duration-300"
             >
               {stat.icon}
               <div className="flex flex-col text-left leading-none">
-                <span className="text-xl xs:text-2xl sm:text-3xl font-black text-neutral-900 leading-none mb-1">
+                <span className="text-xl xs:text-2xl sm:text-3xl font-black text-neutral-900 dark:text-slate-100 leading-none mb-1">
                   {stat.number}
                 </span>
                 <span className="text-[#C6112F] font-bold text-[10px] sm:text-xs tracking-wider uppercase leading-tight">

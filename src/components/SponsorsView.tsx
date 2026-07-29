@@ -218,6 +218,12 @@ const SPONSORS_2026: SponsorItem[] = [
   },
   // Media & Partners
   {
+    name: "Mining Discovery",
+    website: "https://miningdiscovery.com",
+    tier: "media",
+    image: "/sponsors/2026/sponsor_media_21.png",
+  },
+  {
     name: "BTV – Business Television",
     website: "https://www.b-tv.com/",
     tier: "media",
@@ -269,12 +275,6 @@ const SPONSORS_2026: SponsorItem[] = [
     website: "https://www.ibn.fm",
     tier: "media",
     image: "/sponsors/2026/sponsor_media_48.png",
-  },
-  {
-    name: "Mining Discovery",
-    website: "https://miningdiscovery.com",
-    tier: "media",
-    image: "/sponsors/2026/sponsor_media_21.png",
   },
   {
     name: "Mining Hub",

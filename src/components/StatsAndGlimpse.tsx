@@ -40,7 +40,7 @@ function AnimatedNumber({ target, suffix }: { target: string; suffix: string }) 
   const formatted = count.toLocaleString();
 
   return (
-    <div ref={ref} className="text-2xl xs:text-3xl sm:text-4xl md:text-[40px] font-black text-neutral-900 leading-none tracking-tight">
+    <div ref={ref} className="text-2xl xs:text-3xl sm:text-4xl md:text-[40px] font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight">
       {formatted}
       <span>{suffix}</span>
     </div>
@@ -53,7 +53,7 @@ export default function StatsAndGlimpse() {
   const stats = [
     {
       icon: (
-        <svg className="w-8 h-8 text-neutral-900 group-hover:text-[#C6112F] transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <svg className="w-8 h-8 text-neutral-900 dark:text-slate-200 group-hover:text-[#C6112F] transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       ),
@@ -132,13 +132,13 @@ export default function StatsAndGlimpse() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-[#f4f7fa] py-14 sm:py-18">
+    <section className="relative overflow-hidden bg-[#f4f7fa] dark:bg-[#090d16] py-14 sm:py-18 transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
 
       {/* Stats Bar */}
       <div className="relative z-10 max-w-[1280px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-white border border-neutral-200/90 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(198,17,47,0.08)] transition-all duration-500 p-6 sm:p-8 md:p-9">
+        <div className="relative overflow-hidden rounded-3xl bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(198,17,47,0.08)] transition-all duration-500 p-6 sm:p-8 md:p-9">
           {/* Subtle background red glow */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(198,17,47,0.05)_0%,transparent_70%)] pointer-events-none rounded-full" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-[radial-gradient(circle,rgba(198,17,47,0.05)_0%,transparent_70%)] pointer-events-none rounded-full" />
@@ -147,12 +147,12 @@ export default function StatsAndGlimpse() {
             {stats.map((stat, i) => (
               <div
                 key={i}
-                className={`group flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl hover:bg-neutral-50/90 transition-all duration-300 cursor-default ${
-                  i < stats.length - 1 ? "lg:border-r lg:border-neutral-200/70" : ""
+                className={`group flex flex-col items-center text-center p-3 sm:p-4 rounded-2xl hover:bg-neutral-50/90 dark:hover:bg-slate-800/60 transition-all duration-300 cursor-default ${
+                  i < stats.length - 1 ? "lg:border-r lg:border-neutral-200/70 dark:lg:border-[#233049]" : ""
                 }`}
               >
                 {/* Icon Box */}
-                <div className="w-12 h-12 rounded-2xl bg-neutral-100/90 group-hover:bg-[#C6112F]/10 text-neutral-800 group-hover:text-[#C6112F] flex items-center justify-center transition-all duration-300 shadow-2xs mb-3 group-hover:scale-110">
+                <div className="w-12 h-12 rounded-2xl bg-neutral-100/90 dark:bg-slate-800/80 group-hover:bg-[#C6112F]/10 text-neutral-800 dark:text-slate-200 group-hover:text-[#C6112F] flex items-center justify-center transition-all duration-300 shadow-2xs mb-3 group-hover:scale-110">
                   {stat.icon}
                 </div>
 
@@ -160,7 +160,7 @@ export default function StatsAndGlimpse() {
                 <AnimatedNumber target={stat.number} suffix={stat.suffix} />
 
                 {/* Main Label */}
-                <div className="mt-2 text-neutral-900 font-extrabold text-[11px] sm:text-xs tracking-wider uppercase leading-snug">
+                <div className="mt-2 text-neutral-900 dark:text-slate-200 font-extrabold text-[11px] sm:text-xs tracking-wider uppercase leading-snug">
                   {stat.label}
                 </div>
 
@@ -182,17 +182,17 @@ export default function StatsAndGlimpse() {
             <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("welcome-tag", "WELCOME")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
               {t("glimpse-title", "A Glimpse Inside THE Event")}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
-            <p className="text-neutral-700 text-xs sm:text-sm leading-relaxed mb-8 font-medium">
+            <p className="text-neutral-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-8 font-medium">
               {t("glimpse-desc", "Step inside Canada's only Tier 1 global mining investment conference — where senior producers, emerging developers, institutional capital and the next generation of industry leaders converge under one roof.")}
             </p>
 
             {/* Connected Dual Pill Button Bar */}
-            <div className="inline-flex items-center border border-neutral-300 rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
+            <div className="inline-flex items-center border border-neutral-300 dark:border-[#233049] rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
               <Link
                 href="/about"
                 className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase transition-colors"
@@ -201,11 +201,11 @@ export default function StatsAndGlimpse() {
               </Link>
               <Link
                 href="/register"
-                className="bg-[#dedede] hover:bg-[#d4d4d4] text-neutral-900 text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase flex items-center gap-2 border-l border-neutral-300 transition-colors"
+                className="bg-[#dedede] dark:bg-slate-700 hover:bg-[#d4d4d4] dark:hover:bg-slate-600 text-neutral-900 dark:text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase flex items-center gap-2 border-l border-neutral-300 dark:border-[#233049] transition-colors"
               >
                 <span>{t("nav-register", "REGISTER NOW")}</span>
                 <svg
-                  className="w-4 h-4 text-neutral-900 shrink-0"
+                  className="w-4 h-4 text-neutral-900 dark:text-white shrink-0"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"

@@ -7,7 +7,7 @@ export default function EventHighlightsMedia() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative w-full bg-[#f4f7fa] py-16 sm:py-20 md:py-24 overflow-hidden">
+    <section className="relative w-full bg-[#f4f7fa] dark:bg-[#090d16] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
 
@@ -19,11 +19,11 @@ export default function EventHighlightsMedia() {
             <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("highlights-tag", "MEDIA")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
               {t("highlights-title", "Event Highlights")}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
-            <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium">
+            <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium">
               {t(
                 "highlights-desc",
                 "Three days in Québec City — plenary sessions, privately arranged meetings and the evening programme, captured as they happened."
@@ -35,15 +35,15 @@ export default function EventHighlightsMedia() {
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-10 md:gap-14 pt-2 lg:pt-0 shrink-0">
             {/* Stat 1: 500+ PHOTOS */}
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white dark:bg-[#131b2e] border border-neutral-300 dark:border-[#233049] flex items-center justify-center text-neutral-800 dark:text-slate-200 shrink-0 shadow-2xs">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
                   <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 15l-5-5L5 21" />
                 </svg>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-xl sm:text-3xl font-black text-neutral-900 leading-none">
+                <span className="text-xl sm:text-3xl font-black text-neutral-900 dark:text-slate-100 leading-none">
                   500+
                 </span>
                 <span className="text-[#C6112F] font-extrabold text-[10px] sm:text-xs tracking-wider uppercase mt-1">
@@ -54,13 +54,13 @@ export default function EventHighlightsMedia() {
 
             {/* Stat 2: 50+ SPEAKERS */}
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white dark:bg-[#131b2e] border border-neutral-300 dark:border-[#233049] flex items-center justify-center text-neutral-800 dark:text-slate-200 shrink-0 shadow-2xs">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-xl sm:text-3xl font-black text-neutral-900 leading-none">
+                <span className="text-xl sm:text-3xl font-black text-neutral-900 dark:text-slate-100 leading-none">
                   50+
                 </span>
                 <span className="text-[#C6112F] font-extrabold text-[10px] sm:text-xs tracking-wider uppercase mt-1">
@@ -71,14 +71,14 @@ export default function EventHighlightsMedia() {
 
             {/* Stat 3: 3 DAYS OF EVENTS */}
             <div className="flex items-center gap-2.5 sm:gap-3">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white border border-neutral-300 flex items-center justify-center text-neutral-800 shrink-0 shadow-2xs">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-white dark:bg-[#131b2e] border border-neutral-300 dark:border-[#233049] flex items-center justify-center text-neutral-800 dark:text-slate-200 shrink-0 shadow-2xs">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                   <rect x="3" y="4" width="18" height="16" rx="2" />
                   <path strokeLinecap="round" d="M16 2v4M8 2v4M3 9h18" />
                 </svg>
               </div>
               <div className="flex flex-col leading-none">
-                <span className="text-xl sm:text-3xl font-black text-neutral-900 leading-none">
+                <span className="text-xl sm:text-3xl font-black text-neutral-900 dark:text-slate-100 leading-none">
                   3
                 </span>
                 <span className="text-[#C6112F] font-extrabold text-[10px] sm:text-xs tracking-wider uppercase mt-1">

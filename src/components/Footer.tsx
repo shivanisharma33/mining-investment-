@@ -8,19 +8,19 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="relative w-full bg-[#f0f3f6] pt-14 pb-10 overflow-hidden text-left">
+    <footer className="relative w-full bg-[#f0f3f6] dark:bg-[#0b101c] pt-14 pb-10 overflow-hidden text-left transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
 
       {/* 3D Faceted Origami Vector Backdrop */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-100 dark:opacity-20 transition-opacity">
         <svg
           className="w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 600"
           preserveAspectRatio="none"
         >
-          <rect width="1440" height="600" fill="#f0f3f6" />
+          <rect width="1440" height="600" fill="currentColor" className="text-[#f0f3f6] dark:text-[#0b101c]" />
           <polygon points="0,0 500,0 380,600 0,600" fill="#ffffff" opacity="0.9" />
           <polygon points="500,0 980,0 900,600 380,600" fill="#f8fafc" opacity="0.75" />
           <polygon points="980,0 1440,0 1440,600 900,600" fill="#e4e9ee" opacity="0.65" />

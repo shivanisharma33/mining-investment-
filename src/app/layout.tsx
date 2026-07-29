@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Karla } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/ThemeContext";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 const karla = Karla({
   variable: "--font-karla",
@@ -23,10 +26,36 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${karla.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col font-sans">
-        <LanguageProvider>{children}</LanguageProvider>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('theme');
+                  if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col font-sans bg-white dark:bg-[#090d16] text-neutral-900 dark:text-slate-100 transition-colors duration-300">
+        <ThemeProvider>
+          <LanguageProvider>
+            <ScrollToTop />
+            {children}
+            <ScrollToTopButton />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+

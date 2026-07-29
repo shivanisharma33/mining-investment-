@@ -30,7 +30,7 @@ export default function WhyAttend() {
   ];
 
   return (
-    <section className="relative bg-white py-16 sm:py-20 md:py-24 overflow-hidden">
+    <section className="relative bg-white dark:bg-[#090d16] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
 
@@ -65,7 +65,7 @@ export default function WhyAttend() {
             <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("why-tag", "WHY ATTEND")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
               {t("why-title", "Your Pathway To Investment Success")}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
@@ -75,16 +75,16 @@ export default function WhyAttend() {
               {steps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 sm:gap-5 p-3.5 rounded-xl border border-transparent hover:border-neutral-200 hover:bg-neutral-50/80 hover:shadow-2xs transition-all duration-300 group cursor-default"
+                  className="flex items-start gap-4 sm:gap-5 p-3.5 rounded-xl border border-transparent hover:border-neutral-200 dark:hover:border-[#233049] hover:bg-neutral-50/80 dark:hover:bg-slate-800/60 hover:shadow-2xs transition-all duration-300 group cursor-default"
                 >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 group-hover:border-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white flex items-center justify-center text-xs sm:text-sm font-extrabold text-[#C6112F] shrink-0 bg-white shadow-2xs transition-all duration-300 mt-0.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 dark:border-[#233049] group-hover:border-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white flex items-center justify-center text-xs sm:text-sm font-extrabold text-[#C6112F] shrink-0 bg-white dark:bg-[#131b2e] shadow-2xs transition-all duration-300 mt-0.5">
                     {step.number}
                   </div>
                   <div className="flex flex-col">
                     <h3 className="text-[#C6112F] font-extrabold text-xs sm:text-[13px] tracking-wider uppercase mb-1">
                       {step.title}
                     </h3>
-                    <p className="text-neutral-600 text-xs sm:text-[13px] leading-relaxed font-medium">
+                    <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-[13px] leading-relaxed font-medium">
                       {step.description}
                     </p>
                   </div>

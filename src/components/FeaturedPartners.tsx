@@ -53,6 +53,7 @@ const partnerData: Record<TierKey, string[]> = {
   MEDIA: [
     "/sponsers/Media%20Partners/1.pdf.png",
     "/sponsers/Media%20Partners/24.png",
+    "/sponsors/2026/sponsor_media_21.png",
     "/sponsers/Media%20Partners/25.png",
     "/sponsers/Media%20Partners/26.png",
     "/sponsers/Media%20Partners/27.png",
@@ -111,7 +112,7 @@ export default function FeaturedPartners() {
   };
 
   return (
-    <section className="relative w-full bg-[#f0f4f8] py-16 sm:py-20 overflow-hidden">
+    <section className="relative w-full bg-[#f0f4f8] dark:bg-[#090d16] py-16 sm:py-20 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
 
@@ -121,11 +122,11 @@ export default function FeaturedPartners() {
           <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
             {t("partners-tag", "FEATURED")}
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
             {t("partners-title", "Featured Partners")} <span className="capitalize">({activeTier.toLowerCase()})</span>
           </h2>
           <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-6" />
-          <p className="text-neutral-600 text-xs sm:text-sm max-w-[540px] mx-auto leading-relaxed font-medium">
+          <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm max-w-[540px] mx-auto leading-relaxed font-medium">
             {t("partners-sub", "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters.")}
           </p>
         </div>
@@ -141,7 +142,7 @@ export default function FeaturedPartners() {
                 className={`px-5 sm:px-7 py-2.5 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
                   isActive
                     ? "bg-[#C6112F] text-white shadow-md scale-105"
-                    : "bg-white text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 border border-neutral-200/80 shadow-2xs"
+                    : "bg-white dark:bg-[#131b2e] text-neutral-700 dark:text-slate-200 hover:bg-neutral-100 dark:hover:bg-[#1e293b] hover:text-neutral-900 dark:hover:text-white border border-neutral-200/80 dark:border-[#233049] shadow-2xs"
                 }`}
               >
                 {tier}
@@ -160,7 +161,7 @@ export default function FeaturedPartners() {
           <button
             onClick={handlePrev}
             aria-label="Previous partner"
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C6112F] bg-white flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -184,7 +185,7 @@ export default function FeaturedPartners() {
                     className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl bg-white flex items-center justify-center p-4 transition-all duration-500 transform ${
                       isCenter
                         ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-none scale-105 z-20"
-                        : "h-26 sm:h-28 border border-neutral-200/80 shadow-none opacity-90 hover:opacity-100"
+                        : "h-26 sm:h-28 border border-neutral-200/80 dark:border-[#233049] shadow-none opacity-90 hover:opacity-100"
                     }`}
                   >
                     <img
@@ -202,7 +203,7 @@ export default function FeaturedPartners() {
           <button
             onClick={handleNext}
             aria-label="Next partner"
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C6112F] bg-white flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

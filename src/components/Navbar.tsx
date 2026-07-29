@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 
 /* About dropdown sub-items */
 const aboutDropdown = [
@@ -174,6 +175,7 @@ export default function Navbar() {
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
   const [mobilePastYearsOpen, setMobilePastYearsOpen] = useState(false);
   const { lang, setLang, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -194,7 +196,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-20 sm:h-22" : "h-24"
+      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-20 sm:h-22" : "h-24"
         }`}
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 h-full flex items-center justify-between">
@@ -206,7 +208,7 @@ export default function Navbar() {
             width={240}
             height={90}
             priority
-            className="object-contain h-12 xs:h-16 sm:h-20 md:h-[76px] max-h-[80%] w-auto group-hover:scale-105 transition-transform duration-300"
+            className="object-contain h-12 xs:h-16 sm:h-20 md:h-[76px] max-h-[80%] w-auto group-hover:scale-105 transition-transform duration-300 dark:brightness-110"
           />
         </Link>
 
@@ -232,7 +234,7 @@ export default function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 text-neutral-900 hover:text-[#C6112F]"
+                  className="relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                 >
                   <span>{link.name}</span>
                   <span className="absolute bottom-0 left-0 h-[2px] bg-[#C6112F] transition-all duration-300 w-0 group-hover:w-full" />
@@ -240,7 +242,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 ${link.active ? "text-[#C6112F]" : "text-neutral-900 hover:text-[#C6112F]"
+                  className={`relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 ${link.active ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                     }`}
                 >
                   <span>{link.name}</span>
@@ -388,10 +390,47 @@ export default function Navbar() {
 
         {/* Desktop Buttons */}
         <div className="hidden lg:flex items-center gap-3 xl:gap-4 shrink-0">
+          {/* Day / Night Mode Toggle Switch */}
+          <button
+            onClick={toggleTheme}
+            className="relative flex items-center justify-between px-1.5 w-[78px] xl:w-[86px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group"
+            aria-label={`Switch to ${theme === "light" ? "Night" : "Day"} mode`}
+            title={theme === "light" ? "Switch to Night mode" : "Switch to Day mode"}
+          >
+            {/* Sliding Indicator */}
+            <span
+              className="absolute top-[2px] h-[26px] xl:h-[30px] w-[34px] xl:w-[38px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs"
+              style={{ left: theme === "light" ? "2px" : "calc(100% - 36px)" }}
+            >
+              {theme === "light" ? (
+                <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-amber-300 fill-amber-300" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="4" />
+                  <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
+                </svg>
+              ) : (
+                <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-indigo-100 fill-indigo-100" viewBox="0 0 24 24">
+                  <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                </svg>
+              )}
+            </span>
+            {/* Sun Icon */}
+            <span className={`relative z-10 flex-1 flex justify-center transition-opacity duration-300 ${theme === "light" ? "opacity-0" : "opacity-70 text-amber-400"}`}>
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.78a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.414l-.708-.707a1 1 0 010-1.414zm2.78 4.22a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-2.78 5.636a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.415 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-5.636-2.78a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 10a1 1 0 01-1-1V8a1 1 0 112 0v1a1 1 0 01-1 1zm2.78-5.636a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM10 6a4 4 0 100 8 4 4 0 000-8z" clipRule="evenodd" />
+              </svg>
+            </span>
+            {/* Moon Icon */}
+            <span className={`relative z-10 flex-1 flex justify-center transition-opacity duration-300 ${theme === "dark" ? "opacity-0" : "opacity-70 text-indigo-600"}`}>
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+              </svg>
+            </span>
+          </button>
+
           {/* Language Toggle Switch */}
           <button
             onClick={() => setLang(lang === "EN" ? "FR" : "EN")}
-            className="relative flex items-center w-[88px] xl:w-[96px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/50 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs"
+            className="relative flex items-center w-[88px] xl:w-[96px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs"
             aria-label={`Switch language to ${lang === "EN" ? "FR" : "EN"}`}
           >
             {/* Sliding Indicator */}
@@ -436,7 +475,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 text-neutral-900 hover:text-[#C6112F] focus:outline-none transition-colors"
+          className="lg:hidden p-2 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] focus:outline-none transition-colors"
           aria-label="Toggle Menu"
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -451,7 +490,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown Menu */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white/98 backdrop-blur-md border-b border-neutral-200 shadow-xl px-6 py-6 flex flex-col gap-5 animate-fadeIn max-h-[80vh] overflow-y-auto">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-md border-b border-neutral-200 dark:border-slate-800 shadow-xl px-6 py-6 flex flex-col gap-5 animate-fadeIn max-h-[80vh] overflow-y-auto">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <div key={link.name}>
@@ -463,7 +502,7 @@ export default function Navbar() {
                         if (link.dropdownType === "programs") setMobileProgramsOpen(!mobileProgramsOpen);
                         if (link.dropdownType === "past-years") setMobilePastYearsOpen(!mobilePastYearsOpen);
                       }}
-                      className="w-full flex items-center justify-between py-2.5 text-sm font-extrabold tracking-wider uppercase text-neutral-800 hover:text-[#C6112F] transition-colors"
+                      className="w-full flex items-center justify-between py-2.5 text-sm font-extrabold tracking-wider uppercase text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] transition-colors"
                     >
                       <span>{link.name}</span>
                       <svg
@@ -488,7 +527,7 @@ export default function Navbar() {
                             key={item.titleKey}
                             href={item.href}
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 hover:text-[#C6112F] transition-colors"
+                            className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
                           >
                             <span className="text-[#C6112F]">{item.icon}</span>
                             <span>{t(item.titleKey, item.titleDefault)}</span>
@@ -503,7 +542,7 @@ export default function Navbar() {
                             key={item.titleKey}
                             href={item.href}
                             onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 hover:text-[#C6112F] transition-colors"
+                            className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
                           >
                             <span className="text-[#C6112F]">{item.icon}</span>
                             <span>{t(item.titleKey, item.titleDefault)}</span>
@@ -522,7 +561,7 @@ export default function Navbar() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 hover:text-[#C6112F] transition-colors"
+                                className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
                               >
                                 <span className="text-[#C6112F]">{item.icon}</span>
                                 <span>{t(item.titleKey, item.titleDefault)}</span>
@@ -534,7 +573,7 @@ export default function Navbar() {
                               key={item.titleKey}
                               href={item.href}
                               onClick={() => setIsOpen(false)}
-                              className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 hover:text-[#C6112F] transition-colors"
+                              className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
                             >
                               <span className="text-[#C6112F]">{item.icon}</span>
                               <span>{t(item.titleKey, item.titleDefault)}</span>
@@ -550,7 +589,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors block text-neutral-800 hover:text-[#C6112F]"
+                    className="py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors block text-neutral-800 dark:text-slate-100 hover:text-[#C6112F]"
                   >
                     {link.name}
                   </a>
@@ -558,7 +597,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors block ${link.active ? "text-[#C6112F]" : "text-neutral-800 hover:text-[#C6112F]"
+                    className={`py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors block ${link.active ? "text-[#C6112F]" : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F]"
                       }`}
                   >
                     {link.name}
@@ -568,29 +607,50 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="pt-4 border-t border-neutral-200 flex items-center justify-between">
-            {/* Mobile Language Toggle */}
-            <div className="flex items-center gap-2">
+          <div className="pt-4 border-t border-neutral-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+            {/* Mobile Actions: Theme & Language */}
+            <div className="flex items-center gap-3">
+              {/* Mobile Theme Toggle Button */}
               <button
-                onClick={() => setLang("EN")}
-                className={`px-3 py-1 rounded-full text-xs font-bold ${lang === "EN" ? "bg-[#C6112F] text-white" : "bg-neutral-100 text-neutral-700"
-                  }`}
+                onClick={toggleTheme}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-extrabold border border-[#C6112F] text-neutral-800 dark:text-slate-100 bg-neutral-50 dark:bg-slate-800 transition-colors shadow-2xs"
               >
-                EN
+                {theme === "light" ? (
+                  <>
+                    <span className="text-amber-500">☀️</span>
+                    <span>Day</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-indigo-400">🌙</span>
+                    <span>Night</span>
+                  </>
+                )}
               </button>
-              <button
-                onClick={() => setLang("FR")}
-                className={`px-3 py-1 rounded-full text-xs font-bold ${lang === "FR" ? "bg-[#C6112F] text-white" : "bg-neutral-100 text-neutral-700"
-                  }`}
-              >
-                FR
-              </button>
+
+              {/* Mobile Language Toggle */}
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setLang("EN")}
+                  className={`px-3 py-1 rounded-full text-xs font-bold ${lang === "EN" ? "bg-[#C6112F] text-white" : "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300"
+                    }`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => setLang("FR")}
+                  className={`px-3 py-1 rounded-full text-xs font-bold ${lang === "FR" ? "bg-[#C6112F] text-white" : "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300"
+                    }`}
+                >
+                  FR
+                </button>
+              </div>
             </div>
 
             <Link
-              href="#"
+              href="/register"
               onClick={() => setIsOpen(false)}
-              className="px-5 py-2.5 rounded-lg bg-[#C6112F] text-white text-xs font-extrabold tracking-wider uppercase text-center"
+              className="px-5 py-2.5 rounded-lg bg-[#C6112F] text-white text-xs font-extrabold tracking-wider uppercase text-center shrink-0"
             >
               {t("nav-register", "REGISTER HERE")}
             </Link>
