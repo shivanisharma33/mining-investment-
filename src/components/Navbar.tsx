@@ -388,19 +388,46 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop Buttons */}
-        <div className="hidden lg:flex items-center gap-3 xl:gap-4 shrink-0">
-          {/* Day / Night Mode Toggle Switch */}
+        {/* Desktop & Action Buttons Container */}
+        <div className="flex items-center gap-2.5 sm:gap-3 xl:gap-4 shrink-0">
+          {/* Language Toggle Switch (Desktop) */}
+          <button
+            onClick={() => setLang(lang === "EN" ? "FR" : "EN")}
+            className="hidden lg:flex relative items-center w-[80px] xl:w-[96px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs"
+            aria-label={`Switch language to ${lang === "EN" ? "FR" : "EN"}`}
+          >
+            {/* Sliding Indicator */}
+            <span
+              className="absolute top-[2px] h-[26px] xl:h-[30px] w-[38px] xl:w-[44px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out"
+              style={{ left: lang === "EN" ? "2px" : "calc(100% - 40px)" }}
+            />
+            {/* EN Label */}
+            <span
+              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${lang === "EN" ? "text-white" : "text-[#C6112F]"
+                }`}
+            >
+              EN
+            </span>
+            {/* FR Label */}
+            <span
+              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${lang === "FR" ? "text-white" : "text-[#C6112F]"
+                }`}
+            >
+              FR
+            </span>
+          </button>
+
+          {/* Day / Night Mode Toggle Switch (Directly Next To Register Button) */}
           <button
             onClick={toggleTheme}
-            className="relative flex items-center justify-between px-1.5 w-[78px] xl:w-[86px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group"
+            className="relative flex items-center justify-between px-1.5 w-[72px] sm:w-[78px] xl:w-[86px] h-[32px] sm:h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group"
             aria-label={`Switch to ${theme === "light" ? "Night" : "Day"} mode`}
             title={theme === "light" ? "Switch to Night mode" : "Switch to Day mode"}
           >
             {/* Sliding Indicator */}
             <span
-              className="absolute top-[2px] h-[26px] xl:h-[30px] w-[34px] xl:w-[38px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs"
-              style={{ left: theme === "light" ? "2px" : "calc(100% - 36px)" }}
+              className="absolute top-[2px] h-[24px] sm:h-[26px] xl:h-[30px] w-[30px] sm:w-[34px] xl:w-[38px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs"
+              style={{ left: theme === "light" ? "2px" : "calc(100% - 32px)" }}
             >
               {theme === "light" ? (
                 <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-amber-300 fill-amber-300" viewBox="0 0 24 24">
@@ -427,41 +454,14 @@ export default function Navbar() {
             </span>
           </button>
 
-          {/* Language Toggle Switch */}
-          <button
-            onClick={() => setLang(lang === "EN" ? "FR" : "EN")}
-            className="relative flex items-center w-[88px] xl:w-[96px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs"
-            aria-label={`Switch language to ${lang === "EN" ? "FR" : "EN"}`}
-          >
-            {/* Sliding Indicator */}
-            <span
-              className="absolute top-[2px] h-[26px] xl:h-[30px] w-[42px] xl:w-[44px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out"
-              style={{ left: lang === "EN" ? "2px" : "calc(100% - 44px)" }}
-            />
-            {/* EN Label */}
-            <span
-              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${lang === "EN" ? "text-white" : "text-[#C6112F]"
-                }`}
-            >
-              EN
-            </span>
-            {/* FR Label */}
-            <span
-              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${lang === "FR" ? "text-white" : "text-[#C6112F]"
-                }`}
-            >
-              FR
-            </span>
-          </button>
-
           {/* REGISTER HERE Button */}
           <Link
             href="/register"
-            className="px-5 py-2.5 xl:px-6 xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[11px] xl:text-xs font-extrabold tracking-wider uppercase inline-flex items-center gap-1.5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+            className="px-3.5 py-2 sm:px-5 sm:py-2.5 xl:px-6 xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider uppercase inline-flex items-center gap-1.5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
           >
             <span>{t("nav-register", "REGISTER HERE")}</span>
             <svg
-              className="w-3.5 h-3.5 text-white"
+              className="w-3.5 h-3.5 text-white hidden sm:block"
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
@@ -470,22 +470,22 @@ export default function Navbar() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </Link>
-        </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] focus:outline-none transition-colors"
-          aria-label="Toggle Menu"
-        >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden p-2 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] focus:outline-none transition-colors"
+            aria-label="Toggle Menu"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {isOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown Menu */}

@@ -21,40 +21,32 @@ export default function GolfPartnersSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {/* Card 1: Antimony Resources Corp */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="flex items-center gap-3">
-              <svg className="w-10 h-10 text-neutral-800 dark:text-slate-200 shrink-0" viewBox="0 0 100 100" fill="currentColor">
-                <polygon points="50,10 10,85 32,85 50,45 68,85 90,85" />
-                <polygon points="50,28 30,70 70,70" fill="#eeeff2" className="dark:fill-[#182236]" />
-                <polygon points="50,48 38,70 62,70" fill="currentColor" />
-              </svg>
-              <div className="flex flex-col leading-tight text-left">
-                <span className="font-extrabold text-sm sm:text-base text-neutral-900 dark:text-slate-100 tracking-tight">Antimony</span>
-                <span className="font-semibold text-[11px] sm:text-xs text-neutral-600 dark:text-slate-400">Resources Corp</span>
-              </div>
-            </div>
+            <img
+              src="/sponsors/2026/antimony_resources_corp.png"
+              alt="Antimony Resources Corp"
+              className="max-h-16 sm:max-h-20 w-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           {/* Card 2: Genesis */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="flex items-center justify-center w-full">
-              <svg className="w-36 sm:w-40 h-12 text-neutral-800 dark:text-slate-200" viewBox="0 0 200 60" fill="currentColor">
-                {/* Winged emblem representation */}
-                <path d="M 10 30 Q 50 15 85 28 L 85 32 Q 50 25 10 30 Z" />
-                <path d="M 190 30 Q 150 15 115 28 L 115 32 Q 150 25 190 30 Z" />
-                <path d="M 20 35 Q 55 23 85 33 L 85 36 Q 55 30 20 35 Z" />
-                <path d="M 180 35 Q 145 23 115 33 L 115 36 Q 145 30 180 35 Z" />
-                <polygon points="85,20 115,20 118,40 82,40" fill="currentColor" />
-                <text x="100" y="33" textAnchor="middle" fill="#eeeff2" className="dark:fill-[#182236]" fontSize="9" fontWeight="900" letterSpacing="1">GENESIS</text>
-              </svg>
-            </div>
+            <img
+              src="/sponsors/2026/genesis_wings.png"
+              alt="Genesis"
+              className="max-h-16 sm:max-h-20 w-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           {/* Card 3: National Bank of Canada Capital Markets */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
-              src="/sponsors/2026/national_bank_financial_markets.png"
+              src="/sponsors/2026/national_bank_capital_markets.png"
               alt="National Bank of Canada Capital Markets"
-              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
+              className="max-h-16 sm:max-h-20 w-auto object-contain"
               loading="lazy"
               decoding="async"
             />
@@ -63,9 +55,9 @@ export default function GolfPartnersSection() {
           {/* Card 4: Ventum Financial */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
-              src="/sponsors/2026/ventum_financial.png"
+              src="/sponsors/2026/ventum_financial_exact.png"
               alt="Ventum Financial"
-              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
+              className="max-h-16 sm:max-h-20 w-auto object-contain"
               loading="lazy"
               decoding="async"
             />
@@ -89,15 +81,13 @@ export default function GolfPartnersSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6">
           {/* Prize Partner 1: Osisko Development */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full border-[3px] border-[#c89a36] flex items-center justify-center text-[#c89a36] shrink-0 font-bold text-xs">
-                ⟳
-              </div>
-              <div className="flex flex-col leading-none text-left">
-                <span className="font-black text-sm tracking-wider text-[#b88928]">OSISKO</span>
-                <span className="font-semibold text-[10px] tracking-widest text-neutral-600 dark:text-slate-400 mt-0.5 uppercase">DEVELOPMENT</span>
-              </div>
-            </div>
+            <img
+              src="/sponsors/2026/or_royalties_osisko_royalties.svg"
+              alt="Osisko Development"
+              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 
           {/* Prize Partner 2: THE PROSPECTOR Resource Investment News */}
@@ -203,16 +193,13 @@ export default function GolfPartnersSection() {
 
           {/* Stifel (Red/Blue Diamond S Logo) */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="w-16 h-16 relative">
-              <svg viewBox="0 0 100 100" className="w-full h-full">
-                {/* Blue diamond background */}
-                <polygon points="50,5 95,50 50,95 5,50" fill="#1a3567" />
-                {/* Red accent triangle */}
-                <polygon points="50,5 75,30 50,30" fill="#C6112F" />
-                {/* White S letter */}
-                <text x="50" y="62" textAnchor="middle" fill="white" fontSize="38" fontWeight="900" fontFamily="serif">S</text>
-              </svg>
-            </div>
+            <img
+              src="/sponsors/2026/stifel.svg"
+              alt="Stifel"
+              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
 

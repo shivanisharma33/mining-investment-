@@ -702,57 +702,62 @@ const companyArticles = [
   },
 ];
 
-/* 3. COMPANY INTERVIEWS (PAYING) */
+/* 3. COMPANY INTERVIEWS (VID CONFERENCES PLAYLIST) */
 const companyInterviews = [
   {
     id: "int-1",
     category: "CEO INTERVIEW",
-    title: "Exclusive: Glencore CEO on Copper's Role in the Energy Transition",
+    title: "VID Media Interview: Key Insights from THE Mining Investment Event of the North",
     date: "Jun 20, 2025",
-    readTime: "12 min read",
-    snippet: "Gary Nagle discusses Glencore's long-term copper strategy, ESG targets and why the metal remains central to global decarbonization.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200",
+    readTime: "12:45",
+    youtubeId: "L_LUpnjgPso",
+    snippet: "Joanne Jobin (VID Media Founder) sits down with senior mining executives and institutional investors at THE Mining Investment Event in Québec City.",
+    image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-14.jpg",
     featured: true,
     sponsored: true,
   },
   {
     id: "int-2",
-    category: "CFO INTERVIEW",
-    title: "Agnico Eagle CFO on Capital Allocation and Dividend Growth",
+    category: "COPPER & GOLD",
+    title: "Arizona Sonoran Copper: Scaling Brownfield Copper Assets in North America",
     date: "Jun 12, 2025",
-    readTime: "10 min read",
-    snippet: "A deep dive into Agnico Eagle's balance sheet strength and its approach to returning value to shareholders in 2025.",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800",
+    readTime: "09:30",
+    youtubeId: "dQw4w9WgXcQ",
+    snippet: "VID Conferences executive interview detailing project updates, resource expansion, and Tier-1 infrastructure advantages.",
+    image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-10.jpg",
     sponsored: true,
   },
   {
     id: "int-3",
-    category: "EXPLORATION",
-    title: "Patriot Battery Metals: Building the Next Tier-1 Lithium Asset",
+    category: "SILVER & CRITICAL METALS",
+    title: "Apollo Silver Corp: Strategic Growth & High-Grade Resource Expansion",
     date: "May 29, 2025",
-    readTime: "8 min read",
-    snippet: "President & CEO Blair Way explains the resource expansion strategy at Shaakichiuwaanaan and what institutional investors should know.",
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
+    readTime: "08:15",
+    youtubeId: "3JZ_D3ELwOQ",
+    snippet: "Exclusive VID Media interview discussing technical milestones, economic studies, and market outlook for precious & industrial metals.",
+    image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-18.jpg",
     sponsored: true,
   },
   {
     id: "int-4",
-    category: "OIL & GAS",
-    title: "Suncor Energy President on Oil Sands Innovation and Net-Zero Goals",
+    category: "ENERGY TRANSITION",
+    title: "Patriot Battery Metals: Building Quebec's Premier Lithium Asset",
     date: "May 20, 2025",
-    readTime: "9 min read",
-    snippet: "How Suncor is applying AI and carbon capture technology to reduce oil sands emissions while maintaining production growth.",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800",
+    readTime: "11:20",
+    youtubeId: "L_LUpnjgPso",
+    snippet: "Blair Way, CEO & President, outlines the exploration success at Shaakichiuwaanaan and ESG initiatives at THE Mining Event.",
+    image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-22.jpg",
     sponsored: true,
   },
   {
     id: "int-5",
-    category: "PRODUCTION",
-    title: "Teck Resources COO on Scaling QB2 and the Road to QB3",
+    category: "ROYALTIES & STREAMING",
+    title: "Osisko Development: High-Grade Gold Production & Mine Construction Update",
     date: "May 10, 2025",
-    readTime: "7 min read",
-    snippet: "Chief Operating Officer Jonathan Price outlines the operational ramp-up at Quebrada Blanca and the timeline for the next phase expansion.",
-    image: "https://images.unsplash.com/photo-1531973576160-7125cd663d86?q=80&w=800",
+    readTime: "10:05",
+    youtubeId: "dQw4w9WgXcQ",
+    snippet: "Executive presentation at VID Conferences highlighting operational progress, cash flow potential, and strategic partnerships.",
+    image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-28.jpg",
     sponsored: true,
   },
 ];
@@ -920,6 +925,7 @@ type SectionArticle = {
   image: string;
   featured?: boolean;
   sponsored?: boolean;
+  youtubeId?: string;
 };
 
 function NewsSection({
@@ -1906,9 +1912,16 @@ function SectionPressReleaseView({
   const { lang, t } = useLanguage();
   const [selectedCat, setSelectedCat] = useState("ALL");
   const [searchQuery, setSearchQuery] = useState("");
+  const [playingVideo, setPlayingVideo] = useState<SectionArticle | null>(null);
 
-  const goToDetail = (item: SectionArticle) => {
-    router.push(`/news/${item.id}`);
+  const isVideoSection = data.title === "Company Interviews" || data.articles.some((a) => a.youtubeId);
+
+  const handleArticleClick = (item: SectionArticle) => {
+    if (isVideoSection || item.youtubeId) {
+      setPlayingVideo(item);
+    } else {
+      router.push(`/news/${item.id}`);
+    }
   };
 
   const categories = ["ALL", ...Array.from(new Set(data.articles.map((a) => a.category)))];
@@ -1926,7 +1939,7 @@ function SectionPressReleaseView({
   const grid = featured ? filtered.filter((a) => a.id !== featured.id) : filtered;
 
   return (
-    <div className="w-full flex flex-col min-h-screen bg-[#f4f7fa] dark:bg-[#090d16] text-neutral-900 dark:text-white transition-colors duration-300">
+    <div className="w-full flex flex-col min-h-screen bg-[#f4f7fa] dark:bg-[#090d16] text-neutral-900 dark:text-white transition-colors duration-300 relative">
       {/* Hero Header matching Press Release Page */}
       <section className="relative w-full bg-[#0f1117] text-white overflow-hidden pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 md:px-8">
         <div
@@ -1958,7 +1971,9 @@ function SectionPressReleaseView({
           </h1>
           <div className="w-20 h-[3px] bg-[#C6112F] mt-5 rounded-full" />
           <p className="text-neutral-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mt-4 leading-relaxed">
-            Official sector announcements and investment updates from {data.title}.
+            {isVideoSection
+              ? "Watch exclusive video interviews & presentations with leading mining executives."
+              : `Official sector announcements and investment updates from ${data.title}.`}
           </p>
         </div>
       </section>
@@ -2005,7 +2020,7 @@ function SectionPressReleaseView({
                 <div className="lg:col-span-8">
                   <div className="flex items-center gap-3 mb-4 flex-wrap">
                     <span className="bg-[#C6112F] text-white text-[10px] font-black tracking-[0.2em] uppercase px-3.5 py-1 rounded-full shadow-md">
-                      FEATURED RELEASE
+                      FEATURED VIDEO INTERVIEW
                     </span>
                     <span className="px-3 py-1 bg-white/10 rounded-full text-neutral-300 text-xs font-semibold">
                       {featured.category}
@@ -2013,7 +2028,7 @@ function SectionPressReleaseView({
                   </div>
 
                   <h2
-                    onClick={() => goToDetail(featured)}
+                    onClick={() => handleArticleClick(featured)}
                     className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4 group-hover:text-rose-300 transition-colors cursor-pointer"
                   >
                     {featured.title}
@@ -2025,10 +2040,13 @@ function SectionPressReleaseView({
 
                   <div className="flex items-center gap-4 flex-wrap">
                     <button
-                      onClick={() => goToDetail(featured)}
-                      className="px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105"
+                      onClick={() => handleArticleClick(featured)}
+                      className="px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105 flex items-center gap-2"
                     >
-                      READ MORE ↗
+                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      {isVideoSection ? "PLAY VIDEO NOW" : "READ MORE ↗"}
                     </button>
                     <span className="text-neutral-400 text-xs font-medium">
                       {featured.date} · {featured.readTime}
@@ -2037,15 +2055,24 @@ function SectionPressReleaseView({
                 </div>
 
                 <div
-                  onClick={() => goToDetail(featured)}
-                  className="lg:col-span-4 h-64 sm:h-72 rounded-2xl overflow-hidden bg-neutral-800 relative cursor-pointer"
+                  onClick={() => handleArticleClick(featured)}
+                  className="lg:col-span-4 h-64 sm:h-72 rounded-2xl overflow-hidden bg-neutral-800 relative cursor-pointer group/thumb"
                 >
                   <img
                     src={featured.image}
                     alt={featured.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
                   />
+                  {isVideoSection && (
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover/thumb:bg-black/50 transition-colors">
+                      <div className="w-14 h-14 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-2xl transform group-hover/thumb:scale-110 transition-transform">
+                        <svg className="w-7 h-7 fill-current ml-1" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </article>
@@ -2057,7 +2084,7 @@ function SectionPressReleaseView({
           {grid.map((item) => (
             <article
               key={item.id}
-              onClick={() => goToDetail(item)}
+              onClick={() => handleArticleClick(item)}
               className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/60 rounded-3xl p-6 flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
             >
               <div>
@@ -2068,6 +2095,15 @@ function SectionPressReleaseView({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
                   />
+                  {isVideoSection && (
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 flex items-center justify-center transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-[#C6112F] text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                        <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  )}
                   <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[9px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded-full shadow-md">
                     {item.category}
                   </span>
@@ -2087,7 +2123,7 @@ function SectionPressReleaseView({
                   {item.date}
                 </span>
                 <span className="text-[#C6112F] text-xs font-extrabold group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                  READ ↗
+                  {isVideoSection ? "PLAY VIDEO ▶" : "READ ↗"}
                 </span>
               </div>
             </article>
@@ -2104,19 +2140,72 @@ function SectionPressReleaseView({
           </button>
         </div>
       </div>
+
+      {/* ── VIDEO PLAYER MODAL POPUP ── */}
+      {playingVideo && (
+        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+          <div className="relative w-full max-w-4xl bg-[#131b2e] rounded-3xl border border-[#233049] overflow-hidden shadow-2xl flex flex-col">
+            {/* Modal Header Bar */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#233049] bg-[#0e1626]">
+              <div className="flex items-center gap-2.5 overflow-hidden">
+                <span className="bg-[#C6112F] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded shrink-0">
+                  {playingVideo.category}
+                </span>
+                <h3 className="text-sm sm:text-base font-bold text-white truncate">
+                  {playingVideo.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setPlayingVideo(null)}
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C6112F] text-white flex items-center justify-center font-bold text-base transition-colors shrink-0 cursor-pointer ml-3"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Embedded YouTube Player */}
+            <div className="relative w-full aspect-video bg-black">
+              <iframe
+                src={`https://www.youtube.com/embed/${playingVideo.youtubeId || "L_LUpnjgPso"}?autoplay=1`}
+                title={playingVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
+            </div>
+
+            {/* Video Footer Metadata */}
+            <div className="p-4 sm:p-6 text-left flex flex-col gap-2">
+              <div className="flex items-center justify-between text-xs text-neutral-400">
+                <span className="font-semibold text-neutral-300">THE Mining Investment Event Official</span>
+                <span>{playingVideo.date} · 2.4K views</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
+                {playingVideo.snippet}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-function YouTubeConferencesSection({
+function YouTubeSection({
+  sectionLabel = "EXCLUSIVE CONTENT",
+  title = "Company Interviews",
   articles,
   onViewAll,
 }: {
+  sectionLabel?: string;
+  title?: string;
   articles: SectionArticle[];
   onViewAll: () => void;
 }) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState("ALL");
+  const [playingVideo, setPlayingVideo] = useState<SectionArticle | null>(null);
+  const [inlinePlaying, setInlinePlaying] = useState(false);
 
   const filtered = articles.filter(
     (a) => activeTab === "ALL" || a.category === activeTab
@@ -2126,16 +2215,16 @@ function YouTubeConferencesSection({
   const grid = filtered.filter((a) => a.id !== (featured?.id || "")).slice(0, 4);
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col relative">
       {/* ── YouTube Section Header Bar ── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-neutral-200/90 dark:border-slate-800">
         <div className="flex flex-col gap-1 text-left">
           <span className="text-[#C6112F] text-[10px] font-black tracking-[0.25em] uppercase flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
-            EVENTS &amp; CONFERENCES
+            {sectionLabel}
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] dark:text-white uppercase tracking-tight flex items-center gap-2">
-            Upcoming Conferences
+            {title}
             {/* YouTube Red Play Button Badge */}
             <span className="inline-flex items-center justify-center bg-[#C6112F] text-white px-2.5 py-0.5 rounded-lg text-xs font-black tracking-widest lowercase shadow-xs">
               <svg className="w-3.5 h-3.5 mr-1 fill-current" viewBox="0 0 24 24">
@@ -2171,38 +2260,50 @@ function YouTubeConferencesSection({
       {featured && (
         <div className="my-8 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white dark:bg-[#131b2e] p-5 sm:p-7 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xs hover:shadow-md transition-all">
           {/* YouTube Video Player / Thumbnail (16:9 aspect-video) */}
-          <div
-            onClick={() => router.push(`/news/${featured.id}`)}
-            className="lg:col-span-7 relative w-full aspect-video rounded-2xl overflow-hidden bg-black group cursor-pointer shadow-md"
-          >
-            <img
-              src={featured.image}
-              alt={featured.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-              onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800"; }}
-            />
-            {/* Dark Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 group-hover:bg-black/30 transition-colors" />
+          <div className="lg:col-span-7 relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-md">
+            {inlinePlaying ? (
+              <iframe
+                src="https://www.youtube.com/embed/L_LUpnjgPso?autoplay=1"
+                title={featured.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
+            ) : (
+              <div
+                onClick={() => setInlinePlaying(true)}
+                className="relative w-full h-full group cursor-pointer"
+              >
+                <img
+                  src={featured.image}
+                  alt={featured.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                  onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800"; }}
+                />
+                {/* Dark Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 group-hover:bg-black/30 transition-colors" />
 
-            {/* YouTube Red Play Icon Button in Center */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#C6112F]/90 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-[#C6112F] transition-all">
-                <svg className="w-7 h-7 sm:w-8 sm:h-8 fill-current ml-1" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+                {/* YouTube Red Play Icon Button in Center */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#C6112F]/90 text-white flex items-center justify-center shadow-2xl group-hover:scale-110 group-hover:bg-[#C6112F] transition-all">
+                    <svg className="w-7 h-7 sm:w-8 sm:h-8 fill-current ml-1" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Top Left Live / Category Badge */}
+                <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md shadow-md flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                  {featured.category}
+                </span>
+
+                {/* Bottom Right Duration Badge (YouTube Style) */}
+                <span className="absolute bottom-3 right-3 bg-black/85 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded shadow-xs backdrop-blur-xs">
+                  HD · {featured.readTime}
+                </span>
               </div>
-            </div>
-
-            {/* Top Left Live / Category Badge */}
-            <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md shadow-md flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-              {featured.category}
-            </span>
-
-            {/* Bottom Right Duration Badge (YouTube Style) */}
-            <span className="absolute bottom-3 right-3 bg-black/85 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded shadow-xs backdrop-blur-xs">
-              HD · {featured.readTime}
-            </span>
+            )}
           </div>
 
           {/* YouTube Video Info Details */}
@@ -2228,7 +2329,7 @@ function YouTubeConferencesSection({
 
               {/* Title */}
               <h3
-                onClick={() => router.push(`/news/${featured.id}`)}
+                onClick={() => setPlayingVideo(featured)}
                 className="text-xl sm:text-2xl font-extrabold text-[#1f2430] dark:text-white leading-tight mb-3 hover:text-[#C6112F] cursor-pointer transition-colors line-clamp-2"
               >
                 {featured.title}
@@ -2246,8 +2347,8 @@ function YouTubeConferencesSection({
               </span>
 
               <button
-                onClick={() => router.push(`/news/${featured.id}`)}
-                className="px-4 py-2 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-wider uppercase transition-all shadow-2xs cursor-pointer flex items-center gap-1.5 group-hover:scale-105"
+                onClick={() => setPlayingVideo(featured)}
+                className="px-4 py-2 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-wider uppercase transition-all shadow-2xs cursor-pointer flex items-center gap-1.5 hover:scale-105"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
@@ -2264,7 +2365,7 @@ function YouTubeConferencesSection({
         {grid.map((item) => (
           <article
             key={item.id}
-            onClick={() => router.push(`/news/${item.id}`)}
+            onClick={() => setPlayingVideo(item)}
             className="flex flex-col bg-white dark:bg-[#131b2e] border border-neutral-200/80 dark:border-[#233049] hover:border-[#C6112F]/60 rounded-2xl overflow-hidden shadow-2xs hover:shadow-lg transition-all duration-300 group cursor-pointer"
           >
             {/* Video 16:9 Thumbnail Box */}
@@ -2338,9 +2439,56 @@ function YouTubeConferencesSection({
           <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
-          VIEW ALL CONFERENCES &amp; VIDEOS
+          VIEW ALL INTERVIEWS &amp; VIDEOS
         </button>
       </div>
+
+      {/* ── VIDEO PLAYER MODAL POPUP ON CLICK ── */}
+      {playingVideo && (
+        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+          <div className="relative w-full max-w-4xl bg-[#131b2e] rounded-3xl border border-[#233049] overflow-hidden shadow-2xl flex flex-col">
+            {/* Modal Header Bar */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#233049] bg-[#0e1626]">
+              <div className="flex items-center gap-2.5 overflow-hidden">
+                <span className="bg-[#C6112F] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded shrink-0">
+                  {playingVideo.category}
+                </span>
+                <h3 className="text-sm sm:text-base font-bold text-white truncate">
+                  {playingVideo.title}
+                </h3>
+              </div>
+              <button
+                onClick={() => setPlayingVideo(null)}
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#C6112F] text-white flex items-center justify-center font-bold text-base transition-colors shrink-0 cursor-pointer ml-3"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Embedded YouTube Player */}
+            <div className="relative w-full aspect-video bg-black">
+              <iframe
+                src="https://www.youtube.com/embed/L_LUpnjgPso?autoplay=1"
+                title={playingVideo.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
+            </div>
+
+            {/* Video Footer Metadata */}
+            <div className="p-4 sm:p-6 text-left flex flex-col gap-2">
+              <div className="flex items-center justify-between text-xs text-neutral-400">
+                <span className="font-semibold text-neutral-300">THE Mining Investment Event Official</span>
+                <span>{playingVideo.date} · 2.4K views</span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
+                {playingVideo.snippet}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -2454,27 +2602,28 @@ export default function NewsPage() {
             />
           </section>
 
-          {/* ═══════ SECTION 5: COMPANY INTERVIEWS ═══════ */}
+          {/* ═══════ SECTION 5: COMPANY INTERVIEWS (YOUTUBE UI STYLE) ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-            <NewsSection
+            <YouTubeSection
               sectionLabel="EXCLUSIVE CONTENT"
               title="Company Interviews"
-              accentNote="Sponsored Content"
-              icon={
-                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
-                </svg>
-              }
               articles={companyInterviews}
-              ctaLabel="VIEW ALL INTERVIEWS"
               onViewAll={() => setExpandedSection({ title: "Company Interviews", sectionLabel: "EXCLUSIVE CONTENT", articles: companyInterviews })}
             />
           </section>
 
-          {/* ═══════ SECTION 6: UPCOMING CONFERENCES (YOUTUBE UI STYLE) ═══════ */}
+          {/* ═══════ SECTION 6: UPCOMING CONFERENCES (SIMPLE CLEAN STYLE) ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-            <YouTubeConferencesSection
+            <NewsSection
+              sectionLabel="EVENTS & CONFERENCES"
+              title="Upcoming Conferences"
+              icon={
+                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              }
               articles={conferencesArticles}
+              ctaLabel="VIEW ALL CONFERENCES"
               onViewAll={() => setExpandedSection({ title: "Upcoming Conferences", sectionLabel: "EVENTS & CONFERENCES", articles: conferencesArticles })}
             />
           </section>
