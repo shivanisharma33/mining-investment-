@@ -241,6 +241,102 @@ Presenting issuers at THE Mining Investment Event 2026 will showcase high-grade 
     image: "/news/hero_3.png",
     readTime: "4 MIN READ",
   },
+  {
+    id: "co-oilgas-1",
+    tagCategory: "OIL & GAS",
+    dateEN: "Jul 30, 2026",
+    dateFR: "30 juillet 2026",
+    headlineEN: "Shell Reports Record Q2 2026 Adjusted Earnings of $9.8B and Launches $3B Share Buyback",
+    headlineFR: "Shell affiche des bénéfices ajustés record de 9,8 G$ au T2 2026 et lance 3 G$ de rachat d'actions",
+    snippetEN: "Shell doubles its quarterly profit driven by strong upstream production in Brazil and elevated global energy commodity prices, announcing a new $3B share buyback program for investors. (Source: Shell Investor Relations / Reuters)",
+    snippetFR: "Shell double son profit trimestriel grâce à une forte production en amont au Brésil et à des prix élevés de l'énergie, annonçant un rachat d'actions de 3 G$. (Source : Shell Investor Relations / Reuters)",
+    fullBodyEN: `Shell reported strong second-quarter 2026 financial results on July 30, 2026, delivering adjusted earnings of $9.8 billion, more than double the $4.4 billion recorded in the same period of 2025.
+
+The surge in profitability was primarily fueled by strong upstream production volumes from deepwater assets in Brazil, elevated global commodity prices, and robust trading performance across its integrated gas portfolio.
+
+Accompanying the financial results, Shell announced a new $3.0 billion share buyback program scheduled for completion by the third quarter of 2026, maintaining its policy of returning 40-50% of operating cash flow to shareholders.
+
+Source: Shell Investor Relations / Reuters News Agency`,
+    fullBodyFR: "Shell a publié des résultats financiers exceptionnels pour le deuxième trimestre 2026, affichant des bénéfices ajustés de 9,8 milliards de dollars.",
+    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=1200",
+    readTime: "5 MIN READ",
+  },
+  {
+    id: "co-oilgas-2",
+    tagCategory: "NATURAL GAS",
+    dateEN: "Jul 28, 2026",
+    dateFR: "28 juillet 2026",
+    headlineEN: "Expand Energy Beats Q2 Estimates with $1.33 EPS, Announces $1.25B Twin Eagle Acquisition",
+    headlineFR: "Expand Energy dépasse les prévisions au T2 et annonce l'acquisition de Twin Eagle pour 1,25 G$",
+    snippetEN: "Expand Energy transforms into a fully integrated natural gas powerhouse combining 7.5 Bcfe/d production with marketing, storage, and logistics capabilities across North America. (Source: Oil & Gas Journal)",
+    snippetFR: "Expand Energy devient un géant du gaz naturel en combinant une production de 7,5 Bcfe/d avec des actifs de stockage et de logistique.",
+    fullBodyEN: `Expand Energy reported strong second-quarter 2026 earnings on July 28, beating Wall Street consensus with adjusted net income of $1.33 per share.
+
+The company announced a definitive agreement to acquire Twin Eagle Holdings for $1.25 billion. The strategic acquisition adds extensive natural gas storage, pipeline capacity, and logistics assets to Expand's 7.5 Bcfe/d production footprint.
+
+Management reaffirmed its full-year capital expenditure plan while highlighting continued commitment to free cash flow generation and disciplined capital allocation.
+
+Source: Oil & Gas Journal`,
+    fullBodyFR: "Expand Energy a publié des résultats supérieurs aux attentes pour le deuxième trimestre 2026 et annoncé l'acquisition stratégique de Twin Eagle Holdings pour 1,25 milliard de dollars.",
+    image: "https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800",
+    readTime: "4 MIN READ",
+  },
+  {
+    id: "co-oilgas-3",
+    tagCategory: "OFFSHORE & GULF",
+    dateEN: "Jul 30, 2026",
+    dateFR: "30 juillet 2026",
+    headlineEN: "BP Announces Startup of Atlantis Major Facility Expansion Project in US Gulf of Mexico",
+    headlineFR: "BP annonce le démarrage du projet d'expansion majeur de l'installation Atlantis dans le golfe du Mexique",
+    snippetEN: "BP successfully starts up the Atlantis Major Facility Expansion in the deepwater Gulf of Mexico, adding subsea water injection wells to boost hydrocarbon recovery rates and extend reservoir production life. (Source: BP Corporate / Rigzone)",
+    snippetFR: "BP démarre avec succès l'expansion majeure d'Atlantis dans le golfe du Mexique, ajoutant des puits d'injection sous-marins pour stimuler la récupération du pétrole. (Source : BP Corporate / Rigzone)",
+    fullBodyEN: `BP announced the successful offshore commissioning and startup of the Atlantis Major Facility Expansion project in the deepwater US Gulf of Mexico on July 30, 2026.
+
+The subsea tie-back expansion project installs high-pressure water injection wells to optimize reservoir pressure and unlock additional hydrocarbon recovery across the field.
+
+"The Atlantis expansion highlights BP's strategy of maximizing production from existing deepwater hubs while maintaining capital discipline," said BP production leadership.
+
+Source: BP Corporate Press Office / Rigzone`,
+    fullBodyFR: "BP a annoncé la mise en service et le démarrage avec succès du projet d'expansion majeur de l'installation Atlantis dans le golfe du Mexique.",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200",
+    readTime: "4 MIN READ",
+  },
+  {
+    id: "co-oilgas-4",
+    tagCategory: "OIL SANDS",
+    dateEN: "Jul 24, 2026",
+    dateFR: "24 juillet 2026",
+    headlineEN: "Suncor Energy Demonstrates Operational Discipline with Record Oil Sands Throughput",
+    headlineFR: "Suncor Énergie fait preuve de discipline opérationnelle avec un rendement record",
+    snippetEN: "Suncor Energy reports strong free cash flow and asset efficiency ahead of Q2 financial releases, benefiting from TSX-leading performance across Canadian oil sands assets. (Source: Suncor IR / TSX Market News)",
+    snippetFR: "Suncor Énergie affiche un flux de trésorerie disponible élevé et une efficacité des actifs avant la publication des résultats du T2.",
+    fullBodyEN: `Suncor Energy highlighted record operating reliability and mill throughput across its Fort Hills and Firebag oil sands operations ahead of its upcoming Q2 earnings release.
+
+The company's focus on operational discipline, cost reduction per barrel, and capital efficiency has generated substantial free cash flow, supporting ongoing share repurchases and balance sheet deleveraging.
+
+Source: Suncor Investor Relations / TSX Market News`,
+    fullBodyFR: "Suncor Énergie a souligné une fiabilité opérationnelle record dans l'ensemble de ses installations de sables bitumineux.",
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800",
+    readTime: "5 MIN READ",
+  },
+  {
+    id: "co-oilgas-5",
+    tagCategory: "OFFSHORE",
+    dateEN: "Jul 21, 2026",
+    dateFR: "21 juillet 2026",
+    headlineEN: "TotalEnergies and Equinor Approve Subsea Field Expansion to Boost North Sea Gas Supply",
+    headlineFR: "TotalEnergies et Equinor approuvent l'expansion d'un champ sous-marin pour stimuler l'offre",
+    snippetEN: "Joint venture partners approve subsea tie-back expansion targeting 45,000 barrels of oil equivalent per day to bolster European energy security. (Source: Offshore Technology / Rigzone)",
+    snippetFR: "Les partenaires de la coentreprise approuvent l'expansion d'un raccordement sous-marin ciblant 45 000 boepd en mer du Nord.",
+    fullBodyEN: `TotalEnergies and Equinor have sanctioned a major subsea tie-back development project in the North Sea.
+
+The joint venture targets additional production of 45,000 barrels of oil equivalent per day by connecting satellite subsea wells to existing production host infrastructure, minimizing capital outlay while accelerating gas deliverability for European markets.
+
+Source: Offshore Technology / Rigzone`,
+    fullBodyFR: "TotalEnergies et Equinor ont approuvé un projet de développement sous-marin majeur en mer du Nord.",
+    image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?q=80&w=800",
+    readTime: "4 MIN READ",
+  },
 ];
 
 export default function SingleNewsDetailPage() {
@@ -338,21 +434,8 @@ export default function SingleNewsDetailPage() {
                 {headline}
               </h1>
 
-              {/* Publisher Information & Social Share Controls */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-neutral-100 dark:border-zinc-800">
-                <div className="flex items-center gap-3.5">
-                  <div className="w-12 h-12 rounded-full bg-[#C6112F] text-white font-black text-lg flex items-center justify-center shadow-md shrink-0">
-                    M
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-extrabold text-neutral-900 dark:text-white uppercase tracking-wider">
-                      THE Mining Investment Event of the North
-                    </h4>
-                    <p className="text-[11px] text-neutral-500 dark:text-zinc-400 font-medium">
-                      Official Press Release · Quebec City, Canada
-                    </p>
-                  </div>
-                </div>
+              {/* Social Share Controls */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-end gap-6 pt-6 border-t border-neutral-100 dark:border-zinc-800">
 
                 {/* Social Share Buttons */}
                 <div className="flex items-center gap-1.5 bg-neutral-50 dark:bg-zinc-900 p-1.5 rounded-xl border border-neutral-200/80 dark:border-zinc-800">

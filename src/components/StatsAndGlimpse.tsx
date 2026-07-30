@@ -163,7 +163,7 @@ export default function StatsAndGlimpse() {
         <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
           {isFr
             ? "Une plateforme mondiale connectant les investisseurs, les sociétés et les leaders façonnant l'avenir de l'industrie minière et de l'investissement."
-            : "A global platform connecting investors, companies, and leaders driving the future of mining and resource investment."}
+            : "A global platform connecting investors, companies and leaders driving the future of mining and resource investment."}
         </p>
       </div>
 

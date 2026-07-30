@@ -91,7 +91,7 @@ export default function TravelPage() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
               {t("travel-hero-title-1", "Travel &")} <span className="text-[#C6112F]">{t("travel-hero-title-2", "Accommodations")}</span>
             </h1>
-            <div className="w-20 h-[3px] bg-[#C6112F] mt-6" />
+            <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
           </div>
         </section>
 
@@ -114,16 +114,18 @@ export default function TravelPage() {
                   "Welcome to THE Mining Investment EVENT, taking place Tuesday, June 2 to Thursday, June 4, 2026 at the Centre des congrès de Québec (“QCC”)"
                 )}
               </h3>
-              <div className="w-12 h-[2.5px] bg-[#C6112F] mb-4" />
+              <div className="w-12 h-[2.5px] bg-[#C6112F] rounded-full mb-5" />
 
               <a
                 href="https://www.convention.qc.ca/en/about/ceo-message/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base sm:text-lg font-extrabold text-[#C6112F] hover:underline inline-flex items-center gap-1.5 mb-3"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all mb-5"
               >
                 <span>{t("travel-about-qcc", "About the Centre des congrès de Québec")}</span>
-                <span className="text-sm">↗</span>
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
               </a>
 
               <div className="space-y-2 text-neutral-800 dark:text-slate-200 text-sm sm:text-base font-medium leading-relaxed">
@@ -160,7 +162,7 @@ export default function TravelPage() {
                   {t("travel-convention-title", "About the Centre des congrès de Québec ↗")}
                 </a>
               </h3>
-              <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+              <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-3" />
               <p className="text-neutral-700 dark:text-slate-300 text-sm leading-relaxed flex-1 font-medium">
                 {t("travel-convention-desc", "Welcome to the Centre des congrès de Québec, where elegance meets innovation. Nestled within the charming historic district of Old Quebec, this world-class facility seamlessly blends modern amenities with the rich tapestry of Quebecois culture.")}
               </p>
@@ -171,9 +173,12 @@ export default function TravelPage() {
                 href="https://www.convention.qc.ca/en/about/ceo-message/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 text-[#C6112F] text-sm font-bold hover:underline inline-flex items-center gap-1"
+                className="mt-5 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-fit"
               >
-                {t("travel-convention-link", "View Convention Centre ↗")}
+                <span>{t("travel-convention-link", "View Convention Centre")}</span>
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
               </a>
             </div>
 
@@ -202,7 +207,7 @@ export default function TravelPage() {
                     {t("travel-air-title", "Air Travel direct to Quebec (YQB) estimated times")}
                   </h3>
                 </div>
-                <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+                <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-3" />
 
                 <div className="grid grid-cols-2 gap-1.5 mb-3.5">
                   {flights.map((f) => (
@@ -226,9 +231,12 @@ export default function TravelPage() {
                   href="https://www.aeroportdequebec.com/en/flights-and-destinations/destinations-served"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 text-[#C6112F] text-xs font-bold hover:underline inline-flex items-center gap-1"
+                  className="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-fit"
                 >
-                  {t("travel-air-link-btn", "Check YQB destinations ↗")}
+                  <span>{t("travel-air-link-btn", "Check YQB destinations")}</span>
+                  <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
                 </a>
               </div>
 
@@ -255,7 +263,7 @@ export default function TravelPage() {
                     {t("travel-train-title", "Train Travel to Quebec (YQB) estimated times:")}
                   </h3>
                 </div>
-                <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+                <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-3" />
 
                 <div className="space-y-1.5 text-xs font-medium mb-3 bg-slate-100 dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 p-2.5 rounded-lg">
                   <p className="flex justify-between items-center text-[11px] text-neutral-900 dark:text-slate-100">
@@ -275,9 +283,12 @@ export default function TravelPage() {
                   href="https://www.viarail.ca/en/travel-info/booking/buy-train-ticket"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 text-[#C6112F] text-xs font-bold hover:underline inline-flex items-center gap-1"
+                  className="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-fit"
                 >
-                  {t("travel-train-btn", "Book tickets online at Via Rail ↗")}
+                  <span>{t("travel-train-btn", "Book tickets online at Via Rail")}</span>
+                  <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
                 </a>
               </div>
 
@@ -304,7 +315,7 @@ export default function TravelPage() {
                     {t("travel-limo-heading", "Private Transportation")}
                   </h3>
                 </div>
-                <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+                <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-3" />
                 <p className="text-neutral-700 dark:text-slate-300 text-xs leading-relaxed font-medium flex-1 mb-2">
                   {t(
                     "travel-limo-text",
@@ -319,9 +330,12 @@ export default function TravelPage() {
                   href="http://www.limousinequebec.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-3 text-[#C6112F] text-xs font-bold hover:underline inline-flex items-center gap-1"
+                  className="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-fit"
                 >
-                  {t("travel-limo-btn", "Contact Limousine A1 ↗")}
+                  <span>{t("travel-limo-btn", "Contact Limousine A1")}</span>
+                  <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
                 </a>
               </div>
             </div>
@@ -349,7 +363,7 @@ export default function TravelPage() {
                     {item.icon}
                   </div>
                   <h3 className="text-base font-black text-[#1a1f2c] dark:text-white mb-2">{item.title}</h3>
-                  <div className="w-10 h-[2px] bg-[#C6112F] mb-3" />
+                  <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-3" />
                   <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed whitespace-pre-line flex-1 font-medium">{item.desc}</p>
                   {item.note && (
                     <p className="text-[#C6112F] text-xs font-semibold mt-3">{item.note}</p>
@@ -359,9 +373,12 @@ export default function TravelPage() {
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-3 text-[#C6112F] text-xs sm:text-sm font-bold hover:underline inline-flex items-center gap-1"
+                      className="mt-4 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-fit"
                     >
-                      {item.linkText}
+                      <span>{item.linkText.replace(" ↗", "")}</span>
+                      <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
                     </a>
                   )}
                 </div>

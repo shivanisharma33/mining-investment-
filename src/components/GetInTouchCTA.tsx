@@ -10,7 +10,7 @@ export default function GetInTouchCTA() {
   return (
     <section className="relative w-full min-h-[460px] sm:min-h-[500px] flex items-center overflow-hidden bg-neutral-900">
       {/* Bottom Accent Red Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
+      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
       {/* Background Image: Mining Investment Post 2 */}
       <div className="absolute inset-0 w-full h-full">
         <img

@@ -53,8 +53,10 @@ const impactStats = [
     label: "SPEAKERS",
     labelFr: "CONFÉRENCIERS",
     icon: (
-      <svg className="w-8 h-8 text-neutral-900" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.287a6 6 0 010 7.427M11 6H7a2 2 0 00-2 2v8a2 2 0 002 2h4l5 5V1L11 6z" />
+      <svg className="w-7 h-7 text-[#1a1f2c] dark:text-white" viewBox="0 0 24 24" fill="none">
+        <path d="M11 5L6 9H3a1 1 0 00-1 1v4a1 1 0 001 1h3l5 4V5z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15.5 8.5a4 4 0 010 7" stroke="#C6112F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M18.5 6a7 7 0 010 12" stroke="#C6112F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -63,8 +65,10 @@ const impactStats = [
     label: "INVESTORS",
     labelFr: "INVESTISSEURS",
     icon: (
-      <svg className="w-8 h-8 text-neutral-900" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      <svg className="w-7 h-7 text-[#1a1f2c] dark:text-white" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M5 20v-1a7 7 0 0114 0v1" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M9 16h6" stroke="#C6112F" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -73,8 +77,10 @@ const impactStats = [
     label: "MINING COMPANIES",
     labelFr: "SOCIÉTÉS MINIÈRES",
     icon: (
-      <svg className="w-8 h-8 text-neutral-900" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20 7h-4V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM10 5h4v2h-4V5z" />
+      <svg className="w-7 h-7 text-[#1a1f2c] dark:text-white" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M10.5 12h3" stroke="#C6112F" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -83,9 +89,10 @@ const impactStats = [
     label: "COUNTRIES",
     labelFr: "PAYS",
     icon: (
-      <svg className="w-8 h-8 text-neutral-900" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.6 9h16.8M3.6 15h16.8M12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
+      <svg className="w-7 h-7 text-[#1a1f2c] dark:text-white" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M3.6 9h16.8M3.6 15h16.8" stroke="#C6112F" strokeWidth="1.8" />
       </svg>
     ),
   },
@@ -94,8 +101,9 @@ const impactStats = [
     label: "MEETINGS",
     labelFr: "RÉUNIONS",
     icon: (
-      <svg className="w-8 h-8 text-neutral-900" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M7 11.5L10 14.5L14.5 10M17 11.5L14 8.5L9.5 13M4 10l3-3 4 4M20 14l-3 3-4-4" />
+      <svg className="w-7 h-7 text-[#1a1f2c] dark:text-white" viewBox="0 0 24 24" fill="none">
+        <path d="M4 17l5-5 4 4 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15 9h5v5" stroke="#C6112F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -285,10 +293,19 @@ export default function PastEditionsPage() {
             </div>
 
             {/* Impact Stats Container */}
-            <div className="w-full bg-gradient-to-b from-[#ffffff] via-[#fcfdfe] to-[#f4f7fa] dark:from-[#18181b] dark:via-[#18181b] dark:to-[#121215] border border-neutral-300/80 dark:border-zinc-800 rounded-2xl p-5 sm:p-8 md:p-10 shadow-sm text-left mb-10">
-              <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase mb-6 sm:mb-8 block">
-                {isFr ? "NOTRE IMPACT AU FIL DES ANS" : "OUR IMPACT OVER THE YEARS"}
-              </span>
+            <div className="w-full bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-xs text-left mb-10">
+              {/* Top Red Bar Accent */}
+              <div className="w-7 h-[2.5px] bg-[#C6112F] rounded-full mb-3" />
+
+              {/* Two-line Header Title */}
+              <div className="mb-8">
+                <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase block">
+                  {isFr ? "NOTRE IMPACT" : "OUR IMPACT"}
+                </span>
+                <span className="text-neutral-500 dark:text-neutral-400 text-xs font-bold tracking-[0.25em] uppercase block mt-0.5">
+                  {isFr ? "AU FIL DES ANS" : "OVER THE YEARS"}
+                </span>
+              </div>
 
               <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-0">
                 {impactStats.map((stat, idx) => {
@@ -296,19 +313,21 @@ export default function PastEditionsPage() {
                   return (
                     <div
                       key={stat.label}
-                      className={`flex flex-col items-start text-left group ${!isLast ? "lg:border-r lg:border-neutral-200/90 dark:lg:border-zinc-800 lg:pr-8" : ""
+                      className={`flex flex-col items-start text-left group ${!isLast ? "lg:border-r lg:border-neutral-200/80 dark:lg:border-[#233049] lg:pr-8" : ""
                         } ${idx !== 0 ? "lg:pl-8" : ""}`}
                     >
-                      {/* Icon */}
-                      <div className="mb-3 sm:mb-4 text-neutral-900 dark:text-white transform group-hover:scale-110 transition-transform duration-200">{stat.icon}</div>
+                      {/* Two-Tone Icon */}
+                      <div className="mb-3 text-neutral-900 dark:text-white transform group-hover:scale-105 transition-transform duration-200">
+                        {stat.icon}
+                      </div>
 
                       {/* Value */}
-                      <span className="text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 dark:text-white tracking-tight leading-none mb-2 sm:mb-3">
+                      <span className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight leading-none mb-2">
                         {stat.value}
                       </span>
 
                       {/* Label */}
-                      <span className="text-[10px] xs:text-[11px] sm:text-xs font-extrabold tracking-[0.15em] text-[#C6112F] uppercase">
+                      <span className="text-[10px] sm:text-[11px] font-extrabold tracking-[0.18em] text-neutral-400 dark:text-neutral-500 uppercase">
                         {isFr ? stat.labelFr : stat.label}
                       </span>
                     </div>

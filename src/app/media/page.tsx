@@ -209,7 +209,7 @@ export default function MediaPage() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
               {t("media-hero-title-1", "Recent")} <span className="text-[#C6112F]">{t("media-hero-title-2", "Media")}</span>
             </h1>
-            <div className="w-20 h-[3px] bg-[#C6112F] mt-6" />
+            <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
           </div>
         </section>
 

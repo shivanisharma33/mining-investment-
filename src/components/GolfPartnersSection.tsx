@@ -68,7 +68,7 @@ export default function GolfPartnersSection() {
         </div>
 
         {/* Horizontal Divider Line matching mockup */}
-        <div className="w-full h-[1.5px] bg-[#e58a99]/70 dark:bg-[#C6112F]/40 my-10 sm:my-14" />
+        <div className="w-full h-[1.5px] bg-[#e58a99]/70 dark:bg-[#C6112F]/40 my-10 sm:my-14 rounded-full" />
 
         {/* ═════════════════════════════════════════════════════════ */}
         {/* SUBSECTION 2: PARTENAIRES PRIX / PRIZE PARTNERS */}

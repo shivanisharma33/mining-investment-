@@ -82,7 +82,16 @@ body {
   color: #e4e4e7 !important;
 }
 /* ── Preserve Red Brand Accent Text in Dark Mode ── */
-.dark :is(.text-\[\#C6112F\], [class*="text-[#C6112F]"]) {
+.dark .text-\[\#C6112F\],
+.dark .dark\:text-\[\#C6112F\] {
+  color: #C6112F !important;
+}
+
+/* ── Hover Accent Controls ── */
+.dark a.hover\:text-\[\#C6112F\]:hover,
+.dark a.dark\:hover\:text-\[\#C6112F\]:hover,
+.dark button.hover\:text-\[\#C6112F\]:hover,
+.dark button.dark\:hover\:text-\[\#C6112F\]:hover {
   color: #C6112F !important;
 }
 
@@ -92,10 +101,6 @@ body {
 
 .dark :is(h1, h2, h3, h4, h5, h6, b, strong) {
   color: #ffffff !important;
-}
-/* ── Explicit Red Text Overrides for Dark Mode ── */
-.dark :is(.dark\:text-\[\#C6112F\], [class*="dark:text-[#C6112F]"]) {
-  color: #C6112F !important;
 }
 .dark p {
   color: #e4e4e7 !important;

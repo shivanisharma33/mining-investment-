@@ -85,7 +85,7 @@ export default function ProgramsGrid() {
   return (
     <section className="relative w-full bg-white dark:bg-[#090d16] py-14 sm:py-18 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
+      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
       {/* Header Container */}
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 mb-8 sm:mb-10 text-center">
@@ -150,7 +150,7 @@ export default function ProgramsGrid() {
                     <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] dark:text-white leading-snug mb-2.5">
                       {item.title}
                     </h3>
-                    <div className="w-12 h-[2px] bg-[#C6112F] mb-3" />
+                    <div className="w-12 h-[2px] bg-[#C6112F] rounded-full mb-3" />
                     <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
                       {item.description}
                     </p>
@@ -186,7 +186,7 @@ export default function ProgramsGrid() {
                     <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] dark:text-white leading-snug mb-2.5">
                       {item.title}
                     </h3>
-                    <div className="w-12 h-[2px] bg-[#C6112F] mb-3" />
+                    <div className="w-12 h-[2px] bg-[#C6112F] rounded-full mb-3" />
                     <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
                       {item.description}
                     </p>

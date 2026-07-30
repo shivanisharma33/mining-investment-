@@ -63,7 +63,7 @@ export default function FeaturedEventCountdown() {
         </span>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-3 sm:px-6 text-center">
+      <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 text-center">
         {/* Top Tag & Title */}
         <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block mb-2">
           {t("feat-event-tag", "FEATURED EVENT")}
@@ -139,41 +139,43 @@ export default function FeaturedEventCountdown() {
         </div>
 
         {/* 8 Action Buttons Grid arranged in 2 Lines (4 Columns per line on desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-5xl mx-auto">
-          {/* Line 1 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 max-w-[1240px] mx-auto">
+          {/* Line 1 - Button 1 */}
           <Link
             href="/agenda"
-            className="w-full min-h-[54px] bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-5 sm:px-6 lg:px-7 py-3.5 text-[10px] sm:text-[11px] lg:text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2.5 sm:gap-3 transition-all shadow-2xs group text-center whitespace-nowrap"
+            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs group text-center"
           >
             <svg className="w-4 h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
               <line x1="16" y1="2" x2="16" y2="6" />
               <line x1="8" y1="2" x2="8" y2="6" />
             </svg>
-            <span>VIEW AGENDA</span>
+            <span className="whitespace-nowrap">VIEW AGENDA</span>
           </Link>
 
+          {/* Line 1 - Button 2 */}
           <Link
             href="/register"
-            className="w-full min-h-[54px] bg-[#a80d26] hover:bg-[#8a091e] text-white rounded-xl px-5 sm:px-6 lg:px-7 py-3.5 text-[10px] sm:text-[11px] lg:text-xs font-black tracking-wider uppercase flex items-center justify-center transition-all shadow-md hover:scale-105 text-center whitespace-nowrap"
+            className="w-full h-14 sm:h-16 bg-[#a80d26] hover:bg-[#8a091e] text-white rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-md hover:scale-[1.02] text-center"
           >
-            <span>REGISTER NOW</span>
+            <span className="whitespace-nowrap">REGISTER NOW</span>
           </Link>
 
+          {/* Line 1 - Button 3 */}
           <Link
             href="/past-years/2027/2027-brochure"
-            className="w-full min-h-[54px] bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-5 sm:px-6 lg:px-7 py-3.5 text-[10px] sm:text-[11px] lg:text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2.5 sm:gap-3 transition-all shadow-2xs group text-center whitespace-nowrap"
+            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs group text-center"
           >
             <svg className="w-4 h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>
-            <span>BROCHURE</span>
+            <span className="whitespace-nowrap">BROCHURE</span>
           </Link>
 
-          {/* Line 1 Right Corner: International Mining Week */}
+          {/* Line 1 - Button 4 */}
           <Link
             href="/imw"
-            className="w-full min-h-[54px] bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-3 sm:px-4 lg:px-5 py-3.5 text-[9px] xs:text-[9.5px] sm:text-[10px] lg:text-[11px] font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-2 sm:gap-2.5 transition-all shadow-2xs group text-center whitespace-nowrap"
+            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2 sm:px-3 lg:px-3.5 text-[9.5px] xs:text-[10px] sm:text-[11px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-xs group text-center"
           >
             <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
@@ -181,10 +183,10 @@ export default function FeaturedEventCountdown() {
             <span className="whitespace-nowrap">INTERNATIONAL MINING WEEK</span>
           </Link>
 
-          {/* Line 2 */}
+          {/* Line 2 - Button 5 */}
           <Link
             href="/companies"
-            className="w-full min-h-[54px] bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-4 sm:px-5 lg:px-6 py-3.5 text-[9.5px] xs:text-[10px] sm:text-[10.5px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-2 sm:gap-2.5 transition-all shadow-2xs group text-center whitespace-nowrap"
+            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2 sm:px-3 lg:px-3.5 text-[9.5px] xs:text-[10px] sm:text-[11px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-xs group text-center"
           >
             <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21" />
@@ -192,35 +194,37 @@ export default function FeaturedEventCountdown() {
             <span className="whitespace-nowrap">PARTICIPATING COMPANIES</span>
           </Link>
 
+          {/* Line 2 - Button 6 */}
           <Link
             href="/speakers"
-            className="w-full min-h-[54px] bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-5 sm:px-6 lg:px-7 py-3.5 text-[10px] sm:text-[11px] lg:text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2.5 sm:gap-3 transition-all shadow-2xs group text-center whitespace-nowrap"
+            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs group text-center"
           >
             <svg className="w-4 h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
             </svg>
-            <span>OUR SPEAKERS</span>
+            <span className="whitespace-nowrap">OUR SPEAKERS</span>
           </Link>
 
+          {/* Line 2 - Button 7 */}
           <Link
             href="/sponsors"
-            className="w-full min-h-[54px] bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-5 sm:px-6 lg:px-7 py-3.5 text-[10px] sm:text-[11px] lg:text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2.5 sm:gap-3 transition-all shadow-2xs group text-center whitespace-nowrap"
+            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs group text-center"
           >
             <svg className="w-4 h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5A1.5 1.5 0 013 19.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21" />
             </svg>
-            <span>OUR SPONSORS</span>
+            <span className="whitespace-nowrap">OUR SPONSORS</span>
           </Link>
 
-          {/* Line 2 Right Corner: Golf Day */}
+          {/* Line 2 - Button 8 */}
           <Link
             href="/golf"
-            className="w-full min-h-[54px] bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-xl px-5 sm:px-6 lg:px-7 py-3.5 text-[10px] sm:text-[11px] lg:text-xs font-black tracking-wider uppercase flex items-center justify-center gap-2.5 sm:gap-3 transition-all shadow-2xs group text-center whitespace-nowrap"
+            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs group text-center"
           >
             <svg className="w-4 h-4 text-neutral-800 dark:text-slate-200 group-hover:scale-110 transition-transform shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M12 3v18M12 3l7 4-7 4" />
             </svg>
-            <span>ICONIC GOLF DAY</span>
+            <span className="whitespace-nowrap">ICONIC GOLF DAY</span>
           </Link>
         </div>
       </div>

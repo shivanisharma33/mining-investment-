@@ -157,7 +157,7 @@ export default function AboutPage() {
             </h1>
 
             {/* Accent line */}
-            <div className="w-20 h-[3px] bg-[#C6112F] mt-6" />
+            <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
           </div>
         </section>
 
@@ -407,7 +407,7 @@ export default function AboutPage() {
                   <h3 className="text-lg sm:text-xl font-black text-[#1a1f2c] mb-3 tracking-tight">
                     {t(feat.titleKey, feat.titleDefault)}
                   </h3>
-                  <div className="w-10 h-[2px] bg-[#C6112F] mb-4 group-hover:w-14 transition-all duration-300" />
+                  <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-4 group-hover:w-14 transition-all duration-300" />
                   <p className="text-neutral-600 text-sm leading-relaxed font-medium">
                     {t(feat.descKey, feat.descDefault)}
                   </p>

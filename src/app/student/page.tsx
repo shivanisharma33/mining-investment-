@@ -48,7 +48,7 @@ export default function StudentPage() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
               {t("student-hero-title-1", "THE Student")} <span className="text-[#C6112F]">{t("student-hero-title-2", "Sponsorship Program")}</span>
             </h1>
-            <div className="w-20 h-[3px] bg-[#C6112F] mt-6" />
+            <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
           </div>
         </section>
 
@@ -92,7 +92,12 @@ export default function StudentPage() {
                   <p>
                     {t(
                       "student-body-p1",
-                      "THE Glencore Student Sponsorship Program aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada's only Tier 1 global mining investment conference, held from June 1–3, 2027, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking, and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada."
+                      "THE Glencore Student Sponsorship Program aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada's only Tier 1 global mining investment conference, held from June 1–3, 2027, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking, and immersive learning."
+                    )}
+                    <br />
+                    {t(
+                      "student-body-p1-sub",
+                      "The Program is now recognized as one of the largest fully funded conference programs in Canada."
                     )}
                   </p>
                   <p>

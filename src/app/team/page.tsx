@@ -43,7 +43,7 @@ const coreTeam: TeamMember[] = [
 
 
 
-  
+
   {
     initials: "SS",
     name: "Sydney Schuch",
@@ -51,7 +51,7 @@ const coreTeam: TeamMember[] = [
     organization: "IR INC & VID Media",
     bio: "Sydney is the Manager, Production Services at IR INC and VID Media, where she oversees production operations and leads the social media team for THE Mining Investment Event. With a background in media, communications, and public affairs, she brings a structured, detail-oriented approach to managing complex projects and stakeholder-driven initiatives.\n\nShe is a graduate of the University of Western Ontario, holding a BA in Political Science and Media Information (2024), and is currently pursuing a Graduate Certificate in Government Relations at Seneca Polytechnic.\n\nAlongside her professional work, Sydney is actively engaged in public service. She volunteers with her local MPP's office and serves as an administrative assistant to the executive team at the Caledonia Royal Canadian Legion.",
     expandable: true,
-     image: "/ChatGPT Image Jul 24, 2026, 04_48_34 PM.png",
+    image: "/ChatGPT Image Jul 24, 2026, 04_48_34 PM.png",
     category: "executive",
   },
   {
@@ -161,7 +161,7 @@ function BoardCard({ member }: { member: TeamMember }) {
             </span>
           </div>
         )}
-        
+
         {/* Subtle Dark Overlay Gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
 
@@ -189,7 +189,7 @@ function BoardCard({ member }: { member: TeamMember }) {
       {/* Bio Content Area */}
       <div className="p-5 sm:p-6 flex flex-col flex-1 bg-white">
         <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-3" />
-        
+
         <div className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium space-y-2.5 flex-1">
           {expanded ? (
             paragraphs.map((p, idx) => <p key={idx}>{p}</p>)
@@ -299,7 +299,7 @@ export default function TeamPage() {
               <span className="text-[#C6112F]">›</span>
               <span className="text-white">{t("nav-team", "THE Team")}</span>
             </div>
-            
+
             <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-3 block">
               LEADERSHIP & GOVERNANCE
             </span>
@@ -319,31 +319,28 @@ export default function TeamPage() {
             <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={() => setActiveTab("all")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${
-                  activeTab === "all"
-                    ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
-                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${activeTab === "all"
+                  ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
+                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                  }`}
               >
                 All Members ({coreTeam.length + advisoryBoard.length})
               </button>
               <button
                 onClick={() => setActiveTab("executive")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${
-                  activeTab === "executive"
-                    ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
-                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${activeTab === "executive"
+                  ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
+                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                  }`}
               >
                 Core Executive Team ({coreTeam.length})
               </button>
               <button
                 onClick={() => setActiveTab("board")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${
-                  activeTab === "board"
-                    ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
-                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                }`}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${activeTab === "board"
+                  ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
+                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                  }`}
               >
                 Advisory Board Members ({advisoryBoard.length})
               </button>
@@ -380,19 +377,17 @@ export default function TeamPage() {
         {(activeTab === "all" || activeTab === "board") && (
           <section className="relative w-full py-16 sm:py-20 bg-white border-t border-neutral-200/80">
             <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-                <div>
-                  <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-                    {t("team-advisory-label", "Advisory Board Members")}
-                  </span>
-                  <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
-                    {t("team-advisory-title", "Advisory Board")}
-                  </h2>
-                  <div className="w-16 h-[3px] bg-[#C6112F] rounded-full" />
-                </div>
-                <p className="text-neutral-600 text-xs sm:text-sm font-medium max-w-[500px]">
-                  Distinguished mining executives, former government leaders, and technical experts providing strategic direction for THE Mining Investment Event.
+              <div className="mb-10 max-w-[720px]">
+                <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+                  {t("team-advisory-label", "Advisory Board Members")}
+                </span>
+                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+                  {t("team-advisory-title", "Advisory Board")}
+                </h2>
+                <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed mb-4">
+                  {t("team-advisory-desc", "Distinguished mining executives, former government leaders and technical experts providing strategic direction for THE Mining Investment Event.")}
                 </p>
+                <div className="w-16 h-[3px] bg-[#C6112F] rounded-full" />
               </div>
 
               {/* 3-Column Prominent Board Card Grid */}

@@ -28,7 +28,7 @@ export default function PartnershipPage() {
     {
       num: "04",
       title: t("tier1-f4-title", "ESG Alignment"),
-      desc: t("tier1-f4-desc", "Demonstrate commitment to sustainability and diversity by co-sponsoring THE Event's Student Sponsorship and SHE-Co charitable initiatives."),
+      desc: t("tier1-f4-desc", "Demonstrate commitment to sustainability and diversity by co-sponsoring THE Event's Student Sponsorship and SHE\u2011Co charitable initiatives."),
     },
   ];
 
@@ -58,7 +58,7 @@ export default function PartnershipPage() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
               {t("tier1-h1-1", "Tier 1 Conference")} <span className="text-[#C6112F]">{t("tier1-h1-2", "Partnership")}</span>
             </h1>
-            <div className="w-20 h-[3px] bg-[#C6112F] mt-6" />
+            <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
           </div>
         </section>
 

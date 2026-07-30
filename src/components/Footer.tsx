@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="relative w-full bg-[#f0f3f6] dark:bg-[#18181b] pt-14 pb-10 overflow-hidden text-left transition-colors duration-300">
       {/* Bottom Accent Red Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
+      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
       {/* 3D Faceted Origami Vector Backdrop - Day Mode Only */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-100 dark:opacity-0 transition-opacity duration-300">
@@ -41,14 +41,14 @@ export default function Footer() {
               {t("cta-desc-prefix", "For more information about 'THE Event' programming or registration, please contact")}{" "}
               <a
                 href="mailto:jchoi@irinc.ca"
-                className="underline font-bold text-neutral-900 dark:text-[#C6112F] hover:text-[#C6112F] dark:hover:text-rose-400 transition-colors break-all"
+                className="underline font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors break-all"
               >
                 jchoi@irinc.ca
               </a>{" "}
               {t("cta-desc-or", "or call")}{" "}
               <a
                 href="tel:+19055153508"
-                className="underline font-bold text-neutral-900 dark:text-[#C6112F] hover:text-[#C6112F] dark:hover:text-rose-400 transition-colors whitespace-nowrap"
+                className="underline font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors whitespace-nowrap"
               >
                 +1-905-515-3508
               </a>
@@ -163,34 +163,34 @@ export default function Footer() {
             </h3>
             <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
-            <ul className="space-y-3 text-xs sm:text-sm font-bold text-neutral-700 dark:text-[#C6112F]">
+            <ul className="space-y-3 text-xs sm:text-sm font-bold">
               <li>
-                <Link href="/student" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/student" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("footer-link-student-sponsor", "Student Sponsorship")}
                 </Link>
               </li>
               <li>
-                <Link href="/sheco" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/sheco" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("footer-link-sheco", "SHE-CO")}
                 </Link>
               </li>
               <li>
-                <Link href="/student" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/student" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("footer-link-student-volunteer", "Student Volunteer")}
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/news" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-news", "News")}
                 </Link>
               </li>
               <li>
-                <Link href="/newsflash" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/newsflash" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-newsflash", "THE Press Release")}
                 </Link>
               </li>
               <li>
-                <Link href="/imw" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/imw" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-imw", "International Mining Week")}
                 </Link>
               </li>
@@ -204,24 +204,24 @@ export default function Footer() {
             </h3>
             <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
-            <ul className="space-y-3 text-xs sm:text-sm font-bold text-neutral-700 dark:text-[#C6112F]">
+            <ul className="space-y-3 text-xs sm:text-sm font-bold">
               <li>
-                <Link href="/about" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/about" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-about-event", "About THE Event")}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/about" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("footer-link-registration", "Registration Information")}
                 </Link>
               </li>
               <li>
-                <Link href="/travel" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/travel" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-travel", "Travel & Accommodations")}
                 </Link>
               </li>
               <li>
-                <Link href="/partnership" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/partnership" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("footer-link-our-sponsors", "Our Sponsors")}
                 </Link>
               </li>
@@ -235,24 +235,24 @@ export default function Footer() {
             </h3>
             <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
-            <ul className="space-y-3 text-xs sm:text-sm font-bold text-neutral-700 dark:text-[#C6112F]">
+            <ul className="space-y-3 text-xs sm:text-sm font-bold">
               <li>
-                <Link href="/student" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/student" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("footer-link-student-sponsor", "Student Sponsorship")}
                 </Link>
               </li>
               <li>
-                <Link href="/sheco" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/sheco" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("footer-link-sheco", "SHE-CO")}
                 </Link>
               </li>
               <li>
-                <Link href="/media" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/media" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-media", "Recent Media")}
                 </Link>
               </li>
               <li>
-                <Link href="/newsflash" className="hover:text-[#C6112F] dark:hover:text-white transition-colors">
+                <Link href="/newsflash" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-newsflash", "THE Press Release")}
                 </Link>
               </li>
@@ -269,7 +269,7 @@ export default function Footer() {
             <span className="hidden sm:inline text-neutral-400 dark:text-zinc-600">|</span>
             <Link
               href="/privacy-policy"
-              className="text-[#C6112F] hover:text-[#a80d26] dark:hover:text-rose-400 font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-colors inline-flex items-center gap-1.5"
+              className="text-[#C6112F] dark:text-white hover:text-[#a80d26] dark:hover:text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-colors inline-flex items-center gap-1.5"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />

@@ -223,6 +223,7 @@ const translations: Record<Language, Record<string, string>> = {
     "team-core-title-2": "THE Event",
     "team-advisory-label": "ADVISORY BOARD MEMBERS",
     "team-advisory-title": "Advisory Board",
+    "team-advisory-desc": "Distinguished mining executives, former government leaders and technical experts providing strategic direction for THE Mining Investment Event.",
     "team-read-more": "Read More ↓",
     "team-read-less": "Read Less ↑",
 
@@ -307,7 +308,8 @@ const translations: Record<Language, Record<string, string>> = {
     "student-hero-title-2": "Sponsorship Program",
     "student-tag-label": "BECOME THE FUTURE OF MINING",
     "student-main-subtitle": "Apply now for THE Glencore Student Sponsorship Class of 2026",
-    "student-body-p1": "THE Glencore Student Sponsorship Program aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada's only Tier 1 global mining investment conference, held from June 1–3, 2027, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking, and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada.",
+    "student-body-p1": "THE Glencore Student Sponsorship Program aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada's only Tier 1 global mining investment conference, held from June 1–3, 2027, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking, and immersive learning.",
+    "student-body-p1-sub": "The Program is now recognized as one of the largest fully funded conference programs in Canada.",
     "student-body-p2": "Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at no cost. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition, and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals.",
     "student-cta-apply": "Apply Here",
     "student-cta-letter": "Letter from our CEO ↗",
@@ -361,7 +363,7 @@ const translations: Record<Language, Record<string, string>> = {
     "tier1-f3-title": "Speaking Opportunities",
     "tier1-f3-desc": "Keynote and panel session opportunities provide a powerful platform to position your firm as a thought leader in the global mining investment space.",
     "tier1-f4-title": "ESG Alignment",
-    "tier1-f4-desc": "Demonstrate commitment to sustainability and diversity by co-sponsoring THE Event's Student Sponsorship and SHE-Co charitable initiatives.",
+    "tier1-f4-desc": "Demonstrate commitment to sustainability and diversity by co-sponsoring THE Event's Student Sponsorship and SHE\u2011Co charitable initiatives.",
 
     // Speakers Page
     "speakers-hero-title-1": "Keynote",
@@ -707,6 +709,7 @@ const translations: Record<Language, Record<string, string>> = {
     "team-core-title-2": "L'Événement",
     "team-advisory-label": "MEMBRES DU CONSEIL CONSULTATIF",
     "team-advisory-title": "Conseil Consultatif",
+    "team-advisory-desc": "Dirigeants miniers éminents, anciens leaders gouvernementaux et experts techniques apportant une orientation stratégique à L'Événement d'Investissement Minier.",
     "team-read-more": "Lire Plus ↓",
     "team-read-less": "Lire Moins ↑",
 
@@ -763,6 +766,7 @@ const translations: Record<Language, Record<string, string>> = {
     "student-tag-label": "DEVENEZ L'AVENIR DE L'INDUSTRIE MINIÈRE",
     "student-main-subtitle": "Postulez dès maintenant pour la promotion 2026 du Programme de Bourses Étudiantes Glencore",
     "student-body-p1": "Le programme de bourses étudiantes Glencore vise à offrir une exposition unique à l'industrie minière grâce à une participation à L'Événement d'Investissement Minier (L'Événement), la seule conférence d'investissement minier mondiale de Niveau 1 au Canada, qui se tiendra du 1er au 3 juin 2027 à Québec. Cet événement annuel sert de point de rencontre pour les leaders de l'industrie et les investisseurs.",
+    "student-body-p1-sub": "Le programme est désormais reconnu comme l'un des plus grands programmes de conférences entièrement financés au Canada.",
     "student-body-p2": "Jusqu'à 50 étudiants universitaires ou collégiens passionnés de géologie, finance ou génie auront la chance d'assister à la conférence sans aucun coût. Notre objectif est de favoriser l'apprentissage expérientiel en exposant les étudiants aux conférenciers d'honneur et panels de l'industrie.",
     "student-cta-apply": "Postuler ici",
     "student-cta-letter": "Une lettre de notre PDG ↗",
@@ -816,7 +820,7 @@ const translations: Record<Language, Record<string, string>> = {
     "tier1-f3-title": "Opportunités de Prise de Parole",
     "tier1-f3-desc": "Les opportunités de conférences et de panels offrent une tribune puissante pour positionner votre entreprise comme leader d'opinion.",
     "tier1-f4-title": "Alignement ESG",
-    "tier1-f4-desc": "Démontrez votre engagement envers la durabilité et la diversité en coparrainant les bourses étudiantes et l'initiative SHE-Co.",
+    "tier1-f4-desc": "Démontrez votre engagement envers la durabilité et la diversité en coparrainant les bourses étudiantes et l'initiative SHE\u2011Co.",
 
     // Speakers Page
     "speakers-hero-title-1": "Conférenciers",

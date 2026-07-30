@@ -18,7 +18,7 @@ export default function AgendaPage() {
       <main className="flex flex-col flex-grow w-full bg-white">
         {/* ═══════ HERO ═══════ */}
         <section className="relative w-full bg-[#0f1117] overflow-hidden">
-          <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
+          <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
           <div
             className="absolute inset-0 opacity-[0.05]"
             style={{

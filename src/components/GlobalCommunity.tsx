@@ -51,7 +51,7 @@ export default function GlobalCommunity() {
   return (
     <section className="relative w-full bg-white dark:bg-[#090d16] py-14 sm:py-18 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
+      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
       <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Top Section: Text Stack & Red Dotted World Map Graphic */}

@@ -291,25 +291,25 @@ function BannerSliderSection() {
         </p>
       </div>
 
-      {/* Banner Carousel Slider with Side Arrows */}
+      {/* Banner Carousel Slider matching width of top Hero Banner */}
       <div
-        className="relative flex items-center justify-center gap-3 sm:gap-6 max-w-[1240px] mx-auto"
+        className="relative w-full max-w-[1240px] mx-auto"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
-        {/* Left Arrow Button */}
+        {/* Left Arrow Button - Positioned outside banner content */}
         <button
           onClick={prevSlide}
           aria-label="Previous Banner"
-          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-md shrink-0 cursor-pointer z-20"
+          className="absolute -left-3 sm:-left-5 md:-left-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-xl shrink-0 cursor-pointer z-30"
         >
           <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
         </button>
 
-        {/* Banner Display Box with decreased height */}
-        <div className="relative w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] overflow-hidden shadow-lg bg-neutral-900 h-40 sm:h-52 md:h-56 group">
+        {/* Banner Display Box matching hero banner width */}
+        <div className="relative w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] overflow-hidden shadow-lg bg-neutral-900 h-44 sm:h-56 md:h-64 group">
           <img
             src={current.image}
             alt={current.title}
@@ -317,24 +317,24 @@ function BannerSliderSection() {
             loading="lazy"
             decoding="async"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-7 text-left">
-            <span className="text-[#C6112F] bg-white/90 dark:bg-[#131b2e]/90 text-[9px] sm:text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-1.5 shadow-2xs">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10 text-left">
+            <span className="text-[#C6112F] bg-white/90 dark:bg-[#131b2e]/90 text-[9px] sm:text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-2 shadow-2xs">
               {lang === "FR" ? "ÉVÉNEMENT EN VEDETTE" : "FEATURED EVENT"}
             </span>
-            <h3 className="text-lg sm:text-2xl font-extrabold text-white leading-snug drop-shadow-md">
+            <h3 className="text-xl sm:text-3xl font-extrabold text-white leading-snug drop-shadow-md">
               {current.title}
             </h3>
-            <p className="text-neutral-200 text-xs font-medium mt-0.5 drop-shadow-sm max-w-2xl line-clamp-1">
+            <p className="text-neutral-200 text-xs sm:text-sm font-medium mt-1 drop-shadow-sm max-w-2xl line-clamp-1">
               {current.subtitle}
             </p>
           </div>
         </div>
 
-        {/* Right Arrow Button */}
+        {/* Right Arrow Button - Positioned outside banner content */}
         <button
           onClick={nextSlide}
           aria-label="Next Banner"
-          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-md shrink-0 cursor-pointer z-20"
+          className="absolute -right-3 sm:-right-5 md:-right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-xl shrink-0 cursor-pointer z-30"
         >
           <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -682,75 +682,80 @@ const governmentsArticles = [
 /* 2. COMPANY ARTICLES */
 const companyArticles = [
   {
-    id: "co-1",
-    category: "GOLD",
-    categoryFR: "OR",
-    title: "Agnico Eagle Posts Record Q2 Production from LaRonde Complex",
-    titleFR: "Agnico Eagle affiche une production record au T2 au complexe LaRonde",
-    date: "Jun 15, 2025",
-    dateFR: "15 juin 2025",
+    id: "co-oilgas-1",
+    category: "OIL & GAS",
+    categoryFR: "PÉTROLE & GAZ",
+    title: "Shell Reports Record Q2 2026 Adjusted Earnings of $9.8B and Launches $3B Share Buyback",
+    titleFR: "Shell affiche des bénéfices ajustés record de 9,8 G$ au T2 2026 et lance 3 G$ de rachat d'actions",
+    date: "Jul 30, 2026",
+    dateFR: "30 juillet 2026",
     readTime: "5 min read",
     readTimeFR: "5 min de lecture",
-    snippet: "Agnico Eagle reports 920,000 oz of gold production in Q2, driven by exceptional mill throughput at its flagship Quebec operations.",
-    snippetFR: "Agnico Eagle rapporte 920 000 oz de production d'or au T2, stimulée par un rendement exceptionnel au Québec.",
-    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=1200",
+    snippet: "Shell doubles its quarterly profit driven by strong upstream production in Brazil and elevated global energy commodity prices, announcing a new $3B share buyback program for investors.",
+    snippetFR: "Shell double son profit trimestriel grâce à une forte production en amont au Brésil et à des prix élevés de l'énergie, annonçant un rachat d'actions de 3 G$.",
+    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=1200",
+    source: "Shell Investor Relations / Reuters",
     featured: true,
   },
   {
-    id: "co-2",
-    category: "COPPER",
-    categoryFR: "CUIVRE",
-    title: "Teck Resources Advances QB3 Expansion Amid Strong Copper Prices",
-    titleFR: "Teck Resources fait progresser l'expansion QB3 grâce aux prix élevés du cuivre",
-    date: "Jun 8, 2025",
-    dateFR: "8 juin 2025",
+    id: "co-oilgas-2",
+    category: "NATURAL GAS",
+    categoryFR: "GAZ NATUREL",
+    title: "Expand Energy Beats Q2 Estimates with $1.33 EPS, Announces $1.25B Twin Eagle Acquisition",
+    titleFR: "Expand Energy dépasse les prévisions au T2 et annonce l'acquisition de Twin Eagle pour 1,25 G$",
+    date: "Jul 28, 2026",
+    dateFR: "28 juillet 2026",
     readTime: "4 min read",
     readTimeFR: "4 min de lecture",
-    snippet: "Teck secures board approval for QB3 feasibility study as copper trades near $4.50/lb.",
-    snippetFR: "Teck obtient l'approbation du conseil d'administration pour l'étude de faisabilité QB3.",
-    image: "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=800",
+    snippet: "Expand Energy transforms into a fully integrated natural gas powerhouse combining 7.5 Bcfe/d production with marketing, storage, and logistics capabilities across North America.",
+    snippetFR: "Expand Energy devient un géant du gaz naturel en combinant une production de 7,5 Bcfe/d avec des actifs de stockage et de logistique.",
+    image: "https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800",
+    source: "Oil & Gas Journal",
   },
   {
-    id: "co-3",
-    category: "OIL & GAS",
-    categoryFR: "PÉTROLE & GAZ",
-    title: "Suncor Energy Delivers Strong Free Cash Flow in H1 2025",
-    titleFR: "Suncor Énergie génère d'importants flux de trésorerie au S1 2025",
-    date: "May 27, 2025",
-    dateFR: "27 mai 2025",
+    id: "co-oilgas-3",
+    category: "OFFSHORE & GULF",
+    categoryFR: "OFFSHORE & GOLFE",
+    title: "BP Announces Startup of Atlantis Major Facility Expansion Project in US Gulf of Mexico",
+    titleFR: "BP annonce le démarrage du projet d'expansion majeur de l'installation Atlantis dans le golfe du Mexique",
+    date: "Jul 30, 2026",
+    dateFR: "30 juillet 2026",
+    readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
+    snippet: "BP successfully starts up the Atlantis Major Facility Expansion in the deepwater Gulf of Mexico, adding subsea water injection wells to boost hydrocarbon recovery rates and extend reservoir production life.",
+    snippetFR: "BP démarre avec succès l'expansion majeure d'Atlantis dans le golfe du Mexique, ajoutant des puits d'injection sous-marins pour stimuler la récupération du pétrole.",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200",
+    source: "BP Corporate / Rigzone",
+  },
+  {
+    id: "co-oilgas-4",
+    category: "OIL SANDS",
+    categoryFR: "SABLES BITUMINEUX",
+    title: "Suncor Energy Demonstrates Operational Discipline with Record Oil Sands Throughput",
+    titleFR: "Suncor Énergie fait preuve de discipline opérationnelle avec un rendement record",
+    date: "Jul 24, 2026",
+    dateFR: "24 juillet 2026",
     readTime: "5 min read",
     readTimeFR: "5 min de lecture",
-    snippet: "Canada's largest oil sands producer reports $4.1B in free cash flow and raises its annual dividend by 8%.",
-    snippetFR: "Le plus grand producteur de sables bitumineux du Canada rapporte 4,1 G$ en flux de trésorerie disponible.",
-    image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=800",
+    snippet: "Suncor Energy reports strong free cash flow and asset efficiency ahead of Q2 financial releases, benefiting from TSX-leading performance across Canadian oil sands assets.",
+    snippetFR: "Suncor Énergie affiche un flux de trésorerie disponible élevé et une efficacité des actifs avant la publication des résultats du T2.",
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800",
+    source: "Suncor IR / TSX Market News",
   },
   {
-    id: "co-4",
-    category: "CRITICAL MINERALS",
-    categoryFR: "MINÉRAUX CRITIQUES",
-    title: "Patriot Battery Metals Closes C$150M Strategic Investment",
-    titleFR: "Patriot Battery Metals clôture un investissement stratégique de 150 M$ CAD",
-    date: "May 14, 2025",
-    dateFR: "14 mai 2025",
+    id: "co-oilgas-5",
+    category: "OFFSHORE",
+    categoryFR: "OFFSHORE",
+    title: "TotalEnergies and Equinor Approve Subsea Field Expansion to Boost North Sea Gas Supply",
+    titleFR: "TotalEnergies et Equinor approuvent l'expansion d'un champ sous-marin pour stimuler l'offre",
+    date: "Jul 21, 2026",
+    dateFR: "21 juillet 2026",
     readTime: "4 min read",
     readTimeFR: "4 min de lecture",
-    snippet: "The Shaakichiuwaanaan lithium project advances as Patriot secures funding from a major Asian battery manufacturer.",
-    snippetFR: "Le projet de lithium Shaakichiuwaanaan progresse alors que Patriot sécurise un financement d'un fabricant asiatique.",
-    image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=800",
-  },
-  {
-    id: "co-5",
-    category: "SILVER",
-    categoryFR: "ARGENT",
-    title: "First Majestic Silver Reports Highest-Ever Monthly Silver Production",
-    titleFR: "First Majestic Silver rapporte une production mensuelle d'argent record",
-    date: "May 5, 2025",
-    dateFR: "5 mai 2025",
-    readTime: "3 min read",
-    readTimeFR: "3 min de lecture",
-    snippet: "San Dimas and Santa Elena mines combine for a record 3.7M oz Ag equivalent in April 2025.",
-    snippetFR: "Les mines San Dimas et Santa Elena atteignent un niveau record de 3,7 M d'oz équivalent argent en avril 2025.",
-    image: "https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=800",
+    snippet: "Joint venture partners approve subsea tie-back expansion targeting 45,000 barrels of oil equivalent per day to bolster European energy security.",
+    snippetFR: "Les partenaires de la coentreprise approuvent l'expansion d'un raccordement sous-marin ciblant 45 000 boepd en mer du Nord.",
+    image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?q=80&w=800",
+    source: "Offshore Technology / Rigzone",
   },
 ];
 
@@ -993,74 +998,79 @@ const miningNewsArticles = [
 const oilGasNewsArticles = [
   {
     id: "oilgas-1",
-    category: "ENERGY TRANSITION",
-    categoryFR: "TRANSITION ÉNERGÉTIQUE",
-    title: "Canadian Energy Sector Invests C$4.5B in Large-Scale Carbon Capture",
-    titleFR: "Le secteur canadien de l'énergie investit 4,5 G$ dans le captage du carbone à grande échelle",
-    date: "Jun 22, 2025",
-    dateFR: "22 juin 2025",
+    category: "MARKET WATCH",
+    categoryFR: "SUIVI DU MARCHÉ",
+    title: "Global Oil Markets Stabilize near $85/b as Strait of Hormuz Reopens Following MOU Agreement",
+    titleFR: "Les marchés mondiaux du pétrole se stabilisent près de 85 $/b suite à la réouverture du détroit d'Ormuz",
+    date: "Jul 30, 2026",
+    dateFR: "30 juillet 2026",
     readTime: "6 min read",
     readTimeFR: "6 min de lecture",
-    snippet: "Pathways Alliance advances trunkline pipeline construction to sequester up to 22 million tonnes of CO2 annually by 2030.",
-    snippetFR: "L'alliance Pathways fait progresser la construction du réseau pour séquestrer jusqu'à 22 millions de tonnes de CO2.",
+    snippet: "Crude spot prices experience downward correction as international diplomatic agreements reopen key maritime chokepoints and stabilize global supply routes. (Source: EIA / S&P Global Energy)",
+    snippetFR: "Les prix du pétrole brut connaissent une correction à la baisse après la réouverture de voies maritimes clés. (Source : EIA / S&P Global Energy)",
     image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=1200",
+    source: "EIA / S&P Global Energy",
     featured: true,
   },
   {
     id: "oilgas-2",
-    category: "LNG MARKETS",
-    categoryFR: "MARCHÉS DU GNL",
-    title: "LNG Canada Phase 1 Ships First Commercial Cargo from Kitimat",
-    titleFR: "LNG Canada Phase 1 expédie sa première cargaison commerciale depuis Kitimat",
-    date: "Jun 16, 2025",
-    dateFR: "16 juin 2025",
+    category: "CORPORATE",
+    categoryFR: "ENTREPRISES",
+    title: "Shell Reports Q2 2026 Adjusted Profits of $9.8B Driven by Upstream Production Gains",
+    titleFR: "Shell affiche des profits de 9,8 G$ au T2 2026 portés par la production en amont",
+    date: "Jul 29, 2026",
+    dateFR: "29 juillet 2026",
     readTime: "5 min read",
     readTimeFR: "5 min de lecture",
-    snippet: "Landmark energy infrastructure project begins supplying clean natural gas exports directly to Asian utility buyers.",
-    snippetFR: "Ce projet d'infrastructure énergétique commence à fournir du gaz naturel propre directement aux acheteurs asiatiques.",
+    snippet: "Supermajor doubles quarterly earnings year-over-year, buoyed by Brazil deepwater production volume and strong LNG trading results. (Source: Reuters / Shell Corporate)",
+    snippetFR: "La majeure pétrolière double ses bénéfices trimestriels d'une année sur l'autre, soutenue par les volumes en eau profonde au Brésil. (Source : Reuters / Shell Corporate)",
     image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800",
+    source: "Reuters / Shell Corporate",
   },
   {
     id: "oilgas-3",
-    category: "OIL SANDS",
-    categoryFR: "SABLES BITUMINEUX",
-    title: "Oil Sands Thermal In-Situ Efficiency Reaches Record Low Carbon Intensity",
-    titleFR: "L'efficacité in-situ des sables bitumineux atteint une intensité carbone historiquement basse",
-    date: "Jun 05, 2025",
-    dateFR: "5 juin 2025",
+    category: "NATURAL GAS",
+    categoryFR: "GAZ NATUREL",
+    title: "Expand Energy Outperforms Earnings Expectations & Seals $1.25B Logistics Acquisition",
+    titleFR: "Expand Energy dépasse les attentes et conclut une acquisition de 1,25 G$",
+    date: "Jul 28, 2026",
+    dateFR: "28 juillet 2026",
     readTime: "4 min read",
     readTimeFR: "4 min de lecture",
-    snippet: "Solvent-assisted SAGD technologies reduce steam-to-oil ratios, lowering operating costs and GHG emissions per barrel.",
-    snippetFR: "Les technologies SAGD assistées par solvant réduisent les ratios vapeur-pétrole, abaissant les coûts d'exploitation.",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800",
+    snippet: "Combination with Twin Eagle Holdings adds midstream storage and pipeline marketing capacity, creating a premier integrated gas producer. (Source: Oil & Gas Journal)",
+    snippetFR: "La fusion avec Twin Eagle Holdings ajoute des capacités de stockage et de transport midstream. (Source : Oil & Gas Journal)",
+    image: "https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800",
+    source: "Oil & Gas Journal",
   },
   {
     id: "oilgas-4",
-    category: "OFFSHORE",
-    categoryFR: "OFFSHORE",
-    title: "Deepwater Atlantic Exploration Drilling Yields New Light Crude Target",
-    titleFR: "Le forage d'exploration en eaux profondes dans l'Atlantique cible du pétrole brut léger",
-    date: "May 24, 2025",
-    dateFR: "24 mai 2025",
+    category: "OFFSHORE & GULF",
+    categoryFR: "OFFSHORE & GOLFE",
+    title: "BP Announces Startup of Atlantis Major Facility Expansion Project in US Gulf of Mexico",
+    titleFR: "BP annonce le démarrage du projet d'expansion majeur de l'installation Atlantis dans le golfe du Mexique",
+    date: "Jul 30, 2026",
+    dateFR: "30 juillet 2026",
     readTime: "4 min read",
     readTimeFR: "4 min de lecture",
-    snippet: "Offshore Newfoundland discovery confirms high permeability reservoir with estimated 300 million barrels recoverable.",
-    snippetFR: "Une découverte au large de Terre-Neuve confirme un réservoir estimé à 300 millions de barils.",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800",
+    snippet: "BP successfully starts up the Atlantis Major Facility Expansion in the deepwater Gulf of Mexico, adding subsea water injection wells to boost hydrocarbon recovery rates. (Source: BP Corporate / Rigzone)",
+    snippetFR: "BP démarre avec succès l'expansion majeure d'Atlantis dans le golfe du Mexique, ajoutant des puits d'injection sous-marins. (Source : BP Corporate / Rigzone)",
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200",
+    source: "BP Corporate / Rigzone",
   },
   {
     id: "oilgas-5",
-    category: "PIPELINES",
-    categoryFR: "PIPELINES",
-    title: "Trans Mountain Pipeline Operating at 95% Capacity as Asia Shipments Surge",
-    titleFR: "Le pipeline Trans Mountain fonctionne à 95 % de sa capacité suite à la hausse des livraisons vers l'Asie",
-    date: "May 12, 2025",
-    dateFR: "12 mai 2025",
+    category: "OFFSHORE",
+    categoryFR: "OFFSHORE",
+    title: "TotalEnergies and Equinor Sanction Subsea Tie-Back Project in North Sea Basin",
+    titleFR: "TotalEnergies et Equinor valident un projet de raccordement sous-marin en mer du Nord",
+    date: "Jul 21, 2026",
+    dateFR: "21 juillet 2026",
     readTime: "3 min read",
     readTimeFR: "3 min de lecture",
-    snippet: "Expanded pipeline network delivers Western Canadian Select crude to Pacific Rim refiners at record daily throughput.",
-    snippetFR: "Le réseau de pipelines agrandi livre du pétrole brut Western Canadian Select aux raffineurs du bassin Pacifique.",
-    image: "https://images.unsplash.com/photo-1561625116-5f8675632053?q=80&w=800",
+    snippet: "Deepwater subsea tie-back expands production capacity by 45,000 boepd to bolster European natural gas supply security. (Source: Rigzone / Offshore Magazine)",
+    snippetFR: "Un raccordement sous-marin en eaux profondes augmente la capacité de production de 45 000 boepd. (Source : Rigzone / Offshore Magazine)",
+    image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?q=80&w=800",
+    source: "Rigzone / Offshore Magazine",
   },
 ];
 
@@ -1080,6 +1090,7 @@ type SectionArticle = {
   snippet: string;
   snippetFR?: string;
   image: string;
+  source?: string;
   featured?: boolean;
   sponsored?: boolean;
   youtubeId?: string;
@@ -1200,9 +1211,14 @@ function NewsSection({
               {getItemTitle(featured)}
             </h3>
             <div className="w-14 h-[3px] bg-[#C6112F] rounded-full my-3" />
-            <span className="text-[#C6112F] text-xs font-bold mb-3 block">
-              {getItemDate(featured)}&nbsp;·&nbsp;{getItemReadTime(featured)}
-            </span>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-bold mb-3">
+              <span className="text-[#C6112F]">{getItemDate(featured)}&nbsp;·&nbsp;{getItemReadTime(featured)}</span>
+              {featured.source && (
+                <span className="bg-neutral-100 dark:bg-slate-800 border border-neutral-200 dark:border-slate-700 text-neutral-700 dark:text-slate-300 text-[11px] px-2.5 py-0.5 rounded-full">
+                  Source: <strong>{featured.source}</strong>
+                </span>
+              )}
+            </div>
             <p className="text-neutral-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-medium max-w-xl">
               {getItemSnippet(featured)}
             </p>
@@ -1245,9 +1261,16 @@ function NewsSection({
                 {getItemTitle(item)}
               </h4>
             </div>
-            <span className="text-[#C6112F] text-xs font-bold mt-2">
-              {getItemDate(item)}&nbsp;·&nbsp;{getItemReadTime(item)}
-            </span>
+            <div className="mt-2">
+              <span className="text-[#C6112F] text-xs font-bold block">
+                {getItemDate(item)}&nbsp;·&nbsp;{getItemReadTime(item)}
+              </span>
+              {item.source && (
+                <span className="text-neutral-500 dark:text-slate-400 text-[11px] font-semibold block mt-0.5 truncate">
+                  Source: {item.source}
+                </span>
+              )}
+            </div>
           </article>
         ))}
       </div>
@@ -1347,7 +1370,7 @@ function EventByTheNumbers() {
       <p className="text-neutral-600 text-xs sm:text-sm text-center font-medium max-w-xl mx-auto mb-10 leading-relaxed">
         {lang === "FR"
           ? "Une plateforme mondiale reliant investisseurs, entreprises et leaders qui façonnent l'avenir de l'investissement minier."
-          : "A global platform connecting investors, companies, and leaders driving the future of mining and resource investment."}
+          : "A global platform connecting investors, companies and leaders driving the future of mining and resource investment."}
       </p>
 
       {/* ════════ STAGGERED CARDS GRID (4 TOP + 3 BOTTOM CENTERED MATCHING EXACT IMAGE) ════════ */}

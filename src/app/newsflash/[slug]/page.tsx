@@ -216,21 +216,8 @@ export default function SingleNewsflashPage() {
                   {article.title}
                 </h1>
 
-                {/* Publisher Avatar & Share Action Row */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-neutral-100">
-                  <div className="flex items-center gap-3.5">
-                    <div className="w-12 h-12 rounded-full bg-[#C6112F] text-white font-black text-lg flex items-center justify-center shadow-md shrink-0">
-                      M
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-extrabold text-neutral-900 uppercase tracking-wider">
-                        THE Mining Investment Event of the North
-                      </h4>
-                      <p className="text-[11px] text-neutral-500 font-medium">
-                        Official Press Release · Quebec City, Canada
-                      </p>
-                    </div>
-                  </div>
+                {/* Share Action Row */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-end gap-6 pt-6 border-t border-neutral-100">
 
                   {/* PDF Button + Social Share Controls */}
                   <div className="flex items-center gap-3 flex-wrap">

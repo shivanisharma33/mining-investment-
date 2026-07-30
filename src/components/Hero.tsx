@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <section className="relative flex-grow flex items-center justify-center overflow-hidden min-h-screen pt-24 pb-12">
       {/* Bottom Accent Red Line */}
-      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] z-20" />
+      <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full bg-neutral-900">
         <video
