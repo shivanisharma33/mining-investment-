@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface AgendaPdfViewerProps {
   pdfUrl?: string;
@@ -21,6 +22,8 @@ export default function AgendaPdfViewer({
   description = "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview, and sponsorship opportunities.",
   fileSize = "0.9 MB",
 }: AgendaPdfViewerProps) {
+  const { lang } = useLanguage();
+  const isFr = lang === "FR";
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [zoomLevel, setZoomLevel] = useState<number>(100);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -72,7 +75,7 @@ export default function AgendaPdfViewer({
       {/* ════════ HERO & STATS HEADER MATCHING SCREENSHOT 1 ════════ */}
       <div className="mb-8">
         <span className="text-[#C6112F] text-xs font-black tracking-[0.2em] uppercase block mb-1">
-          {year} EDITION
+          {isFr ? `ÉDITION ${year}` : `${year} EDITION`}
         </span>
         <h2 className="text-4xl sm:text-5xl font-black text-[#101828] dark:text-white tracking-tight mb-3">
           {title}
@@ -94,9 +97,11 @@ export default function AgendaPdfViewer({
             </div>
             <div>
               <b className="block text-sm sm:text-base font-extrabold text-[#101828] dark:text-white">
-                June 1 &ndash; 4, {year}
+                {isFr ? `1er – 4 juin ${year}` : `June 1 – 4, ${year}`}
               </b>
-              <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">4 Days Event</span>
+              <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">
+                {isFr ? "Événement de 4 jours" : "4 Days Event"}
+              </span>
             </div>
           </div>
 
@@ -112,7 +117,9 @@ export default function AgendaPdfViewer({
               <b className="block text-sm sm:text-base font-extrabold text-[#101828] dark:text-white">
                 Centre des Congr&egrave;s de Qu&eacute;bec
               </b>
-              <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">Quebec City, Canada</span>
+              <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">
+                {isFr ? "Ville de Québec, Canada" : "Quebec City, Canada"}
+              </span>
             </div>
           </div>
 
@@ -125,9 +132,11 @@ export default function AgendaPdfViewer({
             </div>
             <div>
               <b className="block text-sm sm:text-base font-extrabold text-[#101828] dark:text-white">
-                PDF, {fileSize} &mdash; {totalPages} Pages
+                PDF, {fileSize} &mdash; {totalPages} {isFr ? "Pages" : "Pages"}
               </b>
-              <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">THE Agenda &bull; Subject to change</span>
+              <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">
+                {isFr ? "Ordre du jour • Sujet à changement" : "THE Agenda • Subject to change"}
+              </span>
             </div>
           </div>
         </div>
