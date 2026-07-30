@@ -1350,119 +1350,187 @@ function EventByTheNumbers() {
           : "A global platform connecting investors, companies, and leaders driving the future of mining and resource investment."}
       </p>
 
-      {/* Top Stats Bar Container (7 Key Cards matching provided design) */}
-      <div className="w-full bg-white border border-neutral-200/90 rounded-3xl p-4 sm:p-6 md:p-8 shadow-xs mb-10 overflow-x-auto">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 min-w-[700px] lg:min-w-0">
-          {/* Card 1: 350 INVESTORS */}
-          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
-            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-              </svg>
+      {/* ════════ STAGGERED CARDS GRID (4 TOP + 3 BOTTOM CENTERED MATCHING EXACT IMAGE) ════════ */}
+      <div className="w-full max-w-[1280px] mx-auto space-y-6 sm:space-y-8 mb-12">
+        {/* Top Row: 4 Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+          {/* Card 1 */}
+          <div className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-xs hover:shadow-lg transition-all duration-300 group">
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+            <div className="relative z-10 flex flex-col items-center w-full">
+              <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] transition-colors">
+                <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 12v3m0 0a1.5 1.5 0 010 3m0-3a1.5 1.5 0 000-3" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight mb-2">
+                350
+              </div>
+              <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug">
+                {lang === "FR" ? "INVESTISSEURS QUALIFIÉS" : "QUALIFIED INVESTORS"}
+              </div>
+              <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
+                {lang === "FR"
+                  ? "Connecter le capital aux opportunités du monde entier."
+                  : "Connecting Capital With Opportunity From Around The World."}
+              </p>
             </div>
-            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">350</span>
-            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              {lang === "FR" ? "INVESTISSEURS" : "INVESTORS"}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              {lang === "FR" ? "PRÉSENTS" : "ATTENDING"}
-            </span>
           </div>
 
-          {/* Card 2: 200+ MINING COMPANIES */}
-          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
-            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875A1.125 1.125 0 013.75 18.4v-4.25m16.5 0a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25m16.5 0v3.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25v-3.25" />
-              </svg>
+          {/* Card 2 */}
+          <div className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-xs hover:shadow-lg transition-all duration-300 group">
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+            <div className="relative z-10 flex flex-col items-center w-full">
+              <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] transition-colors">
+                <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight mb-2">
+                200+
+              </div>
+              <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug">
+                {lang === "FR" ? "SOCIÉTÉS REPRÉSENTÉES" : "COMPANIES REPRESENTED"}
+              </div>
+              <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
+                {lang === "FR"
+                  ? "Sociétés minières, d'exploration et de services présentant leurs projets et solutions."
+                  : "Mining, Exploration And Service Companies Showcasing Their Projects And Solutions."}
+              </p>
             </div>
-            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">200+</span>
-            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              {lang === "FR" ? "SOCIÉTÉS MINIÈRES" : "MINING COMPANIES"}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              {lang === "FR" ? "PARTICIPANTES" : "PARTICIPATING"}
-            </span>
           </div>
 
-          {/* Card 3: 143 1-ON-1 USERS */}
-          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
-            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-              </svg>
+          {/* Card 3 */}
+          <div className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-xs hover:shadow-lg transition-all duration-300 group">
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+            <div className="relative z-10 flex flex-col items-center w-full">
+              <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] transition-colors">
+                <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight mb-2">
+                143
+              </div>
+              <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug">
+                {lang === "FR" ? "ÉMETTEURS RENCONTRES 1-À-1" : "1X1 MEETING ISSUERS"}
+              </div>
+              <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
+                {lang === "FR"
+                  ? "Réunions pré-programmées entre investisseurs et dirigeants d'entreprises."
+                  : "Pre-Scheduled Meetings Between Investors And Company Executives."}
+              </p>
             </div>
-            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">143</span>
-            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              {lang === "FR" ? "UTILISATEURS 1-SUR-1" : "1-ON-1 USERS"}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              {lang === "FR" ? "EN RENCONTRE" : "MEETING"}
-            </span>
           </div>
 
-          {/* Card 4: 65 PRESENTATIONS */}
-          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
-            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h16.5m-16.5 0L12 10.5m8.25-7.5v11.25A2.25 2.25 0 0118 16.5h-2.25m-6 3.75h6m-3-3.75v3.75" />
-              </svg>
+          {/* Card 4 */}
+          <div className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-xs hover:shadow-lg transition-all duration-300 group">
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+            <div className="relative z-10 flex flex-col items-center w-full">
+              <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] transition-colors">
+                <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h12a2.25 2.25 0 002.25-2.25V3M3.75 3h16.5M3.75 3L12 12m4.5-4.5L12 12m0 0v9" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight mb-2">
+                65
+              </div>
+              <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug">
+                {lang === "FR" ? "PRÉSENTATIONS" : "PRESENTATIONS"}
+              </div>
+              <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
+                {lang === "FR"
+                  ? "Présentations d'entreprises, conférences et opportunités d'investissement."
+                  : "Company Presentations, Keynotes And Investment Spotlights Over The Event."}
+              </p>
             </div>
-            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">65</span>
-            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              {lang === "FR" ? "PRÉSENTATIONS" : "PRESENTATIONS"}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              {lang === "FR" ? "EFFECTUÉES" : "DELIVERED"}
-            </span>
+          </div>
+        </div>
+
+        {/* Bottom Row: 3 Cards Centered */}
+        <div className="max-w-[960px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-7">
+          {/* Card 5 */}
+          <div className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-xs hover:shadow-lg transition-all duration-300 group">
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+            <div className="relative z-10 flex flex-col items-center w-full">
+              <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] transition-colors">
+                <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 003-3V4.5a3 3 0 10-6 0v8.25a3 3 0 003 3z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight mb-2">
+                17
+              </div>
+              <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug">
+                {lang === "FR" ? "PANELS ET CONFÉRENCES" : "PANELS & KEYNOTES"}
+              </div>
+              <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
+                {lang === "FR"
+                  ? "Partenaires fiers de soutenir l'événement et la communauté minière mondiale."
+                  : "Proud Partners Supporting The Event And The Global Mining Community."}
+              </p>
+            </div>
           </div>
 
-          {/* Card 5: 17 PANELS & KEYNOTES */}
-          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
-            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
-              </svg>
+          {/* Card 6 */}
+          <div className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-xs hover:shadow-lg transition-all duration-300 group">
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+            <div className="relative z-10 flex flex-col items-center w-full">
+              <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] transition-colors">
+                <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight mb-2">
+                60+
+              </div>
+              <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug">
+                {lang === "FR" ? "COMMANDITAIRES & PARTENAIRES" : "SPONSORS & PARTNERS"}
+              </div>
+              <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
+                {lang === "FR"
+                  ? "Des réunions ciblées créant de vraies connexions et un impact durable."
+                  : "Focused Meetings Creating Real Connections And Lasting Impact."}
+              </p>
             </div>
-            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">17</span>
-            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              {lang === "FR" ? "PANELS & CONFÉRENCES" : "PANELS & KEYNOTES"}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              {lang === "FR" ? "TENUS" : "HELD"}
-            </span>
           </div>
 
-          {/* Card 6: 60+ SPONSORS & PARTNERS */}
-          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
-            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-              </svg>
+          {/* Card 7 */}
+          <div className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-xs hover:shadow-lg transition-all duration-300 group">
+            <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+            <div className="relative z-10 flex flex-col items-center w-full">
+              <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] transition-colors">
+                <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6 0 3.375 3.375 0 016 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight mb-2">
+                3500
+              </div>
+              <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug">
+                {lang === "FR" ? "RENCONTRES 1-À-1 / 3 JOURS" : "1X1 MEETINGS / 3 DAYS"}
+              </div>
+              <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
+                {lang === "FR"
+                  ? "Connecter le capital aux opportunités du monde entier."
+                  : "Connecting Capital With Opportunity From Around The World."}
+              </p>
             </div>
-            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">60+</span>
-            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              {lang === "FR" ? "PARTENAIRES" : "SPONSORS & PARTNERS"}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              {lang === "FR" ? "SOUTIEN" : "SUPPORTING"}
-            </span>
-          </div>
-
-          {/* Card 7: 3,500 MEETINGS */}
-          <div className="bg-[#fcfdfe] border border-neutral-100 hover:border-neutral-300 rounded-2xl p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-sm">
-            <div className="w-11 h-11 rounded-full bg-neutral-100/80 flex items-center justify-center text-neutral-800 mb-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-              </svg>
-            </div>
-            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">3 500</span>
-            <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              {lang === "FR" ? "RENCONTRES" : "MEETINGS"}
-            </span>
-            <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              {lang === "FR" ? "TENUES" : "HELD"}
-            </span>
           </div>
         </div>
       </div>

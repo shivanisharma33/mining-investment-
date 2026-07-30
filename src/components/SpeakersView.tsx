@@ -167,23 +167,27 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
         <div className="flex-1 relative">
           <input
             type="text"
-            placeholder="Search by name, title or organization..."
+            placeholder={
+              lang === "FR"
+                ? "Rechercher par nom, titre ou organisation..."
+                : "Search by name, title or organization..."
+            }
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-medium text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 shadow-2xs"
+            className="w-full bg-white dark:bg-[#18181b] border border-neutral-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-medium text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 shadow-2xs"
           />
         </div>
 
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="bg-white border border-neutral-300 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold text-neutral-900 focus:outline-none focus:border-[#C6112F] shadow-2xs cursor-pointer"
+          className="bg-white dark:bg-[#18181b] border border-neutral-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-extrabold text-neutral-900 dark:text-white focus:outline-none focus:border-[#C6112F] shadow-2xs cursor-pointer"
         >
-          <option value="">All Categories</option>
-          <option value="gov">Keynotes & Government</option>
-          <option value="exec">Corporate Executives</option>
-          <option value="fin">Finance & Investors</option>
-          <option value="mod">Moderators</option>
+          <option value="">{lang === "FR" ? "Toutes les catégories" : "All Categories"}</option>
+          <option value="gov">{lang === "FR" ? "Conférenciers & Gouvernement" : "Keynotes & Government"}</option>
+          <option value="exec">{lang === "FR" ? "Dirigeants d'entreprise" : "Corporate Executives"}</option>
+          <option value="fin">{lang === "FR" ? "Finance & Investisseurs" : "Finance & Investors"}</option>
+          <option value="mod">{lang === "FR" ? "Modérateurs" : "Moderators"}</option>
         </select>
       </div>
 
@@ -195,7 +199,7 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
             return (
               <article
                 key={idx}
-                className="bg-white border border-neutral-200/90 rounded-2xl p-6 text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-6 text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Speaker Photo / Avatar */}
@@ -219,12 +223,12 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
                   )}
 
                   {/* Name */}
-                  <h3 className="text-sm sm:text-base font-extrabold text-neutral-900 tracking-tight mb-1 group-hover:text-[#C6112F] transition-colors">
+                  <h3 className="text-sm sm:text-base font-extrabold text-neutral-900 dark:text-white tracking-tight mb-1 group-hover:text-[#C6112F] transition-colors">
                     {speaker.name}
                   </h3>
 
                   {/* Title / Role */}
-                  <div className="text-[11px] sm:text-xs text-neutral-500 font-medium leading-relaxed mb-2 min-h-[28px] flex items-center justify-center">
+                  <div className="text-[11px] sm:text-xs text-neutral-500 dark:text-zinc-400 font-medium leading-relaxed mb-2 min-h-[28px] flex items-center justify-center">
                     {speaker.title}
                   </div>
 
@@ -235,7 +239,7 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
                 </div>
 
                 {/* Badges */}
-                <div className="flex justify-center gap-1.5 flex-wrap pt-3 border-t border-neutral-100">
+                <div className="flex justify-center gap-1.5 flex-wrap pt-3 border-t border-neutral-100 dark:border-zinc-800">
                   <span
                     className={`text-[9px] font-black tracking-wider px-2.5 py-0.5 rounded-full uppercase ${styles.badge}`}
                   >
@@ -247,9 +251,11 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
           })}
         </div>
       ) : (
-        <div className="text-center py-16 bg-neutral-50 rounded-2xl border border-neutral-200">
-          <p className="text-neutral-500 font-semibold text-sm">
-            No speakers matched your search criteria.
+        <div className="text-center py-16 bg-neutral-50 dark:bg-zinc-900/50 rounded-2xl border border-neutral-200 dark:border-zinc-800">
+          <p className="text-neutral-500 dark:text-zinc-400 font-semibold text-sm">
+            {lang === "FR"
+              ? "Aucun conférencier ne correspond à vos critères de recherche."
+              : "No speakers matched your search criteria."}
           </p>
         </div>
       )}

@@ -176,8 +176,8 @@ export default function StatsAndGlimpse() {
               key={i}
               className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-sm hover:shadow-lg transition-all duration-300 group"
             >
-              {/* Bottom Red Inner Gradient Glow matching exact image */}
-              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+              {/* Bottom Red Inner Gradient Glow (left & right bottom, not in bottom center) */}
+              <div className="absolute inset-x-0 bottom-0 h-28 bg-[radial-gradient(ellipse_at_bottom_left,rgba(198,17,47,0.28)_0%,rgba(198,17,47,0.08)_45%,transparent_70%),radial-gradient(ellipse_at_bottom_right,rgba(198,17,47,0.28)_0%,rgba(198,17,47,0.08)_45%,transparent_70%)] pointer-events-none rounded-b-2xl transition-opacity duration-300 opacity-80 group-hover:opacity-100" />
 
               <div className="relative z-10 flex flex-col items-center w-full">
                 {/* Double Ringed Circular Icon Container */}
@@ -211,8 +211,8 @@ export default function StatsAndGlimpse() {
               key={i}
               className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-sm hover:shadow-lg transition-all duration-300 group"
             >
-              {/* Bottom Red Inner Gradient Glow matching exact image */}
-              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#C6112F]/25 via-[#C6112F]/8 to-transparent pointer-events-none rounded-b-2xl transition-opacity duration-300 group-hover:from-[#C6112F]/35" />
+              {/* Bottom Red Inner Gradient Glow (left & right bottom, not in bottom center) */}
+              <div className="absolute inset-x-0 bottom-0 h-28 bg-[radial-gradient(ellipse_at_bottom_left,rgba(198,17,47,0.28)_0%,rgba(198,17,47,0.08)_45%,transparent_70%),radial-gradient(ellipse_at_bottom_right,rgba(198,17,47,0.28)_0%,rgba(198,17,47,0.08)_45%,transparent_70%)] pointer-events-none rounded-b-2xl transition-opacity duration-300 opacity-80 group-hover:opacity-100" />
 
               <div className="relative z-10 flex flex-col items-center w-full">
                 {/* Double Ringed Circular Icon Container */}
