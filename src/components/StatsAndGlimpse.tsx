@@ -150,12 +150,7 @@ export default function StatsAndGlimpse() {
   const bottomRowCards = cards.slice(4);
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 transition-colors duration-300 bg-[#EFEFF3] dark:bg-[#0d111a]"
-      style={{
-        backgroundImage:
-          "repeating-linear-gradient(90deg, #EFEFF3 0px, #EFEFF3 36px, #F9F9FC 36px, #F9F9FC 72px)",
-      }}
-    >
+    <section className="relative overflow-hidden py-16 sm:py-20 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#eef0f5] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
       {/* ════════ HEADER SECTION MATCHING EXACT IMAGE ════════ */}
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-12 sm:mb-16">
         <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.3em] uppercase block mb-2">
