@@ -96,7 +96,8 @@ const DOCUMENTS_DATA: Record<
 
 export default function PastYearDocumentPage() {
   const params = useParams();
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const isFr = lang === "FR";
   const year = params?.year as string;
   const slug = params?.slug as string;
   const key = `${year}-${slug}`;
@@ -131,11 +132,11 @@ export default function PastYearDocumentPage() {
           <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="flex items-center gap-2 text-xs sm:text-sm text-neutral-400 mb-4 font-bold">
               <a href="/" className="hover:text-white transition-colors">
-                {t("py-home", "Home")}
+                {isFr ? "Accueil" : t("py-home", "Home")}
               </a>
               <span className="text-[#C6112F]">›</span>
               <a href="/past-editions" className="hover:text-white transition-colors">
-                {t("py-past-years", "Past Years")}
+                {isFr ? "Éditions précédentes" : t("py-past-years", "Past Years")}
               </a>
               <span className="text-[#C6112F]">›</span>
               <span className="text-white">
@@ -179,7 +180,7 @@ export default function PastYearDocumentPage() {
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                     </svg>
-                    <span>{t("py-pdf-viewer", "PDF Viewer")}</span>
+                    <span>{isFr ? "Visionneuse PDF" : t("py-pdf-viewer", "PDF Viewer")}</span>
                   </button>
                   <button
                     onClick={() => setViewMode("interactive")}
@@ -191,7 +192,7 @@ export default function PastYearDocumentPage() {
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>{t("py-interactive", "Interactive Schedule")}</span>
+                    <span>{isFr ? "Programme interactif" : t("py-interactive", "Interactive Schedule")}</span>
                   </button>
                 </div>
               </div>

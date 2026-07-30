@@ -70,11 +70,67 @@ const sidebarTabs = [
     ),
   },
 ];
-
 export default function PastEdition2024Page() {
   const { lang } = useLanguage();
   const isFr = lang === "FR";
   const viewingEdition = 2024;
+
+  const sidebarTabs = [
+    {
+      id: "overview",
+      label: isFr ? "APERÇU" : "OVERVIEW",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        </svg>
+      ),
+    },
+    {
+      id: "companies",
+      label: isFr ? "Entreprises participantes" : "Participating Companies",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+      ),
+    },
+    {
+      id: "brochures",
+      label: isFr ? "Brochures" : "Brochures",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      ),
+    },
+    {
+      id: "agenda",
+      label: isFr ? "Ordre du jour" : "Agenda",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+    {
+      id: "speakers",
+      label: isFr ? "Conférenciers" : "Speakers",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>
+      ),
+    },
+    {
+      id: "sponsors",
+      label: isFr ? "Commanditaires" : "Sponsors",
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+        </svg>
+      ),
+    },
+  ];
 
   const [activeTab, setActiveTab] = useState<string>("companies");
   const [agendaMode, setAgendaMode] = useState<"pdf" | "interactive">("pdf");
@@ -90,7 +146,7 @@ export default function PastEdition2024Page() {
             <div className="px-4 sm:px-8 py-3.5 sm:py-4 border-b border-neutral-200/80 bg-white flex flex-wrap items-center justify-between gap-2">
               <nav className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] xs:text-xs sm:text-sm font-bold tracking-wider text-neutral-500 uppercase">
                 <Link href="/" className="hover:text-[#C6112F] transition-colors">
-                  HOME
+                  {isFr ? "ACCUEIL" : "HOME"}
                 </Link>
                 <span>&lt;</span>
                 <Link
@@ -166,14 +222,14 @@ export default function PastEdition2024Page() {
                 {/* Quick Links Card */}
                 <div className="mt-2 bg-[#f8f9fa] dark:bg-[#121215] border border-neutral-300/80 dark:border-zinc-800 rounded-2xl p-6 text-left shadow-xs">
                   <h4 className="text-lg sm:text-xl font-extrabold text-[#C6112F] tracking-tight mb-6">
-                    QUICK LINKS
+                    {isFr ? "LIENS RAPIDES" : "QUICK LINKS"}
                   </h4>
                   <div className="space-y-4 text-xs sm:text-sm font-medium text-neutral-700 dark:text-zinc-300">
                     <a
                       href="/register"
                       className="flex items-center justify-between hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7] dark:border-zinc-800"
                     >
-                      <span>Register Now</span>
+                      <span>{isFr ? "S'inscrire maintenant" : "Register Now"}</span>
                       <svg className="w-5 h-5 text-neutral-500 dark:text-zinc-400 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
@@ -183,7 +239,7 @@ export default function PastEdition2024Page() {
                       onClick={() => setActiveTab("brochures")}
                       className="w-full flex items-center justify-between hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7] dark:border-zinc-800 text-left cursor-pointer"
                     >
-                      <span>Download Brochure</span>
+                      <span>{isFr ? "Télécharger la brochure" : "Download Brochure"}</span>
                       <svg className="w-5 h-5 text-neutral-500 dark:text-zinc-400 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
@@ -193,7 +249,7 @@ export default function PastEdition2024Page() {
                       href="mailto:jchoi@irinc.ca"
                       className="flex items-center justify-between hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7] dark:border-zinc-800"
                     >
-                      <span>Contact Us</span>
+                      <span>{isFr ? "Nous contacter" : "Contact Us"}</span>
                       <svg className="w-5 h-5 text-neutral-500 dark:text-zinc-400 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
@@ -207,26 +263,30 @@ export default function PastEdition2024Page() {
                 {activeTab === "companies" ? (
                   <div>
                     <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                      {viewingEdition} EDITION
+                      {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
                     </span>
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white tracking-tight mb-3">
-                      Participating Companies
+                      {isFr ? "Entreprises participantes" : "Participating Companies"}
                     </h1>
-                    <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
-                      Connect with leading mining companies, investors, technology providers, and service partners driving the future of the mining industry.
+                    <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
+                      {isFr
+                        ? "Connectez-vous avec les principales sociétés minières, investisseurs, fournisseurs de technologies et partenaires façonnant l'avenir de l'industrie minière."
+                        : "Connect with leading mining companies, investors, technology providers, and service partners driving the future of the mining industry."}
                     </p>
                     <CompaniesView initialYear={viewingEdition} />
                   </div>
                 ) : activeTab === "brochures" ? (
                   <div>
                     <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                      {viewingEdition} EDITION
+                      {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
                     </span>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
-                      Event Brochure {viewingEdition}
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white tracking-tight mb-3">
+                      {isFr ? `Brochure de l'événement ${viewingEdition}` : `Event Brochure ${viewingEdition}`}
                     </h1>
-                    <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
-                      Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview, and sponsorship opportunities.
+                    <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
+                      {isFr
+                        ? "Explorez la brochure complète pour découvrir les détails de l'événement, les thèmes clés, les conférenciers vedettes, l'ordre du jour et les opportunités de commandite."
+                        : "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview, and sponsorship opportunities."}
                     </p>
 
                     <div className="flex flex-wrap items-center gap-6 md:gap-10 pb-8 mb-8 border-b border-neutral-200 text-xs sm:text-sm font-medium text-neutral-700">
@@ -238,8 +298,10 @@ export default function PastEdition2024Page() {
                           </svg>
                         </div>
                         <div>
-                          <b className="block text-neutral-900 font-extrabold text-sm sm:text-base">June 4 – 7, {viewingEdition}</b>
-                          <span className="text-neutral-500 text-xs">4 Days Event</span>
+                          <b className="block text-neutral-900 font-extrabold text-sm sm:text-base">
+                            {isFr ? `4 – 6 juin ${viewingEdition}` : `June 4 – 6, ${viewingEdition}`}
+                          </b>
+                          <span className="text-neutral-500 text-xs">{isFr ? "Événement de 3 jours" : "3 Days Event"}</span>
                         </div>
                       </div>
 
@@ -252,7 +314,7 @@ export default function PastEdition2024Page() {
                         </div>
                         <div>
                           <b className="block text-neutral-900 font-extrabold text-sm sm:text-base">Centre des congrès de Québec</b>
-                          <span className="text-neutral-500 text-xs">Québec City, Canada</span>
+                          <span className="text-neutral-500 text-xs">{isFr ? "Ville de Québec, Canada" : "Québec City, Canada"}</span>
                         </div>
                       </div>
 
@@ -263,8 +325,8 @@ export default function PastEdition2024Page() {
                           </svg>
                         </div>
                         <div>
-                          <b className="block text-neutral-900 font-extrabold text-sm sm:text-base">PDF, 12.4 MB</b>
-                          <span className="text-neutral-500 text-xs">Official Brochure File</span>
+                          <b className="block text-neutral-900 font-extrabold text-sm sm:text-base">PDF, 14.2 MB</b>
+                          <span className="text-neutral-500 text-xs">{isFr ? "Fichier de brochure officiel" : "Official Brochure File"}</span>
                         </div>
                       </div>
                     </div>
@@ -273,7 +335,7 @@ export default function PastEdition2024Page() {
                       pdfUrl={`/documents/${viewingEdition}-brochure.pdf`}
                       year={viewingEdition}
                       fileName={`${viewingEdition}-brochure.pdf`}
-                      title={`Event Brochure ${viewingEdition}`}
+                      title={isFr ? `Brochure de l'événement ${viewingEdition}` : `Event Brochure ${viewingEdition}`}
                     />
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-xs mt-8">
@@ -283,8 +345,8 @@ export default function PastEdition2024Page() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                           </svg>
                         </div>
-                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">Full Agenda</h4>
-                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">Explore sessions, panels and keynote discussions.</p>
+                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">{isFr ? "Ordre du jour complet" : "Full Agenda"}</h4>
+                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">{isFr ? "Explorez les sessions, les tables rondes et les discours principaux." : "Explore sessions, panels and keynote discussions."}</p>
                       </div>
 
                       <div className="p-4 text-center">
@@ -294,8 +356,8 @@ export default function PastEdition2024Page() {
                             <path d="M5.5 20c.8-3.6 3.3-5.5 6.5-5.5s5.7 1.9 6.5 5.5" />
                           </svg>
                         </div>
-                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">Expert Speakers</h4>
-                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">Discover global leaders and industry experts.</p>
+                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">{isFr ? "Conférenciers experts" : "Expert Speakers"}</h4>
+                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">{isFr ? "Découvrez des leaders mondiaux et des experts du secteur." : "Discover global leaders and industry experts."}</p>
                       </div>
 
                       <div className="p-4 text-center">
@@ -306,8 +368,8 @@ export default function PastEdition2024Page() {
                             <circle cx="12" cy="12" r="1.4" fill="currentColor" />
                           </svg>
                         </div>
-                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">Investment Opportunities</h4>
-                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">Connect with projects and high-growth opportunities.</p>
+                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">{isFr ? "Opportunités d'investissement" : "Investment Opportunities"}</h4>
+                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">{isFr ? "Connectez-vous à des projets et des opportunités à forte croissance." : "Connect with projects and high-growth opportunities."}</p>
                       </div>
 
                       <div className="p-4 text-center">
@@ -316,8 +378,8 @@ export default function PastEdition2024Page() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                           </svg>
                         </div>
-                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">Networking</h4>
-                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">Build valuable relationships with key decision makers.</p>
+                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">{isFr ? "Réseautage" : "Networking"}</h4>
+                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">{isFr ? "Établissez des relations précieuses avec les principaux décideurs." : "Build valuable relationships with key decision makers."}</p>
                       </div>
 
                       <div className="p-4 text-center">
@@ -326,8 +388,8 @@ export default function PastEdition2024Page() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                           </svg>
                         </div>
-                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">Sponsors & Partners</h4>
-                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">Meet our sponsors and service partners.</p>
+                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">{isFr ? "Commanditaires & Partenaires" : "Sponsors & Partners"}</h4>
+                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">{isFr ? "Rencontrez nos commanditaires et partenaires de services." : "Meet our sponsors and service partners."}</p>
                       </div>
                     </div>
                   </div>
@@ -336,10 +398,10 @@ export default function PastEdition2024Page() {
                     <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
                       <div>
                         <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                          {viewingEdition} EDITION
+                          {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
                         </span>
                         <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-2">
-                          Event Agenda {viewingEdition}
+                          {isFr ? `Ordre du jour ${viewingEdition}` : `Event Agenda ${viewingEdition}`}
                         </h1>
                       </div>
                       <div className="flex items-center bg-neutral-100 p-1.5 rounded-xl border border-neutral-200 gap-1">
@@ -353,7 +415,7 @@ export default function PastEdition2024Page() {
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                           </svg>
-                          <span>PDF Viewer</span>
+                          <span>{isFr ? "Visionneuse PDF" : "PDF Viewer"}</span>
                         </button>
                         <button
                           onClick={() => setAgendaMode("interactive")}
@@ -365,12 +427,14 @@ export default function PastEdition2024Page() {
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
-                          <span>Interactive Schedule</span>
+                          <span>{isFr ? "Programme interactif" : "Interactive Schedule"}</span>
                         </button>
                       </div>
                     </div>
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
-                      Four days of keynotes, corporate presentations, panels, and networking bringing together producers, developers, and explorers from across the industry.
+                      {isFr
+                        ? "Trois jours de conférences, présentations d'entreprises, tables rondes et réseautage réunissant producteurs, développeurs et explorateurs de toute l'industrie."
+                        : "Three days of keynotes, corporate presentations, panels, and networking bringing together producers, developers, and explorers from across the industry."}
                     </p>
 
                     {agendaMode === "pdf" ? (
@@ -382,40 +446,46 @@ export default function PastEdition2024Page() {
                 ) : activeTab === "speakers" ? (
                   <div className="w-full">
                     <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                      {viewingEdition} EDITION
+                      {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
                     </span>
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
-                      Event Speakers {viewingEdition}
+                      {isFr ? `Conférenciers de l'événement ${viewingEdition}` : `Event Speakers ${viewingEdition}`}
                     </h1>
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
-                      Ministers, ambassadors, CEOs, investors and analysts taking the stage across four days in Quebec City.
+                      {isFr
+                        ? "Ministres, ambassadeurs, PDG, investisseurs et analystes montant sur scène durant trois jours à Québec."
+                        : "Ministers, ambassadors, CEOs, investors and analysts taking the stage across three days in Quebec City."}
                     </p>
                     <SpeakersView year={viewingEdition} />
                   </div>
                 ) : activeTab === "sponsors" ? (
                   <div className="w-full">
                     <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                      {viewingEdition} EDITION
+                      {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
                     </span>
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
-                      Event Sponsors {viewingEdition}
+                      {isFr ? `Commanditaires de l'événement ${viewingEdition}` : `Event Sponsors ${viewingEdition}`}
                     </h1>
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
-                      We thank our sponsors and partners for their generous support in making the Mining Investment Event a global success.
+                      {isFr
+                        ? "Nous remercions nos commanditaires et partenaires pour leur généreux soutien qui fait du Mining Investment Event un succès mondial."
+                        : "We thank our sponsors and partners for their generous support in making the Mining Investment Event a global success."}
                     </p>
                     <SponsorsView year={viewingEdition} />
                   </div>
                 ) : (
                   <div>
                     <span className="text-[#C6112F] text-[11px] sm:text-xs font-extrabold tracking-[0.3em] uppercase mb-2 block">
-                      T H E &nbsp; M I N I N G &nbsp; I N V E S T M E N T &nbsp; E V E N T
+                      {isFr ? "L ' É V É N E M E N T  D ' I N V E S T I S S E M E N T  M I N I E R" : "T H E &nbsp; M I N I N G &nbsp; I N V E S T M E N T &nbsp; E V E N T"}
                     </span>
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-2">
-                      {viewingEdition} Edition
+                      {isFr ? `Édition ${viewingEdition}` : `${viewingEdition} Edition`}
                     </h1>
                     <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mb-4" />
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-6">
-                      THE Mining Investment Event 2024 brought together mining executives, institutional investors, government delegates, and sector analysts in Québec City for four days of strategic capital allocation.
+                      {isFr
+                        ? "Le principal événement mondial d'investissement minier axé sur l'avenir des minéraux critiques et la croissance durable."
+                        : "The premier global mining investment event focusing on the future of critical minerals and sustainable growth."}
                     </p>
 
                     <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-extrabold text-neutral-800 uppercase mb-8">
@@ -424,7 +494,7 @@ export default function PastEdition2024Page() {
                           <rect x="3" y="4" width="18" height="16" rx="2" />
                           <path strokeLinecap="round" d="M16 2v4M8 2v4M3 9h18" />
                         </svg>
-                        <span>JUNE 4 – 7, 2024</span>
+                        <span>{isFr ? `4 – 6 JUIN ${viewingEdition}` : `JUNE 4 – 6, ${viewingEdition}`}</span>
                       </div>
 
                       <div className="flex items-center gap-2">
@@ -432,26 +502,17 @@ export default function PastEdition2024Page() {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
-                        <span>QUÉBEC CITY, CANADA</span>
+                        <span>{isFr ? "VILLE DE QUÉBEC, CANADA" : "QUÉBEC CITY, CANADA"}</span>
                       </div>
                     </div>
 
                     <div className="py-6 border-y border-neutral-200/90 grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8 text-left">
                       <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80">
                         <span className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-none mb-2">
-                          250+
+                          200+
                         </span>
                         <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
-                          PARTICIPATING COMPANIES
-                        </span>
-                      </div>
-
-                      <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80">
-                        <span className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-none mb-2">
-                          45+
-                        </span>
-                        <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
-                          SPEAKERS
+                          {isFr ? "ENTREPRISES PARTICIPANTES" : "PARTICIPATING COMPANIES"}
                         </span>
                       </div>
 
@@ -460,23 +521,32 @@ export default function PastEdition2024Page() {
                           40+
                         </span>
                         <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
-                          COUNTRIES
+                          {isFr ? "CONFÉRENCIERS" : "SPEAKERS"}
+                        </span>
+                      </div>
+
+                      <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80">
+                        <span className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-none mb-2">
+                          40+
+                        </span>
+                        <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
+                          {isFr ? "PAYS" : "COUNTRIES"}
                         </span>
                       </div>
 
                       <div className="flex flex-col items-start">
                         <span className="text-3xl sm:text-4xl font-black text-neutral-900 tracking-tight leading-none mb-2">
-                          450+
+                          400+
                         </span>
                         <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
-                          ATTENDEES
+                          {isFr ? "PARTICIPANTS" : "ATTENDEES"}
                         </span>
                       </div>
                     </div>
 
                     <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border-2 border-[#C6112F]/40 shadow-sm mb-8 bg-neutral-900">
                       <img
-                        src="/Mining%20Investment%20Post%203.avif"
+                        src="/news/critical_minerals.png"
                         alt="Québec City Event"
                         className="w-full h-full object-cover"
                       />
@@ -487,95 +557,27 @@ export default function PastEdition2024Page() {
                         onClick={() => setActiveTab("brochures")}
                         className="w-full sm:w-auto px-8 py-3.5 bg-[#C6112F] hover:bg-[#a80e27] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase rounded-lg shadow-md hover:shadow-lg transition-all text-center transform hover:-translate-y-0.5 cursor-pointer"
                       >
-                        VIEW BROCHURE
+                        {isFr ? "VOIR LA BROCHURE" : "VIEW BROCHURE"}
                       </button>
 
                       <button
                         onClick={() => setActiveTab("agenda")}
                         className="w-full sm:w-auto px-8 py-3.5 bg-white border border-[#333] hover:bg-neutral-50 text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-wider uppercase rounded-lg shadow-sm hover:shadow-md transition-all text-center transform hover:-translate-y-0.5 cursor-pointer"
                       >
-                        SEE AGENDA
+                        {isFr ? "VOIR L'ORDRE DU JOUR" : "SEE AGENDA"}
                       </button>
                     </div>
 
                     <div className="mb-12">
                       <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] leading-[1.2] mb-3">
-                        About THE EVENT
+                        {isFr ? "À propos de L'ÉVÉNEMENT" : "About THE EVENT"}
                       </h2>
                       <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
                       <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium max-w-[760px]">
-                        Mining Investment Event 2024 is the world&apos;s leading mining investment conference, where global capital meets opportunity. Join top mining executives, investors, analysts, government representatives and service providers for three days of deal-making, insightful discussions, and strategic networking.
+                        {isFr
+                          ? "Mining Investment Event 2024 s'est concentré sur les opportunités d'investissement dans les minéraux critiques et la transition énergétique durable."
+                          : "Mining Investment Event 2024 focused on investment opportunities in critical minerals and the sustainable energy transition."}
                       </p>
-
-                      <div className="space-y-3 text-xs sm:text-sm text-neutral-700 font-medium max-w-[500px]">
-                        {[
-                          "Discover new investment opportunities",
-                          "Connect with global mining leaders",
-                          "Gain exclusive market and industry insights",
-                          "Build valuable partnerships",
-                        ].map((bullet, i) => (
-                          <div key={i} className="flex items-center gap-3 pb-2 border-b border-neutral-200/60">
-                            <span className="w-1.5 h-1.5 bg-[#C6112F] rounded-xs shrink-0" />
-                            <span>{bullet}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-[#800016] via-[#730214] to-[#54020e] rounded-xl p-6 sm:p-10 text-white relative overflow-hidden shadow-xl border border-white/10">
-                      <h3 className="text-xl sm:text-2xl font-extrabold tracking-wider uppercase mb-2">
-                        EVENT OVERVIEW
-                      </h3>
-                      <div className="w-16 h-[2.5px] bg-white rounded-full mb-4" />
-                      <p className="text-white/90 text-xs sm:text-sm leading-relaxed mb-8 max-w-[760px] font-medium">
-                        The 2024 edition focuses on investment trends, critical minerals, sustainable development and innovation shaping the future of mining.
-                      </p>
-
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4 border-t border-white/20">
-                        <div className="flex flex-col items-start text-left md:pr-6 md:border-r md:border-white/20">
-                          <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-3">
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <circle cx="12" cy="12" r="9" />
-                              <circle cx="12" cy="12" r="4" />
-                              <circle cx="12" cy="12" r="1" />
-                            </svg>
-                          </div>
-                          <h4 className="text-lg font-black tracking-wider uppercase mb-1 pb-1 border-b-2 border-white/80 w-fit">
-                            INVEST
-                          </h4>
-                          <p className="text-xs text-white/80 leading-relaxed font-medium mt-2">
-                            Explore new projects and high-potential opportunities across the global mining landscape.
-                          </p>
-                        </div>
-
-                        <div className="flex flex-col items-start text-left md:pr-6 md:border-r md:border-white/20">
-                          <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-3">
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                          </div>
-                          <h4 className="text-lg font-black tracking-wider uppercase mb-1 pb-1 border-b-2 border-white/80 w-fit">
-                            CONNECT
-                          </h4>
-                          <p className="text-xs text-white/80 leading-relaxed font-medium mt-2">
-                            Network with investors, mining companies and industry leaders from around the world.
-                          </p>
-                        </div>
-
-                        <div className="flex flex-col items-start text-left">
-                          <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-3">
-                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                            </svg>
-                          </div>
-                          <h4 className="text-lg font-black tracking-wider uppercase mb-1 pb-1 border-b-2 border-white/80 w-fit">
-                            GROW
-                          </h4>
-                          <p className="text-xs text-white/80 leading-relaxed font-medium mt-2">
-                            Stay ahead with exclusive insights, market updates, and expert-led discussions.
-                          </p>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 )}
@@ -586,7 +588,7 @@ export default function PastEdition2024Page() {
           {/* ═══════════════ BOTTOM RED PAST EDITION YEAR SWITCHER BAR ═══════════════ */}
           <div className="w-full bg-[#C6112F] py-4 px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md text-white rounded-2xl">
             <span className="text-base sm:text-lg font-extrabold tracking-widest uppercase text-white">
-              PAST EDITION
+              {isFr ? "ÉDITIONS PRÉCÉDENTES" : "PAST EDITION"}
             </span>
 
             <div className="flex items-center gap-6 sm:gap-12 md:gap-16">
