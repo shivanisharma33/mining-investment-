@@ -32,15 +32,15 @@ export default function SponsorsPage() {
                 {t("nav-home", "Home")}
               </a>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-neutral-400">{t("nav-past-years", "Past Edition")}</span>
+              <span className="text-neutral-400">Event</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">Sponsors</span>
+              <span className="text-white font-semibold">Sponsors 2027</span>
             </div>
             <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase block mb-3">
-              GLOBAL MINING LEADERSHIP & PARTNERS
+              2027 GLOBAL MINING LEADERSHIP & PARTNERS
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
-              Our <span className="text-[#C6112F]">Sponsors</span>
+              Our <span className="text-[#C6112F]">Sponsors 2027</span>
             </h1>
             <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
           </div>
@@ -50,18 +50,18 @@ export default function SponsorsPage() {
         <section className="relative w-full py-14 sm:py-18 md:py-22">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              SUPPORT & INDUSTRY PARTNERSHIPS
+              SUPPORT & INDUSTRY PARTNERSHIPS 2027
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
-              THE Event Sponsors & Partners
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
+              THE Event 2027 Sponsors & Partners
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
+            <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
               We thank our world-class sponsors and partners for their generous support in making the Mining Investment Event a premier global platform for collaboration, innovation, and sustainable capital growth.
             </p>
 
             {/* Shared Sponsors Component */}
-            <SponsorsView year={2026} />
+            <SponsorsView year={2027} />
           </div>
         </section>
 

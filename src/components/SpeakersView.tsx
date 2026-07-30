@@ -2,8 +2,10 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import { SPEAKERS, SPEAKERS_2025, SPEAKERS_2024, SPEAKERS_2023, RawSpeaker } from "@/app/past-editions/editionData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function SpeakersView({ year = 2026 }: { year?: number }) {
+  const { t, lang } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number>(year);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
@@ -38,15 +40,14 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
       case "fin":
         return {
           label: "FINANCE",
-          avGrad: "from-[#B45309] to-[#78350F]",
-          badge: "bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A]",
+          avGrad: "from-[#8B6914] to-[#B8860B]",
+          badge: "bg-[#B8860B]/10 text-[#B8860B] border border-[#B8860B]/30",
         };
-      case "mod":
       default:
         return {
-          label: "MODERATOR",
-          avGrad: "from-[#334155] to-[#1E293B]",
-          badge: "bg-slate-100 text-slate-800 border border-slate-300",
+          label: "SPEAKER",
+          avGrad: "from-neutral-700 to-neutral-900",
+          badge: "bg-neutral-100 text-neutral-700 border border-neutral-300",
         };
     }
   };
@@ -63,15 +64,13 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
   };
 
   const filteredSpeakers = useMemo(() => {
-    return speakersList.filter((s) => {
-      const matchesSearch =
-        searchTerm.trim() === "" ||
-        `${s.name} ${s.title} ${s.organization}`
-          .toLowerCase()
-          .includes(searchTerm.trim().toLowerCase());
-      const matchesCategory = categoryFilter === "" || s.category === categoryFilter;
-
-      return matchesSearch && matchesCategory;
+    return speakersList.filter((sp) => {
+      const matchSearch =
+        sp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        sp.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        sp.organization.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchCat = categoryFilter ? sp.category === categoryFilter : true;
+      return matchSearch && matchCat;
     });
   }, [speakersList, searchTerm, categoryFilter]);
 
@@ -80,38 +79,39 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
   }, [speakersList]);
 
   return (
-    <div className="w-full text-left font-sans">
-      {/* Edition Filter Toggle */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/90 shadow-md">
+    <div className="w-full text-left">
+      {/* Year Switcher Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-neutral-200/80">
         <div className="flex items-center gap-3">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse shrink-0" />
-          <span className="text-xs font-black tracking-widest uppercase text-neutral-500 whitespace-nowrap">
-            Speaker Edition:
+          <span className="text-xs font-black tracking-widest text-[#C6112F] uppercase">
+            {t("spk-filter-edition", "Filter Edition")}:
           </span>
           <div className="flex gap-2">
-            {[2026, 2025, 2024].map((y) => (
+            {[2027, 2026, 2025, 2024].map((y) => (
               <button
                 key={y}
                 onClick={() => setSelectedYear(y)}
-                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === y
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${selectedYear === y
                     ? "bg-[#C6112F] text-white shadow-md"
-                    : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                    : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-200"
                   }`}
               >
-                {y} Speakers
+                {y} {lang === "FR" ? "Conférenciers" : "Speakers"}
               </button>
             ))}
           </div>
         </div>
 
-        <span className="text-xs font-bold text-neutral-500">
-          Showing {filteredSpeakers.length} of {speakersList.length} Official {selectedYear} Speakers
+        <span className="text-xs font-bold text-neutral-500 dark:text-zinc-400">
+          {lang === "FR"
+            ? `Affichage de ${filteredSpeakers.length} sur ${speakersList.length} conférenciers officiels ${selectedYear}`
+            : `Showing ${filteredSpeakers.length} of ${speakersList.length} Official ${selectedYear} Speakers`}
         </span>
       </div>
 
       {/* 3 Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div className="bg-white border border-neutral-200/90 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
+        <div className="bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
           <div className="w-12 h-12 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <circle cx="12" cy="8" r="3.4" />
@@ -119,14 +119,16 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
             </svg>
           </div>
           <div>
-            <span className="text-2xl font-black text-neutral-900 block leading-tight">
+            <span className="text-2xl font-black text-neutral-900 dark:text-white block leading-tight">
               {speakersList.length}
             </span>
-            <span className="text-xs text-neutral-500 font-semibold">Featured Speakers</span>
+            <span className="text-xs text-neutral-500 dark:text-zinc-400 font-semibold">
+              {t("spk-stat-featured", "Featured Speakers")}
+            </span>
           </div>
         </div>
 
-        <div className="bg-white border border-neutral-200/90 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
+        <div className="bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
           <div className="w-12 h-12 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <rect x="3" y="4" width="18" height="16" rx="2" />
@@ -134,30 +136,34 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
             </svg>
           </div>
           <div>
-            <span className="text-2xl font-black text-neutral-900 block leading-tight">
-              4 Days
+            <span className="text-2xl font-black text-neutral-900 dark:text-white block leading-tight">
+              3 {lang === "FR" ? "Jours" : "Days"}
             </span>
-            <span className="text-xs text-neutral-500 font-semibold">Live Conference</span>
+            <span className="text-xs text-neutral-500 dark:text-zinc-400 font-semibold">
+              {t("spk-stat-live", "Live Conference")}
+            </span>
           </div>
         </div>
 
-        <div className="bg-white border border-neutral-200/90 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
+        <div className="bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-5 flex items-center gap-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/30 transition-all">
           <div className="w-12 h-12 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
           <div>
-            <span className="text-2xl font-black text-neutral-900 block leading-tight">
+            <span className="text-2xl font-black text-neutral-900 dark:text-white block leading-tight">
               {uniqueOrgs}+
             </span>
-            <span className="text-xs text-neutral-500 font-semibold">Organisations</span>
+            <span className="text-xs text-neutral-500 dark:text-zinc-400 font-semibold">
+              {t("spk-stat-orgs", "Organisations")}
+            </span>
           </div>
         </div>
       </div>
 
       {/* Filter Controls Row */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-8 bg-neutral-50/70 p-4 rounded-2xl border border-neutral-200/80">
+      <div className="flex flex-col sm:flex-row gap-4 mb-8 bg-neutral-50/70 dark:bg-zinc-900/50 p-4 rounded-2xl border border-neutral-200/80 dark:border-zinc-800">
         <div className="flex-1 relative">
           <input
             type="text"

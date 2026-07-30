@@ -83,12 +83,12 @@ export default function StudentPage() {
                 <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
                   {t("student-tag-label", "BECOME THE FUTURE OF MINING")}
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#1a1f2c] tracking-tight mb-4 leading-tight">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-4 leading-tight">
                   {t("student-main-subtitle", "Apply now for THE Glencore Student Sponsorship Class of 2026")}
                 </h2>
                 <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
-                <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed">
+                <div className="space-y-4 text-neutral-600 dark:text-neutral-300 text-sm sm:text-base leading-relaxed">
                   <p>
                     {t(
                       "student-body-p1",
@@ -120,7 +120,7 @@ export default function StudentPage() {
                     href="https://www.themininginvestmentevent.com/s/LetterfromOurCEO-FINAL-2025-1-FR-6j3d.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-6 py-3.5 rounded-xl border border-neutral-300 hover:border-[#C6112F] text-neutral-800 hover:text-[#C6112F] text-xs font-bold tracking-[0.15em] uppercase hover:bg-neutral-50 transition-all duration-300 inline-flex items-center gap-2"
+                    className="px-6 py-3.5 rounded-xl border border-neutral-300 hover:border-[#C6112F] text-neutral-800 dark:text-white hover:text-[#C6112F] text-xs font-bold tracking-[0.15em] uppercase hover:bg-neutral-50 dark:hover:bg-zinc-800 transition-all duration-300 inline-flex items-center gap-2"
                   >
                     <span>{t("student-cta-letter", "Letter from our CEO ↗")}</span>
                   </a>
@@ -131,30 +131,30 @@ export default function StudentPage() {
         </section>
 
         {/* ═══════ 2025 AWARD RECIPIENTS SECTION ═══════ */}
-        <section className="relative w-full bg-[#f8f9fa] py-16 sm:py-20 md:py-24 border-t border-neutral-200/60">
+        <section className="relative w-full bg-[#f8f9fa] dark:bg-[#121215] py-16 sm:py-20 md:py-24 border-t border-neutral-200/60 dark:border-zinc-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("student-awards-label", "2025 Award Recipients")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
               {t("student-awards-title-1", "THE Glencore Student Sponsorship")}{" "}
               <span className="text-[#C6112F]">{t("student-awards-title-2", "Program 2025 Award Recipients")}</span>
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-12" />
 
             {/* MVP Card */}
-            <div className="bg-white border border-neutral-200/80 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8">
+            <div className="bg-white dark:bg-[#18181b] border border-neutral-200/80 dark:border-zinc-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8">
               <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-4">
                 {t("student-mvp-label", "MVP — Selected by the Students")}
               </span>
-              <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] mb-1">
+              <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-1">
                 Anna Dalton-Framst
               </h3>
-              <p className="text-neutral-500 text-sm font-medium">University of Ottawa</p>
+              <p className="text-neutral-500 dark:text-zinc-400 text-sm font-medium">University of Ottawa</p>
             </div>
 
             {/* Winning Team 9 */}
-            <div className="bg-white border border-neutral-200/80 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8">
+            <div className="bg-white dark:bg-[#18181b] border border-neutral-200/80 dark:border-zinc-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8">
               <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-6">
                 {t("student-winning-team-label", "Winning Team — Team 9")}
               </span>
@@ -163,29 +163,29 @@ export default function StudentPage() {
                 {winningTeamMembers.map((member, i) => (
                   <div
                     key={i}
-                    className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200/60 hover:border-[#C6112F]/40 hover:bg-white transition-all duration-300"
+                    className="p-5 rounded-2xl bg-neutral-50 dark:bg-zinc-900/60 border border-neutral-200/60 dark:border-zinc-800 hover:border-[#C6112F]/40 hover:bg-white dark:hover:bg-zinc-900 transition-all duration-300"
                   >
                     <div className="w-8 h-8 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-bold text-xs flex items-center justify-center mb-3">
                       0{i + 1}
                     </div>
-                    <div className="text-base font-black text-[#1a1f2c] mb-1">{member.name}</div>
-                    <div className="text-xs text-neutral-500 font-medium">{member.school}</div>
+                    <div className="text-base font-black text-[#1a1f2c] dark:text-white mb-1">{member.name}</div>
+                    <div className="text-xs text-neutral-500 dark:text-zinc-400 font-medium">{member.school}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Outstanding Students */}
-            <div className="bg-white border border-neutral-200/80 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-12">
+            <div className="bg-white dark:bg-[#18181b] border border-neutral-200/80 dark:border-zinc-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-12">
               <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-6">
                 {t("student-outstanding-label", "Outstanding Students")}
               </span>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {outstandingStudents.map((std, i) => (
-                  <div key={i} className="p-5 rounded-2xl bg-neutral-50 border border-neutral-200/60">
-                    <div className="text-lg font-black text-[#1a1f2c] mb-1">{std.name}</div>
-                    <div className="text-xs text-neutral-500 font-medium">{std.school}</div>
+                  <div key={i} className="p-5 rounded-2xl bg-neutral-50 dark:bg-zinc-900/60 border border-neutral-200/60 dark:border-zinc-800">
+                    <div className="text-lg font-black text-[#1a1f2c] dark:text-white mb-1">{std.name}</div>
+                    <div className="text-xs text-neutral-500 dark:text-zinc-400 font-medium">{std.school}</div>
                   </div>
                 ))}
               </div>

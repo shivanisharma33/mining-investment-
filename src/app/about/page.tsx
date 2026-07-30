@@ -192,8 +192,8 @@ export default function AboutPage() {
                 </p>
 
                 {/* Blockquote Highlight */}
-                <blockquote className="relative pl-5 border-l-4 border-[#C6112F] bg-[#fef2f2] rounded-r-lg py-4 pr-5 mb-8">
-                  <p className="text-sm sm:text-base font-semibold text-[#1a1f2c] leading-relaxed">
+                <blockquote className="relative pl-5 border-l-4 border-[#C6112F] bg-[#fef2f2] dark:bg-[#1e1416] rounded-r-lg py-4 pr-5 mb-8">
+                  <p className="text-sm sm:text-base font-semibold text-[#1a1f2c] dark:text-[#C6112F] leading-relaxed">
                     {t(
                       "about-highlight",
                       "Independently sponsored by the Government of Québec, and the financial and mining communities at large."

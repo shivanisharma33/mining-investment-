@@ -47,8 +47,8 @@ export default function CanadaPremierForum() {
             </p>
 
             {/* Pink Tint Highlight Callout Box */}
-            <div className="bg-[#f6e5e8] dark:bg-rose-950/40 border-l-4 border-[#C6112F] p-4 rounded-r-lg mb-7 w-full max-w-[500px]">
-              <p className="text-[#a80d26] dark:text-rose-200 text-xs sm:text-[13px] font-bold leading-relaxed">
+            <div className="bg-[#f6e5e8] dark:bg-[#1e1416] border-l-4 border-[#C6112F] p-4 rounded-r-lg mb-7 w-full max-w-[500px]">
+              <p className="text-[#a80d26] dark:text-[#C6112F] text-xs sm:text-[13px] font-bold leading-relaxed">
                 {t("forum-highlight", "Independently sponsored by the Government of Québec and the financial and mining communities at large.")}
               </p>
             </div>

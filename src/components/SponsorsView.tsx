@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface SponsorItem {
   name: string;
@@ -1172,18 +1173,19 @@ function SponsorLogo({ sponsor }: { sponsor: SponsorItem }) {
 }
 
 export default function SponsorsView({ year = 2026 }: { year?: number }) {
+  const { t } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number>(year);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const filterOptions = useMemo(() => {
     const baseOptions = [
-      { id: "all", label: "All Sponsors" },
-      { id: "platinum", label: "Platinum Sponsors" },
-      { id: "gold", label: "Gold Sponsors" },
-      { id: "silver", label: "Silver Sponsors" },
-      { id: "copper", label: "Copper Sponsors" },
-      { id: "media", label: "Partners" },
-      { id: "government", label: selectedYear === 2025 ? "Special Sponsors" : "Government / Special" },
+      { id: "all", label: t("sp-all", "All Sponsors") },
+      { id: "platinum", label: t("sp-platinum", "Platinum Sponsors") },
+      { id: "gold", label: t("sp-gold", "Gold Sponsors") },
+      { id: "silver", label: t("sp-silver", "Silver Sponsors") },
+      { id: "copper", label: t("sp-copper", "Copper Sponsors") },
+      { id: "media", label: t("sp-partners", "Partners") },
+      { id: "government", label: selectedYear === 2025 ? t("sp-special", "Special Sponsors") : t("sp-government", "Government / Special") },
     ];
     
     const activeList =
@@ -1201,13 +1203,13 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
     const options = [...baseOptions];
     
     if (hasPresenting) {
-      options.splice(1, 0, { id: "presenting", label: "Premier Sponsor" });
+      options.splice(1, 0, { id: "presenting", label: t("sp-premier", "Premier Sponsor") });
     }
     if (hasGreen) {
-      options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "green", label: "Green Sponsors" });
+      options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "green", label: t("sp-green", "Green Sponsors") });
     }
     if (hasSustainable) {
-      options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "sustainable", label: "ESG Sponsor" });
+      options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "sustainable", label: t("sp-esg", "ESG Sponsor") });
     }
     
     return options;
@@ -1258,24 +1260,24 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
   const getTierLabel = (tier: string) => {
     switch (tier) {
       case "presenting":
-        return "Premier Sponsor";
+        return t("sp-premier", "Premier Sponsor");
       case "platinum":
-        return "Platinum Sponsor";
+        return t("sp-platinum", "Platinum Sponsors").replace(/s$/, "");
       case "gold":
-        return "Gold Sponsor";
+        return t("sp-gold", "Gold Sponsors").replace(/s$/, "");
       case "green":
-        return "Green Sponsor";
+        return t("sp-green", "Green Sponsors").replace(/s$/, "");
       case "sustainable":
-        return "ESG Sponsor";
+        return t("sp-esg", "ESG Sponsor");
       case "silver":
-        return "Silver Sponsor";
+        return t("sp-silver", "Silver Sponsors").replace(/s$/, "");
       case "copper":
-        return "Copper Sponsor";
+        return t("sp-copper", "Copper Sponsors").replace(/s$/, "");
       case "government":
-        return selectedYear === 2025 ? "Special Sponsor" : "Government / Special";
+        return selectedYear === 2025 ? t("sp-special", "Special Sponsors").replace(/s$/, "") : t("sp-government", "Government / Special");
       case "media":
       default:
-        return "Partner";
+        return t("sp-partners", "Partners").replace(/s$/, "");
     }
   };
 
@@ -1285,7 +1287,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
         <div className="flex items-center gap-3">
           <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse shrink-0" />
           <span className="text-xs font-black tracking-widest uppercase text-neutral-500 whitespace-nowrap">
-            Sponsor Edition:
+            {t("sp-edition", "Sponsor Edition:")}
           </span>
           <div className="flex gap-2">
             <button
@@ -1295,7 +1297,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
                 }`}
             >
-              2026 Sponsors
+              2026 {t("sp-sponsors", "Sponsors")}
             </button>
             <button
               onClick={() => handleYearChange(2025)}
@@ -1304,7 +1306,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
                 }`}
             >
-              2025 Sponsors
+              2025 {t("sp-sponsors", "Sponsors")}
             </button>
             <button
               onClick={() => handleYearChange(2024)}
@@ -1313,7 +1315,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
                 }`}
             >
-              2024 Sponsors
+              2024 {t("sp-sponsors", "Sponsors")}
             </button>
             <button
               onClick={() => handleYearChange(2023)}
@@ -1322,13 +1324,13 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
                 }`}
             >
-              2023 Sponsors
+              2023 {t("sp-sponsors", "Sponsors")}
             </button>
           </div>
         </div>
 
         <span className="text-xs font-bold text-neutral-500">
-          Showing {filteredSponsors.length} Official Sponsors
+          {t("sp-showing", "Showing")} {filteredSponsors.length} {t("sp-official-sponsors", "Official Sponsors")}
         </span>
       </div>
 
@@ -1354,14 +1356,14 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
         <div className="flex items-center gap-4 mb-6">
           <div className="flex-grow h-[1px] bg-neutral-200" />
           <b className="text-xs sm:text-sm font-extrabold text-[#C6112F] tracking-[0.25em] uppercase whitespace-nowrap">
-            OFFICIAL {selectedYear} SPONSORS & PARTNERS
+            {t("sp-official-year", "OFFICIAL")} {selectedYear} {t("sp-sponsors-partners", "SPONSORS & PARTNERS")}
           </b>
           <div className="flex-grow h-[1px] bg-neutral-200" />
         </div>
 
         {filteredSponsors.length === 0 ? (
           <div className="text-center py-16 bg-neutral-50 rounded-2xl border border-neutral-200/60">
-            <p className="text-neutral-500 text-sm font-bold">No sponsors found in this category.</p>
+            <p className="text-neutral-500 text-sm font-bold">{t("sp-no-sponsors", "No sponsors found in this category.")}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
@@ -1393,7 +1395,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
                       rel="noopener noreferrer"
                       className="text-[11px] font-bold text-[#C6112F] hover:underline inline-flex items-center gap-1"
                     >
-                      <span>Visit Website</span>
+                      <span>{t("sp-visit-website", "Visit Website")}</span>
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
@@ -1415,13 +1417,13 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
         </div>
         <div className="flex-1 text-center md:text-left relative z-10">
           <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase block mb-1">
-            BECOME A PARTNER
+            {t("sp-become-partner", "BECOME A PARTNER")}
           </span>
           <h4 className="text-xl sm:text-2xl font-black text-white mb-2 tracking-tight">
-            Partnering for a Stronger Mining Future
+            {t("sp-become-partner-title", "Partnering for a Stronger Mining Future")}
           </h4>
           <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-medium max-w-xl">
-            Our sponsors play a vital role in driving innovation, ESG excellence, and sustainable mining practices across global capital markets.
+            {t("sp-become-partner-desc", "Our sponsors play a vital role in driving innovation, ESG excellence, and sustainable mining practices across global capital markets.")}
           </p>
         </div>
         <div className="flex flex-col items-center sm:items-end gap-3 shrink-0 relative z-10 w-full sm:w-auto">
@@ -1429,7 +1431,7 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
             href="mailto:jchoi@irinc.ca?subject=Sponsorship Inquiry"
             className="w-full sm:w-auto px-6 py-3.5 bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-extrabold tracking-wider uppercase rounded-xl transition-all duration-300 shadow-xl shadow-[#C6112F]/25 hover:scale-105 flex items-center justify-center gap-2"
           >
-            <span>BECOME A SPONSOR</span>
+            <span>{t("sp-become-sponsor-btn", "BECOME A SPONSOR")}</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>

@@ -3,27 +3,29 @@
 import React, { useState, useMemo } from "react";
 import CompanyLogoImage from "@/components/CompanyLogoImage";
 import { PARTICIPATING_COMPANIES, CompanyItem } from "./companiesData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function CompaniesView({
   initialYear = 2026,
 }: {
   initialYear?: number;
 }) {
+  const { t, lang } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number>(initialYear);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const getTypeBadgeStyle = (type: string) => {
     const t = type.toUpperCase();
     if (t.includes("PRODUCER")) {
-      return "bg-emerald-500/10 text-emerald-700 border border-emerald-500/30 shadow-2xs";
+      return "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 shadow-2xs";
     } else if (t.includes("DEVELOPER")) {
-      return "bg-sky-500/10 text-sky-700 border border-sky-500/30 shadow-2xs";
+      return "bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/30 shadow-2xs";
     } else if (t.includes("EXPLORER") || t.includes("EXPL")) {
-      return "bg-amber-500/10 text-amber-700 border border-amber-500/30 shadow-2xs";
+      return "bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/30 shadow-2xs";
     } else if (t.includes("ROYALTY")) {
-      return "bg-purple-500/10 text-purple-700 border border-purple-500/30 shadow-2xs";
+      return "bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-500/30 shadow-2xs";
     }
-    return "bg-neutral-100 text-neutral-700 border border-neutral-200";
+    return "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 border border-neutral-200 dark:border-zinc-700";
   };
 
   const filteredCompanies = useMemo(() => {
@@ -48,7 +50,7 @@ export default function CompaniesView({
   return (
     <div className="w-full text-left font-sans">
       {/* ════════ MAP DIRECTORY IFRAME ════════ */}
-      <div className="w-full mb-8 bg-white rounded-2xl overflow-hidden shadow-xl border border-neutral-200/90 p-2 relative z-10">
+      <div className="w-full mb-8 bg-white dark:bg-[#18181b] rounded-2xl overflow-hidden shadow-xl border border-neutral-200/90 dark:border-zinc-800 p-2 relative z-10">
         <iframe
           src="https://mininghub.com/custom-map/the-mining-investment-event"
           width="100%"
@@ -62,22 +64,23 @@ export default function CompaniesView({
       </div>
 
       {/* ════════ TOOLBAR: YEAR SELECTOR & SEARCH ════════ */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/90 shadow-md">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 bg-white dark:bg-[#18181b] p-4 sm:p-5 rounded-2xl border border-neutral-200/90 dark:border-zinc-800 shadow-md">
         {/* Year Selector */}
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
           <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse shrink-0" />
-          <label className="text-xs font-black tracking-widest uppercase text-neutral-500 whitespace-nowrap">
-            Edition Filter:
+          <label className="text-xs font-black tracking-widest uppercase text-neutral-500 dark:text-zinc-400 whitespace-nowrap">
+            {t("co-filter-label", "Edition Filter")}:
           </label>
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(Number(e.target.value))}
-            className="bg-neutral-50 border border-neutral-300 rounded-xl py-2 sm:py-2.5 px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-neutral-900 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 cursor-pointer shadow-2xs transition-all hover:border-[#C6112F] w-full xs:w-auto"
+            className="bg-neutral-50 dark:bg-zinc-800 border border-neutral-300 dark:border-zinc-700 rounded-xl py-2 sm:py-2.5 px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-neutral-900 dark:text-white focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 cursor-pointer shadow-2xs transition-all hover:border-[#C6112F] w-full xs:w-auto"
           >
-            <option value={2026}>2026 Participating Companies</option>
-            <option value={2025}>2025 Participating Companies</option>
-            <option value={2024}>2024 Participating Companies</option>
-            <option value={2023}>2023 Participating Companies</option>
+            <option value={2027}>2027 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
+            <option value={2026}>2026 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
+            <option value={2025}>2025 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
+            <option value={2024}>2024 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
+            <option value={2023}>2023 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
           </select>
         </div>
 
@@ -97,13 +100,13 @@ export default function CompaniesView({
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search company, ticker, location, commodity..."
-            className="w-full bg-neutral-50 border border-neutral-300 rounded-xl py-2.5 pl-11 pr-8 text-xs sm:text-sm font-medium text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 transition-all shadow-2xs"
+            placeholder={t("co-search-ph", "Search company, ticker, location, commodity...")}
+            className="w-full bg-neutral-50 dark:bg-zinc-800 border border-neutral-300 dark:border-zinc-700 rounded-xl py-2.5 pl-11 pr-8 text-xs sm:text-sm font-medium text-neutral-900 dark:text-white placeholder-neutral-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 transition-all shadow-2xs"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-700 text-xs font-bold bg-neutral-200 rounded-full w-5 h-5 flex items-center justify-center transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-700 dark:hover:text-white text-xs font-bold bg-neutral-200 dark:bg-zinc-700 rounded-full w-5 h-5 flex items-center justify-center transition-colors"
               title="Clear search"
             >
               ✕
@@ -113,38 +116,44 @@ export default function CompaniesView({
       </div>
 
       {/* ════════ META STATS COUNTER ════════ */}
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 px-1 text-xs sm:text-sm font-semibold text-neutral-600">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 px-1 text-xs sm:text-sm font-semibold text-neutral-600 dark:text-zinc-400">
         <span className="flex items-center gap-2">
           <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />
-          Showing <strong className="text-neutral-900 font-extrabold">{filteredCompanies.length}</strong> of{" "}
-          <strong className="text-neutral-900 font-extrabold">{PARTICIPATING_COMPANIES.length}</strong> companies
+          {lang === "FR" ? (
+            <>Affichage de <strong className="text-neutral-900 dark:text-white font-extrabold">{filteredCompanies.length}</strong> sur <strong className="text-neutral-900 dark:text-white font-extrabold">{PARTICIPATING_COMPANIES.length}</strong> sociétés</>
+          ) : (
+            <>Showing <strong className="text-neutral-900 dark:text-white font-extrabold">{filteredCompanies.length}</strong> of <strong className="text-neutral-900 dark:text-white font-extrabold">{PARTICIPATING_COMPANIES.length}</strong> companies</>
+          )}
         </span>
         {searchQuery && (
           <span className="text-[#C6112F] font-extrabold text-xs">
-            Filtered by: &ldquo;{searchQuery}&rdquo;
+            {lang === "FR" ? "Filtré par :" : "Filtered by:"} &ldquo;{searchQuery}&rdquo;
           </span>
         )}
       </div>
 
       {/* ════════ FULLY VISIBLE TABLE (NO SLIDER) ════════ */}
-      <div className="w-full bg-white border border-neutral-200/90 rounded-2xl overflow-hidden shadow-xl overflow-x-auto">
+      <div className="w-full bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-xl overflow-x-auto">
         <table className="w-full text-left border-collapse min-w-[640px] sm:min-w-full table-fixed">
           <thead>
             <tr className="bg-[#0F1117] text-white text-[11px] sm:text-xs uppercase font-black tracking-widest border-b border-neutral-800 relative">
               <th className="py-4 px-3 sm:px-6 w-[34%] sm:w-[32%] text-neutral-200">
-                Company Name
+                {t("co-col-name", "Company Name")}
               </th>
               <th className="py-4 px-2 sm:px-4 w-[18%] sm:w-[18%] text-neutral-200">
-                Ticker
+                {t("co-col-ticker", "Ticker")}
               </th>
               <th className="py-4 px-2 sm:px-4 w-[15%] sm:w-[14%] text-neutral-200">
-                Type
+                {t("co-col-stage", "Stage")}
+              </th>
+              <th className="py-4 px-2 sm:px-4 w-[15%] sm:w-[14%] text-neutral-200">
+                {t("co-col-type", "Type")}
               </th>
               <th className="py-4 px-2 sm:px-4 w-[17%] sm:w-[18%] text-neutral-200">
-                Location
+                {t("co-col-location", "Location")}
               </th>
               <th className="py-4 px-3 sm:px-6 w-[16%] sm:w-[18%] text-neutral-200">
-                Commodities
+                {t("co-col-commodities", "Commodities")}
               </th>
             </tr>
           </thead>

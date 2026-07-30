@@ -10,7 +10,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function AgendaPage() {
   const { t } = useLanguage();
-  const [viewMode, setViewMode] = useState<"pdf" | "interactive">("pdf");
+  const [viewMode, setViewMode] = useState<"pdf" | "interactive">("interactive");
 
   return (
     <>
@@ -28,23 +28,23 @@ export default function AgendaPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-14 sm:pb-18 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-12 sm:pb-16">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">
                 {t("nav-home", "Home")}
               </a>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-neutral-400">{t("nav-past-years", "Past Edition")}</span>
+              <span className="text-neutral-400">Event</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">Agenda</span>
+              <span className="text-white font-semibold">Agenda 2027</span>
             </div>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
               <div>
                 <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase block mb-3">
-                  JUNE 1 - 4, 2026 &bull; QUEBEC CITY
+                  JUNE 1 - 3, 2027 &bull; QUÉBEC CITY
                 </span>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
-                  THE <span className="text-[#C6112F]">Agenda</span>
+                  THE <span className="text-[#C6112F]">Agenda 2027</span>
                 </h1>
                 <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
               </div>
@@ -66,39 +66,26 @@ export default function AgendaPage() {
         </section>
 
         {/* ═══════ AGENDA VIEW CONTENT ═══════ */}
-        <section className="relative w-full py-14 sm:py-18 md:py-22">
+        <section className="relative w-full py-10 sm:py-14 md:py-16">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div>
-                <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+                <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-1.5 block">
                   SCHEDULE & SESSION DETAILS
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
-                  Event Agenda & Schedule
-                </h2>
+                <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white tracking-tight">
+                  Event Agenda & Schedule 2027
+                </h3>
               </div>
 
               {/* View Switcher Pills */}
-              <div className="flex items-center bg-neutral-100 p-1.5 rounded-xl border border-neutral-200 gap-1">
-                <button
-                  onClick={() => setViewMode("pdf")}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-                    viewMode === "pdf"
-                      ? "bg-[#0f1117] text-white shadow-sm"
-                      : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
-                  }`}
-                >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                  <span>PDF Viewer</span>
-                </button>
+              <div className="flex items-center bg-neutral-100 dark:bg-zinc-800 p-1.5 rounded-xl border border-neutral-200 dark:border-zinc-700 gap-1">
                 <button
                   onClick={() => setViewMode("interactive")}
                   className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
                     viewMode === "interactive"
-                      ? "bg-[#0f1117] text-white shadow-sm"
-                      : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                      ? "bg-[#C6112F] text-white shadow-sm"
+                      : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-zinc-700"
                   }`}
                 >
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -106,19 +93,27 @@ export default function AgendaPage() {
                   </svg>
                   <span>Interactive Schedule</span>
                 </button>
+                <button
+                  onClick={() => setViewMode("pdf")}
+                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
+                    viewMode === "pdf"
+                      ? "bg-[#0f1117] text-white shadow-sm"
+                      : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-zinc-700"
+                  }`}
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                  <span>PDF Viewer</span>
+                </button>
               </div>
             </div>
 
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
-              Four days of keynotes, corporate presentations, panels, and networking bringing together producers, developers, and explorers from across the global mining industry.
-            </p>
-
             {/* Display Mode Content */}
             {viewMode === "pdf" ? (
-              <AgendaPdfViewer year={2026} pdfUrl="/documents/2026-agenda.pdf" />
+              <AgendaPdfViewer year={2027} pdfUrl="/documents/2026-agenda.pdf" title="Event Agenda 2027" />
             ) : (
-              <AgendaView year={2026} />
+              <AgendaView year={2027} />
             )}
           </div>
         </section>

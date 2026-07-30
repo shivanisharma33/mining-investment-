@@ -160,20 +160,20 @@ function HeroNewsSlider({ lang }: { lang: string }) {
   const current = heroSlides[currentIndex];
 
   return (
-    <div className="relative w-full bg-[#f6f7f9] border border-neutral-300/80 rounded-2xl sm:rounded-3xl p-8 sm:p-12 md:p-14 min-h-[360px] sm:min-h-[400px] flex flex-col justify-between overflow-hidden shadow-xs">
+    <div className="relative w-full bg-[#f6f7f9] dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-800 rounded-2xl sm:rounded-3xl p-8 sm:p-12 md:p-14 min-h-[360px] sm:min-h-[400px] flex flex-col justify-between overflow-hidden shadow-xs">
       {/* Right Side Crisp Image Container */}
       <div
         className="absolute right-0 top-0 bottom-0 w-full md:w-1/2 bg-cover bg-center transition-all duration-700 opacity-60 md:opacity-90"
         style={{ backgroundImage: `url(${current.image})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#f6f7f9] via-[#f6f7f9]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f6f7f9] via-[#f6f7f9]/80 to-transparent dark:from-[#18181b] dark:via-[#18181b]/90 dark:to-transparent" />
       </div>
 
       {/* Left Arrow Button */}
       <button
         onClick={prevSlide}
         aria-label="Previous Story"
-        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 bg-white hover:bg-neutral-100 hover:border-neutral-800 text-neutral-800 flex items-center justify-center shadow-sm transition-all z-20 cursor-pointer"
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:bg-neutral-100 dark:hover:bg-zinc-700 hover:border-neutral-800 text-neutral-800 dark:text-white flex items-center justify-center shadow-sm transition-all z-20 cursor-pointer"
       >
         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -184,10 +184,10 @@ function HeroNewsSlider({ lang }: { lang: string }) {
       <button
         onClick={nextSlide}
         aria-label="Next Story"
-        className="absolute right-3 sm:left-auto right-3 sm:right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 bg-white hover:bg-neutral-100 hover:border-neutral-800 text-neutral-800 flex items-center justify-center shadow-sm transition-all z-20 cursor-pointer"
+        className="absolute right-3 sm:left-auto right-3 sm:right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 hover:bg-neutral-100 dark:hover:bg-zinc-700 hover:border-neutral-800 text-neutral-800 dark:text-white flex items-center justify-center shadow-sm transition-all z-20 cursor-pointer"
       >
         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l7.5-7.5M21 12H3" />
         </svg>
       </button>
 
@@ -196,11 +196,11 @@ function HeroNewsSlider({ lang }: { lang: string }) {
         <span className="text-[#C6112F] font-bold text-xs sm:text-sm tracking-[0.25em] uppercase block mb-3">
           {current.featuredTag}
         </span>
-        <h2 className="text-2xl sm:text-4xl md:text-[42px] font-extrabold text-[#1f2430] tracking-tight leading-[1.18] mb-4">
+        <h2 className="text-2xl sm:text-4xl md:text-[42px] font-extrabold text-[#1f2430] dark:text-[#C6112F] tracking-tight leading-[1.18] mb-4">
           {lang === "FR" ? current.headlineFR : current.headlineEN}
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-        <p className="text-neutral-600 text-xs sm:text-base font-medium leading-relaxed mb-6">
+        <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-base font-medium leading-relaxed mb-6">
           {lang === "FR" ? current.snippetFR : current.snippetEN}
         </p>
         <button
@@ -222,7 +222,7 @@ function HeroNewsSlider({ lang }: { lang: string }) {
             aria-label={`Go to slide ${idx + 1}`}
             className={`transition-all duration-300 cursor-pointer ${idx === currentIndex
               ? "w-3 h-3 rounded-full bg-[#C6112F] scale-110"
-              : "w-2.5 h-2.5 rounded-full bg-neutral-300 hover:bg-neutral-400"
+              : "w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-zinc-700 hover:bg-neutral-400"
               }`}
           />
         ))}
@@ -280,10 +280,10 @@ function BannerSliderSection() {
       {/* Header from mockup */}
       <div className="text-center mb-8">
         <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase block mb-2">
-          FEATURED
+          {lang === "FR" ? "EN VEDETTE" : "FEATURED"}
         </span>
         <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
-          Featured Partners
+          {lang === "FR" ? "Partenaires en Vedette" : "Featured Partners"}
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
         <p className="text-neutral-500 dark:text-slate-300 text-xs sm:text-sm font-medium max-w-xl mx-auto leading-relaxed">
@@ -319,7 +319,7 @@ function BannerSliderSection() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-7 text-left">
             <span className="text-[#C6112F] bg-white/90 dark:bg-[#131b2e]/90 text-[9px] sm:text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-1.5 shadow-2xs">
-              FEATURED EVENT
+              {lang === "FR" ? "ÉVÉNEMENT EN VEDETTE" : "FEATURED EVENT"}
             </span>
             <h3 className="text-lg sm:text-2xl font-extrabold text-white leading-snug drop-shadow-md">
               {current.title}
@@ -361,14 +361,14 @@ function BannerSliderSection() {
 }
 
 function SponsorsSection() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [activeTier, setActiveTier] = useState<string>("ALL");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
   const tiersData: Record<string, { label: string; color: string; logos: string[] }> = {
     PLATINUM: {
-      label: "Platinum Partners",
+      label: lang === "FR" ? "Commanditaires Platine" : "Platinum Partners",
       color: "#8B6914",
       logos: [
         "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
@@ -381,7 +381,7 @@ function SponsorsSection() {
       ],
     },
     GOLD: {
-      label: "Gold Partners",
+      label: lang === "FR" ? "Commanditaires Or" : "Gold Partners",
       color: "#B8860B",
       logos: [
         "/sponsors/2026/peartree_canada.png",
@@ -399,7 +399,7 @@ function SponsorsSection() {
       ],
     },
     SILVER: {
-      label: "Silver Partners",
+      label: lang === "FR" ? "Commanditaires Argent" : "Silver Partners",
       color: "#6B7280",
       logos: [
         "/sponsors/2026/atrium_research.ico",
@@ -427,7 +427,7 @@ function SponsorsSection() {
       ],
     },
     COPPER: {
-      label: "Copper Partners",
+      label: lang === "FR" ? "Commanditaires Cuivre" : "Copper Partners",
       color: "#B45309",
       logos: [
         "/sponsors/2026/alliance_global_partners.ico",
@@ -454,7 +454,7 @@ function SponsorsSection() {
       ],
     },
     MEDIA: {
-      label: "Media Partners",
+      label: lang === "FR" ? "Partenaires Médias" : "Media Partners",
       color: "#C6112F",
       logos: [
         "/sponsors/2026/sponsor_media_21.png",
@@ -475,7 +475,7 @@ function SponsorsSection() {
       ],
     },
     SPECIAL: {
-      label: "Special Participation",
+      label: lang === "FR" ? "Participation Spéciale" : "Special Participation",
       color: "#1a3a7a",
       logos: [
         "/sponsors/2026/qu_bec.png",
@@ -522,14 +522,16 @@ function SponsorsSection() {
       {/* Section Header */}
       <div className="text-center mb-8">
         <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-          SPONSORS &amp; PARTNERS
+          {lang === "FR" ? "COMMANDITAIRES & PARTENAIRES" : "SPONSORS & PARTNERS"}
         </span>
         <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
-          Our Sponsors &amp; <span className="text-[#C6112F]">Partners</span>
+          {lang === "FR" ? "Nos Commanditaires & " : "Our Sponsors & "}<span className="text-[#C6112F]">{lang === "FR" ? "Partenaires" : "Partners"}</span>
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
         <p className="text-neutral-500 dark:text-slate-300 text-sm font-medium max-w-xl mx-auto">
-          A spotlight on the partners powering THE Mining Investment Event.
+          {lang === "FR"
+            ? "Mise en lumière des partenaires soutenant THE Mining Investment Event."
+            : "A spotlight on the partners powering THE Mining Investment Event."}
         </p>
       </div>
 
@@ -607,47 +609,72 @@ const governmentsArticles = [
   {
     id: "gov-1",
     category: "CANADA",
+    categoryFR: "CANADA",
     title: "Ottawa Unveils $3B Critical Minerals Strategy for 2026",
+    titleFR: "Ottawa dévoile une stratégie de 3 G$ pour les minéraux critiques d'ici 2026",
     date: "Jun 18, 2025",
+    dateFR: "18 juin 2025",
     readTime: "5 min read",
+    readTimeFR: "5 min de lecture",
     snippet: "The federal government's landmark strategy targets lithium, nickel and cobalt supply chains to reduce reliance on foreign imports.",
+    snippetFR: "La stratégie historique du gouvernement fédéral cible les chaînes d'approvisionnement en lithium, nickel et cobalt.",
     image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200",
     featured: true,
   },
   {
     id: "gov-2",
     category: "USA",
+    categoryFR: "ÉTATS-UNIS",
     title: "U.S. DOE Releases New Permitting Fast-Track for Mining Projects",
+    titleFR: "Le DOE américain accélère la délivrance des permis pour les projets miniers",
     date: "Jun 10, 2025",
+    dateFR: "10 juin 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "Washington accelerates environmental review timelines to boost domestic production of battery metals.",
+    snippetFR: "Washington accélère les évaluations environnementales pour stimuler la production nationale de métaux pour batteries.",
     image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=800",
   },
   {
     id: "gov-3",
     category: "EUROPE",
+    categoryFR: "EUROPE",
     title: "EU Critical Raw Materials Act: First Benchmarks Published",
+    titleFR: "Loi européenne sur les matières premières critiques : Premiers objectifs publiés",
     date: "May 30, 2025",
+    dateFR: "30 mai 2025",
     readTime: "6 min read",
+    readTimeFR: "6 min de lecture",
     snippet: "Brussels sets binding targets to source 10% of strategic minerals domestically by 2030 under the new CRMA framework.",
+    snippetFR: "Bruxelles fixe des objectifs contraignants pour s'approvisionner à 10 % en minéraux stratégiques localement d'ici 2030.",
     image: "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?q=80&w=800",
   },
   {
     id: "gov-4",
     category: "AFRICA",
+    categoryFR: "AFRIQUE",
     title: "DRC Reforms Mining Code to Attract Foreign Direct Investment",
+    titleFR: "La RDC réforme son code minier pour attirer les investissements directs étrangers",
     date: "May 18, 2025",
+    dateFR: "18 mai 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "Kinshasa announces royalty restructuring and streamlined licensing to revitalize its copper-cobalt sector.",
+    snippetFR: "Kinshasa annonce la restructuration des redevances et la simplification des licences pour revitaliser le secteur cuivre-cobalt.",
     image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800",
   },
   {
     id: "gov-5",
     category: "ASIA-PACIFIC",
+    categoryFR: "ASIE-PACIFIQUE",
     title: "Australia's NAIF Commits A$500M to Northern Territory Resources",
+    titleFR: "Le NAIF australien engage 500 M$ AUD dans le Territoire du Nord",
     date: "May 8, 2025",
+    dateFR: "8 mai 2025",
     readTime: "3 min read",
+    readTimeFR: "3 min de lecture",
     snippet: "Northern Australia Infrastructure Facility backs new road and port infrastructure to unlock remote mineral deposits.",
+    snippetFR: "Le Fonds d'infrastructures de l'Australie du Nord soutient de nouvelles routes et infrastructures portuaires.",
     image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=800",
   },
 ];
@@ -657,47 +684,72 @@ const companyArticles = [
   {
     id: "co-1",
     category: "GOLD",
+    categoryFR: "OR",
     title: "Agnico Eagle Posts Record Q2 Production from LaRonde Complex",
+    titleFR: "Agnico Eagle affiche une production record au T2 au complexe LaRonde",
     date: "Jun 15, 2025",
+    dateFR: "15 juin 2025",
     readTime: "5 min read",
+    readTimeFR: "5 min de lecture",
     snippet: "Agnico Eagle reports 920,000 oz of gold production in Q2, driven by exceptional mill throughput at its flagship Quebec operations.",
+    snippetFR: "Agnico Eagle rapporte 920 000 oz de production d'or au T2, stimulée par un rendement exceptionnel au Québec.",
     image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=1200",
     featured: true,
   },
   {
     id: "co-2",
     category: "COPPER",
+    categoryFR: "CUIVRE",
     title: "Teck Resources Advances QB3 Expansion Amid Strong Copper Prices",
+    titleFR: "Teck Resources fait progresser l'expansion QB3 grâce aux prix élevés du cuivre",
     date: "Jun 8, 2025",
+    dateFR: "8 juin 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "Teck secures board approval for QB3 feasibility study as copper trades near $4.50/lb.",
+    snippetFR: "Teck obtient l'approbation du conseil d'administration pour l'étude de faisabilité QB3.",
     image: "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=800",
   },
   {
     id: "co-3",
     category: "OIL & GAS",
+    categoryFR: "PÉTROLE & GAZ",
     title: "Suncor Energy Delivers Strong Free Cash Flow in H1 2025",
+    titleFR: "Suncor Énergie génère d'importants flux de trésorerie au S1 2025",
     date: "May 27, 2025",
+    dateFR: "27 mai 2025",
     readTime: "5 min read",
+    readTimeFR: "5 min de lecture",
     snippet: "Canada's largest oil sands producer reports $4.1B in free cash flow and raises its annual dividend by 8%.",
+    snippetFR: "Le plus grand producteur de sables bitumineux du Canada rapporte 4,1 G$ en flux de trésorerie disponible.",
     image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=800",
   },
   {
     id: "co-4",
     category: "CRITICAL MINERALS",
+    categoryFR: "MINÉRAUX CRITIQUES",
     title: "Patriot Battery Metals Closes C$150M Strategic Investment",
+    titleFR: "Patriot Battery Metals clôture un investissement stratégique de 150 M$ CAD",
     date: "May 14, 2025",
+    dateFR: "14 mai 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "The Shaakichiuwaanaan lithium project advances as Patriot secures funding from a major Asian battery manufacturer.",
+    snippetFR: "Le projet de lithium Shaakichiuwaanaan progresse alors que Patriot sécurise un financement d'un fabricant asiatique.",
     image: "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?q=80&w=800",
   },
   {
     id: "co-5",
     category: "SILVER",
+    categoryFR: "ARGENT",
     title: "First Majestic Silver Reports Highest-Ever Monthly Silver Production",
+    titleFR: "First Majestic Silver rapporte une production mensuelle d'argent record",
     date: "May 5, 2025",
+    dateFR: "5 mai 2025",
     readTime: "3 min read",
+    readTimeFR: "3 min de lecture",
     snippet: "San Dimas and Santa Elena mines combine for a record 3.7M oz Ag equivalent in April 2025.",
+    snippetFR: "Les mines San Dimas et Santa Elena atteignent un niveau record de 3,7 M d'oz équivalent argent en avril 2025.",
     image: "https://images.unsplash.com/photo-1605792657660-596af9009e82?q=80&w=800",
   },
 ];
@@ -707,11 +759,16 @@ const companyInterviews = [
   {
     id: "int-1",
     category: "CEO INTERVIEW",
+    categoryFR: "INTERVIEW PDG",
     title: "VID Media Interview: Key Insights from THE Mining Investment Event of the North",
+    titleFR: "Interview VID Media : Perspectives clés de THE Mining Investment Event du Nord",
     date: "Jun 20, 2025",
+    dateFR: "20 juin 2025",
     readTime: "12:45",
+    readTimeFR: "12:45",
     youtubeId: "L_LUpnjgPso",
     snippet: "Joanne Jobin (VID Media Founder) sits down with senior mining executives and institutional investors at THE Mining Investment Event in Québec City.",
+    snippetFR: "Joanne Jobin (Fondatrice VID Media) s'entretient avec des dirigeants miniers et des investisseurs institutionnels à Québec.",
     image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-14.jpg",
     featured: true,
     sponsored: true,
@@ -719,44 +776,64 @@ const companyInterviews = [
   {
     id: "int-2",
     category: "COPPER & GOLD",
+    categoryFR: "CUIVRE & OR",
     title: "Arizona Sonoran Copper: Scaling Brownfield Copper Assets in North America",
+    titleFR: "Arizona Sonoran Copper : Développement d'actifs de cuivre en Amérique du Nord",
     date: "Jun 12, 2025",
+    dateFR: "12 juin 2025",
     readTime: "09:30",
+    readTimeFR: "09:30",
     youtubeId: "dQw4w9WgXcQ",
     snippet: "VID Conferences executive interview detailing project updates, resource expansion, and Tier-1 infrastructure advantages.",
+    snippetFR: "Interview exécutive VID Conferences détaillant les mises à jour du projet et l'expansion des ressources.",
     image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-10.jpg",
     sponsored: true,
   },
   {
     id: "int-3",
     category: "SILVER & CRITICAL METALS",
+    categoryFR: "ARGENT & MÉTAUX CRITIQUES",
     title: "Apollo Silver Corp: Strategic Growth & High-Grade Resource Expansion",
+    titleFR: "Apollo Silver Corp : Croissance stratégique et expansion des ressources à haute teneur",
     date: "May 29, 2025",
+    dateFR: "29 mai 2025",
     readTime: "08:15",
+    readTimeFR: "08:15",
     youtubeId: "3JZ_D3ELwOQ",
     snippet: "Exclusive VID Media interview discussing technical milestones, economic studies, and market outlook for precious & industrial metals.",
+    snippetFR: "Interview exclusive VID Media discutant des jalons techniques, des études économiques et des perspectives de marché.",
     image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-18.jpg",
     sponsored: true,
   },
   {
     id: "int-4",
     category: "ENERGY TRANSITION",
+    categoryFR: "TRANSITION ÉNERGÉTIQUE",
     title: "Patriot Battery Metals: Building Quebec's Premier Lithium Asset",
+    titleFR: "Patriot Battery Metals : Construction du premier actif de lithium au Québec",
     date: "May 20, 2025",
+    dateFR: "20 mai 2025",
     readTime: "11:20",
+    readTimeFR: "11:20",
     youtubeId: "L_LUpnjgPso",
     snippet: "Blair Way, CEO & President, outlines the exploration success at Shaakichiuwaanaan and ESG initiatives at THE Mining Event.",
+    snippetFR: "Blair Way, PDG, présente le succès d'exploration à Shaakichiuwaanaan et les initiatives ESG à THE Mining Event.",
     image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-22.jpg",
     sponsored: true,
   },
   {
     id: "int-5",
     category: "ROYALTIES & STREAMING",
+    categoryFR: "REDEVANCES & STREAMING",
     title: "Osisko Development: High-Grade Gold Production & Mine Construction Update",
+    titleFR: "Osisko Development : Production d'or à haute teneur & mise à jour de la construction minière",
     date: "May 10, 2025",
+    dateFR: "10 mai 2025",
     readTime: "10:05",
+    readTimeFR: "10:05",
     youtubeId: "dQw4w9WgXcQ",
     snippet: "Executive presentation at VID Conferences highlighting operational progress, cash flow potential, and strategic partnerships.",
+    snippetFR: "Présentation exécutive aux conférences VID soulignant les progrès opérationnels et le potentiel de trésorerie.",
     image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-28.jpg",
     sponsored: true,
   },
@@ -767,47 +844,72 @@ const conferencesArticles = [
   {
     id: "conf-1",
     category: "MINING",
+    categoryFR: "MINES",
     title: "THE Mining Investment Event 2026 — Quebec City, June 2–4",
+    titleFR: "THE Mining Investment Event 2026 — Ville de Québec, 2–4 juin",
     date: "Jun 2, 2026",
+    dateFR: "2 juin 2026",
     readTime: "3 min read",
+    readTimeFR: "3 min de lecture",
     snippet: "Canada's premier mining capital markets conference returns to the Centre des congrès de Québec with 1,400+ delegates, 350+ investors and 300+ mining companies.",
+    snippetFR: "La conférence majeure des marchés des capitaux miniers au Canada revient au Centre des congrès de Québec avec 1400+ délégués.",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200",
     featured: true,
   },
   {
     id: "conf-2",
     category: "OIL & GAS",
+    categoryFR: "PÉTROLE & GAZ",
     title: "ADIPEC 2025 — Abu Dhabi International Petroleum Exhibition",
+    titleFR: "ADIPEC 2025 — Exposition internationale du pétrole d'Abou Dabi",
     date: "Nov 4, 2025",
+    dateFR: "4 nov. 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "The world's largest oil and gas gathering convenes 180,000+ professionals to discuss energy security, decarbonization and investment.",
+    snippetFR: "Le plus grand rassemblement pétrolier et gazier mondial réunit 180 000+ professionnels pour discuter de sécurité énergétique.",
     image: "https://images.unsplash.com/photo-1561625116-5f8675632053?q=80&w=800",
   },
   {
     id: "conf-3",
     category: "MINING",
+    categoryFR: "MINES",
     title: "PDAC 2026 — Prospectors & Developers Association of Canada",
+    titleFR: "PDAC 2026 — Association des prospecteurs et développeurs du Canada",
     date: "Mar 1, 2026",
+    dateFR: "1er mars 2026",
     readTime: "3 min read",
+    readTimeFR: "3 min de lecture",
     snippet: "PDAC 2026 opens in Toronto with record exhibitor registrations and a dedicated Critical Minerals Investment Corridor.",
+    snippetFR: "PDAC 2026 s'ouvre à Toronto avec un nombre record d'exposants inscrits et un corridor d'investissement dédié.",
     image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=800",
   },
   {
     id: "conf-4",
     category: "OIL & GAS",
+    categoryFR: "PÉTROLE & GAZ",
     title: "CERAWeek 2026 — Energy Capital Markets Forum, Houston",
+    titleFR: "CERAWeek 2026 — Forum des marchés des capitaux de l'énergie, Houston",
     date: "Mar 9, 2026",
+    dateFR: "9 mars 2026",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "S&P Global's flagship energy summit gathers 8,000+ executives to debate oil prices, LNG markets and the speed of the energy transition.",
+    snippetFR: "Le sommet de S&P Global réunit 8000+ dirigeants pour débattre des prix du pétrole et des marchés du GNL.",
     image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
   },
   {
     id: "conf-5",
     category: "MINING",
+    categoryFR: "MINES",
     title: "Mining Indaba 2026 — Africa's Foremost Mining Investment Forum",
+    titleFR: "Mining Indaba 2026 — Le principal forum d'investissement minier en Afrique",
     date: "Feb 2, 2026",
+    dateFR: "2 févr. 2026",
     readTime: "3 min read",
+    readTimeFR: "3 min de lecture",
     snippet: "Cape Town hosts 8,500+ delegates from 100 countries as Africa's critical minerals sector attracts unprecedented investor attention.",
+    snippetFR: "Le Cap accueille 8500+ délégués de 100 pays alors que les minéraux critiques d'Afrique attirent les investisseurs.",
     image: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800",
   },
 ];
@@ -817,47 +919,72 @@ const miningNewsArticles = [
   {
     id: "mining-1",
     category: "CRITICAL MINERALS",
+    categoryFR: "MINÉRAUX CRITIQUES",
     title: "Global Lithium Demand Surge Triggers C$1.2B Exploration Boom in Quebec",
+    titleFR: "L'envolée de la demande mondiale de lithium déclenche un boom d'exploration de 1,2 G$ au Québec",
     date: "Jun 24, 2025",
+    dateFR: "24 juin 2025",
     readTime: "5 min read",
+    readTimeFR: "5 min de lecture",
     snippet: "James Bay lithium corridor sees record drilling results as automakers move to secure domestic battery raw materials supply chains.",
+    snippetFR: "Le corridor de lithium de la Baie-James enregistre des résultats de forage records pour les chaînes de batteries.",
     image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200",
     featured: true,
   },
   {
     id: "mining-2",
     category: "GOLD & SILVER",
+    categoryFR: "OR & ARGENT",
     title: "Gold Rallies Near All-Time Highs as Mining Majors Expand Reserve Base",
+    titleFR: "L'or s'approche de sommets historiques alors que les géants miniers étendent leurs réserves",
     date: "Jun 19, 2025",
+    dateFR: "19 juin 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "Tier-1 gold producers step up brownfield development and strategic M&A to replace depleted oz reserves.",
+    snippetFR: "Les producteurs d'or de premier ordre accélèrent le développement et les acquisitions stratégiques.",
     image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=800",
   },
   {
     id: "mining-3",
     category: "COPPER",
+    categoryFR: "CUIVRE",
     title: "South American Copper Mines Scale Production to Meet Global EV Growth",
+    titleFR: "Les mines de cuivre d'Amérique du Sud augmentent la production pour répondre à la demande de VE",
     date: "Jun 12, 2025",
+    dateFR: "12 juin 2025",
     readTime: "5 min read",
+    readTimeFR: "5 min de lecture",
     snippet: "Expanded processing mills at major Chilean deposits increase annual output by 18% in Q2.",
+    snippetFR: "Les usines de traitement agrandies dans les principaux gisements chiliens augmentent la production de 18 % au T2.",
     image: "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=800",
   },
   {
     id: "mining-4",
     category: "ESG & TECH",
+    categoryFR: "ESG & TECH",
     title: "Zero-Emission Heavy Equipment Fleet Deployed at Ontario Underground Mine",
+    titleFR: "Flotte d'équipements lourds à zéro émission déployée dans une mine souterraine de l'Ontario",
     date: "May 28, 2025",
+    dateFR: "28 mai 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "Battery-electric haul trucks cut underground diesel emissions by 90% while significantly boosting worker safety.",
+    snippetFR: "Des camions de transport électriques à batterie réduisent les émissions de diesel de 90 % tout en améliorant la sécurité.",
     image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800",
   },
   {
     id: "mining-5",
     category: "EXPLORATION",
+    categoryFR: "EXPLORATION",
     title: "High-Grade Nickel Discovery Announced in Western Australia",
+    titleFR: "Découverte de nickel à haute teneur annoncée en Australie-Occidentale",
     date: "May 15, 2025",
+    dateFR: "15 mai 2025",
     readTime: "3 min read",
+    readTimeFR: "3 min de lecture",
     snippet: "Step-out drilling intercepts 42 meters at 3.2% Ni eq, extending deposit strike length by 800 meters.",
+    snippetFR: "Le forage d'extension intercepte 42 mètres à 3,2 % Ni éq, étendant le gisement de 800 mètres.",
     image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800",
   },
 ];
@@ -867,47 +994,72 @@ const oilGasNewsArticles = [
   {
     id: "oilgas-1",
     category: "ENERGY TRANSITION",
+    categoryFR: "TRANSITION ÉNERGÉTIQUE",
     title: "Canadian Energy Sector Invests C$4.5B in Large-Scale Carbon Capture",
+    titleFR: "Le secteur canadien de l'énergie investit 4,5 G$ dans le captage du carbone à grande échelle",
     date: "Jun 22, 2025",
+    dateFR: "22 juin 2025",
     readTime: "6 min read",
+    readTimeFR: "6 min de lecture",
     snippet: "Pathways Alliance advances trunkline pipeline construction to sequester up to 22 million tonnes of CO2 annually by 2030.",
+    snippetFR: "L'alliance Pathways fait progresser la construction du réseau pour séquestrer jusqu'à 22 millions de tonnes de CO2.",
     image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=1200",
     featured: true,
   },
   {
     id: "oilgas-2",
     category: "LNG MARKETS",
+    categoryFR: "MARCHÉS DU GNL",
     title: "LNG Canada Phase 1 Ships First Commercial Cargo from Kitimat",
+    titleFR: "LNG Canada Phase 1 expédie sa première cargaison commerciale depuis Kitimat",
     date: "Jun 16, 2025",
+    dateFR: "16 juin 2025",
     readTime: "5 min read",
+    readTimeFR: "5 min de lecture",
     snippet: "Landmark energy infrastructure project begins supplying clean natural gas exports directly to Asian utility buyers.",
+    snippetFR: "Ce projet d'infrastructure énergétique commence à fournir du gaz naturel propre directement aux acheteurs asiatiques.",
     image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800",
   },
   {
     id: "oilgas-3",
     category: "OIL SANDS",
+    categoryFR: "SABLES BITUMINEUX",
     title: "Oil Sands Thermal In-Situ Efficiency Reaches Record Low Carbon Intensity",
+    titleFR: "L'efficacité in-situ des sables bitumineux atteint une intensité carbone historiquement basse",
     date: "Jun 05, 2025",
+    dateFR: "5 juin 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "Solvent-assisted SAGD technologies reduce steam-to-oil ratios, lowering operating costs and GHG emissions per barrel.",
+    snippetFR: "Les technologies SAGD assistées par solvant réduisent les ratios vapeur-pétrole, abaissant les coûts d'exploitation.",
     image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800",
   },
   {
     id: "oilgas-4",
     category: "OFFSHORE",
+    categoryFR: "OFFSHORE",
     title: "Deepwater Atlantic Exploration Drilling Yields New Light Crude Target",
+    titleFR: "Le forage d'exploration en eaux profondes dans l'Atlantique cible du pétrole brut léger",
     date: "May 24, 2025",
+    dateFR: "24 mai 2025",
     readTime: "4 min read",
+    readTimeFR: "4 min de lecture",
     snippet: "Offshore Newfoundland discovery confirms high permeability reservoir with estimated 300 million barrels recoverable.",
+    snippetFR: "Une découverte au large de Terre-Neuve confirme un réservoir estimé à 300 millions de barils.",
     image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800",
   },
   {
     id: "oilgas-5",
     category: "PIPELINES",
+    categoryFR: "PIPELINES",
     title: "Trans Mountain Pipeline Operating at 95% Capacity as Asia Shipments Surge",
+    titleFR: "Le pipeline Trans Mountain fonctionne à 95 % de sa capacité suite à la hausse des livraisons vers l'Asie",
     date: "May 12, 2025",
+    dateFR: "12 mai 2025",
     readTime: "3 min read",
+    readTimeFR: "3 min de lecture",
     snippet: "Expanded pipeline network delivers Western Canadian Select crude to Pacific Rim refiners at record daily throughput.",
+    snippetFR: "Le réseau de pipelines agrandi livre du pétrole brut Western Canadian Select aux raffineurs du bassin Pacifique.",
     image: "https://images.unsplash.com/photo-1561625116-5f8675632053?q=80&w=800",
   },
 ];
@@ -918,10 +1070,15 @@ const oilGasNewsArticles = [
 type SectionArticle = {
   id: string;
   category: string;
+  categoryFR?: string;
   title: string;
+  titleFR?: string;
   date: string;
+  dateFR?: string;
   readTime: string;
+  readTimeFR?: string;
   snippet: string;
+  snippetFR?: string;
   image: string;
   featured?: boolean;
   sponsored?: boolean;
@@ -952,6 +1109,7 @@ function NewsSection({
   onSelectArticle?: (article: SectionArticle) => void;
 }) {
   const router = useRouter();
+  const { lang } = useLanguage();
   const [selectedCat, setSelectedCat] = useState("ALL");
 
   const filtered = articles.filter((a) => !categories || selectedCat === "ALL" || a.category === selectedCat);
@@ -962,6 +1120,12 @@ function NewsSection({
     router.push(`/news/${item.id}`);
   };
 
+  const getItemCategory = (item: SectionArticle) => (lang === "FR" && item.categoryFR ? item.categoryFR : item.category);
+  const getItemTitle = (item: SectionArticle) => (lang === "FR" && item.titleFR ? item.titleFR : item.title);
+  const getItemSnippet = (item: SectionArticle) => (lang === "FR" && item.snippetFR ? item.snippetFR : item.snippet);
+  const getItemDate = (item: SectionArticle) => (lang === "FR" && item.dateFR ? item.dateFR : item.date);
+  const getItemReadTime = (item: SectionArticle) => (lang === "FR" && item.readTimeFR ? item.readTimeFR : item.readTime);
+
   return (
     <div className="w-full flex flex-col">
       {/* ── Header Row ── */}
@@ -970,7 +1134,7 @@ function NewsSection({
           <span className="text-[#C6112F] text-[10px] font-black tracking-[0.25em] uppercase">
             {sectionLabel}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] dark:text-white uppercase tracking-tight flex items-center gap-2.5">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] dark:text-[#C6112F] uppercase tracking-tight flex items-center gap-2.5">
             {title}{titleAccent && <span className="text-[#C6112F]">&nbsp;{titleAccent}</span>}
           </h2>
           {accentNote && (
@@ -1011,42 +1175,42 @@ function NewsSection({
           >
             <img
               src={featured.image}
-              alt={featured.title}
+              alt={getItemTitle(featured)}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
             />
             <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-full shadow-md">
-              {featured.category}
+              {getItemCategory(featured)}
             </span>
             {featured.sponsored && (
               <span className="absolute top-3 right-3 bg-neutral-900/80 text-white text-[9px] font-black tracking-wider uppercase px-2.5 py-1 rounded-full backdrop-blur-sm">
-                SPONSORED
+                {lang === "FR" ? "COMMANDITÉ" : "SPONSORED"}
               </span>
             )}
           </div>
 
           <div className="md:col-span-7 flex flex-col justify-center text-left">
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-2 block">
-              {featured.category}
+              {getItemCategory(featured)}
             </span>
             <h3
               onClick={() => handleArticleClick(featured)}
-              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1f2430] dark:text-white tracking-tight leading-tight mb-2 hover:text-[#C6112F] cursor-pointer transition-colors"
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1f2430] dark:text-[#C6112F] tracking-tight leading-tight mb-2 hover:text-[#C6112F] cursor-pointer transition-colors"
             >
-              {featured.title}
+              {getItemTitle(featured)}
             </h3>
             <div className="w-14 h-[3px] bg-[#C6112F] rounded-full my-3" />
             <span className="text-[#C6112F] text-xs font-bold mb-3 block">
-              {featured.date}&nbsp;·&nbsp;{featured.readTime}
+              {getItemDate(featured)}&nbsp;·&nbsp;{getItemReadTime(featured)}
             </span>
             <p className="text-neutral-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-medium max-w-xl">
-              {featured.snippet}
+              {getItemSnippet(featured)}
             </p>
             <button
               onClick={() => handleArticleClick(featured)}
               className="text-[#C6112F] text-xs font-black tracking-widest uppercase hover:underline inline-flex items-center gap-1.5 cursor-pointer w-fit"
             >
-              <span>READ MORE</span><span>&gt;</span>
+              <span>{lang === "FR" ? "LIRE LA SUITE" : "READ MORE"}</span><span>&gt;</span>
             </button>
           </div>
         </div>
@@ -1064,12 +1228,12 @@ function NewsSection({
               <div className="w-full h-44 sm:h-48 rounded-xl overflow-hidden mb-3 bg-neutral-200 dark:bg-slate-800 border border-neutral-200/80 dark:border-slate-700 relative">
                 <img
                   src={item.image}
-                  alt={item.title}
+                  alt={getItemTitle(item)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
                 />
                 <span className="absolute top-2 left-2 bg-[#C6112F]/90 text-white text-[9px] font-black tracking-wider uppercase px-2 py-0.5 rounded-full">
-                  {item.category}
+                  {getItemCategory(item)}
                 </span>
                 {item.sponsored && (
                   <span className="absolute top-2 right-2 bg-neutral-900/70 text-white text-[8px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded-full">
@@ -1078,11 +1242,11 @@ function NewsSection({
                 )}
               </div>
               <h4 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-3">
-                {item.title}
+                {getItemTitle(item)}
               </h4>
             </div>
             <span className="text-[#C6112F] text-xs font-bold mt-2">
-              {item.date}&nbsp;·&nbsp;{item.readTime}
+              {getItemDate(item)}&nbsp;·&nbsp;{getItemReadTime(item)}
             </span>
           </article>
         ))}
@@ -1109,6 +1273,7 @@ function NewsSection({
 }
 
 function EventByTheNumbers() {
+  const { lang, t } = useLanguage();
   const [selectedYearIndex, setSelectedYearIndex] = useState<number>(4); // default 2026
   const [activeLegend, setActiveLegend] = useState<{
     name: string;
@@ -1121,7 +1286,13 @@ function EventByTheNumbers() {
   const [hasFlippedOnScroll, setHasFlippedOnScroll] = useState<boolean>(false);
   const donutRef = useRef<HTMLDivElement>(null);
 
-  const legendItems = [
+  const legendItems = lang === "FR" ? [
+    { name: "Family Offices", percent: "20%", color: "#C6112F", desc: "Partenaires en capital-investissement à long terme" },
+    { name: "Investisseurs HNW", percent: "25%", color: "#6366f1", desc: "Investisseurs accrédités à valeur nette élevée" },
+    { name: "Investisseurs Individuels", percent: "10%", color: "#06b6d4", desc: "Liquidité et acheteurs du marché public" },
+    { name: "Fonds Ressources", percent: "25%", color: "#f59e0b", desc: "Fonds institutionnels miniers et de transition" },
+    { name: "Acheteurs Buy-Side", percent: "20%", color: "#374151", desc: "Gestionnaires d'actifs et développement d'affaires" },
+  ] : [
     { name: "Family Offices", percent: "20%", color: "#C6112F", desc: "Long-term private equity partners" },
     { name: "HNW Investors", percent: "25%", color: "#6366f1", desc: "Accredited high net worth investors" },
     { name: "Retail Investors", percent: "10%", color: "#06b6d4", desc: "Public market liquidity & market buyers" },
@@ -1170,11 +1341,13 @@ function EventByTheNumbers() {
         THE EVENT 2026
       </span>
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] text-center mb-3 tracking-tight">
-        The Event by the Numbers
+        {lang === "FR" ? "L'Événement en Chiffres" : "The Event by the Numbers"}
       </h2>
       <div className="w-16 h-[3px] bg-[#C6112F] mx-auto rounded-full mb-4" />
       <p className="text-neutral-600 text-xs sm:text-sm text-center font-medium max-w-xl mx-auto mb-10 leading-relaxed">
-        A global platform connecting investors, companies, and leaders driving the future of mining and resource investment.
+        {lang === "FR"
+          ? "Une plateforme mondiale reliant investisseurs, entreprises et leaders qui façonnent l'avenir de l'investissement minier."
+          : "A global platform connecting investors, companies, and leaders driving the future of mining and resource investment."}
       </p>
 
       {/* Top Stats Bar Container (7 Key Cards matching provided design) */}
@@ -1189,10 +1362,10 @@ function EventByTheNumbers() {
             </div>
             <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">350</span>
             <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              INVESTORS
+              {lang === "FR" ? "INVESTISSEURS" : "INVESTORS"}
             </span>
             <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              ATTENDING
+              {lang === "FR" ? "PRÉSENTS" : "ATTENDING"}
             </span>
           </div>
 
@@ -1205,10 +1378,10 @@ function EventByTheNumbers() {
             </div>
             <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">200+</span>
             <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              MINING COMPANIES
+              {lang === "FR" ? "SOCIÉTÉS MINIÈRES" : "MINING COMPANIES"}
             </span>
             <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              PARTICIPATING
+              {lang === "FR" ? "PARTICIPANTES" : "PARTICIPATING"}
             </span>
           </div>
 
@@ -1221,10 +1394,10 @@ function EventByTheNumbers() {
             </div>
             <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">143</span>
             <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              1-ON-1 USERS
+              {lang === "FR" ? "UTILISATEURS 1-SUR-1" : "1-ON-1 USERS"}
             </span>
             <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              MEETING
+              {lang === "FR" ? "EN RENCONTRE" : "MEETING"}
             </span>
           </div>
 
@@ -1237,10 +1410,10 @@ function EventByTheNumbers() {
             </div>
             <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">65</span>
             <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              PRESENTATIONS
+              {lang === "FR" ? "PRÉSENTATIONS" : "PRESENTATIONS"}
             </span>
             <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              DELIVERED
+              {lang === "FR" ? "EFFECTUÉES" : "DELIVERED"}
             </span>
           </div>
 
@@ -1253,10 +1426,10 @@ function EventByTheNumbers() {
             </div>
             <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">17</span>
             <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              PANELS &amp; KEYNOTES
+              {lang === "FR" ? "PANELS & CONFÉRENCES" : "PANELS & KEYNOTES"}
             </span>
             <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              HELD
+              {lang === "FR" ? "TENUS" : "HELD"}
             </span>
           </div>
 
@@ -1269,10 +1442,10 @@ function EventByTheNumbers() {
             </div>
             <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">60+</span>
             <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              SPONSORS &amp; PARTNERS
+              {lang === "FR" ? "PARTENAIRES" : "SPONSORS & PARTNERS"}
             </span>
             <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              SUPPORTING
+              {lang === "FR" ? "SOUTIEN" : "SUPPORTING"}
             </span>
           </div>
 
@@ -1283,12 +1456,12 @@ function EventByTheNumbers() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
               </svg>
             </div>
-            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">3,500</span>
+            <span className="text-3xl font-black text-[#1a1f2c] tracking-tight leading-none mb-1">3 500</span>
             <span className="text-[10px] font-extrabold text-neutral-800 uppercase tracking-tight leading-tight mb-3">
-              MEETINGS
+              {lang === "FR" ? "RENCONTRES" : "MEETINGS"}
             </span>
             <span className="px-3 py-1 rounded-full bg-rose-100/70 text-[#C6112F] text-[9px] font-black uppercase tracking-wider">
-              HELD
+              {lang === "FR" ? "TENUES" : "HELD"}
             </span>
           </div>
         </div>
@@ -1301,17 +1474,19 @@ function EventByTheNumbers() {
           <div>
             <div className="flex items-center justify-between mb-1">
               <span className="text-[#C6112F] font-bold text-xs tracking-widest uppercase block">
-                GROWTH OVER TIME
+                {lang === "FR" ? "CROISSANCE AU FIL DU TEMPS" : "GROWTH OVER TIME"}
               </span>
               <span className="px-2.5 py-0.5 rounded-full bg-[#C6112F]/10 text-[#C6112F] text-[10px] font-black uppercase tracking-wider animate-pulse">
-                5X EXPANSION
+                {lang === "FR" ? "EXPANSION DE 5X" : "5X EXPANSION"}
               </span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] mb-2">
-              Growth Profile - 500%
+              {lang === "FR" ? "Profil de Croissance - 500%" : "Growth Profile - 500%"}
             </h3>
             <p className="text-neutral-600 text-xs sm:text-sm font-medium mb-4">
-              Strong and consistent growth in delegates and investor participation.
+              {lang === "FR"
+                ? "Croissance forte et constante des délégués et de la participation des investisseurs."
+                : "Strong and consistent growth in delegates and investor participation."}
             </p>
 
             {/* Interactive Year Selector Tabs */}
@@ -1610,6 +1785,7 @@ function EventByTheNumbers() {
 }
 
 function AdvertisingSubscriptionSection() {
+  const { lang, t } = useLanguage();
   const [sponsorLogoOption, setSponsorLogoOption] = useState("6-month ($1,500)");
   const [vidInterviewOption, setVidInterviewOption] = useState("1 interview ($3,000)");
   const [advertisingOption, setAdvertisingOption] = useState("3-month ($1,000)");
@@ -1618,14 +1794,16 @@ function AdvertisingSubscriptionSection() {
     <div className="w-full flex flex-col text-left">
       {/* Header */}
       <span className="text-[#C6112F] font-bold text-xs sm:text-sm tracking-[0.25em] uppercase block mb-2">
-        ADVERTISING &amp; SUBSCRIPTION
+        {lang === "FR" ? "PUBLICITÉ & ABONNEMENT" : "ADVERTISING & SUBSCRIPTION"}
       </span>
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] dark:text-white tracking-tight mb-3">
-        THE News — Your Source for all Things Resource
+        {lang === "FR" ? "THE News — Votre source pour le secteur des ressources" : "THE News — Your Source for all Things Resource"}
       </h2>
       <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-3" />
       <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium max-w-2xl mb-10 leading-relaxed">
-        Promote your brand, share your story and connect with a global audience of resource industry leaders, investors and decision makers.
+        {lang === "FR"
+          ? "Faites la promotion de votre marque, partagez votre histoire et connectez-vous avec un auditoire mondial de dirigeants miniers, d'investisseurs et de décideurs."
+          : "Promote your brand, share your story and connect with a global audience of resource industry leaders, investors and decision makers."}
       </p>
 
       {/* Cards Layout */}
@@ -1665,7 +1843,7 @@ function AdvertisingSubscriptionSection() {
             href="mailto:jchoi@irinc.ca?subject=Basic%20Annual%20Subscription%20Inquiry"
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            BUY NOW
+            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
           </a>
         </div>
 
@@ -1673,7 +1851,7 @@ function AdvertisingSubscriptionSection() {
         <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              CORPORATE SUBSCRIPTION
+              {lang === "FR" ? "ABONNEMENT CORPORATIF" : "CORPORATE SUBSCRIPTION"}
             </span>
             <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
               <div className="flex items-center justify-between p-2.5 rounded-xl border bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs">
@@ -1681,7 +1859,7 @@ function AdvertisingSubscriptionSection() {
                   <div className="w-4 h-4 rounded-full border border-[#C6112F] bg-[#C6112F] flex items-center justify-center">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                   </div>
-                  <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">12 months</span>
+                  <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{lang === "FR" ? "12 mois" : "12 months"}</span>
                 </div>
                 <span className="text-xl font-black text-[#1f2430] dark:text-white">$3,000</span>
               </div>
@@ -1691,11 +1869,11 @@ function AdvertisingSubscriptionSection() {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Your latest PR's &amp; interviews distributed for 12 months.</span>
+                <span>{lang === "FR" ? "Vos derniers communiqués et interviews distribués pendant 12 mois." : "Your latest PR's & interviews distributed for 12 months."}</span>
               </li>
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Up to 6 press releases &amp; 6 interviews included.</span>
+                <span>{lang === "FR" ? "Jusqu'à 6 communiqués de presse et 6 interviews inclus." : "Up to 6 press releases & 6 interviews included."}</span>
               </li>
             </ul>
           </div>
@@ -1704,7 +1882,7 @@ function AdvertisingSubscriptionSection() {
             href="mailto:jchoi@irinc.ca?subject=Corporate%20Subscription%20Inquiry"
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            BUY NOW
+            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
           </a>
         </div>
 
@@ -1712,14 +1890,14 @@ function AdvertisingSubscriptionSection() {
         <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              SPONSOR LOGO
+              {lang === "FR" ? "LOGO DU COMMANDITAIRE" : "SPONSOR LOGO"}
             </span>
 
             {/* Multiple Price Checkbox Selectors */}
             <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
               {[
-                { label: "6-month", price: "$1,500", val: "6-month ($1,500)" },
-                { label: "12-month", price: "$2,500", val: "12-month ($2,500)" },
+                { label: lang === "FR" ? "6 mois" : "6-month", price: "$1,500", val: "6-month ($1,500)" },
+                { label: lang === "FR" ? "12 mois" : "12-month", price: "$2,500", val: "12-month ($2,500)" },
               ].map((opt) => {
                 const isSelected = sponsorLogoOption === opt.val;
                 return (
@@ -1748,11 +1926,11 @@ function AdvertisingSubscriptionSection() {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Your logo prominently featured as a sponsor of THE News.</span>
+                <span>{lang === "FR" ? "Votre logo mis en valeur en tant que commanditaire de THE News." : "Your logo prominently featured as a sponsor of THE News."}</span>
               </li>
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Clickable link directing to your website.</span>
+                <span>{lang === "FR" ? "Lien cliquable redirigeant vers votre site Web." : "Clickable link directing to your website."}</span>
               </li>
             </ul>
           </div>
@@ -1761,7 +1939,7 @@ function AdvertisingSubscriptionSection() {
             href={`mailto:jchoi@irinc.ca?subject=Sponsor%20Logo%20Inquiry%20-${encodeURIComponent(sponsorLogoOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            BUY NOW
+            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
           </a>
         </div>
 
@@ -1769,15 +1947,15 @@ function AdvertisingSubscriptionSection() {
         <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              VID INTERVIEWS
+              {lang === "FR" ? "INTERVIEWS VID" : "VID INTERVIEWS"}
             </span>
 
             {/* Multiple Price Checkbox Selectors */}
             <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
               {[
-                { label: "1 interview", price: "$3,000", val: "1 interview ($3,000)" },
-                { label: "3 interviews", price: "$6,000", val: "3 interviews ($6,000)" },
-                { label: "4 interviews", price: "$9,000", val: "4 interviews ($9,000)" },
+                { label: lang === "FR" ? "1 interview" : "1 interview", price: "$3,000", val: "1 interview ($3,000)" },
+                { label: lang === "FR" ? "3 interviews" : "3 interviews", price: "$6,000", val: "3 interviews ($6,000)" },
+                { label: lang === "FR" ? "4 interviews" : "4 interviews", price: "$9,000", val: "4 interviews ($9,000)" },
               ].map((opt) => {
                 const isSelected = vidInterviewOption === opt.val;
                 return (
@@ -1806,19 +1984,15 @@ function AdvertisingSubscriptionSection() {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Moderated intro — 15 minutes each.</span>
+                <span>{lang === "FR" ? "Introduction modérée — 15 minutes chacune." : "Moderated intro — 15 minutes each."}</span>
               </li>
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Edited and sent across THE Event social platforms.</span>
+                <span>{lang === "FR" ? "Montées et diffusées sur les plateformes de THE Event." : "Edited and sent across THE Event social platforms."}</span>
               </li>
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Included in THE News for up to 1 year.</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Used for quarterly updates, press releases &amp; announcements.</span>
+                <span>{lang === "FR" ? "Incluses dans THE News jusqu'à 1 an." : "Included in THE News for up to 1 year."}</span>
               </li>
             </ul>
           </div>
@@ -1827,7 +2001,7 @@ function AdvertisingSubscriptionSection() {
             href={`mailto:jchoi@irinc.ca?subject=VID%20Interviews%20Inquiry%20-${encodeURIComponent(vidInterviewOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            BUY NOW
+            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
           </a>
         </div>
 
@@ -1835,15 +2009,15 @@ function AdvertisingSubscriptionSection() {
         <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
           <div>
             <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              ADVERTISING
+              {lang === "FR" ? "PUBLICITÉ BANNIÈRE" : "ADVERTISING"}
             </span>
 
             {/* Multiple Price Checkbox Selectors */}
             <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
               {[
-                { label: "3-month rotating banner", price: "$1,000", val: "3-month ($1,000)" },
-                { label: "6-month rotating banner", price: "$3,000", val: "6-month ($3,000)" },
-                { label: "12-month rotating banner", price: "$5,000", val: "12-month ($5,000)" },
+                { label: lang === "FR" ? "Bannière rotative 3 mois" : "3-month rotating banner", price: "$1,000", val: "3-month ($1,000)" },
+                { label: lang === "FR" ? "Bannière rotative 6 mois" : "6-month rotating banner", price: "$3,000", val: "6-month ($3,000)" },
+                { label: lang === "FR" ? "Bannière rotative 12 mois" : "12-month rotating banner", price: "$5,000", val: "12-month ($5,000)" },
               ].map((opt) => {
                 const isSelected = advertisingOption === opt.val;
                 return (
@@ -1872,11 +2046,11 @@ function AdvertisingSubscriptionSection() {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>We provide the specs, you provide us with artwork to publish.</span>
+                <span>{lang === "FR" ? "Fournissez le visuel, nous nous occupons de la publication." : "We provide the specs, you provide us with artwork to publish."}</span>
               </li>
               <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Maximum of four companies per rotation.</span>
+                <span>{lang === "FR" ? "Maximum de quatre entreprises par rotation." : "Maximum of four companies per rotation."}</span>
               </li>
             </ul>
           </div>
@@ -1885,7 +2059,7 @@ function AdvertisingSubscriptionSection() {
             href={`mailto:jchoi@irinc.ca?subject=Advertising%20Banner%20Inquiry%20-${encodeURIComponent(advertisingOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            BUY NOW
+            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
           </a>
         </div>
       </div>
@@ -1916,6 +2090,12 @@ function SectionPressReleaseView({
 
   const isVideoSection = data.title === "Company Interviews" || data.articles.some((a) => a.youtubeId);
 
+  const getItemCategory = (item: SectionArticle) => (lang === "FR" && item.categoryFR ? item.categoryFR : item.category);
+  const getItemTitle = (item: SectionArticle) => (lang === "FR" && item.titleFR ? item.titleFR : item.title);
+  const getItemSnippet = (item: SectionArticle) => (lang === "FR" && item.snippetFR ? item.snippetFR : item.snippet);
+  const getItemDate = (item: SectionArticle) => (lang === "FR" && item.dateFR ? item.dateFR : item.date);
+  const getItemReadTime = (item: SectionArticle) => (lang === "FR" && item.readTimeFR ? item.readTimeFR : item.readTime);
+
   const handleArticleClick = (item: SectionArticle) => {
     if (isVideoSection || item.youtubeId) {
       setPlayingVideo(item);
@@ -1924,14 +2104,17 @@ function SectionPressReleaseView({
     }
   };
 
-  const categories = ["ALL", ...Array.from(new Set(data.articles.map((a) => a.category)))];
+  const categories = ["ALL", ...Array.from(new Set(data.articles.map((a) => getItemCategory(a))))];
 
   const filtered = data.articles.filter((a) => {
-    const matchesCat = selectedCat === "ALL" || a.category === selectedCat;
+    const cat = getItemCategory(a);
+    const title = getItemTitle(a);
+    const snippet = getItemSnippet(a);
+    const matchesCat = selectedCat === "ALL" || cat === selectedCat;
     const matchesSearch =
       searchQuery.trim() === "" ||
-      a.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      a.snippet.toLowerCase().includes(searchQuery.toLowerCase());
+      title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      snippet.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesSearch;
   });
 
@@ -1957,11 +2140,11 @@ function SectionPressReleaseView({
             onClick={onBack}
             className="mb-6 px-4 py-2 rounded-full bg-white/10 hover:bg-[#C6112F] text-white text-xs font-bold transition-all cursor-pointer flex items-center gap-2 border border-white/20 w-fit"
           >
-            <span>←</span> <span>Back to THE News Overview</span>
+            <span>←</span> <span>{lang === "FR" ? "Retour à la vue d'ensemble des nouvelles" : "Back to THE News Overview"}</span>
           </button>
 
           <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-4">
-            <span className="hover:text-white cursor-pointer" onClick={onBack}>THE News</span>
+            <span className="hover:text-white cursor-pointer" onClick={onBack}>{lang === "FR" ? "Nouvelles" : "THE News"}</span>
             <span className="text-[#C6112F]">›</span>
             <span className="text-white">{data.title}</span>
           </div>
@@ -1972,8 +2155,8 @@ function SectionPressReleaseView({
           <div className="w-20 h-[3px] bg-[#C6112F] mt-5 rounded-full" />
           <p className="text-neutral-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mt-4 leading-relaxed">
             {isVideoSection
-              ? "Watch exclusive video interviews & presentations with leading mining executives."
-              : `Official sector announcements and investment updates from ${data.title}.`}
+              ? (lang === "FR" ? "Regardez des interviews vidéo exclusives et des présentations avec des dirigeants miniers." : "Watch exclusive video interviews & presentations with leading mining executives.")
+              : (lang === "FR" ? `Annonces officielles du secteur et mises à jour d'investissement de ${data.title}.` : `Official sector announcements and investment updates from ${data.title}.`)}
           </p>
         </div>
       </section>
@@ -1992,7 +2175,7 @@ function SectionPressReleaseView({
                   : "bg-white dark:bg-[#131b2e] text-neutral-600 dark:text-slate-300 border border-neutral-200/80 dark:border-slate-700 hover:bg-neutral-100 dark:hover:bg-slate-800 shadow-2xs"
                   }`}
               >
-                {cat}
+                {cat === "ALL" ? (lang === "FR" ? "TOUS" : "ALL") : cat}
               </button>
             ))}
           </div>
@@ -2004,7 +2187,7 @@ function SectionPressReleaseView({
             </svg>
             <input
               type="text"
-              placeholder={`Search ${data.title}...`}
+              placeholder={lang === "FR" ? `Rechercher ${data.title}...` : `Search ${data.title}...`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2 bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-slate-700 rounded-full text-xs sm:text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
@@ -2020,10 +2203,10 @@ function SectionPressReleaseView({
                 <div className="lg:col-span-8">
                   <div className="flex items-center gap-3 mb-4 flex-wrap">
                     <span className="bg-[#C6112F] text-white text-[10px] font-black tracking-[0.2em] uppercase px-3.5 py-1 rounded-full shadow-md">
-                      FEATURED VIDEO INTERVIEW
+                      {lang === "FR" ? "INTERVIEW VIDÉO EN VEDETTE" : "FEATURED VIDEO INTERVIEW"}
                     </span>
                     <span className="px-3 py-1 bg-white/10 rounded-full text-neutral-300 text-xs font-semibold">
-                      {featured.category}
+                      {getItemCategory(featured)}
                     </span>
                   </div>
 
@@ -2031,11 +2214,11 @@ function SectionPressReleaseView({
                     onClick={() => handleArticleClick(featured)}
                     className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4 group-hover:text-rose-300 transition-colors cursor-pointer"
                   >
-                    {featured.title}
+                    {getItemTitle(featured)}
                   </h2>
 
                   <p className="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-medium max-w-3xl">
-                    {featured.snippet}
+                    {getItemSnippet(featured)}
                   </p>
 
                   <div className="flex items-center gap-4 flex-wrap">
@@ -2046,10 +2229,12 @@ function SectionPressReleaseView({
                       <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
-                      {isVideoSection ? "PLAY VIDEO NOW" : "READ MORE ↗"}
+                      {isVideoSection
+                        ? (lang === "FR" ? "JOUER LA VIDÉO MAINTENANT" : "PLAY VIDEO NOW")
+                        : (lang === "FR" ? "LIRE LA SUITE ↗" : "READ MORE ↗")}
                     </button>
                     <span className="text-neutral-400 text-xs font-medium">
-                      {featured.date} · {featured.readTime}
+                      {getItemDate(featured)} · {getItemReadTime(featured)}
                     </span>
                   </div>
                 </div>
@@ -2060,7 +2245,7 @@ function SectionPressReleaseView({
                 >
                   <img
                     src={featured.image}
-                    alt={featured.title}
+                    alt={getItemTitle(featured)}
                     className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
                   />
@@ -2091,7 +2276,7 @@ function SectionPressReleaseView({
                 <div className="w-full h-48 rounded-2xl overflow-hidden mb-4 bg-neutral-200 dark:bg-slate-800 relative">
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={getItemTitle(item)}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
                   />
@@ -2105,25 +2290,27 @@ function SectionPressReleaseView({
                     </div>
                   )}
                   <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[9px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded-full shadow-md">
-                    {item.category}
+                    {getItemCategory(item)}
                   </span>
                 </div>
 
                 <h3 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-2">
-                  {item.title}
+                  {getItemTitle(item)}
                 </h3>
 
                 <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-4 line-clamp-3">
-                  {item.snippet}
+                  {getItemSnippet(item)}
                 </p>
               </div>
 
               <div className="pt-4 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
                 <span className="text-neutral-500 dark:text-slate-400 text-xs font-bold">
-                  {item.date}
+                  {getItemDate(item)}
                 </span>
                 <span className="text-[#C6112F] text-xs font-extrabold group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                  {isVideoSection ? "PLAY VIDEO ▶" : "READ ↗"}
+                  {isVideoSection
+                    ? (lang === "FR" ? "JOUER LA VIDÉO ▶" : "PLAY VIDEO ▶")
+                    : (lang === "FR" ? "LIRE ↗" : "READ ↗")}
                 </span>
               </div>
             </article>
@@ -2203,6 +2390,7 @@ function YouTubeSection({
   onViewAll: () => void;
 }) {
   const router = useRouter();
+  const { lang } = useLanguage();
   const [activeTab, setActiveTab] = useState("ALL");
   const [playingVideo, setPlayingVideo] = useState<SectionArticle | null>(null);
   const [inlinePlaying, setInlinePlaying] = useState(false);
@@ -2214,6 +2402,12 @@ function YouTubeSection({
   const featured = filtered.find((a) => a.featured) || filtered[0];
   const grid = filtered.filter((a) => a.id !== (featured?.id || "")).slice(0, 4);
 
+  const getItemCategory = (item: SectionArticle) => (lang === "FR" && item.categoryFR ? item.categoryFR : item.category);
+  const getItemTitle = (item: SectionArticle) => (lang === "FR" && item.titleFR ? item.titleFR : item.title);
+  const getItemSnippet = (item: SectionArticle) => (lang === "FR" && item.snippetFR ? item.snippetFR : item.snippet);
+  const getItemDate = (item: SectionArticle) => (lang === "FR" && item.dateFR ? item.dateFR : item.date);
+  const getItemReadTime = (item: SectionArticle) => (lang === "FR" && item.readTimeFR ? item.readTimeFR : item.readTime);
+
   return (
     <div className="w-full flex flex-col relative">
       {/* ── YouTube Section Header Bar ── */}
@@ -2223,7 +2417,7 @@ function YouTubeSection({
             <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
             {sectionLabel}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] dark:text-white uppercase tracking-tight flex items-center gap-2">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] dark:text-[#C6112F] uppercase tracking-tight flex items-center gap-2">
             {title}
             {/* YouTube Red Play Button Badge */}
             <span className="inline-flex items-center justify-center bg-[#C6112F] text-white px-2.5 py-0.5 rounded-lg text-xs font-black tracking-widest lowercase shadow-xs">
@@ -2239,6 +2433,7 @@ function YouTubeSection({
         <div className="flex flex-wrap items-center gap-2">
           {["ALL", "MINING", "OIL & GAS"].map((cat) => {
             const isSelected = activeTab === cat;
+            const label = cat === "ALL" ? (lang === "FR" ? "TOUS" : "ALL") : cat === "MINING" ? (lang === "FR" ? "MINES" : "MINING") : (lang === "FR" ? "PÉTROLE & GAZ" : "OIL & GAS");
             return (
               <button
                 key={cat}
@@ -2249,7 +2444,7 @@ function YouTubeSection({
                     : "bg-neutral-100 dark:bg-slate-800/80 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700"
                 }`}
               >
-                {cat}
+                {label}
               </button>
             );
           })}
@@ -2264,7 +2459,7 @@ function YouTubeSection({
             {inlinePlaying ? (
               <iframe
                 src="https://www.youtube.com/embed/L_LUpnjgPso?autoplay=1"
-                title={featured.title}
+                title={getItemTitle(featured)}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full border-0"
@@ -2276,7 +2471,7 @@ function YouTubeSection({
               >
                 <img
                   src={featured.image}
-                  alt={featured.title}
+                  alt={getItemTitle(featured)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                   onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800"; }}
                 />
@@ -2295,12 +2490,12 @@ function YouTubeSection({
                 {/* Top Left Live / Category Badge */}
                 <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md shadow-md flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                  {featured.category}
+                  {getItemCategory(featured)}
                 </span>
 
                 {/* Bottom Right Duration Badge (YouTube Style) */}
                 <span className="absolute bottom-3 right-3 bg-black/85 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded shadow-xs backdrop-blur-xs">
-                  HD · {featured.readTime}
+                  HD · {getItemReadTime(featured)}
                 </span>
               </div>
             )}
@@ -2322,7 +2517,7 @@ function YouTubeSection({
                     </svg>
                   </span>
                   <span className="text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
-                    12.4K subscribers · Verified Channel
+                    {lang === "FR" ? "12,4k abonnés · Chaîne vérifiée" : "12.4K subscribers · Verified Channel"}
                   </span>
                 </div>
               </div>
@@ -2330,20 +2525,20 @@ function YouTubeSection({
               {/* Title */}
               <h3
                 onClick={() => setPlayingVideo(featured)}
-                className="text-xl sm:text-2xl font-extrabold text-[#1f2430] dark:text-white leading-tight mb-3 hover:text-[#C6112F] cursor-pointer transition-colors line-clamp-2"
+                className="text-xl sm:text-2xl font-extrabold text-[#1f2430] dark:text-[#C6112F] leading-tight mb-3 hover:text-[#C6112F] cursor-pointer transition-colors line-clamp-2"
               >
-                {featured.title}
+                {getItemTitle(featured)}
               </h3>
 
               <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 font-medium line-clamp-3">
-                {featured.snippet}
+                {getItemSnippet(featured)}
               </p>
             </div>
 
             {/* Video Stats & Watch Action */}
             <div className="pt-4 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
               <span className="text-neutral-500 dark:text-slate-400 text-xs font-semibold">
-                {featured.date} · 2.4K views
+                {getItemDate(featured)} · {lang === "FR" ? "2,4k vues" : "2.4K views"}
               </span>
 
               <button
@@ -2353,7 +2548,7 @@ function YouTubeSection({
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
-                WATCH NOW
+                {lang === "FR" ? "REGARDER MAINTENANT" : "WATCH NOW"}
               </button>
             </div>
           </div>
@@ -2372,7 +2567,7 @@ function YouTubeSection({
             <div className="relative w-full aspect-video bg-neutral-900 overflow-hidden shrink-0">
               <img
                 src={item.image}
-                alt={item.title}
+                alt={getItemTitle(item)}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                 onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800"; }}
               />
@@ -2390,12 +2585,12 @@ function YouTubeSection({
 
               {/* Category Badge Top Left */}
               <span className="absolute top-2 left-2 bg-[#C6112F] text-white text-[8px] font-black tracking-wider uppercase px-2 py-0.5 rounded shadow-2xs">
-                {item.category}
+                {getItemCategory(item)}
               </span>
 
               {/* YouTube Duration Badge Bottom Right */}
               <span className="absolute bottom-2 right-2 bg-black/85 text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded backdrop-blur-xs">
-                {item.readTime}
+                {getItemReadTime(item)}
               </span>
             </div>
 
@@ -2407,7 +2602,7 @@ function YouTubeSection({
                   TM
                 </div>
                 <h4 className="text-xs sm:text-sm font-bold text-[#1f2430] dark:text-white leading-snug group-hover:text-[#C6112F] transition-colors line-clamp-2">
-                  {item.title}
+                  {getItemTitle(item)}
                 </h4>
               </div>
 
@@ -2418,7 +2613,7 @@ function YouTubeSection({
                     <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z"/>
                   </svg>
                 </span>
-                <span>{item.date} · 1.1K views</span>
+                <span>{getItemDate(item)} · {lang === "FR" ? "1,1k vues" : "1.1K views"}</span>
               </div>
             </div>
           </article>
@@ -2439,7 +2634,7 @@ function YouTubeSection({
           <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
           </svg>
-          VIEW ALL INTERVIEWS &amp; VIDEOS
+          {lang === "FR" ? "VOIR TOUTES LES INTERVIEWS ET VIDÉOS" : "VIEW ALL INTERVIEWS & VIDEOS"}
         </button>
       </div>
 
@@ -2540,56 +2735,68 @@ export default function NewsPage() {
           {/* ═══════ SECTION 3: MINING NEWS (FIRST BELOW SPONSORS) ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
-              sectionLabel="RESOURCE SECTOR"
-              title="Mining News"
+              sectionLabel={lang === "FR" ? "SECTEUR DES RESSOURCES" : "RESOURCE SECTOR"}
+              title={lang === "FR" ? "Nouvelles Minières" : "Mining News"}
               icon={
                 <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                 </svg>
               }
               articles={miningNewsArticles}
-              ctaLabel="VIEW ALL MINING NEWS"
-              onViewAll={() => setExpandedSection({ title: "Mining News", sectionLabel: "RESOURCE SECTOR", articles: miningNewsArticles })}
+              ctaLabel={lang === "FR" ? "VOIR TOUTES LES NOUVELLES MINIÈRES" : "VIEW ALL MINING NEWS"}
+              onViewAll={() => setExpandedSection({
+                title: lang === "FR" ? "Nouvelles Minières" : "Mining News",
+                sectionLabel: lang === "FR" ? "SECTEUR DES RESSOURCES" : "RESOURCE SECTOR",
+                articles: miningNewsArticles
+              })}
             />
           </section>
 
           {/* ═══════ SECTION 4: OIL & GAS NEWS ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
-              sectionLabel="ENERGY SECTOR"
-              title="Oil & Gas News"
+              sectionLabel={lang === "FR" ? "SECTEUR ÉNERGÉTIQUE" : "ENERGY SECTOR"}
+              title={lang === "FR" ? "Pétrole & Gaz" : "Oil & Gas News"}
               icon={
                 <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-4.386 8.25 8.25 0 003.001 0z" />
                 </svg>
               }
               articles={oilGasNewsArticles}
-              ctaLabel="VIEW ALL OIL & GAS NEWS"
-              onViewAll={() => setExpandedSection({ title: "Oil & Gas News", sectionLabel: "ENERGY SECTOR", articles: oilGasNewsArticles })}
+              ctaLabel={lang === "FR" ? "VOIR TOUTES LES NOUVELLES PÉTROLIÈRES & GAZIÈRES" : "VIEW ALL OIL & GAS NEWS"}
+              onViewAll={() => setExpandedSection({
+                title: lang === "FR" ? "Nouvelles Pétrolières & Gazières" : "Oil & Gas News",
+                sectionLabel: lang === "FR" ? "SECTEUR ÉNERGÉTIQUE" : "ENERGY SECTOR",
+                articles: oilGasNewsArticles
+              })}
             />
           </section>
 
           {/* ═══════ SECTION 5: GOVERNMENTS ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
-              sectionLabel="THE LATEST"
-              title="Governments"
+              sectionLabel={lang === "FR" ? "LES DERNIÈRES NOUVELLES" : "THE LATEST"}
+              title={lang === "FR" ? "Gouvernements" : "Governments"}
               icon={
                 <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 21h18M9 8h1m-1 4h1m4-4h1m-1 4h1M3 7l9-4 9 4M4 7v14M20 7v14M9 21V8m6 13V8" />
                 </svg>
               }
               articles={governmentsArticles}
-              ctaLabel="VIEW ALL GOVERNMENT NEWS"
-              onViewAll={() => setExpandedSection({ title: "Governments", sectionLabel: "THE LATEST", articles: governmentsArticles })}
+              ctaLabel={lang === "FR" ? "VOIR TOUTES LES NOUVELLES GOUVERNEMENTALES" : "VIEW ALL GOVERNMENT NEWS"}
+              onViewAll={() => setExpandedSection({
+                title: lang === "FR" ? "Gouvernements" : "Governments",
+                sectionLabel: lang === "FR" ? "LES DERNIÈRES NOUVELLES" : "THE LATEST",
+                articles: governmentsArticles
+              })}
             />
           </section>
 
           {/* ═══════ SECTION 6: COMPANY ARTICLES ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
-              sectionLabel="COMPANY NEWS"
-              title="Company Articles"
+              sectionLabel={lang === "FR" ? "NOUVELLES DES ENTREPRISES" : "COMPANY NEWS"}
+              title={lang === "FR" ? "Articles d'Entreprises" : "Company Articles"}
               icon={
                 <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 21H5a2 2 0 01-2-2V7l5-5h11a2 2 0 012 2v15a2 2 0 01-2 2z" />
@@ -2597,33 +2804,41 @@ export default function NewsPage() {
                 </svg>
               }
               articles={companyArticles}
-              ctaLabel="VIEW ALL COMPANY ARTICLES"
-              onViewAll={() => setExpandedSection({ title: "Company Articles", sectionLabel: "COMPANY NEWS", articles: companyArticles })}
+              ctaLabel={lang === "FR" ? "VOIR TOUS LES ARTICLES D'ENTREPRISES" : "VIEW ALL COMPANY ARTICLES"}
+              onViewAll={() => setExpandedSection({
+                title: lang === "FR" ? "Articles d'Entreprises" : "Company Articles",
+                sectionLabel: lang === "FR" ? "NOUVELLES DES ENTREPRISES" : "COMPANY NEWS",
+                articles: companyArticles
+              })}
             />
           </section>
 
           {/* ═══════ SECTION 5: COMPANY INTERVIEWS (YOUTUBE UI STYLE) ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <YouTubeSection
-              sectionLabel="EXCLUSIVE CONTENT"
-              title="Company Interviews"
+              sectionLabel={lang === "FR" ? "CONTENU EXCLUSIF" : "EXCLUSIVE CONTENT"}
+              title={lang === "FR" ? "Interviews d'Entreprises" : "Company Interviews"}
               articles={companyInterviews}
-              onViewAll={() => setExpandedSection({ title: "Company Interviews", sectionLabel: "EXCLUSIVE CONTENT", articles: companyInterviews })}
+              onViewAll={() => setExpandedSection({
+                title: lang === "FR" ? "Interviews d'Entreprises" : "Company Interviews",
+                sectionLabel: lang === "FR" ? "CONTENU EXCLUSIF" : "EXCLUSIVE CONTENT",
+                articles: companyInterviews
+              })}
             />
           </section>
 
           {/* ═══════ SECTION 6: UPCOMING CONFERENCES (SIMPLE CLEAN STYLE) ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
-              sectionLabel="EVENTS & CONFERENCES"
-              title="Upcoming Conferences"
+              sectionLabel={lang === "FR" ? "ÉVÉNEMENTS & CONFÉRENCES" : "EVENTS & CONFERENCES"}
+              title={lang === "FR" ? "Conférences à Venir" : "Upcoming Conferences"}
               icon={
                 <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               }
               articles={conferencesArticles}
-              ctaLabel="VIEW ALL CONFERENCES"
+              ctaLabel={lang === "FR" ? "VOIR TOUTES LES CONFÉRENCES" : "VIEW ALL CONFERENCES"}
               onViewAll={() => setExpandedSection({ title: "Upcoming Conferences", sectionLabel: "EVENTS & CONFERENCES", articles: conferencesArticles })}
             />
           </section>

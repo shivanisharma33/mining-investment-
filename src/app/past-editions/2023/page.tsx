@@ -113,8 +113,8 @@ export default function PastEdition2023Page() {
               </Link>
             </div>
 
-            {/* Mobile Sub-Navigation Horizontal Scrollable Pill Bar (Mobile Only) */}
-            <div className="lg:hidden px-4 py-3 bg-[#fdfefe] border-b border-neutral-200/80 flex items-center gap-2 overflow-x-auto shrink-0 shadow-2xs">
+            {/* Mobile Pill Nav */}
+            <div className="flex lg:hidden overflow-x-auto gap-2 p-4 bg-neutral-100 dark:bg-zinc-900 border-b border-neutral-200 dark:border-zinc-800 scrollbar-none">
               {sidebarTabs.map((tab) => {
                 const isSelected = activeTab === tab.id;
                 return (
@@ -123,7 +123,7 @@ export default function PastEdition2023Page() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${isSelected
                         ? "bg-[#C6112F] text-white shadow-xs"
-                        : "bg-white border border-neutral-200 text-neutral-700 hover:bg-neutral-100"
+                        : "bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 text-neutral-700 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700"
                       }`}
                   >
                     <span className={isSelected ? "text-white" : "text-[#C6112F]"}>
@@ -138,7 +138,7 @@ export default function PastEdition2023Page() {
             {/* Two-Column Grid: Left Sidebar & Right Detail Section */}
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[700px]">
               {/* ═══════════════ LEFT SIDEBAR (Desktop Only) ═══════════════ */}
-              <div className="hidden lg:flex lg:col-span-3 border-r border-neutral-200/80 bg-[#fdfefe] p-6 flex-col items-stretch">
+              <div className="hidden lg:flex lg:col-span-3 border-r border-neutral-200/80 dark:border-zinc-800 bg-[#fdfefe] dark:bg-[#18181b] p-6 flex-col items-stretch">
                 <div>
                   {/* Menu Item List */}
                   <div className="space-y-2 mb-6">
@@ -149,11 +149,11 @@ export default function PastEdition2023Page() {
                           key={tab.id}
                           onClick={() => setActiveTab(tab.id)}
                           className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left cursor-pointer ${isSelected
-                              ? "bg-[#FCDDE1] text-[#8A1224] border-l-4 border-[#C6112F] shadow-xs"
-                              : "text-neutral-600 hover:bg-neutral-100/90 hover:text-neutral-900"
+                              ? "bg-[#FCDDE1] text-[#8A1224] dark:bg-[#C6112F]/20 dark:text-rose-300 border-l-4 border-[#C6112F] shadow-xs"
+                              : "text-neutral-600 dark:text-zinc-300 hover:bg-neutral-100/90 dark:hover:bg-zinc-800 hover:text-neutral-900 dark:hover:text-white"
                             }`}
                         >
-                          <span className={isSelected ? "text-[#C6112F]" : "text-neutral-500"}>
+                          <span className={isSelected ? "text-[#C6112F] dark:text-[#C6112F]" : "text-neutral-500 dark:text-zinc-400"}>
                             {tab.icon}
                           </span>
                           <span>{tab.label}</span>
@@ -164,37 +164,37 @@ export default function PastEdition2023Page() {
                 </div>
 
                 {/* Quick Links Card */}
-                <div className="mt-2 bg-[#f8f9fa] border border-neutral-300/80 rounded-2xl p-6 text-left shadow-xs">
+                <div className="mt-2 bg-[#f8f9fa] dark:bg-[#121215] border border-neutral-300/80 dark:border-zinc-800 rounded-2xl p-6 text-left shadow-xs">
                   <h4 className="text-lg sm:text-xl font-extrabold text-[#C6112F] tracking-tight mb-6">
                     QUICK LINKS
                   </h4>
-                  <div className="space-y-4 text-xs sm:text-sm font-medium text-neutral-700">
+                  <div className="space-y-4 text-xs sm:text-sm font-medium text-neutral-700 dark:text-zinc-300">
                     <a
                       href="/register"
-                      className="flex items-center justify-between hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7]"
+                      className="flex items-center justify-between hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7] dark:border-zinc-800"
                     >
-                      <span>Register For 2027</span>
-                      <svg className="w-5 h-5 text-neutral-500 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
+                      <span>Register Now</span>
+                      <svg className="w-5 h-5 text-neutral-500 dark:text-zinc-400 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                       </svg>
                     </a>
 
                     <button
                       onClick={() => setActiveTab("brochures")}
-                      className="w-full flex items-center justify-between hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7] text-left cursor-pointer"
+                      className="w-full flex items-center justify-between hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7] dark:border-zinc-800 text-left cursor-pointer"
                     >
                       <span>Download Brochure</span>
-                      <svg className="w-5 h-5 text-neutral-500 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-neutral-500 dark:text-zinc-400 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                       </svg>
                     </button>
 
                     <a
                       href="mailto:jchoi@irinc.ca"
-                      className="flex items-center justify-between hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7]"
+                      className="flex items-center justify-between hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors pb-3 border-b border-[#F5C2C7] dark:border-zinc-800"
                     >
                       <span>Contact Us</span>
-                      <svg className="w-5 h-5 text-neutral-500 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-neutral-500 dark:text-zinc-400 hover:text-[#C6112F] stroke-current shrink-0 ml-2 transition-colors" fill="none" strokeWidth="2" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </a>
@@ -203,13 +203,13 @@ export default function PastEdition2023Page() {
               </div>
 
               {/* ═══════════════ RIGHT MAIN CONTENT AREA ═══════════════ */}
-              <div className="lg:col-span-9 p-4 xs:p-6 sm:p-8 md:p-10 flex flex-col justify-between text-left">
+              <div className="lg:col-span-9 p-4 xs:p-6 sm:p-8 md:p-10 flex flex-col justify-between text-left bg-white dark:bg-[#18181b]">
                 {activeTab === "companies" ? (
                   <div>
                     <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
                       {viewingEdition} EDITION
                     </span>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white tracking-tight mb-3">
                       Participating Companies
                     </h1>
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
@@ -273,6 +273,7 @@ export default function PastEdition2023Page() {
                       pdfUrl={`/documents/${viewingEdition}-brochure.pdf`}
                       year={viewingEdition}
                       fileName={`${viewingEdition}-brochure.pdf`}
+                      title={`Event Brochure ${viewingEdition}`}
                     />
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-xs mt-8">

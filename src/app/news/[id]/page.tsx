@@ -290,13 +290,13 @@ export default function SingleNewsDetailPage() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-[#f8fafc] text-left pt-24 sm:pt-28 pb-16">
+      <main className="flex flex-col flex-grow w-full bg-[#f8fafc] dark:bg-[#090d16] text-left pt-24 sm:pt-28 pb-16 transition-colors duration-300">
         <div className="max-w-[1000px] mx-auto px-4 sm:px-6 md:px-8 w-full">
           {/* Top Header Actions / Breadcrumbs Bar */}
           <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
             <button
               onClick={() => router.push("/news")}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-neutral-100 text-neutral-800 text-xs font-bold transition-all cursor-pointer border border-neutral-200/90 shadow-2xs group"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-zinc-800 hover:bg-neutral-100 dark:hover:bg-zinc-700 text-neutral-800 dark:text-white text-xs font-bold transition-all cursor-pointer border border-neutral-200/90 dark:border-zinc-700 shadow-2xs group"
             >
               <svg className="w-4 h-4 text-[#C6112F] group-hover:-translate-x-0.5 transition-transform" fill="none" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -305,23 +305,23 @@ export default function SingleNewsDetailPage() {
             </button>
 
             {/* Breadcrumb Navigation */}
-            <nav className="flex items-center gap-2 text-xs font-semibold text-neutral-500 flex-wrap">
+            <nav className="flex items-center gap-2 text-xs font-semibold text-neutral-500 dark:text-zinc-400 flex-wrap">
               <a href="/" className="hover:text-[#C6112F] transition-colors">{t("nav-home", "Home")}</a>
               <span>&lt;</span>
               <a href="/news" className="hover:text-[#C6112F] transition-colors">News & Media</a>
               <span>&lt;</span>
-              <span className="text-neutral-900 font-extrabold truncate max-w-[200px]">{headline}</span>
+              <span className="text-neutral-900 dark:text-white font-extrabold truncate max-w-[200px]">{headline}</span>
             </nav>
           </div>
 
-          <article className="bg-white rounded-3xl shadow-md border border-neutral-200/90 overflow-hidden text-left">
-            {/* Clean White Article Header (NO BACKGROUND IMAGE) */}
-            <div className="p-6 sm:p-10 md:p-12 border-b border-neutral-100 bg-white">
+          <article className="bg-white dark:bg-[#18181b] rounded-3xl shadow-md border border-neutral-200/90 dark:border-zinc-800 overflow-hidden text-left">
+            {/* Clean Article Header */}
+            <div className="p-6 sm:p-10 md:p-12 border-b border-neutral-100 dark:border-zinc-800 bg-white dark:bg-[#18181b]">
               <div className="flex items-center gap-3 mb-4 flex-wrap">
                 <span className="px-3.5 py-1 bg-[#C6112F]/10 border border-[#C6112F]/20 text-[#C6112F] text-[11px] font-black uppercase tracking-[0.2em] rounded-full">
                   {article.tagCategory}
                 </span>
-                <span className="px-3.5 py-1 bg-neutral-100 text-neutral-700 text-xs font-semibold rounded-full border border-neutral-200 flex items-center gap-1.5">
+                <span className="px-3.5 py-1 bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 text-xs font-semibold rounded-full border border-neutral-200 dark:border-zinc-700 flex items-center gap-1.5">
                   <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                     <line x1="16" y1="2" x2="16" y2="6" />
@@ -329,34 +329,34 @@ export default function SingleNewsDetailPage() {
                   </svg>
                   {date}
                 </span>
-                <span className="px-3 py-1 bg-neutral-100 text-neutral-600 text-xs font-semibold rounded-full border border-neutral-200">
+                <span className="px-3 py-1 bg-neutral-100 dark:bg-zinc-800 text-neutral-600 dark:text-zinc-300 text-xs font-semibold rounded-full border border-neutral-200 dark:border-zinc-700">
                   {article.readTime || "3 MIN READ"}
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-neutral-900 leading-tight tracking-tight mb-6">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight mb-6">
                 {headline}
               </h1>
 
               {/* Publisher Information & Social Share Controls */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-neutral-100">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-6 border-t border-neutral-100 dark:border-zinc-800">
                 <div className="flex items-center gap-3.5">
                   <div className="w-12 h-12 rounded-full bg-[#C6112F] text-white font-black text-lg flex items-center justify-center shadow-md shrink-0">
                     M
                   </div>
                   <div>
-                    <h4 className="text-xs font-extrabold text-neutral-900 uppercase tracking-wider">
+                    <h4 className="text-xs font-extrabold text-neutral-900 dark:text-white uppercase tracking-wider">
                       THE Mining Investment Event of the North
                     </h4>
-                    <p className="text-[11px] text-neutral-500 font-medium">
+                    <p className="text-[11px] text-neutral-500 dark:text-zinc-400 font-medium">
                       Official Press Release · Quebec City, Canada
                     </p>
                   </div>
                 </div>
 
                 {/* Social Share Buttons */}
-                <div className="flex items-center gap-1.5 bg-neutral-50 p-1.5 rounded-xl border border-neutral-200/80">
-                  <span className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider px-2 hidden xs:inline-block">
+                <div className="flex items-center gap-1.5 bg-neutral-50 dark:bg-zinc-900 p-1.5 rounded-xl border border-neutral-200/80 dark:border-zinc-800">
+                  <span className="text-[11px] font-bold text-neutral-500 dark:text-zinc-400 uppercase tracking-wider px-2 hidden xs:inline-block">
                     Share:
                   </span>
                   <a
@@ -364,7 +364,7 @@ export default function SingleNewsDetailPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Share on LinkedIn"
-                    className="w-8 h-8 rounded-lg bg-white hover:bg-[#0A66C2] text-neutral-700 hover:text-white flex items-center justify-center transition-all shadow-2xs border border-neutral-200/80"
+                    className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-800 hover:bg-[#0A66C2] text-neutral-700 dark:text-white hover:text-white flex items-center justify-center transition-all shadow-2xs border border-neutral-200/80 dark:border-zinc-700"
                   >
                     <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                       <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
@@ -375,7 +375,7 @@ export default function SingleNewsDetailPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Share on X (Twitter)"
-                    className="w-8 h-8 rounded-lg bg-white hover:bg-black text-neutral-700 hover:text-white flex items-center justify-center transition-all shadow-2xs border border-neutral-200/80"
+                    className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-800 hover:bg-black text-neutral-700 dark:text-white hover:text-white flex items-center justify-center transition-all shadow-2xs border border-neutral-200/80 dark:border-zinc-700"
                   >
                     <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -386,7 +386,7 @@ export default function SingleNewsDetailPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title="Share on Facebook"
-                    className="w-8 h-8 rounded-lg bg-white hover:bg-[#1877F2] text-neutral-700 hover:text-white flex items-center justify-center transition-all shadow-2xs border border-neutral-200/80"
+                    className="w-8 h-8 rounded-lg bg-white dark:bg-zinc-800 hover:bg-[#1877F2] text-neutral-700 dark:text-white hover:text-white flex items-center justify-center transition-all shadow-2xs border border-neutral-200/80 dark:border-zinc-700"
                   >
                     <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                       <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.01 11.49 5.6 13.78 5.6c1.1 0 2.25.2 2.25.2v2.47h-1.27c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 3h-2.34v6.8c4.56-.93 8-4.96 8-9.8z" />
@@ -395,9 +395,9 @@ export default function SingleNewsDetailPage() {
                   <button
                     onClick={handleCopyLink}
                     title="Copy Link"
-                    className="px-2.5 py-1.5 rounded-lg bg-white hover:bg-neutral-100 text-neutral-800 text-xs font-bold transition-all border border-neutral-200/80 flex items-center gap-1 cursor-pointer"
+                    className="px-2.5 py-1.5 rounded-lg bg-white dark:bg-zinc-800 hover:bg-neutral-100 dark:hover:bg-zinc-700 text-neutral-800 dark:text-white text-xs font-bold transition-all border border-neutral-200/80 dark:border-zinc-700 flex items-center gap-1 cursor-pointer"
                   >
-                    <svg className="w-3.5 h-3.5 text-neutral-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5 text-neutral-600 dark:text-zinc-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.75v-6.75" />
                     </svg>
                     <span>{copied ? "Copied!" : "Copy"}</span>
@@ -411,13 +411,13 @@ export default function SingleNewsDetailPage() {
 
               {/* Lead Quote Callout */}
               {snippet && (
-                <div className="bg-rose-50/90 border-l-4 border-[#C6112F] p-6 rounded-r-2xl text-neutral-800 text-base sm:text-lg font-semibold leading-relaxed shadow-2xs">
+                <div className="bg-rose-50/90 dark:bg-rose-950/40 border-l-4 border-[#C6112F] p-6 rounded-r-2xl text-neutral-800 dark:text-zinc-200 text-base sm:text-lg font-semibold leading-relaxed shadow-2xs">
                   "{snippet}"
                 </div>
               )}
 
               {/* Main Body Text */}
-              <div className="space-y-3.5 text-neutral-700 text-base sm:text-lg leading-relaxed font-normal">
+              <div className="space-y-3.5 text-neutral-700 dark:text-zinc-300 text-base sm:text-lg leading-relaxed font-normal">
                 {bodyText
                   ? bodyText
                     .split(/\n+/)
@@ -432,13 +432,13 @@ export default function SingleNewsDetailPage() {
               </div>
 
               {/* Media Contact Footer */}
-              <div className="pt-8 border-t border-neutral-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="text-xs font-semibold text-neutral-600">
+              <div className="pt-8 border-t border-neutral-100 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="text-xs font-semibold text-neutral-600 dark:text-zinc-400">
                   Media Contact: <a href="mailto:jchoi@irinc.ca" className="text-[#C6112F] font-bold hover:underline">jchoi@irinc.ca</a>
                 </div>
                 <button
                   onClick={() => router.push("/news")}
-                  className="px-6 py-2.5 rounded-xl bg-neutral-900 text-white text-xs font-extrabold uppercase tracking-wider hover:bg-neutral-800 transition-all shadow-xs cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-neutral-900 dark:bg-zinc-800 text-white text-xs font-extrabold uppercase tracking-wider hover:bg-neutral-800 dark:hover:bg-zinc-700 transition-all shadow-xs cursor-pointer"
                 >
                   All News Stories
                 </button>
@@ -451,7 +451,7 @@ export default function SingleNewsDetailPage() {
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.2em] uppercase block mb-2">
               MORE STORIES
             </span>
-            <h3 className="text-2xl font-black text-neutral-900 mb-6">
+            <h3 className="text-2xl font-black text-neutral-900 dark:text-white mb-6">
               Related Press Releases
             </h3>
 
@@ -464,10 +464,10 @@ export default function SingleNewsDetailPage() {
                   <article
                     key={rel.id}
                     onClick={() => router.push(`/news/${rel.id}`)}
-                    className="group cursor-pointer bg-white border border-neutral-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                    className="group cursor-pointer bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-5 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
                   >
                     <div>
-                      <div className="w-full h-36 rounded-xl overflow-hidden mb-3 bg-neutral-100">
+                      <div className="w-full h-36 rounded-xl overflow-hidden mb-3 bg-neutral-100 dark:bg-zinc-800">
                         <img
                           src={rel.image || "/news/hero_1.png"}
                           alt={relTitle}
@@ -477,11 +477,11 @@ export default function SingleNewsDetailPage() {
                       <span className="text-[10px] font-bold text-[#C6112F] uppercase tracking-wider block mb-1">
                         {rel.tagCategory}
                       </span>
-                      <h4 className="text-sm font-extrabold text-neutral-900 group-hover:text-[#C6112F] transition-colors leading-snug line-clamp-2 mb-2">
+                      <h4 className="text-sm font-extrabold text-neutral-900 dark:text-white group-hover:text-[#C6112F] transition-colors leading-snug line-clamp-2 mb-2">
                         {relTitle}
                       </h4>
                     </div>
-                    <span className="text-[11px] font-semibold text-neutral-400">
+                    <span className="text-[11px] font-semibold text-neutral-400 dark:text-zinc-400">
                       {relDate}
                     </span>
                   </article>

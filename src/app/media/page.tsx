@@ -108,39 +108,51 @@ const videos = [
   {
     id: "dWFnebV81DM",
     title: "THE Mining Investment Event - Official Conference Overview",
+    titleFR: "THE Mining Investment Event - Aperçu officiel de la conférence",
     thumb: "https://i.ytimg.com/vi/dWFnebV81DM/hqdefault.jpg",
     duration: "04:18",
     views: "48,920 views",
+    viewsFR: "48 920 vues",
     timeAgo: "2 months ago",
+    timeAgoFR: "Il y a 2 mois",
   },
   {
     id: "38Ec5J0viaU",
     title: "Keynote Panel: The Future of Critical Minerals & ESG Investments",
+    titleFR: "Table ronde principale : L'avenir des minéraux critiques et investissements ESG",
     thumb: "https://i.ytimg.com/vi/38Ec5J0viaU/hqdefault.jpg",
     duration: "14:25",
     views: "32,150 views",
+    viewsFR: "32 150 vues",
     timeAgo: "3 months ago",
+    timeAgoFR: "Il y a 3 mois",
   },
   {
     id: "_3XTqjB4zo8",
     title: "Student Sponsorship & SHE-Co Initiative Highlights",
+    titleFR: "Faits saillants des bourses étudiantes et de l'initiative SHE-Co",
     thumb: "https://i.ytimg.com/vi/_3XTqjB4zo8/hqdefault.jpg",
     duration: "08:42",
     views: "21,400 views",
+    viewsFR: "21 400 vues",
     timeAgo: "4 months ago",
+    timeAgoFR: "Il y a 4 mois",
   },
   {
     id: "7PHjDzBZcac",
     title: "Investor One-on-One Meetings & Networking Night in Québec City",
+    titleFR: "Rencontres individuelles avec investisseurs & Soirée de réseautage à Québec",
     thumb: "https://i.ytimg.com/vi/7PHjDzBZcac/hqdefault.jpg",
     duration: "11:05",
     views: "19,830 views",
+    viewsFR: "19 830 vues",
     timeAgo: "5 months ago",
+    timeAgoFR: "Il y a 5 mois",
   },
 ];
 
 export default function MediaPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [activeVideoId, setActiveVideoId] = useState<string>("dWFnebV81DM");
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
@@ -163,6 +175,12 @@ export default function MediaPage() {
       setHasLiked(true);
     }
   };
+
+  const getVideoTitle = (v: typeof videos[0]) => (lang === "FR" ? v.titleFR : v.title);
+  const getVideoViews = (v: typeof videos[0]) => (lang === "FR" ? v.viewsFR : v.views);
+  const getVideoTimeAgo = (v: typeof videos[0]) => (lang === "FR" ? v.timeAgoFR : v.timeAgo);
+
+  const activeVidObj = videos.find((v) => v.id === activeVideoId) || videos[0];
 
   return (
     <>
@@ -217,13 +235,15 @@ export default function MediaPage() {
             <div className="mb-12 w-full bg-gradient-to-r from-neutral-900 via-[#161a23] to-neutral-900 rounded-3xl p-6 sm:p-8 border border-[#C6112F]/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
               <div className="relative z-10 max-w-xl text-left">
                 <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
-                  INDUSTRY PRESS & NEWS
+                  {lang === "FR" ? "PRESSE ET NOUVELLES DU SECTEUR" : "INDUSTRY PRESS & NEWS"}
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-2">
-                  Official Event <span className="text-[#C6112F]">News & Press Hub</span>
+                  {lang === "FR" ? "Centre Officiel de " : "Official Event "}<span className="text-[#C6112F]">{lang === "FR" ? "Nouvelles & Presse" : "News & Press Hub"}</span>
                 </h3>
                 <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed">
-                  Read full press releases, keynote highlights, issuer updates, and market coverage on our dedicated News page.
+                  {lang === "FR"
+                    ? "Consultez les communiqués de presse officiels, les faits saillants des conférences, les mises à jour des émetteurs et la couverture du marché sur notre page Nouvelles."
+                    : "Read full press releases, keynote highlights, issuer updates, and market coverage on our dedicated News page."}
                 </p>
               </div>
               <div className="relative z-10 shrink-0">
@@ -231,7 +251,7 @@ export default function MediaPage() {
                   href="/news"
                   className="inline-flex items-center gap-2 bg-[#C6112F] hover:bg-[#a50e27] text-white px-6 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase shadow-lg shadow-[#C6112F]/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
                 >
-                  <span>EXPLORE NEWS PAGE</span>
+                  <span>{lang === "FR" ? "EXPLORER LA PAGE NOUVELLES" : "EXPLORE NEWS PAGE"}</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                   </svg>
@@ -315,7 +335,7 @@ export default function MediaPage() {
                   <div className="flex flex-col items-start text-left">
                     <div className="flex items-center gap-2">
                       <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-                        THE Mining Investment Event Channel
+                        {lang === "FR" ? "Chaîne Officielle THE Mining Investment Event" : "THE Mining Investment Event Channel"}
                       </h2>
                       {/* YouTube Verified Checkmark Badge */}
                       <span className="w-4 h-4 rounded-full bg-neutral-400 text-[#0f0f0f] flex items-center justify-center text-[10px] font-bold" title="Verified Channel">
@@ -323,7 +343,7 @@ export default function MediaPage() {
                       </span>
                     </div>
                     <span className="text-xs sm:text-sm text-neutral-400 font-medium">
-                      @mininginvestment · 12.5K subscribers · Official Video Portal
+                      {lang === "FR" ? "@mininginvestment · 12,5k abonnés · Portail Vidéo Officiel" : "@mininginvestment · 12.5K subscribers · Official Video Portal"}
                     </span>
                   </div>
                 </div>
@@ -339,7 +359,7 @@ export default function MediaPage() {
                     <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                       <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
                     </svg>
-                    <span>Subscribe</span>
+                    <span>{lang === "FR" ? "S'abonner" : "Subscribe"}</span>
                   </a>
 
                   <a
@@ -351,7 +371,7 @@ export default function MediaPage() {
                     <svg className="w-4 h-4 text-[#FF0000] fill-current" viewBox="0 0 24 24">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                     </svg>
-                    <span>Open Channel ↗</span>
+                    <span>{lang === "FR" ? "Ouvrir la chaîne ↗" : "Open Channel ↗"}</span>
                   </a>
                 </div>
 
@@ -376,12 +396,12 @@ export default function MediaPage() {
                 {/* Video Title & Actions */}
                 <div className="mt-4 flex flex-col items-start text-left">
                   <h3 className="text-lg sm:text-xl font-bold text-white leading-snug">
-                    {videos.find((v) => v.id === activeVideoId)?.title || "THE Mining Investment Event Highlights"}
+                    {getVideoTitle(activeVidObj)}
                   </h3>
 
                   <div className="w-full mt-3 pt-3 border-t border-neutral-800 flex flex-wrap items-center justify-between gap-4">
                     <div className="text-xs sm:text-sm text-neutral-400 font-medium">
-                      {videos.find((v) => v.id === activeVideoId)?.views || "48,920 views"} · Premiered in Québec City
+                      {getVideoViews(activeVidObj)} · {lang === "FR" ? "Présenté à Québec" : "Premiered in Québec City"}
                     </div>
 
                     <div className="flex items-center gap-2 text-xs font-bold text-white">
@@ -400,13 +420,13 @@ export default function MediaPage() {
                       </button>
 
                       <button
-                        onClick={() => alert("Video link copied to clipboard!")}
+                        onClick={() => alert(lang === "FR" ? "Lien de la vidéo copié !" : "Video link copied to clipboard!")}
                         className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-200 transition-all"
                       >
                         <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                           <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
                         </svg>
-                        <span>Share</span>
+                        <span>{lang === "FR" ? "Partager" : "Share"}</span>
                       </button>
                     </div>
                   </div>
@@ -419,7 +439,7 @@ export default function MediaPage() {
                   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
-                  <span>UP NEXT · YOUTUBE PLAYLIST</span>
+                  <span>{lang === "FR" ? "À SUIVRE · PLAYLIST YOUTUBE" : "UP NEXT · YOUTUBE PLAYLIST"}</span>
                 </span>
 
                 <div className="flex flex-col gap-4 w-full">
@@ -436,7 +456,7 @@ export default function MediaPage() {
                         }`}
                       >
                         <div className="relative w-36 aspect-video rounded-lg overflow-hidden bg-neutral-900 shrink-0">
-                          <img src={v.thumb} alt={v.title} className="w-full h-full object-cover" />
+                          <img src={v.thumb} alt={getVideoTitle(v)} className="w-full h-full object-cover" />
                           <span className="absolute bottom-1 right-1 bg-black/80 text-[10px] font-bold px-1.5 py-0.5 rounded text-white">
                             {v.duration}
                           </span>
@@ -444,13 +464,13 @@ export default function MediaPage() {
 
                         <div className="flex flex-col justify-center text-left min-w-0">
                           <h4 className="text-xs font-bold text-white line-clamp-2 leading-snug">
-                            {v.title}
+                            {getVideoTitle(v)}
                           </h4>
                           <span className="text-[11px] text-neutral-400 mt-1">
                             THE Mining Investment Event
                           </span>
                           <span className="text-[11px] text-neutral-500">
-                            {v.views} · {v.timeAgo}
+                            {getVideoViews(v)} · {getVideoTimeAgo(v)}
                           </span>
                         </div>
                       </div>
@@ -464,7 +484,7 @@ export default function MediaPage() {
             {/* YouTube Videos Grid */}
             <div className="mt-8 border-t border-neutral-800 pt-10">
               <span className="text-xs font-extrabold tracking-[0.25em] text-[#FF0000] uppercase mb-2 block text-left">
-                YOUTUBE VIDEO DIRECTORY
+                {lang === "FR" ? "RÉPERTOIRE VIDÉO YOUTUBE" : "YOUTUBE VIDEO DIRECTORY"}
               </span>
               <h3 className="text-2xl font-black text-white mb-6 text-left">
                 {t("media-videos-title-1", "Watch THE Event")}{" "}
@@ -481,7 +501,7 @@ export default function MediaPage() {
                     <div className="relative aspect-video w-full overflow-hidden bg-neutral-900">
                       <img
                         src={v.thumb}
-                        alt={v.title}
+                        alt={getVideoTitle(v)}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <span className="absolute bottom-2 right-2 bg-black/80 text-[10px] font-extrabold px-2 py-0.5 rounded text-white">
@@ -498,13 +518,13 @@ export default function MediaPage() {
 
                     <div className="p-4 flex flex-col items-start">
                       <h4 className="text-xs sm:text-sm font-bold text-white line-clamp-2 leading-snug group-hover:text-[#FF0000] transition-colors">
-                        {v.title}
+                        {getVideoTitle(v)}
                       </h4>
                       <span className="text-[11px] text-neutral-400 mt-2">
-                        THE Mining Investment Event
+                        THE Mining Event
                       </span>
                       <span className="text-[11px] text-neutral-500">
-                        {v.views} · {v.timeAgo}
+                        {getVideoViews(v)} · {getVideoTimeAgo(v)}
                       </span>
                     </div>
                   </div>

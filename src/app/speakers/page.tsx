@@ -32,15 +32,15 @@ export default function SpeakersPage() {
                 {t("nav-home", "Home")}
               </a>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-neutral-400">{t("nav-programs", "Programs")}</span>
+              <span className="text-neutral-400">Event</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">Speakers</span>
+              <span className="text-white font-semibold">Speakers 2027</span>
             </div>
             <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase block mb-3">
-              2026 KEYNOTE & INDUSTRY EXPERTS
+              2027 KEYNOTE & INDUSTRY EXPERTS
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
-              THE <span className="text-[#C6112F]">Speakers</span>
+              THE <span className="text-[#C6112F]">Speakers 2027</span>
             </h1>
             <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
           </div>
@@ -50,18 +50,18 @@ export default function SpeakersPage() {
         <section className="relative w-full py-14 sm:py-18 md:py-22">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              2026 EDITION FEATURED STAGE
+              2027 EDITION FEATURED STAGE
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
               Event Speakers & Keynotes
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
+            <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
               Ministers, ambassadors, CEOs, investors, and leading analysts taking the stage across four days of high-impact sessions in Quebec City.
             </p>
 
             {/* Dynamic searchable and filterable speakers component */}
-            <SpeakersView />
+            <SpeakersView year={2027} />
 
             {/* Speaking Slot Inquiries CTA Box */}
             <div className="mt-16 bg-[#0f1117] text-white rounded-3xl p-8 sm:p-12 text-center border border-[#C6112F]/30 shadow-2xl relative overflow-hidden">

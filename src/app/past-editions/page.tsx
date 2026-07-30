@@ -285,7 +285,7 @@ export default function PastEditionsPage() {
             </div>
 
             {/* Impact Stats Container */}
-            <div className="w-full bg-gradient-to-b from-[#ffffff] via-[#fcfdfe] to-[#f4f7fa] border border-neutral-300/80 rounded-2xl p-5 sm:p-8 md:p-10 shadow-sm text-left mb-10">
+            <div className="w-full bg-gradient-to-b from-[#ffffff] via-[#fcfdfe] to-[#f4f7fa] dark:from-[#18181b] dark:via-[#18181b] dark:to-[#121215] border border-neutral-300/80 dark:border-zinc-800 rounded-2xl p-5 sm:p-8 md:p-10 shadow-sm text-left mb-10">
               <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase mb-6 sm:mb-8 block">
                 {isFr ? "NOTRE IMPACT AU FIL DES ANS" : "OUR IMPACT OVER THE YEARS"}
               </span>
@@ -296,14 +296,14 @@ export default function PastEditionsPage() {
                   return (
                     <div
                       key={stat.label}
-                      className={`flex flex-col items-start text-left group ${!isLast ? "lg:border-r lg:border-neutral-200/90 lg:pr-8" : ""
+                      className={`flex flex-col items-start text-left group ${!isLast ? "lg:border-r lg:border-neutral-200/90 dark:lg:border-zinc-800 lg:pr-8" : ""
                         } ${idx !== 0 ? "lg:pl-8" : ""}`}
                     >
                       {/* Icon */}
-                      <div className="mb-3 sm:mb-4 text-neutral-900 transform group-hover:scale-110 transition-transform duration-200">{stat.icon}</div>
+                      <div className="mb-3 sm:mb-4 text-neutral-900 dark:text-white transform group-hover:scale-110 transition-transform duration-200">{stat.icon}</div>
 
                       {/* Value */}
-                      <span className="text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 tracking-tight leading-none mb-2 sm:mb-3">
+                      <span className="text-2xl xs:text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 dark:text-white tracking-tight leading-none mb-2 sm:mb-3">
                         {stat.value}
                       </span>
 

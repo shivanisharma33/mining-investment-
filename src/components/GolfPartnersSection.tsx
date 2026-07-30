@@ -2,8 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function GolfPartnersSection() {
+  const { t, lang } = useLanguage();
+
   return (
     <section className="relative w-full bg-white dark:bg-[#0e1626] py-12 sm:py-16 transition-colors duration-300">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
@@ -12,7 +15,7 @@ export default function GolfPartnersSection() {
         {/* ═════════════════════════════════════════════════════════ */}
         <div className="text-center mb-8 sm:mb-10">
           <h2 className="text-lg sm:text-xl md:text-2xl font-black text-[#2b354f] dark:text-white tracking-wider uppercase">
-            PARTENAIRES DORÉ PARTNER
+            {lang === "FR" ? "PARTENAIRES DORÉ" : "DORÉ PARTNERS"}
           </h2>
           <div className="w-14 sm:w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mt-2.5" />
         </div>
@@ -72,7 +75,7 @@ export default function GolfPartnersSection() {
         {/* ═════════════════════════════════════════════════════════ */}
         <div className="text-center mb-8 sm:mb-10">
           <h2 className="text-lg sm:text-xl md:text-2xl font-black text-[#2b354f] dark:text-white tracking-wider uppercase">
-            PARTENAIRES PRIX / PRIZE PARTNERS
+            {lang === "FR" ? "PARTENAIRES PRIX" : "PRIZE PARTNERS"}
           </h2>
           <div className="w-14 sm:w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mt-2.5" />
         </div>
@@ -91,7 +94,7 @@ export default function GolfPartnersSection() {
           </div>
 
           {/* Prize Partner 2: THE PROSPECTOR Resource Investment News */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
               src="/sponsors/2026/the_prospector_news.png"
               alt="The Prospector Resource Investment News"
@@ -102,7 +105,7 @@ export default function GolfPartnersSection() {
           </div>
 
           {/* Prize Partner 3: Café du Monde Brasserie Française */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <div className="flex flex-col items-center justify-center text-center">
               <span className="font-black text-base text-[#2f3e46] dark:text-slate-200 tracking-tight leading-tight">CAFÉ</span>
               <span className="font-semibold text-[10px] text-[#2f3e46] dark:text-slate-300 tracking-widest uppercase my-0.5">— DU —</span>
@@ -112,9 +115,8 @@ export default function GolfPartnersSection() {
           </div>
 
           {/* Prize Partner 4: IL TEATRO */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <div className="bg-black text-white p-3 rounded-lg flex flex-col items-center justify-center w-28 h-20 shadow-xs">
-              {/* Palm/fountain emblem */}
               <svg className="w-8 h-8 text-white mb-1" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2L15 8L19 4L16 11L22 13L15 15L17 22L12 17L7 22L9 15L2 13L8 11L5 4L9 8L12 2Z" />
               </svg>
@@ -123,10 +125,10 @@ export default function GolfPartnersSection() {
           </div>
         </div>
 
-        {/* Bottom Row: 3 Centered Cards matching mockup */}
+        {/* Bottom Row: 3 Centered Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 max-w-[960px] mx-auto gap-4 sm:gap-6">
           {/* Prize Partner 5: CIEL! Bistro-Bar Tournant */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <div className="w-24 h-24 rounded-full border border-neutral-300 bg-white flex flex-col items-center justify-center text-center p-2 shadow-2xs">
               <span className="text-[7px] font-bold text-neutral-500 uppercase tracking-widest">BISTRO • BAR</span>
               <span className="font-black text-xl text-neutral-900 leading-none my-0.5">ciel!</span>
@@ -135,7 +137,7 @@ export default function GolfPartnersSection() {
           </div>
 
           {/* Prize Partner 6: Niji SUSHI */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <div className="bg-black text-white p-3.5 rounded-lg flex flex-col items-center justify-center w-28 h-20 shadow-xs">
               <span className="font-serif italic text-2xl font-bold leading-none mb-1">Niji</span>
               <span className="font-extrabold text-[9px] tracking-widest uppercase text-neutral-300">SUSHI</span>
@@ -143,10 +145,9 @@ export default function GolfPartnersSection() {
           </div>
 
           {/* Prize Partner 7: Laurier Du Vallon */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <div className="bg-white p-3 rounded-lg flex flex-col items-center justify-center w-40 h-20 shadow-2xs">
               <div className="w-6 h-5 mb-1 text-[#e65c00]">
-                {/* Ribbon origami icon */}
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M4 4h16l-8 8zM4 20l8-8 8 8z" />
                 </svg>
@@ -157,7 +158,7 @@ export default function GolfPartnersSection() {
           </div>
         </div>
 
-        {/* Horizontal Divider Line matching mockup */}
+        {/* Horizontal Divider Line */}
         <div className="w-full h-[1.5px] bg-[#e58a99]/70 dark:bg-[#C6112F]/40 my-10 sm:my-14" />
 
         {/* ═════════════════════════════════════════════════════════ */}
@@ -165,7 +166,7 @@ export default function GolfPartnersSection() {
         {/* ═════════════════════════════════════════════════════════ */}
         <div className="text-center mb-8 sm:mb-10">
           <h2 className="text-lg sm:text-xl md:text-2xl font-black text-[#2b354f] dark:text-white tracking-wider uppercase">
-            PROMOTIONAL PARTNERS
+            {lang === "FR" ? "PARTENAIRES PROMOTIONNELS" : "PROMOTIONAL PARTNERS"}
           </h2>
           <div className="w-14 sm:w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mt-2.5" />
         </div>
