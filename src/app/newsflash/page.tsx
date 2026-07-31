@@ -1,11 +1,9 @@
 import NewsflashClient from "./NewsflashClient";
-import {
-  fetchNewsflashList,
-  NEWSFLASH_REVALIDATE_SECONDS,
-  ApiNewsflashItem,
-} from "@/lib/newsflashApi";
+import { fetchNewsflashList, ApiNewsflashItem } from "@/lib/newsflashApi";
 
-export const revalidate = NEWSFLASH_REVALIDATE_SECONDS;
+// Must be a literal — Next statically analyses segment config exports.
+// Keep in sync with NEWSFLASH_REVALIDATE_SECONDS in @/lib/newsflashApi.
+export const revalidate = 300;
 
 export default async function NewsflashPage() {
   let items: ApiNewsflashItem[] = [];

@@ -12,11 +12,12 @@ import {
   estimateReadingTime,
   formatArticleDate,
   extractPdfUrl,
-  NEWSFLASH_REVALIDATE_SECONDS,
   type ArticleBlock,
 } from "@/lib/newsflashApi";
 
-export const revalidate = NEWSFLASH_REVALIDATE_SECONDS;
+// Must be a literal — Next statically analyses segment config exports.
+// Keep in sync with NEWSFLASH_REVALIDATE_SECONDS in @/lib/newsflashApi.
+export const revalidate = 300;
 
 // Opens a PDF in Google Docs Viewer so it displays inline instead of downloading
 function openPdfUrl(rawUrl: string): string {
