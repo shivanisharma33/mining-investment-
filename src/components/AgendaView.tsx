@@ -1,16 +1,35 @@
 "use client";
 
 import React, { useState } from "react";
-import { AGENDA_DAYS, AgendaItem } from "@/app/past-editions/editionData";
+import { AGENDA_DAYS, AgendaDay, AgendaItem } from "@/app/past-editions/editionData";
 import { useLanguage } from "@/context/LanguageContext";
 
-export default function AgendaView({ year = 2026 }: { year?: number }) {
+interface AgendaViewProps {
+  year?: number;
+  /**
+   * Schedule to render. Supplied by the events API for 2027; past editions omit
+   * it and keep using the bundled AGENDA_DAYS data.
+   */
+  days?: AgendaDay[];
+  eventDates?: string;
+  venue?: string;
+  city?: string;
+}
+
+export default function AgendaView({
+  year = 2026,
+  days,
+  eventDates,
+  venue,
+  city,
+}: AgendaViewProps) {
   const { t } = useLanguage();
   const [activeDayIdx, setActiveDayIdx] = useState<number>(1); // Default to June 2 (first full day)
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
 
-  const activeDay = AGENDA_DAYS[activeDayIdx] || AGENDA_DAYS[0];
+  const agendaDays = days?.length ? days : AGENDA_DAYS;
+  const activeDay = agendaDays[activeDayIdx] || agendaDays[0];
 
   const getBadgeStyle = (type: string) => {
     switch (type) {
@@ -99,7 +118,7 @@ export default function AgendaView({ year = 2026 }: { year?: number }) {
             <div>
               <span className="text-[11px] font-bold text-neutral-400 dark:text-slate-400 uppercase tracking-wider block">{t("agenda-date-label", "Date")}</span>
               <b className="block text-sm sm:text-base font-extrabold text-[#101828] dark:text-white">
-                June 1 &ndash; 4, {year}
+                {eventDates ?? `June 1 – 4, ${year}`}
               </b>
               <span className="text-xs text-[#C6112F] font-extrabold">{t("agenda-4-days", "4 Days Event")}</span>
             </div>
@@ -115,9 +134,9 @@ export default function AgendaView({ year = 2026 }: { year?: number }) {
             <div>
               <span className="text-[11px] font-bold text-neutral-400 dark:text-slate-400 uppercase tracking-wider block">{t("agenda-venue-label", "Venue")}</span>
               <b className="block text-sm sm:text-base font-extrabold text-[#101828] dark:text-white">
-                {t("agenda-venue-name", "Centre des Congrès")}
+                {venue ?? t("agenda-venue-name", "Centre des Congrès")}
               </b>
-              <span className="text-xs text-neutral-500 dark:text-slate-400 font-medium">{t("agenda-venue-city", "Quebec City, Canada")}</span>
+              <span className="text-xs text-neutral-500 dark:text-slate-400 font-medium">{city ?? t("agenda-venue-city", "Quebec City, Canada")}</span>
             </div>
           </div>
 
@@ -190,7 +209,7 @@ export default function AgendaView({ year = 2026 }: { year?: number }) {
 
       {/* 4 Day Tabs Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3.5 mb-8">
-        {AGENDA_DAYS.map((day, idx) => {
+        {agendaDays.map((day, idx) => {
           const isSelected = activeDayIdx === idx;
           const tabTopBorderColor =
             idx === 0

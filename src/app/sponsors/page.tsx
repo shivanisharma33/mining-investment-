@@ -1,14 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
-import SponsorsView from "@/components/SponsorsView";
+import SponsorsView, { SponsorItem } from "@/components/SponsorsView";
 import { useLanguage } from "@/context/LanguageContext";
+import { fetchSponsorsByYear } from "@/lib/sponsorsApi";
+
+const SPONSORS_YEAR = 2027;
 
 export default function SponsorsPage() {
   const { t } = useLanguage();
+  const [sponsors, setSponsors] = useState<SponsorItem[]>([]);
+  const [sponsorsError, setSponsorsError] = useState<string>("");
+  const [sponsorsLoading, setSponsorsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchSponsorsByYear(SPONSORS_YEAR, controller.signal)
+      .then((items) => {
+        setSponsors(items);
+        setSponsorsLoading(false);
+      })
+      .catch((err: unknown) => {
+        if (controller.signal.aborted) return;
+        setSponsorsError(
+          err instanceof Error ? err.message : "Unable to load sponsors"
+        );
+        setSponsorsLoading(false);
+      });
+
+    return () => controller.abort();
+  }, []);
 
   return (
     <>
@@ -61,7 +86,23 @@ export default function SponsorsPage() {
             </p>
 
             {/* Shared Sponsors Component */}
-            <SponsorsView year={2027} />
+            {sponsorsLoading ? (
+              <div className="rounded-2xl border border-neutral-200 bg-white p-10 flex items-center justify-center gap-3">
+                <span className="w-6 h-6 rounded-full border-2 border-neutral-200 border-t-[#C6112F] animate-spin" />
+                <span className="text-xs font-bold uppercase tracking-wider text-neutral-500">
+                  Loading sponsors…
+                </span>
+              </div>
+            ) : sponsorsError ? (
+              <div className="rounded-2xl border border-neutral-200 bg-white p-10 text-center">
+                <p className="font-extrabold text-sm text-neutral-800 mb-1">
+                  Unable to load the {SPONSORS_YEAR} sponsors
+                </p>
+                <p className="text-xs text-neutral-500">{sponsorsError}</p>
+              </div>
+            ) : (
+              <SponsorsView year={SPONSORS_YEAR} sponsors={sponsors} />
+            )}
           </div>
         </section>
 

@@ -6,7 +6,7 @@ export async function GET() {
       headers: {
         "Content-Type": "application/json",
       },
-      next: { revalidate: 60 }, // Cache for 60 seconds
+      next: { revalidate: 300 }, // Upstream takes ~1.2s per call — cache well away from the request path
     });
 
     if (!res.ok) {
@@ -20,7 +20,7 @@ export async function GET() {
     return NextResponse.json(data, {
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
       },
     });
   } catch (error: any) {

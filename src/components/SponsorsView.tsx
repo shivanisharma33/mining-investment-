@@ -3,11 +3,23 @@
 import React, { useState, useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
+export type SponsorTier =
+  | "presenting"
+  | "platinum"
+  | "gold"
+  | "silver"
+  | "copper"
+  | "bronze"
+  | "media"
+  | "government"
+  | "green"
+  | "sustainable";
+
 export interface SponsorItem {
   name: string;
   website: string;
   image?: string;
-  tier: "presenting" | "platinum" | "gold" | "silver" | "copper" | "media" | "government" | "green" | "sustainable";
+  tier: SponsorTier;
 }
 
 const SPONSORS_2026: SponsorItem[] = [
@@ -1172,10 +1184,46 @@ function SponsorLogo({ sponsor }: { sponsor: SponsorItem }) {
   );
 }
 
-export default function SponsorsView({ year = 2026 }: { year?: number }) {
+interface SponsorsViewProps {
+  year?: number;
+  /**
+   * Sponsors for `year`, supplied by the sponsors API for 2027. Past editions
+   * omit it and keep using the bundled SPONSORS_* lists.
+   */
+  sponsors?: SponsorItem[];
+}
+
+const STATIC_YEARS = [2026, 2025, 2024, 2023];
+
+const staticSponsorsFor = (year: number): SponsorItem[] =>
+  year === 2026
+    ? SPONSORS_2026
+    : year === 2025
+    ? SPONSORS_2025
+    : year === 2024
+    ? SPONSORS_2024
+    : SPONSORS_2023;
+
+export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProps) {
   const { t } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number>(year);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  const hasApiSponsors = Boolean(sponsors?.length);
+
+  const yearOptions = useMemo(
+    () =>
+      Array.from(new Set(hasApiSponsors ? [year, ...STATIC_YEARS] : STATIC_YEARS)),
+    [hasApiSponsors, year]
+  );
+
+  const activeList = useMemo(
+    () =>
+      hasApiSponsors && selectedYear === year
+        ? (sponsors as SponsorItem[])
+        : staticSponsorsFor(selectedYear),
+    [hasApiSponsors, sponsors, selectedYear, year]
+  );
 
   const filterOptions = useMemo(() => {
     const baseOptions = [
@@ -1187,21 +1235,17 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
       { id: "media", label: t("sp-partners", "Partners") },
       { id: "government", label: selectedYear === 2025 ? t("sp-special", "Special Sponsors") : t("sp-government", "Government / Special") },
     ];
-    
-    const activeList =
-      selectedYear === 2026
-        ? SPONSORS_2026
-        : selectedYear === 2025
-        ? SPONSORS_2025
-        : selectedYear === 2024
-        ? SPONSORS_2024
-        : SPONSORS_2023;
+
     const hasPresenting = activeList.some((s) => s.tier === "presenting");
     const hasGreen = activeList.some((s) => s.tier === "green");
     const hasSustainable = activeList.some((s) => s.tier === "sustainable");
-    
-    const options = [...baseOptions];
-    
+    const hasBronze = activeList.some((s) => s.tier === "bronze");
+
+    // Only offer tiers this edition actually has.
+    const options = baseOptions.filter(
+      (opt) => opt.id === "all" || activeList.some((s) => s.tier === opt.id)
+    );
+
     if (hasPresenting) {
       options.splice(1, 0, { id: "presenting", label: t("sp-premier", "Premier Sponsor") });
     }
@@ -1211,22 +1255,19 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
     if (hasSustainable) {
       options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "sustainable", label: t("sp-esg", "ESG Sponsor") });
     }
-    
+    if (hasBronze) {
+      const copperIdx = options.findIndex((o) => o.id === "copper");
+      const insertAt = copperIdx >= 0 ? copperIdx + 1 : options.length;
+      options.splice(insertAt, 0, { id: "bronze", label: t("sp-bronze", "Bronze Sponsors") });
+    }
+
     return options;
-  }, [selectedYear]);
- 
+  }, [selectedYear, activeList, t]);
+
   const filteredSponsors = useMemo(() => {
-    const list =
-      selectedYear === 2026
-        ? SPONSORS_2026
-        : selectedYear === 2025
-        ? SPONSORS_2025
-        : selectedYear === 2024
-        ? SPONSORS_2024
-        : SPONSORS_2023;
-    if (selectedCategory === "all") return list;
-    return list.filter((s) => s.tier === selectedCategory);
-  }, [selectedYear, selectedCategory]);
+    if (selectedCategory === "all") return activeList;
+    return activeList.filter((s) => s.tier === selectedCategory);
+  }, [activeList, selectedCategory]);
 
   const handleYearChange = (year: number) => {
     setSelectedYear(year);
@@ -1249,6 +1290,8 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
         return "bg-slate-500/10 text-slate-800 border-slate-500/30";
       case "copper":
         return "bg-orange-500/10 text-orange-800 border-orange-500/30";
+      case "bronze":
+        return "bg-amber-700/10 text-amber-900 border-amber-700/30";
       case "government":
         return "bg-indigo-500/10 text-indigo-800 border-indigo-500/30";
       case "media":
@@ -1273,6 +1316,8 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
         return t("sp-silver", "Silver Sponsors").replace(/s$/, "");
       case "copper":
         return t("sp-copper", "Copper Sponsors").replace(/s$/, "");
+      case "bronze":
+        return t("sp-bronze", "Bronze Sponsors").replace(/s$/, "");
       case "government":
         return selectedYear === 2025 ? t("sp-special", "Special Sponsors").replace(/s$/, "") : t("sp-government", "Government / Special");
       case "media":
@@ -1289,43 +1334,19 @@ export default function SponsorsView({ year = 2026 }: { year?: number }) {
           <span className="text-xs font-black tracking-widest uppercase text-neutral-500 whitespace-nowrap">
             {t("sp-edition", "Sponsor Edition:")}
           </span>
-          <div className="flex gap-2">
-            <button
-              onClick={() => handleYearChange(2026)}
-              className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === 2026
-                  ? "bg-[#C6112F] text-white shadow-md"
-                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                }`}
-            >
-              2026 {t("sp-sponsors", "Sponsors")}
-            </button>
-            <button
-              onClick={() => handleYearChange(2025)}
-              className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === 2025
-                  ? "bg-[#C6112F] text-white shadow-md"
-                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                }`}
-            >
-              2025 {t("sp-sponsors", "Sponsors")}
-            </button>
-            <button
-              onClick={() => handleYearChange(2024)}
-              className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === 2024
-                  ? "bg-[#C6112F] text-white shadow-md"
-                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                }`}
-            >
-              2024 {t("sp-sponsors", "Sponsors")}
-            </button>
-            <button
-              onClick={() => handleYearChange(2023)}
-              className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === 2023
-                  ? "bg-[#C6112F] text-white shadow-md"
-                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                }`}
-            >
-              2023 {t("sp-sponsors", "Sponsors")}
-            </button>
+          <div className="flex gap-2 flex-wrap">
+            {yearOptions.map((yearOption) => (
+              <button
+                key={yearOption}
+                onClick={() => handleYearChange(yearOption)}
+                className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === yearOption
+                    ? "bg-[#C6112F] text-white shadow-md"
+                    : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                  }`}
+              >
+                {yearOption} {t("sp-sponsors", "Sponsors")}
+              </button>
+            ))}
           </div>
         </div>
 

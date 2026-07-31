@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface AgendaPdfViewerProps {
@@ -11,6 +11,37 @@ interface AgendaPdfViewerProps {
   title?: string;
   description?: string;
   fileSize?: string;
+  /**
+   * Download the PDF into a blob before rendering it. Required for the remote
+   * Cloudinary files returned by the agenda API: they are served as
+   * application/octet-stream with no .pdf extension, so browsers refuse to
+   * render them inline and save them as an unknown file type. Local files under
+   * /public/documents (past editions) leave this off and behave as before.
+   */
+  remote?: boolean;
+  eventDates?: string;
+  venue?: string;
+}
+
+/** Approximate page count read straight from the PDF's object structure. */
+function detectPageCount(buffer: ArrayBuffer): number {
+  const text = new TextDecoder("iso-8859-1").decode(buffer);
+
+  const pageObjects = text.match(/\/Type\s*\/Page[^s]/g);
+  if (pageObjects && pageObjects.length > 0) {
+    return Math.min(pageObjects.length, 200);
+  }
+
+  // Fallback: the page-tree /Count entry (only readable on uncompressed PDFs).
+  const counts = Array.from(text.matchAll(/\/Count\s+(\d+)/g)).map((m) =>
+    Number(m[1])
+  );
+  return counts.length ? Math.min(Math.max(...counts), 200) : 1;
+}
+
+function formatFileSize(bytes: number): string {
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
 export default function AgendaPdfViewer({
@@ -21,6 +52,9 @@ export default function AgendaPdfViewer({
   title = "Event Brochure",
   description = "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview, and sponsorship opportunities.",
   fileSize = "0.9 MB",
+  remote = false,
+  eventDates,
+  venue,
 }: AgendaPdfViewerProps) {
   const { lang } = useLanguage();
   const isFr = lang === "FR";
@@ -28,14 +62,63 @@ export default function AgendaPdfViewer({
   const [zoomLevel, setZoomLevel] = useState<number>(100);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [copied, setCopied] = useState<boolean>(false);
+  const [blobUrl, setBlobUrl] = useState<string>("");
+  const [remotePages, setRemotePages] = useState<number>(0);
+  const [remoteSize, setRemoteSize] = useState<string>("");
+  const [loadError, setLoadError] = useState<string>("");
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!remote || !pdfUrl) return;
+
+    const controller = new AbortController();
+    let objectUrl = "";
+
+    (async () => {
+      try {
+        const res = await fetch(pdfUrl, { signal: controller.signal });
+        if (!res.ok) throw new Error(`Request failed (${res.status})`);
+
+        const buffer = await res.arrayBuffer();
+        if (controller.signal.aborted) return;
+
+        // Re-tag as application/pdf so the browser renders it inline and the
+        // download saves a real .pdf instead of an extension-less blob.
+        objectUrl = URL.createObjectURL(
+          new Blob([buffer], { type: "application/pdf" })
+        );
+
+        setBlobUrl(objectUrl);
+        setRemotePages(detectPageCount(buffer));
+        setRemoteSize(formatFileSize(buffer.byteLength));
+        setLoadError("");
+      } catch (err) {
+        if (controller.signal.aborted) return;
+        setLoadError(err instanceof Error ? err.message : "Unable to load PDF");
+      }
+    })();
+
+    return () => {
+      controller.abort();
+      if (objectUrl) URL.revokeObjectURL(objectUrl);
+    };
+  }, [remote, pdfUrl]);
+
+  const isLoading = remote && !blobUrl && !loadError;
+  const resolvedUrl = remote ? blobUrl : pdfUrl;
+  const resolvedPages = remote ? remotePages || 1 : totalPages;
+  const resolvedSize = remote ? remoteSize || fileSize : fileSize;
+  const activePage = Math.min(currentPage, resolvedPages);
+  const downloadName = fileName.toLowerCase().endsWith(".pdf")
+    ? fileName
+    : `${fileName}.pdf`;
 
   const handlePrevPage = () => {
     setCurrentPage((prev) => Math.max(1, prev - 1));
   };
 
   const handleNextPage = () => {
-    setCurrentPage((prev) => Math.min(totalPages, prev + 1));
+    setCurrentPage((prev) => Math.min(resolvedPages, prev + 1));
   };
 
   const handleZoomIn = () => {
@@ -97,7 +180,7 @@ export default function AgendaPdfViewer({
             </div>
             <div>
               <b className="block text-sm sm:text-base font-extrabold text-[#101828] dark:text-white">
-                {isFr ? `1er – 4 juin ${year}` : `June 1 – 4, ${year}`}
+                {eventDates ?? (isFr ? `1er – 4 juin ${year}` : `June 1 – 4, ${year}`)}
               </b>
               <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">
                 {isFr ? "Événement de 4 jours" : "4 Days Event"}
@@ -115,7 +198,7 @@ export default function AgendaPdfViewer({
             </div>
             <div>
               <b className="block text-sm sm:text-base font-extrabold text-[#101828] dark:text-white">
-                Centre des Congr&egrave;s de Qu&eacute;bec
+                {venue ?? "Centre des Congrès de Québec"}
               </b>
               <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">
                 {isFr ? "Ville de Québec, Canada" : "Quebec City, Canada"}
@@ -132,7 +215,11 @@ export default function AgendaPdfViewer({
             </div>
             <div>
               <b className="block text-sm sm:text-base font-extrabold text-[#101828] dark:text-white">
-                PDF, {fileSize} &mdash; {totalPages} {isFr ? "Pages" : "Pages"}
+                {isLoading
+                  ? isFr
+                    ? "Chargement du PDF…"
+                    : "Loading PDF…"
+                  : `PDF, ${resolvedSize} — ${resolvedPages} ${isFr ? "Pages" : "Pages"}`}
               </b>
               <span className="text-xs text-neutral-400 dark:text-slate-400 font-medium">
                 {isFr ? "Ordre du jour • Sujet à changement" : "THE Agenda • Subject to change"}
@@ -147,8 +234,8 @@ export default function AgendaPdfViewer({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
           {/* Left Sidebar Thumbnails (Page 1, 2, 3, 4) */}
           <div className="lg:col-span-3 flex lg:flex-col gap-3.5 overflow-x-auto lg:overflow-y-auto max-h-[750px] p-3 bg-white dark:bg-[#131b2e] rounded-2xl border border-neutral-200/80 dark:border-[#233049] items-center">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((pgNum) => {
-              const isSelected = currentPage === pgNum;
+            {resolvedUrl && Array.from({ length: resolvedPages }, (_, i) => i + 1).map((pgNum) => {
+              const isSelected = activePage === pgNum;
               return (
                 <button
                   key={pgNum}
@@ -162,7 +249,7 @@ export default function AgendaPdfViewer({
                   {/* Miniature PDF Page Live Preview Container */}
                   <div className="w-[105px] h-[136px] bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-neutral-300 dark:border-slate-700 relative shadow-2xs">
                     <iframe
-                      src={`${pdfUrl}#page=${pgNum}&toolbar=0&navpanes=0&scrollbar=0`}
+                      src={`${resolvedUrl}#page=${pgNum}&toolbar=0&navpanes=0&scrollbar=0`}
                       className="w-[315px] h-[408px] border-none pointer-events-none origin-top-left transform scale-[0.333]"
                       title={`Page ${pgNum} preview`}
                     />
@@ -179,11 +266,31 @@ export default function AgendaPdfViewer({
           <div className="lg:col-span-9 flex flex-col gap-3">
             {/* Embedded PDF iframe */}
             <div className="bg-white dark:bg-[#131b2e] rounded-2xl border border-neutral-200/90 dark:border-[#233049] shadow-md overflow-hidden p-2">
-              <iframe
-                src={`${pdfUrl}#page=${currentPage}&zoom=${zoomLevel}&toolbar=0&navpanes=0&scrollbar=1`}
-                className="w-full h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800"
-                title={`${year} Brochure Document`}
-              />
+              {loadError ? (
+                <div className="w-full h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 flex flex-col items-center justify-center gap-2 text-center px-6">
+                  <svg className="w-10 h-10 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v5M12 16.5v.01" />
+                  </svg>
+                  <p className="font-extrabold text-sm text-neutral-800 dark:text-white">
+                    {isFr ? "Impossible de charger le PDF" : "Unable to load the PDF"}
+                  </p>
+                  <p className="text-xs text-neutral-500 dark:text-slate-400">{loadError}</p>
+                </div>
+              ) : !resolvedUrl ? (
+                <div className="w-full h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 flex flex-col items-center justify-center gap-3">
+                  <span className="w-8 h-8 rounded-full border-2 border-neutral-200 dark:border-slate-700 border-t-[#C6112F] animate-spin" />
+                  <p className="text-xs font-bold text-neutral-500 dark:text-slate-400 uppercase tracking-wider">
+                    {isFr ? "Chargement du document…" : "Loading document…"}
+                  </p>
+                </div>
+              ) : (
+                <iframe
+                  src={`${resolvedUrl}#page=${activePage}&zoom=${zoomLevel}&toolbar=0&navpanes=0&scrollbar=1`}
+                  className="w-full h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800"
+                  title={`${year} Brochure Document`}
+                />
+              )}
             </div>
 
             {/* Bottom Controls Bar */}
@@ -192,17 +299,17 @@ export default function AgendaPdfViewer({
               <div className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 rounded-xl px-3 py-1.5 flex items-center gap-3 text-xs font-mono font-extrabold text-neutral-800 dark:text-white">
                 <button
                   onClick={handlePrevPage}
-                  disabled={currentPage <= 1}
+                  disabled={activePage <= 1}
                   className="w-6 h-6 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all"
                 >
                   ‹
                 </button>
                 <span>
-                  {currentPage} / {totalPages}
+                  {activePage} / {resolvedPages}
                 </span>
                 <button
                   onClick={handleNextPage}
-                  disabled={currentPage >= totalPages}
+                  disabled={activePage >= resolvedPages}
                   className="w-6 h-6 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all"
                 >
                   ›
@@ -263,14 +370,20 @@ export default function AgendaPdfViewer({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* DOWNLOAD BROCHURE BUTTON */}
         <a
-          href={pdfUrl}
-          download={fileName}
-          className="w-full py-4 px-6 bg-[#C6112F] hover:bg-[#a80e27] text-white font-extrabold text-sm uppercase tracking-wider rounded-2xl shadow-md shadow-[#C6112F]/20 hover:shadow-lg transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-3 text-center"
+          href={resolvedUrl || undefined}
+          download={downloadName}
+          type="application/pdf"
+          aria-disabled={!resolvedUrl}
+          className={`w-full py-4 px-6 bg-[#C6112F] text-white font-extrabold text-sm uppercase tracking-wider rounded-2xl shadow-md shadow-[#C6112F]/20 transition-all duration-300 flex items-center justify-center gap-3 text-center ${
+            resolvedUrl
+              ? "hover:bg-[#a80e27] hover:shadow-lg hover:scale-[1.01] active:scale-[0.99]"
+              : "opacity-60 pointer-events-none"
+          }`}
         >
           <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
           </svg>
-          <span>DOWNLOAD BROCHURE</span>
+          <span>{resolvedUrl ? "DOWNLOAD BROCHURE" : "PREPARING DOWNLOAD…"}</span>
         </a>
 
         {/* SHARE BROCHURE BUTTON */}

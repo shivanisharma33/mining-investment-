@@ -5,6 +5,12 @@ import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
+import {
+  submitInvestorRegistration,
+  submitCompanyRegistration,
+  RegistrationError,
+  ProjectStage,
+} from "@/lib/registrationsApi";
 
 export default function RegisterPage() {
   const { t, lang } = useLanguage();
@@ -39,19 +45,114 @@ export default function RegisterPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string>("");
+  const [registrationNumber, setRegistrationNumber] = useState<string>("");
 
-  const handleInvestorSubmit = (e: React.FormEvent) => {
+  const handleInvestorSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const result = await submitInvestorRegistration({
+        companyName: investorFormData.companyName.trim(),
+        firstName: investorFormData.firstName.trim(),
+        lastName: investorFormData.lastName.trim(),
+        businessTitle: investorFormData.businessTitle.trim(),
+        city: investorFormData.city.trim(),
+        country: investorFormData.country.trim(),
+        email: investorFormData.email.trim(),
+        phone: investorFormData.phone.trim(),
+        assetsUnderManagement: investorFormData.aum,
+        investorType: investorFormData.investorType,
+        signUpForNews: investorFormData.newsletterOptIn,
+      });
+
+      setRegistrationNumber(result.registrationNumber ?? "");
+      setSubmitted(true);
+      setInvestorFormData({
+        companyName: "",
+        firstName: "",
+        lastName: "",
+        businessTitle: "",
+        city: "",
+        country: "",
+        email: "",
+        phone: "",
+        aum: "",
+        investorType: "Institutional Investor",
+        newsletterOptIn: true,
+      });
+    } catch (err) {
+      const fieldMessage =
+        err instanceof RegistrationError && err.fieldErrors.length > 0
+          ? err.fieldErrors.map((fe) => fe.message).join(" · ")
+          : "";
+      setSubmitError(
+        fieldMessage ||
+          (err instanceof Error ? err.message : "Something went wrong. Please try again.")
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleCompanySubmit = (e: React.FormEvent) => {
+  const handleCompanySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const result = await submitCompanyRegistration({
+        companyName: companyFormData.companyName.trim(),
+        marketCap: companyFormData.marketCap.trim(),
+        primaryExchangeTicker: companyFormData.ticker.trim(),
+        commodity: companyFormData.commodity.trim(),
+        projectStage: companyFormData.projectStage as ProjectStage,
+        location: companyFormData.location.trim(),
+        email: companyFormData.email.trim(),
+        signUpForNews: companyFormData.newsletterOptIn,
+      });
+
+      setRegistrationNumber(result.registrationNumber ?? "");
+      setSubmitted(true);
+      setCompanyFormData({
+        companyName: "",
+        marketCap: "",
+        ticker: "",
+        commodity: "",
+        projectStage: "Explorer",
+        location: "",
+        email: "",
+        newsletterOptIn: true,
+      });
+    } catch (err) {
+      const fieldMessage =
+        err instanceof RegistrationError && err.fieldErrors.length > 0
+          ? err.fieldErrors.map((fe) => fe.message).join(" · ")
+          : "";
+      setSubmitError(
+        fieldMessage ||
+          (err instanceof Error ? err.message : "Something went wrong. Please try again.")
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const selectTrack = (track: "investor" | "company") => {
+    setActiveTrack(track);
+    // The error banner is shared by both forms — don't carry it across.
+    setSubmitError("");
   };
 
   const scrollToForm = (track: "investor" | "company") => {
-    setActiveTrack(track);
+    selectTrack(track);
     const formElement = document.getElementById("registration-form-section");
     if (formElement) {
       formElement.scrollIntoView({ behavior: "smooth" });
@@ -244,7 +345,7 @@ export default function RegisterPage() {
             {/* Form Track Switcher Tabs */}
             <div className="flex justify-center gap-3 mb-10">
               <button
-                onClick={() => setActiveTrack("investor")}
+                onClick={() => selectTrack("investor")}
                 className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
                   activeTrack === "investor"
                     ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
@@ -254,7 +355,7 @@ export default function RegisterPage() {
                 Investor Registration Form
               </button>
               <button
-                onClick={() => setActiveTrack("company")}
+                onClick={() => selectTrack("company")}
                 className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
                   activeTrack === "company"
                     ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
@@ -279,8 +380,22 @@ export default function RegisterPage() {
                   <p className="text-neutral-600 text-sm max-w-lg mx-auto mb-8 leading-relaxed font-medium">
                     Thank you for completing your {activeTrack === "investor" ? "Investor" : "Company"} registration form. Our credentials team will review your information and issue official invitation details shortly.
                   </p>
+                  {registrationNumber && (
+                    <div className="max-w-xs mx-auto mb-8 px-5 py-4 rounded-2xl bg-neutral-50 border border-neutral-200">
+                      <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-neutral-500 mb-1">
+                        Registration Number
+                      </span>
+                      <b className="text-lg font-black text-[#1a1f2c] tracking-wide">
+                        {registrationNumber}
+                      </b>
+                    </div>
+                  )}
                   <button
-                    onClick={() => setSubmitted(false)}
+                    onClick={() => {
+                      setSubmitted(false);
+                      setRegistrationNumber("");
+                      setSubmitError("");
+                    }}
                     className="px-8 py-3.5 rounded-xl bg-[#0f1117] text-white text-xs font-extrabold uppercase tracking-widest hover:bg-[#C6112F] transition-all"
                   >
                     Submit Another Application
@@ -303,10 +418,11 @@ export default function RegisterPage() {
                     {/* Company Name */}
                     <div>
                       <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                        Company Name
+                        Company Name <span className="text-[#C6112F] font-bold">(required)</span>
                       </label>
                       <input
                         type="text"
+                        required
                         value={investorFormData.companyName}
                         onChange={(e) =>
                           setInvestorFormData({ ...investorFormData, companyName: e.target.value })
@@ -496,12 +612,28 @@ export default function RegisterPage() {
                       </label>
                     </div>
 
+                    {/* Submission Error */}
+                    {submitError && (
+                      <div
+                        role="alert"
+                        className="px-5 py-4 rounded-2xl bg-rose-50 border border-[#C6112F]/30 text-[#8a091e] text-xs sm:text-sm font-semibold leading-relaxed"
+                      >
+                        {submitError}
+                      </div>
+                    )}
+
                     {/* Submit Button */}
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-2xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-black tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/25 hover:scale-[1.01] transition-all duration-300"
+                      disabled={isSubmitting}
+                      className="w-full py-4 rounded-2xl bg-[#C6112F] text-white text-xs sm:text-sm font-black tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/25 transition-all duration-300 flex items-center justify-center gap-3 enabled:hover:bg-[#a50e27] enabled:hover:scale-[1.01] disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      Complete Investor Registration
+                      {isSubmitting && (
+                        <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                      )}
+                      <span>
+                        {isSubmitting ? "Submitting…" : "Complete Investor Registration"}
+                      </span>
                     </button>
                   </form>
                 </div>
@@ -536,10 +668,11 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Company Name
+                          Company Name <span className="text-[#C6112F] font-bold">(required)</span>
                         </label>
                         <input
                           type="text"
+                          required
                           value={companyFormData.companyName}
                           onChange={(e) =>
                             setCompanyFormData({ ...companyFormData, companyName: e.target.value })
@@ -669,12 +802,26 @@ export default function RegisterPage() {
                       </label>
                     </div>
 
+                    {/* Submission Error */}
+                    {submitError && (
+                      <div
+                        role="alert"
+                        className="px-5 py-4 rounded-2xl bg-rose-50 border border-[#C6112F]/30 text-[#8a091e] text-xs sm:text-sm font-semibold leading-relaxed"
+                      >
+                        {submitError}
+                      </div>
+                    )}
+
                     {/* Submit Button */}
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-2xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-black tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/25 hover:scale-[1.01] transition-all duration-300"
+                      disabled={isSubmitting}
+                      className="w-full py-4 rounded-2xl bg-[#C6112F] text-white text-xs sm:text-sm font-black tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/25 transition-all duration-300 flex items-center justify-center gap-3 enabled:hover:bg-[#a50e27] enabled:hover:scale-[1.01] disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      Submit
+                      {isSubmitting && (
+                        <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                      )}
+                      <span>{isSubmitting ? "Submitting…" : "Submit"}</span>
                     </button>
                   </form>
                 </div>

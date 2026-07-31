@@ -1,16 +1,87 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import AgendaView from "@/components/AgendaView";
 import AgendaPdfViewer from "@/components/AgendaPdfViewer";
 import { useLanguage } from "@/context/LanguageContext";
+import { fetchPdfAgendaByYear, AgendaApiItem } from "@/lib/agendaApi";
+import { downloadPdf } from "@/lib/downloadPdf";
+import {
+  fetchEventByYear,
+  mapEventAgendaToDays,
+  formatEventDates,
+  EventApiItem,
+} from "@/lib/eventsApi";
+
+const AGENDA_YEAR = 2027;
+
+const agendaFileName = (agenda: AgendaApiItem) =>
+  `${agenda.slug || `agenda-${agenda.year}`}.pdf`;
 
 export default function AgendaPage() {
   const { t } = useLanguage();
   const [viewMode, setViewMode] = useState<"pdf" | "interactive">("interactive");
+  const [agenda, setAgenda] = useState<AgendaApiItem | null>(null);
+  const [agendaError, setAgendaError] = useState<string>("");
+  const [agendaLoading, setAgendaLoading] = useState<boolean>(true);
+  const [isDownloading, setIsDownloading] = useState<boolean>(false);
+  const [event, setEvent] = useState<EventApiItem | null>(null);
+  const [eventLoading, setEventLoading] = useState<boolean>(true);
+
+  const handleDownload = async () => {
+    if (!agenda?.pdfUrl || isDownloading) return;
+
+    setIsDownloading(true);
+    try {
+      await downloadPdf(agenda.pdfUrl, agendaFileName(agenda));
+    } catch (err) {
+      console.error("Agenda download failed:", err);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchPdfAgendaByYear(AGENDA_YEAR, controller.signal)
+      .then((item) => {
+        setAgenda(item);
+        setAgendaLoading(false);
+      })
+      .catch((err: unknown) => {
+        if (controller.signal.aborted) return;
+        setAgendaError(
+          err instanceof Error ? err.message : "Unable to load the agenda"
+        );
+        setAgendaLoading(false);
+      });
+
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchEventByYear(AGENDA_YEAR, controller.signal)
+      .then((item) => {
+        setEvent(item);
+        setEventLoading(false);
+      })
+      .catch((err: unknown) => {
+        if (controller.signal.aborted) return;
+        // The interactive view falls back to the bundled schedule on failure.
+        console.error("Event schedule request failed:", err);
+        setEventLoading(false);
+      });
+
+    return () => controller.abort();
+  }, []);
+
+  const eventDays = event ? mapEventAgendaToDays(event) : undefined;
 
   return (
     <>
@@ -49,17 +120,25 @@ export default function AgendaPage() {
                 <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
               </div>
               <div className="shrink-0">
-                <a
-                  href="/documents/2026-agenda.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#A30E26] text-white text-xs font-extrabold tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#C6112F]/25 hover:scale-105"
+                <button
+                  onClick={handleDownload}
+                  type="button"
+                  disabled={!agenda?.pdfUrl || isDownloading}
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#C6112F] text-white text-xs font-extrabold tracking-wider uppercase transition-all duration-300 shadow-lg shadow-[#C6112F]/25 enabled:hover:bg-[#A30E26] enabled:hover:scale-105 enabled:cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <span>Download Official PDF Agenda</span>
-                </a>
+                  {isDownloading ? (
+                    <span className="w-4 h-4 shrink-0 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                  ) : (
+                    <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  )}
+                  <span>
+                    {isDownloading
+                      ? "Preparing Download…"
+                      : "Download Official PDF Agenda"}
+                  </span>
+                </button>
               </div>
             </div>
           </div>
@@ -111,9 +190,59 @@ export default function AgendaPage() {
 
             {/* Display Mode Content */}
             {viewMode === "pdf" ? (
-              <AgendaPdfViewer year={2027} pdfUrl="/documents/2026-agenda.pdf" title="Event Agenda 2027" />
+              agendaError ? (
+                <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 text-center">
+                  <p className="font-extrabold text-sm text-neutral-800 dark:text-white mb-1">
+                    Unable to load the {AGENDA_YEAR} agenda
+                  </p>
+                  <p className="text-xs text-neutral-500 dark:text-slate-400">{agendaError}</p>
+                </div>
+              ) : agendaLoading ? (
+                <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 flex items-center justify-center gap-3">
+                  <span className="w-6 h-6 rounded-full border-2 border-neutral-200 dark:border-slate-700 border-t-[#C6112F] animate-spin" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
+                    Loading agenda…
+                  </span>
+                </div>
+              ) : agenda ? (
+                <AgendaPdfViewer
+                  remote
+                  year={agenda.year}
+                  pdfUrl={agenda.pdfUrl}
+                  title={agenda.title}
+                  description={
+                    agenda.description ||
+                    "Explore the complete agenda to discover event details, key themes, speaker highlights, session schedule, and networking opportunities."
+                  }
+                  eventDates={agenda.eventDates}
+                  venue={agenda.venue}
+                  fileName={agendaFileName(agenda)}
+                />
+              ) : (
+                <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 text-center">
+                  <p className="font-extrabold text-sm text-neutral-800 dark:text-white mb-1">
+                    No PDF agenda published for {AGENDA_YEAR} yet
+                  </p>
+                  <p className="text-xs text-neutral-500 dark:text-slate-400">
+                    Switch to the interactive schedule in the meantime.
+                  </p>
+                </div>
+              )
+            ) : eventLoading ? (
+              <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 flex items-center justify-center gap-3">
+                <span className="w-6 h-6 rounded-full border-2 border-neutral-200 dark:border-slate-700 border-t-[#C6112F] animate-spin" />
+                <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
+                  Loading schedule…
+                </span>
+              </div>
             ) : (
-              <AgendaView year={2027} />
+              <AgendaView
+                year={AGENDA_YEAR}
+                days={eventDays}
+                eventDates={event ? formatEventDates(event) : undefined}
+                venue={event?.venue}
+                city={event?.location}
+              />
             )}
           </div>
         </section>
