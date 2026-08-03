@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default function EventHighlightsMedia() {
   const { t } = useLanguage();
@@ -15,14 +16,15 @@ export default function EventHighlightsMedia() {
         {/* Top Section: Header & Media Stats Row */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           {/* Left Column: Text Header */}
-          <div className="flex flex-col items-start text-left max-w-[520px]">
-            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
+          <div className="flex flex-col items-start text-left max-w-[520px] group">
+            <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase mb-2 block transition-all duration-300 group-hover:tracking-[0.32em]">
               {t("highlights-tag", "MEDIA")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
-              {t("highlights-title", "Event Highlights")}
-            </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
+            <AnimatedHeading
+              text={t("highlights-title", "Event Highlights")}
+              className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3"
+            />
+            <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
             <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium">
               {t(
                 "highlights-desc",
@@ -94,46 +96,47 @@ export default function EventHighlightsMedia() {
           {/* Column 1 (Left Side) */}
           <div className="flex flex-col gap-5 sm:gap-6">
             {/* Top Item: Tall Vertical Executive Photo */}
-            <div className="group relative w-full h-[260px] xs:h-[320px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+            <div className="group relative w-full h-[280px] xs:h-[340px] sm:h-[440px] rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-[#233049] bg-neutral-900 shadow-xs card-shimmer hover:shadow-[0_15px_35px_rgba(198,17,47,0.2)] hover:border-[#C6112F] hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               <img
                 src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-10.jpg"
                 alt="Executive delegates networking reception"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
-            {/* Bottom Row: 2 Small Photos */}
+            {/* Middle Row: 2 Small Photos */}
             <div className="grid grid-cols-2 gap-4 sm:gap-5">
-              <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+              <div className="group relative w-full h-[160px] sm:h-[200px] rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-[#233049] bg-neutral-900 shadow-xs card-shimmer hover:shadow-[0_12px_28px_rgba(198,17,47,0.2)] hover:border-[#C6112F] hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                 <img
                   src="/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-3.jpg"
                   alt="Student delegates collaborating"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
-              <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+              {/* Replaced with New Speaker Podium Photo */}
+              <div className="group relative w-full h-[160px] sm:h-[200px] rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-[#233049] bg-neutral-900 shadow-xs card-shimmer hover:shadow-[0_12px_28px_rgba(198,17,47,0.2)] hover:border-[#C6112F] hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                 <img
-                  src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-12.jpg"
-                  alt="Delegates group at evening reception"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
+                  src="/gallery%20photos/MAIN%20EVENT/speaker-podium.jpg"
+                  alt="Keynote presentation speaker at podium"
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
 
-            {/* Bottom Wide Banner: Close-up Microphone */}
-            <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+            {/* Bottom 3rd Banner: Replaced with New Quebec Entrance Photo */}
+            <div className="group relative w-full h-[190px] sm:h-[230px] rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-[#233049] bg-neutral-900 shadow-xs card-shimmer hover:shadow-[0_12px_28px_rgba(198,17,47,0.2)] hover:border-[#C6112F] hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               <img
-                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-13.jpg"
-                alt="Stage presentation speaker"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                src="/gallery%20photos/MAIN%20EVENT/quebec-entrance.jpg"
+                alt="Quebec City Mining Investment Event entrance"
+                className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
               />
@@ -144,44 +147,44 @@ export default function EventHighlightsMedia() {
           <div className="flex flex-col gap-5 sm:gap-6">
             {/* Top Row: 2 Small Photos */}
             <div className="grid grid-cols-2 gap-4 sm:gap-5">
-              <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+              <div className="group relative w-full h-[160px] sm:h-[200px] rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-[#233049] bg-neutral-900 shadow-xs card-shimmer hover:shadow-[0_12px_28px_rgba(198,17,47,0.2)] hover:border-[#C6112F] hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                 <img
                   src="/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-8.jpg"
                   alt="Student delegates at panel discussion"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
-              <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+              <div className="group relative w-full h-[160px] sm:h-[200px] rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-[#233049] bg-neutral-900 shadow-xs card-shimmer hover:shadow-[0_12px_28px_rgba(198,17,47,0.2)] hover:border-[#C6112F] hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                 <img
                   src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-15.jpg"
                   alt="Conference audience delegates"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
+                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
 
-            {/* Middle Wide Banner: Close-up Microphone */}
-            <div className="group relative w-full h-[150px] sm:h-[180px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+            {/* Middle Wide Banner */}
+            <div className="group relative w-full h-[190px] sm:h-[230px] rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-[#233049] bg-neutral-900 shadow-xs card-shimmer hover:shadow-[0_12px_28px_rgba(198,17,47,0.2)] hover:border-[#C6112F] hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               <img
                 src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-16.jpg"
                 alt="Keynote presentation audience"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
               />
             </div>
 
             {/* Bottom Item: Tall Vertical Executive Photo */}
-            <div className="group relative w-full h-[260px] xs:h-[320px] sm:h-[420px] rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-900 shadow-xs hover:shadow-md transition-all">
+            <div className="group relative w-full h-[280px] xs:h-[340px] sm:h-[440px] rounded-2xl overflow-hidden border border-neutral-200/80 dark:border-[#233049] bg-neutral-900 shadow-xs card-shimmer hover:shadow-[0_15px_35px_rgba(198,17,47,0.2)] hover:border-[#C6112F] hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               <img
                 src="/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-12.jpg"
                 alt="Students networking at Mining Investment Event"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
               />

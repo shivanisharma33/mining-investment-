@@ -393,13 +393,16 @@ export default function Navbar() {
           {/* Language Toggle Switch (Desktop) */}
           <button
             onClick={() => setLang(lang === "EN" ? "FR" : "EN")}
-            className="hidden lg:flex relative items-center w-[80px] xl:w-[96px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs"
+            className="hidden lg:flex relative items-center w-[80px] xl:w-[96px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group overflow-hidden"
             aria-label={`Switch language to ${lang === "EN" ? "FR" : "EN"}`}
           >
             {/* Sliding Indicator */}
             <span
-              className="absolute top-[2px] h-[26px] xl:h-[30px] w-[38px] xl:w-[44px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out"
-              style={{ left: lang === "EN" ? "2px" : "calc(100% - 40px)" }}
+              className="absolute top-[2px] h-[26px] xl:h-[30px] w-[36px] xl:w-[44px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out z-0"
+              style={{
+                left: lang === "EN" ? "2px" : "calc(100% - 2px)",
+                transform: lang === "EN" ? "translateX(0)" : "translateX(-100%)",
+              }}
             />
             {/* EN Label */}
             <span
@@ -437,14 +440,17 @@ export default function Navbar() {
           {/* Day / Night Mode Toggle Switch (Right Corner) */}
           <button
             onClick={toggleTheme}
-            className="relative flex items-center justify-between px-1.5 w-[72px] sm:w-[78px] xl:w-[86px] h-[32px] sm:h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group"
+            className="relative flex items-center justify-between px-1.5 w-[72px] sm:w-[78px] xl:w-[86px] h-[32px] sm:h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group overflow-hidden"
             aria-label={`Switch to ${theme === "light" ? "Night" : "Day"} mode`}
             title={theme === "light" ? "Switch to Night mode" : "Switch to Day mode"}
           >
-            {/* Sliding Indicator */}
+            {/* Sliding Indicator Circle */}
             <span
-              className="absolute top-[2px] h-[24px] sm:h-[26px] xl:h-[30px] w-[30px] sm:w-[34px] xl:w-[38px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs"
-              style={{ left: theme === "light" ? "2px" : "calc(100% - 32px)" }}
+              className="absolute top-[2px] h-[24px] sm:h-[26px] xl:h-[30px] w-[24px] sm:w-[26px] xl:w-[30px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs z-20"
+              style={{
+                left: theme === "light" ? "2px" : "calc(100% - 2px)",
+                transform: theme === "light" ? "translateX(0)" : "translateX(-100%)",
+              }}
             >
               {theme === "light" ? (
                 <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-amber-300 fill-amber-300" viewBox="0 0 24 24">

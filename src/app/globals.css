@@ -236,3 +236,168 @@ p, blockquote, figcaption {
   -webkit-text-wrap: pretty;
 }
 
+/* ═══════════════════════════════════════════════════════════════════
+   PREMIUM CARD ANIMATION KEYFRAMES & UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════════ */
+
+@keyframes cardShimmer {
+  0% {
+    transform: translateX(-150%) rotate(25deg);
+  }
+  100% {
+    transform: translateX(250%) rotate(25deg);
+  }
+}
+
+@keyframes crimsonGlowPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(198, 17, 47, 0.15);
+    border-color: rgba(198, 17, 47, 0.4);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(198, 17, 47, 0.35);
+    border-color: rgba(198, 17, 47, 0.8);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes borderBeam {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Shimmer overlay class for card hover */
+.card-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.card-shimmer::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 70%
+  );
+  transform: translateX(-150%) rotate(25deg);
+  pointer-events: none;
+  z-index: 15;
+  transition: opacity 0.3s ease;
+}
+.card-shimmer:hover::before {
+  animation: cardShimmer 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .card-shimmer::before {
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(198, 17, 47, 0.18) 50%,
+    transparent 70%
+  );
+}
+
+/* Elevated Hover Card effect */
+.interactive-card {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease,
+              background-color 0.35s ease;
+}
+.interactive-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 20px 35px -8px rgba(198, 17, 47, 0.18), 0 10px 15px -5px rgba(0, 0, 0, 0.08);
+  border-color: rgba(198, 17, 47, 0.7);
+}
+
+.dark .interactive-card:hover {
+  box-shadow: 0 20px 40px -8px rgba(198, 17, 47, 0.3), 0 10px 20px -5px rgba(0, 0, 0, 0.6);
+  border-color: rgba(198, 17, 47, 0.8);
+}
+
+/* Pulsing Red Glow */
+.pulse-glow {
+  animation: crimsonGlowPulse 3s ease-in-out infinite;
+}
+
+/* Floating element */
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+/* Animated Section Heading Utilities */
+.heading-badge {
+  letter-spacing: 0.28em;
+  transition: all 0.4s ease;
+  background: linear-gradient(135deg, #C6112F 0%, #e63956 50%, #C6112F 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s linear infinite;
+}
+
+.heading-underline {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #C6112F, #ff4d6d, #C6112F);
+  background-size: 200% 100%;
+  animation: gradientSlide 3s linear infinite;
+  box-shadow: 0 0 12px rgba(198, 17, 47, 0.45);
+  transition: width 0.4s ease, transform 0.4s ease;
+}
+
+@keyframes textShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes gradientSlide {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* Character-by-Character Slide Left Animation */
+.char-slide-left-hidden {
+  opacity: 0;
+  transform: translateX(28px) translateY(2px);
+  filter: blur(4px);
+}
+
+.char-slide-left-active {
+  animation: charSlideLeft 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes charSlideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(28px) translateY(2px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+    filter: blur(0);
+  }
+}
+
+

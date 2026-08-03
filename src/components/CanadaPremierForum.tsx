@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default function CanadaPremierForum() {
   const { lang, t } = useLanguage();
@@ -23,14 +24,15 @@ export default function CanadaPremierForum() {
       <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Text Stack, Pink Callout & Bullets */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
+          <div className="lg:col-span-6 flex flex-col items-start text-left group">
+            <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase mb-2 block transition-all duration-300 group-hover:tracking-[0.32em]">
               {t("forum-tag", "THE CONFERENCE")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
-              {t("forum-title", "Canada's Premier Mining Forum")}
-            </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
+            <AnimatedHeading
+              text={t("forum-title", "Canada's Premier Mining Forum")}
+              className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3"
+            />
+            <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
 
             <p className="text-neutral-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 max-w-[500px] font-medium">
               {lang === "FR" ? (
@@ -113,11 +115,11 @@ export default function CanadaPremierForum() {
             <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none z-0" />
 
             {/* Primary Hero Image Card */}
-            <div className="relative z-10 rounded-3xl overflow-hidden border border-neutral-200/90 shadow-[0_20px_45px_rgba(0,0,0,0.08)] w-full max-w-[460px] aspect-[4/3] bg-neutral-900 group">
+            <div className="relative z-10 rounded-3xl overflow-hidden border border-neutral-200/90 dark:border-[#233049] shadow-[0_20px_45px_rgba(0,0,0,0.08)] w-full max-w-[460px] aspect-[4/3] bg-neutral-900 group card-shimmer hover:shadow-[0_20px_45px_rgba(198,17,47,0.2)] transition-all duration-500 cursor-pointer">
               <img
                 src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-4.jpg"
                 alt="Conference delegates networking at Mining Investment Event"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                 loading="lazy"
                 decoding="async"
               />
@@ -125,18 +127,18 @@ export default function CanadaPremierForum() {
 
               {/* Bottom Image Tag */}
               <div className="absolute bottom-4 left-4 z-20 text-white">
-                <span className="text-[9px] sm:text-[10px] font-black tracking-[0.2em] uppercase bg-[#C6112F] px-3 py-1 rounded-full">
+                <span className="text-[9px] sm:text-[10px] font-black tracking-[0.2em] uppercase bg-[#C6112F] px-3 py-1 rounded-full shadow-md group-hover:scale-105 transition-transform duration-300">
                   TIER 1 GLOBAL FORUM
                 </span>
               </div>
             </div>
 
             {/* Overlapping Accent Card with Clean Frame */}
-            <div className="absolute -bottom-4 left-1 sm:-bottom-6 sm:-left-2 z-20 w-[46%] sm:w-[48%] rounded-2xl overflow-hidden border-4 border-white dark:border-[#131b2e] shadow-[0_15px_35px_rgba(0,0,0,0.14)] aspect-[4/3] bg-white dark:bg-[#131b2e] group/small hover:scale-105 transition-transform duration-300 cursor-pointer">
+            <div className="absolute -bottom-4 left-1 sm:-bottom-6 sm:-left-2 z-20 w-[46%] sm:w-[48%] rounded-2xl overflow-hidden border-4 border-white dark:border-[#131b2e] shadow-[0_15px_35px_rgba(0,0,0,0.14)] aspect-[4/3] bg-white dark:bg-[#131b2e] group/small card-shimmer hover:scale-105 hover:shadow-[0_20px_40px_rgba(198,17,47,0.3)] transition-all duration-300 cursor-pointer">
               <img
                 src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-20.jpg"
                 alt="Delegates group at Mining Investment Event"
-                className="w-full h-full object-cover group-hover/small:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover/small:scale-108 transition-transform duration-500"
                 loading="lazy"
                 decoding="async"
               />

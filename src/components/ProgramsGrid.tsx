@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 const categories = ["ALL", "EDUCATION", "LEADERSHIP", "INSTITUTIONAL", "DIALOGUE"];
 
@@ -88,14 +89,15 @@ export default function ProgramsGrid() {
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
       {/* Header Container */}
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 mb-8 sm:mb-10 text-center">
-        <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 mb-8 sm:mb-10 text-center group">
+        <span className="heading-badge text-xs font-extrabold uppercase mb-2 block transition-all duration-300 group-hover:tracking-[0.32em]">
           {t("programs-tag", "FEATURED INITIATIVES")}
         </span>
-        <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
-          {t("programs-title", "Key Event Programs")}
-        </h2>
-        <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-8" />
+        <AnimatedHeading
+          text={t("programs-title", "Key Event Programs")}
+          className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3"
+        />
+        <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mx-auto mb-8" />
 
         {/* Program Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
@@ -119,7 +121,7 @@ export default function ProgramsGrid() {
         {filteredPrograms.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col sm:flex-row w-full h-auto sm:min-h-[380px] lg:min-h-[420px] rounded-none group relative border-none"
+            className="flex flex-col sm:flex-row w-full h-auto sm:min-h-[380px] lg:min-h-[420px] rounded-none group relative border-none card-shimmer cursor-pointer"
           >
             {item.imageOnLeft ? (
               <>
@@ -128,29 +130,30 @@ export default function ProgramsGrid() {
                   <img
                     src={item.image}
                     alt={item.imageAlt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-none"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 rounded-none"
                     loading="lazy"
                     decoding="async"
                   />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
 
                 {/* Clean Origami Text Block (Right Half) */}
-                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] dark:bg-[#131b2e] overflow-hidden rounded-none group-hover:bg-[#e4e4e4] dark:group-hover:bg-[#1a2238] transition-colors duration-300">
+                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] dark:bg-[#131b2e] overflow-hidden rounded-none group-hover:bg-[#e2e2e2] dark:group-hover:bg-[#1a2238] transition-colors duration-300">
                   {/* Origami Faceted Polygon Background */}
-                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40 dark:opacity-10">
+                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40 dark:opacity-10 group-hover:scale-105 transition-transform duration-700">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 400">
                       <polygon points="0,0 400,0 280,400 0,400" fill="#ffffff" />
                     </svg>
                   </div>
 
                   <div className="relative z-10">
-                    <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
+                    <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block group-hover:translate-x-1 transition-transform duration-300">
                       {item.category}
                     </span>
                     <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] dark:text-white leading-snug mb-2.5">
                       {item.title}
                     </h3>
-                    <div className="w-12 h-[2px] bg-[#C6112F] rounded-full mb-3" />
+                    <div className="w-12 group-hover:w-20 h-[2.5px] bg-[#C6112F] rounded-full mb-3 transition-all duration-300" />
                     <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
                       {item.description}
                     </p>
@@ -163,7 +166,7 @@ export default function ProgramsGrid() {
                       className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
                     >
                       <span>{item.cta}</span>
-                      <span className="text-base leading-none">➔</span>
+                      <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
                     </Link>
                   </div>
                 </div>
@@ -171,22 +174,22 @@ export default function ProgramsGrid() {
             ) : (
               <>
                 {/* Clean Origami Text Block First (Left Half) */}
-                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] dark:bg-[#131b2e] overflow-hidden rounded-none order-2 sm:order-1 group-hover:bg-[#e4e4e4] dark:group-hover:bg-[#1a2238] transition-colors duration-300">
+                <div className="w-full sm:w-1/2 p-5 sm:p-7 lg:p-9 flex flex-col justify-between relative bg-[#eaeaea] dark:bg-[#131b2e] overflow-hidden rounded-none order-2 sm:order-1 group-hover:bg-[#e2e2e2] dark:group-hover:bg-[#1a2238] transition-colors duration-300">
                   {/* Origami Faceted Polygon Background */}
-                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40 dark:opacity-10">
+                  <div className="absolute inset-0 w-full h-full pointer-events-none opacity-40 dark:opacity-10 group-hover:scale-105 transition-transform duration-700">
                     <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 400 400">
                       <polygon points="0,0 400,0 400,400 120,400" fill="#ffffff" />
                     </svg>
                   </div>
 
                   <div className="relative z-10">
-                    <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
+                    <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block group-hover:translate-x-1 transition-transform duration-300">
                       {item.category}
                     </span>
                     <h3 className="text-xl sm:text-2xl lg:text-[26px] font-black text-[#1a1f2c] dark:text-white leading-snug mb-2.5">
                       {item.title}
                     </h3>
-                    <div className="w-12 h-[2px] bg-[#C6112F] rounded-full mb-3" />
+                    <div className="w-12 group-hover:w-20 h-[2.5px] bg-[#C6112F] rounded-full mb-3 transition-all duration-300" />
                     <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
                       {item.description}
                     </p>
@@ -199,7 +202,7 @@ export default function ProgramsGrid() {
                       className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
                     >
                       <span>{item.cta}</span>
-                      <span className="text-base leading-none">➔</span>
+                      <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
                     </Link>
                   </div>
                 </div>
@@ -209,10 +212,11 @@ export default function ProgramsGrid() {
                   <img
                     src={item.image}
                     alt={item.imageAlt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-none"
+                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 rounded-none"
                     loading="lazy"
                     decoding="async"
                   />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
               </>
             )}

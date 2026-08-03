@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default function WhyAttend() {
   const { t } = useLanguage();
@@ -65,27 +66,28 @@ export default function WhyAttend() {
           </div>
 
           {/* Right Column: Text and Numbered Feature Steps */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left lg:pl-4">
-            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
+          <div className="lg:col-span-6 flex flex-col items-start text-left lg:pl-4 group">
+            <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase mb-2 block transition-all duration-300 group-hover:tracking-[0.32em]">
               {t("why-tag", "WHY ATTEND")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
-              {t("why-title", "Your Pathway To Investment Success")}
-            </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
+            <AnimatedHeading
+              text={t("why-title", "Your Pathway To Investment Success")}
+              className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3"
+            />
+            <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
 
             {/* 4 Steps Stack with Equal Cards and Equal Gap Spacing */}
             <div className="space-y-4 sm:space-y-4 w-full max-w-[500px]">
               {steps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 sm:gap-5 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/60 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-default"
+                  className="flex items-start gap-4 sm:gap-5 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F] shadow-2xs hover:shadow-[0_12px_28px_rgba(198,17,47,0.14)] dark:hover:shadow-[0_12px_28px_rgba(198,17,47,0.25)] hover:-translate-y-1 transition-all duration-300 card-shimmer group cursor-pointer"
                 >
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#C6112F] text-white flex items-center justify-center text-xs sm:text-sm font-extrabold shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105 mt-0.5">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#C6112F] text-white flex items-center justify-center text-xs sm:text-sm font-extrabold shrink-0 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-[#a80d26] group-hover:shadow-[0_0_15px_rgba(198,17,47,0.5)] mt-0.5">
                     {step.number}
                   </div>
                   <div className="flex flex-col">
-                    <h3 className="text-[#C6112F] dark:text-[#ff4d6d] font-extrabold text-xs sm:text-[13px] tracking-wider uppercase mb-1">
+                    <h3 className="text-[#C6112F] dark:text-[#ff4d6d] font-extrabold text-xs sm:text-[13px] tracking-wider uppercase mb-1 group-hover:translate-x-1 transition-transform duration-300">
                       {step.title}
                     </h3>
                     <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-[13px] leading-relaxed font-medium">

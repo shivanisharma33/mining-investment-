@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default function GlobalCommunity() {
   const { t } = useLanguage();
@@ -57,14 +58,15 @@ export default function GlobalCommunity() {
         {/* Top Section: Text Stack & Red Dotted World Map Graphic */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
           {/* Left Column: Title & Action Button */}
-          <div className="lg:col-span-6 flex flex-col items-start text-left">
-            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
+          <div className="lg:col-span-6 flex flex-col items-start text-left group">
+            <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase mb-2 block transition-all duration-300 group-hover:tracking-[0.32em]">
               {t("map-tag", "GLOBAL PRESENCE")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
-              {t("map-title", "Where the World's Mining Converges")}
-            </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
+            <AnimatedHeading
+              text={t("map-title", "Where the World's Mining Converges")}
+              className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3"
+            />
+            <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
 
             <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed mb-6 max-w-[420px]">
               {t("map-desc", "Explore the international network of companies, investors, and delegations gathering in Québec City.")}
@@ -95,11 +97,13 @@ export default function GlobalCommunity() {
           {communityStats.map((stat, i) => (
             <div
               key={i}
-              className="border border-[#C6112F]/60 rounded-2xl p-4 sm:p-6 bg-white dark:bg-[#131b2e] shadow-2xs flex items-center gap-3.5 sm:gap-4 hover:border-[#C6112F] transition-all duration-300"
+              className="border border-[#C6112F]/60 hover:border-[#C6112F] rounded-2xl p-4 sm:p-6 bg-white dark:bg-[#131b2e] shadow-2xs hover:shadow-[0_12px_28px_rgba(198,17,47,0.18)] hover:-translate-y-1 transition-all duration-300 card-shimmer group cursor-pointer flex items-center gap-3.5 sm:gap-4"
             >
-              {stat.icon}
+              <div className="group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
+                {stat.icon}
+              </div>
               <div className="flex flex-col text-left leading-none">
-                <span className="text-xl xs:text-2xl sm:text-3xl font-black text-neutral-900 dark:text-slate-100 leading-none mb-1">
+                <span className="text-xl xs:text-2xl sm:text-3xl font-black text-neutral-900 dark:text-slate-100 leading-none mb-1 group-hover:text-[#C6112F] transition-colors duration-300">
                   {stat.number}
                 </span>
                 <span className="text-[#C6112F] font-bold text-[10px] sm:text-xs tracking-wider uppercase leading-tight">
