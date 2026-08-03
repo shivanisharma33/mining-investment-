@@ -19,11 +19,7 @@ interface AgendasResponse {
   data: AgendaApiItem[];
 }
 
-/**
- * Same-origin proxy for https://mining-investment-backend.vercel.app/api/agendas.
- * The backend returns no Access-Control-Allow-Origin header, so the browser
- * blocks a direct call — see src/app/api/agendas/route.ts.
- */
+
 export const AGENDAS_ENDPOINT = "/api/agendas";
 
 /**
