@@ -394,7 +394,19 @@ export default function CompanyArticlesShelfSection({ onViewAll, ctaLabel, hideC
               </div>
 
               {/* 3D BOOK COVERS GRID */}
-              <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-10 justify-items-center sm:justify-items-start items-end">
+              <div
+                className={`grid gap-6 sm:gap-8 justify-items-center items-end w-full ${
+                  articles.length === 1
+                    ? "grid-cols-1 max-w-sm mx-auto"
+                    : articles.length === 2
+                    ? "grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto"
+                    : articles.length === 3
+                    ? "grid-cols-1 sm:grid-cols-3"
+                    : articles.length === 4
+                    ? "grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+                    : "grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+                }`}
+              >
                 {articles.map((article) => {
                   return (
                     <div
@@ -403,7 +415,7 @@ export default function CompanyArticlesShelfSection({ onViewAll, ctaLabel, hideC
                       className="group flex flex-col items-center cursor-pointer select-none w-full"
                     >
                       {/* 3D BOOK COVER WRAPPER WITH REALISTIC SPINE & SHADOW */}
-                      <div className="relative w-40 sm:w-44 md:w-48 aspect-[1/1.38] rounded-r-sm overflow-hidden border-t border-b border-r border-stone-300/80 dark:border-slate-700 bg-white dark:bg-[#1a2334] shadow-[8px_16px_28px_rgba(0,0,0,0.18)] group-hover:shadow-[12px_24px_38px_rgba(198,17,47,0.28)] group-hover:-translate-y-2 group-hover:rotate-1 transition-all duration-300 transform mx-auto">
+                      <div className="relative w-full max-w-[240px] sm:max-w-[265px] md:max-w-[280px] aspect-[1/1.38] rounded-r-sm overflow-hidden border-t border-b border-r border-stone-300/80 dark:border-slate-700 bg-white dark:bg-[#1a2334] shadow-[8px_16px_28px_rgba(0,0,0,0.18)] group-hover:shadow-[12px_24px_38px_rgba(198,17,47,0.28)] group-hover:-translate-y-2 group-hover:rotate-1 transition-all duration-300 transform mx-auto">
                         {/* LEFT SPINE 3D SHADOW OVERLAY */}
                         <div className="absolute inset-y-0 left-0 w-3.5 bg-gradient-to-r from-black/45 via-black/15 to-transparent z-30 pointer-events-none" />
 
