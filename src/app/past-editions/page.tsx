@@ -336,28 +336,6 @@ export default function PastEditionsPage() {
               </div>
             </div>
 
-            {/* 4 Photo Thumbnails Gallery Row */}
-            <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
-              {[
-                "/Mining Investment Post 2.avif",
-                "/image%2015%20(2).avif",
-                "/Mining Investment Post 3.avif",
-                "/Mining Investment Post (1) 2.avif",
-              ].map((imgSrc, index) => (
-                <div
-                  key={index}
-                  className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden border-2 border-[#C6112F]/60 shadow-sm group hover:border-[#C6112F] hover:shadow-md transition-all duration-300 bg-white"
-                >
-                  <Image
-                    src={imgSrc}
-                    alt={`Event photo ${index + 1}`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
-
             {/* Centered Explore All Edition Button */}
             <div className="flex justify-center">
               <Link

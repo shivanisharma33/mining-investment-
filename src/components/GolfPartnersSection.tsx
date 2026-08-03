@@ -280,20 +280,15 @@ export default function GolfPartnersSection() {
           {/* NP Partners */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <div className="flex flex-col items-center justify-center text-center">
-                 <img
-              src="./image 110.svg"
-              alt="XPAV Expert'Ease"
-              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
-              loading="lazy"
-              decoding="async"
-            />
+              <span className="font-serif text-4xl font-bold text-[#8facc0] leading-none tracking-tight">NP</span>
+              <span className="font-serif italic text-[11px] text-[#b0aaa0] tracking-wide mt-0.5">Partners</span>
             </div>
           </div>
 
           {/* XPAV Expert'Ease */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
-              src="./image 111.svg"
+              src="/sponsors/2026/xpav_expert_ease.png"
               alt="XPAV Expert'Ease"
               className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
               loading="lazy"
@@ -304,7 +299,7 @@ export default function GolfPartnersSection() {
           {/* Stifel (Red/Blue Diamond S Logo) */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
-              src="./image 112.svg"
+              src="/sponsors/2026/stifel.svg"
               alt="Stifel"
               className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
               loading="lazy"

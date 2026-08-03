@@ -129,10 +129,10 @@ export default function FeaturedEventCountdown() {
 
         {/* Subtitle & Description */}
         <div className="max-w-2xl mx-auto mb-10">
-          <h3 className="text-xl sm:text-3xl font-extrabold text-[#1a1f2c] dark:text-white mb-2">
+          <h3 className="text-xl sm:text-3xl font-extrabold text-[#1a1f2c] dark:text-white mb-1">
             Where Global Mining Leaders Connect
           </h3>
-          <div className="w-14 h-[2px] bg-[#C6112F] mx-auto rounded-full mb-4" />
+          <div className="w-14 sm:w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mt-2.5 mb-4" />
           <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed">
             A premier gathering of investors, mining companies, government, innovators and industry experts driving the future of mining.
           </p>
