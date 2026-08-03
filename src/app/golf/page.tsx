@@ -50,7 +50,7 @@ export default function GolfPage() {
         <section className="relative w-full min-h-[540px] sm:min-h-[600px] md:min-h-[660px] flex items-center justify-start overflow-hidden bg-neutral-900 pt-24 sm:pt-28">
           {/* Background Image */}
           <img
-            src="/golf_hero_bg.png"
+            src="/golf_hero_bg.jpg"
             alt="Iconic Golf Day - Le Tournoi Doré"
             className="absolute inset-0 w-full h-full object-cover object-center z-0"
             fetchPriority="high"

@@ -1,11 +1,127 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function GolfPartnersSection() {
   const { t, lang } = useLanguage();
+
+  const prizePartners = [
+    {
+      id: "osisko",
+      name: "Osisko Development",
+      content: (
+        <img
+          src="/image 105.svg"
+          alt="Osisko Development"
+          className="max-h-16 sm:max-h-20 w-auto object-contain dark:brightness-110"
+          loading="lazy"
+          decoding="async"
+        />
+      ),
+    },
+    {
+      id: "prospector",
+      name: "The Prospector News",
+      content: (
+        <img
+          src="/image 106.svg"
+          alt="The Prospector Resource Investment News"
+          className="max-h-16 sm:max-h-20 w-auto object-contain dark:brightness-110"
+          loading="lazy"
+          decoding="async"
+        />
+      ),
+    },
+    {
+      id: "cafe-du-monde",
+      name: "Café du Monde",
+      content: (
+        <img
+          src="/image 107.svg"
+          alt="Café du Monde Brasserie Française"
+          className="max-h-16 sm:max-h-20 w-auto object-contain dark:brightness-110"
+          loading="lazy"
+          decoding="async"
+        />
+      ),
+    },
+    {
+      id: "il-teatro",
+      name: "IL TEATRO",
+      content: (
+        <img
+          src="/image 109.svg"
+          alt="IL TEATRO"
+          className="max-h-16 sm:max-h-20 w-auto object-contain dark:brightness-110"
+          loading="lazy"
+          decoding="async"
+        />
+      ),
+    },
+    {
+      id: "ciel",
+      name: "CIEL!",
+      content: (
+        <img
+          src="/image 110.svg"
+          alt="CIEL! Bistro-Bar Tournant"
+          className="max-h-16 sm:max-h-20 w-auto object-contain dark:brightness-110"
+          loading="lazy"
+          decoding="async"
+        />
+      ),
+    },
+    {
+      id: "niji-sushi",
+      name: "Niji SUSHI",
+      content: (
+        <img
+          src="/image 111.svg"
+          alt="Niji SUSHI"
+          className="max-h-16 sm:max-h-20 w-auto object-contain dark:brightness-110"
+          loading="lazy"
+          decoding="async"
+        />
+      ),
+    },
+    {
+      id: "laurier",
+      name: "Laurier Du Vallon",
+      content: (
+        <img
+          src="/image 112.svg"
+          alt="Laurier Du Vallon"
+          className="max-h-16 sm:max-h-20 w-auto object-contain dark:brightness-110"
+          loading="lazy"
+          decoding="async"
+        />
+      ),
+    },
+  ];
+
+  const [prizeIndex, setPrizeIndex] = useState(0);
+  const [isPrizePaused, setIsPrizePaused] = useState(false);
+
+  useEffect(() => {
+    if (isPrizePaused) return;
+    const interval = setInterval(() => {
+      setPrizeIndex((prev) => (prev + 1) % prizePartners.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isPrizePaused, prizePartners.length]);
+
+  const handlePrizePrev = () => {
+    setPrizeIndex((prev) => (prev - 1 + prizePartners.length) % prizePartners.length);
+  };
+
+  const handlePrizeNext = () => {
+    setPrizeIndex((prev) => (prev + 1) % prizePartners.length);
+  };
+
+  // Duplicate list for infinite loop sliding
+  const displayPrizePartners = [...prizePartners, ...prizePartners, ...prizePartners];
 
   return (
     <section className="relative w-full bg-white dark:bg-[#0e1626] py-12 sm:py-16 transition-colors duration-300">
@@ -71,7 +187,7 @@ export default function GolfPartnersSection() {
         <div className="w-full h-[1.5px] bg-[#e58a99]/70 dark:bg-[#C6112F]/40 my-10 sm:my-14 rounded-full" />
 
         {/* ═════════════════════════════════════════════════════════ */}
-        {/* SUBSECTION 2: PARTENAIRES PRIX / PRIZE PARTNERS */}
+        {/* SUBSECTION 2: PARTENAIRES PRIX / PRIZE PARTNERS (SLIDER) */}
         {/* ═════════════════════════════════════════════════════════ */}
         <div className="text-center mb-8 sm:mb-10">
           <h2 className="text-lg sm:text-xl md:text-2xl font-black text-[#2b354f] dark:text-white tracking-wider uppercase">
@@ -80,82 +196,70 @@ export default function GolfPartnersSection() {
           <div className="w-14 sm:w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mt-2.5" />
         </div>
 
-        {/* Top Row: 4 Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-4 sm:mb-6">
-          {/* Prize Partner 1: Osisko Development */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <img
-              src="/sponsors/2026/or_royalties_osisko_royalties.svg"
-              alt="Osisko Development"
-              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
+        {/* Prize Partners Slider Container */}
+        <div
+          className="relative flex items-center gap-2 sm:gap-4 [--prize-slide-w:100%] sm:[--prize-slide-w:50%] md:[--prize-slide-w:33.333%] lg:[--prize-slide-w:25%]"
+          onMouseEnter={() => setIsPrizePaused(true)}
+          onMouseLeave={() => setIsPrizePaused(false)}
+        >
+          {/* Left Arrow Button */}
+          <button
+            onClick={handlePrizePrev}
+            aria-label="Previous partner"
+            className="w-10 h-10 rounded-full border border-[#C6112F] bg-white dark:bg-[#182236] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </button>
 
-          {/* Prize Partner 2: THE PROSPECTOR Resource Investment News */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <img
-              src="/sponsors/2026/the_prospector_news.png"
-              alt="The Prospector Resource Investment News"
-              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-
-          {/* Prize Partner 3: Café du Monde Brasserie Française */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="flex flex-col items-center justify-center text-center">
-              <span className="font-black text-base text-[#2f3e46] dark:text-slate-200 tracking-tight leading-tight">CAFÉ</span>
-              <span className="font-semibold text-[10px] text-[#2f3e46] dark:text-slate-300 tracking-widest uppercase my-0.5">— DU —</span>
-              <span className="font-black text-base text-[#2f3e46] dark:text-slate-200 tracking-tight leading-tight">MONDE</span>
-              <span className="text-[8px] font-bold text-[#0077b6] tracking-widest uppercase border-t border-b border-[#0077b6]/30 px-2 py-0.5 mt-1">BRASSERIE FRANÇAISE</span>
+          {/* Viewport Mask for Slider */}
+          <div className="w-full overflow-hidden py-3">
+            <div
+              className="flex items-center transition-transform duration-500 ease-in-out"
+              style={{
+                transform: `translateX(calc(-${prizeIndex} * var(--prize-slide-w, 25%)))`,
+              }}
+            >
+              {displayPrizePartners.map((partner, idx) => (
+                <div
+                  key={`${partner.id}-${idx}`}
+                  className="shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2"
+                >
+                  <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/50 transition-all duration-300 group">
+                    {partner.content}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Prize Partner 4: IL TEATRO */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="bg-black text-white p-3 rounded-lg flex flex-col items-center justify-center w-28 h-20 shadow-xs">
-              <svg className="w-8 h-8 text-white mb-1" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2L15 8L19 4L16 11L22 13L15 15L17 22L12 17L7 22L9 15L2 13L8 11L5 4L9 8L12 2Z" />
-              </svg>
-              <span className="font-black text-[10px] tracking-widest uppercase">IL TEATRO</span>
-            </div>
-          </div>
+          {/* Right Arrow Button */}
+          <button
+            onClick={handlePrizeNext}
+            aria-label="Next partner"
+            className="w-10 h-10 rounded-full border border-[#C6112F] bg-white dark:bg-[#182236] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
         </div>
 
-        {/* Bottom Row: 3 Centered Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 max-w-[960px] mx-auto gap-4 sm:gap-6">
-          {/* Prize Partner 5: CIEL! Bistro-Bar Tournant */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="w-24 h-24 rounded-full border border-neutral-300 bg-white flex flex-col items-center justify-center text-center p-2 shadow-2xs">
-              <span className="text-[7px] font-bold text-neutral-500 uppercase tracking-widest">BISTRO • BAR</span>
-              <span className="font-black text-xl text-neutral-900 leading-none my-0.5">ciel!</span>
-              <span className="text-[6.5px] font-bold text-neutral-500 uppercase tracking-widest">TOURNANT</span>
-            </div>
-          </div>
-
-          {/* Prize Partner 6: Niji SUSHI */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="bg-black text-white p-3.5 rounded-lg flex flex-col items-center justify-center w-28 h-20 shadow-xs">
-              <span className="font-serif italic text-2xl font-bold leading-none mb-1">Niji</span>
-              <span className="font-extrabold text-[9px] tracking-widest uppercase text-neutral-300">SUSHI</span>
-            </div>
-          </div>
-
-          {/* Prize Partner 7: Laurier Du Vallon */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-[#233049] rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
-            <div className="bg-white p-3 rounded-lg flex flex-col items-center justify-center w-40 h-20 shadow-2xs">
-              <div className="w-6 h-5 mb-1 text-[#e65c00]">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M4 4h16l-8 8zM4 20l8-8 8 8z" />
-                </svg>
-              </div>
-              <span className="font-bold text-xs text-[#e65c00] leading-none">Laurier Du Vallon</span>
-              <span className="text-[7px] font-semibold text-neutral-500 uppercase tracking-wider mt-1">VOYAGES ET DÉCOUVERTES</span>
-            </div>
-          </div>
+        {/* Slide Indicator Dots */}
+        <div className="flex items-center justify-center gap-2 mt-6">
+          {prizePartners.map((partner, idx) => (
+            <button
+              key={`dot-${partner.id}`}
+              onClick={() => setPrizeIndex(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                prizeIndex % prizePartners.length === idx
+                  ? "w-8 bg-[#C6112F]"
+                  : "w-2.5 bg-neutral-300 dark:bg-slate-700 hover:bg-neutral-400"
+              }`}
+            />
+          ))}
         </div>
 
         {/* Horizontal Divider Line */}
@@ -176,15 +280,20 @@ export default function GolfPartnersSection() {
           {/* NP Partners */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <div className="flex flex-col items-center justify-center text-center">
-              <span className="font-serif text-4xl font-bold text-[#8facc0] leading-none tracking-tight">NP</span>
-              <span className="font-serif italic text-[11px] text-[#b0aaa0] tracking-wide mt-0.5">Partners</span>
+                 <img
+              src="./image 110.svg"
+              alt="XPAV Expert'Ease"
+              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
+              loading="lazy"
+              decoding="async"
+            />
             </div>
           </div>
 
           {/* XPAV Expert'Ease */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
-              src="/sponsors/2026/xpav_expert_ease.png"
+              src="./image 111.svg"
               alt="XPAV Expert'Ease"
               className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
               loading="lazy"
@@ -195,7 +304,7 @@ export default function GolfPartnersSection() {
           {/* Stifel (Red/Blue Diamond S Logo) */}
           <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
-              src="/sponsors/2026/stifel.svg"
+              src="./image 112.svg"
               alt="Stifel"
               className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
               loading="lazy"
