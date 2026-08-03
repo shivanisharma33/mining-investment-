@@ -309,7 +309,7 @@ const translations: Record<Language, Record<string, string>> = {
     "student-tag-label": "BECOME THE FUTURE OF MINING",
     "student-main-subtitle": "Apply now for THE Glencore Student Sponsorship Class of 2026",
     "student-body-p1": "THE Glencore Student Sponsorship Program aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada's only Tier 1 global mining investment conference, held from June 1–3, 2027, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking, and immersive learning.",
-    "student-body-p1-sub": "The Program is now recognized as one of the largest fully funded conference programs in Canada.",
+    "student-body-p1-sub": "The Program is now recognized as one of the largest fully funded conference programs in\u00A0Canada.",
     "student-body-p2": "Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at no cost. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition, and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals.",
     "student-cta-apply": "Apply Here",
     "student-cta-letter": "Letter from our CEO ↗",

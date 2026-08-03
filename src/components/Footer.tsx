@@ -12,21 +12,6 @@ export default function Footer() {
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
-      {/* 3D Faceted Origami Vector Backdrop - Day Mode Only */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 opacity-100 dark:opacity-0 transition-opacity duration-300">
-        <svg
-          className="w-full h-full"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1440 600"
-          preserveAspectRatio="none"
-        >
-          <rect width="1440" height="600" fill="#f0f3f6" />
-          <polygon points="0,0 500,0 380,600 0,600" fill="#ffffff" opacity="0.9" />
-          <polygon points="500,0 980,0 900,600 380,600" fill="#f8fafc" opacity="0.75" />
-          <polygon points="980,0 1440,0 1440,600 900,600" fill="#e4e9ee" opacity="0.65" />
-        </svg>
-      </div>
-
       <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Top Footer Section: 4 Columns */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 border-b border-neutral-300/70 dark:border-zinc-800">

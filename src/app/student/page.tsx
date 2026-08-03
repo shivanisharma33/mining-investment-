@@ -88,13 +88,12 @@ export default function StudentPage() {
                 </h2>
                 <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
-                <div className="space-y-4 text-neutral-600 dark:text-neutral-300 text-sm sm:text-base leading-relaxed">
+                <div className="space-y-4 text-neutral-600 dark:text-neutral-300 text-sm sm:text-base leading-relaxed text-pretty">
                   <p>
                     {t(
                       "student-body-p1",
                       "THE Glencore Student Sponsorship Program aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada's only Tier 1 global mining investment conference, held from June 1–3, 2027, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking, and immersive learning."
-                    )}
-                    <br />
+                    )}{" "}
                     {t(
                       "student-body-p1-sub",
                       "The Program is now recognized as one of the largest fully funded conference programs in Canada."
