@@ -5,14 +5,30 @@ import CompanyLogoImage from "@/components/CompanyLogoImage";
 import { PARTICIPATING_COMPANIES, CompanyItem } from "./companiesData";
 import { useLanguage } from "@/context/LanguageContext";
 
+interface CompaniesViewProps {
+  initialYear?: number;
+  /**
+   * Companies for `apiYear`, supplied by the companies API for 2027. Past
+   * editions omit these and keep using the bundled PARTICIPATING_COMPANIES.
+   */
+  apiCompanies?: CompanyItem[];
+  apiYear?: number;
+  apiLoading?: boolean;
+  apiError?: string;
+}
+
 export default function CompaniesView({
   initialYear = 2026,
-}: {
-  initialYear?: number;
-}) {
+  apiCompanies,
+  apiYear,
+  apiLoading = false,
+  apiError = "",
+}: CompaniesViewProps) {
   const { t, lang } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number>(initialYear);
   const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const isApiYear = apiYear !== undefined && selectedYear === apiYear;
 
   const getTypeBadgeStyle = (type: string) => {
     const t = type.toUpperCase();
@@ -28,24 +44,27 @@ export default function CompaniesView({
     return "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 border border-neutral-200 dark:border-zinc-700";
   };
 
-  const filteredCompanies = useMemo(() => {
-    return PARTICIPATING_COMPANIES.filter((company) => {
-      // Filter by selected year
-      if (company.year && company.year !== selectedYear) {
-        return false;
-      }
+  // Every company in the selected edition, before the search box narrows it.
+  const editionCompanies = useMemo(() => {
+    if (isApiYear) return apiCompanies ?? [];
+    return PARTICIPATING_COMPANIES.filter(
+      (company) => !company.year || company.year === selectedYear
+    );
+  }, [isApiYear, apiCompanies, selectedYear]);
 
-      const q = searchQuery.trim().toLowerCase();
-      if (!q) return true;
-      return (
+  const filteredCompanies = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return editionCompanies;
+
+    return editionCompanies.filter(
+      (company) =>
         company.name.toLowerCase().includes(q) ||
         company.ticker.toLowerCase().includes(q) ||
         company.location.toLowerCase().includes(q) ||
         company.type.toLowerCase().includes(q) ||
         company.commodities.toLowerCase().includes(q)
-      );
-    });
-  }, [selectedYear, searchQuery]);
+    );
+  }, [editionCompanies, searchQuery]);
 
   return (
     <div className="w-full text-left font-sans">
@@ -120,9 +139,9 @@ export default function CompaniesView({
         <span className="flex items-center gap-2">
           <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />
           {lang === "FR" ? (
-            <>Affichage de <strong className="text-neutral-900 dark:text-white font-extrabold">{filteredCompanies.length}</strong> sur <strong className="text-neutral-900 dark:text-white font-extrabold">{PARTICIPATING_COMPANIES.length}</strong> sociétés</>
+            <>Affichage de <strong className="text-neutral-900 dark:text-white font-extrabold">{filteredCompanies.length}</strong> sur <strong className="text-neutral-900 dark:text-white font-extrabold">{editionCompanies.length}</strong> sociétés</>
           ) : (
-            <>Showing <strong className="text-neutral-900 dark:text-white font-extrabold">{filteredCompanies.length}</strong> of <strong className="text-neutral-900 dark:text-white font-extrabold">{PARTICIPATING_COMPANIES.length}</strong> companies</>
+            <>Showing <strong className="text-neutral-900 dark:text-white font-extrabold">{filteredCompanies.length}</strong> of <strong className="text-neutral-900 dark:text-white font-extrabold">{editionCompanies.length}</strong> companies</>
           )}
         </span>
         {searchQuery && (
@@ -140,25 +159,46 @@ export default function CompaniesView({
               <th className="py-4 px-3 sm:px-6 w-[34%] sm:w-[32%] text-neutral-200">
                 {t("co-col-name", "Company Name")}
               </th>
-              <th className="py-4 px-2 sm:px-4 w-[18%] sm:w-[18%] text-neutral-200">
+              <th className="py-4 px-2 sm:px-4 w-[20%] text-neutral-200">
                 {t("co-col-ticker", "Ticker")}
               </th>
-              <th className="py-4 px-2 sm:px-4 w-[15%] sm:w-[14%] text-neutral-200">
-                {t("co-col-stage", "Stage")}
-              </th>
-              <th className="py-4 px-2 sm:px-4 w-[15%] sm:w-[14%] text-neutral-200">
+              <th className="py-4 px-2 sm:px-4 w-[14%] text-neutral-200">
                 {t("co-col-type", "Type")}
               </th>
-              <th className="py-4 px-2 sm:px-4 w-[17%] sm:w-[18%] text-neutral-200">
+              <th className="py-4 px-2 sm:px-4 w-[16%] text-neutral-200">
                 {t("co-col-location", "Location")}
               </th>
-              <th className="py-4 px-3 sm:px-6 w-[16%] sm:w-[18%] text-neutral-200">
+              <th className="py-4 px-3 sm:px-6 w-[16%] text-neutral-200">
                 {t("co-col-commodities", "Commodities")}
               </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-neutral-100 text-xs sm:text-sm font-medium">
-            {filteredCompanies.length > 0 ? (
+            {isApiYear && apiLoading ? (
+              <tr>
+                <td colSpan={5} className="py-16 px-6 text-center bg-neutral-50/50">
+                  <div className="flex flex-col items-center justify-center gap-3">
+                    <span className="w-7 h-7 rounded-full border-2 border-neutral-200 border-t-[#C6112F] animate-spin" />
+                    <span className="text-neutral-500 font-bold">
+                      {lang === "FR" ? "Chargement des sociétés…" : "Loading companies…"}
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            ) : isApiYear && apiError ? (
+              <tr>
+                <td colSpan={5} className="py-16 px-6 text-center bg-neutral-50/50">
+                  <div className="flex flex-col items-center justify-center gap-2">
+                    <span className="text-neutral-800 font-extrabold">
+                      {lang === "FR"
+                        ? "Impossible de charger les sociétés"
+                        : "Unable to load the company directory"}
+                    </span>
+                    <span className="text-xs text-neutral-500 font-medium">{apiError}</span>
+                  </div>
+                </td>
+              </tr>
+            ) : filteredCompanies.length > 0 ? (
               filteredCompanies.map((company: CompanyItem, idx: number) => (
                 <tr
                   key={idx}
@@ -231,7 +271,15 @@ export default function CompaniesView({
                       <circle cx="11" cy="11" r="6.5" />
                       <path d="M20 20l-4-4" />
                     </svg>
-                    <span>No companies match your search. Try resetting your search filter.</span>
+                    <span>
+                      {searchQuery.trim()
+                        ? lang === "FR"
+                          ? "Aucune société ne correspond à votre recherche. Essayez de réinitialiser le filtre."
+                          : "No companies match your search. Try resetting your search filter."
+                        : lang === "FR"
+                        ? `Aucune société n'a encore été publiée pour l'édition ${selectedYear}.`
+                        : `No companies have been published for the ${selectedYear} edition yet.`}
+                    </span>
                   </div>
                 </td>
               </tr>

@@ -1,14 +1,40 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import CompaniesView from "@/components/CompaniesView";
+import type { CompanyItem } from "@/components/companiesData";
 import { useLanguage } from "@/context/LanguageContext";
+import { fetchCompaniesByYear } from "@/lib/companiesApi";
+
+const COMPANIES_YEAR = 2027;
 
 export default function CompaniesPage() {
   const { t } = useLanguage();
+  const [companies, setCompanies] = useState<CompanyItem[]>([]);
+  const [companiesError, setCompaniesError] = useState<string>("");
+  const [companiesLoading, setCompaniesLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchCompaniesByYear(COMPANIES_YEAR, controller.signal)
+      .then((items) => {
+        setCompanies(items);
+        setCompaniesLoading(false);
+      })
+      .catch((err: unknown) => {
+        if (controller.signal.aborted) return;
+        setCompaniesError(
+          err instanceof Error ? err.message : "Unable to load companies"
+        );
+        setCompaniesLoading(false);
+      });
+
+    return () => controller.abort();
+  }, []);
 
   return (
     <>
@@ -61,7 +87,13 @@ export default function CompaniesPage() {
             </p>
 
             {/* Render Table Component */}
-            <CompaniesView initialYear={2027} />
+            <CompaniesView
+              initialYear={COMPANIES_YEAR}
+              apiYear={COMPANIES_YEAR}
+              apiCompanies={companies}
+              apiLoading={companiesLoading}
+              apiError={companiesError}
+            />
           </div>
         </section>
 
