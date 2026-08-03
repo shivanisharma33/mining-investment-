@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function PartnershipPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const partnershipFeatures = [
     {
@@ -77,7 +77,14 @@ export default function PartnershipPage() {
                 <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
                 <p className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-8">
-                  {t("tier1-sub-desc", "Becoming a Tier 1 Conference Partner provides unrivalled access to decision-makers, investors, and influencers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event.")}
+                  {lang === "FR"
+                    ? t("tier1-sub-desc", "Devenir un partenaire de conférence Tier 1 offre un accès inégalé aux décideurs, investisseurs et influenceurs de l'industrie minière mondiale. Nos partenariats sont conçus sur mesure pour maximiser la visibilité et l'engagement tout au long de L'Événement.")
+                    : (
+                      <>
+                        Becoming a Tier 1 Conference Partner provides unrivalled access to{" "}
+                        <span className="whitespace-nowrap font-semibold text-neutral-800 dark:text-neutral-200">decision-makers</span>, investors, and influencers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event.
+                      </>
+                    )}
                 </p>
 
                 <div className="flex flex-wrap gap-4">
@@ -101,7 +108,7 @@ export default function PartnershipPage() {
               {/* Right Contact Sidebar Box */}
               <div className="lg:col-span-5">
                 <div className="bg-[#0f1117] text-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-neutral-800">
-                  <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-4">
+                  <span className="text-[10px] font-black tracking-[0.2em] uppercase text-white bg-[#C6112F] px-3.5 py-1 rounded-full inline-block mb-4 shadow-sm border border-rose-400/30">
                     {t("tier1-sidebar-tag", "SPONSORSHIP INQUIRY")}
                   </span>
                   <h3 className="text-2xl font-black text-white mb-3">{t("tier1-sidebar-title", "Contact For Sponsorship")}</h3>
@@ -109,20 +116,28 @@ export default function PartnershipPage() {
                     {t("tier1-sidebar-body", "To discuss partnership opportunities, please contact Jennifer Choi directly:")}
                   </p>
 
-                  <div className="space-y-3 pt-4 border-t border-neutral-800">
+                  <div className="space-y-4 pt-4 border-t border-neutral-800">
                     <a
                       href="mailto:jchoi@irinc.ca"
-                      className="flex items-center gap-3 text-neutral-300 hover:text-[#C6112F] transition-colors text-sm font-semibold"
+                      className="group flex items-center gap-3.5 text-white hover:text-rose-300 transition-colors text-sm font-bold"
                     >
-                      <span className="w-8 h-8 rounded-lg bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center">✉</span>
-                      <span>jchoi@irinc.ca</span>
+                      <span className="w-10 h-10 rounded-xl bg-[#C6112F] text-white flex items-center justify-center shadow-md shrink-0 group-hover:scale-105 transition-transform">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </span>
+                      <span className="text-white text-base">jchoi@irinc.ca</span>
                     </a>
                     <a
                       href="tel:+19055153508"
-                      className="flex items-center gap-3 text-neutral-300 hover:text-[#C6112F] transition-colors text-sm font-semibold"
+                      className="group flex items-center gap-3.5 text-white hover:text-rose-300 transition-colors text-sm font-bold"
                     >
-                      <span className="w-8 h-8 rounded-lg bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center">☏</span>
-                      <span>+1-905-515-3508</span>
+                      <span className="w-10 h-10 rounded-xl bg-[#C6112F] text-white flex items-center justify-center shadow-md shrink-0 group-hover:scale-105 transition-transform">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                      </span>
+                      <span className="text-white text-base">+1-905-515-3508</span>
                     </a>
                   </div>
                 </div>

@@ -69,18 +69,18 @@ export default function CanadaPremierForum() {
             </div>
 
             {/* Dual Connected Pill Action Buttons */}
-            <div className="flex flex-col sm:inline-flex sm:flex-row w-full sm:w-auto items-stretch sm:items-center border border-neutral-300 dark:border-slate-700 rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
+            <div className="flex flex-col sm:inline-flex sm:flex-row w-full sm:w-auto items-stretch sm:items-center rounded-xl overflow-hidden shadow-md transition-shadow">
               <Link
                 href="/about"
-                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-5 sm:px-7 py-3 sm:py-3.5 uppercase transition-colors text-center"
+                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 uppercase transition-colors text-center shrink-0"
               >
                 {t("forum-about-btn", "ABOUT THE EVENT")}
               </Link>
               <Link
                 href="/register"
-                className="bg-[#dedede] dark:bg-slate-800 hover:bg-[#d0d0d0] dark:hover:bg-slate-700 text-neutral-900 dark:text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-5 sm:px-7 py-3 sm:py-3.5 uppercase flex items-center justify-center gap-2 border-t sm:border-t-0 sm:border-l border-neutral-400 dark:border-slate-700 transition-colors"
+                className="bg-[#e2e8f0] dark:bg-slate-800 hover:bg-[#cbd5e1] dark:hover:bg-slate-700 text-neutral-900 dark:text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 uppercase flex items-center justify-center gap-2 transition-colors shrink-0"
               >
-                <span>{t("nav-register", "REGISTER NOW")}</span>
+                <span>{t("nav-register", "REGISTER HERE")}</span>
                 <svg
                   className="w-5 h-5 text-neutral-900 dark:text-white shrink-0"
                   fill="none"

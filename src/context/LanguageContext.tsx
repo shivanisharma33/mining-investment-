@@ -350,7 +350,7 @@ const translations: Record<Language, Record<string, string>> = {
     "tier1-title-1": "Align Your Brand with",
     "tier1-title-2": "Canada's Premier",
     "tier1-title-3": "Mining Conference",
-    "tier1-sub-desc": "Becoming a Tier 1 Conference Partner provides unrivalled access to decision-makers, investors, and influencers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event.",
+    "tier1-sub-desc": "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u2011makers, investors, and influencers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event.",
     "tier1-cta-pdf": "Download Sponsor PDF ↗",
     "tier1-cta-contact": "Contact Jennifer Choi",
     "tier1-sidebar-tag": "SPONSORSHIP INQUIRY",

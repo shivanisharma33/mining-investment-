@@ -74,21 +74,21 @@ export default function WhyAttend() {
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
-            {/* 4 Steps Stack with Interactive Hover Cards */}
-            <div className="space-y-4 sm:space-y-5 w-full max-w-[480px]">
+            {/* 4 Steps Stack with Equal Cards and Equal Gap Spacing */}
+            <div className="space-y-4 sm:space-y-4 w-full max-w-[500px]">
               {steps.map((step, idx) => (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 sm:gap-5 p-3.5 rounded-xl border border-transparent hover:border-neutral-200 dark:hover:border-[#233049] hover:bg-neutral-50/80 dark:hover:bg-slate-800/60 hover:shadow-2xs transition-all duration-300 group cursor-default"
+                  className="flex items-start gap-4 sm:gap-5 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/60 shadow-2xs hover:shadow-md transition-all duration-300 group cursor-default"
                 >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-300 dark:border-[#233049] group-hover:border-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white flex items-center justify-center text-xs sm:text-sm font-extrabold text-[#C6112F] shrink-0 bg-white dark:bg-[#131b2e] shadow-2xs transition-all duration-300 mt-0.5">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#C6112F] text-white flex items-center justify-center text-xs sm:text-sm font-extrabold shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-105 mt-0.5">
                     {step.number}
                   </div>
                   <div className="flex flex-col">
-                    <h3 className="text-[#C6112F] font-extrabold text-xs sm:text-[13px] tracking-wider uppercase mb-1">
+                    <h3 className="text-[#C6112F] dark:text-[#ff4d6d] font-extrabold text-xs sm:text-[13px] tracking-wider uppercase mb-1">
                       {step.title}
                     </h3>
-                    <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-[13px] leading-relaxed font-medium">
+                    <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-[13px] leading-relaxed font-medium">
                       {step.description}
                     </p>
                   </div>

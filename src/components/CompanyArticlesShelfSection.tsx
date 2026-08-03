@@ -243,9 +243,9 @@ export default function CompanyArticlesShelfSection({ onViewAll, ctaLabel, hideC
     { key: "CRITICAL MINERALS", label: isFr ? "MINÉRAUX CRITIQUES" : "CRITICAL MINERALS" },
   ];
 
-  // Filtered articles
-  const filteredArticles = useMemo(() => {
-    return defaultArticles.filter((art) => {
+  // Filtered & displayed articles (4 cards on main page preview, all cards on dedicated page)
+  const displayedArticles = useMemo(() => {
+    const list = defaultArticles.filter((art) => {
       const matchesCat = selectedCategory === "ALL" || art.category === selectedCategory;
       const q = searchQuery.toLowerCase().trim();
       const matchesSearch =
@@ -256,115 +256,76 @@ export default function CompanyArticlesShelfSection({ onViewAll, ctaLabel, hideC
         (art.subtitle && art.subtitle.toLowerCase().includes(q));
       return matchesCat && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+
+    return hideCtaButton ? list : list.slice(0, 4);
+  }, [selectedCategory, searchQuery, hideCtaButton]);
 
   // Group by Date Issue (e.g. JUNE 2026, MAY 2026, APRIL 2026)
   const groupedByDate = useMemo(() => {
     const groups: Record<string, BookArticle[]> = {};
-    filteredArticles.forEach((art) => {
+    displayedArticles.forEach((art) => {
       const dateKey = isFr ? art.dateFR || art.date : art.date;
       if (!groups[dateKey]) groups[dateKey] = [];
       groups[dateKey].push(art);
     });
     return groups;
-  }, [filteredArticles, isFr]);
+  }, [displayedArticles, isFr]);
 
   return (
     <section className="relative w-full py-8 sm:py-12 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto transition-colors duration-300">
       {/* SECTION HEADER MATCHING SITE-WIDE DESIGN SYSTEM */}
       <div className="text-center mb-8">
         <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase block mb-2">
-          {isFr ? "PUBLICATIONS & RAPPORTS CORPORATIFS" : "CORPORATE PUBLICATIONS & REPORTS"}
+          {isFr ? "PUBLICATIONS & RAPPORTS" : "FEATURED PUBLICATIONS"}
         </span>
         <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
-          {isFr ? "Articles & Rapports d'Entreprises" : "Company Articles & Reports"}
+          {isFr ? "Articles d'Entreprises" : "Company Articles"}
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
         <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-medium">
           {isFr
-            ? "Explorez les rapports corporatifs approfondis, mises à jour techniques et publications exclusives des leaders miniers participants."
-            : "Explore in-depth corporate technical reports, development updates, and exclusive publications from participating global mining leaders."}
+            ? "Découvrez les derniers rapports, analyses et publications exclusives des entreprises minières participantes."
+            : "Explore in-depth corporate reports, development updates, and exclusive publications from participating mining leaders."}
         </p>
       </div>
 
-      {/* TOP FEATURE STATS HIGHLIGHTS BAR */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8">
-        <div className="bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] rounded-2xl p-4 flex items-center gap-3.5 shadow-2xs">
-          <div className="w-10 h-10 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0 font-bold">
-            📚
+      {/* FILTER TABS & SEARCH INPUT BAR (VISIBLE ON DEDICATED ARTICLE PAGE) */}
+      {hideCtaButton && (
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          {/* CATEGORY TABS */}
+          <div className="flex flex-wrap gap-2">
+            {categories.map((cat) => {
+              const isActive = selectedCategory === cat.key;
+              return (
+                <button
+                  key={cat.key}
+                  onClick={() => setSelectedCategory(cat.key)}
+                  className={`px-4 py-2 rounded-full text-xs font-extrabold tracking-wider transition-all duration-200 cursor-pointer ${isActive
+                      ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
+                      : "bg-white dark:bg-[#0e1626] text-neutral-700 dark:text-slate-300 border border-neutral-200/90 dark:border-[#233049] hover:bg-neutral-100 dark:hover:bg-slate-800 shadow-2xs"
+                    }`}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
           </div>
-          <div className="flex flex-col text-left">
-            <span className="text-lg font-black text-[#1a1f2c] dark:text-white leading-tight">12+ Reports</span>
-            <span className="text-[10px] text-neutral-500 dark:text-slate-400 font-bold uppercase tracking-wider">In-Depth Technicals</span>
-          </div>
-        </div>
 
-        <div className="bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] rounded-2xl p-4 flex items-center gap-3.5 shadow-2xs">
-          <div className="w-10 h-10 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0 font-bold">
-            🏢
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="text-lg font-black text-[#1a1f2c] dark:text-white leading-tight">10 Companies</span>
-            <span className="text-[10px] text-neutral-500 dark:text-slate-400 font-bold uppercase tracking-wider">Global Mining Leaders</span>
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] rounded-2xl p-4 flex items-center gap-3.5 shadow-2xs">
-          <div className="w-10 h-10 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0 font-bold">
-            ⛏️
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="text-lg font-black text-[#1a1f2c] dark:text-white leading-tight">5 Commodities</span>
-            <span className="text-[10px] text-neutral-500 dark:text-slate-400 font-bold uppercase tracking-wider">Gold, Copper & Critical</span>
+          {/* SEARCH BOX */}
+          <div className="relative w-full md:w-72 shrink-0">
+            <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            <input
+              type="text"
+              placeholder={isFr ? "Rechercher une entreprise, symbole..." : "Search company, ticker, title..."}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] rounded-full text-xs sm:text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
+            />
           </div>
         </div>
-
-        <div className="bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] rounded-2xl p-4 flex items-center gap-3.5 shadow-2xs">
-          <div className="w-10 h-10 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center shrink-0 font-bold">
-            📄
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="text-lg font-black text-[#1a1f2c] dark:text-white leading-tight">PDF Access</span>
-            <span className="text-[10px] text-neutral-500 dark:text-slate-400 font-bold uppercase tracking-wider">Full Technical Filings</span>
-          </div>
-        </div>
-      </div>
-
-      {/* FILTER TABS & SEARCH INPUT BAR */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        {/* CATEGORY TABS */}
-        <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => {
-            const isActive = selectedCategory === cat.key;
-            return (
-              <button
-                key={cat.key}
-                onClick={() => setSelectedCategory(cat.key)}
-                className={`px-4 py-2 rounded-full text-xs font-extrabold tracking-wider transition-all duration-200 cursor-pointer ${isActive
-                    ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
-                    : "bg-white dark:bg-[#0e1626] text-neutral-700 dark:text-slate-300 border border-neutral-200/90 dark:border-[#233049] hover:bg-neutral-100 dark:hover:bg-slate-800 shadow-2xs"
-                  }`}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* SEARCH BOX */}
-        <div className="relative w-full md:w-72 shrink-0">
-          <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-          </svg>
-          <input
-            type="text"
-            placeholder={isFr ? "Rechercher une entreprise, symbole..." : "Search company, ticker, title..."}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-white dark:bg-[#0e1626] border border-neutral-200/90 dark:border-[#233049] rounded-full text-xs sm:text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
-          />
-        </div>
-      </div>
+      )}
 
       {/* CONTAINER CONTAINER MATCHING SITE THEME */}
       <div className="w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] bg-white dark:bg-[#0e1626] p-6 sm:p-10 md:p-12 shadow-sm transition-colors">

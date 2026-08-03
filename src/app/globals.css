@@ -216,3 +216,23 @@ body {
 .delay-7 { animation-delay: 1000ms; }
 .delay-8 { animation-delay: 1200ms; }
 
+/* ═══════════════════════════════════════════════════════════════════
+   PREVENT WIDOW WORDS GLOBALLY ACROSS ALL PAGES & SECTIONS
+   Balances line wrapping for titles, headings, card labels & body text
+   ═══════════════════════════════════════════════════════════════════ */
+h1, h2, h3, h4, h5, h6,
+.font-black,
+.font-extrabold,
+[class*="text-2xl"],
+[class*="text-3xl"],
+[class*="text-4xl"],
+[class*="text-5xl"] {
+  text-wrap: balance;
+  -webkit-text-wrap: balance;
+}
+
+p, blockquote, figcaption {
+  text-wrap: pretty;
+  -webkit-text-wrap: pretty;
+}
+
