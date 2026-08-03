@@ -37,24 +37,41 @@ export default function AnimatedHeading({
     return () => observer.disconnect();
   }, []);
 
+  // Split sentence into words to prevent mid-word breaks or orphan letters
+  const words = text.split(" ");
+  let globalCharIndex = 0;
+
   return (
-    <div ref={containerRef} className="inline-block overflow-hidden py-1">
+    <div ref={containerRef} className="inline-block py-1 max-w-full">
       <Tag className={className}>
-        {text.split("").map((char, i) => (
-          <span
-            key={`${char}-${i}`}
-            className={`inline-block transition-all duration-500 ${
-              isVisible ? "char-slide-left-active" : "char-slide-left-hidden"
-            }`}
-            style={{
-              animationDelay: isVisible ? `${i * delayStep}s` : "0s",
-              transitionDelay: isVisible ? `${i * delayStep}s` : "0s",
-              whiteSpace: char === " " ? "pre" : "normal",
-            }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </span>
-        ))}
+        {words.map((word, wIdx) => {
+          const charSpans = word.split("").map((char) => {
+            const charIdx = globalCharIndex++;
+            return (
+              <span
+                key={charIdx}
+                className={`inline-block transition-all duration-500 ${
+                  isVisible ? "char-slide-left-active" : "char-slide-left-hidden"
+                }`}
+                style={{
+                  animationDelay: isVisible ? `${charIdx * delayStep}s` : "0s",
+                  transitionDelay: isVisible ? `${charIdx * delayStep}s` : "0s",
+                }}
+              >
+                {char}
+              </span>
+            );
+          });
+
+          // Count space in character delay index sequence
+          globalCharIndex++;
+
+          return (
+            <span key={wIdx} className="inline-block whitespace-nowrap mr-[0.25em]">
+              {charSpans}
+            </span>
+          );
+        })}
       </Tag>
     </div>
   );
