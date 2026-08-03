@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
+import CompanyArticlesShelfSection from "@/components/CompanyArticlesShelfSection";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface RawNewsItem {
@@ -486,13 +487,20 @@ function SponsorsSection() {
   const tierKeys = ["ALL", "PLATINUM", "GOLD", "SILVER", "COPPER", "MEDIA", "SPECIAL"];
 
   // Get active logos
-  const currentLogos =
+  const rawLogos =
     activeTier === "ALL"
       ? Object.values(tiersData).flatMap((t) => t.logos)
       : tiersData[activeTier]?.logos || [];
 
-  // Repeat logos 3 times for infinite loop track
-  const displayLogos = [...currentLogos, ...currentLogos, ...currentLogos];
+  const currentLogos = rawLogos.filter(Boolean);
+
+  // Ensure displayLogos has enough items to fill the viewport track completely
+  let displayLogos: string[] = [];
+  if (currentLogos.length > 0) {
+    while (displayLogos.length < 20) {
+      displayLogos = [...displayLogos, ...currentLogos];
+    }
+  }
 
   useEffect(() => {
     if (isPaused || currentLogos.length === 0) return;
@@ -2179,6 +2187,10 @@ function SectionPressReleaseView({
   const [searchQuery, setSearchQuery] = useState("");
   const [playingVideo, setPlayingVideo] = useState<SectionArticle | null>(null);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [data]);
+
   const isVideoSection = data.title === "Company Interviews" || data.articles.some((a) => a.youtubeId);
 
   const getItemCategory = (item: SectionArticle) => (lang === "FR" && item.categoryFR ? item.categoryFR : item.category);
@@ -2252,8 +2264,13 @@ function SectionPressReleaseView({
         </div>
       </section>
 
-      {/* Main Content Area matching Press Release Feed */}
-      <div className="max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 py-12 sm:py-16">
+      {/* Main Content Area */}
+      {data.title.toLowerCase().includes("article") ? (
+        <div className="max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 py-8 sm:py-12">
+          <CompanyArticlesShelfSection hideCtaButton={true} />
+        </div>
+      ) : (
+        <div className="max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 py-12 sm:py-16">
         {/* Filter Tags & Search Row */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
           <div className="flex flex-wrap gap-2">
@@ -2418,6 +2435,7 @@ function SectionPressReleaseView({
           </button>
         </div>
       </div>
+      )}
 
       {/* ── VIDEO PLAYER MODAL POPUP ── */}
       {playingVideo && (
@@ -2513,7 +2531,7 @@ function YouTubeSection({
             {/* YouTube Red Play Button Badge */}
             <span className="inline-flex items-center justify-center bg-[#C6112F] text-white px-2.5 py-0.5 rounded-lg text-xs font-black tracking-widest lowercase shadow-xs">
               <svg className="w-3.5 h-3.5 mr-1 fill-current" viewBox="0 0 24 24">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
               </svg>
               YouTube
             </span>
@@ -2529,11 +2547,10 @@ function YouTubeSection({
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
-                className={`text-xs font-bold px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  isSelected
+                className={`text-xs font-bold px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${isSelected
                     ? "bg-[#1f2430] dark:bg-white text-white dark:text-[#1f2430] shadow-xs"
                     : "bg-neutral-100 dark:bg-slate-800/80 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700"
-                }`}
+                  }`}
               >
                 {label}
               </button>
@@ -2604,7 +2621,7 @@ function YouTubeSection({
                   <span className="text-xs font-bold text-[#1f2430] dark:text-white flex items-center gap-1">
                     THE Mining Event Official
                     <svg className="w-3.5 h-3.5 text-[#C6112F] fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z"/>
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z" />
                     </svg>
                   </span>
                   <span className="text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
@@ -2701,7 +2718,7 @@ function YouTubeSection({
                 <span className="flex items-center gap-1 text-neutral-600 dark:text-slate-300 font-semibold">
                   THE Mining Event
                   <svg className="w-3 h-3 text-[#C6112F] fill-current" viewBox="0 0 24 24">
-                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z"/>
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z" />
                   </svg>
                 </span>
                 <span>{getItemDate(item)} · {lang === "FR" ? "1,1k vues" : "1.1K views"}</span>
@@ -2723,7 +2740,7 @@ function YouTubeSection({
           className="bg-[#C6112F] hover:bg-[#a50e27] text-white px-8 py-3 rounded-xl text-xs font-black tracking-widest uppercase shadow-md transition-all cursor-pointer hover:scale-105 active:scale-95 flex items-center gap-2"
         >
           <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
           </svg>
           {lang === "FR" ? "VOIR TOUTES LES INTERVIEWS ET VIDÉOS" : "VIEW ALL INTERVIEWS & VIDEOS"}
         </button>
@@ -2883,26 +2900,17 @@ export default function NewsPage() {
             />
           </section>
 
-          {/* ═══════ SECTION 6: COMPANY ARTICLES ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-            <NewsSection
-              sectionLabel={lang === "FR" ? "NOUVELLES DES ENTREPRISES" : "COMPANY NEWS"}
-              title={lang === "FR" ? "Articles d'Entreprises" : "Company Articles"}
-              icon={
-                <svg className="w-5 h-5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 21H5a2 2 0 01-2-2V7l5-5h11a2 2 0 012 2v15a2 2 0 01-2 2z" />
-                  <polyline strokeLinecap="round" strokeLinejoin="round" points="14 2 14 8 20 8" />
-                </svg>
-              }
-              articles={companyArticles}
-              ctaLabel={lang === "FR" ? "VOIR TOUS LES ARTICLES D'ENTREPRISES" : "VIEW ALL COMPANY ARTICLES"}
-              onViewAll={() => setExpandedSection({
+          {/* ═══════ SECTION 6: COMPANY ARTICLES (3D BOOKSHELF STYLE) ═══════ */}
+          <CompanyArticlesShelfSection
+            onViewAll={() => {
+              setExpandedSection({
                 title: lang === "FR" ? "Articles d'Entreprises" : "Company Articles",
                 sectionLabel: lang === "FR" ? "NOUVELLES DES ENTREPRISES" : "COMPANY NEWS",
                 articles: companyArticles
-              })}
-            />
-          </section>
+              });
+              window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+            }}
+          />
 
           {/* ═══════ SECTION 5: COMPANY INTERVIEWS (YOUTUBE UI STYLE) ═══════ */}
           <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
