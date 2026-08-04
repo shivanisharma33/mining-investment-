@@ -133,17 +133,14 @@ export default function PastEditionsPage() {
                 </div>
               </div>
 
-              {/* Right Column - Dotted Globe Image */}
-              <div className="lg:col-span-6 flex justify-center lg:justify-end relative">
+              {/* Right Column - Dotted Globe Image Covering Right Half */}
+              <div className="lg:col-span-6 flex justify-center lg:justify-end relative w-full h-full min-h-[360px] sm:min-h-[440px] lg:min-h-[500px]">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,17,47,0.08),transparent_65%)] pointer-events-none rounded-full" />
-                <div className="relative w-full max-w-[280px] xs:max-w-[340px] sm:w-[420px] md:w-[460px] lg:w-[480px] aspect-square flex items-center justify-center">
-                  <Image
-                    src="/image%2034.png"
+                <div className="relative w-full h-full flex items-center justify-center lg:justify-end">
+                  <img
+                    src="/image%2034.webp"
                     alt="Mining Investment Event Globe"
-                    width={600}
-                    height={600}
-                    priority
-                    className="w-full h-full object-contain select-none"
+                    className="w-full h-full max-h-[520px] lg:max-h-[580px] xl:max-h-[640px] object-contain object-center lg:object-right select-none"
                   />
                 </div>
               </div>

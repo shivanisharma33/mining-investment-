@@ -234,7 +234,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Mining Discovery",
     website: "https://miningdiscovery.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_21.png",
+    image: "/sponsors/2026/mining_discovery.webp",
   },
   {
     name: "BTV – Business Television",
@@ -562,7 +562,7 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "Mining Discovery",
     website: "https://miningdiscovery.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_21.png",
+    image: "/sponsors/2026/mining_discovery.webp",
   },
   {
     name: "Mining Network",
@@ -853,7 +853,7 @@ const SPONSORS_2024: SponsorItem[] = [
     name: "Mining Discovery",
     website: "https://miningdiscovery.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_21.png",
+    image: "/sponsors/2026/mining_discovery.webp",
   },
   {
     name: "Mining IR",
@@ -1199,10 +1199,10 @@ const staticSponsorsFor = (year: number): SponsorItem[] =>
   year === 2026
     ? SPONSORS_2026
     : year === 2025
-    ? SPONSORS_2025
-    : year === 2024
-    ? SPONSORS_2024
-    : SPONSORS_2023;
+      ? SPONSORS_2025
+      : year === 2024
+        ? SPONSORS_2024
+        : SPONSORS_2023;
 
 export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProps) {
   const { t } = useLanguage();
@@ -1340,8 +1340,8 @@ export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProp
                 key={yearOption}
                 onClick={() => handleYearChange(yearOption)}
                 className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all ${selectedYear === yearOption
-                    ? "bg-[#C6112F] text-white shadow-md"
-                    : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                  ? "bg-[#C6112F] text-white shadow-md"
+                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
                   }`}
               >
                 {yearOption} {t("sp-sponsors", "Sponsors")}
@@ -1363,8 +1363,8 @@ export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProp
               key={opt.id}
               onClick={() => setSelectedCategory(opt.id)}
               className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wide uppercase transition-all whitespace-nowrap shrink-0 border ${isSelected
-                  ? "bg-[#C6112F] text-white border-[#C6112F] shadow-md scale-105"
-                  : "bg-white text-neutral-600 border-neutral-200/90 hover:bg-neutral-100 hover:text-neutral-900"
+                ? "bg-[#C6112F] text-white border-[#C6112F] shadow-md scale-105"
+                : "bg-white text-neutral-600 border-neutral-200/90 hover:bg-neutral-100 hover:text-neutral-900"
                 }`}
             >
               {opt.label}

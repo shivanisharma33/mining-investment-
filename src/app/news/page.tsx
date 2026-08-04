@@ -458,7 +458,7 @@ function SponsorsSection() {
       label: lang === "FR" ? "Partenaires Médias" : "Media Partners",
       color: "#C6112F",
       logos: [
-        "/sponsors/2026/sponsor_media_21.png",
+        "/sponsors/2026/mining_discovery.webp",
         "/sponsors/2026/sponsor_media_17.png",
         "/sponsors/2026/sponsor_media_19.png",
         "/sponsors/2026/sponsor_media_35.png",

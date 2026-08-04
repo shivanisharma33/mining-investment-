@@ -9,11 +9,9 @@ const tiers: TierKey[] = ["PLATINUM", "GOLD", "SILVER", "COPPER", "MEDIA"];
 
 const partnerData: Record<TierKey, string[]> = {
   PLATINUM: [
-    "/sponsors/2026/mining_discovery.webp",
-    "/sponsers/Platinum%20Partners/5.png",
-    "/sponsers/Platinum%20Partners/7.png",
-    "/sponsers/Platinum%20Partners/8.png",
-    "/sponsers/Platinum%20Partners/9.png",
+    "/sponsors/2026/glencore.svg",
+    "/sponsor image/logo-capitalmarkets.svg",
+    "/sponsors/2026/ventum_financial.png",
     "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
   ],
   GOLD: [
@@ -53,7 +51,7 @@ const partnerData: Record<TierKey, string[]> = {
   MEDIA: [
     "/sponsers/Media%20Partners/1.pdf.png",
     "/sponsers/Media%20Partners/24.png",
-    "/sponsors/2026/sponsor_media_21.png",
+    "/sponsors/2026/mining_discovery.webp",
     "/sponsers/Media%20Partners/25.png",
     "/sponsers/Media%20Partners/26.png",
     "/sponsers/Media%20Partners/27.png",
@@ -188,8 +186,8 @@ export default function FeaturedPartners() {
                     key={`${logoPath}-${idx}`}
                     style={{ backgroundColor: "#ffffff" }}
                     className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl flex items-center justify-center p-4 transition-all duration-500 transform ${isCenter
-                      ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-lg scale-105 z-20"
-                      : "h-26 sm:h-28 border border-neutral-200 dark:border-neutral-300 shadow-2xs opacity-95 hover:opacity-100"
+                      ? "h-32 sm:h-36 border-2 border-[#C6112F] scale-105 z-20"
+                      : "h-26 sm:h-28 border border-neutral-200 dark:border-neutral-300 opacity-95 hover:opacity-100"
                       }`}
                   >
                     <img

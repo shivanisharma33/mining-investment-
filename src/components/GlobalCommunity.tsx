@@ -50,13 +50,13 @@ export default function GlobalCommunity() {
   ];
 
   return (
-    <section className="relative w-full bg-white dark:bg-[#090d16] py-14 sm:py-18 overflow-hidden transition-colors duration-300">
+    <section className="relative w-full bg-white dark:bg-[#090d16] py-8 sm:py-12 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
       <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Top Section: Text Stack & Red Dotted World Map Graphic */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center mb-6 sm:mb-8">
           {/* Left Column: Title & Action Button */}
           <div className="lg:col-span-6 flex flex-col items-start text-left group">
             <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase mb-2 block transition-all duration-300 group-hover:tracking-[0.32em]">
@@ -66,27 +66,27 @@ export default function GlobalCommunity() {
               text={t("map-title", "Where the World's Mining Converges")}
               className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3"
             />
-            <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
+            <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-5" />
 
-            <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed mb-6 max-w-[420px]">
+            <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed mb-5 max-w-[420px]">
               {t("map-desc", "Explore the international network of companies, investors, and delegations gathering in Québec City.")}
             </p>
 
             <Link
               href="/companies"
-              className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider uppercase px-7 py-3.5 rounded-lg shadow-md hover:shadow-lg transition-all inline-block"
+              className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider uppercase px-7 py-3 rounded-lg shadow-md hover:shadow-lg transition-all inline-block"
             >
               {t("map-cta", "VIEW GLOBAL PARTICIPATION")}
             </Link>
           </div>
 
-          {/* Right Column: 3D Dotted Red World Map Graphic Image */}
+          {/* Right Column: Graphic Image */}
           <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-end">
-            <div className="relative w-full max-w-[580px] aspect-[2.2/1] flex items-center justify-center overflow-hidden">
+            <div className="relative w-full max-w-[440px] sm:max-w-[480px] flex items-center justify-center overflow-hidden">
               <img
-                src="/image%2015%20(2).avif"
+                src="/image%2034.webp"
                 alt="Global Mining Community World Map"
-                className="w-full h-full object-contain"
+                className="w-full h-auto max-h-[360px] sm:max-h-[400px] object-contain"
               />
             </div>
           </div>
