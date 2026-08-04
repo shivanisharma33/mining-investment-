@@ -114,11 +114,6 @@ const highlights = [
 export default function AboutPage() {
   const { t, lang } = useLanguage();
 
-  const stat1 = useCounter(800);
-  const stat2 = useCounter(100);
-  const stat3 = useCounter(3);
-  const stat4 = useCounter(50);
-
   const facts = lang === "FR" ? quickFactsFr : quickFacts;
 
   return (
@@ -316,65 +311,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ═══════════════ SECTION 3: STATS STRIP ═══════════════ */}
-        <section className="relative w-full bg-[#C6112F] py-14 sm:py-18 overflow-hidden">
-          {/* Subtle pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.06]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-            }}
-          />
-          <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
-              {/* Stat 1 */}
-              <div ref={stat1.ref} className="flex flex-col items-center text-center">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-none">
-                  {stat1.count}<span className="text-white/60 text-3xl">+</span>
-                </span>
-                <div className="w-8 h-[2px] bg-white/30 rounded-full mt-3 mb-2" />
-                <span className="text-white/80 text-xs sm:text-sm font-bold tracking-wider uppercase">
-                  {t("stat-participants", "Participants")}
-                </span>
-              </div>
 
-              {/* Stat 2 */}
-              <div ref={stat2.ref} className="flex flex-col items-center text-center">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-none">
-                  {stat2.count}<span className="text-white/60 text-3xl">+</span>
-                </span>
-                <div className="w-8 h-[2px] bg-white/30 rounded-full mt-3 mb-2" />
-                <span className="text-white/80 text-xs sm:text-sm font-bold tracking-wider uppercase">
-                  {t("stat-companies", "Mining Companies")}
-                </span>
-              </div>
-
-              {/* Stat 3 */}
-              <div ref={stat3.ref} className="flex flex-col items-center text-center">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-none">
-                  {stat3.count}
-                </span>
-                <div className="w-8 h-[2px] bg-white/30 rounded-full mt-3 mb-2" />
-                <span className="text-white/80 text-xs sm:text-sm font-bold tracking-wider uppercase">
-                  {t("stat-days", "Days of Programming")}
-                </span>
-              </div>
-
-              {/* Stat 4 */}
-              <div ref={stat4.ref} className="flex flex-col items-center text-center">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-none">
-                  {stat4.count}<span className="text-white/60 text-3xl">+</span>
-                </span>
-                <div className="w-8 h-[2px] bg-white/30 rounded-full mt-3 mb-2" />
-                <span className="text-white/80 text-xs sm:text-sm font-bold tracking-wider uppercase">
-                  {t("stat-student-sponsors", "Student Sponsors")}
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* ═══════════════ SECTION 4: WHAT MAKES US DIFFERENT ═══════════════ */}
         <section className="relative w-full bg-[#f4f7fa] py-16 sm:py-20 md:py-24 overflow-hidden">
