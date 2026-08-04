@@ -291,11 +291,11 @@ export default function CompaniesView({
                         )}
                       </td>
                       <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-700 text-xs leading-relaxed break-words">
-                        {company.contactEmail || company.contactPhone ? (
+                        {company.email || company.contactPhone ? (
                           <div className="space-y-1">
-                            {company.contactEmail && (
+                            {company.email && (
                               <div className="truncate text-[#C6112F] hover:text-[#9d0f20]">
-                                <a href={`mailto:${company.contactEmail}`}>{company.contactEmail}</a>
+                                <a href={`mailto:${company.email}`}>{company.email}</a>
                               </div>
                             )}
                             {company.contactPhone && (
