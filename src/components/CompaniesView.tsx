@@ -171,12 +171,25 @@ export default function CompaniesView({
               <th className="py-4 px-3 sm:px-6 w-[16%] text-neutral-200">
                 {t("co-col-commodities", "Commodities")}
               </th>
+              {isApiYear && (
+                <>
+                  <th className="py-4 px-3 sm:px-6 w-[14%] text-neutral-200">
+                    {t("co-col-industry", "Industry")}
+                  </th>
+                  <th className="py-4 px-3 sm:px-6 w-[18%] text-neutral-200">
+                    {t("co-col-website", "Website")}
+                  </th>
+                  <th className="py-4 px-3 sm:px-6 w-[18%] text-neutral-200">
+                    {t("co-col-contact", "Contact")}
+                  </th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody className="divide-y divide-neutral-100 text-xs sm:text-sm font-medium">
             {isApiYear && apiLoading ? (
               <tr>
-                <td colSpan={5} className="py-16 px-6 text-center bg-neutral-50/50">
+                <td colSpan={isApiYear ? 8 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
                   <div className="flex flex-col items-center justify-center gap-3">
                     <span className="w-7 h-7 rounded-full border-2 border-neutral-200 border-t-[#C6112F] animate-spin" />
                     <span className="text-neutral-500 font-bold">
@@ -187,7 +200,7 @@ export default function CompaniesView({
               </tr>
             ) : isApiYear && apiError ? (
               <tr>
-                <td colSpan={5} className="py-16 px-6 text-center bg-neutral-50/50">
+                <td colSpan={isApiYear ? 8 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <span className="text-neutral-800 font-extrabold">
                       {lang === "FR"
@@ -201,7 +214,7 @@ export default function CompaniesView({
             ) : filteredCompanies.length > 0 ? (
               filteredCompanies.map((company: CompanyItem, idx: number) => (
                 <tr
-                  key={idx}
+                  key={company._id ?? idx}
                   className="even:bg-neutral-50/60 hover:bg-[#FCDDE1]/25 transition-all duration-200 group border-b border-neutral-100"
                 >
                   {/* Column 1: Company Logo + Name */}
@@ -258,14 +271,48 @@ export default function CompaniesView({
                       ))}
                     </div>
                   </td>
+                  {isApiYear && (
+                    <>
+                      <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-700 text-xs leading-relaxed break-words">
+                        {company.industry || "—"}
+                      </td>
+                      <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-700 text-xs leading-relaxed break-words">
+                        {company.website ? (
+                          <a
+                            href={company.website}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[#C6112F] hover:text-[#9d0f20] truncate block max-w-[180px]"
+                          >
+                            {company.website}
+                          </a>
+                        ) : (
+                          "—"
+                        )}
+                      </td>
+                      <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-700 text-xs leading-relaxed break-words">
+                        {company.contactEmail || company.contactPhone ? (
+                          <div className="space-y-1">
+                            {company.contactEmail && (
+                              <div className="truncate text-[#C6112F] hover:text-[#9d0f20]">
+                                <a href={`mailto:${company.contactEmail}`}>{company.contactEmail}</a>
+                              </div>
+                            )}
+                            {company.contactPhone && (
+                              <div className="truncate">{company.contactPhone}</div>
+                            )}
+                          </div>
+                        ) : (
+                          "—"
+                        )}
+                      </td>
+                    </>
+                  )}
                 </tr>
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={5}
-                  className="py-16 px-6 text-center text-neutral-500 font-bold bg-neutral-50/50"
-                >
+                <td colSpan={isApiYear ? 8 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <svg className="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                       <circle cx="11" cy="11" r="6.5" />
@@ -290,3 +337,4 @@ export default function CompaniesView({
     </div>
   );
 }
+

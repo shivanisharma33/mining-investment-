@@ -9,11 +9,25 @@ export interface CompanyApiItem {
   ticker?: string;
   type?: string;
   location?: string;
+  industry?: string;
+  employees?: string;
+  headquarters?: string;
   commodities?: string[];
   year: number;
   contactEmail?: string;
+  contactPhone?: string;
+  social?: {
+    linkedin?: string;
+    twitter?: string;
+    facebook?: string;
+  };
   status: string;
+  isFeatured?: boolean;
+  seoTitle?: string;
+  seoDescription?: string;
   isDeleted?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
   logo?: {
     url?: string;
     publicId?: string;
@@ -36,16 +50,31 @@ export const COMPANIES_ENDPOINT = "/api/companies";
 /** Maps an API record onto the shape the directory table already renders. */
 export function mapCompany(item: CompanyApiItem): CompanyItem {
   return {
+    _id: item._id,
+    slug: item.slug,
     name: item.name,
+    description: item.description?.trim() || undefined,
     ticker: item.ticker?.trim() || "—",
     type: item.type?.trim() || "—",
     location: item.location?.trim() || "—",
-    // The table splits this on commas to render one chip per commodity.
+    industry: item.industry?.trim() || undefined,
+    employees: item.employees?.trim() || undefined,
+    headquarters: item.headquarters?.trim() || undefined,
     commodities: (item.commodities ?? []).filter(Boolean).join(", "),
     email: item.contactEmail?.trim() || undefined,
+    contactPhone: item.contactPhone?.trim() || undefined,
     website: item.website?.trim() || undefined,
+    social: item.social,
+    status: item.status,
+    isFeatured: item.isFeatured,
+    seoTitle: item.seoTitle?.trim() || undefined,
+    seoDescription: item.seoDescription?.trim() || undefined,
+    isDeleted: item.isDeleted,
+    createdAt: item.createdAt,
+    updatedAt: item.updatedAt,
     logo: item.logo?.url || undefined,
     year: item.year,
+    rawData: item,
   };
 }
 

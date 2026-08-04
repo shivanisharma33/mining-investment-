@@ -1,14 +1,34 @@
 export interface CompanyItem {
+  _id?: string;
+  slug?: string;
   name: string;
   marker?: string;
   ticker: string;
   type: string;
   location: string;
   commodities: string;
-  email?: string;
+  description?: string;
   website?: string;
+  industry?: string;
+  employees?: string;
+  headquarters?: string;
+  email?: string;
+  contactPhone?: string;
+  social?: {
+    linkedin?: string;
+    twitter?: string;
+    facebook?: string;
+  };
   year?: number;
+  status?: string;
+  isFeatured?: boolean;
+  seoTitle?: string;
+  seoDescription?: string;
+  isDeleted?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
   logo?: string;
+  rawData?: unknown;
 }
 
 export const PARTICIPATING_COMPANIES: CompanyItem[] = [
