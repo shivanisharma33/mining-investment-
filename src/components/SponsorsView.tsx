@@ -1391,7 +1391,8 @@ export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProp
             {filteredSponsors.map((sponsor, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-neutral-200/90 rounded-2xl p-6 flex flex-col items-center justify-between text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 group min-h-[240px]"
+                style={{ backgroundColor: "#ffffff" }}
+                className="border border-neutral-200 dark:border-neutral-300 rounded-2xl p-6 flex flex-col items-center justify-between text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 group min-h-[240px]"
               >
                 <span
                   className={`text-[9px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded-full border mb-3 ${getTierBadgeStyle(
@@ -1401,7 +1402,10 @@ export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProp
                   {getTierLabel(sponsor.tier)}
                 </span>
 
-                <div className="w-full h-24 flex items-center justify-center mb-4 p-2 bg-neutral-50/50 rounded-xl border border-neutral-100 group-hover:bg-white transition-colors">
+                <div
+                  style={{ backgroundColor: "#f8fafc" }}
+                  className="w-full h-24 flex items-center justify-center mb-4 p-2 rounded-xl border border-neutral-200 transition-colors"
+                >
                   <SponsorLogo sponsor={sponsor} />
                 </div>
 

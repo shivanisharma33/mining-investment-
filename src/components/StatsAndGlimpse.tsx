@@ -41,9 +41,21 @@ function AnimatedNumber({ target, suffix }: { target: string; suffix: string }) 
   const formatted = count.toLocaleString();
 
   return (
-    <div ref={ref} className="text-2xl xs:text-3xl sm:text-4xl md:text-[40px] font-black text-neutral-900 dark:text-slate-100 leading-none tracking-tight">
+    <div ref={ref} className="text-base sm:text-lg md:text-xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight">
       {formatted}
       <span>{suffix}</span>
+    </div>
+  );
+}
+
+function StatIconBadge({ icon }: { icon: React.ReactNode }) {
+  return (
+    <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
+      {/* Red Arc Accent in Top Right */}
+      <div className="absolute -top-[1.5px] -right-[1.5px] w-4.5 h-4.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
+      <div className="text-neutral-700 dark:text-zinc-200 flex items-center justify-center">
+        {icon}
+      </div>
     </div>
   );
 }
@@ -54,84 +66,81 @@ export default function StatsAndGlimpse() {
 
   const cards = [
     {
-      icon: <i className="fi fi-rr-user-salary text-2xl text-[#C6112F] flex items-center justify-center"></i>,
+      icon: (
+        <svg className="w-4.5 h-4.5 text-neutral-700 dark:text-zinc-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+        </svg>
+      ),
       number: "350",
       suffix: "",
       label: isFr ? "INVESTISSEURS QUALIFIÉS" : "QUALIFIED INVESTORS",
-      subtext: isFr
-        ? "Connecter le capital aux opportunités du monde entier."
-        : "Connecting Capital With Opportunity From Around The World.",
-    },
-    {
-      icon: <i className="fi fi-rs-building text-2xl text-[#C6112F] flex items-center justify-center"></i>,
-      number: "200",
-      suffix: "+",
-      label: isFr ? "SOCIÉTÉS REPRÉSENTÉES" : "COMPANIES REPRESENTED",
-      subtext: isFr
-        ? "Sociétés minières, d'exploration et de services présentant leurs projets et solutions."
-        : "Mining, Exploration And Service Companies Showcasing Their Projects And Solutions.",
-    },
-    {
-      icon: <i className="fi fi-rr-handshake text-2xl text-[#C6112F] flex items-center justify-center"></i>,
-      number: "143",
-      suffix: "",
-      label: isFr ? "ÉMETTEURS RENCONTRES 1-À-1" : "1X1 MEETING ISSUERS",
-      subtext: isFr
-        ? "Réunions pré-programmées entre investisseurs et dirigeants d'entreprises."
-        : "Pre-Scheduled Meetings Between Investors And Company Executives.",
-    },
-    {
-      icon: <i className="fi fi-rr-chart-user text-2xl text-[#C6112F] flex items-center justify-center"></i>,
-      number: "65",
-      suffix: "",
-      label: isFr ? "PRÉSENTATIONS" : "PRESENTATIONS",
-      subtext: isFr
-        ? "Présentations d'entreprises, conférences et opportunités d'investissement."
-        : "Company Presentations, Keynotes And Investment Spotlights Over The Event.",
-    },
-    {
-      icon: <i className="fi fi-rs-circle-microphone text-2xl text-[#C6112F] flex items-center justify-center"></i>,
-      number: "17",
-      suffix: "",
-      label: isFr ? "PANELS ET CONFÉRENCES" : "PANELS & KEYNOTES",
-      subtext: isFr
-        ? "Partenaires fiers de soutenir l'événement et la communauté minière mondiale."
-        : "Proud Partners Supporting The Event And The Global Mining Community.",
-    },
-    {
-      icon: <i className="fi fi-rr-circle-nodes text-2xl text-[#C6112F] flex items-center justify-center"></i>,
-      number: "60",
-      suffix: "+",
-      label: isFr ? "COMMANDITAIRES & PARTENAIRES" : "SPONSORS & PARTNERS",
-      subtext: isFr
-        ? "Des réunions ciblées créant de vraies connexions et un impact durable."
-        : "Focused Meetings Creating Real Connections And Lasting Impact.",
     },
     {
       icon: (
-        <div className="relative flex items-center justify-center min-w-[28px] min-h-[28px]">
-          <i className="fi fi-rr-coworking fi-sr-coworking fi-rr-users-alt text-2xl text-[#C6112F] leading-none flex items-center justify-center"></i>
-          <svg className="w-6 h-6 text-[#C6112F] absolute inset-0 m-auto -z-10" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-          </svg>
-        </div>
+        <svg className="w-4.5 h-4.5 text-neutral-700 dark:text-zinc-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5M13.5 6.75h1.5M9 10.5h1.5M13.5 10.5h1.5M9 14.25h1.5M13.5 14.25h1.5M9 18h1.5M13.5 18h1.5" />
+        </svg>
+      ),
+      number: "200",
+      suffix: "+",
+      label: isFr ? "SOCIÉTÉS REPRÉSENTÉES" : "COMPANIES REPRESENTED",
+    },
+    {
+      icon: (
+        <svg className="w-4.5 h-4.5 text-neutral-700 dark:text-zinc-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+        </svg>
+      ),
+      number: "143",
+      suffix: "",
+      label: isFr ? "ÉMETTEURS RENCONTRES 1-À-1" : "1X1 MEETING ISSUERS",
+    },
+    {
+      icon: (
+        <svg className="w-4.5 h-4.5 text-neutral-700 dark:text-zinc-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+        </svg>
+      ),
+      number: "65",
+      suffix: "",
+      label: isFr ? "PRÉSENTATIONS" : "PRESENTATIONS",
+    },
+    {
+      icon: (
+        <svg className="w-4.5 h-4.5 text-neutral-700 dark:text-zinc-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 003-3V4.5a3 3 0 10-6 0v8.25a3 3 0 003 3z" />
+        </svg>
+      ),
+      number: "17",
+      suffix: "",
+      label: isFr ? "PANELS ET CONFÉRENCES" : "PANELS & KEYNOTES",
+    },
+    {
+      icon: (
+        <svg className="w-4.5 h-4.5 text-neutral-700 dark:text-zinc-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.05 4.575a1.575 1.575 0 10-3.15 0v3m3.15-3v-1.5a1.5 1.5 0 00-3 0v1.5m3.15 3h1.5a1.5 1.5 0 011.5 1.5v2.25m-6-3.75V12m6 0a1.5 1.5 0 01-1.5 1.5H6a1.5 1.5 0 01-1.5-1.5M16.5 7.5V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18V7.5" />
+        </svg>
+      ),
+      number: "60",
+      suffix: "+",
+      label: isFr ? "COMMANDITAIRES & PARTENAIRES" : "SPONSORS & PARTNERS",
+    },
+    {
+      icon: (
+        <svg className="w-4.5 h-4.5 text-neutral-700 dark:text-zinc-200" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+        </svg>
       ),
       number: "3500",
       suffix: "",
-      label: isFr ? "RÉUNIONS 1-À-1 / 3 JOURS" : "1X1 MEETINGS/ 3 DAYS",
-      subtext: isFr
-        ? "Connecter le capital aux opportunités du monde entier."
-        : "Connecting Capital With Opportunity From Around The World.",
+      label: isFr ? "RÉUNIONS 1-À-1 / 3 JOURS" : "1X1 MEETINGS / 3 DAYS",
     },
   ];
 
-  const topRowCards = cards.slice(0, 4);
-  const bottomRowCards = cards.slice(4);
-
   return (
-    <section className="relative overflow-hidden py-16 sm:py-20 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#eef0f5] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
+    <section className="relative overflow-hidden py-14 sm:py-18 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
       {/* ════════ HEADER SECTION MATCHING EXACT IMAGE ════════ */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-12 sm:mb-16 group">
+      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-10 sm:mb-12 group">
         <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase block mb-2 transition-all duration-300 group-hover:tracking-[0.35em]">
           {isFr ? "L ' É V É N E M E N T  2 0 2 6" : "T H E   E V E N T   2 0 2 6"}
         </span>
@@ -143,83 +152,30 @@ export default function StatsAndGlimpse() {
         <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
           {isFr
             ? "Une plateforme mondiale connectant les investisseurs, les sociétés et les leaders façonnant l'avenir de l'industrie minière et de l'investissement."
-            : "A global platform connecting investors, companies and leaders driving the future of mining and resource investment."}
+            : "A global platform connecting investors, companies, and leaders driving the future of mining and resource investment."}
         </p>
       </div>
 
-      {/* ════════ STAGGERED CARDS GRID (4 TOP + 3 BOTTOM CENTERED) ════════ */}
-      <div className="relative z-10 max-w-[1280px] w-full mx-auto px-4 sm:px-6 md:px-8 space-y-6 sm:space-y-8">
-        {/* Top Row: 4 Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
-          {topRowCards.map((card, i) => (
+      {/* ════════ SINGLE 1-LINE HORIZONTAL STATS ROW (EXACT MATCH TO IMAGE) ════════ */}
+      <div className="relative z-10 max-w-[1360px] w-full mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-3.5">
+          {cards.map((card, i) => (
             <div
               key={i}
-              className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-sm card-shimmer interactive-card group cursor-pointer"
+              className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-3 sm:p-3.5 flex items-center gap-2.5 sm:gap-3 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer"
             >
-              {/* Bottom Red Inner Gradient Glow */}
-              <div className="absolute inset-x-0 bottom-0 h-28 group-hover:h-36 bg-[radial-gradient(ellipse_at_bottom_left,rgba(198,17,47,0.28)_0%,rgba(198,17,47,0.08)_45%,transparent_70%),radial-gradient(ellipse_at_bottom_right,rgba(198,17,47,0.28)_0%,rgba(198,17,47,0.08)_45%,transparent_70%)] pointer-events-none rounded-b-2xl transition-all duration-500 opacity-80 group-hover:opacity-100" />
+              {/* Icon Badge with Red Arc */}
+              <StatIconBadge icon={card.icon} />
 
-              {/* Hover Animated Red Top Line Accent */}
-              <div className="w-0 group-hover:w-16 h-[2.5px] bg-[#C6112F] transition-all duration-300 rounded-full mb-1" />
+              {/* Red Vertical Line Divider */}
+              <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
 
-              <div className="relative z-10 flex flex-col items-center w-full">
-                {/* Double Ringed Circular Icon Container */}
-                <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                  <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 group-hover:border-[#C6112F] flex items-center justify-center transition-colors">
-                    {card.icon}
-                  </div>
-                </div>
-
-                {/* Number */}
+              {/* Number & Red Label */}
+              <div className="flex flex-col items-start justify-center overflow-hidden min-w-0">
                 <AnimatedNumber target={card.number} suffix={card.suffix} />
-
-                {/* Red Label */}
-                <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug group-hover:scale-105 transition-transform duration-300">
+                <span className="text-[#C6112F] font-bold text-[10px] sm:text-[11px] tracking-tight uppercase leading-tight mt-0.5 truncate w-full">
                   {card.label}
-                </div>
-
-                {/* Subtext */}
-                <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
-                  {card.subtext}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Row: 3 Cards Centered */}
-        <div className="max-w-[960px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-7">
-          {bottomRowCards.map((card, i) => (
-            <div
-              key={i}
-              className="relative overflow-hidden bg-white dark:bg-[#18181b] border border-neutral-300/80 dark:border-zinc-700/80 rounded-2xl p-6 sm:p-7 text-center flex flex-col items-center justify-between min-h-[290px] shadow-sm card-shimmer interactive-card group cursor-pointer"
-            >
-              {/* Bottom Red Inner Gradient Glow */}
-              <div className="absolute inset-x-0 bottom-0 h-28 group-hover:h-36 bg-[radial-gradient(ellipse_at_bottom_left,rgba(198,17,47,0.28)_0%,rgba(198,17,47,0.08)_45%,transparent_70%),radial-gradient(ellipse_at_bottom_right,rgba(198,17,47,0.28)_0%,rgba(198,17,47,0.08)_45%,transparent_70%)] pointer-events-none rounded-b-2xl transition-all duration-500 opacity-80 group-hover:opacity-100" />
-
-              {/* Hover Animated Red Top Line Accent */}
-              <div className="w-0 group-hover:w-16 h-[2.5px] bg-[#C6112F] transition-all duration-300 rounded-full mb-1" />
-
-              <div className="relative z-10 flex flex-col items-center w-full">
-                {/* Double Ringed Circular Icon Container */}
-                <div className="w-14 h-14 rounded-full border border-neutral-300 dark:border-zinc-700 bg-white dark:bg-[#202532] flex items-center justify-center shadow-2xs mb-4 relative group-hover:border-[#C6112F] group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                  <div className="w-11 h-11 rounded-full border border-[#C6112F]/50 group-hover:border-[#C6112F] flex items-center justify-center transition-colors">
-                    {card.icon}
-                  </div>
-                </div>
-
-                {/* Number */}
-                <AnimatedNumber target={card.number} suffix={card.suffix} />
-
-                {/* Red Label */}
-                <div className="text-[#C6112F] font-bold text-xs sm:text-[13px] tracking-wider uppercase mb-2 max-w-[200px] leading-snug group-hover:scale-105 transition-transform duration-300">
-                  {card.label}
-                </div>
-
-                {/* Subtext */}
-                <p className="text-neutral-600 dark:text-zinc-300 text-xs font-medium leading-relaxed max-w-[220px]">
-                  {card.subtext}
-                </p>
+                </span>
               </div>
             </div>
           ))}
@@ -227,7 +183,7 @@ export default function StatsAndGlimpse() {
       </div>
 
       {/* ════════ A GLIMPSE INSIDE THE EVENT VIDEO SECTION ════════ */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 pt-16 sm:pt-20">
+      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 pt-14 sm:pt-18">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 bg-white/80 dark:bg-[#131b2e]/80 p-8 sm:p-12 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xl backdrop-blur-xs">
           {/* Left Column: Text & Connected Action Buttons */}
           <div className="flex-1 flex flex-col items-start text-left max-w-[560px] lg:max-w-[520px] group">
@@ -275,7 +231,7 @@ export default function StatsAndGlimpse() {
             </div>
           </div>
 
-          {/* Right Column: Video Card with Red Perimeter Frame & Overlay Text */}
+          {/* Right Column: Video Card with Red Perimeter Frame */}
           <div className="flex-1 w-full max-w-[580px] lg:max-w-none">
             <div className="relative rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-md bg-neutral-900 aspect-[16/9] group card-shimmer hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(198,17,47,0.25)] transition-all duration-500 cursor-pointer">
               <video

@@ -139,7 +139,7 @@ export default function GolfPartnersSection() {
         {/* 4-Card Grid matching mockup */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {/* Card 1: Antimony Resources Corp */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div style={{ backgroundColor: "#ffffff" }} className="border border-neutral-200 dark:border-neutral-300 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
               src="/sponsors/2026/antimony_resources_corp.png"
               alt="Antimony Resources Corp"
@@ -150,7 +150,7 @@ export default function GolfPartnersSection() {
           </div>
 
           {/* Card 2: Genesis */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div style={{ backgroundColor: "#ffffff" }} className="border border-neutral-200 dark:border-neutral-300 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
               src="/sponsors/2026/genesis_wings.png"
               alt="Genesis"
@@ -161,7 +161,7 @@ export default function GolfPartnersSection() {
           </div>
 
           {/* Card 3: National Bank of Canada Capital Markets */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div style={{ backgroundColor: "#ffffff" }} className="border border-neutral-200 dark:border-neutral-300 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
               src="/sponsors/2026/national_bank_capital_markets.png"
               alt="National Bank of Canada Capital Markets"
@@ -172,7 +172,7 @@ export default function GolfPartnersSection() {
           </div>
 
           {/* Card 4: Ventum Financial */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div style={{ backgroundColor: "#ffffff" }} className="border border-neutral-200 dark:border-neutral-300 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
               src="/sponsors/2026/ventum_financial_exact.png"
               alt="Ventum Financial"
@@ -226,7 +226,7 @@ export default function GolfPartnersSection() {
                   key={`${partner.id}-${idx}`}
                   className="shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2"
                 >
-                  <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/50 transition-all duration-300 group">
+                  <div style={{ backgroundColor: "#ffffff" }} className="border border-neutral-200 dark:border-neutral-300 rounded-xl h-28 sm:h-32 flex items-center justify-center p-4 shadow-2xs hover:shadow-md hover:border-[#C6112F]/50 transition-all duration-300 group">
                     {partner.content}
                   </div>
                 </div>
@@ -278,30 +278,30 @@ export default function GolfPartnersSection() {
         {/* 3 Centered Partner Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 max-w-[860px] mx-auto gap-4 sm:gap-6 mb-10 sm:mb-14">
           {/* NP Partners */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div style={{ backgroundColor: "#ffffff" }} className="border border-neutral-200 dark:border-neutral-300 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <div className="flex flex-col items-center justify-center text-center">
-              <span className="font-serif text-4xl font-bold text-[#8facc0] leading-none tracking-tight">NP</span>
-              <span className="font-serif italic text-[11px] text-[#b0aaa0] tracking-wide mt-0.5">Partners</span>
+              <span className="font-serif text-4xl font-bold text-[#203a43] leading-none tracking-tight">NP</span>
+              <span className="font-serif italic text-[11px] text-[#556b2f] tracking-wide mt-0.5">Partners</span>
             </div>
           </div>
 
           {/* XPAV Expert'Ease */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div style={{ backgroundColor: "#ffffff" }} className="border border-neutral-200 dark:border-neutral-300 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
               src="/sponsors/2026/xpav_expert_ease.png"
               alt="XPAV Expert'Ease"
-              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
+              className="max-h-14 sm:max-h-16 w-auto object-contain"
               loading="lazy"
               decoding="async"
             />
           </div>
 
           {/* Stifel (Red/Blue Diamond S Logo) */}
-          <div className="bg-[#eeeff2] dark:bg-[#182236] border border-neutral-300/80 dark:border-slate-700/80 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
+          <div style={{ backgroundColor: "#ffffff" }} className="border border-neutral-200 dark:border-neutral-300 rounded-xl h-28 sm:h-32 flex items-center justify-center p-5 shadow-2xs hover:shadow-sm transition-all duration-300 group">
             <img
               src="/sponsors/2026/stifel.svg"
               alt="Stifel"
-              className="max-h-14 sm:max-h-16 w-auto object-contain dark:brightness-110"
+              className="max-h-14 sm:max-h-16 w-auto object-contain"
               loading="lazy"
               decoding="async"
             />

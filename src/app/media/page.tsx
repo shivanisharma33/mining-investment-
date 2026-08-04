@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -103,61 +103,531 @@ const galleryTiles = [
   },
 ];
 
-/* ─── 4 YouTube videos ─── */
-const videos = [
+/* ─── Day 1 to Day 3 Playlists Data matching YouTube Shelf Interface ─── */
+const playlistsData = [
   {
-    id: "dWFnebV81DM",
-    title: "THE Mining Investment Event - Official Conference Overview",
-    titleFR: "THE Mining Investment Event - Aperçu officiel de la conférence",
-    thumb: "https://i.ytimg.com/vi/dWFnebV81DM/hqdefault.jpg",
-    duration: "04:18",
-    views: "48,920 views",
-    viewsFR: "48 920 vues",
-    timeAgo: "2 months ago",
-    timeAgoFR: "Il y a 2 mois",
+    id: "interviews",
+    dayNum: "Interviews",
+    dayNumFR: "Entretiens",
+    title: "The Mining Investment Event 2026 VID Interviews",
+    titleFR: "The Mining Investment Event 2026 Entretiens Exclusifs VID",
+    description: "Exclusive 1-on-1 interviews from THE Mining Investment Event 2026, presented by VID. Hear directly from industry leaders, CEOs, and innovators shaping the future of mining, critical metals,...",
+    descriptionFR: "Entretiens exclusifs individuels de THE Mining Investment Event 2026, présentés par VID. Écoutez directement les leaders de l'industrie, les PDG et les innovateurs...",
+    videos: [
+      {
+        id: "oYmuaZ96KhA",
+        title: "Nuvau Minerals Advances the Matagami Mining District Project in Québec",
+        titleFR: "Nuvau Minerals fait progresser le projet du district minier de Matagami au Québec",
+        duration: "6:46",
+        channel: "VID TV",
+        views: "122 views",
+        viewsFR: "122 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/oYmuaZ96KhA/hqdefault.jpg",
+      },
+      {
+        id: "_dCyyv-Fi6o",
+        title: "South Kirkland Gold Targets Large-Scale Discovery Potential in Ontario's Kirkland Lake Camp",
+        titleFR: "South Kirkland Gold vise un potentiel de découverte à grande échelle en Ontario",
+        duration: "5:28",
+        channel: "VID TV",
+        views: "78 views",
+        viewsFR: "78 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/_dCyyv-Fi6o/hqdefault.jpg",
+      },
+      {
+        id: "XKYZf4cLwes",
+        title: "Pivotal Metals Advances the Horden Lake Copper Project in Québec",
+        titleFR: "Pivotal Metals fait progresser le projet de cuivre de Horden Lake au Québec",
+        duration: "2:29",
+        channel: "VID TV",
+        views: "32 views",
+        viewsFR: "32 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/XKYZf4cLwes/hqdefault.jpg",
+      },
+      {
+        id: "EPsR6oo5QvA",
+        title: "Dynasty Gold Advances the Thundercloud Gold Project in Northwestern Ontario",
+        titleFR: "Dynasty Gold fait progresser le projet d'or Thundercloud dans le nord-ouest de l'Ontario",
+        duration: "2:45",
+        channel: "VID TV",
+        views: "52 views",
+        viewsFR: "52 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/EPsR6oo5QvA/hqdefault.jpg",
+      },
+      {
+        id: "m_dCsxzAtlE",
+        title: "Brixton Metals Advances Thorn Copper-Gold and Langis Silver Exploration",
+        titleFR: "Brixton Metals fait progresser l'exploration du cuivre-or Thorn et de l'argent Langis",
+        duration: "3:09",
+        channel: "VID TV",
+        views: "49 views",
+        viewsFR: "49 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/m_dCsxzAtlE/hqdefault.jpg",
+      },
+      {
+        id: "k_eq9d6Ti50",
+        title: "Q2 Metals Advances the Cisco Lithium Project in Québec's James Bay Region",
+        titleFR: "Q2 Metals fait progresser le projet de lithium Cisco dans la région de la Baie-James",
+        duration: "4:12",
+        channel: "VID TV",
+        views: "95 views",
+        viewsFR: "95 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/k_eq9d6Ti50/hqdefault.jpg",
+      },
+      {
+        id: "XewH4jR9Dig",
+        title: "Resouro Strategic Metals Advances the Tiros Titanium-Rare Earths Project in Brazil",
+        titleFR: "Resouro Strategic Metals fait progresser le projet Tiros au Brésil",
+        duration: "3:50",
+        channel: "VID TV",
+        views: "64 views",
+        viewsFR: "64 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/XewH4jR9Dig/hqdefault.jpg",
+      },
+    ],
   },
   {
-    id: "38Ec5J0viaU",
-    title: "Keynote Panel: The Future of Critical Minerals & ESG Investments",
-    titleFR: "Table ronde principale : L'avenir des minéraux critiques et investissements ESG",
-    thumb: "https://i.ytimg.com/vi/38Ec5J0viaU/hqdefault.jpg",
-    duration: "14:25",
-    views: "32,150 views",
-    viewsFR: "32 150 vues",
-    timeAgo: "3 months ago",
-    timeAgoFR: "Il y a 3 mois",
+    id: "day1",
+    dayNum: "Day 1",
+    dayNumFR: "Jour 1",
+    title: "THE Mining Investment Event 2026 – Day 1 Presentations | CEO Keynotes & Market Strategy",
+    titleFR: "THE Mining Investment Event 2026 – Présentations du Jour 1 | Discours des PDG & Stratégie",
+    description: "Experience the full lineup of Day 1 presentations from THE Mining Investment Event of the North 2026 – Canada's only Tier 1 global mining investment conference. Held in Quebec City, Day 1...",
+    descriptionFR: "Découvrez l'ensemble des présentations du Jour 1 de THE Mining Investment Event of the North 2026 – La seule conférence minière mondiale de niveau 1 au Canada. Tenue à Québec, Jour 1...",
+    videos: [
+      {
+        id: "UjKV33kdUbA",
+        title: "Canada's Next Gold Giant? | Blue Lagoon's High-Grade Gold Production Starts Now",
+        titleFR: "Le prochain géant de l'or au Canada ? | Production d'or à haute teneur",
+        duration: "14:32",
+        channel: "VID TV",
+        views: "713 views",
+        viewsFR: "713 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/UjKV33kdUbA/hqdefault.jpg",
+      },
+      {
+        id: "sajPA8WXXjg",
+        title: "Massive Gold Growth Ahead? | Orezone's Multi-Asset Gold Growth Unleashed",
+        titleFR: "Croissance massive de l'or à venir ? | Croissance multi-actifs d'Orezone",
+        duration: "16:01",
+        channel: "VID TV",
+        views: "209 views",
+        viewsFR: "209 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/sajPA8WXXjg/hqdefault.jpg",
+      },
+      {
+        id: "M8ayyKliNkk",
+        title: "The Next Gold Empire: Ready to Scale | Osisko Development & Capital Strategy",
+        titleFR: "Le prochain empire de l'or : Prêt à évoluer | Développement Osisko",
+        duration: "15:02",
+        channel: "VID TV",
+        views: "189 views",
+        viewsFR: "189 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/M8ayyKliNkk/hqdefault.jpg",
+      },
+      {
+        id: "kXf1MQRPZCo",
+        title: "Gold Producer Going Massive: No Share Dilution | Heliostar Metals",
+        titleFR: "Producteur d'or en pleine expansion : Aucune dilution d'actions",
+        duration: "15:22",
+        channel: "VID TV",
+        views: "408 views",
+        viewsFR: "408 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/kXf1MQRPZCo/hqdefault.jpg",
+      },
+      {
+        id: "WZLatWI1VlI",
+        title: "Why IAMGOLD Could Surge: Hidden Value Revealed | IAMGOLD Corporation",
+        titleFR: "Pourquoi IAMGOLD pourrait augmenter : Valeur cachée révélée",
+        duration: "14:45",
+        channel: "VID TV",
+        views: "312 views",
+        viewsFR: "312 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/WZLatWI1VlI/hqdefault.jpg",
+      },
+      {
+        id: "1Mo6aPMY7Y8",
+        title: "The Critical Minerals Race: Future Depends Here | U.S. Ambassador Keynote",
+        titleFR: "La course aux minéraux critiques : L'avenir dépend d'ici",
+        duration: "18:20",
+        channel: "VID TV",
+        views: "640 views",
+        viewsFR: "640 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/1Mo6aPMY7Y8/hqdefault.jpg",
+      },
+      {
+        id: "BQrBf6Sdc5k",
+        title: "Unlocking Canada's Gold Future: Multibagger Potential | Stellar Gold",
+        titleFR: "Libérer l'avenir de l'or au Canada : Potentiel exceptionnel",
+        duration: "14:38",
+        channel: "VID TV",
+        views: "47 views",
+        viewsFR: "47 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/BQrBf6Sdc5k/hqdefault.jpg",
+      },
+    ],
   },
   {
-    id: "_3XTqjB4zo8",
-    title: "Student Sponsorship & SHE-Co Initiative Highlights",
-    titleFR: "Faits saillants des bourses étudiantes et de l'initiative SHE-Co",
-    thumb: "https://i.ytimg.com/vi/_3XTqjB4zo8/hqdefault.jpg",
-    duration: "08:42",
-    views: "21,400 views",
-    viewsFR: "21 400 vues",
-    timeAgo: "4 months ago",
-    timeAgoFR: "Il y a 4 mois",
+    id: "day2",
+    dayNum: "Day 2",
+    dayNumFR: "Jour 2",
+    title: "THE Mining Investment Event 2026 – Day 2 Presentations | Critical Metals, ESG & Royalties",
+    titleFR: "THE Mining Investment Event 2026 – Présentations du Jour 2 | Minéraux Critiques, ESG & Redevances",
+    description: "Watch full Day 2 sessions covering critical minerals, battery metals supply chains, royalty streaming panels, SHE-Co initiatives, and ESG best practices.",
+    descriptionFR: "Regardez les sessions intégrales du Jour 2 couvrant les minéraux critiques, les chaînes d'approvisionnement en métaux de batterie, les redevances et l'initiative SHE-Co.",
+    videos: [
+      {
+        id: "wOa0mN4ughY",
+        title: "Inside Mining's Next Giant: High-Grade Growth Strategy | Contango Silver & Gold",
+        titleFR: "Au cœur du prochain géant minier : Stratégie de croissance à haute teneur",
+        duration: "18:25",
+        channel: "VID TV",
+        views: "580 views",
+        viewsFR: "580 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/wOa0mN4ughY/hqdefault.jpg",
+      },
+      {
+        id: "X1NpnA8zC8Q",
+        title: "Massive New Silver Scale: The 2026 Strategy | Outcrop Silver & Gold",
+        titleFR: "Nouvelle échelle d'argent massive : La stratégie 2026",
+        duration: "16:40",
+        channel: "VID TV",
+        views: "420 views",
+        viewsFR: "420 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/X1NpnA8zC8Q/hqdefault.jpg",
+      },
+      {
+        id: "xJZP3AY0iLc",
+        title: "Mining's Massive Next Boom: AI Changes Everything | Salman Partners",
+        titleFR: "Le prochain boom minier : L'IA change tout",
+        duration: "21:15",
+        channel: "VID TV",
+        views: "690 views",
+        viewsFR: "690 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/xJZP3AY0iLc/hqdefault.jpg",
+      },
+      {
+        id: "Nx8NrD2-VBk",
+        title: "Cracking The Off-Take Code: Glencore's Growth Strategy | Glencore Canada",
+        titleFR: "Décoder les contrats d'off-take : Stratégie de croissance de Glencore",
+        duration: "19:50",
+        channel: "VID TV",
+        views: "510 views",
+        viewsFR: "510 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/Nx8NrD2-VBk/hqdefault.jpg",
+      },
+      {
+        id: "4KdA7QwfAtM",
+        title: "Quebec's Multi-Billion Mineral Boom: Future Mining Powerhouse | Quebec Panel",
+        titleFR: "Le boom minéral de plusieurs milliards au Québec : Puissance minière du futur",
+        duration: "24:30",
+        channel: "VID TV",
+        views: "730 views",
+        viewsFR: "730 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/4KdA7QwfAtM/hqdefault.jpg",
+      },
+      {
+        id: "BhZNr_8vuCw",
+        title: "Critical Metals & ESG Excellence Spotlight | Executive Keynotes",
+        titleFR: "Métaux critiques et excellence ESG : Discours principaux",
+        duration: "17:10",
+        channel: "VID TV",
+        views: "360 views",
+        viewsFR: "360 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/BhZNr_8vuCw/hqdefault.jpg",
+      },
+      {
+        id: "QMvZtKsg258",
+        title: "Bolivia's Next Silver Giant: Massive Open Pits | New Pacific Metals",
+        titleFR: "Le prochain géant de l'argent en Bolivie : Fosses ouvertes massives",
+        duration: "15:45",
+        channel: "VID TV",
+        views: "490 views",
+        viewsFR: "490 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/QMvZtKsg258/hqdefault.jpg",
+      },
+    ],
   },
   {
-    id: "7PHjDzBZcac",
-    title: "Investor One-on-One Meetings & Networking Night in Québec City",
-    titleFR: "Rencontres individuelles avec investisseurs & Soirée de réseautage à Québec",
-    thumb: "https://i.ytimg.com/vi/7PHjDzBZcac/hqdefault.jpg",
-    duration: "11:05",
-    views: "19,830 views",
-    viewsFR: "19 830 vues",
-    timeAgo: "5 months ago",
-    timeAgoFR: "Il y a 5 mois",
+    id: "day3",
+    dayNum: "Day 3",
+    dayNumFR: "Jour 3",
+    title: "THE Mining Investment Event 2026 – Day 3 Presentations | Explorers, Developers & Spotlights",
+    titleFR: "THE Mining Investment Event 2026 – Présentations du Jour 3 | Explorateurs, Développeurs & Vitrines",
+    description: "Explore Day 3 presentations showcasing high-grade discoveries, junior mining pitches, student sponsorship award ceremonies, and closing remarks.",
+    descriptionFR: "Explorez les présentations du Jour 3 présentant des découvertes à haute teneur, des présentations de projets juniors et la cérémonie de clôture.",
+    videos: [
+      {
+        id: "q9_nsx6pFvc",
+        title: "Why Yukon, Why Now? | Discovery, Scale & Development in Canada's Next Mining District",
+        titleFR: "Pourquoi le Yukon, pourquoi maintenant ? | Découverte & Développement",
+        duration: "23:40",
+        channel: "VID TV",
+        views: "640 views",
+        viewsFR: "640 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/q9_nsx6pFvc/hqdefault.jpg",
+      },
+      {
+        id: "wsi7YowJUWw",
+        title: "How to Pick Junior Mining Winners | Top Mining CEOs Share Their Investment Playbook",
+        titleFR: "Comment choisir les gagnants miniers juniors | Les grands PDG partagent leur stratégie",
+        duration: "19:15",
+        channel: "VID TV",
+        views: "520 views",
+        viewsFR: "520 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/wsi7YowJUWw/hqdefault.jpg",
+      },
+      {
+        id: "a3S8YCiBS0A",
+        title: "Could Dryden Gold Be Building the Next Red Lake? | Trey Wasser on District-Scale Gold",
+        titleFR: "Dryden Gold pourrait-il construire le prochain Red Lake ?",
+        duration: "17:50",
+        channel: "VID TV",
+        views: "480 views",
+        viewsFR: "480 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/a3S8YCiBS0A/hqdefault.jpg",
+      },
+      {
+        id: "Rd4fqZ2v_q4",
+        title: "Massive Gold Upside Unlocked: Abcourt Mines Ramps Up Production at Sleeping Giant",
+        titleFR: "Potentiel d'or massif débloqué : Abcourt Mines augmente sa production",
+        duration: "16:30",
+        channel: "VID TV",
+        views: "590 views",
+        viewsFR: "590 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/Rd4fqZ2v_q4/hqdefault.jpg",
+      },
+      {
+        id: "3LlhJNFIyTM",
+        title: "The Honourable Kody Blois on Canada's Mining Future & Policy Framework",
+        titleFR: "L'honorable Kody Blois sur l'avenir minier du Canada",
+        duration: "14:20",
+        channel: "VID TV",
+        views: "710 views",
+        viewsFR: "710 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/3LlhJNFIyTM/hqdefault.jpg",
+      },
+      {
+        id: "Fs4dOARX8qg",
+        title: "Massive Copper Merger Revealed | Cygnus Metals & Central Asia Metals Deal Explained",
+        titleFR: "Fusion cuivre massive révélée : Accord Cygnus Metals & Central Asia Metals",
+        duration: "20:10",
+        channel: "VID TV",
+        views: "660 views",
+        viewsFR: "660 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/Fs4dOARX8qg/hqdefault.jpg",
+      },
+      {
+        id: "UFLn0PQi_A4",
+        title: "Emerging Explorers & Junior Mining Discoveries | Day 3 Closing Showcase",
+        titleFR: "Explorateurs émergents & Découvertes minières juniors | Vitrine de clôture",
+        duration: "15:40",
+        channel: "VID TV",
+        views: "430 views",
+        viewsFR: "430 vues",
+        timeAgo: "1 month ago",
+        timeAgoFR: "il y a 1 mois",
+        thumb: "https://i.ytimg.com/vi/UFLn0PQi_A4/hqdefault.jpg",
+      },
+    ],
   },
 ];
 
+/* ─── Reusable YouTube Playlist Shelf Row Component ─── */
+function YouTubePlaylistShelf({
+  playlist,
+  onPlayVideo,
+}: {
+  playlist: (typeof playlistsData)[0];
+  onPlayVideo: (videoId: string) => void;
+}) {
+  const { lang } = useLanguage();
+  const isFr = lang === "FR";
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -450, behavior: "smooth" });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 450, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="w-full mb-12 sm:mb-14 border-b border-neutral-800/80 pb-10">
+      {/* ─── Playlist Header matching YouTube exact UI ─── */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-2">
+        <div className="flex items-center gap-3">
+          <h2 className="text-lg sm:text-xl md:text-[22px] font-bold text-[#f1f1f1] tracking-tight leading-snug">
+            {isFr ? playlist.titleFR : playlist.title}
+          </h2>
+        </div>
+
+        {/* Play all button */}
+        <button
+          onClick={() => onPlayVideo(playlist.videos[0].id)}
+          className="inline-flex items-center gap-2 text-white hover:text-neutral-200 font-semibold text-xs sm:text-sm px-4 py-1.5 rounded-full bg-neutral-800/90 hover:bg-neutral-700 transition-colors border border-neutral-700 shrink-0 cursor-pointer"
+        >
+          <svg className="w-3.5 h-3.5 fill-current text-white" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+          <span>{isFr ? "Tout lire" : "Play all"}</span>
+        </button>
+      </div>
+
+      {/* Playlist Subtext Description */}
+      <p className="text-neutral-400 text-xs sm:text-sm max-w-5xl leading-relaxed mb-5 font-normal">
+        {isFr ? playlist.descriptionFR : playlist.description}
+      </p>
+
+      {/* ─── Carousel Track with Floating Navigation Arrow Buttons ─── */}
+      <div className="relative group/shelf">
+        {/* Left Arrow Button */}
+        <button
+          onClick={scrollLeft}
+          className="absolute -left-3 sm:-left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#272727]/90 hover:bg-[#3f3f3f] text-white shadow-2xl border border-white/10 flex items-center justify-center text-lg z-20 opacity-0 group-hover/shelf:opacity-100 transition-opacity duration-200 cursor-pointer"
+          aria-label="Scroll left"
+        >
+          ‹
+        </button>
+
+        {/* Scrollable Container */}
+        <div
+          ref={scrollRef}
+          className="flex gap-4 overflow-x-auto scrollbar-none scroll-smooth py-1 px-0.5"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {playlist.videos.map((vid, idx) => (
+            <div
+              key={idx}
+              onClick={() => onPlayVideo(vid.id)}
+              className="w-[230px] sm:w-[250px] md:w-[270px] shrink-0 flex flex-col group/card cursor-pointer"
+            >
+              {/* Thumbnail Container matching YouTube exact UI */}
+              <div className="relative aspect-video rounded-xl overflow-hidden bg-neutral-900 shadow-md transition-all duration-200">
+                <img
+                  src={vid.thumb}
+                  alt={isFr ? vid.titleFR : vid.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+                  loading="lazy"
+                />
+
+                {/* Duration Badge */}
+                <span className="absolute bottom-1.5 right-1.5 bg-black/85 text-white text-[11px] font-semibold px-1.5 py-0.5 rounded tracking-wide">
+                  {vid.duration}
+                </span>
+
+                {/* Hover Play Icon Overlay */}
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover/card:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-lg transform scale-90 group-hover/card:scale-100 transition-transform">
+                    <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              {/* Title & Info below Thumbnail matching YouTube exact layout */}
+              <div className="flex items-start justify-between gap-1 mt-2.5">
+                <h3 className="text-xs sm:text-[13px] font-semibold text-[#f1f1f1] line-clamp-2 leading-snug group-hover/card:text-white transition-colors">
+                  {isFr ? vid.titleFR : vid.title}
+                </h3>
+                {/* 3-Dot Context Menu Icon */}
+                <button className="text-neutral-400 hover:text-white p-0.5 text-sm shrink-0 transition-colors">
+                  ⋮
+                </button>
+              </div>
+
+              {/* Channel Name */}
+              <span className="text-[11px] text-neutral-400 font-medium mt-1">
+                {vid.channel}
+              </span>
+
+              {/* Views & Upload Timestamp */}
+              <span className="text-[11px] text-neutral-400 font-medium mt-0.5">
+                {isFr ? vid.viewsFR : vid.views} • {isFr ? vid.timeAgoFR : vid.timeAgo}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Right Arrow Button matching reference image */}
+        <button
+          onClick={scrollRight}
+          className="absolute -right-3 sm:-right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#272727]/90 hover:bg-[#3f3f3f] text-white shadow-2xl border border-white/10 flex items-center justify-center text-lg z-20 opacity-90 group-hover/shelf:opacity-100 transition-opacity duration-200 cursor-pointer"
+          aria-label="Scroll right"
+        >
+          ›
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function MediaPage() {
   const { t, lang } = useLanguage();
-  const [activeVideoId, setActiveVideoId] = useState<string>("dWFnebV81DM");
+  const isFr = lang === "FR";
+
+  const [activeVideoId, setActiveVideoId] = useState<string>("UjKV33kdUbA");
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
-  const [isSubscribed, setIsSubscribed] = useState<boolean>(false);
-  const [likesCount, setLikesCount] = useState<number>(1420);
-  const [hasLiked, setHasLiked] = useState<boolean>(false);
 
   const openLightbox = (i: number) => setLightboxIdx(i);
   const closeLightbox = () => setLightboxIdx(null);
@@ -166,21 +636,13 @@ export default function MediaPage() {
   const nextImage = () =>
     setLightboxIdx((p) => (p !== null ? (p + 1) % galleryTiles.length : null));
 
-  const toggleLike = () => {
-    if (hasLiked) {
-      setLikesCount((prev) => prev - 1);
-      setHasLiked(false);
-    } else {
-      setLikesCount((prev) => prev + 1);
-      setHasLiked(true);
+  const handlePlayVideo = (videoId: string) => {
+    setActiveVideoId(videoId);
+    const playerEl = document.getElementById("featured-player-section");
+    if (playerEl) {
+      playerEl.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
-
-  const getVideoTitle = (v: typeof videos[0]) => (lang === "FR" ? v.titleFR : v.title);
-  const getVideoViews = (v: typeof videos[0]) => (lang === "FR" ? v.viewsFR : v.views);
-  const getVideoTimeAgo = (v: typeof videos[0]) => (lang === "FR" ? v.timeAgoFR : v.timeAgo);
-
-  const activeVidObj = videos.find((v) => v.id === activeVideoId) || videos[0];
 
   return (
     <>
@@ -207,14 +669,14 @@ export default function MediaPage() {
               <span className="text-white">{t("nav-media", "Recent Media")}</span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
-              {t("media-hero-title-1", "Recent")} <span className="text-[#C6112F]">{t("media-hero-title-2", "Media")}</span>
+              {t("media-hero-title-1", "Recent")} <span className="text-[#C6112F]">{t("media-hero-title-2", "Media & Playlists")}</span>
             </h1>
             <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
           </div>
         </section>
 
-        {/* ═══════════════ ORIGINAL PHOTO GALLERY GRID ═══════════════ */}
-        <section className="relative w-full bg-white py-16 sm:py-20 md:py-24">
+        {/* ═══════════════ 1. PHOTO GALLERY GRID (VISIBLE FIRST) ═══════════════ */}
+        <section className="relative w-full bg-white py-16 sm:py-20">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("media-gallery-label", "Gallery & Media")}
@@ -231,35 +693,6 @@ export default function MediaPage() {
               )}
             </p>
 
-            {/* ═══════════════ NEWS PAGE FEATURED BANNER ═══════════════ */}
-            <div className="mb-12 w-full bg-gradient-to-r from-neutral-900 via-[#161a23] to-neutral-900 rounded-3xl p-6 sm:p-8 border border-[#C6112F]/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
-              <div className="relative z-10 max-w-xl text-left">
-                <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-1.5 block">
-                  {lang === "FR" ? "PRESSE ET NOUVELLES DU SECTEUR" : "INDUSTRY PRESS & NEWS"}
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-2">
-                  {lang === "FR" ? "Centre Officiel de " : "Official Event "}<span className="text-[#C6112F]">{lang === "FR" ? "Nouvelles & Presse" : "News & Press Hub"}</span>
-                </h3>
-                <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed">
-                  {lang === "FR"
-                    ? "Consultez les communiqués de presse officiels, les faits saillants des conférences, les mises à jour des émetteurs et la couverture du marché sur notre page Nouvelles."
-                    : "Read full press releases, keynote highlights, issuer updates, and market coverage on our dedicated News page."}
-                </p>
-              </div>
-              <div className="relative z-10 shrink-0">
-                <Link
-                  href="/news"
-                  className="inline-flex items-center gap-2 bg-[#C6112F] hover:bg-[#a50e27] text-white px-6 py-3.5 rounded-xl text-xs font-black tracking-widest uppercase shadow-lg shadow-[#C6112F]/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
-                >
-                  <span>{lang === "FR" ? "EXPLORER LA PAGE NOUVELLES" : "EXPLORE NEWS PAGE"}</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Grid – 3-col on desktop, 2-col on tablet, 1-col on mobile */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {galleryTiles.map((tile, i) => (
                 <div
@@ -270,41 +703,17 @@ export default function MediaPage() {
                   }`}
                   style={{ aspectRatio: tile.featured ? "8/3" : "4/3" }}
                 >
-                  {/* Image */}
                   <img
                     src={tile.img}
                     alt={t(tile.labelKey, tile.labelDefault)}
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-
-                  {/* Dark gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-
-                  {/* Diagonal pattern overlay */}
-                  <div
-                    className="absolute inset-0 opacity-30"
-                    style={{
-                      backgroundImage:
-                        "repeating-linear-gradient(45deg, rgba(198,17,47,0.03) 0px, rgba(198,17,47,0.03) 1px, transparent 1px, transparent 30px)",
-                    }}
-                  />
-
-                  {/* Label at bottom in a glassmorphic badge */}
                   <div className="absolute bottom-4 left-0 right-0 px-4 flex justify-center z-10">
                     <span className="inline-block px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase text-white group-hover:bg-[#C6112F] group-hover:border-[#C6112F] transition-all duration-300 shadow-lg">
                       {t(tile.labelKey, tile.labelDefault)}
                     </span>
-                  </div>
-
-                  {/* Hover magnify icon */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                    <div className="w-13 h-13 rounded-full bg-[#C6112F] shadow-xl border border-white/20 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="8" />
-                        <path strokeLinecap="round" d="m21 21-4.35-4.35" />
-                      </svg>
-                    </div>
                   </div>
                 </div>
               ))}
@@ -312,224 +721,81 @@ export default function MediaPage() {
           </div>
         </section>
 
-        {/* ═══════════════ YOUTUBE UI VIDEOS SECTION ONLY ═══════════════ */}
-        <section className="relative w-full bg-[#0f0f0f] text-white py-16 sm:py-20 md:py-24 border-t border-neutral-800">
-          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8">
+        {/* ═══════════════ 2. YOUTUBE PLAYLIST SHELVES SECTION (VISIBLE AFTER PHOTOS) ═══════════════ */}
+        <section className="relative w-full bg-[#0f0f0f] text-white py-14 sm:py-18 border-t border-b border-neutral-800">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-8">
             
-            {/* YouTube Section Header & Channel Info Bar */}
-            <div className="mb-10 bg-[#181818] border border-neutral-800 rounded-2xl p-6 sm:p-8">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                
-                {/* YouTube Channel Branding */}
-                <div className="flex items-center gap-4 sm:gap-6">
-                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#C6112F] p-1 border-2 border-white/20 shadow-xl overflow-hidden shrink-0">
+            {/* Channel Branding & Cinema Player Section */}
+            <div id="featured-player-section" className="mb-12 scroll-mt-28">
+              {/* Channel Header Bar */}
+              <div className="mb-6 bg-[#181818] border border-neutral-800 rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+                <div className="flex items-center gap-4 sm:gap-5">
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF0000] p-1 border-2 border-white/20 shadow-xl overflow-hidden shrink-0">
                     <Image
                       src="/MainPageLogo.webp"
                       alt="Channel Avatar"
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain p-1.5 bg-white rounded-full"
+                      width={64}
+                      height={64}
+                      className="w-full h-full object-contain p-1 bg-white rounded-full"
                     />
                   </div>
 
                   <div className="flex flex-col items-start text-left">
                     <div className="flex items-center gap-2">
-                      <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
-                        {lang === "FR" ? "Chaîne Officielle THE Mining Investment Event" : "THE Mining Investment Event Channel"}
+                      <h2 className="text-lg sm:text-xl font-black text-white tracking-tight">
+                        VID TV · THE Mining Investment Event
                       </h2>
-                      {/* YouTube Verified Checkmark Badge */}
-                      <span className="w-4 h-4 rounded-full bg-neutral-400 text-[#0f0f0f] flex items-center justify-center text-[10px] font-bold" title="Verified Channel">
+                      <span className="w-4 h-4 rounded-full bg-neutral-300 text-[#0f0f0f] flex items-center justify-center text-[10px] font-bold" title="Verified Channel">
                         ✓
                       </span>
                     </div>
-                    <span className="text-xs sm:text-sm text-neutral-400 font-medium">
-                      {lang === "FR" ? "@mininginvestment · 12,5k abonnés · Portail Vidéo Officiel" : "@mininginvestment · 12.5K subscribers · Official Video Portal"}
+                    <span className="text-xs text-neutral-400 font-medium">
+                      @VIDCONFERENCES · Official Day 1 to Day 3 Event Video Playlists
                     </span>
                   </div>
                 </div>
 
-                {/* YouTube Subscribe & Action Buttons */}
                 <div className="flex items-center gap-3 w-full sm:w-auto">
                   <a
-                    href="https://youtube.com/@vidconferences?si=VVEfWLrZyKUbjTEY"
+                    href="https://www.youtube.com/@VIDCONFERENCES/featured"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 sm:flex-initial px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 bg-[#FF0000] hover:bg-[#cc0000] text-white shadow-lg"
+                    className="flex-1 sm:flex-initial px-5 py-2 rounded-full font-bold text-xs tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 bg-[#FF0000] hover:bg-[#cc0000] text-white shadow-md shadow-[#FF0000]/30"
                   >
-                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
-                    </svg>
-                    <span>{lang === "FR" ? "S'abonner" : "Subscribe"}</span>
+                    <span>{isFr ? "S'abonner" : "Subscribe"}</span>
                   </a>
-
                   <a
-                    href="https://youtube.com/@vidconferences?si=VVEfWLrZyKUbjTEY"
+                    href="https://www.youtube.com/@VIDCONFERENCES/featured"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-2.5 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs sm:text-sm border border-neutral-700 transition-all inline-flex items-center gap-2"
+                    className="px-4 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs border border-neutral-700 transition-all inline-flex items-center gap-1.5"
                   >
-                    <svg className="w-4 h-4 text-[#FF0000] fill-current" viewBox="0 0 24 24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                    </svg>
-                    <span>{lang === "FR" ? "Ouvrir la chaîne ↗" : "Open Channel ↗"}</span>
+                    <span>{isFr ? "Chaîne YouTube ↗" : "YouTube Channel ↗"}</span>
                   </a>
                 </div>
+              </div>
 
+              {/* Main YouTube Cinema Player Container */}
+              <div className="relative w-full aspect-video max-h-[560px] rounded-2xl overflow-hidden bg-black shadow-2xl border border-neutral-800 mx-auto">
+                <iframe
+                  src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
+                  title="YouTube Video Cinema Player"
+                  className="w-full h-full border-0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
             </div>
 
-            {/* YouTube Featured Player & Sidebar Queue */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
-              
-              {/* Main YouTube Video Player */}
-              <div className="lg:col-span-8 flex flex-col">
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl border border-neutral-800">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=0&rel=0`}
-                    title="YouTube Video Player"
-                    className="w-full h-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-
-                {/* Video Title & Actions */}
-                <div className="mt-4 flex flex-col items-start text-left">
-                  <h3 className="text-lg sm:text-xl font-bold text-white leading-snug">
-                    {getVideoTitle(activeVidObj)}
-                  </h3>
-
-                  <div className="w-full mt-3 pt-3 border-t border-neutral-800 flex flex-wrap items-center justify-between gap-4">
-                    <div className="text-xs sm:text-sm text-neutral-400 font-medium">
-                      {getVideoViews(activeVidObj)} · {lang === "FR" ? "Présenté à Québec" : "Premiered in Québec City"}
-                    </div>
-
-                    <div className="flex items-center gap-2 text-xs font-bold text-white">
-                      <button
-                        onClick={toggleLike}
-                        className={`flex items-center gap-1.5 px-4 py-2 rounded-full border transition-all ${
-                          hasLiked
-                            ? "bg-[#C6112F] text-white border-[#C6112F]"
-                            : "bg-neutral-800 hover:bg-neutral-700 border-neutral-700 text-neutral-200"
-                        }`}
-                      >
-                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                          <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" />
-                        </svg>
-                        <span>{likesCount}</span>
-                      </button>
-
-                      <button
-                        onClick={() => alert(lang === "FR" ? "Lien de la vidéo copié !" : "Video link copied to clipboard!")}
-                        className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 border border-neutral-700 text-neutral-200 transition-all"
-                      >
-                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                          <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
-                        </svg>
-                        <span>{lang === "FR" ? "Partager" : "Share"}</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* YouTube Playlist Sidebar */}
-              <div className="lg:col-span-4 flex flex-col items-start text-left">
-                <span className="text-xs font-extrabold uppercase tracking-widest text-[#FF0000] mb-4 flex items-center gap-2">
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  <span>{lang === "FR" ? "À SUIVRE · PLAYLIST YOUTUBE" : "UP NEXT · YOUTUBE PLAYLIST"}</span>
-                </span>
-
-                <div className="flex flex-col gap-4 w-full">
-                  {videos.map((v) => {
-                    const isPlaying = activeVideoId === v.id;
-                    return (
-                      <div
-                        key={v.id}
-                        onClick={() => setActiveVideoId(v.id)}
-                        className={`flex gap-3.5 p-2.5 rounded-xl cursor-pointer transition-all ${
-                          isPlaying
-                            ? "bg-neutral-800 border border-[#FF0000]/60 shadow-md"
-                            : "hover:bg-neutral-900 border border-neutral-800/60"
-                        }`}
-                      >
-                        <div className="relative w-36 aspect-video rounded-lg overflow-hidden bg-neutral-900 shrink-0">
-                          <img src={v.thumb} alt={getVideoTitle(v)} className="w-full h-full object-cover" />
-                          <span className="absolute bottom-1 right-1 bg-black/80 text-[10px] font-bold px-1.5 py-0.5 rounded text-white">
-                            {v.duration}
-                          </span>
-                        </div>
-
-                        <div className="flex flex-col justify-center text-left min-w-0">
-                          <h4 className="text-xs font-bold text-white line-clamp-2 leading-snug">
-                            {getVideoTitle(v)}
-                          </h4>
-                          <span className="text-[11px] text-neutral-400 mt-1">
-                            THE Mining Investment Event
-                          </span>
-                          <span className="text-[11px] text-neutral-500">
-                            {getVideoViews(v)} · {getVideoTimeAgo(v)}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-            </div>
-
-            {/* YouTube Videos Grid */}
-            <div className="mt-8 border-t border-neutral-800 pt-10">
-              <span className="text-xs font-extrabold tracking-[0.25em] text-[#FF0000] uppercase mb-2 block text-left">
-                {lang === "FR" ? "RÉPERTOIRE VIDÉO YOUTUBE" : "YOUTUBE VIDEO DIRECTORY"}
-              </span>
-              <h3 className="text-2xl font-black text-white mb-6 text-left">
-                {t("media-videos-title-1", "Watch THE Event")}{" "}
-                <span className="text-[#FF0000]">{t("media-videos-title-2", "in Motion")}</span>
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {videos.map((v) => (
-                  <div
-                    key={v.id}
-                    onClick={() => setActiveVideoId(v.id)}
-                    className="group bg-[#181818] border border-neutral-800 rounded-xl overflow-hidden cursor-pointer hover:border-[#FF0000]/60 transition-all duration-300 text-left flex flex-col justify-between"
-                  >
-                    <div className="relative aspect-video w-full overflow-hidden bg-neutral-900">
-                      <img
-                        src={v.thumb}
-                        alt={getVideoTitle(v)}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <span className="absolute bottom-2 right-2 bg-black/80 text-[10px] font-extrabold px-2 py-0.5 rounded text-white">
-                        {v.duration}
-                      </span>
-                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <div className="w-12 h-12 rounded-full bg-[#FF0000] text-white flex items-center justify-center shadow-lg">
-                          <svg className="w-6 h-6 fill-current ml-0.5" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-4 flex flex-col items-start">
-                      <h4 className="text-xs sm:text-sm font-bold text-white line-clamp-2 leading-snug group-hover:text-[#FF0000] transition-colors">
-                        {getVideoTitle(v)}
-                      </h4>
-                      <span className="text-[11px] text-neutral-400 mt-2">
-                        THE Mining Event
-                      </span>
-                      <span className="text-[11px] text-neutral-500">
-                        {getVideoViews(v)} · {getVideoTimeAgo(v)}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+            {/* ════════ STACKED DAY PLAYLIST SHELVES (DAY 1 -> DAY 2 -> DAY 3) ════════ */}
+            <div className="space-y-4">
+              {playlistsData.map((playlist) => (
+                <YouTubePlaylistShelf
+                  key={playlist.id}
+                  playlist={playlist}
+                  onPlayVideo={handlePlayVideo}
+                />
+              ))}
             </div>
 
           </div>
@@ -563,7 +829,6 @@ export default function MediaPage() {
           className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center"
           onClick={closeLightbox}
         >
-          {/* Close */}
           <button
             onClick={closeLightbox}
             className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl z-10 transition-colors"
@@ -571,8 +836,6 @@ export default function MediaPage() {
           >
             ✕
           </button>
-
-          {/* Prev */}
           <button
             onClick={(e) => { e.stopPropagation(); prevImage(); }}
             className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#C6112F]/80 text-white flex items-center justify-center text-2xl transition-all z-10"
@@ -580,8 +843,6 @@ export default function MediaPage() {
           >
             ‹
           </button>
-
-          {/* Next */}
           <button
             onClick={(e) => { e.stopPropagation(); nextImage(); }}
             className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#C6112F]/80 text-white flex items-center justify-center text-2xl transition-all z-10"
@@ -589,8 +850,6 @@ export default function MediaPage() {
           >
             ›
           </button>
-
-          {/* Image */}
           <div className="max-w-[90vw] max-h-[85vh] relative" onClick={(e) => e.stopPropagation()}>
             <img
               src={galleryTiles[lightboxIdx].img}

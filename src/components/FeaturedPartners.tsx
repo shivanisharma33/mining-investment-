@@ -186,9 +186,10 @@ export default function FeaturedPartners() {
                 return (
                   <div
                     key={`${logoPath}-${idx}`}
-                    className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl bg-white flex items-center justify-center p-4 transition-all duration-500 transform ${isCenter
-                      ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-none scale-105 z-20"
-                      : "h-26 sm:h-28 border border-neutral-200/80 dark:border-[#233049] shadow-none opacity-90 hover:opacity-100"
+                    style={{ backgroundColor: "#ffffff" }}
+                    className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl flex items-center justify-center p-4 transition-all duration-500 transform ${isCenter
+                      ? "h-32 sm:h-36 border-2 border-[#C6112F] shadow-lg scale-105 z-20"
+                      : "h-26 sm:h-28 border border-neutral-200 dark:border-neutral-300 shadow-2xs opacity-95 hover:opacity-100"
                       }`}
                   >
                     <img
