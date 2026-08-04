@@ -133,7 +133,15 @@ export default function StatsAndGlimpse() {
       ),
       number: "3500",
       suffix: "",
-      label: isFr ? "RÉUNIONS 1-À-1 / 3 JOURS" : "1X1 MEETINGS / 3 DAYS",
+      label: isFr ? (
+        <>
+          RÉUNIONS 1-À-1 /<br />3 JOURS
+        </>
+      ) : (
+        <>
+          1X1 MEETINGS /<br />3 DAYS
+        </>
+      ),
     },
   ];
 
@@ -141,8 +149,8 @@ export default function StatsAndGlimpse() {
     <section className="relative overflow-hidden py-14 sm:py-18 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
       {/* ════════ HEADER SECTION MATCHING EXACT IMAGE ════════ */}
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-10 sm:mb-12 group">
-        <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase block mb-2 transition-all duration-300 group-hover:tracking-[0.35em]">
-          {isFr ? "L ' É V É N E M E N T  2 0 2 6" : "T H E   E V E N T   2 0 2 6"}
+        <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase tracking-[0.18em] block mb-2 transition-all duration-300">
+          {isFr ? "L'ÉVÉNEMENT 2026" : "THE EVENT 2026"}
         </span>
         <AnimatedHeading
           text={isFr ? "L'Événement en Chiffres" : "The Event by the Numbers"}
@@ -157,23 +165,23 @@ export default function StatsAndGlimpse() {
       </div>
 
       {/* ════════ SINGLE 1-LINE HORIZONTAL STATS ROW (EXACT MATCH TO IMAGE) ════════ */}
-      <div className="relative z-10 max-w-[1360px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-3.5">
+      <div className="relative z-10 max-w-[1380px] w-full mx-auto px-3 sm:px-6 md:px-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3">
           {cards.map((card, i) => (
             <div
               key={i}
-              className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-3 sm:p-3.5 flex items-center gap-2.5 sm:gap-3 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer"
+              className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2.5 sm:p-3 flex items-center gap-2 sm:gap-2.5 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer"
             >
               {/* Icon Badge with Red Arc */}
               <StatIconBadge icon={card.icon} />
 
               {/* Red Vertical Line Divider */}
-              <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
+              <div className="w-[1px] h-8 sm:h-9 bg-[#C6112F]/30 shrink-0" />
 
-              {/* Number & Red Label */}
-              <div className="flex flex-col items-start justify-center overflow-hidden min-w-0">
+              {/* Number & Red Label (2 Lines) */}
+              <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
                 <AnimatedNumber target={card.number} suffix={card.suffix} />
-                <span className="text-[#C6112F] font-bold text-[10px] sm:text-[11px] tracking-tight uppercase leading-tight mt-0.5 truncate w-full">
+                <span className="text-[#C6112F] font-medium text-[10px] sm:text-[11px] tracking-tight uppercase leading-[1.15] mt-0.5 line-clamp-2 max-w-full">
                   {card.label}
                 </span>
               </div>
