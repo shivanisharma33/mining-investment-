@@ -132,11 +132,11 @@ export default function FeaturedEventCountdown() {
         {/* Subtitle & Description */}
         <div className="max-w-2xl mx-auto mb-10">
           <h3 className="text-xl sm:text-3xl font-extrabold text-[#1a1f2c] dark:text-white mb-1">
-            Where Global Mining Leaders Connect
+            {t("countdown-subtitle", "Where Global Mining Leaders Connect")}
           </h3>
           <div className="w-14 sm:w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mt-2.5 mb-4" />
           <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed">
-            A premier gathering of investors, mining companies, government, innovators and industry experts driving the future of mining.
+            {t("countdown-desc", "A premier gathering of investors, mining companies, government, innovators and industry experts driving the future of mining.")}
           </p>
         </div>
 
@@ -148,7 +148,7 @@ export default function FeaturedEventCountdown() {
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
             <i className="fi fi-rr-calendar text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">VIEW AGENDA</span>
+            <span className="whitespace-nowrap">{t("feat-event-agenda", "VIEW AGENDA")}</span>
           </Link>
 
           {/* Line 1 - Button 2 */}
@@ -157,7 +157,7 @@ export default function FeaturedEventCountdown() {
             className="w-full h-14 sm:h-16 bg-[#a80d26] hover:bg-[#8a091e] hover:-translate-y-0.5 hover:scale-[1.02] text-white rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg card-shimmer group text-center"
           >
             <i className="fi fi-rr-arrow-circle-right text-base leading-none text-white group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">REGISTER NOW</span>
+            <span className="whitespace-nowrap">{t("hero-register", "REGISTER NOW")}</span>
           </Link>
 
           {/* Line 1 - Button 3 */}
@@ -166,7 +166,7 @@ export default function FeaturedEventCountdown() {
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
             <i className="fi fi-rr-poll-h text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">BROCHURE</span>
+            <span className="whitespace-nowrap">{t("ql-brochure", "BROCHURE")}</span>
           </Link>
 
           {/* Line 1 - Button 4 */}
@@ -175,7 +175,7 @@ export default function FeaturedEventCountdown() {
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2 sm:px-3 lg:px-3.5 text-[9.5px] xs:text-[10px] sm:text-[11px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
             <i className="fi fi-rs-world-megaphone text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">INTERNATIONAL MINING WEEK</span>
+            <span className="whitespace-nowrap">{t("ql-mining-week", "INTERNATIONAL MINING WEEK")}</span>
           </Link>
 
           {/* Line 2 - Button 5 */}
@@ -184,7 +184,7 @@ export default function FeaturedEventCountdown() {
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2 sm:px-3 lg:px-3.5 text-[9.5px] xs:text-[10px] sm:text-[11px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
             <i className="fi fi-rr-coworking text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">PARTICIPATING COMPANIES</span>
+            <span className="whitespace-nowrap">{t("ql-companies", "PARTICIPATING COMPANIES")}</span>
           </Link>
 
           {/* Line 2 - Button 6 */}
@@ -193,7 +193,7 @@ export default function FeaturedEventCountdown() {
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
             <i className="fi fi-rr-user text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">OUR SPEAKERS</span>
+            <span className="whitespace-nowrap">{t("nav-speakers", "OUR SPEAKERS")}</span>
           </Link>
 
           {/* Line 2 - Button 7 */}
@@ -202,7 +202,7 @@ export default function FeaturedEventCountdown() {
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
             <i className="fi fi-rr-handshake text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">OUR SPONSORS</span>
+            <span className="whitespace-nowrap">{t("ql-sponsors", "OUR SPONSORS")}</span>
           </Link>
 
           {/* Line 2 - Button 8 */}
@@ -211,7 +211,7 @@ export default function FeaturedEventCountdown() {
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
             <i className="fi fi-rr-golf-hole text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">ICONIC GOLF DAY</span>
+            <span className="whitespace-nowrap">{t("golf-hero-title-3", "ICONIC GOLF DAY")}</span>
           </Link>
         </div>
       </div>

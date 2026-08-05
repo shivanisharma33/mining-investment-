@@ -113,6 +113,8 @@ const translations: Record<Language, Record<string, string>> = {
     "timer-hrs": "HRS",
     "timer-min": "MIN",
     "timer-sec": "SEC",
+    "countdown-subtitle": "Where Global Mining Leaders Connect",
+    "countdown-desc": "A premier gathering of investors, mining companies, government, innovators and industry experts driving the future of mining.",
 
     // Featured Partners
     "partners-tag": "FEATURED",
@@ -230,34 +232,39 @@ const translations: Record<Language, Record<string, string>> = {
     // Travel page
     "travel-hero-title-1": "Travel &",
     "travel-hero-title-2": "Accommodations",
-    "travel-venue-label": "VENUE",
-    "travel-venue-title-1": "Welcome to",
-    "travel-venue-title-2": "Québec City",
-    "travel-venue-desc": "Welcome to THE Mining Investment EVENT, taking place 1-3 June 2027 at the Centre des congrès de Québec (\u201cQCC\u201d). Discounted block rates available for registered participants only. You are responsible for coordinating all your own travel and lodging arrangements.",
-    "travel-convention-title": "Québec City Convention Centre",
-    "travel-convention-desc": "Welcome to the Quebec City Convention Centre, where elegance meets innovation. Nestled within the charming historic district of Old Quebec, this world-class facility seamlessly blends modern amenities with the rich tapestry of Quebecois culture.",
-    "travel-convention-note": "Please Note: Entry into THE Event and special hotel discount rates are restricted to registered participants only.",
-    "travel-convention-link": "View Convention Centre ↗",
-    "travel-air-title": "Air Travel to Quebec (YQB)",
-    "travel-air-easy": "Traveling to Quebec City is easy!",
-    "travel-air-times": "Estimated flight times:",
-    "travel-air-desc": "All major carriers fly to Toronto or Montreal with quick connections to YQB. Jean Lesage International airport is a 20 minute taxi ride to/from the Chateau Frontenac.",
-    "travel-air-link": "View YQB Destinations ↗",
-    "travel-services-label": "SERVICES",
-    "travel-services-title": "Accommodations & Transport",
+    "travel-venue-label": "TRAVEL & ACCOMMODATIONS",
+    "travel-main-heading": "Travel & Accommodations",
+    "travel-event-welcome": "Welcome to THE Mining Investment EVENT, taking place Tuesday, June 2 to Thursday, June 4, 2026 at the Centre des congrès de Québec (“QCC”)",
+    "travel-about-qcc": "About the Centre des congrès de Québec",
+    "travel-notice-1": "Discounted block rates available for registered participants only.",
+    "travel-notice-2": "You are responsible for coordinating all your own travel and lodging arrangements. Please check with individual properties regarding cancellation policy, deposit requirement, and taxes/fees.",
+    "travel-convention-title": "About the Centre des congrès de Québec ↗",
+    "travel-convention-desc": "Welcome to the Centre des congrès de Québec, where elegance meets innovation. Nestled within the charming historic district of Old Quebec, this world-class facility seamlessly blends modern amenities with the rich tapestry of Quebecois culture.",
+    "travel-convention-note": "Please Note: Discounted block rates available for registered participants only. You are responsible for coordinating all your own travel and lodging arrangements.",
+    "travel-convention-link": "View Convention Centre",
+    "travel-air-title": "Air Travel direct to Quebec (YQB) estimated times",
+    "travel-air-carrier-note": "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB. Some carriers fly direct to YQB, Please check with your carrier of choice. Jean Lesage International airport in Quebec City is a 20 minute taxi ride to/from The Chateau Frontenac.",
+    "travel-air-link-btn": "Check YQB destinations",
+    "travel-train-title": "Train Travel to Quebec (YQB) estimated times:",
+    "travel-train-desc": "Estimated train travel times:\n• From Toronto: 8 hrs (with a transfer at Montreal to QC)\n• From Montreal: 3 hrs\n\nThe train station in Quebec City is 5 mins by taxi to most major hotels.",
+    "travel-train-taxi-note": "The train station in Quebec City is 5 mins by taxi to most major hotels.",
+    "travel-train-btn": "Book tickets online at Via Rail",
+    "travel-train-link": "Book Ticket at Via Rail ↗",
+    "travel-limo-heading": "Private Transportation",
+    "travel-limo-title": "Limousine A1 (Private Transportation)",
+    "travel-limo-desc": "If you wish to book private transportation, we invite you to contact Limousine A1 directly to arrange. With over 40 years of experience, Limousine A1 provides personalized transportation and seamless logistics in Quebec.\n\nTel: 418-523-5059\nEmail: res@limousinequebec.com",
+    "travel-limo-text": "If wish to book private transportation, we invite you to contact Limousine A1 directly to arrange.",
+    "travel-limo-note": "Restricted to registered participants only.",
+    "travel-limo-btn": "Contact Limousine A1",
+    "travel-limo-link": "Arrange Private Transportation ↗",
+    "travel-services-label": "HOTELS & DISCOUNTS",
+    "travel-services-title": "Accommodations & Hotel Discounts",
     "travel-hilton-title": "Hilton Québec",
     "travel-hilton-desc": "Experience luxury and convenience at the Hilton Hotel in Quebec City, perfectly positioned just steps away from the Quebec City Convention Centre. Indulge in exquisite dining, unwind with a cocktail at the lounge, or rejuvenate in the state-of-the-art fitness centre.",
-    "travel-hilton-note": "Entry into THE Event and special hotel discount rates are restricted to registered participants only.",
+    "travel-hilton-note": "Discounted block rates available for registered participants only. You are responsible for coordinating all your own travel and lodging arrangements.",
     "travel-hilton-link": "View Hotel Website ↗",
-    "travel-train-title": "Train Travel (VIA Rail)",
-    "travel-train-desc": "Estimated train times to Quebec City:\n• From Toronto: 8 hrs (transfer at Montreal)\n• From Montreal: 3 hrs\n\nThe train station in Quebec City is just 5 minutes by taxi to most major hotels. Book your tickets online at VIA Rail.",
-    "travel-train-link": "Book Train Ticket ↗",
-    "travel-limo-title": "Limousine A1",
-    "travel-limo-desc": "With over 40 years of experience in transportation management and coordination, Limousine A1 is the leading limousine carrier in the province of Quebec. Their team of professionals provides a personalized transportation experience, seamless logistics, and a courteous attitude.\n\nTel: 418-523-5059\nEmail: res@limousinequebec.com",
-    "travel-limo-note": "Entry into THE Event and special discount rates are restricted to registered participants only.",
-    "travel-limo-link": "View Limousine A1 ↗",
     "travel-discount-title": "Delegate Discount Program",
-    "travel-discount-desc": "Our venue partner, The Québec City Convention Centre, is proud to offer delegates of THE Event exclusive offers and discounts at select restaurants, attractions and boutiques throughout Quebec City.\n\nYou will be able to take advantage of the offers through presentation of your THE Event badge. Scan QR code on-site for more details.",
+    "travel-discount-desc": "Our venue partner, The Québec City Convention Centre, offers delegates of THE Event exclusive discounts at select restaurants, attractions and boutiques throughout Quebec City.\n\nPlease check with individual properties regarding cancellation policy, deposit requirement, and taxes/fees. Scan QR code on-site for more details.",
 
     // Media page
     "media-hero-title-1": "Recent",
@@ -292,8 +299,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Press Release page
     "news-hero-title-1": "THE",
-    "news-hero-title-2": "Press Release",
-    "news-latest-label": "LATEST PRESS RELEASES",
+    "news-hero-title-2": "Press Releases",
+    "news-press-label": "PRESS RELEASES & ANNOUNCEMENTS",
     "news-section-title-1": "Stay Informed with",
     "news-section-title-2": "THE Press Releases",
     "news-section-desc": "The latest press releases, announcements and official updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates.",
@@ -465,6 +472,49 @@ const translations: Record<Language, Record<string, string>> = {
     "golf-includes-desc": "18 holes of golf with cart, lunch & on-course refreshments, awards dinner, networking cocktail reception, branded golf gift package, and access to exclusive sponsor activations.",
     "golf-schedule-title": "Schedule Overview",
     "golf-schedule-desc": "10:00 AM Registration & Practice Range · 11:30 AM Shotgun Start · 5:00 PM Awards Ceremony & Cocktail · 7:00 PM Gala Dinner",
+    
+    // Speaker modal & extra
+    "spk-modal-bio": "Bio & Keynotes",
+    "spk-modal-company": "Company",
+    "spk-modal-position": "Position",
+    "spk-modal-sessions": "Presentations & Panels",
+    "spk-search-ph": "Search speakers by name, company, position...",
+
+    // Company Directory Extra
+    "co-col-website-btn": "Visit Website",
+    "co-col-industry": "Industry",
+    "co-col-website": "Website",
+
+    // Footer & Common UI
+    "footer-subscribe-ph": "Enter your email address...",
+    "footer-subscribe-btn": "Subscribe",
+    "footer-rights": "All rights reserved",
+    "footer-credit": "Designed & Developed for THE Event",
+
+    // PDF Viewer & Document Controls
+    "pdf-page": "Page",
+    "pdf-of": "of",
+    "pdf-zoom-in": "Zoom In",
+    "pdf-zoom-out": "Zoom Out",
+    "pdf-fullscreen": "Full Screen",
+    "pdf-download": "Download PDF",
+    "pdf-close": "Close Document",
+
+    // News & Media Extra
+    "news-cat-all": "All Updates",
+    "news-cat-press": "Press Releases",
+    "news-cat-articles": "Articles",
+    "news-cat-media": "Media",
+    "news-published-on": "Published on",
+    "news-read-time": "min read",
+    "news-related": "Related News & Updates",
+
+    // General Common
+    "btn-close": "Close",
+    "btn-back": "Back",
+    "btn-apply": "Apply Now",
+    "btn-learn-more": "Learn More",
+    "btn-register-here": "Register Here",
 
     // Footer
     "footer-privacy-policy": "Privacy Policy",
@@ -569,6 +619,8 @@ const translations: Record<Language, Record<string, string>> = {
     "timer-hrs": "HRS",
     "timer-min": "MIN",
     "timer-sec": "SEC",
+    "countdown-subtitle": "Où les leaders miniers mondiaux se réunissent",
+    "countdown-desc": "Un rassemblement de premier plan d'investisseurs, de sociétés minières, de gouvernements et d'experts façonnant l'avenir minier.",
 
     // Featured Partners
     "partners-tag": "EN VEDETTE",
@@ -716,36 +768,39 @@ const translations: Record<Language, Record<string, string>> = {
     // Travel page
     "travel-hero-title-1": "Voyage et",
     "travel-hero-title-2": "Hébergement",
-    "travel-venue-label": "LIEU",
-    "travel-venue-title-1": "Bienvenue à",
-    "travel-venue-title-2": "Québec",
-    "travel-venue-desc": "Bienvenue à L'ÉVÉNEMENT d'Investissement Minier, qui se tiendra du 1 au 3 juin 2027 au Centre des congrès de Québec (\u00abCCQ\u00bb). Tarifs de groupe réduits offerts aux participants inscrits seulement. Vous êtes responsable de la coordination de tous vos arrangements de voyage et d'hébergement.",
-    "travel-convention-title": "Centre des Congrès de Québec",
+    "travel-venue-label": "VOYAGE ET HÉBERGEMENT",
+    "travel-main-heading": "Voyage et Hébergement",
+    "travel-event-welcome": "Bienvenue à L'ÉVÉNEMENT d'investissement minier, se déroulant du 1 au 3 juin 2027 au Centre des congrès de Québec (« QCC »)",
+    "travel-about-qcc": "À propos du Centre des congrès de Québec",
+    "travel-notice-1": "Tarifs de groupe réduits disponibles pour les participants inscrits seulement.",
+    "travel-notice-2": "Vous êtes responsable de la coordination de l'ensemble de vos déplacements et de votre hébergement. Veuillez vérifier auprès de chaque établissement la politique d'annulation, les exigences de dépôt et les taxes/frais.",
+    "travel-convention-title": "À propos du Centre des congrès de Québec ↗",
     "travel-convention-desc": "Bienvenue au Centre des congrès de Québec, où l'élégance rencontre l'innovation. Niché au cœur du charmant quartier historique du Vieux-Québec, cet établissement de classe mondiale allie harmonieusement installations modernes et riche patrimoine québécois.",
-    "travel-convention-note": "Veuillez noter : L'accès à L'Événement et les tarifs hôteliers préférentiels sont réservés aux participants inscrits uniquement.",
-    "travel-convention-link": "Voir le Centre des Congrès ↗",
-    "travel-air-title": "Voyage Aérien vers Québec (YQB)",
-    "travel-air-easy": "Voyager à Québec est facile !",
-    "travel-air-times": "Temps de vol estimés :",
-    "travel-air-desc": "Tous les grands transporteurs aériens desservent Toronto ou Montréal avec des connexions rapides vers YQB. L'aéroport international Jean-Lesage est à 20 minutes en taxi du Château Frontenac.",
-    "travel-air-link": "Voir les Destinations YQB ↗",
-    "travel-services-label": "SERVICES",
-    "travel-services-title": "Hébergement et Transport",
+    "travel-convention-note": "Remarque : Tarifs de groupe réduits réservés aux participants inscrits uniquement. Vous êtes responsable de la coordination de vos déplacements et de votre hébergement.",
+    "travel-convention-link": "Voir le Centre des congrès",
+    "travel-air-title": "Temps de vol estimés vers Québec (YQB)",
+    "travel-air-carrier-note": "Toutes les grandes compagnies aériennes desservent Toronto ou Montréal avec des correspondances rapides vers YQB. Certaines compagnies volent directement vers YQB. L'aéroport international Jean-Lesage de Québec se trouve à 20 minutes en taxi du Château Frontenac.",
+    "travel-air-link-btn": "Vérifier les destinations YQB",
+    "travel-train-title": "Temps de trajet estimés en train vers Québec (YQB) :",
+    "travel-train-desc": "Temps de trajet estimés en train :\n• De Toronto : 8 h (avec correspondance à Montréal)\n• De Montréal : 3 h\n\nLa gare ferroviaire de Québec est à 5 min en taxi de la plupart des grands hôtels.",
+    "travel-train-taxi-note": "La gare ferroviaire de Québec se trouve à 5 minutes en taxi de la plupart des grands hôtels.",
+    "travel-train-btn": "Réserver des billets sur Via Rail",
+    "travel-train-link": "Réserver sur Via Rail ↗",
+    "travel-limo-heading": "Transport privé",
+    "travel-limo-title": "Limousine A1 (Transport privé)",
+    "travel-limo-desc": "Si vous souhaitez réserver un transport privé, nous vous invitons à contacter directement Limousine A1. Avec plus de 40 ans d'expérience, Limousine A1 offre un transport personnalisé et une logistique fluide au Québec.\n\nTél : 418-523-5059\nCourriel : res@limousinequebec.com",
+    "travel-limo-text": "Si vous souhaitez réserver un transport privé, nous vous invitons à contacter directement Limousine A1 pour l'organiser.",
+    "travel-limo-note": "Réservé aux participants inscrits uniquement.",
+    "travel-limo-btn": "Contacter Limousine A1",
+    "travel-limo-link": "Organiser un transport privé ↗",
+    "travel-services-label": "HÔTELS ET RABAIS",
+    "travel-services-title": "Hébergements et rabais hôteliers",
     "travel-hilton-title": "Hilton Québec",
-    "travel-hilton-desc": "Vivez le luxe et la commodité à l'Hôtel Hilton de Québec, idéalement situé à quelques pas du Centre des congrès de Québec. Savourez une cuisine exquise, détendez-vous avec un cocktail au salon ou ressourcez-vous dans le centre de conditionnement physique dernier cri.",
-    "travel-hilton-note": "L'accès à L'Événement et les tarifs hôteliers préférentiels sont réservés aux participants inscrits uniquement.",
-    "travel-hilton-link": "Voir le Site de l'Hôtel ↗",
-    "travel-train-title": "Voyage en Train (VIA Rail)",
-    "travel-train-desc": "Temps de train estimés vers Québec :\n• De Toronto : 8 h (correspondance à Montréal)\n• De Montréal : 3 h\n\nLa gare de Québec est à seulement 5 minutes en taxi de la plupart des grands hôtels. Réservez vos billets en ligne sur VIA Rail.",
-    "travel-train-link": "Réserver un Billet de Train ↗",
-    "travel-limo-title": "Limousine A1",
-    "travel-limo-desc": "Avec plus de 40 ans d'expérience en gestion et coordination du transport, Limousine A1 est le principal transporteur de limousines de la province de Québec. Leur équipe de professionnels offre une expérience de transport personnalisée, une logistique sans faille et une attitude courtoise.\n\nTél : 418-523-5059\nCourriel : res@limousinequebec.com",
-    "travel-limo-note": "L'accès à L'Événement et les tarifs préférentiels sont réservés aux participants inscrits uniquement.",
-    "travel-limo-link": "Voir Limousine A1 ↗",
-    "travel-discount-title": "Programme de Rabais pour Délégués",
-    "travel-discount-desc": "Notre partenaire de site, le Centre des Congrès de Québec, est fier d'offrir aux délégués de L'Événement des offres et des réductions exclusives dans certains restaurants, attractions et boutiques de Québec.\n\nVous pourrez profiter des offres en présentant votre badge L'Événement. Scannez le code QR sur place pour plus de détails.",
-
-    // Travel page (continued)
+    "travel-hilton-desc": "Vivez le luxe et la commodité à l'Hôtel Hilton de Québec, idéalement situé à deux pas du Centre des congrès de Québec. Savourez une cuisine exquise, détendez-vous avec un cocktail au salon ou ressourcez-vous dans le centre de remise en forme dernier cri.",
+    "travel-hilton-note": "Tarifs de groupe réduits réservés aux participants inscrits uniquement. Vous êtes responsable de la coordination de vos déplacements et de votre hébergement.",
+    "travel-hilton-link": "Voir le site de l'hôtel ↗",
+    "travel-discount-title": "Programme de rabais pour délégués",
+    "travel-discount-desc": "Notre partenaire hôte, Le Centre des congrès de Québec, offre aux délégués de L'Événement des rabais exclusifs dans une sélection de restaurants, d'attractions et de boutiques à travers la ville de Québec.\n\nVeuillez vérifier auprès de chaque établissement les politiques d'annulation, les dépôts et les taxes.",
 
     // Press Release page
     "news-hero-title-1": "THE",
@@ -939,6 +994,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       setLangState(saved);
     }
   }, []);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = lang.toLowerCase();
+    }
+  }, [lang]);
 
   const setLang = (newLang: Language) => {
     setLangState(newLang);

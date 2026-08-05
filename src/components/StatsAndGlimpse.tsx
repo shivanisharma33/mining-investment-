@@ -111,7 +111,7 @@ export default function StatsAndGlimpse() {
       icon: <i className="fi fi-rr-chart-user text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
       number: "65",
       suffix: "",
-      label: "PRESENTATIONS",
+      label: isFr ? "PRÉSENTATIONS" : "PRESENTATIONS",
     },
     {
       icon: <i className="fi fi-rs-circle-microphone text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,

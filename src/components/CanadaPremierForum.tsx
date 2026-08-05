@@ -152,16 +152,16 @@ export default function CanadaPremierForum() {
                 {/* Live Ribbon Badge on Top-Right */}
                 <div className="absolute top-4 right-4 bg-[#C6112F] text-white text-[10px] sm:text-[11px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-md border border-white/20">
                   <span className="w-2 h-2 rounded-full bg-white animate-ping" />
-                  <span>TIER I GLOBAL FORUM</span>
+                  <span>{lang === "FR" ? "FORUM MONDIAL NIVEAU I" : "TIER I GLOBAL FORUM"}</span>
                 </div>
 
                 {/* Caption at Bottom of Main Image */}
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <div className="flex items-center gap-1.5 mb-1 text-[#ff4d6d] font-extrabold text-[11px] uppercase tracking-wider">
-                    <i className="fi fi-rr-marker text-xs" /> QUÉBEC CITY • CANADA
+                    <i className="fi fi-rr-marker text-xs" /> {lang === "FR" ? "VILLE DE QUÉBEC • CANADA" : "QUÉBEC CITY • CANADA"}
                   </div>
                   <h4 className="text-white font-extrabold text-xs sm:text-sm leading-snug drop-shadow-md">
-                    Canada's Premier Global Mining Forum
+                    {lang === "FR" ? "Premier Forum Minier du Canada" : "Canada's Premier Global Mining Forum"}
                   </h4>
                 </div>
               </div>
@@ -175,8 +175,8 @@ export default function CanadaPremierForum() {
                   <i className="fi fi-rr-lock leading-none" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-slate-400 font-extrabold">EXCLUSIVE</span>
-                  <span className="text-xs font-black text-neutral-900 dark:text-white">By Invitation Only</span>
+                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-slate-400 font-extrabold">{lang === "FR" ? "EXCLUSIF" : "EXCLUSIVE"}</span>
+                  <span className="text-xs font-black text-neutral-900 dark:text-white">{lang === "FR" ? "Sur invitation seulement" : "By Invitation Only"}</span>
                 </div>
               </div>
 
@@ -189,8 +189,8 @@ export default function CanadaPremierForum() {
                   <i className="fi fi-rr-handshake leading-none" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-slate-400 font-extrabold">NETWORKING</span>
-                  <span className="text-xs font-black text-neutral-900 dark:text-white">1-on-1 Meetings</span>
+                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-slate-400 font-extrabold">{lang === "FR" ? "RÉSEAUTAGE" : "NETWORKING"}</span>
+                  <span className="text-xs font-black text-neutral-900 dark:text-white">{lang === "FR" ? "Rencontres 1-à-1" : "1-on-1 Meetings"}</span>
                 </div>
               </div>
 

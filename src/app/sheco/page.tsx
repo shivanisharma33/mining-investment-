@@ -12,14 +12,14 @@ export default function SheCoPage() {
   const annualDonations = [
     {
       year: "2026",
-      title: "The Quesnel Education and Employment Society",
+      title: lang === "FR" ? "La Société d'éducation et d'emploi de Quesnel" : "The Quesnel Education and Employment Society",
       desc: lang === "FR"
         ? "Don aux fins de soutenir l'éducation, la formation et l'emploi des membres de la communauté. Établi par la Nation Lhoosk'uz Dene, la Nation Lhtako Dene et la Nation Nazko."
         : "Donation to support education, training and employment of community members. Established by the Lhoosk'uz Dene Nation, Lhtako Dene Nation and Nazko Nation.",
     },
     {
       year: "2025",
-      title: "The Quesnel Education and Employment Society",
+      title: lang === "FR" ? "La Société d'éducation et d'emploi de Quesnel" : "The Quesnel Education and Employment Society",
       desc: lang === "FR"
         ? "Don aux fins de soutenir l'éducation, la formation et l'emploi des membres de la communauté. Grâce à l'aide de Sean Roosen, l'initiative SHE-Co est heureuse de soutenir cet organisme."
         : "Donation to support education, training and employment of community members. Through the help of Sean Roosen, THE Event's SHE-Co initiative is pleased to support this organization.",
@@ -35,7 +35,7 @@ export default function SheCoPage() {
     },
     {
       year: "2023",
-      title: "University of British Columbia",
+      title: lang === "FR" ? "Université de la Colombie-Britannique (UBC)" : "University of British Columbia",
       desc: lang === "FR"
         ? "Don ayant aidé 3 jeunes femmes afghanes à poursuivre leurs programmes d'études."
         : "Donation assisted 3 young Afghani women with their education programs.",

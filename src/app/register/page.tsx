@@ -14,6 +14,7 @@ import {
 
 export default function RegisterPage() {
   const { t, lang } = useLanguage();
+  const isFr = lang === "FR";
 
   const [activeTrack, setActiveTrack] = useState<"investor" | "company">("investor");
 
@@ -187,10 +188,10 @@ export default function RegisterPage() {
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
               <div>
                 <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-3 block">
-                  {t("register-save-date-label", "SAVE THE DATE — INVITATION ONLY")}
+                  {isFr ? "RÉSERVEZ LA DATE — SUR INVITATION SEULEMENT" : "SAVE THE DATE — INVITATION ONLY"}
                 </span>
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
-                  Registration <span className="text-[#C6112F]">Portal</span>
+                  {isFr ? "Portail d'" : "Registration "}<span className="text-[#C6112F]">{isFr ? "Inscription" : "Portal"}</span>
                 </h1>
                 <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
               </div>
@@ -205,7 +206,7 @@ export default function RegisterPage() {
                   <span>Centre des congrès de Québec</span>
                 </div>
                 <div className="text-xl sm:text-2xl font-black text-white">
-                  June 1–3, 2027
+                  {isFr ? "1–3 juin 2027" : "June 1–3, 2027"}
                 </div>
                 <p className="text-neutral-300 text-xs mt-2 leading-relaxed font-normal">
                   {t(
@@ -223,10 +224,10 @@ export default function RegisterPage() {
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-                CHOOSE YOUR PARTICIPATION TRACK
+                {isFr ? "CHOISISSEZ VOTRE PARCOURS DE PARTICIPATION" : "CHOOSE YOUR PARTICIPATION TRACK"}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] tracking-tight">
-                Tailored Access for Investors & Companies
+                {isFr ? "Un accès sur mesure pour investisseurs et sociétés" : "Tailored Access for Investors & Companies"}
               </h2>
               <div className="w-16 h-[3px] bg-[#C6112F] mx-auto mt-4 rounded-full" />
             </div>
@@ -240,7 +241,7 @@ export default function RegisterPage() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1.5 rounded-full">
-                      {t("register-investor-type", "FOR INVESTORS")}
+                      {isFr ? "POUR LES INVESTISSEURS" : "FOR INVESTORS"}
                     </span>
                     <div className="w-10 h-10 rounded-2xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center font-bold text-lg">
                       01
@@ -260,9 +261,9 @@ export default function RegisterPage() {
 
                   <div className="space-y-3 mb-8">
                     {[
-                      "1-on-1 Private Executive Meetings",
-                      "Keynote & Ministerial Session Access",
-                      "VIP Receptions & Networking Dinners",
+                      isFr ? "Rencontres privées individuelles pour dirigeants" : "1-on-1 Private Executive Meetings",
+                      isFr ? "Accès aux conférences et sessions ministérielles" : "Keynote & Ministerial Session Access",
+                      isFr ? "Réceptions VIP et dîners de réseautage" : "VIP Receptions & Networking Dinners",
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3 text-xs sm:text-sm font-bold text-neutral-800">
                         <span className="w-5 h-5 rounded-full bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center text-xs shrink-0">
@@ -292,7 +293,7 @@ export default function RegisterPage() {
                 <div>
                   <div className="flex items-center justify-between mb-6">
                     <span className="text-[10px] font-black tracking-[0.2em] uppercase text-neutral-800 bg-neutral-100 px-3.5 py-1.5 rounded-full">
-                      {t("register-company-type", "FOR COMPANIES")}
+                      {isFr ? "POUR LES SOCIÉTÉS" : "FOR COMPANIES"}
                     </span>
                     <div className="w-10 h-10 rounded-2xl bg-neutral-100 text-neutral-800 flex items-center justify-center font-bold text-lg">
                       02
@@ -312,9 +313,9 @@ export default function RegisterPage() {
 
                   <div className="space-y-3 mb-8">
                     {[
-                      "Corporate Project Showcase",
-                      "Curated Accredited Investor Audience",
-                      "Tier 1 Sponsorship Opportunities",
+                      isFr ? "Présentation de projets corporatifs" : "Corporate Project Showcase",
+                      isFr ? "Auditoire d'investisseurs accrédités ciblés" : "Curated Accredited Investor Audience",
+                      isFr ? "Opportunités de commandite de Niveau 1" : "Tier 1 Sponsorship Opportunities",
                     ].map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3 text-xs sm:text-sm font-bold text-neutral-800">
                         <span className="w-5 h-5 rounded-full bg-[#1a1f2c]/10 text-[#1a1f2c] flex items-center justify-center text-xs shrink-0">
@@ -352,7 +353,7 @@ export default function RegisterPage() {
                     : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
                 }`}
               >
-                Investor Registration Form
+                {isFr ? "Formulaire Investisseur" : "Investor Registration Form"}
               </button>
               <button
                 onClick={() => selectTrack("company")}
@@ -362,7 +363,7 @@ export default function RegisterPage() {
                     : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
                 }`}
               >
-                Company Registration Form
+                {isFr ? "Formulaire Société" : "Company Registration Form"}
               </button>
             </div>
 
@@ -375,15 +376,17 @@ export default function RegisterPage() {
                     ✓
                   </div>
                   <h3 className="text-3xl font-black text-[#1a1f2c] mb-3">
-                    Registration Received!
+                    {isFr ? "Inscription reçue !" : "Registration Received!"}
                   </h3>
                   <p className="text-neutral-600 text-sm max-w-lg mx-auto mb-8 leading-relaxed font-medium">
-                    Thank you for completing your {activeTrack === "investor" ? "Investor" : "Company"} registration form. Our credentials team will review your information and issue official invitation details shortly.
+                    {isFr
+                      ? `Merci d'avoir rempli votre formulaire d'inscription ${activeTrack === "investor" ? "Investisseur" : "Société"}. Notre équipe révisera vos informations et émettra les détails officiels d'invitation prochainement.`
+                      : `Thank you for completing your ${activeTrack === "investor" ? "Investor" : "Company"} registration form. Our credentials team will review your information and issue official invitation details shortly.`}
                   </p>
                   {registrationNumber && (
                     <div className="max-w-xs mx-auto mb-8 px-5 py-4 rounded-2xl bg-neutral-50 border border-neutral-200">
                       <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-neutral-500 mb-1">
-                        Registration Number
+                        {isFr ? "Numéro d'inscription" : "Registration Number"}
                       </span>
                       <b className="text-lg font-black text-[#1a1f2c] tracking-wide">
                         {registrationNumber}
@@ -398,7 +401,7 @@ export default function RegisterPage() {
                     }}
                     className="px-8 py-3.5 rounded-xl bg-[#0f1117] text-white text-xs font-extrabold uppercase tracking-widest hover:bg-[#C6112F] transition-all"
                   >
-                    Submit Another Application
+                    {isFr ? "Soumettre une autre demande" : "Submit Another Application"}
                   </button>
                 </div>
               ) : activeTrack === "investor" ? (
@@ -406,10 +409,10 @@ export default function RegisterPage() {
                 <div>
                   <div className="text-center mb-10">
                     <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-                      ACCREDITED DELEGATE APPLICATION
+                      {isFr ? "DEMANDE DE DÉLÉGUÉ ACCRÉDITÉ" : "ACCREDITED DELEGATE APPLICATION"}
                     </span>
                     <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] tracking-tight">
-                      Investor Registration Form
+                      {isFr ? "Formulaire d'inscription investisseur" : "Investor Registration Form"}
                     </h3>
                     <div className="w-12 h-[3px] bg-[#C6112F] mx-auto mt-3 rounded-full" />
                   </div>
@@ -418,7 +421,7 @@ export default function RegisterPage() {
                     {/* Company Name */}
                     <div>
                       <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                        Company Name <span className="text-[#C6112F] font-bold">(required)</span>
+                        {isFr ? "Nom de la société" : "Company Name"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                       </label>
                       <input
                         type="text"
@@ -427,7 +430,7 @@ export default function RegisterPage() {
                         onChange={(e) =>
                           setInvestorFormData({ ...investorFormData, companyName: e.target.value })
                         }
-                        placeholder="e.g. Apex Capital Partners"
+                        placeholder={isFr ? "ex: Apex Capital Partners" : "e.g. Apex Capital Partners"}
                         className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                       />
                     </div>
@@ -436,7 +439,7 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          First Name <span className="text-[#C6112F] font-bold">(required)</span>
+                          {isFr ? "Prénom" : "First Name"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <input
                           type="text"
@@ -445,13 +448,13 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, firstName: e.target.value })
                           }
-                          placeholder="e.g. Sarah"
+                          placeholder={isFr ? "ex: Sarah" : "e.g. Sarah"}
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Last Name <span className="text-[#C6112F] font-bold">(required)</span>
+                          {isFr ? "Nom" : "Last Name"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <input
                           type="text"
@@ -460,7 +463,7 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, lastName: e.target.value })
                           }
-                          placeholder="e.g. Jenkins"
+                          placeholder={isFr ? "ex: Jenkins" : "e.g. Jenkins"}
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
@@ -469,7 +472,7 @@ export default function RegisterPage() {
                     {/* Business Title */}
                     <div>
                       <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                        Business Title
+                        {isFr ? "Titre professionnel" : "Business Title"}
                       </label>
                       <input
                         type="text"
@@ -477,7 +480,7 @@ export default function RegisterPage() {
                         onChange={(e) =>
                           setInvestorFormData({ ...investorFormData, businessTitle: e.target.value })
                         }
-                        placeholder="e.g. Managing Director, Mining & Resources"
+                        placeholder={isFr ? "ex: Directeur Général, Mines & Ressources" : "e.g. Managing Director, Mining & Resources"}
                         className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                       />
                     </div>
@@ -486,7 +489,7 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          City
+                          {isFr ? "Ville" : "City"}
                         </label>
                         <input
                           type="text"
@@ -494,13 +497,13 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, city: e.target.value })
                           }
-                          placeholder="e.g. Toronto"
+                          placeholder={isFr ? "ex: Montréal" : "e.g. Toronto"}
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Country
+                          {isFr ? "Pays" : "Country"}
                         </label>
                         <input
                           type="text"
@@ -508,7 +511,7 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, country: e.target.value })
                           }
-                          placeholder="e.g. Canada"
+                          placeholder={isFr ? "ex: Canada" : "e.g. Canada"}
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
@@ -518,7 +521,7 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Email <span className="text-[#C6112F] font-bold">(required)</span>
+                          {isFr ? "Courriel" : "Email"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <input
                           type="email"
@@ -533,7 +536,7 @@ export default function RegisterPage() {
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Phone
+                          {isFr ? "Téléphone" : "Phone"}
                         </label>
                         <input
                           type="tel"
@@ -541,7 +544,7 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, phone: e.target.value })
                           }
-                          placeholder="e.g. +1 (416) 555-0192"
+                          placeholder="e.g. +1 (514) 555-0192"
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
@@ -551,7 +554,7 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Assets Under Management
+                          {isFr ? "Actifs sous gestion" : "Assets Under Management"}
                         </label>
                         <select
                           value={investorFormData.aum}
@@ -560,19 +563,19 @@ export default function RegisterPage() {
                           }
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-bold outline-none transition-all bg-white cursor-pointer"
                         >
-                          <option value="">Select AUM Range</option>
-                          <option value="Under $10M">Under $10 Million</option>
-                          <option value="$10M - $50M">$10 Million – $50 Million</option>
-                          <option value="$50M - $250M">$50 Million – $250 Million</option>
-                          <option value="$250M - $1B">$250 Million – $1 Billion</option>
-                          <option value="Over $1B">Over $1 Billion</option>
-                          <option value="HNWI / Personal">HNWI / Personal Accredited Investor</option>
+                          <option value="">{isFr ? "Sélectionner la fourchette AUM" : "Select AUM Range"}</option>
+                          <option value="Under $10M">{isFr ? "Moins de 10 millions $" : "Under $10 Million"}</option>
+                          <option value="$10M - $50M">{isFr ? "10 millions $ – 50 millions $" : "$10 Million – $50 Million"}</option>
+                          <option value="$50M - $250M">{isFr ? "50 millions $ – 250 millions $" : "$50 Million – $250 Million"}</option>
+                          <option value="$250M - $1B">{isFr ? "250 millions $ – 1 milliard $" : "$250 Million – $1 Billion"}</option>
+                          <option value="Over $1B">{isFr ? "Plus de 1 milliard $" : "Over $1 Billion"}</option>
+                          <option value="HNWI / Personal">{isFr ? "Investisseur accrédité personnel" : "HNWI / Personal Accredited Investor"}</option>
                         </select>
                       </div>
 
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Investor Type
+                          {isFr ? "Type d'investisseur" : "Investor Type"}
                         </label>
                         <select
                           value={investorFormData.investorType}
@@ -581,13 +584,13 @@ export default function RegisterPage() {
                           }
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-bold outline-none transition-all bg-white cursor-pointer"
                         >
-                          <option value="Institutional Investor">Institutional Investor</option>
+                          <option value="Institutional Investor">{isFr ? "Investisseur institutionnel" : "Institutional Investor"}</option>
                           <option value="Family Office">Family Office</option>
-                          <option value="High Net Worth Individual (HNWI)">High Net Worth Individual (HNWI)</option>
-                          <option value="Fund / Portfolio Manager">Fund / Portfolio Manager</option>
-                          <option value="Sovereign Wealth Fund">Sovereign Wealth Fund</option>
-                          <option value="Mining Analyst / Investment Banker">Mining Analyst / Investment Banker</option>
-                          <option value="Retail / Accredited Investor">Retail / Accredited Investor</option>
+                          <option value="High Net Worth Individual (HNWI)">{isFr ? "Investisseur à valeur nette élevée" : "High Net Worth Individual (HNWI)"}</option>
+                          <option value="Fund / Portfolio Manager">{isFr ? "Gestionnaire de portefeuille" : "Fund / Portfolio Manager"}</option>
+                          <option value="Sovereign Wealth Fund">{isFr ? "Fonds souverain" : "Sovereign Wealth Fund"}</option>
+                          <option value="Mining Analyst / Investment Banker">{isFr ? "Analyste minier / Banquier d'affaires" : "Mining Analyst / Investment Banker"}</option>
+                          <option value="Retail / Accredited Investor">{isFr ? "Investisseur accrédité" : "Retail / Accredited Investor"}</option>
                         </select>
                       </div>
                     </div>
@@ -607,7 +610,7 @@ export default function RegisterPage() {
                           className="w-4 h-4 text-[#C6112F] rounded border-neutral-300 focus:ring-[#C6112F]"
                         />
                         <span className="text-xs sm:text-sm font-semibold text-neutral-700">
-                          Sign up for news and updates
+                          {isFr ? "S'abonner aux actualités et mises à jour" : "Sign up for news and updates"}
                         </span>
                       </label>
                     </div>
@@ -632,7 +635,7 @@ export default function RegisterPage() {
                         <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
                       )}
                       <span>
-                        {isSubmitting ? "Submitting…" : "Complete Investor Registration"}
+                        {isSubmitting ? (isFr ? "Soumission en cours…" : "Submitting…") : (isFr ? "Compléter l'inscription investisseur" : "Complete Investor Registration")}
                       </span>
                     </button>
                   </form>
@@ -642,10 +645,10 @@ export default function RegisterPage() {
                 <div>
                   <div className="text-center mb-6">
                     <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-                      ISSUER & MINING COMPANY APPLICATION
+                      {isFr ? "DEMANDE D'ÉMETTEUR ET SOCIÉTÉ MINIÈRE" : "ISSUER & MINING COMPANY APPLICATION"}
                     </span>
                     <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] tracking-tight">
-                      Company Registration
+                      {isFr ? "Formulaire d'inscription de société" : "Company Registration"}
                     </h3>
                     <div className="w-12 h-[3px] bg-[#C6112F] mx-auto mt-3 rounded-full" />
                   </div>
@@ -653,13 +656,15 @@ export default function RegisterPage() {
                   {/* Please Note Callout Notice */}
                   <div className="bg-[#fdf2f4] border-l-4 border-[#C6112F] p-4 sm:p-5 rounded-r-2xl mb-8">
                     <h4 className="text-xs font-black uppercase text-[#C6112F] tracking-wider mb-1.5">
-                      Please Note*
+                      {isFr ? "Veuillez noter*" : "Please Note*"}
                     </h4>
                     <p className="text-xs text-neutral-800 leading-relaxed font-medium mb-2">
-                      You must register your attendance prior to THE Event. You must receive an official invitation prior to THE Event in order to receive your badge at the door.
+                      {isFr
+                        ? "Vous devez vous inscrire avant L'Événement. Vous devez recevoir une invitation officielle avant L'Événement pour obtenir votre badge à l'entrée."
+                        : "You must register your attendance prior to THE Event. You must receive an official invitation prior to THE Event in order to receive your badge at the door."}
                     </p>
                     <p className="text-xs font-black text-[#C6112F]">
-                      Walk-ins will not be accepted.
+                      {isFr ? "Les entrées sans inscription ne seront pas acceptées." : "Walk-ins will not be accepted."}
                     </p>
                   </div>
 
@@ -668,7 +673,7 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Company Name <span className="text-[#C6112F] font-bold">(required)</span>
+                          {isFr ? "Nom de la société" : "Company Name"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <input
                           type="text"
@@ -677,13 +682,13 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setCompanyFormData({ ...companyFormData, companyName: e.target.value })
                           }
-                          placeholder="e.g. Apex Gold & Copper Inc."
+                          placeholder={isFr ? "ex: Apex Gold & Copper Inc." : "e.g. Apex Gold & Copper Inc."}
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Market Cap
+                          {isFr ? "Capitalisation boursière" : "Market Cap"}
                         </label>
                         <input
                           type="text"
@@ -691,7 +696,7 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setCompanyFormData({ ...companyFormData, marketCap: e.target.value })
                           }
-                          placeholder="e.g. $250 Million CAD"
+                          placeholder={isFr ? "ex: 250 millions $ CAD" : "e.g. $250 Million CAD"}
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
@@ -701,7 +706,7 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Primary Exchange/Ticker
+                          {isFr ? "Bourse principale / Symbole" : "Primary Exchange/Ticker"}
                         </label>
                         <input
                           type="text"
@@ -715,7 +720,7 @@ export default function RegisterPage() {
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Commodity
+                          {isFr ? "Matière première" : "Commodity"}
                         </label>
                         <input
                           type="text"
@@ -723,7 +728,7 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setCompanyFormData({ ...companyFormData, commodity: e.target.value })
                           }
-                          placeholder="e.g. Gold, Copper, Lithium"
+                          placeholder={isFr ? "ex: Or, Cuivre, Lithium" : "e.g. Gold, Copper, Lithium"}
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
@@ -733,7 +738,7 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Project Stage
+                          {isFr ? "Stade du projet" : "Project Stage"}
                         </label>
                         <select
                           value={companyFormData.projectStage}
@@ -742,16 +747,16 @@ export default function RegisterPage() {
                           }
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-bold outline-none transition-all bg-white cursor-pointer"
                         >
-                          <option value="Explorer">Explorer</option>
-                          <option value="Developer">Developer</option>
-                          <option value="Producer">Producer</option>
-                          <option value="Royalty">Royalty</option>
-                          <option value="Project Generator">Project Generator</option>
+                          <option value="Explorer">{isFr ? "Exploration" : "Explorer"}</option>
+                          <option value="Developer">{isFr ? "Développement" : "Developer"}</option>
+                          <option value="Producer">{isFr ? "Production" : "Producer"}</option>
+                          <option value="Royalty">{isFr ? "Redevances" : "Royalty"}</option>
+                          <option value="Project Generator">{isFr ? "Générateur de projets" : "Project Generator"}</option>
                         </select>
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          Location
+                          {isFr ? "Emplacement" : "Location"}
                         </label>
                         <input
                           type="text"
@@ -759,7 +764,7 @@ export default function RegisterPage() {
                           onChange={(e) =>
                             setCompanyFormData({ ...companyFormData, location: e.target.value })
                           }
-                          placeholder="e.g. Quebec, Canada"
+                          placeholder={isFr ? "ex: Québec, Canada" : "e.g. Quebec, Canada"}
                           className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                         />
                       </div>
@@ -768,7 +773,7 @@ export default function RegisterPage() {
                     {/* Email (required) */}
                     <div>
                       <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                        Email <span className="text-[#C6112F] font-bold">(required)</span>
+                        {isFr ? "Courriel" : "Email"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                       </label>
                       <input
                         type="email"
@@ -797,7 +802,7 @@ export default function RegisterPage() {
                           className="w-4 h-4 text-[#C6112F] rounded border-neutral-300 focus:ring-[#C6112F]"
                         />
                         <span className="text-xs sm:text-sm font-semibold text-neutral-700">
-                          Sign up for news and updates
+                          {isFr ? "S'abonner aux actualités et mises à jour" : "Sign up for news and updates"}
                         </span>
                       </label>
                     </div>
@@ -821,7 +826,7 @@ export default function RegisterPage() {
                       {isSubmitting && (
                         <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
                       )}
-                      <span>{isSubmitting ? "Submitting…" : "Submit"}</span>
+                      <span>{isSubmitting ? (isFr ? "Soumission en cours…" : "Submitting…") : (isFr ? "Soumettre l'inscription de société" : "Submit")}</span>
                     </button>
                   </form>
                 </div>
@@ -837,28 +842,40 @@ export default function RegisterPage() {
               <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">
                 <div className="max-w-2xl">
                   <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-4">
-                    REGISTRATION POLICIES & REQUIREMENTS
+                    {isFr ? "POLITIQUES ET EXIGENCES D'INSCRIPTION" : "REGISTRATION POLICIES & REQUIREMENTS"}
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-black text-white mb-4">
-                    Important Registration Notice
+                    {isFr ? "Avis important concernant l'inscription" : "Important Registration Notice"}
                   </h3>
                   <div className="space-y-3 text-neutral-300 text-sm leading-relaxed font-light">
                     <p>
-                      Entry into THE Event and special hotel discount rates are restricted strictly to registered participants.
+                      {isFr
+                        ? "L'accès à L'Événement et les tarifs hôteliers réduits sont strictement réservés aux participants inscrits."
+                        : "Entry into THE Event and special hotel discount rates are restricted strictly to registered participants."}
                     </p>
                     <p>
-                      You must register your attendance prior to THE Event. You must receive an official invitation prior to THE Event in order to receive your badge at the door. <strong className="text-white font-bold underline">Walk-ins will not be accepted under any circumstances.</strong>
+                      {isFr ? (
+                        <>
+                          Vous devez vous inscrire avant L'Événement. Vous devez recevoir une invitation officielle avant L'Événement afin de récupérer votre badge sur place. <strong className="text-white font-bold underline">Aucune entrée sans invitation ne sera acceptée en aucune circonstance.</strong>
+                        </>
+                      ) : (
+                        <>
+                          You must register your attendance prior to THE Event. You must receive an official invitation prior to THE Event in order to receive your badge at the door. <strong className="text-white font-bold underline">Walk-ins will not be accepted under any circumstances.</strong>
+                        </>
+                      )}
                     </p>
                   </div>
                 </div>
 
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-6 lg:w-[360px] shrink-0">
                   <div className="text-xs font-bold text-[#C6112F] uppercase tracking-wider mb-2">
-                    Sponsorship Contact
+                    {isFr ? "Contact pour commandites" : "Sponsorship Contact"}
                   </div>
                   <div className="text-base font-black text-white mb-2">Jennifer Choi</div>
                   <p className="text-xs text-neutral-400 mb-4">
-                    To discuss Tier 1 sponsorship packages or custom options:
+                    {isFr
+                      ? "Pour discuter des forfaits de commandite de Niveau 1 ou d'options sur mesure :"
+                      : "To discuss Tier 1 sponsorship packages or custom options:"}
                   </p>
                   <a
                     href="mailto:jchoi@irinc.ca"

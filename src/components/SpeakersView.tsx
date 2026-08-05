@@ -4,6 +4,72 @@ import React, { useState, useMemo, useEffect } from "react";
 import { SPEAKERS, SPEAKERS_2025, SPEAKERS_2024, SPEAKERS_2023, RawSpeaker } from "@/app/past-editions/editionData";
 import { useLanguage } from "@/context/LanguageContext";
 
+function translateSpeakerTitle(title: string, isFr: boolean): string {
+  if (!isFr || !title) return title;
+
+  const translations: Record<string, string> = {
+    "Department of Energy and Mines": "Ministère de l'Énergie et des Mines",
+    "Parliamentary Secretary to the Minister of Energy & Natural Resources": "Secrétaire parlementaire du ministre de l'Énergie et des Ressources naturelles",
+    "Parliamentary Secretary to the Prime Minister": "Secrétaire parlementaire du Premier ministre",
+    "Minister of Mining and Critical Minerals": "Ministre des Mines et des Minéraux critiques",
+    "Minister of Natural Resources and Forests, Quebec": "Ministre des Ressources naturelles et des Forêts du Québec",
+    "U.S. Ambassador to Canada": "Ambassadeur des États-Unis au Canada",
+    "Speaker & Industry Expert": "Conférencier & Expert de l'industrie",
+    "Speaker": "Conférencier",
+    "Chief Financial Officer": "Directeur financier (CFO)",
+    "President & CEO": "Président et PDG",
+    "CEO & Director": "PDG et administrateur",
+    "Chief Executive Officer": "Chef de la direction",
+    "President, CEO & Director": "Président, PDG et administrateur",
+    "VP, Investor Relations & Development": "VP, Relations investisseurs et développement",
+    "Vice President, Corporate Communications": "Vice-présidente, Communications d'entreprise",
+    "Vice President, Investor Relations": "Vice-présidente, Relations avec les investisseurs",
+    "Managing Director & CEO": "Directeur général et PDG",
+    "Chief Strategy & Risk Officer": "Directrice de la stratégie et des risques",
+    "EVP, Chief Strategy & Technology Officer": "VPE, Directeur de la stratégie et de la technologie",
+    "Vice President, Corporate Development & IR": "Vice-président, Développement d'entreprise et RI",
+    "Director, Capital Markets & Corporate Development": "Directeur, Marchés des capitaux et développement",
+    "Moderator": "Modérateur",
+    "Panel Moderator": "Modérateur de panel",
+    "Panelist": "Panéliste",
+    "Fireside Speaker": "Conférencier de causerie",
+    "Founder": "Fondateur",
+    "President": "Président",
+  };
+
+  if (translations[title]) return translations[title];
+
+  return title
+    .replace(/Speaker & Industry Expert/gi, "Conférencier & Expert de l'industrie")
+    .replace(/Speaker/gi, "Conférencier")
+    .replace(/Chief Financial Officer/gi, "Directeur financier")
+    .replace(/President & CEO/gi, "Président et PDG")
+    .replace(/Chief Executive Officer/gi, "Chef de la direction")
+    .replace(/CEO & Director/gi, "PDG et administrateur")
+    .replace(/Managing Director/gi, "Directeur général")
+    .replace(/Vice President/gi, "Vice-président")
+    .replace(/Moderator/gi, "Modérateur")
+    .replace(/Panelist/gi, "Panéliste")
+    .replace(/Department of/gi, "Ministère de")
+    .replace(/Parliamentary Secretary/gi, "Secrétaire parlementaire");
+}
+
+function translateSpeakerOrg(org: string, isFr: boolean): string {
+  if (!isFr || !org) return org;
+
+  const translations: Record<string, string> = {
+    "Government of Newfoundland & Labrador": "Gouvernement de Terre-Neuve-et-Labrador",
+    "Government of Québec": "Gouvernement du Québec",
+    "Government of Canada": "Gouvernement du Canada",
+    "Government of British Columbia": "Gouvernement de la Colombie-Britannique",
+    "United States of America": "États-Unis d'Amérique",
+    "Mining Industry Executive": "Cadre de l'industrie minière",
+    "Independent": "Indépendant",
+  };
+
+  return translations[org] || org;
+}
+
 export default function SpeakersView({ year = 2026 }: { year?: number }) {
   const { t, lang } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number>(year);
@@ -27,25 +93,25 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
     switch (category) {
       case "gov":
         return {
-          label: "KEYNOTE",
+          label: lang === "FR" ? "CONFÉRENCIER" : "KEYNOTE",
           avGrad: "from-[#C6112F] to-[#7A0011]",
           badge: "bg-[#C6112F]/10 text-[#C6112F] border border-[#C6112F]/30",
         };
       case "exec":
         return {
-          label: "EXECUTIVE",
+          label: lang === "FR" ? "DIRIGEANT" : "EXECUTIVE",
           avGrad: "from-[#0F1117] to-[#1F2430]",
           badge: "bg-[#0F1117] text-white border border-neutral-700",
         };
       case "fin":
         return {
-          label: "FINANCE",
+          label: lang === "FR" ? "FINANCE" : "FINANCE",
           avGrad: "from-[#8B6914] to-[#B8860B]",
           badge: "bg-[#B8860B]/10 text-[#B8860B] border border-[#B8860B]/30",
         };
       default:
         return {
-          label: "SPEAKER",
+          label: lang === "FR" ? "CONFÉRENCIER" : "SPEAKER",
           avGrad: "from-neutral-700 to-neutral-900",
           badge: "bg-neutral-100 text-neutral-700 border border-neutral-300",
         };
@@ -228,13 +294,13 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
                   </h3>
 
                   {/* Title / Role */}
-                  <div className="text-[11px] sm:text-xs text-neutral-500 dark:text-zinc-400 font-medium leading-relaxed mb-2 min-h-[28px] flex items-center justify-center">
-                    {speaker.title}
+                  <div className="text-[11px] sm:text-xs text-neutral-500 dark:text-zinc-400 font-medium leading-relaxed mb-2 min-h-[28px] flex items-center justify-center text-center">
+                    {translateSpeakerTitle(speaker.title, lang === "FR")}
                   </div>
 
                   {/* Company/Org */}
-                  <div className="text-xs font-bold text-[#C6112F] mb-4">
-                    {speaker.organization}
+                  <div className="text-xs font-bold text-[#C6112F] mb-4 text-center">
+                    {translateSpeakerOrg(speaker.organization, lang === "FR")}
                   </div>
                 </div>
 

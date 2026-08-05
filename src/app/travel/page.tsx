@@ -16,7 +16,8 @@ const flights = [
 ];
 
 export default function TravelPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isFr = lang === "FR";
 
   const localizedAccommodations = [
     {
@@ -193,7 +194,7 @@ export default function TravelPage() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/20">
-                    AIR TRAVEL
+                    {isFr ? "TRANSPORT AÉRIEN" : "AIR TRAVEL"}
                   </div>
                 </div>
 
@@ -249,7 +250,7 @@ export default function TravelPage() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/20">
-                    TRAIN TRAVEL
+                    {isFr ? "TRANSPORT EN TRAIN" : "TRAIN TRAVEL"}
                   </div>
                 </div>
 
@@ -267,12 +268,12 @@ export default function TravelPage() {
 
                 <div className="space-y-1.5 text-xs font-medium mb-3 bg-slate-100 dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 p-2.5 rounded-lg">
                   <p className="flex justify-between items-center text-[11px] text-neutral-900 dark:text-slate-100">
-                    <span className="font-semibold">• From Toronto:</span>
-                    <span className="font-extrabold text-[#C6112F] dark:text-[#ff4d6d]">8 hrs (transfer at Montreal)</span>
+                    <span className="font-semibold">{isFr ? "• De Toronto :" : "• From Toronto:"}</span>
+                    <span className="font-extrabold text-[#C6112F] dark:text-[#ff4d6d]">{isFr ? "8 h (correspondance à Montréal)" : "8 hrs (transfer at Montreal)"}</span>
                   </p>
                   <p className="flex justify-between items-center border-t border-neutral-200/60 dark:border-slate-700/60 pt-1.5 text-[11px] text-neutral-900 dark:text-slate-100">
-                    <span className="font-semibold">• From Montreal:</span>
-                    <span className="font-extrabold text-[#C6112F] dark:text-[#ff4d6d]">3 hrs</span>
+                    <span className="font-semibold">{isFr ? "• De Montréal :" : "• From Montreal:"}</span>
+                    <span className="font-extrabold text-[#C6112F] dark:text-[#ff4d6d]">{isFr ? "3 h" : "3 hrs"}</span>
                   </p>
                 </div>
 
@@ -301,7 +302,7 @@ export default function TravelPage() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-2.5 left-2.5 bg-black/50 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border border-white/20">
-                    PRIVATE TRANSPORT
+                    {isFr ? "TRANSPORT PRIVÉ" : "PRIVATE TRANSPORT"}
                   </div>
                 </div>
 

@@ -71,7 +71,7 @@ export default function PastEditionsPage() {
                 {/* Breadcrumb */}
                 <nav className="flex flex-wrap items-center gap-1.5 text-[10px] xs:text-[11px] md:text-xs font-bold tracking-[0.15em] text-neutral-500 uppercase mb-4">
                   <Link href="/" className="hover:text-[#C6112F] transition-colors">
-                    HOME
+                    {isFr ? "ACCUEIL" : "HOME"}
                   </Link>
                   <span>&lt;</span>
                   <span className="text-neutral-800 font-extrabold">
@@ -311,7 +311,7 @@ export default function PastEditionsPage() {
                   <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
                     <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">65</div>
                     <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                      PRESENTATIONS
+                      {isFr ? "PRÉSENTATIONS" : "PRESENTATIONS"}
                     </span>
                   </div>
                 </div>
