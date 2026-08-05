@@ -179,9 +179,6 @@ export default function CompaniesView({
                   <th className="py-4 px-3 sm:px-6 w-[18%] text-neutral-200">
                     {t("co-col-website", "Website")}
                   </th>
-                  <th className="py-4 px-3 sm:px-6 w-[18%] text-neutral-200">
-                    {t("co-col-contact", "Contact")}
-                  </th>
                 </>
               )}
             </tr>
@@ -189,7 +186,7 @@ export default function CompaniesView({
           <tbody className="divide-y divide-neutral-100 text-xs sm:text-sm font-medium">
             {isApiYear && apiLoading ? (
               <tr>
-                <td colSpan={isApiYear ? 8 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
+                <td colSpan={isApiYear ? 7 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
                   <div className="flex flex-col items-center justify-center gap-3">
                     <span className="w-7 h-7 rounded-full border-2 border-neutral-200 border-t-[#C6112F] animate-spin" />
                     <span className="text-neutral-500 font-bold">
@@ -200,7 +197,7 @@ export default function CompaniesView({
               </tr>
             ) : isApiYear && apiError ? (
               <tr>
-                <td colSpan={isApiYear ? 8 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
+                <td colSpan={isApiYear ? 7 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <span className="text-neutral-800 font-extrabold">
                       {lang === "FR"
@@ -279,31 +276,18 @@ export default function CompaniesView({
                       <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-700 text-xs leading-relaxed break-words">
                         {company.website ? (
                           <a
-                            href={company.website}
+                            href={company.website.startsWith("http") ? company.website : `https://${company.website}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-[#C6112F] hover:text-[#9d0f20] truncate block max-w-[180px]"
+                            className="inline-flex items-center gap-1.5 bg-[#C6112F] hover:bg-[#a80d26] text-white text-[11px] sm:text-xs font-extrabold px-3 py-1.5 rounded-lg transition-all shadow-2xs hover:shadow-md hover:-translate-y-0.5 whitespace-nowrap"
                           >
-                            {company.website}
+                            <span>Visit Website</span>
+                            <svg className="w-3 h-3 text-white shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
                           </a>
                         ) : (
-                          "—"
-                        )}
-                      </td>
-                      <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-700 text-xs leading-relaxed break-words">
-                        {company.email || company.contactPhone ? (
-                          <div className="space-y-1">
-                            {company.email && (
-                              <div className="truncate text-[#C6112F] hover:text-[#9d0f20]">
-                                <a href={`mailto:${company.email}`}>{company.email}</a>
-                              </div>
-                            )}
-                            {company.contactPhone && (
-                              <div className="truncate">{company.contactPhone}</div>
-                            )}
-                          </div>
-                        ) : (
-                          "—"
+                          <span className="text-neutral-400 font-medium">—</span>
                         )}
                       </td>
                     </>
@@ -312,7 +296,7 @@ export default function CompaniesView({
               ))
             ) : (
               <tr>
-                <td colSpan={isApiYear ? 8 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
+                <td colSpan={isApiYear ? 7 : 5} className="py-16 px-6 text-center bg-neutral-50/50">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <svg className="w-8 h-8 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                       <circle cx="11" cy="11" r="6.5" />
