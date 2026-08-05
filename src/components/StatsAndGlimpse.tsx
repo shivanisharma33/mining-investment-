@@ -95,11 +95,34 @@ export default function StatsAndGlimpse() {
     },
     {
       icon: (
-        <img
-          src="/meeting-table.svg"
-          alt="1x1 Meeting"
-          className="w-4 h-4 object-contain dark:invert"
-        />
+        <svg
+          viewBox="0 0 512 512"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-neutral-700 dark:text-zinc-200 shrink-0"
+        >
+          <circle cx="112" cy="80" r="48" stroke="currentColor" strokeWidth="36" />
+          <path d="M72 60c24-20 56-20 80 0" stroke="currentColor" strokeWidth="36" strokeLinecap="round" />
+          <circle cx="400" cy="80" r="48" stroke="currentColor" strokeWidth="36" />
+          <path d="M360 60c24-20 56-20 80 0" stroke="currentColor" strokeWidth="36" strokeLinecap="round" />
+          <path d="M140 280h232" stroke="currentColor" strokeWidth="36" strokeLinecap="round" />
+          <path d="M256 280v190" stroke="currentColor" strokeWidth="36" strokeLinecap="round" />
+          <path d="M200 470h112" stroke="currentColor" strokeWidth="36" strokeLinecap="round" />
+          <path
+            d="M16 150h112c24 0 44 20 44 44v24c0 14-11 25-25 25h-55c-14 0-25 11-25 25v72c0 24 20 44 44 44h20v96c0 15-12 27-27 27s-27-12-27-27v-68h-10c-37 0-67-30-67-67V194c0-24 20-44 44-44z"
+            stroke="currentColor"
+            strokeWidth="36"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M496 150H384c-24 0-44 20-44 44v24c0 14 11 25 25 25h55c14 0 25 11 25 25v72c0 24-20 44-44 44h-20v96c0 15 12 27 27 27s27-12 27-27v-68h10c37 0 67-30 67-67V194c0-24 20-44 44-44z"
+            stroke="currentColor"
+            strokeWidth="36"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       ),
       number: "143",
       suffix: "",
