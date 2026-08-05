@@ -94,7 +94,13 @@ export default function StatsAndGlimpse() {
       ),
     },
     {
-      icon: <i className="fi fi-rr-handshake text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
+      icon: (
+        <img
+          src="/meeting-table.svg"
+          alt="1x1 Meeting"
+          className="w-4 h-4 object-contain dark:invert"
+        />
+      ),
       number: "143",
       suffix: "",
       label: isFr ? (
@@ -128,7 +134,7 @@ export default function StatsAndGlimpse() {
       ),
     },
     {
-      icon: <i className="fi fi-rr-circle-nodes text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
+      icon: <i className="fi fi-rr-handshake text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
       number: "60",
       suffix: "+",
       label: isFr ? (
@@ -221,16 +227,16 @@ export default function StatsAndGlimpse() {
             </p>
 
             {/* Connected Dual Pill Button Bar */}
-            <div className="inline-flex items-center border border-neutral-300 dark:border-[#233049] rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow">
+            <div className="inline-flex items-stretch border border-neutral-300 dark:border-[#233049] rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow bg-[#C6112F]">
               <Link
                 href="/about"
-                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase transition-colors"
+                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase transition-colors flex items-center justify-center self-stretch"
               >
                 {t("discover-event", "DISCOVER THE EVENT")}
               </Link>
               <Link
                 href="/register"
-                className="bg-[#dedede] dark:bg-slate-700 hover:bg-[#d4d4d4] dark:hover:bg-slate-600 text-neutral-900 dark:text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase flex items-center gap-2 border-l border-neutral-300 dark:border-[#233049] transition-colors"
+                className="bg-[#dedede] dark:bg-slate-700 hover:bg-[#d4d4d4] dark:hover:bg-slate-600 text-neutral-900 dark:text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-7 py-3.5 uppercase flex items-center gap-2 border-l border-neutral-300 dark:border-[#233049] transition-colors self-stretch"
               >
                 <span>{t("nav-register", "REGISTER NOW")}</span>
                 <svg

@@ -174,7 +174,11 @@ export default function FeaturedEventCountdown() {
             href="/imw"
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2 sm:px-3 lg:px-3.5 text-[9.5px] xs:text-[10px] sm:text-[11px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
-            <i className="fi fi-rs-world-megaphone text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
+            <img
+              src="/globe copy.svg"
+              alt="Globe"
+              className="w-4.5 h-4.5 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0 dark:invert"
+            />
             <span className="whitespace-nowrap">{t("ql-mining-week", "INTERNATIONAL MINING WEEK")}</span>
           </Link>
 

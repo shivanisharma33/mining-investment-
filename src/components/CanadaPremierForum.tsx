@@ -87,16 +87,16 @@ export default function CanadaPremierForum() {
             </div>
 
             {/* Dual Connected Pill Action Buttons */}
-            <div className="flex flex-col sm:inline-flex sm:flex-row w-full sm:w-auto items-stretch sm:items-center rounded-xl overflow-hidden shadow-md transition-shadow">
+            <div className="flex flex-col sm:inline-flex sm:flex-row w-full sm:w-auto items-stretch rounded-xl overflow-hidden shadow-md transition-shadow bg-[#C6112F]">
               <Link
                 href="/about"
-                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 uppercase transition-colors text-center shrink-0"
+                className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 uppercase transition-colors text-center shrink-0 flex items-center justify-center self-stretch"
               >
                 {t("forum-about-btn", "ABOUT THE EVENT")}
               </Link>
               <Link
                 href="/register"
-                className="bg-[#e2e8f0] dark:bg-slate-800 hover:bg-[#cbd5e1] dark:hover:bg-slate-700 text-neutral-900 dark:text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 uppercase flex items-center justify-center gap-2 transition-colors shrink-0"
+                className="bg-[#e2e8f0] dark:bg-slate-800 hover:bg-[#cbd5e1] dark:hover:bg-slate-700 text-neutral-900 dark:text-white text-xs sm:text-[13px] font-extrabold tracking-wider px-6 sm:px-8 py-3.5 sm:py-4 uppercase flex items-center justify-center gap-2 transition-colors shrink-0 self-stretch"
               >
                 <span>{t("nav-register", "REGISTER HERE")}</span>
                 <svg

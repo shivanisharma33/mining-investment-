@@ -235,20 +235,26 @@ function HeroNewsSlider({ lang }: { lang: string }) {
 const bannerSlides = [
   {
     id: "banner-1",
-    title: "Global Mining Capital Markets Summit",
-    subtitle: "Connecting Issuers, Investors & Global Mining Leaders",
+    titleEN: "Global Mining Capital Markets Summit",
+    titleFR: "Sommet mondial des marchés des capitaux miniers",
+    subtitleEN: "Connecting Issuers, Investors & Global Mining Leaders",
+    subtitleFR: "Connecter les émetteurs, les investisseurs et les dirigeants miniers mondiaux",
     image: "/news/banner_1.png",
   },
   {
     id: "banner-2",
-    title: "Critical Minerals & ESG Innovation Showcase",
-    subtitle: "Shaping the Future of Sustainable Mining & Energy Transition",
+    titleEN: "Critical Minerals & ESG Innovation Showcase",
+    titleFR: "Vitrine des minéraux critiques et de l'innovation ESG",
+    subtitleEN: "Shaping the Future of Sustainable Mining & Energy Transition",
+    subtitleFR: "Façonner l'avenir de l'exploitation minière durable et de la transition énergétique",
     image: "/news/banner_2.png",
   },
   {
     id: "banner-3",
-    title: "Quebec City Convention & Executive Networking",
-    subtitle: "Canada's Premier Mining Investment Gathering",
+    titleEN: "Quebec City Convention & Executive Networking",
+    titleFR: "Congrès de Québec et réseautez entre dirigeants",
+    subtitleEN: "Canada's Premier Mining Investment Gathering",
+    subtitleFR: "Le premier rassemblement d'investissement minier au Canada",
     image: "/news/banner_3.png",
   },
 ];
@@ -313,7 +319,7 @@ function BannerSliderSection() {
         <div className="relative w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] overflow-hidden shadow-lg bg-neutral-900 h-44 sm:h-56 md:h-64 group">
           <img
             src={current.image}
-            alt={current.title}
+            alt={lang === "FR" ? current.titleFR : current.titleEN}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
             decoding="async"
@@ -323,10 +329,10 @@ function BannerSliderSection() {
               {lang === "FR" ? "ÉVÉNEMENT EN VEDETTE" : "FEATURED EVENT"}
             </span>
             <h3 className="text-xl sm:text-3xl font-extrabold text-white leading-snug drop-shadow-md">
-              {current.title}
+              {lang === "FR" ? current.titleFR : current.titleEN}
             </h3>
             <p className="text-neutral-200 text-xs sm:text-sm font-medium mt-1 drop-shadow-sm max-w-2xl line-clamp-1">
-              {current.subtitle}
+              {lang === "FR" ? current.subtitleFR : current.subtitleEN}
             </p>
           </div>
         </div>
@@ -1435,7 +1441,11 @@ function EventByTheNumbers() {
           <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
             <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
               <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-handshake text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
+              <img
+                src="/meeting-table.svg"
+                alt="1x1 Meeting"
+                className="w-4 h-4 object-contain dark:invert"
+              />
             </div>
             <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
             <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
@@ -1496,7 +1506,7 @@ function EventByTheNumbers() {
           <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
             <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
               <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-circle-nodes text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
+              <i className="fi fi-rr-handshake text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
             </div>
             <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
             <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
@@ -2912,7 +2922,11 @@ export default function NewsPage() {
               }
               articles={conferencesArticles}
               ctaLabel={lang === "FR" ? "VOIR TOUTES LES CONFÉRENCES" : "VIEW ALL CONFERENCES"}
-              onViewAll={() => setExpandedSection({ title: "Upcoming Conferences", sectionLabel: "EVENTS & CONFERENCES", articles: conferencesArticles })}
+              onViewAll={() => setExpandedSection({
+                title: lang === "FR" ? "Conférences à Venir" : "Upcoming Conferences",
+                sectionLabel: lang === "FR" ? "ÉVÉNEMENTS & CONFÉRENCES" : "EVENTS & CONFERENCES",
+                articles: conferencesArticles
+              })}
             />
           </section>
 
