@@ -147,7 +147,11 @@ export default function FeaturedEventCountdown() {
             href="/agenda"
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
-            <i className="fi fi-rr-calendar text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
+            <img
+              src="/image 37.svg"
+              alt="Agenda"
+              className="w-5 h-5 object-contain shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform dark:invert"
+            />
             <span className="whitespace-nowrap">{t("feat-event-agenda", "VIEW AGENDA")}</span>
           </Link>
 
@@ -156,7 +160,11 @@ export default function FeaturedEventCountdown() {
             href="/register"
             className="w-full h-14 sm:h-16 bg-[#a80d26] hover:bg-[#8a091e] hover:-translate-y-0.5 hover:scale-[1.02] text-white rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg card-shimmer group text-center"
           >
-            <i className="fi fi-rr-arrow-circle-right text-base leading-none text-white group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
+            <img
+              src="/image 38.svg"
+              alt="Register"
+              className="w-5 h-5 object-contain shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform brightness-0 invert"
+            />
             <span className="whitespace-nowrap">{t("hero-register", "REGISTER NOW")}</span>
           </Link>
 
@@ -165,7 +173,11 @@ export default function FeaturedEventCountdown() {
             href="/past-years/2027/2027-brochure"
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
-            <i className="fi fi-rr-poll-h text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
+            <img
+              src="/image 39.svg"
+              alt="Brochure"
+              className="w-5 h-5 object-contain shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform dark:invert"
+            />
             <span className="whitespace-nowrap">{t("ql-brochure", "BROCHURE")}</span>
           </Link>
 
@@ -177,7 +189,7 @@ export default function FeaturedEventCountdown() {
             <img
               src="/globe copy.svg"
               alt="Globe"
-              className="w-4.5 h-4.5 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0 dark:invert"
+              className="w-5 h-5 object-contain shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform dark:invert"
             />
             <span className="whitespace-nowrap">{t("ql-mining-week", "INTERNATIONAL MINING WEEK")}</span>
           </Link>
@@ -187,7 +199,11 @@ export default function FeaturedEventCountdown() {
             href="/companies"
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2 sm:px-3 lg:px-3.5 text-[9.5px] xs:text-[10px] sm:text-[11px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
-            <i className="fi fi-rr-coworking text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
+            <img
+              src="/image 40.svg"
+              alt="Companies"
+              className="w-5 h-5 object-contain shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform dark:invert"
+            />
             <span className="whitespace-nowrap">{t("ql-companies", "PARTICIPATING COMPANIES")}</span>
           </Link>
 
@@ -196,7 +212,11 @@ export default function FeaturedEventCountdown() {
             href="/speakers"
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
-            <i className="fi fi-rr-user text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
+            <img
+              src="/image 41.svg"
+              alt="Speakers"
+              className="w-5 h-5 object-contain shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform dark:invert"
+            />
             <span className="whitespace-nowrap">{t("nav-speakers", "OUR SPEAKERS")}</span>
           </Link>
 
@@ -214,7 +234,11 @@ export default function FeaturedEventCountdown() {
             href="/golf"
             className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
           >
-            <i className="fi fi-rr-golf-hole text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
+            <img
+              src="/golf-hole.svg"
+              alt="Golf"
+              className="w-5 h-5 object-contain shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-transform dark:invert"
+            />
             <span className="whitespace-nowrap">{t("golf-hero-title-3", "ICONIC GOLF DAY")}</span>
           </Link>
         </div>
