@@ -261,14 +261,11 @@ export default function StatsAndGlimpse() {
                 loop
                 playsInline
                 preload="metadata"
+                controls
               >
                 <source
-                  src="https://www.themininginvestmentevent.com/s/The-Event-Main-Video-Final-1.mov"
+                  src="/output_progressive_17378ef1-fb4d-4325-a4f2-b0379c3cd087.mp4"
                   type="video/mp4"
-                />
-                <source
-                  src="https://www.themininginvestmentevent.com/s/The-Event-Main-Video-Final-1.mov"
-                  type="video/quicktime"
                 />
               </video>
             </div>
@@ -276,5 +273,10 @@ export default function StatsAndGlimpse() {
         </div>
       </div>
     </section>
+
+
+
+
+
   );
 }
