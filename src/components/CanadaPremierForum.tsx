@@ -7,6 +7,22 @@ import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default function CanadaPremierForum() {
   const { lang, t } = useLanguage();
+  const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 12;
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
 
   const bullets = [
     t("forum-bullet-1", "Privately arranged 1-on-1 meetings between mining companies and international investors"),
@@ -101,47 +117,83 @@ export default function CanadaPremierForum() {
             </div>
           </div>
 
-          {/* Right Column: Adorable Multi-Layered Image Composition */}
-          <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-end py-6 pr-2 sm:pr-6">
-            {/* Top-Right Floating Glassmorphism Badge */}
-            <div className="absolute -top-3 right-2 sm:top-0 sm:right-6 z-30 bg-white/95 dark:bg-[#131b2e]/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-neutral-200 dark:border-[#233049] shadow-md flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse" />
-              <span className="text-[10px] sm:text-xs font-black text-[#1a1f2c] dark:text-white tracking-wider uppercase">
-                QUÉBEC CITY • CANADA
-              </span>
-            </div>
+          {/* Right Column: Single High-Impact Hero Image with Interactive 3D Perspective Tilt (No Overlapping Images) */}
+          <div className="lg:col-span-6 relative py-6 px-2 sm:px-6 flex justify-center [perspective:1200px]">
+            {/* Ambient Background Glow Orbs */}
+            <div className="absolute -top-6 -right-6 w-72 h-72 bg-gradient-to-tr from-[#C6112F]/20 via-red-500/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
+            <div className="absolute -bottom-6 -left-6 w-64 h-64 bg-gradient-to-bl from-amber-500/15 via-[#C6112F]/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
 
-            {/* Background Soft Red Glow Ambient Circle */}
-            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none z-0" />
+            {/* Interactive 3D Parallax Stage */}
+            <div
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                transformStyle: "preserve-3d",
+              }}
+              className="relative z-10 w-full max-w-[480px] my-4 transition-transform duration-200 ease-out cursor-pointer group/stage py-4"
+            >
+              {/* Main Hero Photo Card (3D Layer 1, translateZ: 20px) */}
+              <div
+                style={{ transform: "translateZ(20px)" }}
+                className="relative rounded-[26px] overflow-hidden border-[3px] border-[#C6112F] shadow-[0_25px_60px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_60px_rgba(198,17,47,0.3)] bg-neutral-900 group/img aspect-[4/3] transition-all duration-500"
+              >
+                <img
+                  src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-4.jpg"
+                  alt="Conference delegates networking at Mining Investment Event"
+                  className="w-full h-full object-cover group-hover/img:scale-108 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                  decoding="async"
+                />
 
-            {/* Primary Hero Image Card */}
-            <div className="relative z-10 rounded-3xl overflow-hidden border border-neutral-200/90 dark:border-[#233049] shadow-[0_20px_45px_rgba(0,0,0,0.08)] w-full max-w-[460px] aspect-[4/3] bg-neutral-900 group card-shimmer hover:shadow-[0_20px_45px_rgba(198,17,47,0.2)] transition-all duration-500 cursor-pointer">
-              <img
-                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-4.jpg"
-                alt="Conference delegates networking at Mining Investment Event"
-                className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                {/* Dark Gradient Overlay at Bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-90 transition-opacity duration-300" />
 
-              {/* Bottom Image Tag */}
-              <div className="absolute bottom-4 left-4 z-20 text-white">
-                <span className="text-[9px] sm:text-[10px] font-black tracking-[0.2em] uppercase bg-[#C6112F] px-3 py-1 rounded-full shadow-md group-hover:scale-105 transition-transform duration-300">
-                  TIER 1 GLOBAL FORUM
-                </span>
+                {/* Live Ribbon Badge on Top-Right */}
+                <div className="absolute top-4 right-4 bg-[#C6112F] text-white text-[10px] sm:text-[11px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-md border border-white/20">
+                  <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+                  <span>TIER I GLOBAL FORUM</span>
+                </div>
+
+                {/* Caption at Bottom of Main Image */}
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="flex items-center gap-1.5 mb-1 text-[#ff4d6d] font-extrabold text-[11px] uppercase tracking-wider">
+                    <i className="fi fi-rr-marker text-xs" /> QUÉBEC CITY • CANADA
+                  </div>
+                  <h4 className="text-white font-extrabold text-xs sm:text-sm leading-snug drop-shadow-md">
+                    Canada's Premier Global Mining Forum
+                  </h4>
+                </div>
               </div>
-            </div>
 
-            {/* Overlapping Accent Card with Clean Frame */}
-            <div className="absolute -bottom-4 left-1 sm:-bottom-6 sm:-left-2 z-20 w-[46%] sm:w-[48%] rounded-2xl overflow-hidden border-4 border-white dark:border-[#131b2e] shadow-[0_15px_35px_rgba(0,0,0,0.14)] aspect-[4/3] bg-white dark:bg-[#131b2e] group/small card-shimmer hover:scale-105 hover:shadow-[0_20px_40px_rgba(198,17,47,0.3)] transition-all duration-300 cursor-pointer">
-              <img
-                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-20.jpg"
-                alt="Delegates group at Mining Investment Event"
-                className="w-full h-full object-cover group-hover/small:scale-108 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
-              />
+              {/* Glassmorphic Floating Stat Badge 1 (Top-Left, translateZ: 60px) */}
+              <div
+                style={{ transform: "translateZ(60px)" }}
+                className="absolute -top-4 -left-2 sm:-left-6 z-30 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border border-neutral-200/80 dark:border-[#C6112F]/50 px-3.5 sm:px-4 py-2 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.2)] dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center gap-3 transition-transform duration-300 group-hover/stage:scale-105"
+              >
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C6112F] to-[#8a091e] text-white flex items-center justify-center text-sm shadow-md shrink-0">
+                  <i className="fi fi-rr-lock leading-none" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-slate-400 font-extrabold">EXCLUSIVE</span>
+                  <span className="text-xs font-black text-neutral-900 dark:text-white">By Invitation Only</span>
+                </div>
+              </div>
+
+              {/* Glassmorphic Floating Stat Badge 2 (Bottom-Right, translateZ: 60px) */}
+              <div
+                style={{ transform: "translateZ(60px)" }}
+                className="absolute -bottom-4 -right-2 sm:-right-6 z-30 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border border-neutral-200/80 dark:border-[#C6112F]/50 px-3.5 sm:px-4 py-2 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.2)] dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center gap-3 transition-transform duration-300 group-hover/stage:scale-105"
+              >
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white flex items-center justify-center text-sm shadow-md shrink-0">
+                  <i className="fi fi-rr-handshake leading-none" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-slate-400 font-extrabold">NETWORKING</span>
+                  <span className="text-xs font-black text-neutral-900 dark:text-white">1-on-1 Meetings</span>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

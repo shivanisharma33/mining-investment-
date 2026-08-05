@@ -6,6 +6,22 @@ import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default function WhyAttend() {
   const { t } = useLanguage();
+  const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -12; // -12deg to +12deg
+    const rotateY = ((x - centerX) / centerX) * 14;  // -14deg to +14deg
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
 
   const steps = [
     {
@@ -37,31 +53,83 @@ export default function WhyAttend() {
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Stacked Images with Red Perimeter Borders & Hover Zoom */}
-          <div className="lg:col-span-6 relative flex items-center justify-center lg:justify-start pl-3 sm:pl-8 py-6">
-            {/* Red Accent Frame Box Behind Bottom Left */}
-            <div className="absolute left-1 sm:left-2 bottom-0 w-36 sm:w-44 h-36 sm:h-44 border-[2px] border-[#C6112F] rounded-2xl z-0 pointer-events-none opacity-80" />
+          {/* Left Column: Single High-Impact Image with Interactive 3D Perspective Tilt */}
+          <div className="lg:col-span-6 relative py-6 sm:py-10 px-2 sm:px-6 flex justify-center [perspective:1200px]">
+            {/* Ambient Background Red & Amber Glow Orbs */}
+            <div className="absolute -top-6 -left-6 w-72 h-72 bg-gradient-to-tr from-[#C6112F]/25 via-red-500/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
+            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-gradient-to-bl from-[#C6112F]/20 via-amber-500/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0" />
 
-            {/* Main Handshake Image Card */}
-            <div className="relative z-10 rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_35px_rgba(0,0,0,0.12)] w-full max-w-[480px] aspect-[4/3] bg-neutral-100 group">
-              <img
-                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-2.jpg"
-                alt="Business agreement handshake"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+            {/* Interactive 3D Parallax Stage */}
+            <div
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                transformStyle: "preserve-3d",
+              }}
+              className="relative z-10 w-full max-w-[480px] my-4 transition-transform duration-200 ease-out cursor-pointer group/stage py-4"
+            >
+              {/* 3D Main Hero Photo Card (translateZ: 20px) */}
+              <div
+                style={{ transform: "translateZ(20px)" }}
+                className="relative rounded-[26px] overflow-hidden border-[3px] border-[#C6112F] shadow-[0_25px_60px_rgba(0,0,0,0.3)] dark:shadow-[0_25px_60px_rgba(198,17,47,0.35)] bg-neutral-900 group/img aspect-[4/3] transition-all duration-500"
+              >
+                <img
+                  src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-2.jpg"
+                  alt="Mining Investment Event Main Conference"
+                  className="w-full h-full object-cover group-hover/img:scale-108 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                  decoding="async"
+                />
 
-            {/* Overlapping Small Clock Image Card */}
-            <div className="absolute left-0 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-[42%] sm:w-[46%] rounded-xl overflow-hidden border-[3px] border-[#C6112F] shadow-[0_15px_30px_rgba(0,0,0,0.2)] aspect-[4/3] bg-white group hover:scale-105 transition-transform duration-300">
-              <img
-                src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-18.jpg"
-                alt="Desk clock and analytics"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
-              />
+                {/* Dark Gradient Overlay at Bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-90 transition-opacity duration-300" />
+
+                {/* Live Ribbon Badge on Top-Right */}
+                <div className="absolute top-4 right-4 bg-[#C6112F] text-white text-[10px] sm:text-[11px] font-black tracking-widest uppercase px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-md border border-white/20">
+                  <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+                  <span>TIER I FORUM</span>
+                </div>
+
+                {/* Caption at Bottom of Main Image */}
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="flex items-center gap-1.5 mb-1 text-[#ff4d6d] font-extrabold text-[11px] uppercase tracking-wider">
+                    <i className="fi fi-rr-marker text-xs" /> QUÉBEC CITY • CANADA
+                  </div>
+                  <h4 className="text-white font-extrabold text-xs sm:text-sm leading-snug drop-shadow-md">
+                    Canada's Premier Mining Investment Conference
+                  </h4>
+                </div>
+              </div>
+
+              {/* 3D Layer 2: Glassmorphic Floating Stat Badge 1 (Top-Left Overlap, translateZ: 60px) */}
+              <div
+                style={{ transform: "translateZ(60px)" }}
+                className="absolute -top-4 -left-2 sm:-left-6 z-30 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border border-neutral-200/80 dark:border-[#C6112F]/50 px-3.5 sm:px-4 py-2 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.2)] dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center gap-3 transition-transform duration-300 group-hover/stage:scale-105"
+              >
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#C6112F] to-[#8a091e] text-white flex items-center justify-center text-sm shadow-md shrink-0">
+                  <i className="fi fi-rr-handshake leading-none" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-slate-400 font-extrabold">GLOBAL NETWORK</span>
+                  <span className="text-xs font-black text-neutral-900 dark:text-white">500+ Investors</span>
+                </div>
+              </div>
+
+              {/* 3D Layer 2: Glassmorphic Floating Stat Badge 2 (Bottom-Right Overlap, translateZ: 60px) */}
+              <div
+                style={{ transform: "translateZ(60px)" }}
+                className="absolute -bottom-4 -right-2 sm:-right-6 z-30 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border border-neutral-200/80 dark:border-[#C6112F]/50 px-3.5 sm:px-4 py-2 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.2)] dark:shadow-[0_15px_35px_rgba(0,0,0,0.5)] flex items-center gap-3 transition-transform duration-300 group-hover/stage:scale-105"
+              >
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 text-white flex items-center justify-center text-sm shadow-md shrink-0">
+                  <i className="fi fi-rr-award leading-none" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-slate-400 font-extrabold">CONFIRMED</span>
+                  <span className="text-xs font-black text-neutral-900 dark:text-white">100% Focused</span>
+                </div>
+              </div>
+
             </div>
           </div>
 
