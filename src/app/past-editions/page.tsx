@@ -97,8 +97,8 @@ export default function PastEditionsPage() {
                 {/* Description Subtext */}
                 <p className="text-neutral-600 text-xs sm:text-sm md:text-base font-medium leading-relaxed mb-6 max-w-[480px]">
                   {isFr
-                    ? "Revivez chaque édition à travers les programmes, les conférenciers, les entreprises participantes, les brochures et les commanditaires."
-                    : "Relive every edition through agendas, speakers, participating companies, brochures and sponsors."}
+                    ? "Revivez chaque édition à travers les programmes, les conférenciers, les entreprises participantes, les brochures et les médias & partenaires."
+                    : "Relive every edition through agendas, speakers, participating companies, brochures and media & partners."}
                 </p>
 
                 {/* Search Bar Input */}
@@ -162,8 +162,8 @@ export default function PastEditionsPage() {
               <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
               <p className="text-neutral-600 text-xs sm:text-base font-medium max-w-[680px] leading-relaxed">
                 {isFr
-                  ? "Sélectionnez une année ci-dessous pour consulter les ordres du jour, les conférenciers, les brochures, les entreprises et les commanditaires."
-                  : "Select a year below to explore complete agendas, speakers, event brochures, participating companies, and sponsors."}
+                  ? "Sélectionnez une année ci-dessous pour consulter les ordres du jour, les conférenciers, les brochures, les entreprises et les médias & partenaires."
+                  : "Select a year below to explore complete agendas, speakers, event brochures, participating companies, and media & partners."}
               </p>
             </div>
 
@@ -351,11 +351,11 @@ export default function PastEditionsPage() {
                     <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
                       {isFr ? (
                         <>
-                          COMMANDITAIRES<br />& PARTENAIRES
+                          MÉDIAS<br />& PARTENAIRES
                         </>
                       ) : (
                         <>
-                          SPONSORS &<br />PARTNERS
+                          MEDIA &<br />PARTNERS
                         </>
                       )}
                     </span>

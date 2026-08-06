@@ -26,7 +26,6 @@ const outstandingStudents = [
 export default function StudentPage() {
   const { t } = useLanguage();
 
-  // Student Application Form State
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -36,6 +35,11 @@ export default function StudentPage() {
     phone: "",
     language: "",
     signUpForNews: true,
+    resumeFileName: "",
+    resumeData: "",
+    interestLetterText: "",
+    interestLetterFileName: "",
+    interestLetterData: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -67,6 +71,10 @@ export default function StudentPage() {
         phone: formData.phone.trim(),
         language: formData.language,
         signUpForNews: formData.signUpForNews,
+        resume: formData.resumeData || formData.resumeFileName,
+        resumeFileName: formData.resumeFileName,
+        interestLetter: formData.interestLetterText || formData.interestLetterData,
+        interestLetterFileName: formData.interestLetterFileName,
       });
 
       setRegistrationNumber(result.registrationNumber ?? "");
@@ -80,6 +88,11 @@ export default function StudentPage() {
         phone: "",
         language: "",
         signUpForNews: true,
+        resumeFileName: "",
+        resumeData: "",
+        interestLetterText: "",
+        interestLetterFileName: "",
+        interestLetterData: "",
       });
     } catch (err) {
       const fieldMessage =
@@ -88,7 +101,7 @@ export default function StudentPage() {
           : "";
       setSubmitError(
         fieldMessage ||
-          (err instanceof Error ? err.message : "Something went wrong. Please try again.")
+        (err instanceof Error ? err.message : "Something went wrong. Please try again.")
       );
     } finally {
       setIsSubmitting(false);
@@ -116,12 +129,12 @@ export default function StudentPage() {
               <span className="text-[#C6112F]">›</span>
               <span className="text-neutral-500">{t("student-breadcrumb-init", "Initiatives")}</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white">{t("student-breadcrumb-prog", "Student Sponsorship Program")}</span>
+              <span className="text-white font-semibold">{t("student-breadcrumb-prog", "Student Sponsorship Program")}</span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
               {t("student-hero-title-1", "THE Student")} <span className="text-[#C6112F]">{t("student-hero-title-2", "Sponsorship Program")}</span>
             </h1>
-            <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
+            <div className="w-20 h-[3.5px] bg-[#C6112F] rounded-full mt-6" />
           </div>
         </section>
 
@@ -131,22 +144,22 @@ export default function StudentPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               {/* Left Side Image */}
               <div className="lg:col-span-5 relative group">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-neutral-200">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-neutral-200/90 dark:border-zinc-800 bg-neutral-900">
                   <img
-                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=70"
-                    alt="Glencore Student Sponsorship Program"
-                    className="w-full h-[380px] sm:h-[450px] object-cover group-hover:scale-105 transition-transform duration-700"
+                    src="/student-hero.jpg"
+                    alt="THE Glencore Student Sponsorship Program Award Ceremony"
+                    className="w-full aspect-[16/11] sm:aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                 </div>
                 {/* Floating stat card overlay */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-5 shadow-xl border border-neutral-100 hidden sm:flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#C6112F]/10 flex items-center justify-center text-[#C6112F] font-black text-xl">
+                <div className="absolute -bottom-5 -right-5 bg-white dark:bg-[#18181b] rounded-2xl p-4 shadow-2xl border border-neutral-200 dark:border-zinc-800 flex items-center gap-3.5 z-20">
+                  <div className="w-10 h-10 rounded-xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center font-black text-lg">
                     50
                   </div>
                   <div>
-                    <div className="text-xs font-bold text-neutral-400 uppercase tracking-wider">SPONSORED</div>
-                    <div className="text-sm font-black text-[#1a1f2c]">Fully Funded Students</div>
+                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">SPONSORED</div>
+                    <div className="text-xs sm:text-sm font-black text-[#1a1f2c] dark:text-white">Fully Funded Students</div>
                   </div>
                 </div>
               </div>
@@ -422,6 +435,105 @@ export default function StudentPage() {
                         <option value="French">Français</option>
                         <option value="Bilingual">Bilingual / Bilingue</option>
                       </select>
+                    </div>
+
+                    {/* Resume / CV Field (Required) */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {t("student-form-resume", "Upload Resume / CV")}{" "}
+                        <span className="text-[#C6112F] font-bold">
+                          ({t("student-form-required", "required")})
+                        </span>
+                      </label>
+                      <div className="relative border-2 border-dashed border-neutral-300 hover:border-[#C6112F] rounded-xl p-4 transition-colors text-center bg-slate-50/50">
+                        <input
+                          type="file"
+                          required={!formData.resumeFileName}
+                          accept=".pdf,.doc,.docx"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onloadend = () => {
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  resumeFileName: file.name,
+                                  resumeData: reader.result as string,
+                                }));
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          }}
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        />
+                        <div className="flex flex-col items-center justify-center gap-1">
+                          <svg className="w-6 h-6 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5h10.5a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0017.25 4.5H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z" />
+                          </svg>
+                          {formData.resumeFileName ? (
+                            <span className="text-xs font-bold text-emerald-700 flex items-center gap-1.5">
+                              <span>✓</span> <span>{formData.resumeFileName}</span>
+                            </span>
+                          ) : (
+                            <span className="text-xs text-neutral-600 font-medium">
+                              {t("student-form-resume-ph", "Click or drag your Resume file (PDF, DOCX up to 10MB)")}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Letter of Interest Field (Required) */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {t("student-form-interest-letter", "Letter of Interest")}{" "}
+                        <span className="text-[#C6112F] font-bold">
+                          ({t("student-form-required", "required")})
+                        </span>
+                      </label>
+                      <textarea
+                        rows={4}
+                        required={!formData.interestLetterFileName}
+                        value={formData.interestLetterText}
+                        onChange={(e) => setFormData({ ...formData, interestLetterText: e.target.value })}
+                        placeholder={t("student-form-interest-ph", "Explain why you are interested in attending THE Glencore Student Sponsorship Program and your academic goals...")}
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all resize-y mb-2"
+                      />
+
+                      {/* Optional Interest Letter File Upload */}
+                      <div className="relative border border-neutral-300 hover:border-[#C6112F] rounded-xl p-3 transition-colors text-center bg-slate-50/50">
+                        <input
+                          type="file"
+                          accept=".pdf,.doc,.docx"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              const reader = new FileReader();
+                              reader.onloadend = () => {
+                                setFormData((prev) => ({
+                                  ...prev,
+                                  interestLetterFileName: file.name,
+                                  interestLetterData: reader.result as string,
+                                }));
+                              };
+                              reader.readAsDataURL(file);
+                            }
+                          }}
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        />
+                        <div className="flex items-center justify-center gap-2 text-xs text-neutral-600 font-medium">
+                          <svg className="w-4 h-4 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94a3 3 0 114.243 4.243L8.567 18.31a1.5 1.5 0 01-2.122-2.122l8.485-8.485" />
+                          </svg>
+                          {formData.interestLetterFileName ? (
+                            <span className="font-bold text-emerald-700 flex items-center gap-1">
+                              <span>✓</span> <span>{formData.interestLetterFileName}</span>
+                            </span>
+                          ) : (
+                            <span>{t("student-form-interest-file", "Or attach Letter of Interest file (PDF, DOCX)")}</span>
+                          )}
+                        </div>
+                      </div>
                     </div>
 
                     {/* Submission Error */}

@@ -158,8 +158,8 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
                 key={y}
                 onClick={() => setSelectedYear(y)}
                 className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${selectedYear === y
-                    ? "bg-[#C6112F] text-white shadow-md"
-                    : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-200"
+                  ? "bg-[#C6112F] text-white shadow-md"
+                  : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-200"
                   }`}
               >
                 {y} {lang === "FR" ? "Conférenciers" : "Speakers"}

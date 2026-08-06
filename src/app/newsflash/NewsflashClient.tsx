@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
+import NewsflashSubscribeSection from "@/components/NewsflashSubscribeSection";
 import { useLanguage } from "@/context/LanguageContext";
 import { ApiNewsflashItem, extractPdfUrl } from "@/lib/newsflashApi";
 
@@ -553,6 +554,7 @@ export default function NewsflashClient({
           </div>
         )}
 
+        <NewsflashSubscribeSection />
         <GetInTouchCTA />
         <Footer />
       </main>

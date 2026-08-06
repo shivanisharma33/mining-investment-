@@ -13,14 +13,24 @@ export default function InternationalMiningWeekPage() {
   const isFr = lang === "FR";
   const [activeModal, setActiveModal] = useState<string | null>(null);
 
-  const exploreCards = [
+  interface ExploreCard {
+    id: string;
+    title: string;
+    desc: string;
+    href: string;
+    icon: React.ReactNode;
+    isExternal?: boolean;
+  }
+
+  const exploreCards: ExploreCard[] = [
     {
       id: "partner-events",
-      title: isFr ? "Événements Partenaires" : "Partner Events",
+      title: isFr ? "Partenaires" : "Partner",
       desc: isFr
         ? "Découvrez les conférences, forums et activités se déroulant toute la semaine."
         : "Discover conferences, forums and activities happening all week.",
-      href: "/agenda",
+      href: "https://static1.squarespace.com/static/695c62b92250ae6cd2bc370f/t/69fda4c82dce4a46e87e0f4a/1778230472696/IMW+SPONSORS.pdf",
+      isExternal: true,
       icon: (
         <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200 group-hover:text-[#C6112F] transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <rect x="3" y="4" width="18" height="16" rx="2.5" />
@@ -38,7 +48,8 @@ export default function InternationalMiningWeekPage() {
       desc: isFr
         ? "Consultez le programme complet des événements et planifiez votre semaine."
         : "View the full schedule of events and plan your week.",
-      href: "/agenda",
+      href: "https://static1.squarespace.com/static/695c62b92250ae6cd2bc370f/t/6a1d7c9e6d6a9d62f57d4e93/1780317342457/IMW+PLENNARY+SESSIONS+%283%29.pdf",
+      isExternal: true,
       icon: (
         <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200 group-hover:text-[#C6112F] transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <rect x="3" y="4" width="18" height="16" rx="2.5" />
@@ -66,10 +77,10 @@ export default function InternationalMiningWeekPage() {
     },
     {
       id: "sponsors",
-      title: isFr ? "Commanditaires" : "Sponsors",
+      title: isFr ? "Médias & Partenaires" : "Media & Partners",
       desc: isFr
-        ? "Rencontrez nos précieux commanditaires qui font avancer l'industrie minière."
-        : "Meet our valued sponsors driving the mining industry forward.",
+        ? "Rencontrez nos précieux médias et partenaires qui font avancer l'industrie minière."
+        : "Meet our valued media & partners driving the mining industry forward.",
       href: "/sponsors",
       icon: (
         <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200 group-hover:text-[#C6112F] transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
@@ -84,8 +95,7 @@ export default function InternationalMiningWeekPage() {
       desc: isFr
         ? "Téléchargez la brochure officielle et partagez-la avec votre réseau."
         : "Download the official brochure and share with your network.",
-      href: "https://online.flippingbook.com/view/213558062/",
-      isExternal: true,
+      href: "#",
       icon: (
         <svg className="w-6 h-6 text-neutral-800 dark:text-slate-200 group-hover:text-[#C6112F] transition-colors" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25" />
@@ -178,8 +188,10 @@ export default function InternationalMiningWeekPage() {
                   </span>
                 </Link>
 
-                <Link
-                  href="/agenda"
+                <a
+                  href="https://static1.squarespace.com/static/695c62b92250ae6cd2bc370f/t/6a1d7c9e6d6a9d62f57d4e93/1780317342457/IMW+PLENNARY+SESSIONS+%283%29.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 rounded-lg text-white hover:bg-white/10 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 inline-flex items-center gap-2.5"
                 >
                   <span>{isFr ? "VOIR LE PROGRAMME" : "VIEW PROGRAM"}</span>
@@ -188,7 +200,7 @@ export default function InternationalMiningWeekPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                   </span>
-                </Link>
+                </a>
               </div>
             </div>
 

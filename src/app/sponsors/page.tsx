@@ -11,7 +11,8 @@ import { fetchSponsorsByYear } from "@/lib/sponsorsApi";
 const SPONSORS_YEAR = 2027;
 
 export default function SponsorsPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isFr = lang === "FR";
   const [sponsors, setSponsors] = useState<SponsorItem[]>([]);
   const [sponsorsError, setSponsorsError] = useState<string>("");
   const [sponsorsLoading, setSponsorsLoading] = useState<boolean>(true);
@@ -59,13 +60,13 @@ export default function SponsorsPage() {
               <span className="text-[#C6112F]">›</span>
               <span className="text-neutral-400">Event</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">Sponsors 2027</span>
+              <span className="text-white font-semibold">{isFr ? "Médias & Partenaires 2027" : "Media & Partners 2027"}</span>
             </div>
             <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase block mb-3">
               2027 GLOBAL MINING LEADERSHIP & PARTNERS
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
-              Our <span className="text-[#C6112F]">Sponsors 2027</span>
+              {isFr ? "Nos" : "Our"} <span className="text-[#C6112F]">{isFr ? "Médias & Partenaires 2027" : "Media & Partners 2027"}</span>
             </h1>
             <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
           </div>
@@ -78,11 +79,13 @@ export default function SponsorsPage() {
               SUPPORT & INDUSTRY PARTNERSHIPS 2027
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
-              THE Event 2027 Sponsors & Partners
+              THE Event 2027 {isFr ? "Médias & Partenaires" : "Media & Partners"}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
             <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
-              We thank our world-class sponsors and partners for their generous support in making the Mining Investment Event a premier global platform for collaboration, innovation, and sustainable capital growth.
+              {isFr
+                ? "Nous remercions nos médias et partenaires de classe mondiale pour leur soutien généreux afin de faire de L'Événement d'Investissement Minier une plateforme mondiale de premier plan."
+                : "We thank our world-class media and partners for their generous support in making the Mining Investment Event a premier global platform for collaboration, innovation, and sustainable capital growth."}
             </p>
 
             {/* Shared Sponsors Component */}
@@ -90,13 +93,15 @@ export default function SponsorsPage() {
               <div className="rounded-2xl border border-neutral-200 bg-white p-10 flex items-center justify-center gap-3">
                 <span className="w-6 h-6 rounded-full border-2 border-neutral-200 border-t-[#C6112F] animate-spin" />
                 <span className="text-xs font-bold uppercase tracking-wider text-neutral-500">
-                  Loading sponsors…
+                  {isFr ? "Chargement des médias & partenaires…" : "Loading media & partners…"}
                 </span>
               </div>
             ) : sponsorsError ? (
               <div className="rounded-2xl border border-neutral-200 bg-white p-10 text-center">
                 <p className="font-extrabold text-sm text-neutral-800 mb-1">
-                  Unable to load the {SPONSORS_YEAR} sponsors
+                  {isFr
+                    ? `Impossible de charger les médias & partenaires ${SPONSORS_YEAR}`
+                    : `Unable to load the ${SPONSORS_YEAR} media & partners`}
                 </p>
                 <p className="text-xs text-neutral-500">{sponsorsError}</p>
               </div>

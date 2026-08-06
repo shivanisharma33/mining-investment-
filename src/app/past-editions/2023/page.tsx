@@ -123,7 +123,7 @@ export default function PastEdition2023Page() {
     },
     {
       id: "sponsors",
-      label: isFr ? "Commanditaires" : "Sponsors",
+      label: isFr ? "Médias & Partenaires" : "Media & Partners",
       icon: (
         <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
@@ -178,8 +178,8 @@ export default function PastEdition2023Page() {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${isSelected
-                        ? "bg-[#C6112F] text-white shadow-xs"
-                        : "bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 text-neutral-700 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700"
+                      ? "bg-[#C6112F] text-white shadow-xs"
+                      : "bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 text-neutral-700 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700"
                       }`}
                   >
                     <span className={isSelected ? "text-white" : "text-[#C6112F]"}>
@@ -205,8 +205,8 @@ export default function PastEdition2023Page() {
                           key={tab.id}
                           onClick={() => setActiveTab(tab.id)}
                           className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left cursor-pointer ${isSelected
-                              ? "bg-[#FCDDE1] text-[#8A1224] dark:bg-[#C6112F]/20 dark:text-rose-300 border-l-4 border-[#C6112F] shadow-xs"
-                              : "text-neutral-600 dark:text-zinc-300 hover:bg-neutral-100/90 dark:hover:bg-zinc-800 hover:text-neutral-900 dark:hover:text-white"
+                            ? "bg-[#FCDDE1] text-[#8A1224] dark:bg-[#C6112F]/20 dark:text-rose-300 border-l-4 border-[#C6112F] shadow-xs"
+                            : "text-neutral-600 dark:text-zinc-300 hover:bg-neutral-100/90 dark:hover:bg-zinc-800 hover:text-neutral-900 dark:hover:text-white"
                             }`}
                         >
                           <span className={isSelected ? "text-[#C6112F] dark:text-[#C6112F]" : "text-neutral-500 dark:text-zinc-400"}>
@@ -388,8 +388,8 @@ export default function PastEdition2023Page() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                           </svg>
                         </div>
-                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">{isFr ? "Commanditaires & Partenaires" : "Sponsors & Partners"}</h4>
-                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">{isFr ? "Rencontrez nos commanditaires et partenaires de services." : "Meet our sponsors and service partners."}</p>
+                        <h4 className="text-sm font-extrabold text-neutral-900 mb-1">{isFr ? "Médias & Partenaires" : "Media & Partners"}</h4>
+                        <p className="text-xs text-neutral-500 font-medium leading-relaxed">{isFr ? "Rencontrez nos médias et partenaires de services." : "Meet our media and service partners."}</p>
                       </div>
                     </div>
                   </div>
@@ -408,8 +408,8 @@ export default function PastEdition2023Page() {
                         <button
                           onClick={() => setAgendaMode("pdf")}
                           className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${agendaMode === "pdf"
-                              ? "bg-[#0f1117] text-white shadow-sm"
-                              : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                            ? "bg-[#0f1117] text-white shadow-sm"
+                            : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
                             }`}
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -420,8 +420,8 @@ export default function PastEdition2023Page() {
                         <button
                           onClick={() => setAgendaMode("interactive")}
                           className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${agendaMode === "interactive"
-                              ? "bg-[#0f1117] text-white shadow-sm"
-                              : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                            ? "bg-[#0f1117] text-white shadow-sm"
+                            : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
                             }`}
                         >
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -464,12 +464,12 @@ export default function PastEdition2023Page() {
                       {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
                     </span>
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
-                      {isFr ? `Commanditaires de l'événement ${viewingEdition}` : `Event Sponsors ${viewingEdition}`}
+                      {isFr ? `Médias & Partenaires de l'événement ${viewingEdition}` : `Event Media & Partners ${viewingEdition}`}
                     </h1>
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
                       {isFr
-                        ? "Nous remercions nos commanditaires et partenaires pour leur généreux soutien qui fait du Mining Investment Event un succès mondial."
-                        : "We thank our sponsors and partners for their generous support in making the Mining Investment Event a global success."}
+                        ? "Nous remercions nos médias et partenaires pour leur généreux soutien qui fait du Mining Investment Event un succès mondial."
+                        : "We thank our media and partners for their generous support in making the Mining Investment Event a global success."}
                     </p>
                     <SponsorsView year={viewingEdition} />
                   </div>

@@ -375,7 +375,7 @@ function SponsorsSection() {
 
   const tiersData: Record<string, { label: string; color: string; logos: string[] }> = {
     PLATINUM: {
-      label: lang === "FR" ? "Commanditaires Platine" : "Platinum Partners",
+      label: lang === "FR" ? "Médias & Partenaires Platine" : "Platinum Media & Partners",
       color: "#8B6914",
       logos: [
         "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
@@ -388,7 +388,7 @@ function SponsorsSection() {
       ],
     },
     GOLD: {
-      label: lang === "FR" ? "Commanditaires Or" : "Gold Partners",
+      label: lang === "FR" ? "Médias & Partenaires Or" : "Gold Media & Partners",
       color: "#B8860B",
       logos: [
         "/sponsors/2026/peartree_canada.png",
@@ -406,7 +406,7 @@ function SponsorsSection() {
       ],
     },
     SILVER: {
-      label: lang === "FR" ? "Commanditaires Argent" : "Silver Partners",
+      label: lang === "FR" ? "Médias & Partenaires Argent" : "Silver Media & Partners",
       color: "#6B7280",
       logos: [
         "/sponsors/2026/atrium_research.ico",
@@ -434,7 +434,7 @@ function SponsorsSection() {
       ],
     },
     COPPER: {
-      label: lang === "FR" ? "Commanditaires Cuivre" : "Copper Partners",
+      label: lang === "FR" ? "Médias & Partenaires Cuivre" : "Copper Media & Partners",
       color: "#B45309",
       logos: [
         "/sponsors/2026/alliance_global_partners.ico",
@@ -536,10 +536,10 @@ function SponsorsSection() {
       {/* Section Header */}
       <div className="text-center mb-8">
         <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-          {lang === "FR" ? "COMMANDITAIRES & PARTENAIRES" : "SPONSORS & PARTNERS"}
+          {lang === "FR" ? "MÉDIAS & PARTENAIRES" : "MEDIA & PARTNERS"}
         </span>
         <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
-          {lang === "FR" ? "Nos Commanditaires & " : "Our Sponsors & "}<span className="text-[#C6112F]">{lang === "FR" ? "Partenaires" : "Partners"}</span>
+          {lang === "FR" ? "Nos Médias & " : "Our Media & "}<span className="text-[#C6112F]">{lang === "FR" ? "Partenaires" : "Partners"}</span>
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
         <p className="text-neutral-500 dark:text-slate-300 text-sm font-medium max-w-xl mx-auto">
@@ -1514,11 +1514,11 @@ function EventByTheNumbers() {
               <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
                 {lang === "FR" ? (
                   <>
-                    COMMANDITAIRES<br />& PARTENAIRES
+                    MÉDIAS<br />& PARTENAIRES
                   </>
                 ) : (
                   <>
-                    SPONSORS &<br />PARTNERS
+                    MEDIA &<br />PARTNERS
                   </>
                 )}
               </span>

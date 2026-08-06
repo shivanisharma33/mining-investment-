@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
+import NewsflashSubscribeSection from "@/components/NewsflashSubscribeSection";
 import ShareBar from "./ShareBar";
 import {
   fetchArticleBySlug,
@@ -322,6 +323,7 @@ export default async function NewsflashArticlePage({
           )}
         </div>
       </main>
+      <NewsflashSubscribeSection />
       <GetInTouchCTA />
       <Footer />
     </>

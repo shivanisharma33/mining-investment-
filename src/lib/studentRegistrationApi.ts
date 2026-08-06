@@ -7,6 +7,10 @@ export interface StudentRegistrationPayload {
   phone: string;
   language?: string;
   signUpForNews?: boolean;
+  resume?: string;
+  resumeFileName?: string;
+  interestLetter?: string;
+  interestLetterFileName?: string;
 }
 
 export interface StudentRegistrationResult {
