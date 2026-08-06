@@ -17,6 +17,10 @@ interface CompaniesViewProps {
   apiError?: string;
 }
 
+
+
+
+
 export default function CompaniesView({
   initialYear = 2026,
   apiCompanies,
