@@ -16,6 +16,8 @@ interface TeamMember {
   organizationFr?: string;
   bio: string;
   bioFr?: string;
+  expandable: boolean;
+  image?: string;
   category: "executive" | "board";
 }
 
