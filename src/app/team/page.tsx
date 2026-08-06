@@ -16,8 +16,6 @@ interface TeamMember {
   organizationFr?: string;
   bio: string;
   bioFr?: string;
-  expandable: boolean;
-  image?: string;
   category: "executive" | "board";
 }
 
@@ -32,7 +30,6 @@ const coreTeam: TeamMember[] = [
     bio: "Joanne is a seasoned Capital Markets and Communications executive with over 25 years of dedicated experience. She is the Principal and Founder of IR.INC, Capital Markets Advisory, VID Media Incorporated and THE Mining Investment Event of the North. She began her career in the fledgling investor relations industry in 1987 with Barrick Gold, where she helped develop its early IR and marketing programs.\n\nSince then, she has worked in the natural resources sector and managed the investor relations, corporate affairs and communications programs for a number of publicly traded companies, including J.P. Morgan & Co. (Canada), Canadian Tire Corporation, and Meridian Credit Union. Ms. Jobin has held senior IRO positions in several companies, including IAMGOLD, Yamana Gold, Noront Resources, Excellon Resources, Schwazze, and Jaguar Mining.\n\nIR.INC is an Advisory firm dedicated to providing capital markets and IR advice to select natural resource and financial industry clients. VID Media is focused on providing companies with an unparalleled direct investor experience through its unique flagship products including VID Town Hall Forums. THE Mining Investment Event of the North is Canada's only Tier 1 Mining Investment Conference, held annually in Quebec City, hosting 800+ participants including issuers, investors, financial institutions, sponsors and governments of all levels.",
     bioFr: "Joanne est une dirigeante chevronnée des marchés des capitaux et des communications avec plus de 25 ans d'expérience dédiée. Elle est la dirigeante et fondatrice d'IR.INC, Capital Markets Advisory, VID Media Incorporated et THE Mining Investment Event of the North. Elle a débuté sa carrière dans l'industrie émergente des relations avec les investisseurs en 1987 chez Barrick Gold, où elle a contribué au développement de ses premiers programmes de relations avec les investisseurs et de marketing.\n\nDepuis lors, elle a travaillé dans le secteur des ressources naturelles et a géré les programmes de relations avec les investisseurs, d'affaires corporatives et de communications pour plusieurs sociétés cotées en bourse, notamment J.P. Morgan & Co. (Canada), Canadian Tire Corporation et Meridian Credit Union. Mme Jobin a occupé des postes de direction en RI au sein de plusieurs entreprises, dont IAMGOLD, Yamana Gold, Noront Resources, Excellon Resources, Schwazze et Jaguar Mining.\n\nIR.INC est un cabinet de conseil dédié à fournir des conseils en marchés des capitaux et RI à des clients sélectionnés des secteurs des ressources naturelles et de la finance. VID Media se concentre sur la fourniture d'une expérience d'investisseur direct inégalée grâce à ses produits phares uniques, dont les forums VID Town Hall. THE Mining Investment Event of the North est la seule conférence d'investissement minier de Niveau 1 au Canada, tenue annuellement à la ville de Québec, accueillant plus de 800 participants, y compris des émetteurs, des investisseurs, des institutions financières, des commanditaires et des gouvernements de tous niveaux.",
     expandable: true,
-    image: "/ChatGPT Image Jul 24, 2026, 04_48_40 PM.png",
     category: "executive",
   },
   {
@@ -57,7 +54,6 @@ const coreTeam: TeamMember[] = [
     bio: "Sydney is the Manager, Production Services at IR INC and VID Media, where she oversees production operations and leads the social media team for THE Mining Investment Event. With a background in media, communications, and public affairs, she brings a structured, detail-oriented approach to managing complex projects and stakeholder-driven initiatives.\n\nShe is a graduate of the University of Western Ontario, holding a BA in Political Science and Media Information (2024), and is currently pursuing a Graduate Certificate in Government Relations at Seneca Polytechnic.\n\nAlongside her professional work, Sydney is actively engaged in public service. She volunteers with her local MPP's office and serves as an administrative assistant to the executive team at the Caledonia Royal Canadian Legion.",
     bioFr: "Sydney est directrice des services de production chez IR INC et VID Media, où elle supervise les opérations de production et dirige l'équipe des médias sociaux pour THE Mining Investment Event. Avec une formation en médias, communications et affaires publiques, elle apporte une approche structurée et axée sur les détails à la gestion de projets complexes et d'initiatives axées sur les parties prenantes.\n\nDiplômée de l'Université Western Ontario, elle est titulaire d'un baccalauréat en sciences politiques et informations média (2024), et poursuit actuellement un certificat d'études supérieures en relations gouvernementales au Seneca Polytechnic.\n\nEn parallèle de son travail professionnel, Sydney s'engage activement dans le service public. Elle est bénévole auprès du bureau de son député provincial local et agit en tant qu'assistante administrative auprès de l'équipe exécutive de la Légion royale canadienne de Caledonia.",
     expandable: true,
-    image: "/ChatGPT Image Jul 24, 2026, 04_48_34 PM.png",
     category: "executive",
   },
   {
@@ -84,6 +80,18 @@ const coreTeam: TeamMember[] = [
     expandable: true,
     category: "executive",
   },
+  {
+    initials: "TZ",
+    name: "Taylor Zimmerman",
+    role: "Associate",
+    roleFr: "Associée",
+    organization: "THE Mining Investment EVENT",
+    organizationFr: "THE Mining Investment EVENT",
+    bio: "Taylor Zimmerman serves as Associate at THE Mining Investment Event, supporting operational planning, delegate relations, and event logistics for Canada's premier mining investment conference.",
+    bioFr: "Taylor Zimmerman agit à titre d'associée chez THE Mining Investment Event, appuyant la planification opérationnelle, les relations avec les délégués et la logistique de la plus importante conférence d'investissement minier au Canada.",
+    expandable: false,
+    category: "executive",
+  },
 ];
 
 const advisoryBoard: TeamMember[] = [
@@ -97,7 +105,6 @@ const advisoryBoard: TeamMember[] = [
     bio: "Yvonne Rumbolt-Jones is a senior public policy and governance leader with more than thirty years of experience advancing sustainable development, Indigenous partnerships, and community–industry relations in Northern and Arctic Canada. A former Member of Parliament for Labrador, Member of the House of Assembly, Cabinet Minister, and Leader of the Liberal Party of Newfoundland and Labrador, she has built a distinguished career at the intersection of government, Indigenous communities, and the mining and energy sectors.\n\nThroughout her public service, Yvonne championed the inclusion of women and Indigenous peoples in resource development. As Parliamentary Secretary for Natural Resources, she contributed to Canada's Critical Minerals Strategy, supporting Indigenous equity participation, community-benefit frameworks, and responsible mining and energy development in northern and Arctic regions.",
     bioFr: "Yvonne Rumbolt-Jones est une dirigeante de haut niveau en politiques publiques et gouvernance comptant plus de trente ans d'expérience dans l'avancement du développement durable, des partenariats autochtones et des relations communauté-industrie dans le Nord et l'Arctique canadien. Ancienne députée du Labrador, membre de l'Assemblée législative, ministre du Cabinet et chef du Parti libéral de Terre-Neuve-et-Labrador, elle s'est bâtie une carrière distinguée à l'intersection du gouvernement, des communautés autochtones et des secteurs minier et énergétique.\n\nTout au long de son service public, Yvonne a préconisé l'inclusion des femmes et des peuples autochtones dans le développement des ressources. En tant que secrétaire parlementaire des Ressources naturelles, elle a contribué à la Stratégie canadienne sur les minéraux critiques.",
     expandable: true,
-    image: "/fwdboardmemberphotos/yvonne jones.jpg",
     category: "board",
   },
   {
@@ -110,7 +117,6 @@ const advisoryBoard: TeamMember[] = [
     bio: "Daniella has more than 25 years of experience in building, leading and operating businesses in mining and financial services in various strategy, finance, operations, corporate development and governance roles. Daniella's previous roles include President and CEO, Interim CEO, CFO of multi mine gold/copper producers and a $2B+ mine developer, partner at a mining investment bank.\n\nDaniella was chosen as one of the Top 100 Global Inspirational Women in Mining for 2016, was a Canada Board Diversity Council – 2016 Diversity 50 Candidate and has the National Association of Corporate Directors (NACD) Directorship Certification.",
     bioFr: "Daniella possède plus de 25 ans d'expérience dans la création, la direction et l'exploitation d'entreprises du secteur minier et des services financiers, dans divers rôles de stratégie, finance, opérations, développement d'entreprise et gouvernance. Les rôles précédents de Daniella incluent présidente et PDG, PDG par intérim, directrice financière de producteurs d'or/cuivre multi-mines et d'un développeur minier de plus de 2 milliards de dollars, et associée dans une banque d'investissement minier.\n\nDaniella a été choisie parmi les 100 femmes inspirantes de l'industrie minière mondiale en 2016 et a obtenu la certification de gestion d'entreprise de la National Association of Corporate Directors (NACD).",
     expandable: true,
-    image: "/fwdboardmemberphotos/Daniella-Dimitrov.jpg",
     category: "board",
   },
   {
@@ -123,7 +129,6 @@ const advisoryBoard: TeamMember[] = [
     bio: "Daniele is an international mining industry executive with a technical background in geology and over 30 years of experience in mineral exploration, team building, and corporate leadership across public companies, M&A transitions, and not-for-profits. She is a co-founder of Warrior Gold Inc., taking it from private to public.\n\nShe currently serves as Secretary and Director of the Ontario Prospectors Association, helping to rebuild its governance, leadership, and strategic direction.",
     bioFr: "Daniele est une dirigeante internationale de l'industrie minière avec une formation technique en géologie et plus de 30 ans d'expérience dans l'exploration minérale, la création d'équipes et la direction d'entreprises publiques, les transitions de fusion-acquisition et les organismes à but non lucratif. Elle est cofondatrice de Warrior Gold Inc., l'ayant fait passer du statut privé à public.\n\nElle occupe actuellement les fonctions de secrétaire et directrice de l'Ontario Prospectors Association, aidant à reconstruire sa gouvernance, son leadership et sa direction stratégique.",
     expandable: true,
-    image: "/fwdboardmemberphotos/daniele spethmann.jpg",
     category: "board",
   },
   {
@@ -136,7 +141,6 @@ const advisoryBoard: TeamMember[] = [
     bio: "Angie Stockley is an accomplished executive with over 25 years' experience in corporate development, strategic communications, go-to-market strategy, investor relations, partnership development, M&A activity and change management. Her current focus is predominantly in the mining sector, coupled with extensive expertise in tech, enterprise SaaS and the public sector.\n\nIn the mining sector, Angie's roles include serving as President, Chief Commercial Officer (CCO) and Director at Blue Ice Gold; and President and CCO at SSAF Exploration.",
     bioFr: "Angie Stockley est une dirigeante accomplie comptant plus de 25 ans d'expérience dans le développement d'entreprise, les communications stratégiques, la stratégie de commercialisation, les relations avec les investisseurs, le développement de partenariats, les activités de fusion-acquisition et la gestion du changement. Son accent actuel est principalement mis sur le secteur minier, combiné à une vaste expertise en technologie, SaaS d'entreprise et secteur public.\n\nDans le secteur minier, les rôles d'Angie incluent les fonctions de présidente, directrice commerciale (CCO) et directrice chez Blue Ice Gold, ainsi que présidente et CCO chez SSAF Exploration.",
     expandable: true,
-    image: "/fwdboardmemberphotos/angie-stockley-.webp",
     category: "board",
   },
   {
@@ -149,7 +153,6 @@ const advisoryBoard: TeamMember[] = [
     bio: "Jenny-Lou Campbell is Anishinaabe-Kwe and a proud member of Serpent River First Nation. She grew up in the Ontario mining communities of Elliot Lake and Marathon. Her career in mining has taken her to Hemlo Ontario, Thompson Manitoba, and Sudbury Ontario.\n\nCurrently as the Executive Director of the Indigenous Centre of Excellence for Mineral Development (ICEMD), Jenny is leading efforts to support First Nation participation in the mining sector.",
     bioFr: "Jenny-Lou Campbell est Anishinaabe-Kwe et fière membre de la Première Nation de Serpent River. Elle a grandi dans les communautés minières ontariennes d'Elliot Lake et de Marathon. Sa carrière dans le secteur minier l'a amenée à Hemlo (Ontario), Thompson (Manitoba) et Sudbury (Ontario).\n\nActuellement directrice générale du Centre d'excellence autochtone pour le développement minéral (ICEMD), Jenny dirige les efforts visant à soutenir la participation des Premières Nations dans le secteur minier.",
     expandable: true,
-    image: "/fwdboardmemberphotos/jenny-lou-campbell.jpg",
     category: "board",
   },
   {
@@ -162,12 +165,11 @@ const advisoryBoard: TeamMember[] = [
     bio: "Stéfanie Vo is a senior process engineer with two decades of experience in consulting engineering, specializing in mineral processing and process optimization. Her career includes more than four years on-site at an iron ore concentrator. She currently serves as Regional Director, Mining and Metals for Eastern Canada at Hatch, and contributes to the Board of Directors for CIM's Canadian Mineral Processors (CMP) Society.",
     bioFr: "Stéfanie Vo est une ingénieure de procédé senior comptant deux décennies d'expérience en ingénierie-conseil, spécialisée dans le traitement des minerais et l'optimisation des procédés. Sa carrière comprend plus de quatre ans sur le terrain dans un concentrateur de minerai de fer. Elle occupe actuellement le poste de directrice régionale, Mines et métaux pour l'Est du Canada chez Hatch, et siège au conseil d'administration de la Société des minéralurgistes du Canada (CMP) de l'ICM.",
     expandable: false,
-    image: "/fwdboardmemberphotos/stefanie vo.jpg",
     category: "board",
   },
 ];
 
-/* ──────── Board Member Card (Large Portrait Frame) ──────── */
+/* ──────── Board Member Card (Unified Executive Style) ──────── */
 function BoardCard({ member }: { member: TeamMember }) {
   const [expanded, setExpanded] = useState(false);
   const { t, lang } = useLanguage();
@@ -181,68 +183,47 @@ function BoardCard({ member }: { member: TeamMember }) {
   const shortBio = paragraphs[0];
 
   return (
-    <div className="group bg-white border border-neutral-200/90 rounded-2xl overflow-hidden shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] transition-all duration-500 flex flex-col hover:-translate-y-1.5">
-      {/* Prominent Portrait Photo Header */}
-      <div className="w-full h-72 sm:h-80 bg-neutral-950 relative overflow-hidden shrink-0">
-        {member.image ? (
-          <img
-            src={member.image}
-            alt={member.name}
-            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 brightness-[0.98] group-hover:brightness-100"
-          />
-        ) : (
-          <div className="w-full h-full bg-gradient-to-br from-[#0f1117] via-[#1a1f2c] to-[#0f1117] flex items-center justify-center relative">
-            <span className="text-5xl font-black text-white/20 group-hover:text-[#C6112F]/40 transition-colors">
-              {member.initials}
-            </span>
-          </div>
-        )}
-
-        {/* Subtle Dark Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90" />
-
-        {/* Floating Category Badge */}
-        <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full border border-white/20">
-          {isFr ? "CONSEIL CONSULTATIF" : "ADVISORY BOARD"}
+    <div className="group bg-white border border-neutral-200/90 rounded-2xl p-6 sm:p-7 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] transition-all duration-500 flex flex-col hover:-translate-y-1.5">
+      {/* Avatar Header */}
+      <div className="flex items-start gap-4 mb-4">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl sm:text-2xl shrink-0 group-hover:border-[#C6112F] group-hover:scale-105 transition-all duration-300 shadow-md">
+          {member.initials}
         </div>
-
-        {/* Name & Role Overlay inside Photo Banner */}
-        <div className="absolute bottom-4 left-4 right-4 text-white">
-          <h3 className="text-lg sm:text-xl font-black tracking-tight leading-snug drop-shadow-sm">
+        <div className="pt-1">
+          <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#fef2f2] px-2.5 py-0.5 rounded-full border border-[#C6112F]/15 mb-1.5 inline-block">
+            {isFr ? "CONSEIL CONSULTATIF" : "ADVISORY BOARD"}
+          </span>
+          <h3 className="text-lg sm:text-xl font-black text-[#1a1f2c] tracking-tight leading-tight">
             {member.name}
           </h3>
-          <p className="text-[#ff4d6d] text-xs font-bold mt-0.5 tracking-wide">
-            {roleText}
-          </p>
+          <p className="text-[#C6112F] text-xs sm:text-sm font-extrabold mt-0.5">{roleText}</p>
           {orgText && (
-            <p className="text-neutral-300 text-[11px] font-medium mt-0.5 line-clamp-1 opacity-90">
-              {orgText}
-            </p>
+            <p className="text-neutral-500 text-xs font-semibold mt-0.5">{orgText}</p>
           )}
         </div>
       </div>
 
-      {/* Bio Content Area */}
-      <div className="p-5 sm:p-6 flex flex-col flex-1 bg-white">
-        <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-3" />
+      {/* Divider */}
+      <div className="w-12 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
-        <div className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium space-y-2.5 flex-1">
-          {expanded ? (
-            paragraphs.map((p, idx) => <p key={idx}>{p}</p>)
-          ) : (
-            <p className="line-clamp-4">{shortBio}</p>
-          )}
-        </div>
-
-        {member.expandable && (
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="mt-4 pt-3 border-t border-neutral-100 text-[#C6112F] text-xs font-bold tracking-wider uppercase hover:underline inline-flex items-center gap-1.5 self-start transition-colors"
-          >
-            {expanded ? t("team-read-less", "Read Less ↑") : t("team-read-more", "Read Full Bio ➔")}
-          </button>
+      {/* Bio */}
+      <div className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium space-y-2.5 flex-1">
+        {expanded ? (
+          paragraphs.map((p, idx) => <p key={idx}>{p}</p>)
+        ) : (
+          <p className="line-clamp-4">{shortBio}</p>
         )}
       </div>
+
+      {/* Read More Button */}
+      {member.expandable && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="mt-4 pt-3 border-t border-neutral-100 text-[#C6112F] text-xs font-bold tracking-wider uppercase hover:underline inline-flex items-center gap-1.5 self-start transition-colors"
+        >
+          {expanded ? t("team-read-less", "Read Less ↑") : t("team-read-more", "Read Full Bio ➔")}
+        </button>
+      )}
     </div>
   );
 }
@@ -264,17 +245,9 @@ function ExecutiveCard({ member }: { member: TeamMember }) {
     <div className="group bg-white border border-neutral-200/90 rounded-2xl p-6 sm:p-7 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] transition-all duration-500 flex flex-col hover:-translate-y-1.5">
       {/* Avatar Header */}
       <div className="flex items-start gap-4 mb-4">
-        {member.image ? (
-          <img
-            src={member.image}
-            alt={member.name}
-            className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 border-[#C6112F]/30 object-cover shrink-0 group-hover:border-[#C6112F] transition-all duration-300 shadow-sm"
-          />
-        ) : (
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl sm:text-2xl shrink-0 group-hover:border-[#C6112F] group-hover:scale-105 transition-all duration-300 shadow-md">
-            {member.initials}
-          </div>
-        )}
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl sm:text-2xl shrink-0 group-hover:border-[#C6112F] group-hover:scale-105 transition-all duration-300 shadow-md">
+          {member.initials}
+        </div>
         <div className="pt-1">
           <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#fef2f2] px-2.5 py-0.5 rounded-full border border-[#C6112F]/15 mb-1.5 inline-block">
             {isFr ? "DIRECTION EXÉCUTIVE" : "EXECUTIVE LEADERSHIP"}
