@@ -38,8 +38,8 @@ export default function ProgramsGrid() {
       cta: t("prog-lead-cta", "LEARN MORE"),
       link: "/sheco",
       image:
-        "/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-5.jpg",
-      imageAlt: "SHE-Co Initiative delegates",
+        "/Centre-des-congres-Quebec-Mines-1%20(1).webp",
+      imageAlt: "SHE-Co Initiative at Centre des congrès de Québec",
       imageOnLeft: true,
     },
     {
@@ -67,8 +67,7 @@ export default function ProgramsGrid() {
       ),
       cta: t("prog-dial-cta", "MEET SPEAKERS"),
       link: "/agenda",
-      image:
-        "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-6.jpg",
+      image: "/core-shack-networking.jpg",
       imageAlt: "Core Shack networking session",
       imageOnLeft: false,
     },

@@ -45,7 +45,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero-subtitle": "Meet investors, discover projects, secure partnerships and shape the future of mining.",
     "hero-date": "1-3 JUNE 2027 · QUÉBEC CITY, CANADA",
     "hero-register": "REGISTER NOW",
-    "hero-program": "VIEW PROGRAM",
+    "hero-program": "VIEW AGENDA",
 
     // Quick Links
     "ql-sponsors": "Sponsors",
@@ -551,7 +551,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero-subtitle": "Rencontrer des investisseurs, découvrir des projets, sécuriser des partenariats et façonner l'avenir minier.",
     "hero-date": "1-3 JUIN 2027 · VILLE DE QUÉBEC, CANADA",
     "hero-register": "S'INSCRIRE MAINTENANT",
-    "hero-program": "VOIR LE PROGRAMME",
+    "hero-program": "VOIR L'ORDRE DU JOUR",
 
     // Quick Links
     "ql-sponsors": "Commanditaires",

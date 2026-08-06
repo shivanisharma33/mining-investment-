@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
+import {
+  submitStudentRegistration,
+  StudentRegistrationError,
+} from "@/lib/studentRegistrationApi";
 
 const winningTeamMembers = [
   { name: "Alp Tastekin", school: "Queen's University" },
@@ -21,6 +25,75 @@ const outstandingStudents = [
 
 export default function StudentPage() {
   const { t } = useLanguage();
+
+  // Student Application Form State
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    currentSchool: "",
+    programAndYear: "",
+    email: "",
+    phone: "",
+    language: "",
+    signUpForNews: true,
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string>("");
+  const [registrationNumber, setRegistrationNumber] = useState<string>("");
+
+  const scrollToForm = () => {
+    const formElement = document.getElementById("student-application-form");
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const result = await submitStudentRegistration({
+        firstName: formData.firstName.trim(),
+        lastName: formData.lastName.trim(),
+        currentSchool: formData.currentSchool.trim(),
+        programAndYear: formData.programAndYear.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        language: formData.language,
+        signUpForNews: formData.signUpForNews,
+      });
+
+      setRegistrationNumber(result.registrationNumber ?? "");
+      setSubmitted(true);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        currentSchool: "",
+        programAndYear: "",
+        email: "",
+        phone: "",
+        language: "",
+        signUpForNews: true,
+      });
+    } catch (err) {
+      const fieldMessage =
+        err instanceof StudentRegistrationError && err.fieldErrors.length > 0
+          ? err.fieldErrors.map((fe) => fe.message).join(" · ")
+          : "";
+      setSubmitError(
+        fieldMessage ||
+          (err instanceof Error ? err.message : "Something went wrong. Please try again.")
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -109,17 +182,15 @@ export default function StudentPage() {
 
                 {/* CTAs */}
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <a
-                    href="https://www.themininginvestmentevent.com/student-application-form"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={scrollToForm}
                     className="px-6 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-bold tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/20 hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
                   >
                     <span>{t("student-cta-apply", "Apply Here")}</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
-                  </a>
+                  </button>
                   <a
                     href="https://www.themininginvestmentevent.com/s/LetterfromOurCEO-FINAL-2025-1-FR-6j3d.pdf"
                     target="_blank"
@@ -130,6 +201,257 @@ export default function StudentPage() {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════ STUDENT APPLICATION FORM SECTION ═══════ */}
+        <section
+          id="student-application-form"
+          className="relative w-full py-16 sm:py-20 md:py-24 bg-white border-t border-neutral-200"
+        >
+          <div className="max-w-[860px] mx-auto px-4 sm:px-6 md:px-8">
+            <div className="bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#0f1117] via-[#C6112F] to-[#0f1117]" />
+
+              {submitted ? (
+                /* ═══════ SUCCESS STATE ═══════ */
+                <div className="text-center py-12">
+                  <div className="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-6 text-3xl font-black shadow-lg">
+                    ✓
+                  </div>
+                  <h3 className="text-3xl font-black text-[#1a1f2c] mb-3">
+                    {t("student-form-success-title", "Application Received!")}
+                  </h3>
+                  <p className="text-neutral-600 text-sm max-w-lg mx-auto mb-8 leading-relaxed font-medium">
+                    {t(
+                      "student-form-success-desc",
+                      "Thank you for applying to THE Glencore Student Sponsorship Program. Our team will review your application and contact you with next steps shortly."
+                    )}
+                  </p>
+                  {registrationNumber && (
+                    <div className="max-w-xs mx-auto mb-8 px-5 py-4 rounded-2xl bg-neutral-50 border border-neutral-200">
+                      <span className="block text-[10px] font-black uppercase tracking-[0.2em] text-neutral-500 mb-1">
+                        {t("student-form-reg-number", "Registration Number")}
+                      </span>
+                      <b className="text-lg font-black text-[#1a1f2c] tracking-wide">
+                        {registrationNumber}
+                      </b>
+                    </div>
+                  )}
+                  <button
+                    onClick={() => {
+                      setSubmitted(false);
+                      setRegistrationNumber("");
+                      setSubmitError("");
+                    }}
+                    className="px-8 py-3.5 rounded-xl bg-[#0f1117] text-white text-xs font-extrabold uppercase tracking-widest hover:bg-[#C6112F] transition-all"
+                  >
+                    {t("student-form-another", "Submit Another Application")}
+                  </button>
+                </div>
+              ) : (
+                /* ═══════ APPLICATION FORM ═══════ */
+                <div>
+                  <div className="text-center mb-10">
+                    <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+                      {t("student-form-tag", "CLASS OF 2026 APPLICATION")}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] tracking-tight">
+                      {t("student-form-title", "Student Sponsorship Application")}
+                    </h3>
+                    <div className="w-12 h-[3px] bg-[#C6112F] mx-auto mt-3 rounded-full" />
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Name: First Name & Last Name (Required) */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-500 uppercase tracking-wider mb-3">
+                        {t("student-form-name-label", "Name")}
+                      </label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                            {t("student-form-first-name", "First Name")}{" "}
+                            <span className="text-[#C6112F] font-bold">
+                              ({t("student-form-required", "required")})
+                            </span>
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={formData.firstName}
+                            onChange={(e) =>
+                              setFormData({ ...formData, firstName: e.target.value })
+                            }
+                            placeholder={t("student-form-first-name-ph", "e.g. Sarah")}
+                            className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                            {t("student-form-last-name", "Last Name")}{" "}
+                            <span className="text-[#C6112F] font-bold">
+                              ({t("student-form-required", "required")})
+                            </span>
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            value={formData.lastName}
+                            onChange={(e) =>
+                              setFormData({ ...formData, lastName: e.target.value })
+                            }
+                            placeholder={t("student-form-last-name-ph", "e.g. Jenkins")}
+                            className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Current School (Required) */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {t("student-form-school", "Current School")}{" "}
+                        <span className="text-[#C6112F] font-bold">
+                          ({t("student-form-required", "required")})
+                        </span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={formData.currentSchool}
+                        onChange={(e) =>
+                          setFormData({ ...formData, currentSchool: e.target.value })
+                        }
+                        placeholder={t("student-form-school-ph", "e.g. Queen's University")}
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                      />
+                    </div>
+
+                    {/* Program and Year */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {t("student-form-program", "Program and Year")}
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.programAndYear}
+                        onChange={(e) =>
+                          setFormData({ ...formData, programAndYear: e.target.value })
+                        }
+                        placeholder={t("student-form-program-ph", "e.g. Mining Engineering, 3rd Year")}
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                      />
+                    </div>
+
+                    {/* Email (Required) */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {t("student-form-email", "Email")}{" "}
+                        <span className="text-[#C6112F] font-bold">
+                          ({t("student-form-required", "required")})
+                        </span>
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                        placeholder={t("student-form-email-ph", "e.g. sarah@university.ca")}
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                      />
+                    </div>
+
+                    {/* Newsletter Checkbox */}
+                    <div className="pt-1">
+                      <label className="flex items-center gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.signUpForNews}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              signUpForNews: e.target.checked,
+                            })
+                          }
+                          className="w-4 h-4 text-[#C6112F] rounded border-neutral-300 focus:ring-[#C6112F]"
+                        />
+                        <span className="text-xs sm:text-sm font-semibold text-neutral-700">
+                          {t("student-form-news", "Sign up for news and updates")}
+                        </span>
+                      </label>
+                    </div>
+
+                    {/* Phone Number (Required) */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {t("student-form-phone", "Phone Number")}{" "}
+                        <span className="text-[#C6112F] font-bold">
+                          ({t("student-form-required", "required")})
+                        </span>
+                      </label>
+                      <input
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={(e) =>
+                          setFormData({ ...formData, phone: e.target.value })
+                        }
+                        placeholder={t("student-form-phone-ph", "e.g. +1 (514) 555-0192")}
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
+                      />
+                    </div>
+
+                    {/* Language (Dropdown) */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {t("student-form-language", "Language")}
+                      </label>
+                      <select
+                        value={formData.language}
+                        onChange={(e) =>
+                          setFormData({ ...formData, language: e.target.value })
+                        }
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-bold outline-none transition-all bg-white cursor-pointer"
+                      >
+                        <option value="">{t("student-form-language-default", "Select an option")}</option>
+                        <option value="English">English</option>
+                        <option value="French">Français</option>
+                        <option value="Bilingual">Bilingual / Bilingue</option>
+                      </select>
+                    </div>
+
+                    {/* Submission Error */}
+                    {submitError && (
+                      <div
+                        role="alert"
+                        className="px-5 py-4 rounded-2xl bg-rose-50 border border-[#C6112F]/30 text-[#8a091e] text-xs sm:text-sm font-semibold leading-relaxed"
+                      >
+                        {submitError}
+                      </div>
+                    )}
+
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-4 rounded-2xl bg-[#C6112F] text-white text-xs sm:text-sm font-black tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/25 transition-all duration-300 flex items-center justify-center gap-3 enabled:hover:bg-[#a50e27] enabled:hover:scale-[1.01] disabled:opacity-70 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting && (
+                        <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                      )}
+                      <span>
+                        {isSubmitting
+                          ? t("student-form-submitting", "Submitting…")
+                          : t("student-form-submit", "Submit")}
+                      </span>
+                    </button>
+                  </form>
+                </div>
+              )}
             </div>
           </div>
         </section>

@@ -40,6 +40,13 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css" />
         <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css" />
         <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css" />
+        {/* Preload hero background video for faster playback start */}
+        <link
+          rel="preload"
+          href="/fwdboardmemberphotos/hero-bg.mp4"
+          as="video"
+          type="video/mp4"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

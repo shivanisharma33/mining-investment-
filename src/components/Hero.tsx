@@ -1,11 +1,36 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
   const { lang, t } = useLanguage();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Eagerly attempt playback as soon as enough data is buffered
+    const tryPlay = () => {
+      video.play().catch(() => {
+        /* autoplay may be blocked; the autoPlay attr will retry */
+      });
+    };
+
+    // Fire play on first frame ready
+    video.addEventListener("canplay", tryPlay, { once: true });
+
+    // If the video is already ready (cached), play immediately
+    if (video.readyState >= 3) {
+      tryPlay();
+    }
+
+    return () => {
+      video.removeEventListener("canplay", tryPlay);
+    };
+  }, []);
 
   return (
     <section className="relative flex-grow flex items-center justify-center overflow-hidden min-h-screen pt-24 pb-12">
@@ -14,14 +39,15 @@ export default function Hero() {
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full bg-neutral-900">
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="/fwdboardmemberphotos/Mining%20investment%20video%20.mov" type="video/quicktime" />
-          <source src="/fwdboardmemberphotos/Mining%20investment%20video%20.mov" type="video/mp4" />
+          <source src="/fwdboardmemberphotos/hero-bg.mp4" type="video/mp4" />
         </video>
       </div>
 
@@ -99,7 +125,7 @@ export default function Hero() {
             href="/agenda"
             className="bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-extrabold tracking-wider px-5 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 transition-all duration-300 shrink-0 backdrop-blur-sm"
           >
-            <span>{t("hero-program", "VIEW PROGRAM")}</span>
+            <span>{t("hero-program", "VIEW AGENDA")}</span>
             <svg
               className="w-4 h-4 shrink-0"
               fill="none"
