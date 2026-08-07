@@ -232,7 +232,7 @@ export default function SheCoPage() {
             {/* Resident Artist 2026 - Bertram Turmel */}
             <div className="bg-[#0f1117] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-neutral-800 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none" />
-              
+
               <div className="flex items-center gap-3 mb-4 relative z-10">
                 <span className="w-10 h-10 rounded-xl bg-[#C6112F] text-white font-black text-sm flex items-center justify-center">
                   BT

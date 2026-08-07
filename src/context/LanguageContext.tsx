@@ -263,6 +263,10 @@ const translations: Record<Language, Record<string, string>> = {
     "travel-hilton-desc": "Experience luxury and convenience at the Hilton Hotel in Quebec City, perfectly positioned just steps away from the Quebec City Convention Centre. Indulge in exquisite dining, unwind with a cocktail at the lounge, or rejuvenate in the state-of-the-art fitness centre.",
     "travel-hilton-note": "Discounted block rates available for registered participants only. You are responsible for coordinating all your own travel and lodging arrangements.",
     "travel-hilton-link": "View Hotel Website ↗",
+    "travel-delta-title": "Delta Hotels by Marriott Québec (Recommended Partner Hotel)",
+    "travel-delta-desc": "Conveniently located near the Québec City Convention Centre (QCC), Delta Hotels Québec offers premium guest rooms, modern amenities, on-site dining, and exclusive group rates for conference delegates.",
+    "travel-delta-note": "Recommended partner hotel with special delegate rates available for registered participants.",
+    "travel-delta-link": "View Delta Hotel Website ↗",
     "travel-discount-title": "Delegate Discount Program",
     "travel-discount-desc": "Our venue partner, The Québec City Convention Centre, offers delegates of THE Event exclusive discounts at select restaurants, attractions and boutiques throughout Quebec City.\n\nPlease check with individual properties regarding cancellation policy, deposit requirement, and taxes/fees. Scan QR code on-site for more details.",
 

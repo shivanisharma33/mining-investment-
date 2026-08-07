@@ -114,9 +114,9 @@ function getResponsivePageSize(): PageSize {
 
   let width: number;
   if (viewportWidth < 480) {
-    width = Math.min(280, viewportWidth - 48);
+    width = Math.min(360, viewportWidth - 24);
   } else if (viewportWidth < MOBILE_BREAKPOINT) {
-    width = Math.min(360, viewportWidth - 64);
+    width = Math.min(460, viewportWidth - 40);
   } else {
     // Desktop shows a two-page spread, so a page gets half the viewport.
     width = Math.min(420, Math.floor((viewportWidth - 160) / 2));

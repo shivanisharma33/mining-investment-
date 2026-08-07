@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
+import QuickNavGrid from "@/components/QuickNavGrid";
+
 export default function FeaturedEventCountdown() {
   const { t } = useLanguage();
   const [timeLeft, setTimeLeft] = useState({
@@ -140,80 +142,8 @@ export default function FeaturedEventCountdown() {
           </p>
         </div>
 
-        {/* 8 Action Buttons Grid arranged in 2 Lines (4 Columns per line on desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 max-w-[1240px] mx-auto">
-          {/* Line 1 - Button 1 */}
-          <Link
-            href="/agenda"
-            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
-          >
-            <i className="fi fi-rr-calendar text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">{t("feat-event-agenda", "VIEW AGENDA")}</span>
-          </Link>
-
-          {/* Line 1 - Button 2 */}
-          <Link
-            href="/register"
-            className="w-full h-14 sm:h-16 bg-[#a80d26] hover:bg-[#8a091e] hover:-translate-y-0.5 hover:scale-[1.02] text-white rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-lg card-shimmer group text-center"
-          >
-            <i className="fi fi-rr-arrow-circle-right text-base leading-none text-white group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">{t("hero-register", "REGISTER NOW")}</span>
-          </Link>
-
-          {/* Line 1 - Button 3 */}
-          <Link
-            href="/past-years/2027/2027-brochure"
-            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
-          >
-            <i className="fi fi-rr-poll-h text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">{t("ql-brochure", "BROCHURE")}</span>
-          </Link>
-
-          {/* Line 1 - Button 4 */}
-          <Link
-            href="/imw"
-            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2 sm:px-3 lg:px-3.5 text-[9.5px] xs:text-[10px] sm:text-[11px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
-          >
-            <i className="fi fi-rr-globe text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">{t("ql-mining-week", "INTERNATIONAL MINING WEEK")}</span>
-          </Link>
-
-          {/* Line 2 - Button 5 */}
-          <Link
-            href="/companies"
-            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2 sm:px-3 lg:px-3.5 text-[9.5px] xs:text-[10px] sm:text-[11px] lg:text-xs font-black tracking-tight sm:tracking-normal uppercase flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
-          >
-            <i className="fi fi-rr-coworking text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">{t("ql-companies", "PARTICIPATING COMPANIES")}</span>
-          </Link>
-
-          {/* Line 2 - Button 6 */}
-          <Link
-            href="/speakers"
-            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
-          >
-            <i className="fi fi-rr-user text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">{t("nav-speakers", "OUR SPEAKERS")}</span>
-          </Link>
-
-          {/* Line 2 - Button 7 */}
-          <Link
-            href="/sponsors"
-            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
-          >
-            <i className="fi fi-rr-handshake text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">{t("ql-sponsors", "OUR SPONSORS")}</span>
-          </Link>
-
-          {/* Line 2 - Button 8 */}
-          <Link
-            href="/golf"
-            className="w-full h-14 sm:h-16 bg-[#e5e7eb] dark:bg-slate-700 hover:bg-[#d1d5db] dark:hover:bg-slate-600 hover:border-[#C6112F]/60 hover:-translate-y-0.5 text-neutral-900 dark:text-white border border-neutral-300/80 dark:border-[#233049] rounded-2xl px-2.5 sm:px-3.5 lg:px-4 text-[10.5px] xs:text-[11px] sm:text-xs font-black tracking-normal sm:tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md card-shimmer group text-center"
-          >
-            <i className="fi fi-rr-golf-hole text-base leading-none text-neutral-800 dark:text-slate-200 group-hover:scale-110 group-hover:rotate-6 transition-transform shrink-0" />
-            <span className="whitespace-nowrap">{t("golf-hero-title-3", "ICONIC GOLF DAY")}</span>
-          </Link>
-        </div>
+        {/* 8 Action Buttons Grid */}
+        <QuickNavGrid />
       </div>
     </section>
   );

@@ -177,7 +177,7 @@ export default function Navbar() {
     { name: t("nav-home", "HOME"), href: "/", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
     { name: t("nav-about", "ABOUT"), href: "/about", active: false, hasDropdown: true, dropdownType: "about", isExternal: false },
     { name: t("nav-programs", "PROGRAMS"), href: "/student", active: false, hasDropdown: true, dropdownType: "programs", isExternal: false },
-    { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", active: false, hasDropdown: true, dropdownType: "past-years", isExternal: false },
+    { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
     { name: t("nav-gallery", "GALLERY"), href: "/media", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
     { name: t("nav-news-main", "THE NEWS"), href: "/news", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
   ];

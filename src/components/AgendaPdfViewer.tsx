@@ -230,31 +230,46 @@ export default function AgendaPdfViewer({
       </div>
 
       {/* ════════ BROCHURE VIEWER MAIN CONTAINER ════════ */}
-      <div className="bg-[#F8FAFC] dark:bg-slate-900/60 border border-neutral-200/90 dark:border-[#233049] rounded-3xl p-3 sm:p-5 shadow-sm mb-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+      <div className="bg-[#F8FAFC] dark:bg-slate-900/60 border border-neutral-200/90 dark:border-[#233049] rounded-3xl p-2.5 sm:p-5 shadow-sm mb-6">
+        {/* Mobile Fullscreen Banner */}
+        <div className="sm:hidden mb-3 bg-[#C6112F]/10 border border-[#C6112F]/30 p-3 rounded-2xl flex items-center justify-between gap-2 text-xs font-bold text-[#C6112F]">
+          <span>{isFr ? "Visualisation PDF Mobile" : "Mobile PDF Reader"}</span>
+          {resolvedUrl && (
+            <a
+              href={resolvedUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white font-extrabold text-[11px] uppercase tracking-wider inline-flex items-center gap-1.5 shadow-xs transition-all"
+            >
+              <span>{isFr ? "Plein Écran ↗" : "Open Fullscreen ↗"}</span>
+            </a>
+          )}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 lg:gap-6">
           {/* Left Sidebar Thumbnails (Page 1, 2, 3, 4) */}
-          <div className="lg:col-span-3 flex lg:flex-col gap-3.5 overflow-x-auto lg:overflow-y-auto max-h-[750px] p-3 bg-white dark:bg-[#131b2e] rounded-2xl border border-neutral-200/80 dark:border-[#233049] items-center">
+          <div className="lg:col-span-3 flex lg:flex-col gap-2.5 sm:gap-3.5 overflow-x-auto lg:overflow-y-auto max-h-[220px] sm:max-h-[350px] lg:max-h-[750px] p-2.5 sm:p-3 bg-white dark:bg-[#131b2e] rounded-2xl border border-neutral-200/80 dark:border-[#233049] items-center shrink-0 w-full min-w-0">
             {resolvedUrl && Array.from({ length: resolvedPages }, (_, i) => i + 1).map((pgNum) => {
               const isSelected = activePage === pgNum;
               return (
                 <button
                   key={pgNum}
                   onClick={() => setCurrentPage(pgNum)}
-                  className={`flex flex-col items-center gap-2 p-2.5 rounded-2xl border transition-all cursor-pointer shrink-0 ${
+                  className={`flex flex-col items-center gap-1.5 p-2 sm:p-2.5 rounded-2xl border transition-all cursor-pointer shrink-0 ${
                     isSelected
                       ? "border-[#C6112F] bg-rose-50/50 dark:bg-rose-950/20 shadow-md ring-2 ring-[#C6112F]/20 scale-[1.02]"
                       : "border-neutral-200 dark:border-slate-800 hover:border-neutral-300 dark:hover:border-slate-700 bg-neutral-50 dark:bg-slate-900 hover:scale-[1.01]"
                   }`}
                 >
                   {/* Miniature PDF Page Live Preview Container */}
-                  <div className="w-[105px] h-[136px] bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-neutral-300 dark:border-slate-700 relative shadow-2xs">
+                  <div className="w-[85px] sm:w-[105px] h-[110px] sm:h-[136px] bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-neutral-300 dark:border-slate-700 relative shadow-2xs">
                     <iframe
                       src={`${resolvedUrl}#page=${pgNum}&toolbar=0&navpanes=0&scrollbar=0`}
-                      className="w-[315px] h-[408px] border-none pointer-events-none origin-top-left transform scale-[0.333]"
+                      className="w-[315px] h-[408px] border-none pointer-events-none origin-top-left transform scale-[0.27] sm:scale-[0.333]"
                       title={`Page ${pgNum} preview`}
                     />
                   </div>
-                  <span className={`text-xs font-black ${isSelected ? "text-[#C6112F]" : "text-neutral-500 dark:text-slate-400"}`}>
+                  <span className={`text-[11px] sm:text-xs font-black ${isSelected ? "text-[#C6112F]" : "text-neutral-500 dark:text-slate-400"}`}>
                     {pgNum}
                   </span>
                 </button>
@@ -263,11 +278,11 @@ export default function AgendaPdfViewer({
           </div>
 
           {/* Right Main PDF Preview Area */}
-          <div className="lg:col-span-9 flex flex-col gap-3">
+          <div className="lg:col-span-9 flex flex-col gap-3 min-w-0">
             {/* Embedded PDF iframe */}
-            <div className="bg-white dark:bg-[#131b2e] rounded-2xl border border-neutral-200/90 dark:border-[#233049] shadow-md overflow-hidden p-2">
+            <div className="bg-white dark:bg-[#131b2e] rounded-2xl border border-neutral-200/90 dark:border-[#233049] shadow-md overflow-hidden p-1.5 sm:p-2">
               {loadError ? (
-                <div className="w-full h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 flex flex-col items-center justify-center gap-2 text-center px-6">
+                <div className="w-full h-[400px] xs:h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 flex flex-col items-center justify-center gap-2 text-center px-6">
                   <svg className="w-10 h-10 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="9" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v5M12 16.5v.01" />
@@ -278,7 +293,7 @@ export default function AgendaPdfViewer({
                   <p className="text-xs text-neutral-500 dark:text-slate-400">{loadError}</p>
                 </div>
               ) : !resolvedUrl ? (
-                <div className="w-full h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 flex flex-col items-center justify-center gap-3">
+                <div className="w-full h-[400px] xs:h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 flex flex-col items-center justify-center gap-3">
                   <span className="w-8 h-8 rounded-full border-2 border-neutral-200 dark:border-slate-700 border-t-[#C6112F] animate-spin" />
                   <p className="text-xs font-bold text-neutral-500 dark:text-slate-400 uppercase tracking-wider">
                     {isFr ? "Chargement du document…" : "Loading document…"}
@@ -287,56 +302,56 @@ export default function AgendaPdfViewer({
               ) : (
                 <iframe
                   src={`${resolvedUrl}#page=${activePage}&zoom=${zoomLevel}&toolbar=0&navpanes=0&scrollbar=1`}
-                  className="w-full h-[480px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800"
+                  className="w-full h-[420px] xs:h-[500px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 transition-all duration-300"
                   title={`${year} Brochure Document`}
                 />
               )}
             </div>
 
             {/* Bottom Controls Bar */}
-            <div className="bg-white dark:bg-[#131b2e] p-3 rounded-2xl border border-neutral-200/90 dark:border-[#233049] shadow-2xs flex flex-wrap items-center justify-between gap-3">
+            <div className="bg-white dark:bg-[#131b2e] p-2.5 sm:p-3 rounded-2xl border border-neutral-200/90 dark:border-[#233049] shadow-2xs flex flex-wrap items-center justify-between gap-2.5">
               {/* Page Control */}
-              <div className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 rounded-xl px-3 py-1.5 flex items-center gap-3 text-xs font-mono font-extrabold text-neutral-800 dark:text-white">
+              <div className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 rounded-xl px-2.5 py-1.5 flex items-center gap-2 sm:gap-3 text-xs font-mono font-extrabold text-neutral-800 dark:text-white">
                 <button
                   onClick={handlePrevPage}
                   disabled={activePage <= 1}
-                  className="w-6 h-6 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all"
+                  className="w-7 h-7 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all text-sm font-black"
                 >
                   ‹
                 </button>
-                <span>
+                <span className="text-[11px] sm:text-xs">
                   {activePage} / {resolvedPages}
                 </span>
                 <button
                   onClick={handleNextPage}
                   disabled={activePage >= resolvedPages}
-                  className="w-6 h-6 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all"
+                  className="w-7 h-7 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all text-sm font-black"
                 >
                   ›
                 </button>
               </div>
 
               {/* Zoom Controls */}
-              <div className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 rounded-xl px-3 py-1.5 flex items-center gap-3 text-xs font-mono font-extrabold text-neutral-800 dark:text-white">
+              <div className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 rounded-xl px-2.5 py-1.5 flex items-center gap-2 sm:gap-3 text-xs font-mono font-extrabold text-neutral-800 dark:text-white">
                 <button
                   onClick={handleZoomOut}
                   disabled={zoomLevel <= 50}
-                  className="w-6 h-6 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all"
+                  className="w-7 h-7 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all text-sm font-black"
                 >
                   −
                 </button>
-                <span className="min-w-[40px] text-center">{zoomLevel}%</span>
+                <span className="min-w-[36px] sm:min-w-[40px] text-center text-[11px] sm:text-xs">{zoomLevel}%</span>
                 <button
                   onClick={handleZoomIn}
                   disabled={zoomLevel >= 200}
-                  className="w-6 h-6 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all"
+                  className="w-7 h-7 rounded flex items-center justify-center text-neutral-700 dark:text-slate-200 hover:bg-neutral-200 dark:hover:bg-slate-800 disabled:opacity-30 cursor-pointer transition-all text-sm font-black"
                 >
                   +
                 </button>
               </div>
 
               {/* Search Control */}
-              <div className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 rounded-xl px-3 py-1 flex items-center gap-2 text-xs font-medium text-neutral-600 dark:text-slate-300 flex-grow max-w-[240px]">
+              <div className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 rounded-xl px-3 py-1 flex items-center gap-2 text-xs font-medium text-neutral-600 dark:text-slate-300 flex-grow max-w-full xs:max-w-[200px] sm:max-w-[240px]">
                 <svg className="w-3.5 h-3.5 text-neutral-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <circle cx="11" cy="11" r="8" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35" />
@@ -354,12 +369,12 @@ export default function AgendaPdfViewer({
               <button
                 onClick={handleFullscreen}
                 type="button"
-                className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 hover:bg-neutral-100 dark:hover:bg-slate-800 rounded-xl px-3 py-1.5 flex items-center gap-2 text-xs font-extrabold uppercase text-neutral-800 dark:text-white transition-all cursor-pointer"
+                className="bg-neutral-50 dark:bg-slate-900 border border-neutral-200 dark:border-slate-700 hover:bg-neutral-100 dark:hover:bg-slate-800 rounded-xl px-3 py-2 flex items-center gap-2 text-xs font-extrabold uppercase text-neutral-800 dark:text-white transition-all cursor-pointer"
               >
                 <svg className="w-4 h-4 text-neutral-700 dark:text-slate-300 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                 </svg>
-                <span>Fullscreen</span>
+                <span className="hidden xs:inline">Fullscreen</span>
               </button>
             </div>
           </div>
