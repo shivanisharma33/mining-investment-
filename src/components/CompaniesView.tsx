@@ -156,31 +156,32 @@ export default function CompaniesView({
       </div>
 
       {/* ════════ FULLY VISIBLE TABLE (NO SLIDER) ════════ */}
-      <div className="w-full bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-xl overflow-x-auto">
-        <table className="w-full text-left border-collapse min-w-[640px] sm:min-w-full table-fixed">
+      {/* ════════ DIRECTORY TABLE ════════ */}
+      <div className="w-full bg-white dark:bg-[#18181b] rounded-2xl overflow-hidden shadow-xl border border-neutral-200/90 dark:border-zinc-800 overflow-x-auto">
+        <table className="w-full text-left border-collapse min-w-[1100px]">
           <thead>
             <tr className="bg-[#0F1117] text-white text-[11px] sm:text-xs uppercase font-black tracking-widest border-b border-neutral-800 relative">
-              <th className="py-4 px-3 sm:px-6 w-[34%] sm:w-[32%] text-neutral-200">
+              <th className="py-4 px-4 sm:px-6 min-w-[220px] text-neutral-200">
                 {t("co-col-name", "Company Name")}
               </th>
-              <th className="py-4 px-2 sm:px-4 w-[20%] text-neutral-200">
+              <th className="py-4 px-3 sm:px-4 min-w-[130px] text-neutral-200">
                 {t("co-col-ticker", "Ticker")}
               </th>
-              <th className="py-4 px-2 sm:px-4 w-[14%] text-neutral-200">
+              <th className="py-4 px-3 sm:px-4 min-w-[120px] text-neutral-200">
                 {t("co-col-type", "Type")}
               </th>
-              <th className="py-4 px-2 sm:px-4 w-[16%] text-neutral-200">
+              <th className="py-4 px-3 sm:px-4 min-w-[140px] text-neutral-200">
                 {t("co-col-location", "Location")}
               </th>
-              <th className="py-4 px-3 sm:px-6 w-[16%] text-neutral-200">
+              <th className="py-4 px-4 sm:px-6 min-w-[150px] text-neutral-200">
                 {t("co-col-commodities", "Commodities")}
               </th>
               {isApiYear && (
                 <>
-                  <th className="py-4 px-3 sm:px-6 w-[14%] text-neutral-200">
+                  <th className="py-4 px-4 sm:px-6 min-w-[170px] text-neutral-200">
                     {t("co-col-industry", "Industry")}
                   </th>
-                  <th className="py-4 px-3 sm:px-6 w-[18%] text-neutral-200">
+                  <th className="py-4 px-4 sm:px-6 min-w-[150px] text-neutral-200 text-center">
                     {t("co-col-website", "Website")}
                   </th>
                 </>
@@ -219,28 +220,28 @@ export default function CompaniesView({
                   className="even:bg-neutral-50/60 dark:even:bg-zinc-900/50 hover:bg-[#FCDDE1]/25 dark:hover:bg-[#C6112F]/15 transition-all duration-200 group border-b border-neutral-100 dark:border-zinc-800/80"
                 >
                   {/* Column 1: Company Logo + Name */}
-                  <td className="py-3.5 px-3 sm:px-6 align-middle">
-                    <div className="flex items-center gap-2.5 sm:gap-3.5">
+                  <td className="py-4 px-4 sm:px-6 align-middle">
+                    <div className="flex items-center gap-3 sm:gap-4">
                       <div className="shrink-0 transform group-hover:scale-105 transition-transform duration-200">
                         <CompanyLogoImage name={company.name} email={company.email} logo={company.logo} />
                       </div>
-                      <span className="text-neutral-900 dark:text-white font-extrabold text-xs sm:text-sm leading-snug group-hover:text-[#C6112F] dark:group-hover:text-[#ff4d6d] transition-colors break-words">
+                      <span className="text-neutral-900 dark:text-white font-extrabold text-xs sm:text-sm leading-snug group-hover:text-[#C6112F] dark:group-hover:text-[#ff4d6d] transition-colors">
                         {company.name}
                       </span>
                     </div>
                   </td>
 
                   {/* Column 2: Ticker */}
-                  <td className="py-3.5 px-2 sm:px-4 align-middle">
-                    <span className="inline-block bg-neutral-100/80 dark:bg-zinc-800/90 text-neutral-800 dark:text-zinc-200 border border-neutral-200/80 dark:border-zinc-700 px-2 py-1 rounded-lg font-mono text-[10px] sm:text-xs font-bold group-hover:border-[#C6112F]/40 group-hover:text-[#C6112F] dark:group-hover:text-[#ff4d6d] transition-colors break-words max-w-full">
+                  <td className="py-4 px-3 sm:px-4 align-middle">
+                    <span className="inline-block bg-neutral-100/80 dark:bg-zinc-800/90 text-neutral-800 dark:text-zinc-200 border border-neutral-200/80 dark:border-zinc-700 px-2.5 py-1 rounded-lg font-mono text-[10px] sm:text-xs font-bold group-hover:border-[#C6112F]/40 group-hover:text-[#C6112F] dark:group-hover:text-[#ff4d6d] transition-colors whitespace-nowrap">
                       {company.ticker}
                     </span>
                   </td>
 
                   {/* Column 3: Type */}
-                  <td className="py-3.5 px-2 sm:px-4 align-middle">
+                  <td className="py-4 px-3 sm:px-4 align-middle">
                     <span
-                      className={`inline-block text-[9px] sm:text-[10px] font-black tracking-wider px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full uppercase break-words ${getTypeBadgeStyle(
+                      className={`inline-block text-[9px] sm:text-[10px] font-black tracking-wider px-2.5 py-1 rounded-full uppercase whitespace-nowrap ${getTypeBadgeStyle(
                         company.type
                       )}`}
                     >
@@ -249,9 +250,9 @@ export default function CompaniesView({
                   </td>
 
                   {/* Column 4: Location */}
-                  <td className="py-3.5 px-2 sm:px-4 align-middle text-neutral-700 dark:text-zinc-300 font-semibold text-xs leading-relaxed break-words">
-                    <div className="flex items-center gap-1">
-                      <svg className="w-3.5 h-3.5 text-neutral-400 dark:text-zinc-500 shrink-0 hidden sm:inline-block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <td className="py-4 px-3 sm:px-4 align-middle text-neutral-700 dark:text-zinc-300 font-semibold text-xs leading-relaxed whitespace-nowrap">
+                    <div className="flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5 text-neutral-400 dark:text-zinc-500 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <path d="M12 21s-6.5-5.3-6.5-10A6.5 6.5 0 0 1 12 4.5 6.5 6.5 0 0 1 18.5 11c0 4.7-6.5 10-6.5 10z" />
                         <circle cx="12" cy="11" r="2" />
                       </svg>
@@ -260,7 +261,7 @@ export default function CompaniesView({
                   </td>
 
                   {/* Column 5: Commodities */}
-                  <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-800 dark:text-zinc-200 font-bold text-xs leading-relaxed break-words">
+                  <td className="py-4 px-4 sm:px-6 align-middle text-neutral-800 dark:text-zinc-200 font-bold text-xs leading-relaxed">
                     <div className="flex flex-wrap gap-1">
                       {company.commodities.split(",").map((comm, cIdx) => (
                         <span
@@ -274,19 +275,19 @@ export default function CompaniesView({
                   </td>
                   {isApiYear && (
                     <>
-                      <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-700 dark:text-zinc-300 text-xs leading-relaxed break-words">
+                      <td className="py-4 px-4 sm:px-6 align-middle text-neutral-700 dark:text-zinc-300 text-xs font-semibold leading-normal">
                         {company.industry || "—"}
                       </td>
-                      <td className="py-3.5 px-3 sm:px-6 align-middle text-neutral-700 dark:text-zinc-300 text-xs leading-relaxed break-words">
+                      <td className="py-4 px-4 sm:px-6 align-middle text-center whitespace-nowrap">
                         {company.website ? (
                           <a
                             href={company.website.startsWith("http") ? company.website : `https://${company.website}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-1.5 bg-[#C6112F] hover:bg-[#a80d26] text-white text-[11px] sm:text-xs font-extrabold px-3 py-1.5 rounded-lg transition-all shadow-2xs hover:shadow-md hover:-translate-y-0.5 whitespace-nowrap"
+                            className="inline-flex items-center justify-center gap-1.5 bg-[#C6112F] hover:bg-[#a80d26] active:scale-95 text-white text-xs font-extrabold px-3.5 py-2 rounded-xl transition-all shadow-md hover:shadow-lg whitespace-nowrap shrink-0 min-w-max cursor-pointer"
                           >
-                            <span>Visit Website</span>
-                            <svg className="w-3 h-3 text-white shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                            <span className="whitespace-nowrap inline-block shrink-0">Visit Website</span>
+                            <svg className="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                             </svg>
                           </a>
@@ -312,8 +313,8 @@ export default function CompaniesView({
                           ? "Aucune société ne correspond à votre recherche. Essayez de réinitialiser le filtre."
                           : "No companies match your search. Try resetting your search filter."
                         : lang === "FR"
-                        ? `Aucune société n'a encore été publiée pour l'édition ${selectedYear}.`
-                        : `No companies have been published for the ${selectedYear} edition yet.`}
+                          ? `Aucune société n'a encore été publiée pour l'édition ${selectedYear}.`
+                          : `No companies have been published for the ${selectedYear} edition yet.`}
                     </span>
                   </div>
                 </td>

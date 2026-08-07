@@ -21,6 +21,7 @@ interface AgendaPdfViewerProps {
   remote?: boolean;
   eventDates?: string;
   venue?: string;
+  hideHeader?: boolean;
 }
 
 /** Approximate page count read straight from the PDF's object structure. */
@@ -55,6 +56,7 @@ export default function AgendaPdfViewer({
   remote = false,
   eventDates,
   venue,
+  hideHeader = true,
 }: AgendaPdfViewerProps) {
   const { lang } = useLanguage();
   const isFr = lang === "FR";
@@ -157,15 +159,19 @@ export default function AgendaPdfViewer({
     <div ref={containerRef} className="w-full text-left">
       {/* ════════ HERO & STATS HEADER MATCHING SCREENSHOT 1 ════════ */}
       <div className="mb-8">
-        <span className="text-[#C6112F] text-xs font-black tracking-[0.2em] uppercase block mb-1">
-          {isFr ? `ÉDITION ${year}` : `${year} EDITION`}
-        </span>
-        <h2 className="text-4xl sm:text-5xl font-black text-[#101828] dark:text-white tracking-tight mb-3">
-          {title}
-        </h2>
-        <p className="text-neutral-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-3xl mb-8 font-normal">
-          {description}
-        </p>
+        {!hideHeader && (
+          <>
+            <span className="text-[#C6112F] text-xs font-black tracking-[0.2em] uppercase block mb-1">
+              {isFr ? `ÉDITION ${year}` : `${year} EDITION`}
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-black text-[#101828] dark:text-white tracking-tight mb-3">
+              {title}
+            </h2>
+            <p className="text-neutral-500 dark:text-slate-400 text-sm sm:text-base leading-relaxed max-w-3xl mb-8 font-normal">
+              {description}
+            </p>
+          </>
+        )}
 
         {/* 3 Info Stat Cards Row */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-2xl p-5 md:p-6 shadow-2xs divide-y md:divide-y-0 md:divide-x divide-neutral-200 dark:divide-[#233049] transition-colors duration-300">
@@ -255,11 +261,10 @@ export default function AgendaPdfViewer({
                 <button
                   key={pgNum}
                   onClick={() => setCurrentPage(pgNum)}
-                  className={`flex flex-col items-center gap-1.5 p-2 sm:p-2.5 rounded-2xl border transition-all cursor-pointer shrink-0 ${
-                    isSelected
+                  className={`flex flex-col items-center gap-1.5 p-2 sm:p-2.5 rounded-2xl border transition-all cursor-pointer shrink-0 ${isSelected
                       ? "border-[#C6112F] bg-rose-50/50 dark:bg-rose-950/20 shadow-md ring-2 ring-[#C6112F]/20 scale-[1.02]"
                       : "border-neutral-200 dark:border-slate-800 hover:border-neutral-300 dark:hover:border-slate-700 bg-neutral-50 dark:bg-slate-900 hover:scale-[1.01]"
-                  }`}
+                    }`}
                 >
                   {/* Miniature PDF Page Live Preview Container */}
                   <div className="w-[85px] sm:w-[105px] h-[110px] sm:h-[136px] bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-neutral-300 dark:border-slate-700 relative shadow-2xs">
@@ -401,11 +406,10 @@ export default function AgendaPdfViewer({
           download={downloadName}
           type="application/pdf"
           aria-disabled={!resolvedUrl}
-          className={`w-full py-4 px-6 bg-[#C6112F] text-white font-extrabold text-sm uppercase tracking-wider rounded-2xl shadow-md shadow-[#C6112F]/20 transition-all duration-300 flex items-center justify-center gap-3 text-center ${
-            resolvedUrl
+          className={`w-full py-4 px-6 bg-[#C6112F] text-white font-extrabold text-sm uppercase tracking-wider rounded-2xl shadow-md shadow-[#C6112F]/20 transition-all duration-300 flex items-center justify-center gap-3 text-center ${resolvedUrl
               ? "hover:bg-[#a80e27] hover:shadow-lg hover:scale-[1.01] active:scale-[0.99]"
               : "opacity-60 pointer-events-none"
-          }`}
+            }`}
         >
           <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />

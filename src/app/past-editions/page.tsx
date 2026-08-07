@@ -199,57 +199,76 @@ export default function PastEditionsPage() {
               </div>
             </div>
 
-            {/* Year Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {filteredCards.map((card) => {
-                return (
-                  <Link
-                    key={card.year}
-                    href={`/past-editions/${card.year}`}
-                    className="group bg-white dark:bg-neutral-900 rounded-3xl border border-neutral-200/90 dark:border-neutral-800 overflow-hidden flex flex-col justify-between cursor-pointer transition-all duration-300 shadow-sm hover:shadow-2xl hover:border-[#C6112F] hover:-translate-y-1 relative"
-                  >
-                    {/* Top Photo */}
-                    <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+            {/* ════════════ 2027 FEATURED HERO CARD (YouTube UI Style) ════════════ */}
+            {(selectedYear === "ALL" || selectedYear === "2027") && (
+              <div className="mb-12">
+                <Link
+                  href="/past-editions/2027"
+                  className="group relative block bg-[#0f1117] rounded-3xl border border-neutral-800 overflow-hidden shadow-2xl transition-all duration-500 hover:border-[#C6112F] hover:shadow-2xl hover:shadow-[#C6112F]/25"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+                    {/* Left Widescreen Media Container */}
+                    <div className="lg:col-span-7 relative min-h-[300px] sm:min-h-[380px] lg:min-h-[440px] overflow-hidden bg-neutral-950">
                       <Image
-                        src={card.image}
-                        alt={card.year.toString()}
+                        src="/news/edition_2026.png"
+                        alt="Upcoming Edition 2027"
                         fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 1024px) 100vw, 60vw"
+                        className="object-cover object-center transition-transform duration-700 group-hover:scale-105 group-hover:brightness-110"
+                        priority
                       />
+                      {/* Dark Overlay Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0f1117] via-[#0f1117]/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#0f1117]" />
+
+                      {/* Featured Badge Top Left */}
+                      <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/80 border border-white/20 backdrop-blur-md shadow-lg">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse" />
+                        <span className="text-[11px] font-black text-white uppercase tracking-widest">
+                          {isFr ? "ÉDITION À VENIR 2027" : "UPCOMING EDITION 2027"}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Card Content Body */}
-                    <div className="p-6 flex flex-col justify-between flex-grow">
+                    {/* Right Info Panel (YouTube Info Style) */}
+                    <div className="lg:col-span-5 p-6 sm:p-8 md:p-10 flex flex-col justify-between text-left relative z-20 bg-[#0f1117]">
                       <div>
-                        {/* Year */}
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-3xl font-black text-neutral-900 dark:text-white tracking-tight">
-                            {card.year}
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <span className="px-3 py-1 rounded-md bg-[#C6112F]/20 text-[#ff4d6d] text-[11px] font-black uppercase tracking-widest border border-[#C6112F]/30">
+                            2027 PREVIEW
                           </span>
-                          <span className="text-xs font-bold text-[#C6112F] uppercase tracking-wider">
-                            Edition {card.year}
+                          <span className="text-xs font-extrabold text-neutral-400 uppercase tracking-wider">
+                            Québec City, Canada
                           </span>
                         </div>
 
-                        {/* Title */}
-                        <h3 className="text-base sm:text-lg font-bold text-[#C6112F] leading-snug mb-2">
-                          {isFr ? card.titleFr : card.title}
+                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-3 group-hover:text-[#ff4d6d] transition-colors">
+                          {isFr ? "Édition à venir 2027" : "Upcoming Edition 2027"}
                         </h3>
 
-                        {/* Description */}
-                        <p className="text-neutral-600 dark:text-neutral-300 text-xs sm:text-sm font-medium leading-relaxed mb-6">
-                          {isFr ? card.descFr : card.desc}
+                        <p className="text-neutral-300 text-xs sm:text-sm md:text-base font-medium leading-relaxed mb-6">
+                          {isFr
+                            ? "La première conférence mondiale d'investissement minier au Canada à Québec."
+                            : "Canada's Tier 1 Global Mining Investment Conference in Quebec City."}
                         </p>
+
+                        <div className="flex flex-wrap items-center gap-4 text-xs font-extrabold text-neutral-300 mb-6 border-y border-neutral-800 py-3 uppercase tracking-wider">
+                          <div className="flex items-center gap-1.5">
+                            <span>📅</span>
+                            <span>June 1 – 4, 2027</span>
+                          </div>
+                          <div className="flex items-center gap-1.5">
+                            <span>📍</span>
+                            <span>Quebec City</span>
+                          </div>
+                        </div>
                       </div>
 
-                      {/* View Archive Button */}
-                      <div className="w-full pt-2">
-                        <div className="w-full rounded-xl py-3 px-4 text-xs font-extrabold uppercase tracking-wider inline-flex items-center justify-between transition-all duration-200 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white group-hover:border-[#C6112F] shadow-xs">
-                          <span>{isFr ? "VOIR L'ARCHIVE" : "EXPLORE RECAP"}</span>
+                      <div className="pt-2">
+                        <div className="w-full rounded-xl py-3.5 px-6 text-xs sm:text-sm font-extrabold uppercase tracking-wider inline-flex items-center justify-between transition-all duration-300 bg-[#C6112F] text-white group-hover:bg-[#a80e27] shadow-lg shadow-[#C6112F]/30">
+                          <span>{isFr ? "VOIR L'ÉDITION 2027" : "EXPLORE 2027 EDITION"}</span>
                           <svg
-                            className="w-4 h-4 fill-none stroke-current transform group-hover:translate-x-1 transition-transform"
-                            strokeWidth="2.2"
+                            className="w-5 h-5 fill-none stroke-current transform group-hover:translate-x-1.5 transition-transform"
+                            strokeWidth="2.5"
                             viewBox="0 0 24 24"
                           >
                             <path
@@ -261,9 +280,78 @@ export default function PastEditionsPage() {
                         </div>
                       </div>
                     </div>
-                  </Link>
-                );
-              })}
+                  </div>
+                </Link>
+              </div>
+            )}
+
+            {/* Year Cards Grid for Other Editions (2026, 2025, 2024, 2023) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {filteredCards
+                .filter((card) => card.year !== 2027 || selectedYear === "2027")
+                .map((card) => {
+                  return (
+                    <Link
+                      key={card.year}
+                      href={`/past-editions/${card.year}`}
+                      className="group bg-white dark:bg-neutral-900 rounded-3xl border border-neutral-200/90 dark:border-neutral-800 overflow-hidden flex flex-col justify-between cursor-pointer transition-all duration-300 shadow-sm hover:shadow-2xl hover:border-[#C6112F] hover:-translate-y-1 relative"
+                    >
+                      {/* Top Photo */}
+                      <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+                        <Image
+                          src={card.image}
+                          alt={card.year.toString()}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+
+                      {/* Card Content Body */}
+                      <div className="p-6 flex flex-col justify-between flex-grow">
+                        <div>
+                          {/* Year */}
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-3xl font-black text-neutral-900 dark:text-white tracking-tight">
+                              {card.year}
+                            </span>
+                            <span className="text-xs font-bold text-[#C6112F] uppercase tracking-wider">
+                              Edition {card.year}
+                            </span>
+                          </div>
+
+                          {/* Title */}
+                          <h3 className="text-base sm:text-lg font-bold text-[#C6112F] leading-snug mb-2">
+                            {isFr ? card.titleFr : card.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-neutral-600 dark:text-neutral-300 text-xs sm:text-sm font-medium leading-relaxed mb-6">
+                            {isFr ? card.descFr : card.desc}
+                          </p>
+                        </div>
+
+                        {/* View Archive Button */}
+                        <div className="w-full pt-2">
+                          <div className="w-full rounded-xl py-3 px-4 text-xs font-extrabold uppercase tracking-wider inline-flex items-center justify-between transition-all duration-200 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white group-hover:border-[#C6112F] shadow-xs">
+                            <span>{isFr ? "VOIR L'ARCHIVE" : "EXPLORE RECAP"}</span>
+                            <svg
+                              className="w-4 h-4 fill-none stroke-current transform group-hover:translate-x-1 transition-transform"
+                              strokeWidth="2.2"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
             </div>
 
             {/* Featured Snapshot Report Card (Requirement 30) */}
