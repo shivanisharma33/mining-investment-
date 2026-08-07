@@ -543,47 +543,9 @@ export default function PastEdition2027Page() {
                       </div>
                     </div>
 
-                    <div className="py-6 border-y border-neutral-200/90 dark:border-zinc-800 grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8 text-left">
-                      <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80 dark:sm:border-zinc-800">
-                        <span className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight leading-none mb-2">
-                          300+
-                        </span>
-                        <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
-                          {isFr ? "ENTREPRISES PARTICIPANTES" : "PARTICIPATING COMPANIES"}
-                        </span>
-                      </div>
-
-                      <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80 dark:sm:border-zinc-800">
-                        <span className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight leading-none mb-2">
-                          50+
-                        </span>
-                        <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
-                          {isFr ? "CONFÉRENCIERS" : "SPEAKERS"}
-                        </span>
-                      </div>
-
-                      <div className="flex flex-col items-start pr-4 sm:border-r sm:border-neutral-300/80 dark:sm:border-zinc-800">
-                        <span className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight leading-none mb-2">
-                          50+
-                        </span>
-                        <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
-                          {isFr ? "PAYS" : "COUNTRIES"}
-                        </span>
-                      </div>
-
-                      <div className="flex flex-col items-start">
-                        <span className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight leading-none mb-2">
-                          500+
-                        </span>
-                        <span className="text-[#C6112F] text-[10px] sm:text-xs font-extrabold tracking-wider uppercase">
-                          {isFr ? "PARTICIPANTS" : "ATTENDEES"}
-                        </span>
-                      </div>
-                    </div>
-
                     <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border-2 border-[#C6112F]/40 shadow-sm mb-8 bg-neutral-900">
                       <img
-                        src="/news/edition_2026.png"
+                        src="/Mining%20Investment%20Post%203.avif"
                         alt="Québec City Event 2027"
                         className="w-full h-full object-cover"
                       />
