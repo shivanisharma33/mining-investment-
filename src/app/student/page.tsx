@@ -135,50 +135,71 @@ export default function StudentPage() {
               <span className="text-white font-semibold">{t("student-breadcrumb-prog", "Student Sponsorship")}</span>
             </div>
 
-            {/* Badge & Title */}
-            <div className="max-w-4xl">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#C6112F]/15 border border-[#C6112F]/30 text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
-                <span>{t("student-tag-badge", "Canada's Premier Student Mining Sponsorship")}</span>
+            {/* 2-Column Hero Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Column - Content */}
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#C6112F]/15 border border-[#C6112F]/30 text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
+                  <span>{t("student-tag-badge", "Canada's Premier Student Mining Sponsorship")}</span>
+                </div>
+
+                {/* Title */}
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] mb-6">
+                  {t("student-hero-title-1", "THE Student")}{" "}
+                  <span className="text-[#C6112F]">
+                    {t("student-hero-title-2", "Sponsorship Program")}
+                  </span>
+                </h1>
+
+                <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-8">
+                  {t(
+                    "student-hero-subtitle",
+                    "Empowering the next generation of geology, finance, and engineering leaders with fully funded access to Canada's Tier 1 global mining investment event."
+                  )}
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/student/apply"
+                    className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3"
+                  >
+                    <span>{t("student-cta-apply", "Apply For Class of 2026")}</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </Link>
+                  <a
+                    href="https://www.themininginvestmentevent.com/s/LetterfromOurCEO-FINAL-2025-1-FR-6j3d.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-7 py-4 rounded-xl border border-neutral-700 hover:border-white text-neutral-200 hover:text-white text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm"
+                  >
+                    <span>{t("student-cta-letter", "Letter from our CEO")}</span>
+                    <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                  </a>
+                </div>
               </div>
 
-              {/* Title with solid brand red on "Sponsorship Program" */}
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] mb-6">
-                {t("student-hero-title-1", "THE Student")}{" "}
-                <span className="text-[#C6112F]">
-                  {t("student-hero-title-2", "Sponsorship Program")}
-                </span>
-              </h1>
-
-              <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-8">
-                {t(
-                  "student-hero-subtitle",
-                  "Empowering the next generation of geology, finance, and engineering leaders with fully funded access to Canada's Tier 1 global mining investment event."
-                )}
-              </p>
-
-              {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  href="/student/apply"
-                  className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3"
-                >
-                  <span>{t("student-cta-apply", "Apply For Class of 2026")}</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-                <a
-                  href="https://www.themininginvestmentevent.com/s/LetterfromOurCEO-FINAL-2025-1-FR-6j3d.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-7 py-4 rounded-xl border border-neutral-700 hover:border-white text-neutral-200 hover:text-white text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm"
-                >
-                  <span>{t("student-cta-letter", "Letter from our CEO")}</span>
-                  <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                  </svg>
-                </a>
+              {/* Right Column - Hero Image */}
+              <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-3xl overflow-hidden border-2 border-[#C6112F]/40 shadow-2xl shadow-[#C6112F]/20 group">
+                  <img
+                    src="/MINING%20INVESTMENT%20EVENT%202026_DAY%204_STUDENTS-25.jpg"
+                    alt="Mining Investment Event Student Sponsorship Delegation"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-bold">
+                    <span className="bg-[#C6112F] text-white text-[10px] uppercase font-black tracking-widest px-3 py-1 rounded-full shadow-md">
+                      STUDENT DELEGATION
+                    </span>
+                    <span className="text-neutral-300 font-semibold">Quebec City</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

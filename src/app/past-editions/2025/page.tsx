@@ -12,7 +12,7 @@ import SponsorsView from "@/components/SponsorsView";
 import CompaniesView from "@/components/CompaniesView";
 import { useLanguage } from "@/context/LanguageContext";
 
-const years = [2026, 2025, 2024, 2023];
+const years = [2027, 2026, 2025, 2024, 2023];
 
 const sidebarTabs = [
   {
