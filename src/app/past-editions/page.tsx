@@ -7,7 +7,6 @@ import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
-import QuickNavGrid from "@/components/QuickNavGrid";
 
 const editionCards = [
   {
@@ -167,11 +166,6 @@ export default function PastEditionsPage() {
           </div>
         </section>
 
-        {/* Quick 8-Button Navigation Grid */}
-        <section className="pt-8 pb-4 bg-white dark:bg-[#0c0d12]">
-          <QuickNavGrid />
-        </section>
-
         {/* Editions Grid & Year Navigation Buttons */}
         <section className="pt-10 pb-16 bg-white dark:bg-[#0c0d12]">
           <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-12">
@@ -220,6 +214,7 @@ export default function PastEditionsPage() {
                         src={card.image}
                         alt={card.year.toString()}
                         fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>

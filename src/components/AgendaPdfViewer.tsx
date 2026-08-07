@@ -263,11 +263,17 @@ export default function AgendaPdfViewer({
                 >
                   {/* Miniature PDF Page Live Preview Container */}
                   <div className="w-[85px] sm:w-[105px] h-[110px] sm:h-[136px] bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-neutral-300 dark:border-slate-700 relative shadow-2xs">
-                    <iframe
-                      src={`${resolvedUrl}#page=${pgNum}&toolbar=0&navpanes=0&scrollbar=0`}
+                    <object
+                      data={`${resolvedUrl}#page=${pgNum}&toolbar=0&navpanes=0&view=FitH`}
+                      type="application/pdf"
                       className="w-[315px] h-[408px] border-none pointer-events-none origin-top-left transform scale-[0.27] sm:scale-[0.333]"
-                      title={`Page ${pgNum} preview`}
-                    />
+                    >
+                      <iframe
+                        src={`${resolvedUrl}#page=${pgNum}&toolbar=0&navpanes=0&scrollbar=0`}
+                        className="w-[315px] h-[408px] border-none pointer-events-none origin-top-left transform scale-[0.27] sm:scale-[0.333]"
+                        title={`Page ${pgNum} preview`}
+                      />
+                    </object>
                   </div>
                   <span className={`text-[11px] sm:text-xs font-black ${isSelected ? "text-[#C6112F]" : "text-neutral-500 dark:text-slate-400"}`}>
                     {pgNum}
@@ -300,11 +306,17 @@ export default function AgendaPdfViewer({
                   </p>
                 </div>
               ) : (
-                <iframe
-                  src={`${resolvedUrl}#page=${activePage}&zoom=${zoomLevel}&toolbar=0&navpanes=0&scrollbar=1`}
-                  className="w-full h-[420px] xs:h-[500px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 transition-all duration-300"
-                  title={`${year} Brochure Document`}
-                />
+                <object
+                  data={`${resolvedUrl}#page=${activePage}&zoom=${zoomLevel}&toolbar=0&navpanes=0`}
+                  type="application/pdf"
+                  className="w-full h-[450px] xs:h-[540px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 transition-all duration-300"
+                >
+                  <iframe
+                    src={`${resolvedUrl}#page=${activePage}&zoom=${zoomLevel}&toolbar=0&navpanes=0&scrollbar=1`}
+                    className="w-full h-full rounded-xl border-none"
+                    title={`${year} Brochure Document`}
+                  />
+                </object>
               )}
             </div>
 

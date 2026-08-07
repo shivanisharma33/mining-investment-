@@ -64,7 +64,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans bg-white dark:bg-[#09090b] text-neutral-900 dark:text-white transition-colors duration-300">
+      <body
+        className="min-h-full flex flex-col font-sans bg-white dark:bg-[#09090b] text-neutral-900 dark:text-white transition-colors duration-300"
+        suppressHydrationWarning
+      >
         <ThemeProvider>
           <LanguageProvider>
             <ScrollToTop />
