@@ -149,8 +149,8 @@ export default function CompanyArticlesShelfSection({
                   ? "Essayez de modifier votre recherche."
                   : "Try adjusting your search terms."
                 : isFr
-                ? "De nouvelles publications d'entreprises seront bientôt disponibles."
-                : "New company publications will be available here soon."}
+                  ? "De nouvelles publications d'entreprises seront bientôt disponibles."
+                  : "New company publications will be available here soon."}
             </p>
           </div>
         ) : (

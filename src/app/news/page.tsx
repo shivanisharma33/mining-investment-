@@ -325,7 +325,7 @@ function BannerSliderSection() {
             decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10 text-left">
-            <span className="text-[#C6112F] bg-white/90 dark:bg-[#131b2e]/90 text-[9px] sm:text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-2 shadow-2xs">
+            <span className="text-white bg-neutral-900/80 dark:bg-slate-800/90 text-[9px] sm:text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-2 shadow-2xs backdrop-blur-sm border border-white/10">
               {lang === "FR" ? "ÉVÉNEMENT EN VEDETTE" : "FEATURED EVENT"}
             </span>
             <h3 className="text-xl sm:text-3xl font-extrabold text-white leading-snug drop-shadow-md">
@@ -1205,9 +1205,6 @@ function NewsSection({
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
             />
-            <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-[0.18em] uppercase px-3 py-1 rounded-full shadow-md">
-              {getItemCategory(featured)}
-            </span>
             {featured.sponsored && (
               <span className="absolute top-3 right-3 bg-neutral-900/80 text-white text-[9px] font-black tracking-wider uppercase px-2.5 py-1 rounded-full backdrop-blur-sm">
                 {lang === "FR" ? "COMMANDITÉ" : "SPONSORED"}
@@ -1263,9 +1260,6 @@ function NewsSection({
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
                 />
-                <span className="absolute top-2 left-2 bg-[#C6112F]/90 text-white text-[9px] font-black tracking-wider uppercase px-2 py-0.5 rounded-full">
-                  {getItemCategory(item)}
-                </span>
                 {item.sponsored && (
                   <span className="absolute top-2 right-2 bg-neutral-900/70 text-white text-[8px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded-full">
                     AD
@@ -1310,840 +1304,7 @@ function NewsSection({
   );
 }
 
-function EventByTheNumbers() {
-  const { lang, t } = useLanguage();
-  const [selectedYearIndex, setSelectedYearIndex] = useState<number>(4); // default 2026
-  const [activeLegend, setActiveLegend] = useState<{
-    name: string;
-    percent: string;
-    color: string;
-    desc: string;
-  } | null>(null);
 
-  const [flipDegree, setFlipDegree] = useState<number>(0);
-  const [hasFlippedOnScroll, setHasFlippedOnScroll] = useState<boolean>(false);
-  const donutRef = useRef<HTMLDivElement>(null);
-
-  const legendItems = lang === "FR" ? [
-    { name: "Family Offices", percent: "20%", color: "#C6112F", desc: "Partenaires en capital-investissement à long terme" },
-    { name: "Investisseurs HNW", percent: "25%", color: "#6366f1", desc: "Investisseurs accrédités à valeur nette élevée" },
-    { name: "Investisseurs Individuels", percent: "10%", color: "#06b6d4", desc: "Liquidité et acheteurs du marché public" },
-    { name: "Fonds Ressources", percent: "25%", color: "#f59e0b", desc: "Fonds institutionnels miniers et de transition" },
-    { name: "Acheteurs Buy-Side", percent: "20%", color: "#374151", desc: "Gestionnaires d'actifs et développement d'affaires" },
-  ] : [
-    { name: "Family Offices", percent: "20%", color: "#C6112F", desc: "Long-term private equity partners" },
-    { name: "HNW Investors", percent: "25%", color: "#6366f1", desc: "Accredited high net worth investors" },
-    { name: "Retail Investors", percent: "10%", color: "#06b6d4", desc: "Public market liquidity & market buyers" },
-    { name: "Resource Funds", percent: "25%", color: "#f59e0b", desc: "Mining & energy transition institutional funds" },
-    { name: "Buy Side", percent: "20%", color: "#374151", desc: "Asset managers & corporate development" },
-  ];
-
-  const currentDisplayLegend = activeLegend || legendItems[0];
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasFlippedOnScroll) {
-            setHasFlippedOnScroll(true);
-            // Trigger 360-degree 3D flip animation when scrolling into section
-            setFlipDegree((prev) => prev + 360);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (donutRef.current) {
-      observer.observe(donutRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasFlippedOnScroll]);
-
-  const Y_AXIS_MAX = 1450;
-  const yearlyData = [
-    { year: 2022, total: 250, investors: 61, delegates: 189, heightPct: Math.round((250 / Y_AXIS_MAX) * 100), yoy: "+0%" },
-    { year: 2023, total: 600, investors: 200, delegates: 400, heightPct: Math.round((600 / Y_AXIS_MAX) * 100), yoy: "+140%" },
-    { year: 2024, total: 800, investors: 260, delegates: 540, heightPct: Math.round((800 / Y_AXIS_MAX) * 100), yoy: "+33%" },
-    { year: 2025, total: 1045, investors: 300, delegates: 745, heightPct: Math.round((1045 / Y_AXIS_MAX) * 100), yoy: "+31%" },
-    { year: 2026, total: 1400, investors: 350, delegates: 1050, heightPct: Math.round((1400 / Y_AXIS_MAX) * 100), yoy: "+38%", highlight: "38% Y-O-Y" },
-  ];
-
-  const selectedYear = yearlyData[selectedYearIndex];
-
-  return (
-    <div className="w-full flex flex-col items-center">
-      {/* Header matching exact design */}
-      <span className="text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-[0.18em] uppercase text-center block mb-2">
-        {lang === "FR" ? "L'ÉVÉNEMENT 2026" : "THE EVENT 2026"}
-      </span>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] dark:text-white text-center mb-3 tracking-tight">
-        {lang === "FR" ? "L'Événement en Chiffres" : "The Event by the Numbers"}
-      </h2>
-      <div className="w-16 h-[3px] bg-[#C6112F] mx-auto rounded-full mb-4" />
-      <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm text-center font-medium max-w-xl mx-auto mb-10 leading-relaxed">
-        {lang === "FR"
-          ? "Une plateforme mondiale reliant investisseurs, entreprises et leaders qui façonnent l'avenir de l'investissement minier."
-          : "A global platform connecting investors, companies and leaders driving the future of mining and resource investment."}
-      </p>
-
-      {/* ════════ SINGLE 1-LINE HORIZONTAL STATS ROW (EQUAL WIDTH ALIGNED WITH LOWER SECTION) ════════ */}
-      <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 mb-12">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1.5 sm:gap-2 lg:gap-2.5">
-          {/* Card 1: Qualified Investors */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-user-salary text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
-            </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-            <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">350</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                {lang === "FR" ? (
-                  <>
-                    INVESTISSEURS<br />QUALIFIÉS
-                  </>
-                ) : (
-                  <>
-                    QUALIFIED<br />INVESTORS
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-
-          {/* Card 2: Companies Represented */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rs-building text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
-            </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-            <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">200+</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                {lang === "FR" ? (
-                  <>
-                    SOCIÉTÉS<br />REPRÉSENTÉES
-                  </>
-                ) : (
-                  <>
-                    COMPANIES<br />REPRESENTED
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-
-          {/* Card 3: 1x1 Meeting Issuers */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <img
-                src="/meeting-table.svg"
-                alt="1x1 Meeting"
-                className="w-4 h-4 object-contain dark:invert"
-              />
-            </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-            <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">143</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                {lang === "FR" ? (
-                  <>
-                    RENCONTRES<br />1-À-1 ÉMETTEURS
-                  </>
-                ) : (
-                  <>
-                    1X1 MEETING<br />ISSUERS
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-
-          {/* Card 4: Presentations */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-chart-user text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
-            </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-            <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">65</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                PRESENTATIONS
-              </span>
-            </div>
-          </div>
-
-          {/* Card 5: Panels & Keynotes */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rs-circle-microphone text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
-            </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-            <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">17</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                {lang === "FR" ? (
-                  <>
-                    PANELS ET<br />CONFÉRENCES
-                  </>
-                ) : (
-                  <>
-                    PANELS &<br />KEYNOTES
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-
-          {/* Card 6: Sponsors & Partners */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-handshake text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
-            </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-            <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">60+</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                {lang === "FR" ? (
-                  <>
-                    MÉDIAS<br />& PARTENAIRES
-                  </>
-                ) : (
-                  <>
-                    MEDIA &<br />PARTNERS
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-
-          {/* Card 7: 1x1 Meetings / 3 Days */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-coworking text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
-            </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-            <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">3,500</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                {lang === "FR" ? (
-                  <>
-                    RÉUNIONS 1-À-1 /<br />3 JOURS
-                  </>
-                ) : (
-                  <>
-                    1X1 MEETINGS /<br />3 DAYS
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Two-Column Lower Cards (Growth & Investor Profile) */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-        {/* Left Card: Growth Profile */}
-        <div className="bg-[#f0f2f5] border border-neutral-300/90 hover:border-[#C6112F]/40 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left transition-all duration-300 shadow-xs hover:shadow-md">
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-[#C6112F] font-bold text-xs tracking-widest uppercase block">
-                {lang === "FR" ? "CROISSANCE AU FIL DU TEMPS" : "GROWTH OVER TIME"}
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#C6112F]/10 text-[#C6112F] text-[10px] font-black uppercase tracking-wider animate-pulse">
-                {lang === "FR" ? "EXPANSION DE 5X" : "5X EXPANSION"}
-              </span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] mb-2">
-              {lang === "FR" ? "Profil de Croissance - 500%" : "Growth Profile - 500%"}
-            </h3>
-            <p className="text-neutral-600 text-xs sm:text-sm font-medium mb-4">
-              {lang === "FR"
-                ? "Croissance forte et constante des délégués et de la participation des investisseurs."
-                : "Strong and consistent growth in delegates and investor participation."}
-            </p>
-
-            {/* Interactive Year Selector Tabs */}
-            <div className="flex items-center gap-1.5 mb-6 overflow-x-auto pb-1">
-              {yearlyData.map((d, idx) => {
-                const isSelected = selectedYearIndex === idx;
-                return (
-                  <button
-                    key={d.year}
-                    onClick={() => setSelectedYearIndex(idx)}
-                    onMouseEnter={() => setSelectedYearIndex(idx)}
-                    className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${isSelected
-                      ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
-                      : "bg-white text-neutral-600 hover:bg-neutral-200 border border-neutral-200/80"
-                      }`}
-                  >
-                    {d.year}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Bar Chart Container with Y-Axis Gridlines */}
-          <div className="bg-white rounded-2xl border border-neutral-200/90 p-5 sm:p-6 shadow-2xs relative">
-            {/* Chart Legend & Selected Year Detail Banner */}
-            <div className="flex items-center justify-between text-xs font-semibold text-neutral-600 mb-5 flex-wrap gap-2">
-              <div className="flex items-center gap-4">
-                <span className="flex items-center gap-1.5 font-bold text-neutral-700">
-                  <span className="w-3 h-3 rounded-xs bg-gradient-to-t from-slate-400 to-slate-200 inline-block shadow-2xs border border-slate-300" />
-                  Delegates
-                </span>
-                <span className="flex items-center gap-1.5 font-bold text-[#C6112F]">
-                  <span className="w-3 h-3 rounded-xs bg-gradient-to-t from-[#C6112F] to-[#ff4d6d] inline-block shadow-2xs" />
-                  Investors
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2 bg-rose-50 border border-[#C6112F]/30 px-3 py-1 rounded-xl text-[11px] font-extrabold text-[#C6112F] shadow-2xs">
-                <span>{selectedYear.year}:</span>
-                <span>{selectedYear.total} Total</span>
-                <span className="text-neutral-300 font-normal">|</span>
-                <span>{selectedYear.investors} Investors</span>
-                <span className="bg-[#C6112F] text-white text-[9px] px-1.5 py-0.5 rounded-md ml-1 font-black shadow-xs">
-                  {selectedYear.yoy}
-                </span>
-              </div>
-            </div>
-
-            {/* Stacked Bars Container with Gridlines & Y-Axis */}
-            <div className="relative h-96 pt-6 pb-2 pl-8 pr-2 flex items-end justify-between gap-3 border-b border-neutral-200">
-              {/* Background Gridlines */}
-              <div className="absolute inset-0 pl-8 pr-2 pointer-events-none flex flex-col justify-between py-2">
-                {[1400, 1000, 600, 200, 0].map((val) => (
-                  <div key={val} className="w-full flex items-center gap-2">
-                    <span className="text-[9px] font-bold text-neutral-400 w-5 text-right shrink-0">
-                      {val}
-                    </span>
-                    <div className="w-full border-b border-dashed border-neutral-200/80" />
-                  </div>
-                ))}
-              </div>
-
-              {/* Interactive Stacked 3D Metallic Pillars */}
-              {yearlyData.map((d, idx) => {
-                const isSelected = selectedYearIndex === idx;
-                return (
-                  <div
-                    key={d.year}
-                    onClick={() => setSelectedYearIndex(idx)}
-                    onMouseEnter={() => setSelectedYearIndex(idx)}
-                    className="flex flex-col items-center flex-1 h-full justify-end group cursor-pointer relative z-10"
-                  >
-                    {/* Y-O-Y Badge */}
-                    {d.highlight && (
-                      <span className="text-[#C6112F] text-[9px] font-black bg-rose-50 border border-[#C6112F]/40 px-2 py-0.5 rounded-full mb-1 shadow-xs animate-bounce">
-                        {d.highlight}
-                      </span>
-                    )}
-
-                    {/* Number on top */}
-                    <span
-                      className={`text-[10px] font-bold mb-1 transition-all duration-300 ${isSelected ? "text-[#C6112F] font-black scale-110" : "text-neutral-500"
-                        }`}
-                    >
-                      {d.total}
-                    </span>
-
-                    {/* 3D Metallic Glass Pillar Container */}
-                    <div
-                      className={`w-full max-w-[36px] sm:max-w-[42px] bg-gradient-to-t from-slate-400 via-slate-300 to-slate-200 rounded-t-lg relative flex flex-col justify-end overflow-hidden origin-bottom transition-all duration-700 ease-out shadow-sm group-hover:scale-105 group-hover:shadow-md border border-slate-300/80 ${isSelected
-                        ? "ring-2 ring-[#C6112F] shadow-[0_10px_25px_rgba(198,17,47,0.3)] scale-105"
-                        : ""
-                        }`}
-                      style={{
-                        height: `${d.heightPct}%`,
-                      }}
-                    >
-                      {/* Glossy 3D Highlight Strip */}
-                      <div className="absolute top-0 bottom-0 left-0 w-1.5 bg-white/40 z-20 pointer-events-none" />
-
-                      {/* Investor Segment (Ruby Red Gradient Bottom) */}
-                      <div
-                        className="w-full bg-gradient-to-t from-[#900B21] via-[#C6112F] to-[#ff4d6d] flex items-center justify-center transition-all duration-700 ease-out shadow-inner origin-bottom border-t border-white/30"
-                        style={{ height: `${(d.investors / d.total) * 100}%` }}
-                      >
-                        <span className="text-[8px] font-black text-white tracking-tighter shadow-xs">
-                          {d.investors}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Year Label */}
-                    <span
-                      className={`text-[11px] font-bold mt-2.5 transition-all duration-300 ${isSelected ? "text-[#C6112F] font-black scale-110" : "text-neutral-600"
-                        }`}
-                    >
-                      {d.year}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Card: Diverse Investor Mix */}
-        <div className="bg-[#f0f2f5] border border-neutral-300/90 hover:border-[#C6112F]/40 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left transition-all duration-300 shadow-xs hover:shadow-md">
-          <div>
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-[#C6112F] font-bold text-xs tracking-widest uppercase block">
-                INVESTOR PROFILE
-              </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-[#6366f1]/10 text-[#6366f1] text-[10px] font-black uppercase tracking-wider animate-pulse">
-                BALANCED MIX
-              </span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1f2430] mb-2">
-              Diverse Investor Mix
-            </h3>
-            <div className="w-14 h-[3px] bg-[#C6112F] rounded-full my-2" />
-            <p className="text-neutral-600 text-xs sm:text-sm font-medium mb-6">
-              A balanced mix of investor types driving meaningful connections and investment opportunities.
-            </p>
-          </div>
-
-          {/* Donut Chart Container with SVG 3D Depth & Orbiting Satellites */}
-          <div className="bg-white rounded-2xl border border-neutral-200/90 p-6 shadow-2xs flex flex-col items-center justify-center gap-6">
-            {/* Ultra-Realistic 3D SVG Donut Chart Callout */}
-            <div
-              ref={donutRef}
-              className="relative flex items-center justify-center p-3"
-            >
-              {/* Outer Dashed Orbit Ring */}
-              <div className="absolute -inset-3.5 rounded-full border-2 border-dashed border-[#C6112F]/30 animate-[spin_20s_linear_infinite] pointer-events-none" />
-
-              {/* Reverse Inner Orbit Ring */}
-              <div className="absolute -inset-1.5 rounded-full border border-indigo-400/30 animate-[spin_14s_linear_infinite_reverse] pointer-events-none" />
-
-              {/* Orbiting Glowing Satellite Circle */}
-              <div className="absolute -inset-2.5 rounded-full animate-[spin_8s_linear_infinite] pointer-events-none">
-                <div className="w-3.5 h-3.5 rounded-full bg-[#C6112F] shadow-[0_0_14px_#C6112F] border-2 border-white -top-1.5 left-1/2 -translate-x-1/2 absolute" />
-              </div>
-
-              {/* Concentric Pulse Circles (Circle-on-Circle Animation) */}
-              <div className="absolute w-40 h-40 rounded-full border-2 border-rose-300/30 animate-ping pointer-events-none opacity-40" />
-              <div className="absolute w-44 h-44 rounded-full border border-[#C6112F]/20 animate-pulse pointer-events-none opacity-40" />
-
-              {/* Vector SVG 3D Donut Chart */}
-              <div className="relative w-[220px] h-[220px] flex items-center justify-center">
-                <svg className="w-full h-full -rotate-90 transform overflow-visible" viewBox="0 0 160 160">
-                  <defs>
-                    <filter id="donutShadow" x="-20%" y="-20%" width="140%" height="140%">
-                      <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="#000000" floodOpacity="0.16" />
-                    </filter>
-                  </defs>
-
-                  {/* Background Track Ring */}
-                  <circle
-                    cx="80"
-                    cy="80"
-                    r="60"
-                    fill="none"
-                    stroke="#e2e8f0"
-                    strokeWidth="22"
-                    className="opacity-50"
-                  />
-
-                  {/* Interactive Slices with Stroke Dasharray (Circumference ~ 376.99) */}
-                  {[
-                    { name: "Family Offices", pct: 0.20, color: "#C6112F", dashLength: 75.4, dashOffset: 0 },
-                    { name: "HNW Investors", pct: 0.25, color: "#6366f1", dashLength: 94.2, dashOffset: -75.4 },
-                    { name: "Retail Investors", pct: 0.10, color: "#06b6d4", dashLength: 37.7, dashOffset: -169.6 },
-                    { name: "Resource Funds", pct: 0.25, color: "#f59e0b", dashLength: 94.2, dashOffset: -207.3 },
-                    { name: "Buy Side", pct: 0.20, color: "#374151", dashLength: 75.4, dashOffset: -301.5 },
-                  ].map((slice, idx) => {
-                    const isHovered = currentDisplayLegend.name === slice.name;
-                    return (
-                      <circle
-                        key={slice.name}
-                        cx="80"
-                        cy="80"
-                        r="60"
-                        fill="none"
-                        stroke={slice.color}
-                        strokeWidth={isHovered ? "26" : "22"}
-                        strokeDasharray={`${slice.dashLength - 2} ${376.99 - (slice.dashLength - 2)}`}
-                        strokeDashoffset={slice.dashOffset}
-                        filter="url(#donutShadow)"
-                        className="transition-all duration-500 ease-out cursor-pointer"
-                        style={{
-                          opacity: isHovered ? 1 : 0.88,
-                          transformOrigin: "center",
-                          transform: isHovered ? "scale(1.06)" : "scale(1)",
-                        }}
-                        onClick={() => setActiveLegend(legendItems[idx])}
-                        onMouseEnter={() => setActiveLegend(legendItems[idx])}
-                      />
-                    );
-                  })}
-                </svg>
-
-                {/* Upright Glassmorphic Center Hole Dial */}
-                <div className="absolute w-28 h-28 bg-white/95 backdrop-blur-md rounded-full flex flex-col items-center justify-center shadow-[inset_0_2px_6px_rgba(0,0,0,0.06),0_8px_20px_rgba(0,0,0,0.08)] text-center px-2 py-2 border border-neutral-200/90 z-20 group cursor-pointer transition-all duration-300 hover:scale-105">
-                  <div className="flex items-center gap-1.5 mb-2 bg-neutral-100/90 px-3 py-1 rounded-full border border-neutral-200/80 shadow-2xs">
-                    <span
-                      className="w-2.5 h-2.5 rounded-full animate-ping"
-                      style={{ backgroundColor: currentDisplayLegend.color }}
-                    />
-                    <span className="text-xs font-black tracking-wider uppercase text-neutral-700">
-                      {currentDisplayLegend.percent}
-                    </span>
-                  </div>
-
-                  <span
-                    className="text-4xl font-black leading-none mb-1 tracking-tight transition-colors duration-300"
-                    style={{ color: currentDisplayLegend.color }}
-                  >
-                    {currentDisplayLegend.percent}
-                  </span>
-                  <span className="text-xs font-extrabold text-neutral-800 uppercase tracking-tight leading-tight text-center px-2">
-                    {currentDisplayLegend.name}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Interactive Color Legend — grid row below chart */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full text-xs font-bold text-neutral-700">
-              {legendItems.map((item) => {
-                const isActive = currentDisplayLegend.name === item.name;
-                return (
-                  <div
-                    key={item.name}
-                    onClick={() => {
-                      setActiveLegend(item);
-                      setFlipDegree((prev) => prev + 180);
-                    }}
-                    onMouseEnter={() => {
-                      setActiveLegend(item);
-                      setFlipDegree((prev) => prev + 180);
-                    }}
-                    onMouseLeave={() => setActiveLegend(null)}
-                    className={`flex flex-col gap-0.5 px-3 py-2 rounded-xl transition-all duration-200 cursor-pointer border ${isActive
-                      ? "bg-neutral-100/90 border-neutral-300 shadow-sm scale-105 text-[#1f2430]"
-                      : "bg-white border-transparent hover:bg-neutral-50 hover:border-neutral-200"
-                      }`}
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="w-3.5 h-3.5 rounded-xs transition-transform shadow-2xs"
-                          style={{ backgroundColor: item.color }}
-                        />
-                        <span className="font-extrabold">{item.name}</span>
-                      </div>
-                      <span
-                        className="font-black text-xs ml-2"
-                        style={{ color: item.color }}
-                      >
-                        {item.percent}
-                      </span>
-                    </div>
-                    <span className="text-[10px] text-neutral-500 font-medium pl-5 line-clamp-1">
-                      {item.desc}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AdvertisingSubscriptionSection() {
-  const { lang, t } = useLanguage();
-  const [sponsorLogoOption, setSponsorLogoOption] = useState("6-month");
-  const [vidInterviewOption, setVidInterviewOption] = useState("1 interview");
-  const [advertisingOption, setAdvertisingOption] = useState("3-month");
-
-  return (
-    <div className="w-full flex flex-col text-left">
-      {/* Header */}
-      <span className="text-[#C6112F] font-bold text-xs sm:text-sm tracking-[0.25em] uppercase block mb-2">
-        {lang === "FR" ? "PUBLICITÉ & ABONNEMENT" : "ADVERTISING & SUBSCRIPTION"}
-      </span>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] dark:text-white tracking-tight mb-3">
-        {lang === "FR" ? "THE News — Votre source pour le secteur des ressources" : "THE News — Your Source for all Things Resource"}
-      </h2>
-      <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-3" />
-      <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium max-w-2xl mb-10 leading-relaxed">
-        {lang === "FR"
-          ? "Faites la promotion de votre marque, partagez votre histoire et connectez-vous avec un auditoire mondial de dirigeants miniers, d'investisseurs et de décideurs."
-          : "Promote your brand, share your story and connect with a global audience of resource industry leaders, investors and decision makers."}
-      </p>
-
-      {/* Cards Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* Card 1: BASIC ANNUAL SUBSCRIPTION */}
-        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
-          <div>
-            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              BASIC ANNUAL SUBSCRIPTION
-            </span>
-            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
-              <div className="flex items-center justify-between p-2.5 rounded-xl border bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-4 h-4 rounded-full border border-[#C6112F] bg-[#C6112F] flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                  </div>
-                  <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{lang === "FR" ? "12 mois" : "12 months"}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bullet Points */}
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Delivered to your in-box monthly with the latest resource news from around the world.</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>Access the website as needed.</span>
-              </li>
-            </ul>
-          </div>
-
-          <a
-            href="mailto:jchoi@irinc.ca?subject=Basic%20Annual%20Subscription%20Inquiry"
-            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
-          >
-            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
-          </a>
-        </div>
-
-        {/* Card 2: CORPORATE SUBSCRIPTION */}
-        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
-          <div>
-            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              {lang === "FR" ? "ABONNEMENT CORPORATIF" : "CORPORATE SUBSCRIPTION"}
-            </span>
-            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
-              <div className="flex items-center justify-between p-2.5 rounded-xl border bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-4 h-4 rounded-full border border-[#C6112F] bg-[#C6112F] flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                  </div>
-                  <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{lang === "FR" ? "12 mois" : "12 months"}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bullet Points */}
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Vos derniers communiqués et interviews distribués pendant 12 mois." : "Your latest PR's & interviews distributed for 12 months."}</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Jusqu'à 6 communiqués de presse et 6 interviews inclus." : "Up to 6 press releases & 6 interviews included."}</span>
-              </li>
-            </ul>
-          </div>
-
-          <a
-            href="mailto:jchoi@irinc.ca?subject=Corporate%20Subscription%20Inquiry"
-            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
-          >
-            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
-          </a>
-        </div>
-
-        {/* Card 3: SPONSOR LOGO */}
-        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
-          <div>
-            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              {lang === "FR" ? "LOGO DU COMMANDITAIRE" : "SPONSOR LOGO"}
-            </span>
-
-            {/* Checkbox Selectors */}
-            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
-              {[
-                { label: lang === "FR" ? "6 mois" : "6-month", val: "6-month" },
-                { label: lang === "FR" ? "12 mois" : "12-month", val: "12-month" },
-              ].map((opt) => {
-                const isSelected = sponsorLogoOption === opt.val;
-                return (
-                  <div
-                    key={opt.val}
-                    onClick={() => setSponsorLogoOption(opt.val)}
-                    className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
-                      ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
-                      : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
-                      }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${isSelected ? "border-[#C6112F] bg-[#C6112F]" : "border-neutral-400 dark:border-slate-600 bg-white dark:bg-slate-800"
-                        }`}>
-                        {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
-                      </div>
-                      <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Bullet Points */}
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Votre logo mis en valeur en tant que commanditaire de THE News." : "Your logo prominently featured as a sponsor of THE News."}</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Lien cliquable redirigeant vers votre site Web." : "Clickable link directing to your website."}</span>
-              </li>
-            </ul>
-          </div>
-
-          <a
-            href={`mailto:jchoi@irinc.ca?subject=Sponsor%20Logo%20Inquiry%20-${encodeURIComponent(sponsorLogoOption)}`}
-            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
-          >
-            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
-          </a>
-        </div>
-
-        {/* Card 4: VID INTERVIEWS */}
-        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
-          <div>
-            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              {lang === "FR" ? "INTERVIEWS VID" : "VID INTERVIEWS"}
-            </span>
-
-            {/* Checkbox Selectors */}
-            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
-              {[
-                { label: lang === "FR" ? "1 interview" : "1 interview", val: "1 interview" },
-                { label: lang === "FR" ? "3 interviews" : "3 interviews", val: "3 interviews" },
-                { label: lang === "FR" ? "4 interviews" : "4 interviews", val: "4 interviews" },
-              ].map((opt) => {
-                const isSelected = vidInterviewOption === opt.val;
-                return (
-                  <div
-                    key={opt.val}
-                    onClick={() => setVidInterviewOption(opt.val)}
-                    className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
-                      ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
-                      : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
-                      }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${isSelected ? "border-[#C6112F] bg-[#C6112F]" : "border-neutral-400 dark:border-slate-600 bg-white dark:bg-slate-800"
-                        }`}>
-                        {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
-                      </div>
-                      <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Bullet Points */}
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Introduction modérée — 15 minutes chacune." : "Moderated intro — 15 minutes each."}</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Montées et diffusées sur les plateformes de THE Event." : "Edited and sent across THE Event social platforms."}</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Incluses dans THE News jusqu'à 1 an." : "Included in THE News for up to 1 year."}</span>
-              </li>
-            </ul>
-          </div>
-
-          <a
-            href={`mailto:jchoi@irinc.ca?subject=VID%20Interviews%20Inquiry%20-${encodeURIComponent(vidInterviewOption)}`}
-            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
-          >
-            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
-          </a>
-        </div>
-
-        {/* Card 5: ADVERTISING */}
-        <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/50 rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left shadow-xs hover:shadow-md transition-all duration-300 group">
-          <div>
-            <span className="text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3 block">
-              {lang === "FR" ? "PUBLICITÉ BANNIÈRE" : "ADVERTISING"}
-            </span>
-
-            {/* Checkbox Selectors */}
-            <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
-              {[
-                { label: lang === "FR" ? "Bannière rotative 3 mois" : "3-month rotating banner", val: "3-month" },
-                { label: lang === "FR" ? "Bannière rotative 6 mois" : "6-month rotating banner", val: "6-month" },
-                { label: lang === "FR" ? "Bannière rotative 12 mois" : "12-month rotating banner", val: "12-month" },
-              ].map((opt) => {
-                const isSelected = advertisingOption === opt.val;
-                return (
-                  <div
-                    key={opt.val}
-                    onClick={() => setAdvertisingOption(opt.val)}
-                    className={`flex items-center justify-between p-2.5 rounded-xl border transition-all cursor-pointer ${isSelected
-                      ? "bg-rose-50/80 dark:bg-rose-950/40 border-[#C6112F]/60 shadow-2xs"
-                      : "bg-neutral-50/60 dark:bg-slate-800/40 border-neutral-200/80 dark:border-slate-700/60 hover:bg-neutral-100 dark:hover:bg-slate-800"
-                      }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${isSelected ? "border-[#C6112F] bg-[#C6112F]" : "border-neutral-400 dark:border-slate-600 bg-white dark:bg-slate-800"
-                        }`}>
-                        {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
-                      </div>
-                      <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Bullet Points */}
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Fournissez le visuel, nous nous occupons de la publication." : "We provide the specs, you provide us with artwork to publish."}</span>
-              </li>
-              <li className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-700 dark:text-slate-300 font-medium leading-snug">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0 mt-1.5" />
-                <span>{lang === "FR" ? "Maximum de quatre entreprises par rotation." : "Maximum of four companies per rotation."}</span>
-              </li>
-            </ul>
-          </div>
-
-          <a
-            href={`mailto:jchoi@irinc.ca?subject=Advertising%20Banner%20Inquiry%20-${encodeURIComponent(advertisingOption)}`}
-            className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
-          >
-            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 interface ExpandedSectionData {
   title: string;
@@ -2250,170 +1411,167 @@ function SectionPressReleaseView({
         </div>
       ) : (
         <div className="max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 py-12 sm:py-16">
-        {/* Filter Tags & Search Row */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCat(cat)}
-                className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${selectedCat === cat
-                  ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
-                  : "bg-white dark:bg-[#131b2e] text-neutral-600 dark:text-slate-300 border border-neutral-200/80 dark:border-slate-700 hover:bg-neutral-100 dark:hover:bg-slate-800 shadow-2xs"
-                  }`}
+          {/* Filter Tags & Search Row */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCat(cat)}
+                  className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${selectedCat === cat
+                    ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
+                    : "bg-white dark:bg-[#131b2e] text-neutral-600 dark:text-slate-300 border border-neutral-200/80 dark:border-slate-700 hover:bg-neutral-100 dark:hover:bg-slate-800 shadow-2xs"
+                    }`}
+                >
+                  {cat === "ALL" ? (lang === "FR" ? "TOUS" : "ALL") : cat}
+                </button>
+              ))}
+            </div>
+
+            {/* Search Box */}
+            <div className="relative w-full md:w-72 shrink-0">
+              <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+              <input
+                type="text"
+                placeholder={lang === "FR" ? `Rechercher ${data.title}...` : `Search ${data.title}...`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-slate-700 rounded-full text-xs sm:text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
+              />
+            </div>
+          </div>
+
+          {/* Featured Release Card matching Press Release Page */}
+          {featured && (
+            <div className="mb-10 text-left">
+              <article className="group relative bg-[#0f1117] rounded-3xl p-6 sm:p-10 shadow-2xl border border-neutral-800 hover:border-neutral-700 transition-all duration-300 overflow-hidden">
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div className="lg:col-span-8">
+                    <div className="flex items-center gap-3 mb-4 flex-wrap">
+                      <span className="bg-neutral-800 text-white text-[10px] font-black tracking-[0.2em] uppercase px-3.5 py-1 rounded-full shadow-md border border-white/10">
+                        {lang === "FR" ? "INTERVIEW VIDÉO EN VEDETTE" : "FEATURED VIDEO INTERVIEW"}
+                      </span>
+                      <span className="px-3 py-1 bg-white/10 rounded-full text-neutral-300 text-xs font-semibold">
+                        {getItemCategory(featured)}
+                      </span>
+                    </div>
+
+                    <h2
+                      onClick={() => handleArticleClick(featured)}
+                      className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4 group-hover:text-rose-300 transition-colors cursor-pointer"
+                    >
+                      {getItemTitle(featured)}
+                    </h2>
+
+                    <p className="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-medium max-w-3xl">
+                      {getItemSnippet(featured)}
+                    </p>
+
+                    <div className="flex items-center gap-4 flex-wrap">
+                      <button
+                        onClick={() => handleArticleClick(featured)}
+                        className="px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105 flex items-center gap-2"
+                      >
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                        {isVideoSection
+                          ? (lang === "FR" ? "JOUER LA VIDÉO MAINTENANT" : "PLAY VIDEO NOW")
+                          : (lang === "FR" ? "LIRE LA SUITE ↗" : "READ MORE ↗")}
+                      </button>
+                      <span className="text-neutral-400 text-xs font-medium">
+                        {getItemDate(featured)} · {getItemReadTime(featured)}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    onClick={() => handleArticleClick(featured)}
+                    className="lg:col-span-4 h-64 sm:h-72 rounded-2xl overflow-hidden bg-neutral-800 relative cursor-pointer group/thumb"
+                  >
+                    <img
+                      src={featured.image}
+                      alt={getItemTitle(featured)}
+                      className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
+                      onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
+                    />
+                    {isVideoSection && (
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover/thumb:bg-black/50 transition-colors">
+                        <div className="w-14 h-14 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-2xl transform group-hover/thumb:scale-110 transition-transform">
+                          <svg className="w-7 h-7 fill-current ml-1" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </article>
+            </div>
+          )}
+
+          {/* Press Release Cards Grid matching Press Release Page */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+            {grid.map((item) => (
+              <article
+                key={item.id}
+                onClick={() => handleArticleClick(item)}
+                className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-neutral-300 dark:hover:border-slate-700 rounded-3xl p-6 flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
               >
-                {cat === "ALL" ? (lang === "FR" ? "TOUS" : "ALL") : cat}
-              </button>
+                <div>
+                  <div className="w-full h-48 rounded-2xl overflow-hidden mb-4 bg-neutral-200 dark:bg-slate-800 relative">
+                    <img
+                      src={item.image}
+                      alt={getItemTitle(item)}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
+                    />
+                    {isVideoSection && (
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 flex items-center justify-center transition-colors">
+                        <div className="w-10 h-10 rounded-xl bg-[#C6112F] text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                          <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-2">
+                    {getItemTitle(item)}
+                  </h3>
+
+                  <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-4 line-clamp-3">
+                    {getItemSnippet(item)}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
+                  <span className="text-neutral-500 dark:text-slate-400 text-xs font-bold">
+                    {getItemDate(item)}
+                  </span>
+                  <span className="text-[#C6112F] text-xs font-extrabold group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                    {isVideoSection
+                      ? (lang === "FR" ? "JOUER LA VIDÉO ▶" : "PLAY VIDEO ▶")
+                      : (lang === "FR" ? "LIRE ↗" : "READ ↗")}
+                  </span>
+                </div>
+              </article>
             ))}
           </div>
 
-          {/* Search Box */}
-          <div className="relative w-full md:w-72 shrink-0">
-            <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-            <input
-              type="text"
-              placeholder={lang === "FR" ? `Rechercher ${data.title}...` : `Search ${data.title}...`}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-slate-700 rounded-full text-xs sm:text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
-            />
-          </div>
-        </div>
-
-        {/* Featured Release Card matching Press Release Page */}
-        {featured && (
-          <div className="mb-10 text-left">
-            <article className="group relative bg-[#0f1117] rounded-3xl p-6 sm:p-10 shadow-2xl border border-neutral-800 hover:border-[#C6112F]/60 transition-all duration-300 overflow-hidden">
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-8">
-                  <div className="flex items-center gap-3 mb-4 flex-wrap">
-                    <span className="bg-[#C6112F] text-white text-[10px] font-black tracking-[0.2em] uppercase px-3.5 py-1 rounded-full shadow-md">
-                      {lang === "FR" ? "INTERVIEW VIDÉO EN VEDETTE" : "FEATURED VIDEO INTERVIEW"}
-                    </span>
-                    <span className="px-3 py-1 bg-white/10 rounded-full text-neutral-300 text-xs font-semibold">
-                      {getItemCategory(featured)}
-                    </span>
-                  </div>
-
-                  <h2
-                    onClick={() => handleArticleClick(featured)}
-                    className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4 group-hover:text-rose-300 transition-colors cursor-pointer"
-                  >
-                    {getItemTitle(featured)}
-                  </h2>
-
-                  <p className="text-neutral-300 text-xs sm:text-sm md:text-base leading-relaxed mb-6 font-medium max-w-3xl">
-                    {getItemSnippet(featured)}
-                  </p>
-
-                  <div className="flex items-center gap-4 flex-wrap">
-                    <button
-                      onClick={() => handleArticleClick(featured)}
-                      className="px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105 flex items-center gap-2"
-                    >
-                      <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                      {isVideoSection
-                        ? (lang === "FR" ? "JOUER LA VIDÉO MAINTENANT" : "PLAY VIDEO NOW")
-                        : (lang === "FR" ? "LIRE LA SUITE ↗" : "READ MORE ↗")}
-                    </button>
-                    <span className="text-neutral-400 text-xs font-medium">
-                      {getItemDate(featured)} · {getItemReadTime(featured)}
-                    </span>
-                  </div>
-                </div>
-
-                <div
-                  onClick={() => handleArticleClick(featured)}
-                  className="lg:col-span-4 h-64 sm:h-72 rounded-2xl overflow-hidden bg-neutral-800 relative cursor-pointer group/thumb"
-                >
-                  <img
-                    src={featured.image}
-                    alt={getItemTitle(featured)}
-                    className="w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-500"
-                    onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
-                  />
-                  {isVideoSection && (
-                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover/thumb:bg-black/50 transition-colors">
-                      <div className="w-14 h-14 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-2xl transform group-hover/thumb:scale-110 transition-transform">
-                        <svg className="w-7 h-7 fill-current ml-1" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </article>
-          </div>
-        )}
-
-        {/* Press Release Cards Grid matching Press Release Page */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-          {grid.map((item) => (
-            <article
-              key={item.id}
-              onClick={() => handleArticleClick(item)}
-              className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-[#C6112F]/60 rounded-3xl p-6 flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+          {/* Back Button below */}
+          <div className="mt-14 flex justify-center">
+            <button
+              onClick={onBack}
+              className="px-8 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105"
             >
-              <div>
-                <div className="w-full h-48 rounded-2xl overflow-hidden mb-4 bg-neutral-200 dark:bg-slate-800 relative">
-                  <img
-                    src={item.image}
-                    alt={getItemTitle(item)}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
-                  />
-                  {isVideoSection && (
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 flex items-center justify-center transition-colors">
-                      <div className="w-10 h-10 rounded-xl bg-[#C6112F] text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                        <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  )}
-                  <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[9px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded-full shadow-md">
-                    {getItemCategory(item)}
-                  </span>
-                </div>
-
-                <h3 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-2">
-                  {getItemTitle(item)}
-                </h3>
-
-                <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-4 line-clamp-3">
-                  {getItemSnippet(item)}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
-                <span className="text-neutral-500 dark:text-slate-400 text-xs font-bold">
-                  {getItemDate(item)}
-                </span>
-                <span className="text-[#C6112F] text-xs font-extrabold group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                  {isVideoSection
-                    ? (lang === "FR" ? "JOUER LA VIDÉO ▶" : "PLAY VIDEO ▶")
-                    : (lang === "FR" ? "LIRE ↗" : "READ ↗")}
-                </span>
-              </div>
-            </article>
-          ))}
+              ← BACK TO THE NEWS OVERVIEW
+            </button>
+          </div>
         </div>
-
-        {/* Back Button below */}
-        <div className="mt-14 flex justify-center">
-          <button
-            onClick={onBack}
-            className="px-8 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase transition-all shadow-md cursor-pointer hover:scale-105"
-          >
-            ← BACK TO THE NEWS OVERVIEW
-          </button>
-        </div>
-      </div>
       )}
 
       {/* ── VIDEO PLAYER MODAL POPUP ── */}
@@ -2423,7 +1581,7 @@ function SectionPressReleaseView({
             {/* Modal Header Bar */}
             <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#233049] bg-[#0e1626]">
               <div className="flex items-center gap-2.5 overflow-hidden">
-                <span className="bg-[#C6112F] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded shrink-0">
+                <span className="bg-neutral-800 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded shrink-0 border border-white/10">
                   {playingVideo.category}
                 </span>
                 <h3 className="text-sm sm:text-base font-bold text-white truncate">
@@ -2480,6 +1638,7 @@ function YouTubeSection({
   const router = useRouter();
   const { lang } = useLanguage();
   const [activeTab, setActiveTab] = useState("ALL");
+  const [selectedVideo, setSelectedVideo] = useState<SectionArticle | null>(null);
   const [playingVideo, setPlayingVideo] = useState<SectionArticle | null>(null);
   const [inlinePlaying, setInlinePlaying] = useState(false);
 
@@ -2488,13 +1647,19 @@ function YouTubeSection({
   );
 
   const featured = filtered.find((a) => a.featured) || filtered[0];
-  const grid = filtered.filter((a) => a.id !== (featured?.id || "")).slice(0, 4);
+  const activeVideo = selectedVideo && filtered.some((a) => a.id === selectedVideo.id) ? selectedVideo : featured;
+  const grid = filtered.filter((a) => a.id !== (activeVideo?.id || "")).slice(0, 4);
 
   const getItemCategory = (item: SectionArticle) => (lang === "FR" && item.categoryFR ? item.categoryFR : item.category);
   const getItemTitle = (item: SectionArticle) => (lang === "FR" && item.titleFR ? item.titleFR : item.title);
   const getItemSnippet = (item: SectionArticle) => (lang === "FR" && item.snippetFR ? item.snippetFR : item.snippet);
   const getItemDate = (item: SectionArticle) => (lang === "FR" && item.dateFR ? item.dateFR : item.date);
   const getItemReadTime = (item: SectionArticle) => (lang === "FR" && item.readTimeFR ? item.readTimeFR : item.readTime);
+
+  const handleSelectVideo = (item: SectionArticle) => {
+    setSelectedVideo(item);
+    setInlinePlaying(true);
+  };
 
   return (
     <div className="w-full flex flex-col relative">
@@ -2525,10 +1690,14 @@ function YouTubeSection({
             return (
               <button
                 key={cat}
-                onClick={() => setActiveTab(cat)}
+                onClick={() => {
+                  setActiveTab(cat);
+                  setSelectedVideo(null);
+                  setInlinePlaying(false);
+                }}
                 className={`text-xs font-bold px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${isSelected
-                    ? "bg-[#1f2430] dark:bg-white text-white dark:text-[#1f2430] shadow-xs"
-                    : "bg-neutral-100 dark:bg-slate-800/80 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700"
+                  ? "bg-[#1f2430] dark:bg-white text-white dark:text-[#1f2430] shadow-xs"
+                  : "bg-neutral-100 dark:bg-slate-800/80 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700"
                   }`}
               >
                 {label}
@@ -2539,14 +1708,14 @@ function YouTubeSection({
       </div>
 
       {/* ── Featured Video Layout (YouTube Desktop Main Video Style) ── */}
-      {featured && (
+      {activeVideo && (
         <div className="my-8 grid grid-cols-1 lg:grid-cols-12 gap-6 bg-white dark:bg-[#131b2e] p-5 sm:p-7 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xs hover:shadow-md transition-all">
           {/* YouTube Video Player / Thumbnail (16:9 aspect-video) */}
           <div className="lg:col-span-7 relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-md">
             {inlinePlaying ? (
               <iframe
-                src="https://www.youtube.com/embed/L_LUpnjgPso?autoplay=1"
-                title={getItemTitle(featured)}
+                src={`https://www.youtube.com/embed/${activeVideo.youtubeId || "L_LUpnjgPso"}?autoplay=1`}
+                title={getItemTitle(activeVideo)}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="w-full h-full border-0"
@@ -2557,8 +1726,8 @@ function YouTubeSection({
                 className="relative w-full h-full group cursor-pointer"
               >
                 <img
-                  src={featured.image}
-                  alt={getItemTitle(featured)}
+                  src={activeVideo.image}
+                  alt={getItemTitle(activeVideo)}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                   onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800"; }}
                 />
@@ -2574,62 +1743,44 @@ function YouTubeSection({
                   </div>
                 </div>
 
-                {/* Top Left Live / Category Badge */}
-                <span className="absolute top-3 left-3 bg-[#C6112F] text-white text-[10px] font-black tracking-widest uppercase px-2.5 py-1 rounded-md shadow-md flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                  {getItemCategory(featured)}
-                </span>
-
                 {/* Bottom Right Duration Badge (YouTube Style) */}
                 <span className="absolute bottom-3 right-3 bg-black/85 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded shadow-xs backdrop-blur-xs">
-                  HD · {getItemReadTime(featured)}
+                  HD · {getItemReadTime(activeVideo)}
                 </span>
               </div>
             )}
           </div>
 
-          {/* YouTube Video Info Details */}
+          {/* YouTube Video Info Details (RIGHT SIDE DYNAMIC DATA) */}
           <div className="lg:col-span-5 flex flex-col justify-between text-left py-1">
             <div>
-              {/* Channel / Event Avatar Row */}
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-full bg-[#C6112F] text-white font-black text-xs flex items-center justify-center shadow-2xs shrink-0">
-                  TMIE
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xs font-bold text-[#1f2430] dark:text-white flex items-center gap-1">
-                    THE Mining Event Official
-                    <svg className="w-3.5 h-3.5 text-[#C6112F] fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z" />
-                    </svg>
-                  </span>
-                  <span className="text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
-                    {lang === "FR" ? "12,4k abonnés · Chaîne vérifiée" : "12.4K subscribers · Verified Channel"}
-                  </span>
-                </div>
-              </div>
+              {/* Category Subhead */}
+              <span className="text-[#C6112F] text-[11px] font-black tracking-widest uppercase mb-2 block">
+                {getItemCategory(activeVideo)}
+              </span>
 
               {/* Title */}
               <h3
-                onClick={() => setPlayingVideo(featured)}
-                className="text-xl sm:text-2xl font-extrabold text-[#1f2430] dark:text-[#C6112F] leading-tight mb-3 hover:text-[#C6112F] cursor-pointer transition-colors line-clamp-2"
+                onClick={() => setPlayingVideo(activeVideo)}
+                className="text-xl sm:text-2xl font-extrabold text-[#1f2430] dark:text-[#C6112F] leading-tight mb-3 hover:text-[#C6112F] cursor-pointer transition-colors line-clamp-3"
               >
-                {getItemTitle(featured)}
+                {getItemTitle(activeVideo)}
               </h3>
 
-              <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 font-medium line-clamp-3">
-                {getItemSnippet(featured)}
+              {/* Description Snippet */}
+              <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-4 font-medium line-clamp-4">
+                {getItemSnippet(activeVideo)}
               </p>
             </div>
 
             {/* Video Stats & Watch Action */}
             <div className="pt-4 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
               <span className="text-neutral-500 dark:text-slate-400 text-xs font-semibold">
-                {getItemDate(featured)} · {lang === "FR" ? "2,4k vues" : "2.4K views"}
+                {getItemDate(activeVideo)} · {getItemReadTime(activeVideo)}
               </span>
 
               <button
-                onClick={() => setPlayingVideo(featured)}
+                onClick={() => setPlayingVideo(activeVideo)}
                 className="px-4 py-2 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-wider uppercase transition-all shadow-2xs cursor-pointer flex items-center gap-1.5 hover:scale-105"
               >
                 <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -2647,8 +1798,8 @@ function YouTubeSection({
         {grid.map((item) => (
           <article
             key={item.id}
-            onClick={() => setPlayingVideo(item)}
-            className="flex flex-col bg-white dark:bg-[#131b2e] border border-neutral-200/80 dark:border-[#233049] hover:border-[#C6112F]/60 rounded-2xl overflow-hidden shadow-2xs hover:shadow-lg transition-all duration-300 group cursor-pointer"
+            onClick={() => handleSelectVideo(item)}
+            className="flex flex-col bg-white dark:bg-[#131b2e] border border-neutral-200/80 dark:border-[#233049] hover:border-neutral-300 dark:hover:border-slate-700 rounded-2xl overflow-hidden shadow-2xs hover:shadow-lg transition-all duration-300 group cursor-pointer"
           >
             {/* Video 16:9 Thumbnail Box */}
             <div className="relative w-full aspect-video bg-neutral-900 overflow-hidden shrink-0">
@@ -2670,11 +1821,6 @@ function YouTubeSection({
                 </div>
               </div>
 
-              {/* Category Badge Top Left */}
-              <span className="absolute top-2 left-2 bg-[#C6112F] text-white text-[8px] font-black tracking-wider uppercase px-2 py-0.5 rounded shadow-2xs">
-                {getItemCategory(item)}
-              </span>
-
               {/* YouTube Duration Badge Bottom Right */}
               <span className="absolute bottom-2 right-2 bg-black/85 text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded backdrop-blur-xs">
                 {getItemReadTime(item)}
@@ -2683,23 +1829,11 @@ function YouTubeSection({
 
             {/* Video Meta Info Footer */}
             <div className="p-4 flex flex-col justify-between flex-grow">
-              <div className="flex items-start gap-2.5 mb-2">
-                {/* Channel Icon Avatar */}
-                <div className="w-7 h-7 rounded-full bg-[#1f2430] text-white text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
-                  TM
-                </div>
-                <h4 className="text-xs sm:text-sm font-bold text-[#1f2430] dark:text-white leading-snug group-hover:text-[#C6112F] transition-colors line-clamp-2">
-                  {getItemTitle(item)}
-                </h4>
-              </div>
+              <h4 className="text-xs sm:text-sm font-bold text-[#1f2430] dark:text-white leading-snug group-hover:text-[#C6112F] transition-colors line-clamp-2 mb-2">
+                {getItemTitle(item)}
+              </h4>
 
-              <div className="pl-9 flex flex-col gap-0.5 text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
-                <span className="flex items-center gap-1 text-neutral-600 dark:text-slate-300 font-semibold">
-                  THE Mining Event
-                  <svg className="w-3 h-3 text-[#C6112F] fill-current" viewBox="0 0 24 24">
-                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.4-1.4 2.7 2.7 6.9-6.9 1.4 1.4-8.5 8.3z" />
-                  </svg>
-                </span>
+              <div className="flex flex-col gap-0.5 text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
                 <span>{getItemDate(item)} · {lang === "FR" ? "1,1k vues" : "1.1K views"}</span>
               </div>
             </div>
@@ -2925,15 +2059,7 @@ export default function NewsPage() {
             />
           </section>
 
-          {/* ═══════ SECTION 4: THE EVENT BY THE NUMBERS (EXACT MOCKUP MATCH) ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-            <EventByTheNumbers />
-          </section>
 
-          {/* ═══════ SECTION 6: ADVERTISING & SUBSCRIPTION (EXACT MOCKUP MATCH) ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
-            <AdvertisingSubscriptionSection />
-          </section>
 
           <div className="mt-16">
             <GetInTouchCTA />

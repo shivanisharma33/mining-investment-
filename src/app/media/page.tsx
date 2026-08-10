@@ -629,6 +629,17 @@ export default function MediaPage() {
   const [activeVideoId, setActiveVideoId] = useState<string>("UjKV33kdUbA");
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
+  const activeVideoObj =
+    playlistsData
+      .flatMap((p) =>
+        p.videos.map((v) => ({
+          ...v,
+          playlistTitle: isFr ? p.titleFR : p.title,
+          playlistDesc: isFr ? p.descriptionFR : p.description,
+        }))
+      )
+      .find((v) => v.id === activeVideoId) || playlistsData[0].videos[0];
+
   const openLightbox = (i: number) => setLightboxIdx(i);
   const closeLightbox = () => setLightboxIdx(null);
   const prevImage = () =>
@@ -727,63 +738,65 @@ export default function MediaPage() {
             
             {/* Channel Branding & Cinema Player Section */}
             <div id="featured-player-section" className="mb-12 scroll-mt-28">
-              {/* Channel Header Bar */}
-              <div className="mb-6 bg-[#181818] border border-neutral-800 rounded-2xl p-5 sm:p-6 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
-                <div className="flex items-center gap-4 sm:gap-5">
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#FF0000] p-1 border-2 border-white/20 shadow-xl overflow-hidden shrink-0">
-                    <Image
-                      src="/MainPageLogo.webp"
-                      alt="Channel Avatar"
-                      width={64}
-                      height={64}
-                      className="w-full h-full object-contain p-1 bg-white rounded-full"
-                    />
-                  </div>
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                {/* Main YouTube Cinema Player Container */}
+                <div className="lg:col-span-8 relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl border border-neutral-800">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
+                    title={isFr && activeVideoObj.titleFR ? activeVideoObj.titleFR : activeVideoObj.title}
+                    className="w-full h-full border-0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
 
-                  <div className="flex flex-col items-start text-left">
-                    <div className="flex items-center gap-2">
-                      <h2 className="text-lg sm:text-xl font-black text-white tracking-tight">
-                        VID TV · THE Mining Investment Event
-                      </h2>
-                      <span className="w-4 h-4 rounded-full bg-neutral-300 text-[#0f0f0f] flex items-center justify-center text-[10px] font-bold" title="Verified Channel">
-                        ✓
+                {/* Right Side Video Details Panel */}
+                <div className="lg:col-span-4 bg-[#181818] border border-neutral-800 rounded-2xl p-6 shadow-2xl flex flex-col justify-between text-left">
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="px-3 py-1 bg-[#C6112F]/20 text-[#C6112F] border border-[#C6112F]/40 text-[10px] font-black uppercase tracking-widest rounded-full">
+                        {isFr ? "EN LECTURE" : "NOW PLAYING"}
+                      </span>
+                      <span className="text-xs font-semibold text-neutral-400">
+                        {activeVideoObj.channel || "VID TV"}
                       </span>
                     </div>
-                    <span className="text-xs text-neutral-400 font-medium">
-                      @VIDCONFERENCES · Official Day 1 to Day 3 Event Video Playlists
-                    </span>
+
+                    <h3 className="text-base sm:text-lg font-black text-white leading-snug mb-3 line-clamp-3">
+                      {isFr && activeVideoObj.titleFR ? activeVideoObj.titleFR : activeVideoObj.title}
+                    </h3>
+
+                    <div className="flex items-center gap-2 text-xs text-neutral-400 font-medium mb-4 flex-wrap">
+                      <span className="px-2 py-0.5 rounded bg-white/10 font-mono text-white text-[11px]">
+                        ⏱ {activeVideoObj.duration}
+                      </span>
+                      <span>•</span>
+                      <span>{isFr && activeVideoObj.viewsFR ? activeVideoObj.viewsFR : activeVideoObj.views}</span>
+                      <span>•</span>
+                      <span>{isFr && activeVideoObj.timeAgoFR ? activeVideoObj.timeAgoFR : activeVideoObj.timeAgo}</span>
+                    </div>
+
+                    {activeVideoObj.playlistTitle && (
+                      <div className="pt-3 border-t border-neutral-800 mb-3">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 block mb-1">
+                          {isFr ? "PLAYLIST / ÉVÉNEMENT" : "PLAYLIST / EVENT"}
+                        </span>
+                        <p className="text-xs font-semibold text-neutral-300 line-clamp-2">
+                          {activeVideoObj.playlistTitle}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                </div>
 
-                <div className="flex items-center gap-3 w-full sm:w-auto">
                   <a
-                    href="https://www.youtube.com/@VIDCONFERENCES/featured"
+                    href={`https://www.youtube.com/watch?v=${activeVideoId}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 sm:flex-initial px-5 py-2 rounded-full font-bold text-xs tracking-wider uppercase transition-all duration-200 flex items-center justify-center gap-2 bg-[#FF0000] hover:bg-[#cc0000] text-white shadow-md shadow-[#FF0000]/30"
+                    className="mt-4 w-full py-2.5 px-4 rounded-xl bg-neutral-800 hover:bg-[#C6112F] text-white text-xs font-bold uppercase tracking-wider text-center transition-colors flex items-center justify-center gap-2 border border-neutral-700 shadow-sm"
                   >
-                    <span>{isFr ? "S'abonner" : "Subscribe"}</span>
-                  </a>
-                  <a
-                    href="https://www.youtube.com/@VIDCONFERENCES/featured"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white font-bold text-xs border border-neutral-700 transition-all inline-flex items-center gap-1.5"
-                  >
-                    <span>{isFr ? "Chaîne YouTube ↗" : "YouTube Channel ↗"}</span>
+                    <span>{isFr ? "Regarder sur YouTube ↗" : "Watch on YouTube ↗"}</span>
                   </a>
                 </div>
-              </div>
-
-              {/* Main YouTube Cinema Player Container */}
-              <div className="relative w-full aspect-video max-h-[560px] rounded-2xl overflow-hidden bg-black shadow-2xl border border-neutral-800 mx-auto">
-                <iframe
-                  src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
-                  title="YouTube Video Cinema Player"
-                  className="w-full h-full border-0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
               </div>
             </div>
 
