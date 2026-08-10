@@ -122,7 +122,7 @@ export default function StudentPage() {
             }}
           />
           <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#C6112F]/20 blur-[130px] rounded-full pointer-events-none" />
-          
+
           <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             {/* Breadcrumb Navigation */}
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
@@ -355,11 +355,10 @@ export default function StudentPage() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
-                      activeCategory === cat
+                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${activeCategory === cat
                         ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
                         : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:border-[#C6112F]"
-                    }`}
+                      }`}
                   >
                     {cat}
                   </button>
@@ -381,7 +380,7 @@ export default function StudentPage() {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
-                  
+
                   {/* Category Pill Tag */}
                   <div className="absolute top-4 left-4 z-10">
                     <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-extrabold uppercase tracking-widest">

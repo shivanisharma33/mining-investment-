@@ -4,17 +4,10 @@ import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
-import AgendaView from "@/components/AgendaView";
 import AgendaPdfViewer from "@/components/AgendaPdfViewer";
 import { useLanguage } from "@/context/LanguageContext";
 import { fetchPdfAgendaByYear, AgendaApiItem } from "@/lib/agendaApi";
 import { downloadPdf } from "@/lib/downloadPdf";
-import {
-  fetchEventByYear,
-  mapEventAgendaToDays,
-  formatEventDates,
-  EventApiItem,
-} from "@/lib/eventsApi";
 
 const AGENDA_YEAR = 2027;
 
@@ -23,13 +16,10 @@ const agendaFileName = (agenda: AgendaApiItem) =>
 
 export default function AgendaPage() {
   const { t } = useLanguage();
-  const [viewMode, setViewMode] = useState<"pdf" | "interactive">("interactive");
   const [agenda, setAgenda] = useState<AgendaApiItem | null>(null);
   const [agendaError, setAgendaError] = useState<string>("");
   const [agendaLoading, setAgendaLoading] = useState<boolean>(true);
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
-  const [event, setEvent] = useState<EventApiItem | null>(null);
-  const [eventLoading, setEventLoading] = useState<boolean>(true);
 
   const handleDownload = async () => {
     if (!agenda?.pdfUrl || isDownloading) return;
@@ -63,30 +53,10 @@ export default function AgendaPage() {
     return () => controller.abort();
   }, []);
 
-  useEffect(() => {
-    const controller = new AbortController();
-
-    fetchEventByYear(AGENDA_YEAR, controller.signal)
-      .then((item) => {
-        setEvent(item);
-        setEventLoading(false);
-      })
-      .catch((err: unknown) => {
-        if (controller.signal.aborted) return;
-        // The interactive view falls back to the bundled schedule on failure.
-        console.error("Event schedule request failed:", err);
-        setEventLoading(false);
-      });
-
-    return () => controller.abort();
-  }, []);
-
-  const eventDays = event ? mapEventAgendaToDays(event) : undefined;
-
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-white">
+      <main className="flex flex-col flex-grow w-full bg-white dark:bg-[#0c0d12] transition-colors duration-300">
         {/* ═══════ HERO ═══════ */}
         <section className="relative w-full bg-[#0f1117] overflow-hidden">
           <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
@@ -144,104 +114,55 @@ export default function AgendaPage() {
           </div>
         </section>
 
-        {/* ═══════ AGENDA VIEW CONTENT ═══════ */}
+        {/* ═══════ AGENDA PDF VIEWER ═══════ */}
         <section className="relative w-full py-10 sm:py-14 md:py-16">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-              <div>
-                <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-1.5 block">
-                  SCHEDULE & SESSION DETAILS
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white tracking-tight">
-                  Event Agenda & Schedule 2027
-                </h3>
-              </div>
-
-              {/* View Switcher Pills */}
-              <div className="flex items-center bg-neutral-100 dark:bg-zinc-800 p-1.5 rounded-xl border border-neutral-200 dark:border-zinc-700 gap-1">
-                <button
-                  onClick={() => setViewMode("interactive")}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-                    viewMode === "interactive"
-                      ? "bg-[#C6112F] text-white shadow-sm"
-                      : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-zinc-700"
-                  }`}
-                >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span>Interactive Schedule</span>
-                </button>
-                <button
-                  onClick={() => setViewMode("pdf")}
-                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${
-                    viewMode === "pdf"
-                      ? "bg-[#0f1117] text-white shadow-sm"
-                      : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-200/60 dark:hover:bg-zinc-700"
-                  }`}
-                >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                  <span>PDF Viewer</span>
-                </button>
-              </div>
+            <div className="mb-8">
+              <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-1.5 block">
+                OFFICIAL PROGRAMME
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white tracking-tight">
+                Official 2027 Event Agenda (PDF)
+              </h3>
             </div>
 
-            {/* Display Mode Content */}
-            {viewMode === "pdf" ? (
-              agendaError ? (
-                <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 text-center">
-                  <p className="font-extrabold text-sm text-neutral-800 dark:text-white mb-1">
-                    Unable to load the {AGENDA_YEAR} agenda
-                  </p>
-                  <p className="text-xs text-neutral-500 dark:text-slate-400">{agendaError}</p>
-                </div>
-              ) : agendaLoading ? (
-                <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 flex items-center justify-center gap-3">
-                  <span className="w-6 h-6 rounded-full border-2 border-neutral-200 dark:border-slate-700 border-t-[#C6112F] animate-spin" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
-                    Loading agenda…
-                  </span>
-                </div>
-              ) : agenda ? (
-                <AgendaPdfViewer
-                  remote
-                  year={agenda.year}
-                  pdfUrl={agenda.pdfUrl}
-                  title={agenda.title}
-                  description={
-                    agenda.description ||
-                    "Explore the complete agenda to discover event details, key themes, speaker highlights, session schedule, and networking opportunities."
-                  }
-                  eventDates={agenda.eventDates}
-                  venue={agenda.venue}
-                  fileName={agendaFileName(agenda)}
-                />
-              ) : (
-                <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 text-center">
-                  <p className="font-extrabold text-sm text-neutral-800 dark:text-white mb-1">
-                    No PDF agenda published for {AGENDA_YEAR} yet
-                  </p>
-                  <p className="text-xs text-neutral-500 dark:text-slate-400">
-                    Switch to the interactive schedule in the meantime.
-                  </p>
-                </div>
-              )
-            ) : eventLoading ? (
+            {agendaError ? (
+              <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 text-center">
+                <p className="font-extrabold text-sm text-neutral-800 dark:text-white mb-1">
+                  Unable to load the {AGENDA_YEAR} agenda
+                </p>
+                <p className="text-xs text-neutral-500 dark:text-slate-400">{agendaError}</p>
+              </div>
+            ) : agendaLoading ? (
               <div className="rounded-2xl border border-neutral-200 dark:border-[#233049] bg-white dark:bg-[#131b2e] p-10 flex items-center justify-center gap-3">
                 <span className="w-6 h-6 rounded-full border-2 border-neutral-200 dark:border-slate-700 border-t-[#C6112F] animate-spin" />
                 <span className="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
-                  Loading schedule…
+                  Loading PDF agenda…
                 </span>
               </div>
+            ) : agenda ? (
+              <AgendaPdfViewer
+                remote
+                year={agenda.year}
+                pdfUrl={agenda.pdfUrl}
+                title={agenda.title}
+                description={
+                  agenda.description ||
+                  "Explore the complete agenda to discover event details, key themes, speaker highlights, session schedule, and networking opportunities."
+                }
+                eventDates={agenda.eventDates}
+                venue={agenda.venue}
+                fileName={agendaFileName(agenda)}
+              />
             ) : (
-              <AgendaView
+              <AgendaPdfViewer
                 year={AGENDA_YEAR}
-                days={eventDays}
-                eventDates={event ? formatEventDates(event) : undefined}
-                venue={event?.venue}
-                city={event?.location}
+                title={`THE Mining Investment Event ${AGENDA_YEAR}`}
+                description="Explore the complete agenda to discover event details, key themes, speaker highlights, session schedule, and networking opportunities."
+                eventDates="June 1 - 3, 2027"
+                venue="Centre des congrès de Québec, Québec City"
+                pdfUrl="/documents/Agenda-2027.pdf"
+                fileName="agenda-2027.pdf"
               />
             )}
           </div>

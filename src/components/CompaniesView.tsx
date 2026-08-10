@@ -15,11 +15,8 @@ interface CompaniesViewProps {
   apiYear?: number;
   apiLoading?: boolean;
   apiError?: string;
+  showMap?: boolean;
 }
-
-
-
-
 
 export default function CompaniesView({
   initialYear = 2026,
@@ -27,12 +24,14 @@ export default function CompaniesView({
   apiYear,
   apiLoading = false,
   apiError = "",
+  showMap,
 }: CompaniesViewProps) {
   const { t, lang } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number>(initialYear);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const isApiYear = apiYear !== undefined && selectedYear === apiYear;
+  const shouldShowMap = showMap !== undefined ? showMap : selectedYear !== 2027;
 
   const getTypeBadgeStyle = (type: string) => {
     const t = type.toUpperCase();
@@ -72,19 +71,21 @@ export default function CompaniesView({
 
   return (
     <div className="w-full text-left font-sans">
-      {/* ════════ MAP DIRECTORY IFRAME ════════ */}
-      <div className="w-full mb-8 bg-white dark:bg-[#18181b] rounded-2xl overflow-hidden shadow-xl border border-neutral-200/90 dark:border-zinc-800 p-2 relative z-10">
-        <iframe
-          src="https://mininghub.com/custom-map/the-mining-investment-event"
-          width="100%"
-          height="600"
-          frameBorder="0"
-          allowFullScreen={true}
-          allow="fullscreen"
-          className="w-full rounded-xl h-[380px] xs:h-[450px] sm:h-[550px] md:h-[600px]"
-          style={{ border: "0" }}
-        ></iframe>
-      </div>
+      {/* ════════ MAP DIRECTORY IFRAME (Disabled for 2027) ════════ */}
+      {shouldShowMap && (
+        <div className="w-full mb-8 bg-white dark:bg-[#18181b] rounded-2xl overflow-hidden shadow-xl border border-neutral-200/90 dark:border-zinc-800 p-2 relative z-10">
+          <iframe
+            src="https://mininghub.com/custom-map/the-mining-investment-event"
+            width="100%"
+            height="600"
+            frameBorder="0"
+            allowFullScreen={true}
+            allow="fullscreen"
+            className="w-full rounded-xl h-[380px] xs:h-[450px] sm:h-[550px] md:h-[600px]"
+            style={{ border: "0" }}
+          ></iframe>
+        </div>
+      )}
 
       {/* ════════ TOOLBAR: YEAR SELECTOR & SEARCH ════════ */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 bg-white dark:bg-[#18181b] p-4 sm:p-5 rounded-2xl border border-neutral-200/90 dark:border-zinc-800 shadow-md">

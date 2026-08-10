@@ -988,28 +988,21 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Language>("EN");
-
-  useEffect(() => {
-    const saved = localStorage.getItem("preferredLanguage");
-    if (saved === "EN" || saved === "FR") {
-      setLangState(saved);
-    }
-  }, []);
+  const [lang] = useState<Language>("EN");
 
   useEffect(() => {
     if (typeof document !== "undefined") {
-      document.documentElement.lang = lang.toLowerCase();
+      document.documentElement.lang = "en";
     }
-  }, [lang]);
+  }, []);
 
-  const setLang = (newLang: Language) => {
-    setLangState(newLang);
-    localStorage.setItem("preferredLanguage", newLang);
+  const setLang = (_newLang: Language) => {
+    // Language locked to EN per client request
+    localStorage.setItem("preferredLanguage", "EN");
   };
 
   const t = (key: string, fallback?: string): string => {
-    const langDict = translations[lang];
+    const langDict = translations["EN"];
     if (langDict && langDict[key]) {
       return langDict[key];
     }
@@ -1017,7 +1010,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang: "EN", setLang, t }}>
       {children}
     </LanguageContext.Provider>
   );

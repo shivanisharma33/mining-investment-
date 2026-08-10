@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
+import EventByTheNumbers from "@/components/EventByTheNumbers";
 import { useLanguage } from "@/context/LanguageContext";
 
 /* ───────── Animated Counter Hook ───────── */
@@ -311,7 +312,10 @@ export default function AboutPage() {
           </div>
         </section>
 
-
+        {/* ═══════════════ SECTION 3: THE EVENT BY THE NUMBERS ═══════════════ */}
+        <section className="relative w-full bg-white dark:bg-[#09090b] py-16 sm:py-20 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto overflow-hidden transition-colors duration-300">
+          <EventByTheNumbers />
+        </section>
 
         {/* ═══════════════ SECTION 4: WHAT MAKES US DIFFERENT ═══════════════ */}
         <section className="relative w-full bg-[#f4f7fa] py-16 sm:py-20 md:py-24 overflow-hidden">

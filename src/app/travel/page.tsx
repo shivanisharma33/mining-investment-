@@ -180,7 +180,7 @@ export default function TravelPage() {
               <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* ORDER 3: HILTON HOTEL */}
               <div className="bg-white dark:bg-[#131b2e] border-2 border-neutral-200 dark:border-[#233049] hover:border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">
                 <div>
@@ -270,6 +270,50 @@ export default function TravelPage() {
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-full text-center"
                 >
                   <span>{t("travel-delta-link", "View Delta Hotel Website ↗")}</span>
+                </a>
+              </div>
+
+              {/* ORDER 5: FAIRMONT LE CHÂTEAU FRONTENAC */}
+              <div className="bg-white dark:bg-[#131b2e] border-2 border-neutral-200 dark:border-[#233049] hover:border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 rounded-2xl bg-[#fef2f2] dark:bg-rose-950/50 border border-[#C6112F]/20 flex items-center justify-center text-[#C6112F]">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
+                      </svg>
+                    </div>
+                    <span className="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 text-[10px] font-black uppercase tracking-wider">
+                      HISTORIC LUXURY HOTEL
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white mb-2">
+                    {t("travel-fairmont-title", "Fairmont Le Château Frontenac")}
+                  </h3>
+                  <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
+
+                  <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-4">
+                    {t(
+                      "travel-fairmont-desc",
+                      "Perched high above Old Québec, Fairmont Le Château Frontenac is one of Canada's most iconic luxury landmark hotels. Enjoy world-class hospitality, gourmet dining, and breathtaking views of the St. Lawrence River, located just minutes from the Québec City Convention Centre."
+                    )}
+                  </p>
+
+                  <p className="text-[#C6112F] text-xs font-semibold mb-6">
+                    {t(
+                      "travel-fairmont-note",
+                      "Iconic luxury accommodations in historic Old Québec for conference attendees. You are responsible for coordinating all your own travel and lodging arrangements."
+                    )}
+                  </p>
+                </div>
+
+                <a
+                  href="https://www.fairmont.com/en/hotels/quebec-city/fairmont-le-chateau-frontenac.html?cmpid=google_lcf_search-generic-ww_luxury-hotel-e-revsh&kpid=go_cmp-22173449727_adg-174124187973_ad-731161028831_kwd-178173882_dev-c_ext-_prd-&wiz_medium=cpc&wiz_source=google&wiz_campaign=22173449727&gad_source=1&gad_campaignid=22173449727&gbraid=0AAAAA97FndlzrxLwVgmOvfWC7mBLZ5ooL&gclid=EAIaIQobChMIyfvUqv2OlgMVB4jCCB1bxAPNEAAYASAAEgK4CfD_BwE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-full text-center"
+                >
+                  <span>{t("travel-fairmont-link", "View Fairmont Website ↗")}</span>
                 </a>
               </div>
             </div>

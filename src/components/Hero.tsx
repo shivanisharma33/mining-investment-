@@ -59,10 +59,37 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-20 max-w-[1100px] w-full text-center flex flex-col items-center px-4 sm:px-6 md:px-12 pt-8 pb-8">
-        {/* Top Subtitle */}
-        <p className="text-white text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-2 sm:mb-3 md:mb-4 leading-relaxed max-w-xs sm:max-w-none mx-auto text-center animate-fade-in-up delay-0">
+        {/* Top Subtitle Eyebrow */}
+        <p className="text-white text-[10px] xs:text-[11px] sm:text-xs md:text-sm font-extrabold tracking-[0.2em] sm:tracking-[0.25em] uppercase mb-3 sm:mb-4 leading-relaxed max-w-xs sm:max-w-none mx-auto text-center animate-fade-in-up delay-0">
           {t("hero-eyebrow", "Canada's Only Tier I Global Mining Investment Conference")}
         </p>
+
+        {/* Date & Location Badges - Exact Image Match */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 animate-fade-in-up delay-1">
+          {/* Date Badge */}
+          <div className="inline-flex items-center gap-3 px-4 sm:px-5 py-2.5 rounded-lg bg-black/75 backdrop-blur-md border border-neutral-600/80 shadow-md">
+            <svg className="w-5 h-5 text-[#ff3b5c] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+              <line x1="16" y1="2" x2="16" y2="6" />
+              <line x1="8" y1="2" x2="8" y2="6" />
+              <line x1="3" y1="10" x2="21" y2="10" />
+            </svg>
+            <span className="text-xs sm:text-sm font-bold text-white tracking-wider uppercase font-sans">
+              JUNE 1 – 3, 2027
+            </span>
+          </div>
+
+          {/* Location Badge */}
+          <div className="inline-flex items-center gap-3 px-4 sm:px-5 py-2.5 rounded-lg bg-black/75 backdrop-blur-md border border-neutral-600/80 shadow-md">
+            <svg className="w-5 h-5 text-[#ff3b5c] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            <span className="text-xs sm:text-sm font-bold text-white tracking-wider uppercase font-sans">
+              QUÉBEC CITY, CANADA
+            </span>
+          </div>
+        </div>
 
         {/* Main Title - 2 Lines in French */}
         <h1 className="text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.18] mb-3 md:mb-4 text-center">
@@ -120,12 +147,16 @@ export default function Hero() {
             </svg>
           </Link>
 
-          {/* Right Button - View Program */}
+          {/* Right Button - View 2027 Participating Companies */}
           <Link
-            href="/agenda"
+            href="/companies-2027"
             className="bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-extrabold tracking-wider px-5 sm:px-8 py-3.5 sm:py-4 flex items-center justify-center gap-2.5 transition-all duration-300 shrink-0 backdrop-blur-sm"
           >
-            <span>{t("hero-program", "VIEW AGENDA")}</span>
+            <span>
+              {lang === "FR"
+                ? "SOCIÉTÉS PARTICIPANTES"
+                : "PARTICIPATING COMPANIES"}
+            </span>
             <svg
               className="w-4 h-4 shrink-0"
               fill="none"

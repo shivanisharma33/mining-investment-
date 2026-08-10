@@ -378,35 +378,7 @@ export default function Navbar() {
 
         {/* Desktop & Action Buttons Container */}
         <div className="flex items-center gap-2.5 sm:gap-3 xl:gap-4 shrink-0">
-          {/* Language Toggle Switch (Desktop) */}
-          <button
-            onClick={() => setLang(lang === "EN" ? "FR" : "EN")}
-            className="hidden lg:flex relative items-center w-[80px] xl:w-[96px] h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group overflow-hidden"
-            aria-label={`Switch language to ${lang === "EN" ? "FR" : "EN"}`}
-          >
-            {/* Sliding Indicator */}
-            <span
-              className="absolute top-[2px] h-[26px] xl:h-[30px] w-[36px] xl:w-[44px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out z-0"
-              style={{
-                left: lang === "EN" ? "2px" : "calc(100% - 2px)",
-                transform: lang === "EN" ? "translateX(0)" : "translateX(-100%)",
-              }}
-            />
-            {/* EN Label */}
-            <span
-              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${lang === "EN" ? "text-white" : "text-[#C6112F]"
-                }`}
-            >
-              EN
-            </span>
-            {/* FR Label */}
-            <span
-              className={`relative z-10 flex-1 text-center text-[10px] xl:text-xs font-extrabold tracking-wider transition-colors duration-300 ${lang === "FR" ? "text-white" : "text-[#C6112F]"
-                }`}
-            >
-              FR
-            </span>
-          </button>
+
 
           {/* REGISTER HERE Button */}
           <Link
@@ -622,23 +594,7 @@ export default function Navbar() {
                 )}
               </button>
 
-              {/* Mobile Language Toggle */}
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => setLang("EN")}
-                  className={`px-3 py-1 rounded-full text-xs font-bold ${lang === "EN" ? "bg-[#C6112F] text-white" : "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300"
-                    }`}
-                >
-                  EN
-                </button>
-                <button
-                  onClick={() => setLang("FR")}
-                  className={`px-3 py-1 rounded-full text-xs font-bold ${lang === "FR" ? "bg-[#C6112F] text-white" : "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300"
-                    }`}
-                >
-                  FR
-                </button>
-              </div>
+
             </div>
 
             <Link
