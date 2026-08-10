@@ -1869,9 +1869,9 @@ function EventByTheNumbers() {
 
 function AdvertisingSubscriptionSection() {
   const { lang, t } = useLanguage();
-  const [sponsorLogoOption, setSponsorLogoOption] = useState("6-month ($1,500)");
-  const [vidInterviewOption, setVidInterviewOption] = useState("1 interview ($3,000)");
-  const [advertisingOption, setAdvertisingOption] = useState("3-month ($1,000)");
+  const [sponsorLogoOption, setSponsorLogoOption] = useState("6-month");
+  const [vidInterviewOption, setVidInterviewOption] = useState("1 interview");
+  const [advertisingOption, setAdvertisingOption] = useState("3-month");
 
   return (
     <div className="w-full flex flex-col text-left">
@@ -1903,9 +1903,8 @@ function AdvertisingSubscriptionSection() {
                   <div className="w-4 h-4 rounded-full border border-[#C6112F] bg-[#C6112F] flex items-center justify-center">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                   </div>
-                  <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">12 months</span>
+                  <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{lang === "FR" ? "12 mois" : "12 months"}</span>
                 </div>
-                <span className="text-xl font-black text-[#1f2430] dark:text-white">$1,200.00</span>
               </div>
             </div>
 
@@ -1926,7 +1925,7 @@ function AdvertisingSubscriptionSection() {
             href="mailto:jchoi@irinc.ca?subject=Basic%20Annual%20Subscription%20Inquiry"
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
+            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
           </a>
         </div>
 
@@ -1944,7 +1943,6 @@ function AdvertisingSubscriptionSection() {
                   </div>
                   <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{lang === "FR" ? "12 mois" : "12 months"}</span>
                 </div>
-                <span className="text-xl font-black text-[#1f2430] dark:text-white">$3,000</span>
               </div>
             </div>
 
@@ -1965,7 +1963,7 @@ function AdvertisingSubscriptionSection() {
             href="mailto:jchoi@irinc.ca?subject=Corporate%20Subscription%20Inquiry"
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
+            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
           </a>
         </div>
 
@@ -1976,11 +1974,11 @@ function AdvertisingSubscriptionSection() {
               {lang === "FR" ? "LOGO DU COMMANDITAIRE" : "SPONSOR LOGO"}
             </span>
 
-            {/* Multiple Price Checkbox Selectors */}
+            {/* Checkbox Selectors */}
             <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
               {[
-                { label: lang === "FR" ? "6 mois" : "6-month", price: "$1,500", val: "6-month ($1,500)" },
-                { label: lang === "FR" ? "12 mois" : "12-month", price: "$2,500", val: "12-month ($2,500)" },
+                { label: lang === "FR" ? "6 mois" : "6-month", val: "6-month" },
+                { label: lang === "FR" ? "12 mois" : "12-month", val: "12-month" },
               ].map((opt) => {
                 const isSelected = sponsorLogoOption === opt.val;
                 return (
@@ -1999,7 +1997,6 @@ function AdvertisingSubscriptionSection() {
                       </div>
                       <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
                     </div>
-                    <span className="text-xl font-black text-[#1f2430] dark:text-white">{opt.price}</span>
                   </div>
                 );
               })}
@@ -2022,7 +2019,7 @@ function AdvertisingSubscriptionSection() {
             href={`mailto:jchoi@irinc.ca?subject=Sponsor%20Logo%20Inquiry%20-${encodeURIComponent(sponsorLogoOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
+            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
           </a>
         </div>
 
@@ -2033,12 +2030,12 @@ function AdvertisingSubscriptionSection() {
               {lang === "FR" ? "INTERVIEWS VID" : "VID INTERVIEWS"}
             </span>
 
-            {/* Multiple Price Checkbox Selectors */}
+            {/* Checkbox Selectors */}
             <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
               {[
-                { label: lang === "FR" ? "1 interview" : "1 interview", price: "$3,000", val: "1 interview ($3,000)" },
-                { label: lang === "FR" ? "3 interviews" : "3 interviews", price: "$6,000", val: "3 interviews ($6,000)" },
-                { label: lang === "FR" ? "4 interviews" : "4 interviews", price: "$9,000", val: "4 interviews ($9,000)" },
+                { label: lang === "FR" ? "1 interview" : "1 interview", val: "1 interview" },
+                { label: lang === "FR" ? "3 interviews" : "3 interviews", val: "3 interviews" },
+                { label: lang === "FR" ? "4 interviews" : "4 interviews", val: "4 interviews" },
               ].map((opt) => {
                 const isSelected = vidInterviewOption === opt.val;
                 return (
@@ -2057,7 +2054,6 @@ function AdvertisingSubscriptionSection() {
                       </div>
                       <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
                     </div>
-                    <span className="text-xl font-black text-[#1f2430] dark:text-white">{opt.price}</span>
                   </div>
                 );
               })}
@@ -2084,7 +2080,7 @@ function AdvertisingSubscriptionSection() {
             href={`mailto:jchoi@irinc.ca?subject=VID%20Interviews%20Inquiry%20-${encodeURIComponent(vidInterviewOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
+            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
           </a>
         </div>
 
@@ -2095,12 +2091,12 @@ function AdvertisingSubscriptionSection() {
               {lang === "FR" ? "PUBLICITÉ BANNIÈRE" : "ADVERTISING"}
             </span>
 
-            {/* Multiple Price Checkbox Selectors */}
+            {/* Checkbox Selectors */}
             <div className="space-y-2 mb-6 border-b border-neutral-100 dark:border-slate-800 pb-4">
               {[
-                { label: lang === "FR" ? "Bannière rotative 3 mois" : "3-month rotating banner", price: "$1,000", val: "3-month ($1,000)" },
-                { label: lang === "FR" ? "Bannière rotative 6 mois" : "6-month rotating banner", price: "$3,000", val: "6-month ($3,000)" },
-                { label: lang === "FR" ? "Bannière rotative 12 mois" : "12-month rotating banner", price: "$5,000", val: "12-month ($5,000)" },
+                { label: lang === "FR" ? "Bannière rotative 3 mois" : "3-month rotating banner", val: "3-month" },
+                { label: lang === "FR" ? "Bannière rotative 6 mois" : "6-month rotating banner", val: "6-month" },
+                { label: lang === "FR" ? "Bannière rotative 12 mois" : "12-month rotating banner", val: "12-month" },
               ].map((opt) => {
                 const isSelected = advertisingOption === opt.val;
                 return (
@@ -2119,7 +2115,6 @@ function AdvertisingSubscriptionSection() {
                       </div>
                       <span className="text-neutral-700 dark:text-slate-200 text-xs font-bold">{opt.label}</span>
                     </div>
-                    <span className="text-xl font-black text-[#1f2430] dark:text-white">{opt.price}</span>
                   </div>
                 );
               })}
@@ -2142,7 +2137,7 @@ function AdvertisingSubscriptionSection() {
             href={`mailto:jchoi@irinc.ca?subject=Advertising%20Banner%20Inquiry%20-${encodeURIComponent(advertisingOption)}`}
             className="w-full py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-black tracking-widest uppercase text-center transition-all duration-300 shadow-md group-hover:scale-[1.02] cursor-pointer block"
           >
-            {lang === "FR" ? "ACHETER MAINTENANT" : "BUY NOW"}
+            {lang === "FR" ? "SE RENSEIGNER" : "INQUIRE NOW"}
           </a>
         </div>
       </div>
