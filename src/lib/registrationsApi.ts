@@ -10,6 +10,7 @@ export interface InvestorRegistrationPayload {
   signUpForNews?: boolean;
   assetsUnderManagement?: string;
   investorType?: string;
+  tellUsAboutYourself?: string;
 }
 
 /** Values accepted by the backend's projectStage enum. */
@@ -28,6 +29,7 @@ export interface CompanyRegistrationPayload {
   projectStage?: ProjectStage;
   location?: string;
   email: string;
+  tellUsAboutYourself?: string;
   signUpForNews?: boolean;
 }
 

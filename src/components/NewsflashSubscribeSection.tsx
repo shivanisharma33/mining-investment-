@@ -11,23 +11,45 @@ export default function NewsflashSubscribeSection() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName.trim() || !email.trim()) return;
+    if (!email.trim() || isSubmitting) return;
 
     setIsSubmitting(true);
+    setErrorMsg("");
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/subscribers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: fullName.trim(),
+          email: email.trim(),
+        }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.message || (isFr ? "L'inscription a échoué. Veuillez réessayer." : "Subscription failed. Please try again."));
+      }
+
       setIsSubmitted(true);
       setFullName("");
       setEmail("");
 
       setTimeout(() => {
         setIsSubmitted(false);
-      }, 5000);
-    }, 600);
+      }, 7000);
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -123,6 +145,12 @@ export default function NewsflashSubscribeSection() {
                     />
                   </div>
                 </div>
+
+                {errorMsg && (
+                  <p className="text-xs font-semibold text-rose-600 dark:text-rose-400 mt-1">
+                    {errorMsg}
+                  </p>
+                )}
 
                 {/* Submit Button */}
                 <button

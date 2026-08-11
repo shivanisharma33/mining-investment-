@@ -30,6 +30,7 @@ export default function RegisterPage() {
     phone: "",
     aum: "",
     investorType: "Institutional Investor",
+    tellUsAboutYourself: "",
     newsletterOptIn: true,
   });
 
@@ -42,6 +43,7 @@ export default function RegisterPage() {
     projectStage: "Explorer",
     location: "",
     email: "",
+    tellUsAboutYourself: "",
     newsletterOptIn: true,
   });
 
@@ -69,6 +71,7 @@ export default function RegisterPage() {
         phone: investorFormData.phone.trim(),
         assetsUnderManagement: investorFormData.aum,
         investorType: investorFormData.investorType,
+        tellUsAboutYourself: investorFormData.tellUsAboutYourself.trim(),
         signUpForNews: investorFormData.newsletterOptIn,
       });
 
@@ -85,6 +88,7 @@ export default function RegisterPage() {
         phone: "",
         aum: "",
         investorType: "Institutional Investor",
+        tellUsAboutYourself: "",
         newsletterOptIn: true,
       });
     } catch (err) {
@@ -117,6 +121,7 @@ export default function RegisterPage() {
         projectStage: companyFormData.projectStage as ProjectStage,
         location: companyFormData.location.trim(),
         email: companyFormData.email.trim(),
+        tellUsAboutYourself: companyFormData.tellUsAboutYourself.trim(),
         signUpForNews: companyFormData.newsletterOptIn,
       });
 
@@ -130,6 +135,7 @@ export default function RegisterPage() {
         projectStage: "Explorer",
         location: "",
         email: "",
+        tellUsAboutYourself: "",
         newsletterOptIn: true,
       });
     } catch (err) {
@@ -595,6 +601,33 @@ export default function RegisterPage() {
                       </div>
                     </div>
 
+                    {/* Tell Us About Yourself */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {isFr ? "Parlez-nous de vous" : "Tell Us About Yourself"}
+                      </label>
+                      <textarea
+                        rows={4}
+                        maxLength={5000}
+                        value={investorFormData.tellUsAboutYourself}
+                        onChange={(e) =>
+                          setInvestorFormData({
+                            ...investorFormData,
+                            tellUsAboutYourself: e.target.value,
+                          })
+                        }
+                        placeholder={
+                          isFr
+                            ? "Décrivez brièvement vos objectifs ou vos intérêts d'investissement..."
+                            : "Briefly describe your investment focus or objectives..."
+                        }
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all bg-white resize-y"
+                      />
+                      <span className="block text-[11px] text-neutral-400 font-medium mt-1">
+                        max. 5000 characters
+                      </span>
+                    </div>
+
                     {/* Sign up for news and updates checkbox */}
                     <div className="pt-2">
                       <label className="flex items-center gap-3 cursor-pointer">
@@ -785,6 +818,33 @@ export default function RegisterPage() {
                         placeholder="e.g. contact@company.com"
                         className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all"
                       />
+                    </div>
+
+                    {/* Tell Us About Yourself */}
+                    <div>
+                      <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
+                        {isFr ? "Parlez-nous de vous" : "Tell Us About Yourself"}
+                      </label>
+                      <textarea
+                        rows={4}
+                        maxLength={5000}
+                        value={companyFormData.tellUsAboutYourself}
+                        onChange={(e) =>
+                          setCompanyFormData({
+                            ...companyFormData,
+                            tellUsAboutYourself: e.target.value,
+                          })
+                        }
+                        placeholder={
+                          isFr
+                            ? "Décrivez brièvement votre société, vos projets ou vos objectifs..."
+                            : "Briefly describe your company, projects, or objectives..."
+                        }
+                        className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 text-neutral-900 text-xs sm:text-sm font-medium outline-none transition-all bg-white resize-y"
+                      />
+                      <span className="block text-[11px] text-neutral-400 font-medium mt-1">
+                        max. 5000 characters
+                      </span>
                     </div>
 
                     {/* Sign up for news and updates */}

@@ -8,15 +8,19 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    const payload = {
+      ...body,
+      newsletterOptIn: body.newsletterOptIn ?? body.signUpForNews ?? false,
+    };
 
     const res = await fetch(
-      "https://mining-investment-backend.vercel.app/api/investor-registrations",
+      "https://typical-butterfly-3f86e59200.strapiapp.com/api/Investor-Registrations",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(payload),
         cache: "no-store",
       }
     );
