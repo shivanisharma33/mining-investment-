@@ -638,7 +638,7 @@ export default function MediaPage() {
           playlistDesc: isFr ? p.descriptionFR : p.description,
         }))
       )
-      .find((v) => v.id === activeVideoId) || playlistsData[0].videos[0];
+      .find((v) => v.id === activeVideoId) || { ...playlistsData[0].videos[0], playlistTitle: "", playlistDesc: "" };
 
   const openLightbox = (i: number) => setLightboxIdx(i);
   const closeLightbox = () => setLightboxIdx(null);
