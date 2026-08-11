@@ -14,6 +14,7 @@ const aboutDropdown = [
     descKey: "nav-about-event-desc",
     descDefault: "Learn about Canada's premier mining conference",
     href: "/about",
+    isExternal: false,
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
@@ -26,6 +27,7 @@ const aboutDropdown = [
     descKey: "nav-team-desc",
     descDefault: "Meet the people behind THE Event",
     href: "/team",
+    isExternal: false,
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
@@ -38,6 +40,7 @@ const aboutDropdown = [
     descKey: "nav-travel-desc",
     descDefault: "Venue, hotels and travel information",
     href: "/travel",
+    isExternal: false,
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -51,6 +54,7 @@ const aboutDropdown = [
     descKey: "nav-media-desc",
     descDefault: "Latest media coverage and press",
     href: "/media",
+    isExternal: false,
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5" />
@@ -63,6 +67,7 @@ const aboutDropdown = [
     descKey: "nav-newsflash-desc",
     descDefault: "Press releases and official announcements",
     href: "/newsflash",
+    isExternal: false,
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
@@ -74,7 +79,8 @@ const aboutDropdown = [
     titleDefault: "International Mining Week",
     descKey: "nav-imw-desc",
     descDefault: "One week of infinite mining opportunities in Quebec City",
-    href: "/imw",
+    href: "https://mining-international-weekly.vercel.app/",
+    isExternal: true,
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
@@ -264,25 +270,50 @@ export default function Navbar() {
                   <div className="bg-white dark:bg-[#18181b] rounded-xl border border-neutral-200 dark:border-zinc-800 shadow-2xl p-4 min-w-[340px] animate-fadeIn">
                     <div className="absolute top-3 left-4 right-4 h-[2px] bg-[#C6112F] rounded-full" />
                     <div className="flex flex-col gap-1 mt-2">
-                      {aboutDropdown.map((item) => (
-                        <Link
-                          key={item.titleKey}
-                          href={item.href}
-                          className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-[#fef2f2] dark:hover:bg-zinc-800/80 transition-colors duration-200 group/item"
-                        >
-                          <div className="w-10 h-10 rounded-lg bg-[#f4f7fa] dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center text-neutral-600 dark:text-zinc-300 group-hover/item:bg-[#C6112F] group-hover/item:text-white group-hover/item:border-[#C6112F] transition-all duration-200 shrink-0 mt-0.5">
-                            {item.icon}
-                          </div>
-                          <div className="flex flex-col">
-                            <span className="text-sm font-bold text-[#C6112F] dark:text-[#C6112F] transition-colors">
-                              {t(item.titleKey, item.titleDefault)}
-                            </span>
-                            <span className="text-xs text-neutral-500 dark:text-zinc-300 leading-relaxed mt-0.5">
-                              {t(item.descKey, item.descDefault)}
-                            </span>
-                          </div>
-                        </Link>
-                      ))}
+                      {aboutDropdown.map((item) => {
+                        if (item.isExternal) {
+                          return (
+                            <a
+                              key={item.titleKey}
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-[#fef2f2] dark:hover:bg-zinc-800/80 transition-colors duration-200 group/item"
+                            >
+                              <div className="w-10 h-10 rounded-lg bg-[#f4f7fa] dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center text-neutral-600 dark:text-zinc-300 group-hover/item:bg-[#C6112F] group-hover/item:text-white group-hover/item:border-[#C6112F] transition-all duration-200 shrink-0 mt-0.5">
+                                {item.icon}
+                              </div>
+                              <div className="flex flex-col">
+                                <span className="text-sm font-bold text-[#C6112F] dark:text-[#C6112F] transition-colors">
+                                  {t(item.titleKey, item.titleDefault)}
+                                </span>
+                                <span className="text-xs text-neutral-500 dark:text-zinc-300 leading-relaxed mt-0.5">
+                                  {t(item.descKey, item.descDefault)}
+                                </span>
+                              </div>
+                            </a>
+                          );
+                        }
+                        return (
+                          <Link
+                            key={item.titleKey}
+                            href={item.href}
+                            className="flex items-start gap-3.5 p-3 rounded-lg hover:bg-[#fef2f2] dark:hover:bg-zinc-800/80 transition-colors duration-200 group/item"
+                          >
+                            <div className="w-10 h-10 rounded-lg bg-[#f4f7fa] dark:bg-zinc-900 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center text-neutral-600 dark:text-zinc-300 group-hover/item:bg-[#C6112F] group-hover/item:text-white group-hover/item:border-[#C6112F] transition-all duration-200 shrink-0 mt-0.5">
+                              {item.icon}
+                            </div>
+                            <div className="flex flex-col">
+                              <span className="text-sm font-bold text-[#C6112F] dark:text-[#C6112F] transition-colors">
+                                {t(item.titleKey, item.titleDefault)}
+                              </span>
+                              <span className="text-xs text-neutral-500 dark:text-zinc-300 leading-relaxed mt-0.5">
+                                {t(item.descKey, item.descDefault)}
+                              </span>
+                            </div>
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -488,17 +519,34 @@ export default function Navbar() {
                     </button>
                     {link.dropdownType === "about" && mobileAboutOpen && (
                       <div className="pl-4 flex flex-col gap-1 mb-2 border-l-2 border-[#C6112F]/20">
-                        {aboutDropdown.map((item) => (
-                          <Link
-                            key={item.titleKey}
-                            href={item.href}
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
-                          >
-                            <span className="text-[#C6112F]">{item.icon}</span>
-                            <span>{t(item.titleKey, item.titleDefault)}</span>
-                          </Link>
-                        ))}
+                        {aboutDropdown.map((item) => {
+                          if (item.isExternal) {
+                            return (
+                              <a
+                                key={item.titleKey}
+                                href={item.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
+                              >
+                                <span className="text-[#C6112F]">{item.icon}</span>
+                                <span>{t(item.titleKey, item.titleDefault)}</span>
+                              </a>
+                            );
+                          }
+                          return (
+                            <Link
+                              key={item.titleKey}
+                              href={item.href}
+                              onClick={() => setIsOpen(false)}
+                              className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
+                            >
+                              <span className="text-[#C6112F]">{item.icon}</span>
+                              <span>{t(item.titleKey, item.titleDefault)}</span>
+                            </Link>
+                          );
+                        })}
                       </div>
                     )}
                     {link.dropdownType === "programs" && mobileProgramsOpen && (
