@@ -6,9 +6,9 @@ import { useLanguage } from "@/context/LanguageContext";
 import {
   type ApiArticle,
   articleHref,
+  fetchArticles,
   formatIssueLabel,
   getCoverImageUrl,
-  normalizeArticlesResponse,
 } from "@/lib/articlesApi";
 
 export interface CompanyArticlesShelfProps {
@@ -34,16 +34,13 @@ export default function CompanyArticlesShelfSection({
   const [loadError, setLoadError] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // The backend sends no CORS headers, so this goes through the local proxy.
+  // Strapi sends CORS headers, so this calls it directly — no proxy needed.
   useEffect(() => {
     const controller = new AbortController();
 
     (async () => {
       try {
-        const res = await fetch("/api/articles", { signal: controller.signal });
-        if (!res.ok) throw new Error(`Request failed (${res.status})`);
-
-        setArticles(normalizeArticlesResponse(await res.json()));
+        setArticles(await fetchArticles(controller.signal));
         setLoadError(false);
       } catch (error) {
         if ((error as Error)?.name === "AbortError") return;

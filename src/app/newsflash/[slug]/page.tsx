@@ -8,12 +8,8 @@ import Footer from "@/components/Footer";
 import NewsflashSubscribeSection from "@/components/NewsflashSubscribeSection";
 import ShareBar from "./ShareBar";
 import {
-  fetchArticleBySlug,
-  parseArticleContent,
+  fetchPressReleaseBySlug,
   estimateReadingTime,
-  formatArticleDate,
-  extractPdfUrl,
-  type ArticleBlock,
 } from "@/lib/newsflashApi";
 
 // Must be a literal — Next statically analyses segment config exports.
@@ -33,13 +29,13 @@ export async function generateMetadata({
   const { slug } = await params;
 
   try {
-    const result = await fetchArticleBySlug(slug);
+    const result = await fetchPressReleaseBySlug(slug);
     if (!result) return { title: "Press Release Not Found" };
 
     const { article } = result;
     const description =
-      article.subheading?.trim() ||
-      article.content?.trim().slice(0, 200) ||
+      article.summary?.trim() ||
+      article.body?.trim().slice(0, 200) ||
       "A press release from THE Mining Investment Event.";
 
     return {
@@ -49,7 +45,7 @@ export async function generateMetadata({
         type: "article",
         title: article.title,
         description,
-        publishedTime: article.publishedAt || article.createdAt,
+        publishedTime: article.isoDate,
       },
       twitter: {
         card: "summary_large_image",
@@ -62,107 +58,20 @@ export async function generateMetadata({
   }
 }
 
-/** Turns bare URLs and email addresses in press-release text into links. */
-function withLinks(text: string): React.ReactNode[] {
-  const parts = text.split(/(https?:\/\/[^\s<>"')]+|[\w.+-]+@[\w-]+\.[\w.-]+)/g);
-
-  return parts.map((part, idx) => {
-    if (/^https?:\/\//.test(part)) {
-      return (
-        <a
-          key={idx}
-          href={part}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[#C6112F] font-semibold underline decoration-[#C6112F]/30 underline-offset-2 hover:decoration-[#C6112F] break-words"
-        >
-          {part.replace(/^https?:\/\//, "")}
-        </a>
-      );
-    }
-    if (/^[\w.+-]+@[\w-]+\.[\w.-]+$/.test(part)) {
-      return (
-        <a
-          key={idx}
-          href={`mailto:${part}`}
-          className="text-[#C6112F] font-semibold underline decoration-[#C6112F]/30 underline-offset-2 hover:decoration-[#C6112F]"
-        >
-          {part}
-        </a>
-      );
-    }
-    return <React.Fragment key={idx}>{part}</React.Fragment>;
-  });
-}
-
-function ArticleBody({ blocks }: { blocks: ArticleBlock[] }) {
-  return (
-    <div className="space-y-6">
-      {blocks.map((block, idx) => {
-        if (block.type === "heading") {
-          return (
-            <h2
-              key={idx}
-              className="text-lg sm:text-xl font-black text-[#1a1f2c] tracking-tight pt-4 flex items-center gap-3"
-            >
-              <span className="w-1.5 h-5 bg-[#C6112F] rounded-full shrink-0" />
-              <span>{block.text}</span>
-            </h2>
-          );
-        }
-
-        if (block.type === "list") {
-          return (
-            <ul key={idx} className="space-y-2.5 pl-1">
-              {block.items.map((item, itemIdx) => (
-                <li key={itemIdx} className="flex items-start gap-3 text-[15px] sm:text-base text-neutral-700 leading-relaxed">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] mt-2.5 shrink-0" />
-                  <span>{withLinks(item)}</span>
-                </li>
-              ))}
-            </ul>
-          );
-        }
-
-        if (block.type === "quote") {
-          return (
-            <blockquote
-              key={idx}
-              className="border-l-4 border-[#C6112F]/40 bg-neutral-50 rounded-r-2xl px-5 sm:px-6 py-4 text-[15px] sm:text-lg text-neutral-800 italic leading-relaxed"
-            >
-              {withLinks(block.text)}
-            </blockquote>
-          );
-        }
-
-        return (
-          <p key={idx} className="text-[15px] sm:text-base text-neutral-700 leading-[1.85]">
-            {block.label && (
-              <b className="font-extrabold text-[#1a1f2c]">{block.label}: </b>
-            )}
-            {withLinks(block.text)}
-          </p>
-        );
-      })}
-    </div>
-  );
-}
-
 export default async function NewsflashArticlePage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const result = await fetchArticleBySlug(slug);
+  const result = await fetchPressReleaseBySlug(slug);
 
   if (!result) notFound();
 
   const { article, related } = result;
-  const blocks = parseArticleContent(article.content);
-  const readingMinutes = estimateReadingTime(article.content);
-  const publishedOn = formatArticleDate(article);
-  const pdfUrl = extractPdfUrl(article);
+  const readingMinutes = estimateReadingTime(article.body);
+  const publishedOn = article.date;
+  const pdfUrl = article.pdfUrl;
 
   return (
     <>
@@ -197,7 +106,7 @@ export default async function NewsflashArticlePage({
             <header className="p-6 sm:p-10 md:p-12 border-b border-neutral-100">
               <div className="flex items-center gap-2.5 mb-5 flex-wrap">
                 <span className="px-3.5 py-1 bg-[#C6112F]/10 border border-[#C6112F]/20 text-[#C6112F] text-[11px] font-black uppercase tracking-[0.2em] rounded-full">
-                  {article.category || "Newsflash"}
+                  Press Release
                 </span>
                 {publishedOn && (
                   <span className="px-3.5 py-1 bg-neutral-100 text-neutral-700 text-xs font-semibold rounded-full border border-neutral-200 flex items-center gap-1.5">
@@ -222,9 +131,9 @@ export default async function NewsflashArticlePage({
                 {article.title}
               </h1>
 
-              {article.subheading && (
+              {article.summary && (
                 <p className="mt-5 text-base sm:text-lg text-neutral-600 leading-relaxed font-medium border-l-4 border-[#C6112F] pl-5">
-                  {article.subheading}
+                  {article.summary}
                 </p>
               )}
 
@@ -249,8 +158,13 @@ export default async function NewsflashArticlePage({
 
             {/* Body */}
             <div className="p-6 sm:p-10 md:p-12">
-              {blocks.length > 0 ? (
-                <ArticleBody blocks={blocks} />
+              {article.bodyHtml ? (
+                // Strapi rich text, stripped back to semantic tags in the API
+                // layer so the styles below govern how it reads.
+                <div
+                  className="press-body"
+                  dangerouslySetInnerHTML={{ __html: article.bodyHtml }}
+                />
               ) : (
                 <p className="text-sm text-neutral-500 font-medium">
                   The full text of this release is available in the attached PDF.
@@ -303,18 +217,18 @@ export default async function NewsflashArticlePage({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                 {related.map((item) => (
                   <Link
-                    key={item._id}
-                    href={`/newsflash/${item.slug || item._id}`}
+                    key={item.id}
+                    href={`/newsflash/${item.slug}`}
                     className="group bg-white border border-neutral-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-lg hover:border-[#C6112F]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col"
                   >
                     <span className="text-[10px] font-black tracking-wider uppercase text-[#C6112F] mb-2">
-                      {item.category || "Newsflash"}
+                      Press Release
                     </span>
                     <h3 className="text-sm font-extrabold text-[#1a1f2c] leading-snug line-clamp-3 group-hover:text-[#C6112F] transition-colors">
                       {item.title}
                     </h3>
                     <span className="mt-auto pt-4 text-[11px] font-semibold text-neutral-500">
-                      {formatArticleDate(item)}
+                      {item.date}
                     </span>
                   </Link>
                 ))}

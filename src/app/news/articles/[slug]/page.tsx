@@ -42,7 +42,7 @@ export async function generateMetadata({
         type: "article",
         title: article.title,
         description,
-        publishedTime: article.publishDate || article.createdAt,
+        publishedTime: article.publishDate,
         images: cover ? [cover] : undefined,
       },
       twitter: {

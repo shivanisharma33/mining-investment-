@@ -8,32 +8,49 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   submitStudentRegistration,
+  uploadStudentFile,
   StudentRegistrationError,
+  MAX_UPLOAD_BYTES,
 } from "@/lib/studentRegistrationApi";
+
+const EMPTY_FORM = {
+  firstName: "",
+  lastName: "",
+  currentSchool: "",
+  programAndYear: "",
+  email: "",
+  phone: "",
+  language: "",
+  signUpForNews: true,
+  interestLetterText: "",
+};
 
 export default function StudentApplyPage() {
   const { t } = useLanguage();
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    currentSchool: "",
-    programAndYear: "",
-    email: "",
-    phone: "",
-    language: "",
-    signUpForNews: true,
-    resumeFileName: "",
-    resumeData: "",
-    interestLetterText: "",
-    interestLetterFileName: "",
-    interestLetterData: "",
-  });
+  const [formData, setFormData] = useState(EMPTY_FORM);
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
+  const [interestLetterFile, setInterestLetterFile] = useState<File | null>(null);
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string>("");
   const [registrationNumber, setRegistrationNumber] = useState<string>("");
+
+  const pickFile = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    setFile: (file: File | null) => void
+  ) => {
+    const file = e.target.files?.[0] ?? null;
+    if (file && file.size > MAX_UPLOAD_BYTES) {
+      setSubmitError(`"${file.name}" is larger than 10MB. Please upload a smaller file.`);
+      e.target.value = "";
+      setFile(null);
+      return;
+    }
+    setSubmitError("");
+    setFile(file);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,38 +60,33 @@ export default function StudentApplyPage() {
     setSubmitError("");
 
     try {
+      // Files live in Strapi's media library; the entry references the upload id.
+      const resumeUpload = resumeFile ? await uploadStudentFile(resumeFile) : null;
+      const letterUpload = interestLetterFile
+        ? await uploadStudentFile(interestLetterFile)
+        : null;
+
       const result = await submitStudentRegistration({
         firstName: formData.firstName.trim(),
         lastName: formData.lastName.trim(),
-        currentSchool: formData.currentSchool.trim(),
-        programAndYear: formData.programAndYear.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
-        language: formData.language,
-        signUpForNews: formData.signUpForNews,
-        resume: formData.resumeData || formData.resumeFileName,
-        resumeFileName: formData.resumeFileName,
-        interestLetter: formData.interestLetterText || formData.interestLetterData,
-        interestLetterFileName: formData.interestLetterFileName,
+        schoolInstitution: formData.currentSchool.trim(),
+        programYearOfStudy: formData.programAndYear.trim(),
+        preferredLanguage: formData.language,
+        letterOfInterest: formData.interestLetterText.trim(),
+        newsletterOptIn: formData.signUpForNews,
+        ...(resumeUpload ? { resumeCv: resumeUpload.id } : {}),
+        // The optional letter attachment goes into the collection's
+        // "transcript" media field — the only other file slot it has.
+        ...(letterUpload ? { transcript: letterUpload.id } : {}),
       });
 
       setRegistrationNumber(result.registrationNumber ?? "");
       setSubmitted(true);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        currentSchool: "",
-        programAndYear: "",
-        email: "",
-        phone: "",
-        language: "",
-        signUpForNews: true,
-        resumeFileName: "",
-        resumeData: "",
-        interestLetterText: "",
-        interestLetterFileName: "",
-        interestLetterData: "",
-      });
+      setFormData(EMPTY_FORM);
+      setResumeFile(null);
+      setInterestLetterFile(null);
     } catch (err) {
       const fieldMessage =
         err instanceof StudentRegistrationError && err.fieldErrors.length > 0
@@ -420,22 +432,9 @@ export default function StudentApplyPage() {
                           <div className="relative border-2 border-dashed border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F] rounded-2xl p-6 transition-all text-center bg-white dark:bg-neutral-900 group">
                             <input
                               type="file"
-                              required={!formData.resumeFileName}
+                              required={!resumeFile}
                               accept=".pdf,.doc,.docx"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) {
-                                  const reader = new FileReader();
-                                  reader.onloadend = () => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      resumeFileName: file.name,
-                                      resumeData: reader.result as string,
-                                    }));
-                                  };
-                                  reader.readAsDataURL(file);
-                                }
-                              }}
+                              onChange={(e) => pickFile(e, setResumeFile)}
                               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                             />
                             <div className="flex flex-col items-center justify-center gap-2">
@@ -444,9 +443,9 @@ export default function StudentApplyPage() {
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5h10.5a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0017.25 4.5H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25z" />
                                 </svg>
                               </div>
-                              {formData.resumeFileName ? (
+                              {resumeFile ? (
                                 <span className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-                                  <span>✓ File Attached:</span> <span className="underline">{formData.resumeFileName}</span>
+                                  <span>✓ File Attached:</span> <span className="underline">{resumeFile.name}</span>
                                 </span>
                               ) : (
                                 <div>
@@ -470,7 +469,7 @@ export default function StudentApplyPage() {
                           </label>
                           <textarea
                             rows={4}
-                            required={!formData.interestLetterFileName}
+                            required={!interestLetterFile}
                             value={formData.interestLetterText}
                             onChange={(e) =>
                               setFormData({ ...formData, interestLetterText: e.target.value })
@@ -484,29 +483,16 @@ export default function StudentApplyPage() {
                             <input
                               type="file"
                               accept=".pdf,.doc,.docx"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) {
-                                  const reader = new FileReader();
-                                  reader.onloadend = () => {
-                                    setFormData((prev) => ({
-                                      ...prev,
-                                      interestLetterFileName: file.name,
-                                      interestLetterData: reader.result as string,
-                                    }));
-                                  };
-                                  reader.readAsDataURL(file);
-                                }
-                              }}
+                              onChange={(e) => pickFile(e, setInterestLetterFile)}
                               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                             />
                             <div className="flex items-center justify-center gap-2 text-xs text-neutral-600 dark:text-neutral-400 font-medium">
                               <svg className="w-4 h-4 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94a3 3 0 114.243 4.243L8.567 18.31a1.5 1.5 0 01-2.122-2.122l8.485-8.485" />
                               </svg>
-                              {formData.interestLetterFileName ? (
+                              {interestLetterFile ? (
                                 <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                                  <span>✓</span> <span>{formData.interestLetterFileName}</span>
+                                  <span>✓</span> <span>{interestLetterFile.name}</span>
                                 </span>
                               ) : (
                                 <span>{t("student-form-interest-file", "Or attach Letter of Interest file (PDF, DOCX)")}</span>

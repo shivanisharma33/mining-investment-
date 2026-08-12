@@ -7,22 +7,32 @@ import Footer from "@/components/Footer";
 import CompaniesView from "@/components/CompaniesView";
 import type { CompanyItem } from "@/components/companiesData";
 import { useLanguage } from "@/context/LanguageContext";
-import { fetchCompaniesByYear } from "@/lib/companiesApi";
+import {
+  fetchEventEditions,
+  fetchParticipatingCompanies,
+  type EventEdition,
+} from "@/lib/companiesApi";
 
-const COMPANIES_YEAR = 2027;
+/** Used until the editions request answers, and if it returns nothing. */
+const FALLBACK_YEAR = 2027;
 
 export default function CompaniesPage() {
   const { t } = useLanguage();
   const [companies, setCompanies] = useState<CompanyItem[]>([]);
+  const [editions, setEditions] = useState<EventEdition[]>([]);
   const [companiesError, setCompaniesError] = useState<string>("");
   const [companiesLoading, setCompaniesLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const controller = new AbortController();
 
-    fetchCompaniesByYear(COMPANIES_YEAR, controller.signal)
-      .then((items) => {
-        setCompanies(items);
+    Promise.all([
+      fetchEventEditions(controller.signal),
+      fetchParticipatingCompanies(controller.signal),
+    ])
+      .then(([editionList, companyList]) => {
+        setEditions(editionList);
+        setCompanies(companyList);
         setCompaniesLoading(false);
       })
       .catch((err: unknown) => {
@@ -35,6 +45,10 @@ export default function CompaniesPage() {
 
     return () => controller.abort();
   }, []);
+
+  // The newest edition names the page; the filter can still reach the others.
+  const currentEdition = editions[0];
+  const currentYear = currentEdition?.year ?? FALLBACK_YEAR;
 
   return (
     <>
@@ -60,13 +74,15 @@ export default function CompaniesPage() {
               <span className="text-[#C6112F]">›</span>
               <span className="text-neutral-400">Event</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">Participating Companies 2027</span>
+              <span className="text-white font-semibold">
+                {currentEdition?.name ?? `Participating Companies ${currentYear}`}
+              </span>
             </div>
             <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase block mb-3">
-              2027 DIRECTORY & CONFIRMED PARTICIPANTS
+              {currentYear} DIRECTORY & CONFIRMED PARTICIPANTS
             </span>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
-              Participating <span className="text-[#C6112F]">Companies 2027</span>
+              Participating <span className="text-[#C6112F]">Companies {currentYear}</span>
             </h1>
             <div className="w-20 h-[3.5px] bg-[#C6112F] mt-6 rounded-full" />
           </div>
@@ -76,10 +92,10 @@ export default function CompaniesPage() {
         <section className="relative w-full py-14 sm:py-18 md:py-22">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              2027 CONFIRMED DELEGATIONS & EXHIBITORS
+              {currentYear} CONFIRMED DELEGATIONS & EXHIBITORS
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
-              Confirmed for THE Event 2027
+              Confirmed for THE Event {currentYear}
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
             <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
@@ -88,8 +104,11 @@ export default function CompaniesPage() {
 
             {/* Render Table Component */}
             <CompaniesView
-              initialYear={COMPANIES_YEAR}
-              apiYear={COMPANIES_YEAR}
+              key={currentYear}
+              initialYear={currentYear}
+              // Keeps the spinner up while the editions request is still out.
+              apiYear={currentYear}
+              editions={editions}
               apiCompanies={companies}
               apiLoading={companiesLoading}
               apiError={companiesError}

@@ -1,257 +1,156 @@
-export interface ApiNewsflashItem {
-  _id: string;
-  title: string;
-  slug?: string;
-  subheading?: string;
-  content?: string;
-  date?: string;
-  category?: string;
-  pdfAttachment?: { url?: string; name?: string } | string;
-  pdfUrl?: string;
-  pdf?: string;
-  image?: string;
-  publishedAt?: string;
-  createdAt?: string;
-}
+/**
+ * Press releases, served by the Strapi collection
+ * https://typical-butterfly-3f86e59200.strapiapp.com/api/press-releases
+ *
+ * Strapi fields: title, date, shortDescription, longDescription (rich text
+ * HTML), isFeatured, pdfFile (media).
+ */
 
-interface NewsflashResponse {
-  success?: boolean;
-  data?: ApiNewsflashItem[];
-}
+const STRAPI_BASE_URL =
+  process.env.NEXT_PUBLIC_STRAPI_URL ??
+  "https://typical-butterfly-3f86e59200.strapiapp.com";
 
-const NEWSFLASH_UPSTREAM =
-  "https://mining-investment-backend.vercel.app/api/newsflash?limit=200";
+/** pageSize covers the whole collection in one request — it holds ~16 entries. */
+const PRESS_RELEASES_ENDPOINT = `${STRAPI_BASE_URL}/api/press-releases?populate=*&sort=date:desc&pagination[pageSize]=100`;
 
-/** The backend takes ~1.2s per call, so cache it well away from the request path. */
+/** Strapi answers in ~1s, so keep the result off the request path. */
 export const NEWSFLASH_REVALIDATE_SECONDS = 300;
 
 /** Snippet length — cards line-clamp to 3 lines, so this is already generous. */
 const SNIPPET_LENGTH = 400;
 
-export function extractPdfUrl(
-  item: ApiNewsflashItem | null | undefined
-): string | null {
-  if (!item) return null;
-
-  let rawUrl: string | null = null;
-  if (item.pdfUrl && typeof item.pdfUrl === "string" && item.pdfUrl.trim()) {
-    rawUrl = item.pdfUrl.trim();
-  } else if (item.pdf && typeof item.pdf === "string" && item.pdf.trim()) {
-    rawUrl = item.pdf.trim();
-  } else if (item.pdfAttachment) {
-    if (typeof item.pdfAttachment === "string" && item.pdfAttachment.trim()) {
-      rawUrl = item.pdfAttachment.trim();
-    } else if (
-      typeof item.pdfAttachment === "object" &&
-      item.pdfAttachment.url &&
-      typeof item.pdfAttachment.url === "string"
-    ) {
-      rawUrl = item.pdfAttachment.url.trim();
-    }
-  }
-
-  if (!rawUrl && item.content && typeof item.content === "string") {
-    const match = item.content.match(
-      /(https?:\/\/[^\s"']+\.pdf|\/[^\s"']+\.pdf)/i
-    );
-    if (match) rawUrl = match[0];
-  }
-
-  // Only return a PDF URL if one was attached from the backend
-  if (!rawUrl) return null;
-
-  // Hide PDF button for dummy / placeholder URLs from backend
-  const lower = rawUrl.toLowerCase();
-  if (
-    lower.includes("example.com") ||
-    lower.includes("dummy") ||
-    lower.includes("placeholder") ||
-    lower.includes("test.pdf") ||
-    lower.includes("sample.pdf")
-  ) {
-    return null;
-  }
-
-  // Convert localhost / relative backend paths to live backend server URL
-  if (
-    rawUrl.startsWith("http://localhost:5000") ||
-    rawUrl.startsWith("http://localhost:3000") ||
-    rawUrl.startsWith("http://127.0.0.1:5000")
-  ) {
-    rawUrl = rawUrl.replace(
-      /^http:\/\/(localhost|127\.0\.0\.1):(5000|3000)/,
-      "https://mining-investment-backend.vercel.app"
-    );
-  } else if (rawUrl.startsWith("/uploads/")) {
-    rawUrl = `https://mining-investment-backend.vercel.app${rawUrl}`;
-  } else if (rawUrl.startsWith("uploads/")) {
-    rawUrl = `https://mining-investment-backend.vercel.app/${rawUrl}`;
-  } else if (
-    !rawUrl.startsWith("http://") &&
-    !rawUrl.startsWith("https://") &&
-    !rawUrl.startsWith("/")
-  ) {
-    rawUrl = "/" + rawUrl;
-  }
-
-  return rawUrl;
+export interface PressRelease {
+  /** Strapi documentId — stable across edits. */
+  id: string;
+  title: string;
+  /** Title slug with the numeric id appended; several releases share a title. */
+  slug: string;
+  /** Formatted for display, e.g. "July 10, 2026". */
+  date: string;
+  /** Raw `YYYY-MM-DD` from Strapi, for <time> and sorting. */
+  isoDate?: string;
+  summary?: string;
+  /** Plain text, used for search, snippets and reading time. */
+  body?: string;
+  /** Sanitised HTML, rendered on the article page. */
+  bodyHtml?: string;
+  pdfUrl?: string;
+  isFeatured?: boolean;
 }
+
+interface StrapiMedia {
+  url?: string;
+  name?: string;
+}
+
+interface StrapiPressRelease {
+  id: number;
+  documentId: string;
+  title?: string;
+  date?: string;
+  shortDescription?: string;
+  longDescription?: string;
+  isFeatured?: boolean | null;
+  pdfFile?: StrapiMedia | null;
+  publishedAt?: string;
+  createdAt?: string;
+}
+
+interface StrapiListResponse {
+  data?: StrapiPressRelease[];
+}
+
+/* ── HTML handling ─────────────────────────────────────────────────────── */
+
+/** Semantic tags worth keeping; everything else is unwrapped. */
+const KEEP_TAGS = new Set([
+  "p", "br", "strong", "b", "em", "i", "u", "s",
+  "a", "ul", "ol", "li", "h2", "h3", "h4", "blockquote",
+]);
+
+const DROP_WITH_CONTENT = /<(script|style|iframe|object|embed)\b[\s\S]*?<\/\1\s*>/gi;
+const TAG = /<\/?([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>/g;
 
 /**
- * Trims a list entry down to what the cards actually render. Full article
- * bodies are ~80% of the response but are only needed on the detail page, and
- * the PDF link is resolved here while the full content is still available.
+ * Bodies are pasted out of Word, so every tag carries inline styles that fight
+ * the page (18.3px Helvetica, forced white background, justified text). This
+ * keeps the structure and the links, and drops the styling so the site's own
+ * typography applies. Dropping attributes also removes the XSS surface of
+ * rendering CMS HTML directly.
  */
-function toListItem(item: ApiNewsflashItem): ApiNewsflashItem {
-  const pdfUrl = extractPdfUrl(item);
-  const content = item.content?.trim() ?? "";
+function sanitizeHtml(raw?: string): string {
+  if (!raw?.trim()) return "";
 
-  return {
-    _id: item._id,
-    title: item.title,
-    slug: item.slug,
-    subheading: item.subheading,
-    category: item.category,
-    date: item.date,
-    image: item.image,
-    publishedAt: item.publishedAt,
-    createdAt: item.createdAt,
-    content:
-      content.length > SNIPPET_LENGTH
-        ? `${content.slice(0, SNIPPET_LENGTH)}…`
-        : content,
-    // Pre-resolved so extractPdfUrl() on the client returns it without the
-    // full content to scan.
-    pdfUrl: pdfUrl ?? undefined,
-  };
-}
+  const html = raw
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(DROP_WITH_CONTENT, "")
+    .replace(TAG, (full, rawName: string, attrs: string) => {
+      let tag = rawName.toLowerCase();
+      // The page already has an <h1>; demote so headings stay in order.
+      if (tag === "h1") tag = "h2";
+      if (tag === "h5" || tag === "h6") tag = "h4";
 
-/**
- * Server-side list fetch. Runs on the server so the browser never waits on the
- * slow upstream call, and the result is shared across visitors via the Next
- * data cache.
- */
-async function fetchNewsflashRaw(): Promise<ApiNewsflashItem[]> {
-  const res = await fetch(NEWSFLASH_UPSTREAM, {
-    headers: { "Content-Type": "application/json" },
-    next: { revalidate: NEWSFLASH_REVALIDATE_SECONDS },
-  });
+      if (!KEEP_TAGS.has(tag)) return "";
+      if (full.startsWith("</")) return `</${tag}>`;
+      if (tag === "br") return "<br />";
 
-  if (!res.ok) throw new Error(`Newsflash request failed (${res.status})`);
-
-  const json: NewsflashResponse = await res.json();
-  return Array.isArray(json?.data) ? json.data : [];
-}
-
-export async function fetchNewsflashList(): Promise<ApiNewsflashItem[]> {
-  return (await fetchNewsflashRaw()).map(toListItem);
-}
-
-/**
- * Full article for a slug, with content intact. Shares the cached upstream
- * response with the list page, so opening an article costs no extra request.
- */
-export async function fetchArticleBySlug(
-  slug: string
-): Promise<{ article: ApiNewsflashItem; related: ApiNewsflashItem[] } | null> {
-  const items = await fetchNewsflashRaw();
-  const decoded = decodeURIComponent(slug);
-
-  const article = items.find(
-    (item) => item.slug === decoded || item._id === decoded || item.slug === slug
-  );
-  if (!article) return null;
-
-  const sameCategory = items.filter(
-    (item) => item._id !== article._id && item.category === article.category
-  );
-  const others = items.filter(
-    (item) => item._id !== article._id && item.category !== article.category
-  );
-
-  return {
-    article,
-    related: [...sameCategory, ...others].slice(0, 3).map(toListItem),
-  };
-}
-
-export type ArticleBlock =
-  | { type: "heading"; text: string }
-  | { type: "quote"; text: string }
-  | { type: "list"; items: string[] }
-  | { type: "paragraph"; label?: string; text: string };
-
-const BULLET_PATTERN = /^[·•‣▪]\s*|^-\s+/;
-
-/**
- * Press releases arrive as plain text with blank-line separated blocks. This
- * recovers the structure the source document had — section headings, bullet
- * lists, pull quotes, and "Label: value" lines — so the page reads like an
- * article instead of one undifferentiated wall of paragraphs.
- */
-export function parseArticleContent(content?: string): ArticleBlock[] {
-  if (!content?.trim()) return [];
-
-  const chunks = content
-    .split(/\n{2,}/)
-    .map((chunk) => chunk.trim())
-    .filter(Boolean);
-
-  const blocks: ArticleBlock[] = [];
-
-  for (const chunk of chunks) {
-    if (BULLET_PATTERN.test(chunk)) {
-      const items = chunk
-        .split(/\n+/)
-        .map((line) => line.replace(BULLET_PATTERN, "").trim())
-        .filter(Boolean);
-
-      const previous = blocks[blocks.length - 1];
-      if (previous?.type === "list") {
-        previous.items.push(...items);
-      } else {
-        blocks.push({ type: "list", items });
+      if (tag === "a") {
+        const match = attrs.match(/href\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/i);
+        const href = (match?.[1] ?? match?.[2] ?? match?.[3] ?? "").trim();
+        if (!/^(?:https?:|mailto:|tel:|\/)/i.test(href)) return "";
+        const safe = href.replace(/"/g, "&quot;").replace(/</g, "&lt;");
+        // mailto:/tel: hand off to the OS, so a new tab would just flash open.
+        const newTab = /^https?:/i.test(href)
+          ? ' target="_blank" rel="noopener noreferrer"'
+          : "";
+        return `<a href="${safe}"${newTab}>`;
       }
-      continue;
-    }
 
-    // Short, unpunctuated lines are section headings in the source document.
-    if (chunk.length <= 60 && !/[.!?]$/.test(chunk)) {
-      blocks.push({ type: "heading", text: chunk.replace(/:$/, "") });
-      continue;
-    }
+      return `<${tag}>`;
+    })
+    .replace(/<p>(?:\s|&nbsp;|<br \/>)*<\/p>/gi, "");
 
-    if (/^[“"]/.test(chunk)) {
-      blocks.push({ type: "quote", text: chunk });
-      continue;
-    }
-
-    // "IAMGOLD Track Winners: Team 8 — …" reads better with the label lifted out.
-    const labelled = chunk.match(/^([^:\n]{2,40}):\s+([\s\S]+)$/);
-    if (labelled) {
-      blocks.push({ type: "paragraph", label: labelled[1], text: labelled[2] });
-      continue;
-    }
-
-    blocks.push({ type: "paragraph", text: chunk });
-  }
-
-  return blocks;
+  return html.trim();
 }
 
-export function estimateReadingTime(content?: string): number {
-  const words = content?.trim().split(/\s+/).filter(Boolean).length ?? 0;
-  return Math.max(1, Math.round(words / 200));
+const ENTITIES: Record<string, string> = {
+  "&nbsp;": " ", "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"',
+  "&#39;": "'", "&apos;": "'", "&ldquo;": "“", "&rdquo;": "”",
+  "&lsquo;": "‘", "&rsquo;": "’", "&hellip;": "…", "&mdash;": "—", "&ndash;": "–",
+};
+
+function htmlToText(raw?: string): string {
+  if (!raw?.trim()) return "";
+
+  return raw
+    .replace(DROP_WITH_CONTENT, "")
+    .replace(/<\/(?:p|div|h[1-6]|li|blockquote)>/gi, "\n\n")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&[a-z#0-9]+;/gi, (entity) => ENTITIES[entity.toLowerCase()] ?? entity)
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
 }
 
-export function formatArticleDate(item: ApiNewsflashItem): string {
-  if (item.date?.trim()) return item.date.trim();
+/* ── Mapping ───────────────────────────────────────────────────────────── */
 
-  const raw = item.publishedAt || item.createdAt;
-  if (!raw) return "";
+function slugify(title: string): string {
+  return title
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 70)
+    .replace(/-+$/, "");
+}
 
-  const parsed = new Date(raw);
-  if (Number.isNaN(parsed.getTime())) return "";
+export function formatPressDate(isoDate?: string): string {
+  if (!isoDate) return "";
+
+  const parsed = new Date(isoDate);
+  if (Number.isNaN(parsed.getTime())) return isoDate;
 
   return parsed.toLocaleDateString("en-US", {
     month: "long",
@@ -259,4 +158,86 @@ export function formatArticleDate(item: ApiNewsflashItem): string {
     year: "numeric",
     timeZone: "UTC",
   });
+}
+
+function toPressRelease(entry: StrapiPressRelease): PressRelease {
+  const title = entry.title?.trim() || "Untitled press release";
+  const base = slugify(title);
+  const isoDate = entry.date || entry.publishedAt?.slice(0, 10);
+
+  return {
+    id: entry.documentId,
+    title,
+    // Five releases share a title, so the id keeps every URL distinct — and
+    // stable, which a positional "-2" suffix would not be.
+    slug: base ? `${base}-${entry.id}` : String(entry.id),
+    date: formatPressDate(isoDate),
+    isoDate,
+    summary: entry.shortDescription?.trim() || undefined,
+    body: htmlToText(entry.longDescription),
+    bodyHtml: sanitizeHtml(entry.longDescription),
+    pdfUrl: entry.pdfFile?.url?.trim() || undefined,
+    isFeatured: entry.isFeatured === true,
+  };
+}
+
+/** Cards only need a snippet; full bodies are ~80% of the payload. */
+function toListItem(item: PressRelease): PressRelease {
+  const body = item.body ?? "";
+
+  return {
+    ...item,
+    body: body.length > SNIPPET_LENGTH ? `${body.slice(0, SNIPPET_LENGTH)}…` : body,
+    bodyHtml: undefined,
+  };
+}
+
+/* ── Fetching ──────────────────────────────────────────────────────────── */
+
+/**
+ * Runs on the server so the browser never waits on Strapi, and the response is
+ * shared across visitors through the Next data cache. The article page reuses
+ * this same cached list, so opening a release costs no extra request.
+ */
+async function fetchPressReleasesRaw(): Promise<PressRelease[]> {
+  const res = await fetch(PRESS_RELEASES_ENDPOINT, {
+    headers: { "Content-Type": "application/json" },
+    next: { revalidate: NEWSFLASH_REVALIDATE_SECONDS },
+  });
+
+  if (!res.ok) throw new Error(`Press release request failed (${res.status})`);
+
+  const json: StrapiListResponse = await res.json();
+  const items = Array.isArray(json?.data) ? json.data.map(toPressRelease) : [];
+
+  // Strapi already sorts by date; flagged releases are lifted to the top.
+  return [...items.filter((i) => i.isFeatured), ...items.filter((i) => !i.isFeatured)];
+}
+
+export async function fetchPressReleaseList(): Promise<PressRelease[]> {
+  return (await fetchPressReleasesRaw()).map(toListItem);
+}
+
+export async function fetchPressReleaseBySlug(
+  slug: string
+): Promise<{ article: PressRelease; related: PressRelease[] } | null> {
+  const items = await fetchPressReleasesRaw();
+  const decoded = decodeURIComponent(slug);
+
+  const article =
+    items.find((item) => item.slug === decoded || item.slug === slug) ??
+    // Falls back to the documentId so a bare-id link still resolves.
+    items.find((item) => item.id === decoded);
+
+  if (!article) return null;
+
+  return {
+    article,
+    related: items.filter((item) => item.id !== article.id).slice(0, 3).map(toListItem),
+  };
+}
+
+export function estimateReadingTime(text?: string): number {
+  const words = text?.trim().split(/\s+/).filter(Boolean).length ?? 0;
+  return Math.max(1, Math.round(words / 200));
 }

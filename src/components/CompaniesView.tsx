@@ -3,16 +3,23 @@
 import React, { useState, useMemo } from "react";
 import CompanyLogoImage from "@/components/CompanyLogoImage";
 import { PARTICIPATING_COMPANIES, CompanyItem } from "./companiesData";
+import type { EventEdition } from "@/lib/companiesApi";
 import { useLanguage } from "@/context/LanguageContext";
+
+/** Editions that only exist in the bundled dataset, newest first. */
+const BUNDLED_YEARS = [2026, 2025, 2024, 2023];
 
 interface CompaniesViewProps {
   initialYear?: number;
   /**
-   * Companies for `apiYear`, supplied by the companies API for 2027. Past
-   * editions omit these and keep using the bundled PARTICIPATING_COMPANIES.
+   * Companies from the API. Editions with no Strapi entry fall back to the
+   * bundled PARTICIPATING_COMPANIES.
    */
   apiCompanies?: CompanyItem[];
+  /** Single API-backed year. Superseded by `editions` when that is supplied. */
   apiYear?: number;
+  /** Event editions from Strapi — each one becomes a filter option. */
+  editions?: EventEdition[];
   apiLoading?: boolean;
   apiError?: string;
   showMap?: boolean;
@@ -22,6 +29,7 @@ export default function CompaniesView({
   initialYear = 2026,
   apiCompanies,
   apiYear,
+  editions,
   apiLoading = false,
   apiError = "",
   showMap,
@@ -30,7 +38,18 @@ export default function CompaniesView({
   const [selectedYear, setSelectedYear] = useState<number>(initialYear);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const isApiYear = apiYear !== undefined && selectedYear === apiYear;
+  // Years Strapi answers for; everything else comes from the bundled dataset.
+  const apiYears = useMemo(() => {
+    if (editions?.length) return editions.map((edition) => edition.year);
+    return apiYear !== undefined ? [apiYear] : [];
+  }, [editions, apiYear]);
+
+  const editionOptions = useMemo(() => {
+    const years = new Set([...apiYears, ...BUNDLED_YEARS, selectedYear]);
+    return [...years].sort((a, b) => b - a);
+  }, [apiYears, selectedYear]);
+
+  const isApiYear = apiYears.includes(selectedYear);
   const shouldShowMap = showMap !== undefined ? showMap : selectedYear !== 2027;
 
   const getTypeBadgeStyle = (type: string) => {
@@ -49,11 +68,19 @@ export default function CompaniesView({
 
   // Every company in the selected edition, before the search box narrows it.
   const editionCompanies = useMemo(() => {
-    if (isApiYear) return apiCompanies ?? [];
+    if (isApiYear) {
+      const items = apiCompanies ?? [];
+      // A single-year page passes only its own companies; the full directory
+      // passes every edition at once, so narrow to the selected one.
+      return editions?.length
+        ? items.filter((company) => company.year === selectedYear)
+        : items;
+    }
+
     return PARTICIPATING_COMPANIES.filter(
       (company) => !company.year || company.year === selectedYear
     );
-  }, [isApiYear, apiCompanies, selectedYear]);
+  }, [isApiYear, apiCompanies, editions, selectedYear]);
 
   const filteredCompanies = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -100,11 +127,12 @@ export default function CompaniesView({
             onChange={(e) => setSelectedYear(Number(e.target.value))}
             className="bg-neutral-50 dark:bg-zinc-800 border border-neutral-300 dark:border-zinc-700 rounded-xl py-2 sm:py-2.5 px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-neutral-900 dark:text-white focus:outline-none focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 cursor-pointer shadow-2xs transition-all hover:border-[#C6112F] w-full xs:w-auto"
           >
-            <option value={2027}>2027 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
-            <option value={2026}>2026 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
-            <option value={2025}>2025 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
-            <option value={2024}>2024 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
-            <option value={2023}>2023 {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}</option>
+            {editionOptions.map((year) => (
+              <option key={year} value={year}>
+                {year}{" "}
+                {lang === "FR" ? "Sociétés Participantes" : "Participating Companies"}
+              </option>
+            ))}
           </select>
         </div>
 

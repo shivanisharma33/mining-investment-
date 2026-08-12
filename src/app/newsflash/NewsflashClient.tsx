@@ -8,99 +8,71 @@ import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import NewsflashSubscribeSection from "@/components/NewsflashSubscribeSection";
 import { useLanguage } from "@/context/LanguageContext";
-import { ApiNewsflashItem, extractPdfUrl } from "@/lib/newsflashApi";
+import { PressRelease } from "@/lib/newsflashApi";
 
 // Opens a PDF in Google Docs Viewer so it displays inline instead of downloading
 function openPdfUrl(rawUrl: string): string {
   return `https://docs.google.com/viewer?url=${encodeURIComponent(rawUrl)}&embedded=false`;
 }
 
-const tagTranslations: Record<string, { EN: string; FR: string }> = {
-  All: { EN: "All Updates", FR: "Toutes les mises à jour" },
-  Newsflash: { EN: "Newsflash", FR: "Dépêches" },
-  Announcement: { EN: "Announcement", FR: "Annonce" },
-  Issuers: { EN: "Issuers", FR: "Émetteurs" },
-  Students: { EN: "Students", FR: "Étudiants" },
-  "Save the Date": { EN: "Save the Date", FR: "Réservez la date" },
-  Participants: { EN: "Participants", FR: "Participants" },
-  Speakers: { EN: "Speakers", FR: "Conférenciers" },
-  Keynote: { EN: "Keynote", FR: "Conférence" },
-  "SHE-CO": { EN: "SHE-CO", FR: "SHE-CO" },
-};
-
-const fallbackData: ApiNewsflashItem[] = [
+const fallbackData: PressRelease[] = [
   {
-    _id: "1",
+    id: "1",
     title: "Keynote Speakers and Panels Announcement",
     slug: "keynote-speakers-and-panels-announcement",
-    date: "Apr 14, 2026",
-    category: "Announcement",
-    subheading: "THE Mining Investment Event announces its keynote speakers and panel line-up for the 2026 conference in Quebec City.",
-    content: "THE Mining Investment Event of the North is pleased to announce its distinguished keynote speakers and executive panel line-up for the upcoming 2026 conference at the Centre des congrès de Québec.",
-    image: "/news/hero_1.png",
+    date: "April 14, 2026",
+    summary: "THE Mining Investment Event announces its keynote speakers and panel line-up for the 2026 conference in Quebec City.",
+    body: "THE Mining Investment Event of the North is pleased to announce its distinguished keynote speakers and executive panel line-up for the upcoming 2026 conference at the Centre des congrès de Québec.",
   },
   {
-    _id: "2",
+    id: "2",
     title: "THE Mining Investment Event Announces 2026 Issuers and Welcomes Partners",
     slug: "the-mining-investment-event-announces-2026-issuers",
-    date: "Feb 19, 2026",
-    category: "Issuers",
-    subheading: "THE Mining Investment Event unveils its 2026 issuer roster and welcomes new and returning partners.",
-    content: "Organizers of THE Mining Investment Event are proud to unveil the initial lineup of participating public mining companies and sponsors.",
-    image: "/news/copper_mine.png",
+    date: "February 19, 2026",
+    summary: "THE Mining Investment Event unveils its 2026 issuer roster and welcomes new and returning partners.",
+    body: "Organizers of THE Mining Investment Event are proud to unveil the initial lineup of participating public mining companies and sponsors.",
   },
   {
-    _id: "3",
+    id: "3",
     title: "In Collaboration with ITFA and AMQ, Announces International Mining Week in Quebec City",
     slug: "in-collaboration-with-itfa-and-amq-announces-international-mining-week",
-    date: "Oct 8, 2025",
-    category: "Announcement",
-    subheading: "THE Mining Investment Event, in collaboration with ITFA and AMQ, announces International Mining Week in Quebec City.",
-    content: "THE Mining Investment Event, together with the International Trade and Finance Association (ITFA) and Association minière du Québec (AMQ), is thrilled to announce Quebec City's inaugural International Mining Week.",
-    image: "/news/hero_2.png",
+    date: "October 8, 2025",
+    summary: "THE Mining Investment Event, in collaboration with ITFA and AMQ, announces International Mining Week in Quebec City.",
+    body: "THE Mining Investment Event, together with the International Trade and Finance Association (ITFA) and Association minière du Québec (AMQ), is thrilled to announce Quebec City's inaugural International Mining Week.",
   },
 ];
 
 export default function NewsflashClient({
   initialItems,
 }: {
-  initialItems: ApiNewsflashItem[];
+  initialItems: PressRelease[];
 }) {
   const router = useRouter();
   const { t, lang } = useLanguage();
   // Fetched on the server, so the list is in the HTML — no client-side wait.
   const newsItems = initialItems.length > 0 ? initialItems : fallbackData;
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeModalItem, setActiveModalItem] = useState<ApiNewsflashItem | null>(null);
+  const [activeModalItem, setActiveModalItem] = useState<PressRelease | null>(null);
 
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 6;
 
-  const categories = ["All", ...Array.from(new Set(newsItems.map((n) => n.category || "Newsflash")))];
-
   const filteredNews = newsItems.filter((item) => {
-    const itemCat = item.category || "Newsflash";
-    const matchesCategory = selectedCategory === "All" || itemCat === selectedCategory;
-    const matchesSearch =
-      searchQuery.trim() === "" ||
-      (item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.subheading && item.subheading.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (item.content && item.content.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesCategory && matchesSearch;
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return true;
+    return (
+      item.title.toLowerCase().includes(query) ||
+      (item.summary && item.summary.toLowerCase().includes(query)) ||
+      (item.body && item.body.toLowerCase().includes(query))
+    );
   });
 
-  const featuredArticle = selectedCategory === "All" && searchQuery === "" ? filteredNews[0] : null;
+  const featuredArticle = searchQuery === "" ? filteredNews[0] : null;
   const remainingNews = featuredArticle ? filteredNews.slice(1) : filteredNews;
 
   const totalPages = Math.max(1, Math.ceil(remainingNews.length / ITEMS_PER_PAGE));
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedNews = remainingNews.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
-  const handleCategorySelect = (cat: string) => {
-    setSelectedCategory(cat);
-    setCurrentPage(1);
-  };
 
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);
@@ -154,27 +126,12 @@ export default function NewsflashClient({
               )}
             </p>
 
-            {/* Filter Tags & Search Row */}
+            {/* Search Row */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-              {/* Category Pills */}
-              <div className="flex flex-wrap gap-2">
-                {categories.map((cat) => {
-                  const label = tagTranslations[cat] ? tagTranslations[cat][lang] : cat;
-                  const isSelected = selectedCategory === cat;
-                  return (
-                    <button
-                      key={cat}
-                      onClick={() => handleCategorySelect(cat)}
-                      className={`px-4.5 py-2 rounded-full text-xs font-bold tracking-wider transition-all duration-200 cursor-pointer ${isSelected
-                          ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
-                          : "bg-white text-neutral-600 border border-neutral-200/80 hover:bg-neutral-100 hover:text-neutral-900 shadow-2xs"
-                        }`}
-                    >
-                      {label}
-                    </button>
-                  );
-                })}
-              </div>
+              <span className="text-xs font-bold tracking-wider text-neutral-500">
+                {filteredNews.length}{" "}
+                {filteredNews.length === 1 ? "press release" : "press releases"}
+              </span>
 
               {/* Search Box */}
               <div className="relative w-full md:w-72 shrink-0">
@@ -207,13 +164,13 @@ export default function NewsflashClient({
                             <line x1="16" y1="2" x2="16" y2="6" />
                             <line x1="8" y1="2" x2="8" y2="6" />
                           </svg>
-                          {featuredArticle.date || "July 2026"}
+                          {featuredArticle.date}
                         </span>
 
                         {/* PDF Badge on Featured Card */}
-                        {extractPdfUrl(featuredArticle) && (
+                        {featuredArticle.pdfUrl && (
                           <a
-                            href={openPdfUrl(extractPdfUrl(featuredArticle)!)}
+                            href={openPdfUrl(featuredArticle.pdfUrl)}
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
@@ -228,20 +185,20 @@ export default function NewsflashClient({
                       </div>
 
                       <h3
-                        onClick={() => router.push(`/newsflash/${featuredArticle.slug || featuredArticle._id}`)}
+                        onClick={() => router.push(`/newsflash/${featuredArticle.slug}`)}
                         className="text-2xl sm:text-3xl font-black text-white leading-tight mb-3 group-hover:text-[#C6112F] transition-colors duration-300 cursor-pointer"
                       >
                         {featuredArticle.title}
                       </h3>
 
                       <p className="text-neutral-300 text-sm sm:text-base leading-relaxed font-normal max-w-[800px] line-clamp-3">
-                        {featuredArticle.subheading || featuredArticle.content}
+                        {featuredArticle.summary || featuredArticle.body}
                       </p>
                     </div>
 
                     <div className="lg:col-span-4 flex lg:justify-end gap-3 flex-wrap">
                       <button
-                        onClick={() => router.push(`/newsflash/${featuredArticle.slug || featuredArticle._id}`)}
+                        onClick={() => router.push(`/newsflash/${featuredArticle.slug}`)}
                         className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#C6112F] text-white text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#a50e27] transition-all duration-300 shadow-md group-hover:scale-105 cursor-pointer"
                       >
                         <span>Read Full Story</span>
@@ -258,18 +215,18 @@ export default function NewsflashClient({
             {/* 🌟 CARDS GRID FOR NEWS ITEMS (PAGINATED) 🌟 */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {paginatedNews.map((item) => {
-                  const pdfUrl = extractPdfUrl(item);
-                  const articleSlug = item.slug || item._id;
+                  const pdfUrl = item.pdfUrl;
+                  const articleSlug = item.slug;
 
                   return (
                     <article
-                      key={item._id}
+                      key={item.id}
                       className="group relative bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-2xs hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between overflow-hidden text-left"
                     >
                       <div className="absolute top-0 left-0 right-0 h-1 bg-[#C6112F] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                       <div>
-                        {/* Date & Category Tag */}
+                        {/* Date & Type Tag */}
                         <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
                           <div className="px-3 py-1 bg-neutral-100/90 rounded-full text-neutral-600 font-semibold text-[11px] flex items-center gap-1.5">
                             <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -277,11 +234,11 @@ export default function NewsflashClient({
                               <line x1="16" y1="2" x2="16" y2="6" />
                               <line x1="8" y1="2" x2="8" y2="6" />
                             </svg>
-                            <span>{item.date || item.publishedAt?.slice(0, 10) || "2026"}</span>
+                            <span>{item.date}</span>
                           </div>
 
                           <span className="px-3 py-1 bg-[#C6112F]/10 text-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white text-[10px] font-bold tracking-wider uppercase rounded-full transition-colors duration-300">
-                            {item.category || "Newsflash"}
+                            Press Release
                           </span>
                         </div>
 
@@ -295,7 +252,7 @@ export default function NewsflashClient({
 
                         {/* Snippet / Subheading */}
                         <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium line-clamp-3">
-                          {item.subheading || item.content}
+                          {item.summary || item.body}
                         </p>
                       </div>
 
@@ -422,7 +379,7 @@ export default function NewsflashClient({
               <div className="p-6 sm:p-8 md:p-10 border-b border-neutral-100 bg-white">
                 <div className="flex items-center gap-3 mb-3 flex-wrap">
                   <span className="px-3.5 py-1 bg-[#C6112F]/10 border border-[#C6112F]/20 text-[#C6112F] text-[10px] font-black uppercase tracking-[0.2em] rounded-full">
-                    {activeModalItem.category || "Newsflash"}
+                    Press Release
                   </span>
                   <span className="px-3 py-1 bg-neutral-100 text-neutral-700 text-xs font-semibold rounded-full border border-neutral-200 flex items-center gap-1.5">
                     <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -430,7 +387,7 @@ export default function NewsflashClient({
                       <line x1="16" y1="2" x2="16" y2="6" />
                       <line x1="8" y1="2" x2="8" y2="6" />
                     </svg>
-                    {activeModalItem.date || "2026"}
+                    {activeModalItem.date}
                   </span>
                 </div>
 
@@ -441,15 +398,15 @@ export default function NewsflashClient({
 
               {/* Body */}
               <div className="p-6 sm:p-8 md:p-10 overflow-y-auto space-y-6 flex-1">
-                {activeModalItem.subheading && (
+                {activeModalItem.summary && (
                   <div className="bg-rose-50/80 border-l-4 border-[#C6112F] p-5 rounded-r-2xl text-neutral-800 text-sm sm:text-base font-semibold leading-relaxed">
-                    "{activeModalItem.subheading}"
+                    "{activeModalItem.summary}"
                   </div>
                 )}
 
                 <div className="space-y-3.5 text-neutral-700 text-sm sm:text-base leading-relaxed font-medium">
-                  {activeModalItem.content
-                    ? activeModalItem.content
+                  {activeModalItem.body
+                    ? activeModalItem.body
                       .split(/\n+/)
                       .map((p) => p.trim())
                       .filter(Boolean)
@@ -462,11 +419,11 @@ export default function NewsflashClient({
                 </div>
 
                 {/* PDF Option in Modal */}
-                {extractPdfUrl(activeModalItem) && (
+                {activeModalItem.pdfUrl && (
                   <div className="p-5 bg-rose-50 border border-[#C6112F]/20 rounded-2xl flex items-center justify-between gap-4">
                     <span className="text-xs font-extrabold text-[#1a1f2c]">PDF Attachment Available</span>
                     <a
-                      href={openPdfUrl(extractPdfUrl(activeModalItem)!)}
+                      href={openPdfUrl(activeModalItem.pdfUrl)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-5 py-2 rounded-xl bg-[#C6112F] text-white text-xs font-black uppercase shadow-md"
@@ -486,7 +443,7 @@ export default function NewsflashClient({
                     <a
                       href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
                         typeof window !== "undefined"
-                          ? `${window.location.origin}/newsflash/${activeModalItem.slug || activeModalItem._id}`
+                          ? `${window.location.origin}/newsflash/${activeModalItem.slug}`
                           : ""
                       )}`}
                       target="_blank"
@@ -501,7 +458,7 @@ export default function NewsflashClient({
                     <a
                       href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
                         typeof window !== "undefined"
-                          ? `${window.location.origin}/newsflash/${activeModalItem.slug || activeModalItem._id}`
+                          ? `${window.location.origin}/newsflash/${activeModalItem.slug}`
                           : ""
                       )}&text=${encodeURIComponent(activeModalItem.title)}`}
                       target="_blank"
@@ -516,7 +473,7 @@ export default function NewsflashClient({
                     <a
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
                         typeof window !== "undefined"
-                          ? `${window.location.origin}/newsflash/${activeModalItem.slug || activeModalItem._id}`
+                          ? `${window.location.origin}/newsflash/${activeModalItem.slug}`
                           : ""
                       )}`}
                       target="_blank"
@@ -533,7 +490,7 @@ export default function NewsflashClient({
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => {
-                        const slug = activeModalItem.slug || activeModalItem._id;
+                        const slug = activeModalItem.slug;
                         setActiveModalItem(null);
                         router.push(`/newsflash/${slug}`);
                       }}
