@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { SPEAKERS, SPEAKERS_2025, SPEAKERS_2024, SPEAKERS_2023, RawSpeaker } from "@/app/past-editions/editionData";
 import { useLanguage } from "@/context/LanguageContext";
+import { fetchSpeakersByYear } from "@/lib/speakersApi";
 
 function translateSpeakerTitle(title: string, isFr: boolean): string {
   if (!isFr || !title) return title;
@@ -70,11 +71,14 @@ function translateSpeakerOrg(org: string, isFr: boolean): string {
   return translations[org] || org;
 }
 
-export default function SpeakersView({ year = 2026 }: { year?: number }) {
+export default function SpeakersView({ year = 2027 }: { year?: number }) {
   const { t, lang } = useLanguage();
   const [selectedYear, setSelectedYear] = useState<number>(year);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
+
+  const [apiSpeakers, setApiSpeakers] = useState<RawSpeaker[]>([]);
+  const [isLoadingApi, setIsLoadingApi] = useState<boolean>(false);
 
   useEffect(() => {
     if (year) {
@@ -82,13 +86,37 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
     }
   }, [year]);
 
-  const speakersList = useMemo(() => {
-    if (selectedYear === 2023) return SPEAKERS_2023 || [];
-    if (selectedYear === 2024) return SPEAKERS_2024 || [];
-    if (selectedYear === 2025) return SPEAKERS_2025 || [];
-    if (selectedYear === 2027) return [];
-    return SPEAKERS;
+  useEffect(() => {
+    const controller = new AbortController();
+    setIsLoadingApi(true);
+
+    fetchSpeakersByYear(selectedYear, controller.signal)
+      .then((items) => {
+        setApiSpeakers(items);
+        setIsLoadingApi(false);
+      })
+      .catch((err: unknown) => {
+        if (controller.signal.aborted) return;
+        setApiSpeakers([]);
+        setIsLoadingApi(false);
+      });
+
+    return () => controller.abort();
   }, [selectedYear]);
+
+  const speakersList = useMemo(() => {
+    if (selectedYear === 2027) {
+      return apiSpeakers;
+    }
+    if (apiSpeakers.length > 0) {
+      return apiSpeakers;
+    }
+    if (selectedYear === 2026) return SPEAKERS || [];
+    if (selectedYear === 2025) return SPEAKERS_2025 || [];
+    if (selectedYear === 2024) return SPEAKERS_2024 || [];
+    if (selectedYear === 2023) return SPEAKERS_2023 || [];
+    return [];
+  }, [selectedYear, apiSpeakers]);
 
   const getCategoryStyles = (category: string) => {
     switch (category) {
@@ -127,7 +155,7 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
 
   const getInitials = (name: string) => {
     const cleaned = name
-      .replace(/^(The Hon.|The Honourable|Grand Chief|Dr.)s+/i, "")
+      .replace(/^(The Hon.|The Honourable|Grand Chief|Dr.)\s+/i, "")
       .split(" ")
       .filter(Boolean);
     if (cleaned.length === 0) return "";
@@ -154,10 +182,10 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
   return (
     <div className="w-full text-left">
       {/* Year Switcher Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-neutral-200/80">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-neutral-200/80 dark:border-zinc-800">
         <div className="flex items-center gap-3">
           <span className="text-xs font-black tracking-widest text-[#C6112F] uppercase">
-            {t("spk-filter-edition", "Filter Edition")}:
+            {t("spk-filter-edition", "FILTER EDITION")}:
           </span>
           <div className="flex gap-2">
             {[2027, 2026, 2025, 2024].map((y) => (
@@ -166,7 +194,7 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
                 onClick={() => setSelectedYear(y)}
                 className={`px-4 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${selectedYear === y
                   ? "bg-[#C6112F] text-white shadow-md"
-                  : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-200"
+                  : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-200 dark:hover:bg-zinc-700"
                   }`}
               >
                 {y}
@@ -176,7 +204,7 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
         </div>
 
         <span className="text-xs font-bold text-neutral-500 dark:text-zinc-400">
-          {selectedYear === 2027
+          {selectedYear === 2027 && speakersList.length === 0
             ? (lang === "FR" ? "Édition 2027 à venir" : "2027 Edition Coming Soon")
             : (lang === "FR"
               ? `Affichage de ${filteredSpeakers.length} sur ${speakersList.length} conférenciers officiels ${selectedYear}`
@@ -184,8 +212,16 @@ export default function SpeakersView({ year = 2026 }: { year?: number }) {
         </span>
       </div>
 
-      {/* 2027 COMING SOON CARD OR REGULAR SPEAKERS LIST */}
-      {selectedYear === 2027 ? (
+      {/* LOADING STATE */}
+      {isLoadingApi && speakersList.length === 0 ? (
+        <div className="rounded-3xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-[#18181b] p-12 text-center flex flex-col items-center justify-center min-h-[300px] my-4">
+          <span className="w-10 h-10 rounded-full border-3 border-neutral-200 dark:border-slate-700 border-t-[#C6112F] animate-spin mb-4" />
+          <p className="text-sm font-bold text-neutral-500 dark:text-zinc-400 uppercase tracking-wider">
+            Loading speakers data...
+          </p>
+        </div>
+      ) : selectedYear === 2027 && speakersList.length === 0 ? (
+        /* 2027 COMING SOON CARD */
         <div className="rounded-3xl border border-neutral-200/90 dark:border-zinc-800 bg-gradient-to-br from-white via-slate-50 to-neutral-100 dark:from-[#18181b] dark:via-[#121215] dark:to-[#1a1a22] p-8 sm:p-14 text-center shadow-lg relative overflow-hidden my-4">
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none" />
