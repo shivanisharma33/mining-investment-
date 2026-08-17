@@ -1,24 +1,20 @@
 /**
- * Event speakers, served by the Strapi collection
- * https://typical-butterfly-3f86e59200.strapiapp.com/api/speakers
+ * Event speakers, served by the Strapi v5 collection
+ * /api/speakers
  */
 import { RawSpeaker } from "@/app/past-editions/editionData";
+import {
+  fetchStrapi,
+  getStrapiMediaUrl,
+  matchesPublishTo,
+  type StrapiListResponse,
+  type StrapiMedia,
+} from "./strapi";
 
-const STRAPI_BASE_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL ??
-  "https://typical-butterfly-3f86e59200.strapiapp.com";
-
-export const SPEAKERS_ENDPOINT = `${STRAPI_BASE_URL}/api/speakers?populate=*&sort=createdAt:desc&pagination[pageSize]=200`;
-
-/** Server-side cache window. Ignored when this runs in the browser. */
+/** Server-side cache window (5 minutes). */
 export const SPEAKERS_REVALIDATE_SECONDS = 300;
 
-interface StrapiMedia {
-  url?: string;
-  name?: string;
-}
-
-interface StrapiSpeaker {
+export interface StrapiSpeaker {
   id: number;
   documentId: string;
   name?: string;
@@ -33,15 +29,13 @@ interface StrapiSpeaker {
   year?: number | string;
   eventDate?: string;
   Year?: string | number;
+  publishTo?: string[] | string | null;
+  profileImage?: StrapiMedia | null;
   image?: StrapiMedia | null;
   photo?: StrapiMedia | null;
   avatar?: StrapiMedia | null;
   headshot?: StrapiMedia | null;
   days?: number[];
-}
-
-interface StrapiListResponse {
-  data?: StrapiSpeaker[];
 }
 
 function parseYear(...values: Array<string | number | null | undefined>): number | undefined {
@@ -51,14 +45,6 @@ function parseYear(...values: Array<string | number | null | undefined>): number
     if (match) return Number(match[1]);
   }
   return undefined;
-}
-
-function parseMediaUrl(media?: StrapiMedia | null): string | undefined {
-  if (!media?.url) return undefined;
-  const url = media.url.trim();
-  if (!url) return undefined;
-  if (url.startsWith("http://") || url.startsWith("https://")) return url;
-  return `${STRAPI_BASE_URL}${url}`;
 }
 
 function normalizeCategory(cat?: string, type?: string, title?: string): "gov" | "exec" | "fin" | "mod" {
@@ -76,13 +62,17 @@ function normalizeCategory(cat?: string, type?: string, title?: string): "gov" |
 }
 
 export function mapSpeaker(entry: StrapiSpeaker): RawSpeaker | null {
+  if (!matchesPublishTo(entry.publishTo)) {
+    return null;
+  }
+
   const name = entry.name?.trim() || entry.speakerName?.trim();
   if (!name) return null;
 
   const title = entry.title?.trim() || entry.position?.trim() || entry.role?.trim() || "Speaker";
   const organization = entry.organization?.trim() || entry.company?.trim() || "";
-  const media = entry.image || entry.photo || entry.avatar || entry.headshot;
-  const image = parseMediaUrl(media);
+  const media = entry.profileImage || entry.image || entry.photo || entry.avatar || entry.headshot;
+  const image = getStrapiMediaUrl(media?.url) || undefined;
   const year = parseYear(entry.year, entry.Year, entry.eventDate, entry.title);
   const category = normalizeCategory(entry.category, entry.type, entry.title);
 
@@ -97,16 +87,58 @@ export function mapSpeaker(entry: StrapiSpeaker): RawSpeaker | null {
   };
 }
 
-export async function fetchSpeakersFromApi(
-  signal?: AbortSignal
-): Promise<RawSpeaker[]> {
-  const res = await fetch(SPEAKERS_ENDPOINT, {
-    signal,
-    next: { revalidate: SPEAKERS_REVALIDATE_SECONDS },
-  });
-  if (!res.ok) throw new Error(`Speakers request failed (${res.status})`);
+export interface FetchSpeakersOptions {
+  year?: number;
+  category?: string;
+  search?: string;
+  signal?: AbortSignal;
+}
 
-  const json: StrapiListResponse = await res.json();
+export async function fetchSpeakersFromApi(
+  optionsOrSignal?: AbortSignal | FetchSpeakersOptions
+): Promise<RawSpeaker[]> {
+  const isSignal = optionsOrSignal instanceof AbortSignal;
+  const signal = isSignal ? optionsOrSignal : optionsOrSignal?.signal;
+  const year = !isSignal ? optionsOrSignal?.year : undefined;
+  const category = !isSignal ? optionsOrSignal?.category : undefined;
+  const search = !isSignal ? optionsOrSignal?.search : undefined;
+
+  const filters: Record<string, unknown> = {};
+
+  if (year !== undefined) {
+    filters["$or"] = [
+      { year: { $containsi: String(year) } },
+      { Year: { $containsi: String(year) } },
+      { eventDate: { $containsi: String(year) } },
+    ];
+  }
+
+  if (category) {
+    filters["category"] = { $containsi: category };
+  }
+
+  if (search?.trim()) {
+    const q = search.trim();
+    filters["$or"] = [
+      { name: { $containsi: q } },
+      { speakerName: { $containsi: q } },
+      { title: { $containsi: q } },
+      { organization: { $containsi: q } },
+    ];
+  }
+
+  const json = await fetchStrapi<StrapiListResponse<StrapiSpeaker>>("/api/speakers", {
+    signal,
+    revalidate: SPEAKERS_REVALIDATE_SECONDS,
+    queryParams: {
+      filterPublishTo: true,
+      populate: "*",
+      sort: "createdAt:desc",
+      pagination: { pageSize: 200 },
+      filters,
+    },
+  });
+
   const entries = Array.isArray(json?.data) ? json.data : [];
 
   return entries

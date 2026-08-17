@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getStrapiUrl } from "@/lib/strapi";
 
-const STRAPI_ENDPOINT =
-  "https://typical-butterfly-3f86e59200.strapiapp.com/api/student-sponsorships";
+const getEndpoint = () => getStrapiUrl("/api/student-sponsorships");
 
 /** Empty strings are dropped so Strapi's enum/format checks only see real values. */
 function text(value: unknown): string | undefined {
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       if (data[key] === undefined) delete data[key];
     }
 
-    const res = await fetch(STRAPI_ENDPOINT, {
+    const res = await fetch(getEndpoint(), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

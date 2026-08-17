@@ -1,38 +1,34 @@
 import type { SponsorItem, SponsorTier } from "@/components/SponsorsView";
+import {
+  fetchStrapi,
+  getStrapiMediaUrl,
+  matchesPublishTo,
+  type StrapiListResponse,
+  type StrapiMedia,
+} from "./strapi";
 
 /**
- * Media & partners, served by the Strapi collection
- * https://typical-butterfly-3f86e59200.strapiapp.com/api/media-partners
+ * Media & partners, served by the Strapi v5 collection
+ * /api/media-partners
  *
- * Strapi answers cross-origin requests, so this runs straight from the browser.
+ * Strapi fields: name, website, tier, Type, Year, displayOrder, logo (media), publishTo.
  */
-const STRAPI_BASE_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL ??
-  "https://typical-butterfly-3f86e59200.strapiapp.com";
 
-export const SPONSORS_ENDPOINT = `${STRAPI_BASE_URL}/api/media-partners?populate=*&pagination[pageSize]=200`;
-
-interface StrapiMediaPartner {
+export interface StrapiMediaPartner {
   id: number;
   documentId: string;
   name?: string;
   website?: string;
-  /** Uniformly "MEDIA & PARTNERS" on every record — see normalizeTier(). */
   tier?: string;
-  /** Where the real tier lives: Platinum, Gold, Silver, Copper, Bronze, … */
   Type?: string;
-  /** Edition label, e.g. "Media & Partners 2027". */
   Year?: string;
   displayOrder?: number;
-  logo?: { url?: string } | null;
-}
-
-interface StrapiListResponse {
-  data?: StrapiMediaPartner[];
+  publishTo?: string[] | string | null;
+  logo?: StrapiMedia | null;
 }
 
 /** Display order of the tiers, highest first. */
-const TIER_RANK: SponsorTier[] = [
+export const TIER_RANK: SponsorTier[] = [
   "presenting",
   "platinum",
   "gold",
@@ -53,49 +49,88 @@ function matchTier(value?: string): SponsorTier | null {
 }
 
 /**
- * `Type` carries the real tier; the `tier` field reads "MEDIA & PARTNERS" on
- * every record, so relying on it would flatten the whole grid into one band.
- * Anything unrecognised ("MEDIA & PARTNERS" itself) lands in the media tier.
+ * `Type` carries the real tier; `tier` may read "MEDIA & PARTNERS".
+ * Anything unrecognised lands in the media tier.
  */
-function normalizeTier(entry: StrapiMediaPartner): SponsorTier {
+export function normalizeTier(entry: StrapiMediaPartner): SponsorTier {
   return matchTier(entry.Type) ?? matchTier(entry.tier) ?? "media";
 }
 
-/** Strapi stores the edition as a label ("Media & Partners 2027"). */
-function parseYear(value?: string): number | undefined {
+/** Strapi stores the edition as a label ("Media & Partners 2027" or "2027"). */
+export function parseYear(value?: string): number | undefined {
   const match = value?.match(/(\d{4})/);
   return match ? Number(match[1]) : undefined;
 }
 
 export function mapSponsor(entry: StrapiMediaPartner): SponsorItem {
+  const logoUrl = getStrapiMediaUrl(entry.logo?.url) || undefined;
+
   return {
     name: entry.name?.trim() || "",
     website: entry.website?.trim() ?? "",
-    image: entry.logo?.url || undefined,
+    image: logoUrl,
     tier: normalizeTier(entry),
   };
 }
 
-/**
- * Media & partners for a year, ordered by tier then by Strapi's displayOrder,
- * so the grid stays grouped the way the static lists were.
- */
-export async function fetchSponsorsByYear(
-  year: number,
-  signal?: AbortSignal
-): Promise<SponsorItem[]> {
-  const res = await fetch(SPONSORS_ENDPOINT, { signal });
-  if (!res.ok) throw new Error(`Sponsors request failed (${res.status})`);
+export interface FetchSponsorsOptions {
+  year?: number;
+  tier?: string;
+  signal?: AbortSignal;
+}
 
-  const json: StrapiListResponse = await res.json();
+/**
+ * Fetches media partners from Strapi v5 with server-side publishTo, year, and tier filtering.
+ */
+export async function fetchSponsors(
+  options: FetchSponsorsOptions = {}
+): Promise<SponsorItem[]> {
+  const { year, tier, signal } = options;
+
+  // Build filters
+  const filters: Record<string, unknown> = {};
+
+  // Year filter if provided
+  if (year !== undefined) {
+    filters["Year"] = { $containsi: String(year) };
+  }
+
+  // Tier filter: "ALL MEDIA & PARTNERS" is not a Strapi tier.
+  if (tier && !tier.toUpperCase().includes("ALL")) {
+    const cleanTier = tier.replace(/MEDIA\s*&\s*PARTNERS/i, "").trim();
+    if (cleanTier) {
+      filters["$or"] = [
+        { Type: { $containsi: cleanTier } },
+        { tier: { $containsi: cleanTier } },
+      ];
+    }
+  }
+
+  const json = await fetchStrapi<StrapiListResponse<StrapiMediaPartner>>(
+    "/api/media-partners",
+    {
+      signal,
+      queryParams: {
+        filterPublishTo: true,
+        populate: "*",
+        pagination: { pageSize: 200 },
+        filters,
+      },
+    }
+  );
+
   const entries = Array.isArray(json?.data) ? json.data : [];
 
   return entries
     .filter((entry) => {
+      if (!matchesPublishTo(entry.publishTo)) return false;
       if (!entry.name?.trim()) return false;
-      const entryYear = parseYear(entry.Year);
-      // Records with no year stated still belong to the current edition.
-      return entryYear === undefined || entryYear === year;
+      if (year !== undefined) {
+        const entryYear = parseYear(entry.Year);
+        // Records with no year stated still belong to the current edition
+        if (entryYear !== undefined && entryYear !== year) return false;
+      }
+      return true;
     })
     .map((entry) => ({ entry, sponsor: mapSponsor(entry) }))
     .sort((a, b) => {
@@ -109,4 +144,14 @@ export async function fetchSponsorsByYear(
       return a.sponsor.name.localeCompare(b.sponsor.name);
     })
     .map(({ sponsor }) => sponsor);
+}
+
+/**
+ * Media & partners for a year, ordered by tier then by Strapi's displayOrder.
+ */
+export async function fetchSponsorsByYear(
+  year: number,
+  signal?: AbortSignal
+): Promise<SponsorItem[]> {
+  return fetchSponsors({ year, signal });
 }

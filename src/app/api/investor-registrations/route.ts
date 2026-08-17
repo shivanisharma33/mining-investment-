@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getStrapiUrl } from "@/lib/strapi";
 
 /**
  * Server-side proxy for investor registration submissions. The backend accepts
@@ -14,7 +15,7 @@ export async function POST(request: NextRequest) {
     };
 
     const res = await fetch(
-      "https://typical-butterfly-3f86e59200.strapiapp.com/api/Investor-Registrations",
+      getStrapiUrl("/api/Investor-Registrations"),
       {
         method: "POST",
         headers: {

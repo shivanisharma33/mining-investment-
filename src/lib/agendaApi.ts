@@ -1,22 +1,22 @@
 /**
- * Event agendas, served by the Strapi collection
- * https://typical-butterfly-3f86e59200.strapiapp.com/api/agendas
+ * Event agendas, served by the Strapi v5 collection
+ * /api/agendas
  *
- * Strapi fields: title, eventDate, venue, city, country, pdfFile (media).
- * The media host sends `Access-Control-Allow-Origin: *`, so the PDF viewer and
- * the download helper can both read the file straight from the browser.
+ * Strapi fields: title, eventDate, venue, city, country, pdfFile (media), publishTo.
  */
 
-const STRAPI_BASE_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL ??
-  "https://typical-butterfly-3f86e59200.strapiapp.com";
+import {
+  fetchStrapi,
+  getStrapiMediaUrl,
+  matchesPublishTo,
+  type StrapiListResponse,
+  type StrapiMedia,
+} from "./strapi";
 
-export const AGENDAS_ENDPOINT = `${STRAPI_BASE_URL}/api/agendas?populate=*&sort=publishedAt:desc&pagination[pageSize]=100`;
-
-/** Server-side cache window. Ignored when this runs in the browser. */
+/** Server-side cache window (5 minutes). */
 export const AGENDA_REVALIDATE_SECONDS = 300;
 
-/** The shape the agenda, brochure and past-edition pages already render. */
+/** The shape the agenda, brochure and past-edition pages render. */
 export interface AgendaApiItem {
   _id: string;
   title: string;
@@ -29,12 +29,7 @@ export interface AgendaApiItem {
   venue: string;
 }
 
-interface StrapiMedia {
-  url?: string;
-  name?: string;
-}
-
-interface StrapiAgenda {
+export interface StrapiAgenda {
   id: number;
   documentId: string;
   title?: string;
@@ -42,11 +37,8 @@ interface StrapiAgenda {
   venue?: string | null;
   city?: string | null;
   country?: string | null;
+  publishTo?: string[] | string | null;
   pdfFile?: StrapiMedia | null;
-}
-
-interface StrapiListResponse {
-  data?: StrapiAgenda[];
 }
 
 function parseYear(...values: Array<string | null | undefined>): number | undefined {
@@ -57,8 +49,13 @@ function parseYear(...values: Array<string | null | undefined>): number | undefi
   return undefined;
 }
 
-function mapAgenda(entry: StrapiAgenda): AgendaApiItem | null {
-  const pdfUrl = entry.pdfFile?.url?.trim();
+export function mapAgenda(entry: StrapiAgenda): AgendaApiItem | null {
+  if (!matchesPublishTo(entry.publishTo)) {
+    return null;
+  }
+
+  const rawUrl = entry.pdfFile?.url?.trim();
+  const pdfUrl = getStrapiMediaUrl(rawUrl);
   if (!pdfUrl) return null;
 
   const title = entry.title?.trim() || "Event Agenda";
@@ -69,7 +66,6 @@ function mapAgenda(entry: StrapiAgenda): AgendaApiItem | null {
     slug: (entry.pdfFile?.name ?? "").replace(/\.pdf$/i, "").trim() || entry.documentId,
     year: parseYear(entry.eventDate, title),
     pdfUrl,
-    // Strapi has no description field; the pages supply their own copy.
     description: "",
     eventDates: entry.eventDate?.trim() || "",
     venue: [entry.venue, entry.city, entry.country]
@@ -79,17 +75,21 @@ function mapAgenda(entry: StrapiAgenda): AgendaApiItem | null {
   };
 }
 
-/** Every published agenda that has a PDF attached, newest first. */
+/** Every published agenda that has a PDF attached, newest first, filtered by publishTo. */
 export async function fetchPdfAgendas(
   signal?: AbortSignal
 ): Promise<AgendaApiItem[]> {
-  const res = await fetch(AGENDAS_ENDPOINT, {
+  const json = await fetchStrapi<StrapiListResponse<StrapiAgenda>>("/api/agendas", {
     signal,
-    next: { revalidate: AGENDA_REVALIDATE_SECONDS },
+    revalidate: AGENDA_REVALIDATE_SECONDS,
+    queryParams: {
+      filterPublishTo: true,
+      populate: "*",
+      sort: "publishedAt:desc",
+      pagination: { pageSize: 100 },
+    },
   });
-  if (!res.ok) throw new Error(`Agenda request failed (${res.status})`);
 
-  const json: StrapiListResponse = await res.json();
   const entries = Array.isArray(json?.data) ? json.data : [];
 
   return entries
@@ -110,8 +110,7 @@ export async function fetchPdfAgendaByYear(
   const exact = agendas.find((agenda) => agenda.year === year);
   if (exact) return exact;
 
-  // Entries whose eventDate carries no year would otherwise never match, so
-  // fall back to the newest agenda when no entry states a year at all.
+  // Fall back to the newest agenda when no entry states an exact matching year.
   const anyYearKnown = agendas.some((agenda) => agenda.year !== undefined);
   return anyYearKnown ? null : agendas[0] ?? null;
 }

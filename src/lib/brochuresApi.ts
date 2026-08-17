@@ -1,15 +1,19 @@
 /**
- * Event brochures, served by the Strapi collection
- * https://typical-butterfly-3f86e59200.strapiapp.com/api/brochures
+ * Event brochures, served by the Strapi v5 collection
+ * /api/brochures
+ *
+ * Strapi fields: title, eventDate, year, venue, city, country, pdfFile (media), publishTo.
  */
 
-const STRAPI_BASE_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL ??
-  "https://typical-butterfly-3f86e59200.strapiapp.com";
+import {
+  fetchStrapi,
+  getStrapiMediaUrl,
+  matchesPublishTo,
+  type StrapiListResponse,
+  type StrapiMedia,
+} from "./strapi";
 
-export const BROCHURES_ENDPOINT = `${STRAPI_BASE_URL}/api/brochures?populate=*&sort=publishedAt:desc&pagination[pageSize]=100`;
-
-/** Server-side cache window. Ignored when this runs in the browser. */
+/** Server-side cache window (5 minutes). */
 export const BROCHURE_REVALIDATE_SECONDS = 300;
 
 export interface BrochureApiItem {
@@ -23,12 +27,7 @@ export interface BrochureApiItem {
   venue?: string;
 }
 
-interface StrapiMedia {
-  url?: string;
-  name?: string;
-}
-
-interface StrapiBrochure {
+export interface StrapiBrochure {
   id: number;
   documentId: string;
   title?: string;
@@ -38,15 +37,12 @@ interface StrapiBrochure {
   venue?: string | null;
   city?: string | null;
   country?: string | null;
+  publishTo?: string[] | string | null;
   pdfFile?: StrapiMedia | null;
   pdf?: StrapiMedia | null;
   file?: StrapiMedia | null;
   document?: StrapiMedia | null;
   url?: string | null;
-}
-
-interface StrapiListResponse {
-  data?: StrapiBrochure[];
 }
 
 function parseYear(...values: Array<string | null | undefined>): number | undefined {
@@ -57,17 +53,14 @@ function parseYear(...values: Array<string | null | undefined>): number | undefi
   return undefined;
 }
 
-function parseMediaUrl(urlRaw?: string): string | undefined {
-  if (!urlRaw) return undefined;
-  const trimmed = urlRaw.trim();
-  if (!trimmed) return undefined;
-  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) return trimmed;
-  return `${STRAPI_BASE_URL}${trimmed}`;
-}
-
 export function mapBrochure(entry: StrapiBrochure): BrochureApiItem | null {
+  if (!matchesPublishTo(entry.publishTo)) {
+    return null;
+  }
+
   const media = entry.pdfFile || entry.pdf || entry.file || entry.document;
-  const pdfUrl = parseMediaUrl(media?.url || entry.url || undefined);
+  const rawUrl = media?.url || entry.url || undefined;
+  const pdfUrl = getStrapiMediaUrl(rawUrl);
 
   if (!pdfUrl) return null;
 
@@ -90,17 +83,21 @@ export function mapBrochure(entry: StrapiBrochure): BrochureApiItem | null {
   };
 }
 
-/** Every published brochure that has a PDF attached, newest first. */
+/** Every published brochure that has a PDF attached, newest first, filtered by publishTo. */
 export async function fetchBrochures(
   signal?: AbortSignal
 ): Promise<BrochureApiItem[]> {
-  const res = await fetch(BROCHURES_ENDPOINT, {
+  const json = await fetchStrapi<StrapiListResponse<StrapiBrochure>>("/api/brochures", {
     signal,
-    next: { revalidate: BROCHURE_REVALIDATE_SECONDS },
+    revalidate: BROCHURE_REVALIDATE_SECONDS,
+    queryParams: {
+      filterPublishTo: true,
+      populate: "*",
+      sort: "publishedAt:desc",
+      pagination: { pageSize: 100 },
+    },
   });
-  if (!res.ok) throw new Error(`Brochure request failed (${res.status})`);
 
-  const json: StrapiListResponse = await res.json();
   const entries = Array.isArray(json?.data) ? json.data : [];
 
   return entries

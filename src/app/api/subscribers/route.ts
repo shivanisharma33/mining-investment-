@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getStrapiUrl } from "@/lib/strapi";
 
-/**
- * Server-side proxy for newsletter subscribers.
- * Forwards requests to Strapi endpoint https://typical-butterfly-3f86e59200.strapiapp.com/api/subscribers
- */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -24,7 +21,7 @@ export async function POST(request: NextRequest) {
     };
 
     const res = await fetch(
-      "https://typical-butterfly-3f86e59200.strapiapp.com/api/subscribers",
+      getStrapiUrl("/api/subscribers"),
       {
         method: "POST",
         headers: {

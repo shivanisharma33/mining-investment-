@@ -1,18 +1,19 @@
 /**
- * Company articles, served by the Strapi collection
- * https://typical-butterfly-3f86e59200.strapiapp.com/api/articles
+ * Company articles, served by the Strapi v5 collection
+ * /api/articles
  *
- * Strapi fields: title, date, coverImage (media), pdfFile (media). Strapi sends
- * CORS headers, so the shelf can call this straight from the browser.
+ * Strapi fields: title, date, coverImage (media), pdfFile (media), publishTo.
  */
 
-const STRAPI_BASE_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL ??
-  "https://typical-butterfly-3f86e59200.strapiapp.com";
+import {
+  fetchStrapi,
+  getStrapiMediaUrl,
+  matchesPublishTo,
+  type StrapiListResponse,
+  type StrapiMedia,
+} from "./strapi";
 
-export const ARTICLES_ENDPOINT = `${STRAPI_BASE_URL}/api/articles?populate=*&sort=date:desc&pagination[pageSize]=100`;
-
-/** Server-side cache window. Ignored when this runs in the browser. */
+/** Server-side cache window (5 minutes). */
 export const ARTICLES_REVALIDATE_SECONDS = 300;
 
 export interface ApiArticle {
@@ -27,23 +28,15 @@ export interface ApiArticle {
   description?: string;
 }
 
-interface StrapiMedia {
-  url?: string;
-  name?: string;
-}
-
-interface StrapiArticle {
+export interface StrapiArticle {
   id: number;
   documentId: string;
   title?: string;
   date?: string;
+  publishTo?: string[] | string | null;
   coverImage?: StrapiMedia | null;
   pdfFile?: StrapiMedia | null;
   publishedAt?: string;
-}
-
-interface StrapiListResponse {
-  data?: StrapiArticle[];
 }
 
 function slugify(title: string): string {
@@ -57,17 +50,23 @@ function slugify(title: string): string {
     .replace(/-+$/, "");
 }
 
-function mapArticle(entry: StrapiArticle): ApiArticle {
+export function mapArticle(entry: StrapiArticle): ApiArticle | null {
+  if (!matchesPublishTo(entry.publishTo)) {
+    return null;
+  }
+
   const title = entry.title?.trim() || "Untitled publication";
   const base = slugify(title);
+  const coverImage = getStrapiMediaUrl(entry.coverImage?.url) || undefined;
+  const pdfUrl = getStrapiMediaUrl(entry.pdfFile?.url) || undefined;
 
   return {
     _id: entry.documentId,
     title,
     // Articles repeat titles across issues, so the id keeps URLs distinct.
     slug: base ? `${base}-${entry.id}` : String(entry.id),
-    coverImage: entry.coverImage?.url?.trim() || undefined,
-    pdfUrl: entry.pdfFile?.url?.trim() || undefined,
+    coverImage,
+    pdfUrl,
     publishDate: entry.date || entry.publishedAt?.slice(0, 10),
   };
 }
@@ -114,8 +113,7 @@ export function formatArticleDate(article: ApiArticle, isFr = false): string {
 }
 
 /**
- * "AUGUST 2026" — the shelf groups covers under the issue they belong to, the
- * way the hardcoded list it replaced was grouped by month.
+ * "AUGUST 2026" — the shelf groups covers under the issue they belong to.
  */
 export function formatIssueLabel(article: ApiArticle, isFr = false): string {
   const parsed = publishedDate(article);
@@ -131,22 +129,25 @@ export function formatIssueLabel(article: ApiArticle, isFr = false): string {
 }
 
 /**
- * The article list, newest first. Runs on the server for the reader page and
- * in the browser for the shelf; `next.revalidate` is ignored in the browser.
+ * The article list, newest first, filtered by publishTo.
  */
 export async function fetchArticles(signal?: AbortSignal): Promise<ApiArticle[]> {
-  const res = await fetch(ARTICLES_ENDPOINT, {
+  const json = await fetchStrapi<StrapiListResponse<StrapiArticle>>("/api/articles", {
     signal,
-    next: { revalidate: ARTICLES_REVALIDATE_SECONDS },
+    revalidate: ARTICLES_REVALIDATE_SECONDS,
+    queryParams: {
+      filterPublishTo: true,
+      populate: "*",
+      sort: "date:desc",
+      pagination: { pageSize: 100 },
+    },
   });
 
-  if (!res.ok) throw new Error(`Articles request failed (${res.status})`);
-
-  const json: StrapiListResponse = await res.json();
   const entries = Array.isArray(json?.data) ? json.data : [];
 
   return entries
     .map(mapArticle)
+    .filter((article): article is ApiArticle => article !== null)
     .sort((a, b) => {
       const aTime = publishedDate(a)?.getTime() ?? 0;
       const bTime = publishedDate(b)?.getTime() ?? 0;

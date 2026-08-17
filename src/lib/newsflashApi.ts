@@ -1,22 +1,23 @@
 /**
- * Press releases, served by the Strapi collection
- * https://typical-butterfly-3f86e59200.strapiapp.com/api/press-releases
+ * Press releases, served by the Strapi v5 collection
+ * /api/press-releases
  *
- * Strapi fields: title, date, shortDescription, longDescription (rich text
- * HTML), isFeatured, pdfFile (media).
+ * Strapi fields: title, date, shortDescription, longDescription (rich text HTML),
+ * isFeatured, pdfFile (media), publishTo.
  */
 
-const STRAPI_BASE_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL ??
-  "https://typical-butterfly-3f86e59200.strapiapp.com";
+import {
+  fetchStrapi,
+  getStrapiMediaUrl,
+  matchesPublishTo,
+  type StrapiListResponse,
+  type StrapiMedia,
+} from "./strapi";
 
-/** pageSize covers the whole collection in one request — it holds ~16 entries. */
-const PRESS_RELEASES_ENDPOINT = `${STRAPI_BASE_URL}/api/press-releases?populate=*&sort=date:desc&pagination[pageSize]=100`;
-
-/** Strapi answers in ~1s, so keep the result off the request path. */
+/** Cache window (5 minutes). */
 export const NEWSFLASH_REVALIDATE_SECONDS = 300;
 
-/** Snippet length — cards line-clamp to 3 lines, so this is already generous. */
+/** Snippet length — cards line-clamp to 3 lines, so this is generous. */
 const SNIPPET_LENGTH = 400;
 
 export interface PressRelease {
@@ -38,12 +39,7 @@ export interface PressRelease {
   isFeatured?: boolean;
 }
 
-interface StrapiMedia {
-  url?: string;
-  name?: string;
-}
-
-interface StrapiPressRelease {
+export interface StrapiPressRelease {
   id: number;
   documentId: string;
   title?: string;
@@ -51,13 +47,10 @@ interface StrapiPressRelease {
   shortDescription?: string;
   longDescription?: string;
   isFeatured?: boolean | null;
+  publishTo?: string[] | string | null;
   pdfFile?: StrapiMedia | null;
   publishedAt?: string;
   createdAt?: string;
-}
-
-interface StrapiListResponse {
-  data?: StrapiPressRelease[];
 }
 
 /* ── HTML handling ─────────────────────────────────────────────────────── */
@@ -72,11 +65,7 @@ const DROP_WITH_CONTENT = /<(script|style|iframe|object|embed)\b[\s\S]*?<\/\1\s*
 const TAG = /<\/?([a-zA-Z][a-zA-Z0-9]*)\b([^>]*)>/g;
 
 /**
- * Bodies are pasted out of Word, so every tag carries inline styles that fight
- * the page (18.3px Helvetica, forced white background, justified text). This
- * keeps the structure and the links, and drops the styling so the site's own
- * typography applies. Dropping attributes also removes the XSS surface of
- * rendering CMS HTML directly.
+ * Strips out invasive inline formatting while preserving semantic markup and links.
  */
 function sanitizeHtml(raw?: string): string {
   if (!raw?.trim()) return "";
@@ -86,7 +75,7 @@ function sanitizeHtml(raw?: string): string {
     .replace(DROP_WITH_CONTENT, "")
     .replace(TAG, (full, rawName: string, attrs: string) => {
       let tag = rawName.toLowerCase();
-      // The page already has an <h1>; demote so headings stay in order.
+      // Demote h1 so headings stay structured.
       if (tag === "h1") tag = "h2";
       if (tag === "h5" || tag === "h6") tag = "h4";
 
@@ -99,7 +88,6 @@ function sanitizeHtml(raw?: string): string {
         const href = (match?.[1] ?? match?.[2] ?? match?.[3] ?? "").trim();
         if (!/^(?:https?:|mailto:|tel:|\/)/i.test(href)) return "";
         const safe = href.replace(/"/g, "&quot;").replace(/</g, "&lt;");
-        // mailto:/tel: hand off to the OS, so a new tab would just flash open.
         const newTab = /^https?:/i.test(href)
           ? ' target="_blank" rel="noopener noreferrer"'
           : "";
@@ -160,28 +148,31 @@ export function formatPressDate(isoDate?: string): string {
   });
 }
 
-function toPressRelease(entry: StrapiPressRelease): PressRelease {
+export function toPressRelease(entry: StrapiPressRelease): PressRelease | null {
+  if (!matchesPublishTo(entry.publishTo)) {
+    return null;
+  }
+
   const title = entry.title?.trim() || "Untitled press release";
   const base = slugify(title);
   const isoDate = entry.date || entry.publishedAt?.slice(0, 10);
+  const pdfUrl = getStrapiMediaUrl(entry.pdfFile?.url) || undefined;
 
   return {
     id: entry.documentId,
     title,
-    // Five releases share a title, so the id keeps every URL distinct — and
-    // stable, which a positional "-2" suffix would not be.
     slug: base ? `${base}-${entry.id}` : String(entry.id),
     date: formatPressDate(isoDate),
     isoDate,
     summary: entry.shortDescription?.trim() || undefined,
     body: htmlToText(entry.longDescription),
     bodyHtml: sanitizeHtml(entry.longDescription),
-    pdfUrl: entry.pdfFile?.url?.trim() || undefined,
+    pdfUrl,
     isFeatured: entry.isFeatured === true,
   };
 }
 
-/** Cards only need a snippet; full bodies are ~80% of the payload. */
+/** Cards only need a snippet; full bodies are omitted for list items. */
 function toListItem(item: PressRelease): PressRelease {
   const body = item.body ?? "";
 
@@ -195,22 +186,27 @@ function toListItem(item: PressRelease): PressRelease {
 /* ── Fetching ──────────────────────────────────────────────────────────── */
 
 /**
- * Runs on the server so the browser never waits on Strapi, and the response is
- * shared across visitors through the Next data cache. The article page reuses
- * this same cached list, so opening a release costs no extra request.
+ * Fetches published press releases with publishTo filtering.
  */
 async function fetchPressReleasesRaw(): Promise<PressRelease[]> {
-  const res = await fetch(PRESS_RELEASES_ENDPOINT, {
-    headers: { "Content-Type": "application/json" },
-    next: { revalidate: NEWSFLASH_REVALIDATE_SECONDS },
-  });
+  const json = await fetchStrapi<StrapiListResponse<StrapiPressRelease>>(
+    "/api/press-releases",
+    {
+      revalidate: NEWSFLASH_REVALIDATE_SECONDS,
+      queryParams: {
+        filterPublishTo: true,
+        populate: "*",
+        sort: "date:desc",
+        pagination: { pageSize: 100 },
+      },
+    }
+  );
 
-  if (!res.ok) throw new Error(`Press release request failed (${res.status})`);
+  const entries = Array.isArray(json?.data) ? json.data : [];
+  const items = entries
+    .map(toPressRelease)
+    .filter((pr): pr is PressRelease => pr !== null);
 
-  const json: StrapiListResponse = await res.json();
-  const items = Array.isArray(json?.data) ? json.data.map(toPressRelease) : [];
-
-  // Strapi already sorts by date; flagged releases are lifted to the top.
   return [...items.filter((i) => i.isFeatured), ...items.filter((i) => !i.isFeatured)];
 }
 
@@ -226,7 +222,6 @@ export async function fetchPressReleaseBySlug(
 
   const article =
     items.find((item) => item.slug === decoded || item.slug === slug) ??
-    // Falls back to the documentId so a bare-id link still resolves.
     items.find((item) => item.id === decoded);
 
   if (!article) return null;

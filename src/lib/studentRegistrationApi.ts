@@ -41,9 +41,9 @@ export const STUDENT_REGISTRATIONS_ENDPOINT = "/api/student-registrations";
  * CORS headers), so files go straight there instead of through our own route —
  * that keeps large uploads clear of the serverless request body limit.
  */
-export const STRAPI_BASE_URL =
-  process.env.NEXT_PUBLIC_STRAPI_URL ??
-  "https://typical-butterfly-3f86e59200.strapiapp.com";
+import { getStrapiBaseUrl } from "./strapi";
+
+export const STRAPI_BASE_URL = getStrapiBaseUrl();
 
 /** Matches the "Max 10MB" promise made on the application form. */
 export const MAX_UPLOAD_BYTES = 10 * 1024 * 1024;
