@@ -146,7 +146,7 @@ export default function AgendaClient({
                 description={FALLBACK_DESCRIPTION}
                 eventDates={FALLBACK_DATES}
                 venue={FALLBACK_VENUE}
-                pdfUrl="/documents/Agenda-2027.pdf"
+                pdfUrl="/documents/2026-agenda.pdf"
                 fileName="agenda-2027.pdf"
               />
             )}

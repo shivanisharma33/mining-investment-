@@ -535,7 +535,7 @@ export default function SingleNewsDetailPage() {
               MORE STORIES
             </span>
             <h3 className="text-2xl font-black text-neutral-900 dark:text-white mb-6">
-              Related Press Releases
+              Related Press Release
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

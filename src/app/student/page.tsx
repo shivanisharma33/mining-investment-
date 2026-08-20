@@ -7,7 +7,7 @@ import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
-// 2025 Award Recipients Data
+// 2026 Award Recipients Data
 const winningTeamMembers = [
   { name: "Alp Tastekin", school: "Queen's University" },
   { name: "Aynaz Aghbash", school: "Université du Québec en Abitibi-Témiscamingue" },
@@ -21,12 +21,12 @@ const outstandingStudents = [
   { name: "Aisha Mohammed", school: "University of Waterloo" },
 ];
 
-// Student Event Gallery Photos
+// Student Event Gallery Photos from 2026
 const studentGalleryPhotos = [
   {
     id: 1,
     src: "/student/STUDENTS/MINING INVESTMENT EVENT 2026_DAY 1_STUDENTS-17.jpg",
-    title: "2025 Award Ceremony & Winners",
+    title: "2026 Award Ceremony & Winners",
     category: "Awards",
     caption: "Student delegates recognized during the main evening awards presentation.",
   },
@@ -49,7 +49,7 @@ const studentGalleryPhotos = [
     src: "/student/STUDENTS/MINING INVESTMENT EVENT 2026_DAY 1_STUDENTS-6.jpg",
     title: "Student Delegation Group Photo",
     category: "Student Life",
-    caption: "The Class of 2025 gather at the Quebec City Convention Centre.",
+    caption: "The Class of 2026 gather at the Quebec City Convention Centre.",
   },
   {
     id: 5,
@@ -67,20 +67,13 @@ const studentGalleryPhotos = [
   },
   {
     id: 7,
-    src: "/student/STUDENTS/MINING INVESTMENT EVENT 2026_DAY 1_STUDENTS-15.jpg",
-    title: "Core Shack & Technical Exhibits",
-    category: "Networking",
-    caption: "Exploring active exploration rock samples and geology exhibits with experts.",
-  },
-  {
-    id: 8,
     src: "/student/STUDENTS/MINING INVESTMENT EVENT 2026_DAY 1_STUDENTS-27.jpg",
     title: "Quebec City Reception",
     category: "Student Life",
     caption: "Delegates building lifelong connections during the evening social reception.",
   },
   {
-    id: 9,
+    id: 8,
     src: "/student/STUDENTS/MINING INVESTMENT EVENT 2026_DAY 1_STUDENTS-38.jpg",
     title: "Industry Roundtable Discussions",
     category: "Panels",
@@ -106,13 +99,21 @@ export default function StudentPage() {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
+  const scrollToCeoLetter = () => {
+    const el = document.getElementById("ceo-letter-section");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100">
-        {/* ═══════ HERO SECTION ═══════ */}
+        
+        {/* ═══════════════ 1. HERO SECTION ═══════════════ */}
         <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-32 sm:pt-36 md:pt-44 pb-20 sm:pb-24 border-b border-neutral-800">
-          {/* Decorative Background Effects */}
+          {/* Background Grid Pattern */}
           <div
             className="absolute inset-0 opacity-[0.05] pointer-events-none"
             style={{
@@ -124,67 +125,95 @@ export default function StudentPage() {
           <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#C6112F]/20 blur-[130px] rounded-full pointer-events-none" />
 
           <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            {/* Breadcrumb Navigation */}
+            {/* Breadcrumbs */}
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">
                 {t("nav-home", "Home")}
               </a>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-neutral-400">{t("student-breadcrumb-init", "Initiatives")}</span>
+              <span className="text-neutral-400">Initiatives</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">{t("student-breadcrumb-prog", "Student Sponsorship")}</span>
+              <span className="text-white font-semibold">THE Student Partnership Program</span>
             </div>
 
-            {/* 2-Column Hero Grid */}
+            {/* 2-Column Main Hero Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Left Column - Content */}
+              {/* Left Column - Content & Sponsors */}
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#C6112F]/15 border border-[#C6112F]/30 text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
                   <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
-                  <span>{t("student-tag-badge", "Canada's Premier Student Mining Sponsorship")}</span>
+                  <span>Canada's Premier Student Mining Sponsorship</span>
                 </div>
 
-                {/* Title */}
+                {/* Main Heading */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] mb-6">
-                  {t("student-hero-title-1", "THE Student")}{" "}
-                  <span className="text-[#C6112F]">
-                    {t("student-hero-title-2", "Sponsorship Program")}
-                  </span>
+                  THE Student <span className="text-[#C6112F]">Partnership Program</span>
                 </h1>
 
                 <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-8">
-                  {t(
-                    "student-hero-subtitle",
-                    "Empowering the next generation of geology, finance, and engineering leaders with fully funded access to Canada's Tier 1 global mining investment event."
-                  )}
+                  Empowering university and college students in geology, finance, and engineering with fully funded access to Canada's Tier 1 global mining investment event.
                 </p>
 
-                {/* Action Buttons */}
-                <div className="flex flex-wrap items-center gap-4">
+                {/* Hero Action Buttons */}
+                <div className="flex flex-wrap items-center gap-4 mb-10">
                   <Link
                     href="/student/apply"
                     className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3"
                   >
-                    <span>{t("student-cta-apply", "Apply For Class of 2026")}</span>
+                    <span>Apply Now</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                   </Link>
-                  <a
-                    href="https://www.themininginvestmentevent.com/s/LetterfromOurCEO-FINAL-2025-1-FR-6j3d.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-7 py-4 rounded-xl border border-neutral-700 hover:border-white text-neutral-200 hover:text-white text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm"
+
+                  <button
+                    onClick={scrollToCeoLetter}
+                    type="button"
+                    className="px-7 py-4 rounded-xl border border-neutral-700 hover:border-white text-neutral-200 hover:text-white text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm cursor-pointer"
                   >
-                    <span>{t("student-cta-letter", "Letter from our CEO")}</span>
+                    <span>Letter from our CEO</span>
                     <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
-                  </a>
+                  </button>
+                </div>
+
+                {/* 3 Program Sponsors (Glencore on top, OR Royalties & IAMGOLD below) */}
+                <div className="pt-6 border-t border-neutral-800/80 max-w-xl">
+                  <span className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.25em] block mb-3">
+                    PROGRAM SPONSORS
+                  </span>
+                  <div className="flex flex-col gap-3">
+                    {/* Top Row: Glencore */}
+                    <div className="bg-white/95 rounded-xl px-5 py-2.5 flex items-center justify-center w-fit border border-white/20 shadow-sm">
+                      <img
+                        src="/sponsors/2026/glencore.svg"
+                        alt="Glencore Logo"
+                        className="h-7 sm:h-8 max-w-[180px] object-contain"
+                      />
+                    </div>
+                    {/* Bottom Row: OR Royalties & IAMGOLD */}
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <div className="bg-[#0b0e19] rounded-xl px-4 py-2 flex items-center justify-center border border-[#d7a032]/40 shadow-sm">
+                        <img
+                          src="/sponsors/2026/or_royalties_osisko_royalties.svg"
+                          alt="OR Royalties Logo"
+                          className="h-6 sm:h-7 max-w-[120px] object-contain"
+                        />
+                      </div>
+                      <div className="bg-white/95 rounded-xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm">
+                        <img
+                          src="/sponsor image/IAMGOLD-Logo-N.png"
+                          alt="IAMGOLD Logo"
+                          className="h-6 sm:h-7 max-w-[120px] object-contain"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Right Column - Hero Image */}
+              {/* Right Column - Student Delegation Photo */}
               <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
                 <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-3xl overflow-hidden border-2 border-[#C6112F]/40 shadow-2xl shadow-[#C6112F]/20 group">
                   <img
@@ -205,203 +234,216 @@ export default function StudentPage() {
           </div>
         </section>
 
-        {/* ═══════ CONDENSED PROGRAM PILLARS & HIGHLIGHTS ═══════ */}
+        {/* ═══════════════ 2. PROGRAM OVERVIEW TEXT SECTION ═══════════════ */}
         <section className="relative w-full py-16 sm:py-24 bg-white dark:bg-[#0f1117]">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            {/* Header */}
-            <div className="max-w-3xl mb-14">
-              <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                {t("student-overview-tag", "PROGRAM HIGHLIGHTS")}
+            <div className="max-w-4xl mx-auto bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-8 sm:p-12 shadow-xl">
+              <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-3 block">
+                ABOUT THE PROGRAM
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4">
-                {t("student-overview-title", "Bridging Education & Mining Industry Leaders")}
+              <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-6">
+                Investing in the Next Generation of Mining Leaders
               </h2>
-              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mb-4" />
-              <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base leading-relaxed">
-                {t(
-                  "student-overview-desc",
-                  "THE Glencore Student Sponsorship Program provides university and college students passionate about geology, engineering, and finance with an all-inclusive gateway to Canada's premier mining investment conference."
-                )}
-              </p>
-            </div>
+              <div className="w-20 h-[3.5px] bg-[#C6112F] rounded-full mb-8" />
 
-            {/* 4 Equal-Height & Equal-Text Feature Highlight Cards Grid with Website SVG Icons */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {/* Card 1 */}
-              <div className="group p-6 sm:p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/90 dark:border-neutral-800 hover:border-[#C6112F]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#C6112F]/10 border border-[#C6112F]/20 flex items-center justify-center mb-6 group-hover:bg-[#C6112F] group-hover:text-white transition-all duration-300">
-                    <svg className="w-6 h-6 text-[#C6112F] group-hover:text-white transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84 51.39 51.39 0 0 0-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-black text-[#1a1f2c] dark:text-white mb-3 min-h-[52px] flex items-center">
-                    Fully Funded Sponsorship
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm leading-relaxed font-medium">
-                    Selected delegates receive full coverage for conference registration, round-trip travel expenses, and hotel stay in Quebec City.
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 text-[11px] font-extrabold text-[#C6112F] uppercase tracking-wider">
-                  ZERO STUDENT COST
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="group p-6 sm:p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/90 dark:border-neutral-800 hover:border-[#C6112F]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#C6112F]/10 border border-[#C6112F]/20 flex items-center justify-center mb-6 group-hover:bg-[#C6112F] group-hover:text-white transition-all duration-300">
-                    <svg className="w-6 h-6 text-[#C6112F] group-hover:text-white transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 0 3-3V4.5a3 3 0 0 0-6 0v8.25a3 3 0 0 0 3 3z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-black text-[#1a1f2c] dark:text-white mb-3 min-h-[52px] flex items-center">
-                    Tier 1 Keynotes & Panels
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm leading-relaxed font-medium">
-                    Gain direct insights from global mining CEOs, institutional investors, and policy leaders during exclusive multi-day presentations.
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 text-[11px] font-extrabold text-[#C6112F] uppercase tracking-wider">
-                  WORLD-CLASS INSIGHTS
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="group p-6 sm:p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/90 dark:border-neutral-800 hover:border-[#C6112F]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#C6112F]/10 border border-[#C6112F]/20 flex items-center justify-center mb-6 group-hover:bg-[#C6112F] group-hover:text-white transition-all duration-300">
-                    <svg className="w-6 h-6 text-[#C6112F] group-hover:text-white transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-black text-[#1a1f2c] dark:text-white mb-3 min-h-[52px] flex items-center">
-                    Student Case Competition
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm leading-relaxed font-medium">
-                    Participate in collaborative student case challenges judged by senior mining executives with formal awards and industry recognition.
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 text-[11px] font-extrabold text-[#C6112F] uppercase tracking-wider">
-                  EXPERIENTIAL LEARNING
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="group p-6 sm:p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/90 dark:border-neutral-800 hover:border-[#C6112F]/40 hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full">
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[#C6112F]/10 border border-[#C6112F]/20 flex items-center justify-center mb-6 group-hover:bg-[#C6112F] group-hover:text-white transition-all duration-300">
-                    <svg className="w-6 h-6 text-[#C6112F] group-hover:text-white transition-colors" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a5.97 5.97 0 0 0-.942 3.197m0 0A9.094 9.094 0 0 1 2.25 18.241a3 3 0 0 1 4.682-2.72m0 0A5.996 5.996 0 0 1 12 12.75m0 0a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-black text-[#1a1f2c] dark:text-white mb-3 min-h-[52px] flex items-center">
-                    Executive Career Mentorship
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 text-xs sm:text-sm leading-relaxed font-medium">
-                    Connect with corporate leaders, recruiters, and alumni to accelerate your career trajectory across geology, finance, and engineering.
-                  </p>
-                </div>
-                <div className="mt-8 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 text-[11px] font-extrabold text-[#C6112F] uppercase tracking-wider">
-                  CAREER NETWORKING
-                </div>
-              </div>
-            </div>
-
-            {/* Glencore Partnership Highlight Banner */}
-            <div className="relative rounded-3xl bg-gradient-to-r from-[#0f1117] via-[#1a1f2c] to-[#0f1117] text-white p-8 sm:p-12 overflow-hidden shadow-2xl border border-neutral-800">
-              <div className="absolute right-0 top-0 bottom-0 w-1/2 opacity-15 pointer-events-none bg-[radial-gradient(#C6112F_1px,transparent_1px)] [background-size:16px_16px]" />
-              <div className="relative z-10 max-w-3xl">
-                <span className="text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-3 block">
-                  PROUD SPONSOR PARTNERSHIP
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-black mb-3">
-                  Powered by Glencore
-                </h3>
-                <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed mb-6 font-light">
-                  Through Glencore’s visionary commitment to Canadian education, up to 50 deserving post-secondary students attend THE Mining Investment Event completely tuition-free, inspiring future leaders across Canada.
+              <div className="space-y-6 text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed font-normal">
+                <p>
+                  <strong>THE Student Partnership Program</strong> aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada’s only Tier 1 global mining investment conference, held June 2-4, 2026, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking, and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada.
                 </p>
-                <div className="flex flex-wrap items-center gap-4">
-                  <Link
-                    href="/student/apply"
-                    className="px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-extrabold uppercase tracking-wider shadow-lg hover:scale-105 transition-all inline-flex items-center gap-2"
-                  >
-                    <span>Apply Now for 2026</span>
-                    <span className="text-base leading-none">➔</span>
-                  </Link>
+
+                <p>
+                  Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at <strong>no cost</strong>. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition, and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════ 3. LETTER FROM THE CEO SECTION ═══════════════ */}
+        <section id="ceo-letter-section" className="relative w-full py-16 sm:py-24 bg-[#0b0f19] text-white overflow-hidden scroll-mt-28">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
+            <div className="relative bg-gradient-to-br from-neutral-900 via-[#151924] to-[#0b0f19] border border-neutral-800 rounded-3xl p-8 sm:p-14 shadow-2xl overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-[#C6112F]/10 blur-[100px] rounded-full pointer-events-none" />
+              
+              <div className="relative z-10 max-w-4xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="px-3.5 py-1 rounded-full bg-[#C6112F]/20 border border-[#C6112F]/40 text-[#ff4d6d] text-[11px] font-black uppercase tracking-widest">
+                    EXECUTIVE PERSPECTIVE
+                  </span>
+                  <span className="text-xs text-neutral-400 font-semibold">
+                    THE Mining Investment Event
+                  </span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-8">
+                  Letter from our Founder & CEO
+                </h2>
+
+                <div className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] space-y-6">
+                  <p className="text-neutral-200 text-base sm:text-lg md:text-xl font-normal leading-relaxed italic">
+                    Joanne Jobin, Founder and CEO, stated, “I am deeply grateful to the 2026 Student Program Partners for their commitment to funding this program and for taking the time to meet and interact directly with our students. Since its launch in 2023, the program has introduced approximately 200 students to the mining industry, with many returning annually to network, learn more, or volunteer. It is now recognized as one of the largest fully funded conference programs in North America, offering students interested in mining a unique opportunity to participate in THE Event. Program Partners and Industry Leaders facilitate this platform for knowledge sharing, networking, and experiential learning. This program is vital to THE Event’s dedication to making real social impacts and supporting the goal of ensuring that potential future mining leaders have ample opportunities to be identified and to succeed.”
+                  </p>
+
+                  <p className="text-neutral-200 text-base sm:text-lg md:text-xl font-normal leading-relaxed italic">
+                    Jobin added, "As part of our ongoing dedication to industry sustainability through fostering the next generation of mining professionals, we plan to seek another partner to provide additional funding to create an opportunity for international students to participate in our 2027 program."
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-neutral-800 flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#C6112F] text-white flex items-center justify-center font-black text-lg shadow-md">
+                    JJ
+                  </div>
+                  <div>
+                    <h4 className="text-base font-extrabold text-white">Joanne Jobin</h4>
+                    <p className="text-xs text-neutral-400 font-medium">Founder & CEO, THE Mining Investment Event</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═══════ STUDENT MOMENTS & PHOTO GALLERY ═══════ */}
+        {/* ═══════════════ 4. 2026 WINNERS & PHOTO GALLERY ═══════════════ */}
         <section className="relative w-full py-16 sm:py-24 bg-[#f8f9fa] dark:bg-[#12141c] border-t border-b border-neutral-200/80 dark:border-neutral-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-              <div>
-                <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                  PHOTO GALLERY & MOMENTS
+            <div className="max-w-3xl mb-12">
+              <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
+                2026 RECOGNITION
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-3">
+                2026 Award Winners & Highlights
+              </h2>
+              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mb-4" />
+              <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base">
+                Celebrating outstanding student delegates and case competition winners from THE Event 2026 in Québec City.
+              </p>
+            </div>
+
+            {/* MVP Featured Card */}
+            <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8 relative overflow-hidden">
+              <div className="absolute top-0 right-0 px-6 py-2 bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-widest rounded-bl-2xl shadow-md">
+                ⭐ Student MVP Winner
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-1">
+                    Anna Dalton-Framst
+                  </h3>
+                  <p className="text-neutral-600 dark:text-neutral-300 text-sm font-semibold">
+                    University of Ottawa
+                  </p>
+                </div>
+                <div className="px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-xs font-bold text-amber-600 dark:text-amber-400 shrink-0">
+                  Student MVP Award 2026
+                </div>
+              </div>
+            </div>
+
+            {/* Winning Team 9 */}
+            <div className="bg-white dark:bg-[#181a24] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="px-3.5 py-1 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-black text-[10px] uppercase tracking-widest">
+                  Case Study Competition Winners — Team 9
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
-                  Life at THE Student Event
-                </h2>
-                <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mt-3" />
               </div>
 
-              {/* Category Filter Pills */}
-              <div className="flex flex-wrap items-center gap-2">
-                {["All", "Awards", "Networking", "Panels", "Student Life"].map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${activeCategory === cat
-                        ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
-                        : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:border-[#C6112F]"
-                      }`}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {winningTeamMembers.map((member, i) => (
+                  <div
+                    key={i}
+                    className="p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800 hover:border-[#C6112F]/40 transition-all"
                   >
-                    {cat}
-                  </button>
+                    <div className="w-8 h-8 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-bold text-xs flex items-center justify-center mb-3">
+                      0{i + 1}
+                    </div>
+                    <div className="text-base font-black text-[#1a1f2c] dark:text-white mb-1">
+                      {member.name}
+                    </div>
+                    <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
+                      {member.school}
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
 
-            {/* Gallery Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPhotos.map((photo, index) => (
-                <div
-                  key={photo.id}
-                  onClick={() => setSelectedPhotoIndex(index)}
-                  className="group relative rounded-3xl overflow-hidden bg-neutral-900 cursor-pointer aspect-[4/3] border border-neutral-200/80 dark:border-neutral-800 shadow-md hover:shadow-2xl transition-all duration-500"
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+            {/* Outstanding Students */}
+            <div className="bg-white dark:bg-[#181a24] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-14">
+              <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-6">
+                Outstanding Student Recognition
+              </span>
 
-                  {/* Category Pill Tag */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-extrabold uppercase tracking-widest">
-                      {photo.category}
-                    </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {outstandingStudents.map((std, i) => (
+                  <div key={i} className="p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800">
+                    <div className="text-lg font-black text-[#1a1f2c] dark:text-white mb-1">{std.name}</div>
+                    <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">{std.school}</div>
                   </div>
-
-                  {/* Caption & Title */}
-                  <div className="absolute bottom-0 inset-x-0 p-5 z-10 text-white">
-                    <h4 className="text-base font-bold tracking-tight mb-1 group-hover:text-[#ff4d6d] transition-colors">
-                      {photo.title}
-                    </h4>
-                    <p className="text-xs text-neutral-300 font-light line-clamp-2">
-                      {photo.caption}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* Lightbox Modal Pop-up */}
+            {/* 2026 Photo Gallery */}
+            <div className="mt-12">
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-black tracking-tight">
+                    2026 Event Photos & Student Moments
+                  </h3>
+                  <div className="w-12 h-[3px] bg-[#C6112F] rounded-full mt-2" />
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  {["All", "Awards", "Networking", "Panels", "Student Life"].map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => setActiveCategory(cat)}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                        activeCategory === cat
+                          ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
+                          : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:border-[#C6112F]"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredPhotos.map((photo, index) => (
+                  <div
+                    key={photo.id}
+                    onClick={() => setSelectedPhotoIndex(index)}
+                    className="group relative rounded-3xl overflow-hidden bg-neutral-900 cursor-pointer aspect-[4/3] border border-neutral-200/80 dark:border-neutral-800 shadow-md hover:shadow-2xl transition-all duration-500"
+                  >
+                    <img
+                      src={photo.src}
+                      alt={photo.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
+
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-extrabold uppercase tracking-widest">
+                        {photo.category}
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-0 inset-x-0 p-5 z-10 text-white">
+                      <h4 className="text-base font-bold tracking-tight mb-1 group-hover:text-[#ff4d6d] transition-colors">
+                        {photo.title}
+                      </h4>
+                      <p className="text-xs text-neutral-300 font-light line-clamp-2">
+                        {photo.caption}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Lightbox Pop-up */}
             {selectedPhotoIndex !== null && filteredPhotos[selectedPhotoIndex] && (
               <div
                 className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
@@ -411,7 +453,6 @@ export default function StudentPage() {
                   className="relative max-w-4xl w-full bg-neutral-900 rounded-3xl overflow-hidden border border-neutral-800 shadow-2xl"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {/* Close button */}
                   <button
                     onClick={() => setSelectedPhotoIndex(null)}
                     className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-[#C6112F] transition-colors"
@@ -440,7 +481,6 @@ export default function StudentPage() {
                       </p>
                     </div>
 
-                    {/* Prev / Next controls */}
                     <div className="flex items-center gap-2 shrink-0">
                       <button
                         onClick={() =>
@@ -470,115 +510,125 @@ export default function StudentPage() {
           </div>
         </section>
 
-        {/* ═══════ 2025 AWARD RECIPIENTS SECTION ═══════ */}
-        <section className="relative w-full py-16 sm:py-24 bg-[#f8f9fa] dark:bg-[#12141c]">
+        {/* ═══════════════ 5. PREVIOUS YEARS SECTION (BOTTOM) ═══════════════ */}
+        <section className="relative w-full py-16 sm:py-20 bg-white dark:bg-[#0f1117] border-b border-neutral-200/80 dark:border-neutral-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="max-w-3xl mb-12">
+            <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                {t("student-awards-label", "HONOUR ROLL & AWARDS")}
+                PROGRAM ARCHIVES
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-3">
-                Class of 2025 Award Recipients
+              <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-3">
+                Previous Years
               </h2>
-              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mb-4" />
-              <p className="text-neutral-600 dark:text-neutral-300 text-sm">
-                Celebrating outstanding student delegates and case competition winners from our previous annual gathering.
+              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mx-auto mb-4" />
+              <p className="text-neutral-600 dark:text-neutral-400 text-sm font-medium">
+                Explore past student delegations, case study archives, and award recipient honors since the program's inaugural launch in 2023.
               </p>
             </div>
 
-            {/* MVP Featured Card */}
-            <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 px-6 py-2 bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-widest rounded-bl-2xl shadow-md">
-                ⭐ {t("student-mvp-label", "MVP — Selected by Students")}
-              </div>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            {/* 3 Grid Cards for Previous Years */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* 2025 Card */}
+              <Link
+                href="/past-years/2025"
+                className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              >
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-1">
-                    Anna Dalton-Framst
+                  <div className="text-xs font-extrabold text-[#C6112F] uppercase tracking-widest mb-2">
+                    EDITION ARCHIVE
+                  </div>
+                  <h3 className="text-2xl font-black text-neutral-900 dark:text-white mb-2 group-hover:text-[#C6112F] transition-colors">
+                    2025 Student Program
                   </h3>
-                  <p className="text-neutral-600 dark:text-neutral-300 text-sm font-semibold">
-                    University of Ottawa
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
+                    Over 50 delegates attended, featuring case studies and mentorship with Tier 1 mining executives in Québec City.
                   </p>
                 </div>
-                <div className="px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-xs font-bold text-amber-600 dark:text-amber-400 shrink-0">
-                  Student MVP Winner
+                <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between text-xs font-bold text-[#C6112F]">
+                  <span>Explore 2025 Archive</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </div>
-              </div>
-            </div>
+              </Link>
 
-            {/* Winning Team 9 */}
-            <div className="bg-white dark:bg-[#181a24] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="px-3.5 py-1 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-black text-[10px] uppercase tracking-widest">
-                  {t("student-winning-team-label", "Winning Team — Team 9")}
-                </span>
-                <span className="text-xs text-neutral-400 font-medium">Case Study Competition</span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {winningTeamMembers.map((member, i) => (
-                  <div
-                    key={i}
-                    className="p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800 hover:border-[#C6112F]/40 transition-all"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-bold text-xs flex items-center justify-center mb-3">
-                      0{i + 1}
-                    </div>
-                    <div className="text-base font-black text-[#1a1f2c] dark:text-white mb-1">
-                      {member.name}
-                    </div>
-                    <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                      {member.school}
-                    </div>
+              {/* 2024 Card */}
+              <Link
+                href="/past-years/2024"
+                className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="text-xs font-extrabold text-[#C6112F] uppercase tracking-widest mb-2">
+                    EDITION ARCHIVE
                   </div>
-                ))}
-              </div>
-            </div>
+                  <h3 className="text-2xl font-black text-neutral-900 dark:text-white mb-2 group-hover:text-[#C6112F] transition-colors">
+                    2024 Student Program
+                  </h3>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
+                    Expanded national student outreach bringing geology and finance students together for experiential learning.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between text-xs font-bold text-[#C6112F]">
+                  <span>Explore 2024 Archive</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </Link>
 
-            {/* Outstanding Students */}
-            <div className="bg-white dark:bg-[#181a24] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-12">
-              <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-6">
-                {t("student-outstanding-label", "Outstanding Students")}
-              </span>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {outstandingStudents.map((std, i) => (
-                  <div key={i} className="p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800">
-                    <div className="text-lg font-black text-[#1a1f2c] dark:text-white mb-1">{std.name}</div>
-                    <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">{std.school}</div>
+              {/* 2023 Card */}
+              <Link
+                href="/past-years/2023"
+                className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="text-xs font-extrabold text-[#C6112F] uppercase tracking-widest mb-2">
+                    INAUGURAL EDITION
                   </div>
-                ))}
-              </div>
+                  <h3 className="text-2xl font-black text-neutral-900 dark:text-white mb-2 group-hover:text-[#C6112F] transition-colors">
+                    2023 Student Program
+                  </h3>
+                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
+                    The launch of Canada's fully funded student mining conference initiative in Quebec City.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between text-xs font-bold text-[#C6112F]">
+                  <span>Explore 2023 Archive</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+              </Link>
             </div>
+          </div>
+        </section>
 
-            {/* Contact & Support Box */}
-            <div className="bg-[#0b0f19] text-white rounded-3xl p-8 sm:p-10 shadow-2xl border border-neutral-800 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        {/* ═══════════════ 6. CONTACT & SUPPORT FOOTER CTA ═══════════════ */}
+        <section className="relative w-full py-16 sm:py-20 bg-[#0b0f19] text-white">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
+            <div className="bg-[#151821] border border-neutral-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div className="max-w-2xl">
-                <h4 className="text-base font-bold text-[#ff4d6d] uppercase tracking-wider mb-2">
-                  {t("student-contact-title", "Contact Information & Inquiries")}
+                <h4 className="text-base font-extrabold text-[#ff4d6d] uppercase tracking-wider mb-2">
+                  Contact Information & Student Inquiries
                 </h4>
-                <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-light mb-3">
-                  {t(
-                    "student-contact-desc",
-                    "For additional details or questions regarding the sponsorship application process, please reach out to Sydney Schuch, Manager of Production Services:"
-                  )}
+                <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-light mb-4">
+                  For additional details or questions regarding the sponsorship application process, please reach out to Sydney Schuch, Manager of Production Services:
                 </p>
-                <div className="inline-flex items-center gap-3 bg-neutral-900 border border-neutral-800 px-4 py-2 rounded-xl text-xs font-mono text-neutral-200">
+                <div className="inline-flex items-center gap-3 bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-xl text-xs font-mono text-neutral-200">
                   <span>Sydney@irinc.ca</span>
                   <button
                     onClick={handleCopyEmail}
-                    className="text-[#ff4d6d] hover:underline font-sans font-bold"
+                    className="text-[#ff4d6d] hover:underline font-sans font-bold cursor-pointer"
                   >
-                    {copiedEmail ? "✓ Copied!" : "Copy"}
+                    {copiedEmail ? "✓ Copied!" : "Copy Email"}
                   </button>
                 </div>
               </div>
 
-              <div className="pt-4 md:pt-0 md:border-l md:border-neutral-800 md:pl-8 text-neutral-400 text-xs leading-relaxed max-w-xs shrink-0">
-                {t(
-                  "student-closing-note",
-                  "We thank all students who have participated in our annual gathering. Applications for Class of 2026 are actively open."
-                )}
+              <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
+                <Link
+                  href="/student/apply"
+                  className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-extrabold tracking-widest uppercase shadow-xl hover:scale-105 transition-all"
+                >
+                  Apply Now
+                </Link>
+                <span className="text-[11px] text-neutral-400 font-medium">
+                  Applications for 2026 student cohort are open
+                </span>
               </div>
             </div>
           </div>

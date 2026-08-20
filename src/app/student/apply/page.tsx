@@ -141,8 +141,8 @@ export default function StudentApplyPage() {
                 </div>
 
                 <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-5">
-                  Apply for THE Glencore{" "}
-                  <span className="text-[#C6112F]">Sponsorship Program</span>
+                  Apply for THE Student{" "}
+                  <span className="text-[#C6112F]">Partnership Program</span>
                 </h1>
 
                 <p className="text-neutral-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
@@ -461,10 +461,10 @@ export default function StudentApplyPage() {
                           </div>
                         </div>
 
-                        {/* Letter of Interest */}
+                        {/* Cover Letter / Letter of Interest */}
                         <div>
                           <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                            {t("student-form-interest-letter", "Letter of Interest")}{" "}
+                            {t("student-form-interest-letter", "Cover Letter / Letter of Interest")}{" "}
                             <span className="text-[#C6112F] font-bold">*</span>
                           </label>
                           <textarea
@@ -474,12 +474,12 @@ export default function StudentApplyPage() {
                             onChange={(e) =>
                               setFormData({ ...formData, interestLetterText: e.target.value })
                             }
-                            placeholder={t("student-form-interest-ph", "Explain why you are interested in attending THE Glencore Student Sponsorship Program and your academic goals...")}
+                            placeholder={t("student-form-interest-ph", "Type your cover letter / letter of interest, or upload your document file below...")}
                             className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all resize-y mb-3"
                           />
 
-                          {/* Optional Interest Letter Attachment */}
-                          <div className="relative border border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F] rounded-xl p-3.5 transition-colors text-center bg-white dark:bg-neutral-900">
+                          {/* Cover Letter Attachment Dropzone */}
+                          <div className="relative border-2 border-dashed border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F] rounded-2xl p-4 transition-colors text-center bg-white dark:bg-neutral-900 group">
                             <input
                               type="file"
                               accept=".pdf,.doc,.docx"
@@ -487,15 +487,15 @@ export default function StudentApplyPage() {
                               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                             />
                             <div className="flex items-center justify-center gap-2 text-xs text-neutral-600 dark:text-neutral-400 font-medium">
-                              <svg className="w-4 h-4 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                              <svg className="w-5 h-5 text-[#C6112F] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94a3 3 0 114.243 4.243L8.567 18.31a1.5 1.5 0 01-2.122-2.122l8.485-8.485" />
                               </svg>
                               {interestLetterFile ? (
-                                <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
-                                  <span>✓</span> <span>{interestLetterFile.name}</span>
+                                <span className="font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+                                  <span>✓ Cover Letter Attached:</span> <span className="underline">{interestLetterFile.name}</span>
                                 </span>
                               ) : (
-                                <span>{t("student-form-interest-file", "Or attach Letter of Interest file (PDF, DOCX)")}</span>
+                                <span>{t("student-form-interest-file", "Click or Drag to Upload Cover Letter / Letter of Interest File (PDF, DOCX)")}</span>
                               )}
                             </div>
                           </div>

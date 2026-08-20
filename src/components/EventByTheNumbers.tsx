@@ -71,32 +71,32 @@ export default function EventByTheNumbers() {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Header matching exact design */}
-      <span className="text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-[0.18em] uppercase text-center block mb-2">
+      <span className="text-[#C6112F] font-extrabold text-xs sm:text-sm md:text-base tracking-[0.2em] uppercase text-center block mb-2">
         {isFr ? "L'ÉVÉNEMENT 2026" : "THE EVENT 2026"}
       </span>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1f2430] dark:text-white text-center mb-3 tracking-tight">
-        {isFr ? "L'Événement en Chiffres" : "The Event by the Numbers"}
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1f2430] dark:text-white text-center mb-4 tracking-tight">
+        {isFr ? "L'Événement 2026 en chiffres" : "THE Event 2026 by the numbers"}
       </h2>
-      <div className="w-16 h-[3px] bg-[#C6112F] mx-auto rounded-full mb-4" />
-      <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm text-center font-medium max-w-xl mx-auto mb-10 leading-relaxed">
+      <div className="w-20 h-[4px] bg-[#C6112F] mx-auto rounded-full mb-6" />
+      <p className="text-neutral-700 dark:text-zinc-200 text-sm sm:text-base md:text-lg text-center font-medium max-w-2xl mx-auto mb-12 leading-relaxed">
         {isFr
           ? "Une plateforme mondiale reliant investisseurs, entreprises et leaders qui façonnent l'avenir de l'investissement minier."
           : "A global platform connecting investors, companies and leaders driving the future of mining and resource investment."}
       </p>
 
-      {/* ════════ SINGLE 1-LINE HORIZONTAL STATS ROW ════════ */}
+      {/* ════════ SINGLE 1-LINE HORIZONTAL STATS ROW (6 CARDS) ════════ */}
       <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 mb-12">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1.5 sm:gap-2 lg:gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 items-stretch">
           {/* Card 1: Qualified Investors */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-user-salary text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
+          <div className="bg-white dark:bg-[#141824] border-2 border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-3 sm:p-3.5 flex items-center gap-2 sm:gap-2.5 shadow-sm hover:shadow-lg hover:border-[#C6112F]/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0 h-full">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
+              <div className="absolute -top-[1.5px] -right-[1.5px] w-4 h-4 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
+              <i className="fi fi-rr-user-salary text-base sm:text-lg leading-none text-neutral-800 dark:text-zinc-100" />
             </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
+            <div className="w-[1.5px] h-8 sm:h-9 bg-[#C6112F]/40 shrink-0" />
             <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">350</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
+              <div className="text-base sm:text-lg xl:text-xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight">350</div>
+              <span className="text-[#C6112F] font-black text-[8.5px] sm:text-[9.5px] xl:text-[10px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
                 {isFr ? (
                   <>
                     INVESTISSEURS<br />QUALIFIÉS
@@ -111,15 +111,15 @@ export default function EventByTheNumbers() {
           </div>
 
           {/* Card 2: Companies Represented */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rs-building text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
+          <div className="bg-white dark:bg-[#141824] border-2 border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-3 sm:p-3.5 flex items-center gap-2 sm:gap-2.5 shadow-sm hover:shadow-lg hover:border-[#C6112F]/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0 h-full">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
+              <div className="absolute -top-[1.5px] -right-[1.5px] w-4 h-4 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
+              <i className="fi fi-rs-building text-base sm:text-lg leading-none text-neutral-800 dark:text-zinc-100" />
             </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
+            <div className="w-[1.5px] h-8 sm:h-9 bg-[#C6112F]/40 shrink-0" />
             <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">200+</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
+              <div className="text-base sm:text-lg xl:text-xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight">200+</div>
+              <span className="text-[#C6112F] font-black text-[8.5px] sm:text-[9.5px] xl:text-[10px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
                 {isFr ? (
                   <>
                     SOCIÉTÉS<br />REPRÉSENTÉES
@@ -133,58 +133,31 @@ export default function EventByTheNumbers() {
             </div>
           </div>
 
-          {/* Card 3: 1x1 Meeting Issuers */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <img
-                src="/meeting-table.svg"
-                alt="1x1 Meeting"
-                className="w-4 h-4 object-contain dark:invert"
-              />
+          {/* Card 3: Presentations */}
+          <div className="bg-white dark:bg-[#141824] border-2 border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-3 sm:p-3.5 flex items-center gap-2 sm:gap-2.5 shadow-sm hover:shadow-lg hover:border-[#C6112F]/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0 h-full">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
+              <div className="absolute -top-[1.5px] -right-[1.5px] w-4 h-4 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
+              <i className="fi fi-rr-chart-user text-base sm:text-lg leading-none text-neutral-800 dark:text-zinc-100" />
             </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
+            <div className="w-[1.5px] h-8 sm:h-9 bg-[#C6112F]/40 shrink-0" />
             <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">143</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                {isFr ? (
-                  <>
-                    RENCONTRES<br />1-À-1 ÉMETTEURS
-                  </>
-                ) : (
-                  <>
-                    1X1 MEETING<br />ISSUERS
-                  </>
-                )}
-              </span>
-            </div>
-          </div>
-
-          {/* Card 4: Presentations */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-chart-user text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
-            </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-            <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">65</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
+              <div className="text-base sm:text-lg xl:text-xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight">65</div>
+              <span className="text-[#C6112F] font-black text-[8.5px] sm:text-[9.5px] xl:text-[10px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
                 PRESENTATIONS
               </span>
             </div>
           </div>
 
-          {/* Card 5: Panels & Keynotes */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rs-circle-microphone text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
+          {/* Card 4: Panels & Keynotes */}
+          <div className="bg-white dark:bg-[#141824] border-2 border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-3 sm:p-3.5 flex items-center gap-2 sm:gap-2.5 shadow-sm hover:shadow-lg hover:border-[#C6112F]/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0 h-full">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
+              <div className="absolute -top-[1.5px] -right-[1.5px] w-4 h-4 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
+              <i className="fi fi-rs-circle-microphone text-base sm:text-lg leading-none text-neutral-800 dark:text-zinc-100" />
             </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
+            <div className="w-[1.5px] h-8 sm:h-9 bg-[#C6112F]/40 shrink-0" />
             <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">17</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
+              <div className="text-base sm:text-lg xl:text-xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight">17</div>
+              <span className="text-[#C6112F] font-black text-[8.5px] sm:text-[9.5px] xl:text-[10px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
                 {isFr ? (
                   <>
                     PANELS ET<br />CONFÉRENCES
@@ -198,16 +171,16 @@ export default function EventByTheNumbers() {
             </div>
           </div>
 
-          {/* Card 6: Sponsors & Partners */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-handshake text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
+          {/* Card 5: Media & Partners */}
+          <div className="bg-white dark:bg-[#141824] border-2 border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-3 sm:p-3.5 flex items-center gap-2 sm:gap-2.5 shadow-sm hover:shadow-lg hover:border-[#C6112F]/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0 h-full">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
+              <div className="absolute -top-[1.5px] -right-[1.5px] w-4 h-4 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
+              <i className="fi fi-rr-handshake text-base sm:text-lg leading-none text-neutral-800 dark:text-zinc-100" />
             </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
+            <div className="w-[1.5px] h-8 sm:h-9 bg-[#C6112F]/40 shrink-0" />
             <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">60+</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
+              <div className="text-base sm:text-lg xl:text-xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight">60+</div>
+              <span className="text-[#C6112F] font-black text-[8.5px] sm:text-[9.5px] xl:text-[10px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
                 {isFr ? (
                   <>
                     MÉDIAS<br />& PARTENAIRES
@@ -221,16 +194,16 @@ export default function EventByTheNumbers() {
             </div>
           </div>
 
-          {/* Card 7: 1x1 Meetings / 3 Days */}
-          <div className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0">
-            <div className="relative w-8 h-8 sm:w-8.5 sm:h-8.5 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-              <div className="absolute -top-[1.5px] -right-[1.5px] w-3.5 h-3.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-              <i className="fi fi-rr-coworking text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />
+          {/* Card 6: 1x1 Meetings / 3 Days */}
+          <div className="bg-white dark:bg-[#141824] border-2 border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-3 sm:p-3.5 flex items-center gap-2 sm:gap-2.5 shadow-sm hover:shadow-lg hover:border-[#C6112F]/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0 h-full">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
+              <div className="absolute -top-[1.5px] -right-[1.5px] w-4 h-4 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
+              <i className="fi fi-rr-coworking text-base sm:text-lg leading-none text-neutral-800 dark:text-zinc-100" />
             </div>
-            <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
+            <div className="w-[1.5px] h-8 sm:h-9 bg-[#C6112F]/40 shrink-0" />
             <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-              <div className="text-sm sm:text-base xl:text-lg font-black text-neutral-900 dark:text-white leading-tight tracking-tight">3,500</div>
-              <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
+              <div className="text-base sm:text-lg xl:text-xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight">3,500</div>
+              <span className="text-[#C6112F] font-black text-[8.5px] sm:text-[9.5px] xl:text-[10px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
                 {isFr ? (
                   <>
                     RÉUNIONS 1-À-1 /<br />3 JOURS
@@ -247,7 +220,7 @@ export default function EventByTheNumbers() {
       </div>
 
       {/* Two-Column Lower Cards (Growth & Investor Profile) */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {/* Left Card: Growth Profile */}
         <div className="bg-[#f0f2f5] dark:bg-[#121215] border border-neutral-300/90 dark:border-zinc-800 hover:border-[#C6112F]/40 rounded-2xl sm:rounded-3xl p-6 sm:p-8 flex flex-col justify-between text-left transition-all duration-300 shadow-xs hover:shadow-md">
           <div>

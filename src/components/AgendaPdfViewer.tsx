@@ -46,12 +46,12 @@ function formatFileSize(bytes: number): string {
 }
 
 export default function AgendaPdfViewer({
-  pdfUrl = "/documents/2026-brochure.pdf",
+  pdfUrl = "/documents/2026-agenda.pdf",
   totalPages = 4,
-  fileName = "brochure.pdf",
-  year = 2026,
-  title = "Event Brochure",
-  description = "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview, and sponsorship opportunities.",
+  fileName = "agenda.pdf",
+  year = 2027,
+  title = "Event Agenda",
+  description = "Explore the complete agenda to discover event details, key themes, speaker highlights, session schedule, and networking opportunities.",
   fileSize = "0.9 MB",
   remote = false,
   eventDates,
@@ -398,37 +398,58 @@ export default function AgendaPdfViewer({
         </div>
       </div>
 
-      {/* ════════ BOTTOM PROMINENT ACTION BUTTONS MATCHING SCREENSHOT 2 ════════ */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* DOWNLOAD BROCHURE BUTTON */}
-        <a
-          href={resolvedUrl || undefined}
-          download={downloadName}
-          type="application/pdf"
-          aria-disabled={!resolvedUrl}
-          className={`w-full py-4 px-6 bg-[#C6112F] text-white font-extrabold text-sm uppercase tracking-wider rounded-2xl shadow-md shadow-[#C6112F]/20 transition-all duration-300 flex items-center justify-center gap-3 text-center ${resolvedUrl
-              ? "hover:bg-[#a80e27] hover:shadow-lg hover:scale-[1.01] active:scale-[0.99]"
-              : "opacity-60 pointer-events-none"
-            }`}
-        >
-          <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-          </svg>
-          <span>{resolvedUrl ? "DOWNLOAD BROCHURE" : "PREPARING DOWNLOAD…"}</span>
-        </a>
+      {/* ════════ BOTTOM PROMINENT ACTION BUTTONS ════════ */}
+      {(() => {
+        const isAgenda =
+          (fileName && fileName.toLowerCase().includes("agenda")) ||
+          (title && title.toLowerCase().includes("agenda")) ||
+          (pdfUrl && pdfUrl.toLowerCase().includes("agenda"));
+        const docLabel = isAgenda
+          ? isFr ? "L'AGENDA" : "AGENDA"
+          : isFr ? "LA BROCHURE" : "BROCHURE";
 
-        {/* SHARE BROCHURE BUTTON */}
-        <button
-          onClick={handleShare}
-          type="button"
-          className="w-full py-4 px-6 bg-white dark:bg-[#131b2e] border border-neutral-300 dark:border-[#233049] hover:bg-neutral-50 dark:hover:bg-slate-800 text-neutral-800 dark:text-white font-extrabold text-sm uppercase tracking-wider rounded-2xl shadow-2xs hover:shadow-md transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-3 text-center cursor-pointer"
-        >
-          <svg className="w-5 h-5 text-neutral-600 dark:text-slate-300 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-          </svg>
-          <span>{copied ? "LINK COPIED TO CLIPBOARD!" : "SHARE BROCHURE"}</span>
-        </button>
-      </div>
+        return (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* DOWNLOAD BUTTON */}
+            <a
+              href={resolvedUrl || undefined}
+              download={downloadName}
+              type="application/pdf"
+              aria-disabled={!resolvedUrl}
+              className={`w-full py-4 px-6 bg-[#C6112F] text-white font-extrabold text-sm uppercase tracking-wider rounded-2xl shadow-md shadow-[#C6112F]/20 transition-all duration-300 flex items-center justify-center gap-3 text-center ${
+                resolvedUrl
+                  ? "hover:bg-[#a80e27] hover:shadow-lg hover:scale-[1.01] active:scale-[0.99]"
+                  : "opacity-60 pointer-events-none"
+              }`}
+            >
+              <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+              </svg>
+              <span>
+                {resolvedUrl
+                  ? `${isFr ? "TÉLÉCHARGER" : "DOWNLOAD"} ${docLabel}`
+                  : isFr ? "PRÉPARATION..." : "PREPARING DOWNLOAD…"}
+              </span>
+            </a>
+
+            {/* SHARE BUTTON */}
+            <button
+              onClick={handleShare}
+              type="button"
+              className="w-full py-4 px-6 bg-white dark:bg-[#131b2e] border border-neutral-300 dark:border-[#233049] hover:bg-neutral-50 dark:hover:bg-slate-800 text-neutral-800 dark:text-white font-extrabold text-sm uppercase tracking-wider rounded-2xl shadow-2xs hover:shadow-md transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-3 text-center cursor-pointer"
+            >
+              <svg className="w-5 h-5 text-neutral-600 dark:text-slate-300 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+              </svg>
+              <span>
+                {copied
+                  ? isFr ? "LIEN COPIÉ DANS LE PRESSE-PAPIERS !" : "LINK COPIED TO CLIPBOARD!"
+                  : `${isFr ? "PARTAGER" : "SHARE"} ${docLabel}`}
+              </span>
+            </button>
+          </div>
+        );
+      })()}
     </div>
   );
 }

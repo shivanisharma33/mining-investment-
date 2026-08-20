@@ -87,7 +87,7 @@ export default async function NewsflashArticlePage({
               <svg className="w-4 h-4 text-[#C6112F] group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
               </svg>
-              <span>All Press Releases</span>
+              <span>All Press Release</span>
             </Link>
 
             <nav className="flex items-center gap-2 text-xs font-semibold text-neutral-500 flex-wrap">
@@ -209,7 +209,7 @@ export default async function NewsflashArticlePage({
             <section className="mt-12">
               <div className="flex items-center gap-4 mb-6">
                 <b className="text-xs font-extrabold text-[#C6112F] tracking-[0.25em] uppercase whitespace-nowrap">
-                  More Press Releases
+                  More Press Release
                 </b>
                 <div className="flex-grow h-px bg-neutral-200" />
               </div>

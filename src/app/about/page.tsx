@@ -46,21 +46,19 @@ function useCounter(target: number, duration = 2000, startOnView = true) {
 const quickFacts = [
   "Canada's Only Tier I Global Mining Investment Conference",
   "Held annually in Québec City, Canada",
-  "Over 100 participating mining companies",
+  "200 participating mining companies",
   "Invitation only — walk-ins not accepted",
-  "Independently sponsored by Government of Québec",
-  "800+ participants including issuers, investors & governments",
-  "ESG and equality-focused programming",
+  "Independently sponsored by various financial and industry groups as well as domestic and international governments",
+  "1,400+ participants including issuers, investors and governments",
 ];
 
 const quickFactsFr = [
   "La seule conférence mondiale de niveau I sur l'investissement minier au Canada",
   "Se tient annuellement à Québec, Canada",
-  "Plus de 100 sociétés minières participantes",
+  "200 sociétés minières participantes",
   "Sur invitation uniquement — les visiteurs sans invitation ne sont pas acceptés",
-  "Parrainée indépendamment par le gouvernement du Québec",
-  "800+ participants, y compris émetteurs, investisseurs et gouvernements",
-  "Programmation axée sur l'ESG et l'égalité",
+  "Parrainée indépendamment par divers groupes financiers et industriels ainsi que des gouvernements nationaux et internationaux",
+  "1 400+ participants, y compris émetteurs, investisseurs et gouvernements",
 ];
 
 /* ───────── Feature Cards Data ───────── */
@@ -75,7 +73,7 @@ const features = [
     titleDefault: "Tier I Investment Conference",
     descKey: "about-feat1-desc",
     descDefault:
-      "An invitation-only gathering independently sponsored by the Government of Québec, bringing together the world's most influential mining companies and investors.",
+      "An invitation-only gathering independently sponsored by various financial and industry groups as well as domestic and international governments.",
   },
   {
     icon: (
@@ -101,15 +99,6 @@ const features = [
     descDefault:
       "Committed to promoting sustainability via the Student Sponsorship and SHE-Co Initiatives, highlighting ESG innovation and equality in the mining sector.",
   },
-];
-
-/* ───────── Highlight List Data ───────── */
-const highlights = [
-  { key: "about-hl1", default: "Privately arranged 1-on-1 meetings between mining companies and international investors" },
-  { key: "about-hl2", default: "Keynote speakers and industry thought leaders from across the globe" },
-  { key: "about-hl3", default: "Promoting sustainability via the Student Sponsorship and SHE-Co Initiatives" },
-  { key: "about-hl4", default: "Platform for ESG innovation and equality in the mining sector" },
-  { key: "about-hl5", default: "Accredited investors, family offices, institutions, and sovereign funds" },
 ];
 
 export default function AboutPage() {
@@ -163,60 +152,46 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-16">
               {/* Left Column: Lead Content */}
               <div className="flex flex-col">
-                <p className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a1f2c] leading-snug mb-6">
-                  {t(
-                    "about-lead",
-                    "THE Mining Investment Event—Canada’s Only Tier 1 Global Mining Investment Conference© is held annually in Québec City, Canada."
+                <p className="text-base sm:text-lg md:text-xl font-normal text-neutral-800 leading-relaxed mb-6">
+                  {lang === "FR" ? (
+                    <>
+                      <strong className="font-extrabold text-neutral-900">
+                        L&apos;Événement d&apos;Investissement Minier—La seule conférence mondiale de niveau 1 sur l&apos;investissement minier au Canada© se tient annuellement à Québec, Canada.
+                      </strong>{" "}
+                      Il est détenu et associé de manière indépendante pour faciliter les réunions privées entre les sociétés minières, les investisseurs internationaux et diverses autorités minières et gouvernementales. La conférence offre une plate-forme pour entendre certains des leaders d&apos;opinion les plus influents du secteur. L&apos;Événement s&apos;engage à promouvoir la diversité, l&apos;égalité et la durabilité dans l&apos;industrie minière par l&apos;éducation et l&apos;innovation, soutenue par son programme unique de partenariat étudiant et l&apos;initiative THE SHE-Co.
+                    </>
+                  ) : (
+                    <>
+                      <strong className="font-extrabold text-neutral-900">
+                        THE Mining Investment Event—Canada’s Only Tier 1 Global Mining Investment Conference© is held annually in Québec City, Canada.
+                      </strong>{" "}
+                      It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors, and various mining and government authorities. The conference provides a platform to hear from some of the most influential thought leaders in the sector. THE Event is committed to promoting diversity, equality, and sustainability in the mining industry through education and innovation, supported by its unique Student Partnership Program and THE SHE-Co Initiative.
+                    </>
                   )}
                 </p>
 
-                <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
-
-                <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-5">
-                  {t(
-                    "about-body-1",
-                    "It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors, and various mining and government authorities. The conference provides a platform to hear from some of the most influential thought leaders in the sector. THE Event is committed to promoting diversity, equality, and sustainability in the mining industry through education and innovation, supported by its unique Student Partnership Program and THE SHE-Co Initiative."
-                  )}
-                </p>
-
-                <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-8">
+                <p className="text-base sm:text-lg md:text-xl font-semibold text-neutral-800 leading-relaxed mb-8">
                   {t(
                     "about-body-2",
                     "THE Event is a founding member of International Mining Week (“IMW”), also taking place in Quebec City. IMW promotes other industry-focused conferences and activities that unite global mining companies, related businesses, supply chain experts, investors, and government officials in one location for discussions and collaborative meetings across the industry."
                   )}
                 </p>
 
-                {/* Blockquote Highlight */}
-                <blockquote className="relative pl-5 border-l-4 border-[#C6112F] bg-[#fef2f2] dark:bg-[#1e1416] rounded-r-lg py-4 pr-5 mb-8">
-                  <p className="text-sm sm:text-base font-semibold text-[#1a1f2c] dark:text-[#C6112F] leading-relaxed">
-                    {t(
-                      "about-highlight",
-                      "Independently sponsored by the Government of Québec, and the financial and mining communities at large."
-                    )}
+                {/* Quote Section Right Below */}
+                <blockquote className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] bg-[#fff5f6] rounded-r-2xl p-6 sm:p-8 my-4 mb-10 shadow-sm border border-neutral-200/60">
+                  <p className="text-base sm:text-lg md:text-xl font-bold italic text-neutral-900 leading-relaxed mb-3">
+                    “Some of the most important conversations around mining are happening at THE Mining Investment Event in Canada, where government, supply chains, Indigenous communities, investors, and companies can have meaningful discussions in private.”
                   </p>
+                  <cite className="text-xs sm:text-sm font-black text-[#C6112F] uppercase tracking-wider not-italic block">
+                    — Hon. Yvonne Rumbolt-Jones, former MP Labrador
+                  </cite>
                 </blockquote>
-
-                {/* Highlight List */}
-                <ul className="flex flex-col gap-3.5 mb-10">
-                  {highlights.map((hl) => (
-                    <li key={hl.key} className="flex items-start gap-3 group/hl">
-                      <span className="mt-1 w-5 h-5 rounded-full bg-[#fef2f2] border border-[#C6112F]/20 flex items-center justify-center shrink-0 group-hover/hl:bg-[#C6112F] transition-colors duration-300">
-                        <svg className="w-3 h-3 text-[#C6112F] group-hover/hl:text-white transition-colors duration-300" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                      </span>
-                      <span className="text-neutral-700 text-sm sm:text-[15px] leading-relaxed font-medium">
-                        {t(hl.key, hl.default)}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
 
                 {/* Featured Image */}
                 <div className="relative w-full h-[280px] sm:h-[360px] md:h-[420px] rounded-2xl overflow-hidden mb-10 group shadow-lg">
                   <img
-                    src="https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/40f4782a-7966-4213-851f-4a3aca6be7fe/DSC00269.jpg?format=1500w"
-                    alt="Mining company executives and international investors in conversation"
+                    src="/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-4.jpg"
+                    alt="Delegates and industry leaders networking at THE Mining Investment Event"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
@@ -236,7 +211,7 @@ export default function AboutPage() {
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-4">
                   <a
-                    href="#"
+                    href="/register"
                     className="px-7 py-3.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase inline-flex items-center gap-2.5 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
                   >
                     {t("hero-register", "Register Now")}
@@ -312,7 +287,7 @@ export default function AboutPage() {
         </section>
 
         {/* ═══════════════ SECTION 3: THE EVENT BY THE NUMBERS ═══════════════ */}
-        <section className="relative w-full bg-white dark:bg-[#09090b] py-16 sm:py-20 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto overflow-hidden transition-colors duration-300">
+        <section className="relative w-full bg-white dark:bg-[#09090b] py-16 sm:py-20 overflow-hidden transition-colors duration-300">
           <EventByTheNumbers />
         </section>
 

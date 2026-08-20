@@ -7,30 +7,7 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function PartnershipPage() {
-  const { t, lang } = useLanguage();
-
-  const partnershipFeatures = [
-    {
-      num: "01",
-      title: t("tier1-f1-title", "Brand Visibility"),
-      desc: t("tier1-f1-desc", "Premium logo placement across all THE Event materials, digital platforms, and on-site signage. Your brand reaches 800+ industry leaders, investors, and government representatives."),
-    },
-    {
-      num: "02",
-      title: t("tier1-f2-title", "Networking Access"),
-      desc: t("tier1-f2-desc", "Exclusive access to private networking events, VIP receptions, and curated 1-on-1 meeting opportunities with mining company executives and international investors."),
-    },
-    {
-      num: "03",
-      title: t("tier1-f3-title", "Speaking Opportunities"),
-      desc: t("tier1-f3-desc", "Keynote and panel session opportunities provide a powerful platform to position your firm as a thought leader in the global mining investment space."),
-    },
-    {
-      num: "04",
-      title: t("tier1-f4-title", "ESG Alignment"),
-      desc: t("tier1-f4-desc", "Demonstrate commitment to sustainability and diversity by co-sponsoring THE Event's Student Sponsorship and SHE\u2011Co charitable initiatives."),
-    },
-  ];
+  const { t } = useLanguage();
 
   return (
     <>
@@ -130,20 +107,6 @@ export default function PartnershipPage() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Features Grid */}
-            <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {partnershipFeatures.map((f, i) => (
-                <div
-                  key={i}
-                  className="bg-white border border-neutral-200/80 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="text-3xl font-black text-[#C6112F] mb-4">{f.num}</div>
-                  <h3 className="text-xl font-black text-[#1a1f2c] mb-2">{f.title}</h3>
-                  <p className="text-neutral-600 text-sm leading-relaxed">{f.desc}</p>
-                </div>
-              ))}
             </div>
           </div>
         </section>

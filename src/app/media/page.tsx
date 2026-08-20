@@ -659,7 +659,7 @@ export default function MediaPage() {
     <>
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-white font-sans antialiased overflow-x-hidden pt-20 sm:pt-24">
-        
+
         {/* ═══════════════ HERO ═══════════════ */}
         <section className="relative w-full bg-[#0f1117] overflow-hidden">
           <div
@@ -716,16 +716,11 @@ export default function MediaPage() {
                 >
                   <img
                     src={tile.img}
-                    alt={t(tile.labelKey, tile.labelDefault)}
+                    alt={`THE Mining Investment Event Photo ${i + 1}`}
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
-                  <div className="absolute bottom-4 left-0 right-0 px-4 flex justify-center z-10">
-                    <span className="inline-block px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] sm:text-[11px] font-extrabold tracking-[0.2em] uppercase text-white group-hover:bg-[#C6112F] group-hover:border-[#C6112F] transition-all duration-300 shadow-lg">
-                      {t(tile.labelKey, tile.labelDefault)}
-                    </span>
-                  </div>
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
                 </div>
               ))}
             </div>
@@ -735,7 +730,7 @@ export default function MediaPage() {
         {/* ═══════════════ 2. YOUTUBE PLAYLIST SHELVES SECTION (VISIBLE AFTER PHOTOS) ═══════════════ */}
         <section className="relative w-full bg-[#0f0f0f] text-white py-14 sm:py-18 border-t border-b border-neutral-800">
           <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-8">
-            
+
             {/* Channel Branding & Cinema Player Section */}
             <div id="featured-player-section" className="mb-12 scroll-mt-28">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -863,17 +858,14 @@ export default function MediaPage() {
           >
             ›
           </button>
-          <div className="max-w-[90vw] max-h-[85vh] relative" onClick={(e) => e.stopPropagation()}>
+          <div className="max-w-[90vw] max-h-[85vh] relative flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
             <img
               src={galleryTiles[lightboxIdx].img}
-              alt={t(galleryTiles[lightboxIdx].labelKey, galleryTiles[lightboxIdx].labelDefault)}
+              alt={`THE Mining Investment Event Photo ${lightboxIdx + 1}`}
               className="max-w-full max-h-[85vh] object-contain rounded-lg"
             />
-            <div className="text-center mt-4">
-              <span className="text-white/60 text-xs tracking-[0.2em] uppercase font-medium">
-                {t(galleryTiles[lightboxIdx].labelKey, galleryTiles[lightboxIdx].labelDefault)}
-              </span>
-              <span className="text-white/30 text-xs ml-4">
+            <div className="text-center mt-3">
+              <span className="text-white/50 text-xs font-semibold tracking-wider">
                 {lightboxIdx + 1} / {galleryTiles.length}
               </span>
             </div>

@@ -53,7 +53,7 @@ export default function TravelPage() {
 
         {/* ═══════ MAIN CONTENT IN CLIENT SPECIFIED ORDER ═══════ */}
         <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 py-14 sm:py-18 md:py-20 space-y-16 sm:space-y-20">
-          
+
           {/* ════════ ORDER 1: QUÉBEC CITY CONVENTION CENTRE (QCC) DETAILS ════════ */}
           <section id="convention-centre" className="relative w-full">
             <div className="mb-6">
@@ -98,77 +98,23 @@ export default function TravelPage() {
                 </div>
 
                 {/* Right Photo Preview */}
-                <div className="lg:col-span-4 relative rounded-2xl overflow-hidden aspect-[4/3] border-2 border-[#C6112F]/30 shadow-md">
+                <div className="lg:col-span-4 relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] border-2 border-[#C6112F]/40 shadow-lg group">
                   <img
-                    src="/Mining%20Investment%20Post%202.avif"
-                    alt="Québec City Convention Centre QCC"
-                    className="w-full h-full object-cover"
+                    src="/Centre-des-congres-Quebec-Mines-1%20(1).webp"
+                    alt="Centre des congrès de Québec (QCC)"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-bold">
-                    Centre des congrès de Québec
+                  <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-bold flex items-center justify-between">
+                    <span>Centre des congrès de Québec</span>
+                    <span className="text-[10px] bg-[#C6112F] px-2 py-0.5 rounded font-black uppercase tracking-wider">QCC VENUE</span>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* ════════ ORDER 2: ROOM BLOCKS ════════ */}
-          <section id="room-blocks" className="relative w-full">
-            <div className="mb-6">
-              <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-                {isFr ? "TARIFS DÉLÉGUÉS EXCLUSIFS" : "DELEGATE RATES"}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-2">
-                {isFr ? "Blocs de Chambres et Réductions" : "Room Blocks & Delegate Discounts"}
-              </h2>
-              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full" />
-            </div>
-
-            <div className="bg-gradient-to-br from-[#800016] via-[#730214] to-[#54020e] rounded-3xl p-6 sm:p-8 md:p-10 text-white shadow-xl border border-white/10">
-              <div className="max-w-3xl space-y-4">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 text-white text-xs font-extrabold tracking-widest uppercase border border-white/20">
-                  <span>SPECIAL DELEGATE RATES</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-black">
-                  {isFr ? "Tarifs de Chambres Réservés aux Participants" : "Discounted Room Blocks for Registered Delegates"}
-                </h3>
-                <p className="text-white/90 text-sm sm:text-base font-medium leading-relaxed">
-                  {t(
-                    "travel-notice-1",
-                    "Discounted block rates available for registered participants only."
-                  )}
-                </p>
-                <p className="text-white/80 text-xs sm:text-sm font-normal leading-relaxed">
-                  {t(
-                    "travel-notice-2",
-                    "You are responsible for coordinating all your own travel and lodging arrangements. Please check with individual properties regarding cancellation policy, deposit requirement, and taxes/fees."
-                  )}
-                </p>
-
-                <div className="pt-4 border-t border-white/20 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex items-start gap-3 bg-white/10 p-3.5 rounded-xl border border-white/10">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 mt-1.5 shrink-0" />
-                    <span className="text-xs text-white/90 font-medium">
-                      {isFr
-                        ? "Offres spéciales dans les hôtels partenaires officiels à quelques pas du centre de congrès."
-                        : "Special group rate links sent upon registration for official conference hotels."}
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3 bg-white/10 p-3.5 rounded-xl border border-white/10">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 mt-1.5 shrink-0" />
-                    <span className="text-xs text-white/90 font-medium">
-                      {isFr
-                        ? "Rabais exclusifs délégués dans les restaurants et attractions de la ville de Québec."
-                        : "Exclusive delegate discount program at participating Québec City restaurants & attractions."}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* ════════ ORDER 3 & 4: HOTELS (HILTON QUEBEC & DELTA HOTEL RECOMMENDED) ════════ */}
+          {/* ════════ ORDER 2: OFFICIAL PARTNER HOTELS ════════ */}
           <section id="partner-hotels" className="relative w-full">
             <div className="mb-6">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
@@ -181,13 +127,13 @@ export default function TravelPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* ORDER 3: HILTON HOTEL */}
+              {/* HILTON HOTEL */}
               <div className="bg-white dark:bg-[#131b2e] border-2 border-neutral-200 dark:border-[#233049] hover:border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#fef2f2] dark:bg-rose-950/50 border border-[#C6112F]/20 flex items-center justify-center text-[#C6112F]">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5M2.25 18h19.5M2.25 18V9A2.25 2.25 0 014.5 6.75h5.836A2.25 2.25 0 0112 7.5v10.5m0-10.5h5.836A2.25 2.25 0 0120.25 9v9M3.75 18v-3a1.5 1.5 0 011.5-1.5h3.75a1.5 1.5 0 011.5 1.5v3m3-6v-3a1.5 1.5 0 011.5 1.5h3.75a1.5 1.5 0 011.5 1.5v3" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-md shrink-0">
+                      <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     </div>
                     <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300 text-[10px] font-black uppercase tracking-wider">
@@ -225,7 +171,7 @@ export default function TravelPage() {
                 </a>
               </div>
 
-              {/* ORDER 4: DELTA HOTEL (RECOMMENDED PARTNER HOTEL) */}
+              {/* DELTA HOTEL (RECOMMENDED PARTNER HOTEL) */}
               <div className="bg-white dark:bg-[#131b2e] border-2 border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
                 <div className="absolute top-0 right-0 bg-[#C6112F] text-white text-[9.5px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl shadow-md">
                   RECOMMENDED PARTNER HOTEL
@@ -233,9 +179,9 @@ export default function TravelPage() {
 
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-md">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-md shrink-0">
+                      <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     </div>
                   </div>
@@ -273,13 +219,13 @@ export default function TravelPage() {
                 </a>
               </div>
 
-              {/* ORDER 5: FAIRMONT LE CHÂTEAU FRONTENAC */}
+              {/* FAIRMONT LE CHÂTEAU FRONTENAC */}
               <div className="bg-white dark:bg-[#131b2e] border-2 border-neutral-200 dark:border-[#233049] hover:border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#fef2f2] dark:bg-rose-950/50 border border-[#C6112F]/20 flex items-center justify-center text-[#C6112F]">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-md shrink-0">
+                      <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     </div>
                     <span className="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 text-[10px] font-black uppercase tracking-wider">
@@ -315,6 +261,61 @@ export default function TravelPage() {
                 >
                   <span>{t("travel-fairmont-link", "View Fairmont Website ↗")}</span>
                 </a>
+              </div>
+            </div>
+          </section>
+
+          {/* ════════ ORDER 3: ROOM BLOCKS & DELEGATE DISCOUNTS ════════ */}
+          <section id="room-blocks" className="relative w-full">
+            <div className="mb-6">
+              <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+                {isFr ? "TARIFS DÉLÉGUÉS EXCLUSIFS" : "DELEGATE RATES"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-2">
+                {isFr ? "Blocs de Chambres et Réductions" : "Room Blocks & Delegate Discounts"}
+              </h2>
+              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full" />
+            </div>
+
+            <div className="bg-gradient-to-br from-[#800016] via-[#730214] to-[#54020e] rounded-3xl p-8 sm:p-10 md:p-12 text-white shadow-xl border border-white/20">
+              <div className="max-w-4xl space-y-5">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 text-white text-xs sm:text-sm font-black tracking-widest uppercase border border-white/30">
+                  <span>SPECIAL DELEGATE RATES</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight">
+                  {isFr ? "Tarifs de Chambres Réservés aux Participants" : "Discounted Room Blocks for Registered Delegates"}
+                </h3>
+                <p className="text-white text-base sm:text-lg md:text-xl font-bold leading-relaxed">
+                  {t(
+                    "travel-notice-1",
+                    "Discounted block rates available for registered participants only."
+                  )}
+                </p>
+                <p className="text-white/95 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
+                  {t(
+                    "travel-notice-2",
+                    "You are responsible for coordinating all your own travel and lodging arrangements. Please check with individual properties regarding cancellation policy, deposit requirement, and taxes/fees."
+                  )}
+                </p>
+
+                <div className="pt-6 border-t border-white/25 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="flex items-start gap-3.5 bg-white/15 p-4 sm:p-5 rounded-2xl border border-white/20 shadow-sm">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 mt-1.5 shrink-0" />
+                    <span className="text-sm sm:text-base text-white font-semibold leading-relaxed">
+                      {isFr
+                        ? "Offres spéciales dans les hôtels partenaires officiels à quelques pas du centre de congrès."
+                        : "Special group rate links sent upon registration for official conference hotels."}
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3.5 bg-white/15 p-4 sm:p-5 rounded-2xl border border-white/20 shadow-sm">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 mt-1.5 shrink-0" />
+                    <span className="text-sm sm:text-base text-white font-semibold leading-relaxed">
+                      {isFr
+                        ? "Rabais exclusifs délégués dans les restaurants et attractions de la ville de Québec."
+                        : "Exclusive delegate discount program at participating Québec City restaurants & attractions."}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </section>

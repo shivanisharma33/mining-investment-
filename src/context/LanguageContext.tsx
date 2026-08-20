@@ -306,13 +306,13 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Press Release page
     "news-hero-title-1": "THE",
-    "news-hero-title-2": "Press Releases",
-    "news-press-label": "PRESS RELEASES & ANNOUNCEMENTS",
+    "news-hero-title-2": "Press Release",
+    "news-press-label": "PRESS RELEASE & ANNOUNCEMENTS",
     "news-section-title-1": "Stay Informed with",
-    "news-section-title-2": "THE Press Releases",
-    "news-section-desc": "The latest press releases, announcements and official updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates.",
+    "news-section-title-2": "THE Press Release",
+    "news-section-desc": "The latest press release, announcements and official updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates.",
     "news-read-more": "Read More",
-    "news-subscribe-text": "For more information and to subscribe to THE Press Releases, contact",
+    "news-subscribe-text": "For more information and to subscribe to THE Press Release, contact",
     "news-filter-all": "All",
 
     // Student Sponsorship Page
@@ -509,7 +509,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // News & Media Extra
     "news-cat-all": "All Updates",
-    "news-cat-press": "Press Releases",
+    "news-cat-press": "Press Release",
     "news-cat-articles": "Articles",
     "news-cat-media": "Media",
     "news-published-on": "Published on",

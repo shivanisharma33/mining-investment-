@@ -97,7 +97,7 @@ export default function RegisterPage() {
           : "";
       setSubmitError(
         fieldMessage ||
-          (err instanceof Error ? err.message : "Something went wrong. Please try again.")
+        (err instanceof Error ? err.message : "Something went wrong. Please try again.")
       );
     } finally {
       setIsSubmitting(false);
@@ -144,7 +144,7 @@ export default function RegisterPage() {
           : "";
       setSubmitError(
         fieldMessage ||
-          (err instanceof Error ? err.message : "Something went wrong. Please try again.")
+        (err instanceof Error ? err.message : "Something went wrong. Please try again.")
       );
     } finally {
       setIsSubmitting(false);
@@ -180,7 +180,7 @@ export default function RegisterPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent" />
-          
+
           <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-16 sm:pb-20">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">{t("nav-home", "Home")}</a>
@@ -239,9 +239,8 @@ export default function RegisterPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Investor Track Card */}
-              <div className={`group bg-white border rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${
-                activeTrack === "investor" ? "border-[#C6112F] ring-2 ring-[#C6112F]/20 shadow-xl" : "border-neutral-200 hover:border-[#C6112F]/40"
-              }`}>
+              <div className={`group bg-white border rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${activeTrack === "investor" ? "border-[#C6112F] ring-2 ring-[#C6112F]/20 shadow-xl" : "border-neutral-200 hover:border-[#C6112F]/40"
+                }`}>
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#C6112F]" />
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -282,18 +281,16 @@ export default function RegisterPage() {
 
                 <button
                   onClick={() => scrollToForm("investor")}
-                  className={`w-full py-4 rounded-2xl text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md ${
-                    activeTrack === "investor" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
-                  }`}
+                  className={`w-full py-4 rounded-2xl text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md ${activeTrack === "investor" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
+                    }`}
                 >
                   {t("register-investor-cta", "Register as an Investor")}
                 </button>
               </div>
 
               {/* Mining Company Track Card */}
-              <div className={`group bg-white border rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${
-                activeTrack === "company" ? "border-[#C6112F] ring-2 ring-[#C6112F]/20 shadow-xl" : "border-neutral-200 hover:border-[#C6112F]/40"
-              }`}>
+              <div className={`group bg-white border rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${activeTrack === "company" ? "border-[#C6112F] ring-2 ring-[#C6112F]/20 shadow-xl" : "border-neutral-200 hover:border-[#C6112F]/40"
+                }`}>
                 <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#1a1f2c] group-hover:bg-[#C6112F] transition-colors" />
                 <div>
                   <div className="flex items-center justify-between mb-6">
@@ -334,9 +331,8 @@ export default function RegisterPage() {
 
                 <button
                   onClick={() => scrollToForm("company")}
-                  className={`w-full py-4 rounded-2xl text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md ${
-                    activeTrack === "company" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
-                  }`}
+                  className={`w-full py-4 rounded-2xl text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md ${activeTrack === "company" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
+                    }`}
                 >
                   {t("register-company-cta", "Register as a Company")}
                 </button>
@@ -352,21 +348,19 @@ export default function RegisterPage() {
             <div className="flex justify-center gap-3 mb-10">
               <button
                 onClick={() => selectTrack("investor")}
-                className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
-                  activeTrack === "investor"
+                className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${activeTrack === "investor"
                     ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
                     : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                }`}
+                  }`}
               >
                 {isFr ? "Formulaire Investisseur" : "Investor Registration Form"}
               </button>
               <button
                 onClick={() => selectTrack("company")}
-                className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
-                  activeTrack === "company"
+                className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${activeTrack === "company"
                     ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
                     : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
-                }`}
+                  }`}
               >
                 {isFr ? "Formulaire Société" : "Company Registration Form"}
               </button>

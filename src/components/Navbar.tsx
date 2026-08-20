@@ -65,7 +65,7 @@ const aboutDropdown = [
     titleKey: "nav-newsflash",
     titleDefault: "THE Press Release",
     descKey: "nav-newsflash-desc",
-    descDefault: "Press releases and official announcements",
+    descDefault: "Press release and official announcements",
     href: "/newsflash",
     isExternal: false,
     icon: (
