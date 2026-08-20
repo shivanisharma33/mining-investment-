@@ -45,10 +45,10 @@ export default function ProgramsGrid() {
     {
       id: "institutional",
       category: t("prog-inst-cat", "I N S T I T U T I O N A L"),
-      title: t("prog-inst-title", "Tier 1 Partnership"),
+      title: t("prog-inst-title", "THE Tier 1 Conference Partnership"),
       description: t(
         "prog-inst-desc",
-        "Tailored opportunities designed to maximize visibility and engagement with the world's most influential mining companies and investors."
+        "Becoming a Tier 1 Conference Partner provides unrivalled access to decision-makers, investors, and policy makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
       ),
       cta: t("prog-inst-cta", "PARTNERSHIP INFO"),
       link: "/partnership",
@@ -60,15 +60,15 @@ export default function ProgramsGrid() {
     {
       id: "dialogue",
       category: t("prog-dial-cat", "D I A L O G U E"),
-      title: t("prog-dial-title", "Core Shack"),
+      title: t("prog-dial-title", "THE Coreshack"),
       description: t(
         "prog-dial-desc",
-        "An intimate networking experience designed to connect Canada's exploration community with elite international investors."
+        "An intimate networking experience designed to connect Canada's exploration community with international investors"
       ),
       cta: t("prog-dial-cta", "MEET SPEAKERS"),
       link: "/agenda",
       image: "/core-shack-networking.jpg",
-      imageAlt: "Core Shack networking session",
+      imageAlt: "THE Coreshack networking session",
       imageOnLeft: false,
     },
   ];

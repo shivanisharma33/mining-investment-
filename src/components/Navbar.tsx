@@ -117,7 +117,7 @@ const programsDropdown = [
   },
   {
     titleKey: "nav-partnership",
-    titleDefault: "Tier 1 Partnership",
+    titleDefault: "THE Tier 1 Conference Partnership",
     descKey: "nav-partnership-desc",
     descDefault: "Align your brand with Canada's premier mining conference",
     href: "/partnership",

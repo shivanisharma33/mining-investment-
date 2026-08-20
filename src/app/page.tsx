@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StatsAndGlimpse from "@/components/StatsAndGlimpse";
-import WhyAttend from "@/components/WhyAttend";
 import ProgramsGrid from "@/components/ProgramsGrid";
 import FeaturedEventCountdown from "@/components/FeaturedEventCountdown";
 import FeaturedPartners from "@/components/FeaturedPartners";
@@ -17,11 +16,10 @@ export default function Home() {
       <Navbar />
       <main className="flex flex-col flex-grow w-full">
         <Hero />
-        <StatsAndGlimpse />
-        <FeaturedEventCountdown />
-        <WhyAttend />
-        <ProgramsGrid />
         <FeaturedPartners />
+        <FeaturedEventCountdown />
+        <StatsAndGlimpse />
+        <ProgramsGrid />
         <CanadaPremierForum />
         <GlobalCommunity />
         <EventHighlightsMedia />

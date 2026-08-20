@@ -166,7 +166,7 @@ export default function AboutPage() {
                 <p className="text-lg sm:text-xl md:text-2xl font-bold text-[#1a1f2c] leading-snug mb-6">
                   {t(
                     "about-lead",
-                    "THE Mining Investment EVENT is Canada's Only Tier I Global Mining Investment Conference, held annually in Québec City, Canada."
+                    "THE Mining Investment Event—Canada’s Only Tier 1 Global Mining Investment Conference© is held annually in Québec City, Canada."
                   )}
                 </p>
 
@@ -175,15 +175,14 @@ export default function AboutPage() {
                 <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-5">
                   {t(
                     "about-body-1",
-                    "THE Event hosts over 100 participating mining companies, is invitation only and is independently sponsored by the Government of Québec, and financial and mining communities at large. It is designed to specifically facilitate privately arranged meetings between mining companies, international investors, and various mining government authorities."
+                    "It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors, and various mining and government authorities. The conference provides a platform to hear from some of the most influential thought leaders in the sector. THE Event is committed to promoting diversity, equality, and sustainability in the mining industry through education and innovation, supported by its unique Student Partnership Program and THE SHE-Co Initiative."
                   )}
                 </p>
 
                 <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-8">
-                  <span className="font-bold text-[#C6112F]">THE Event </span>
                   {t(
                     "about-body-2",
-                    "is committed to promoting sustainability in the mining industry via education and innovation through its unique Student Sponsorship and SHE-Co Initiatives, highlighting ESG and equality issues, and providing a platform for some of the most influential thought leaders in the sector."
+                    "THE Event is a founding member of International Mining Week (“IMW”), also taking place in Quebec City. IMW promotes other industry-focused conferences and activities that unite global mining companies, related businesses, supply chain experts, investors, and government officials in one location for discussions and collaborative meetings across the industry."
                   )}
                 </p>
 

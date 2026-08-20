@@ -206,21 +206,16 @@ export default function CompaniesView({
                 {t("co-col-commodities", "Commodities")}
               </th>
               {isApiYear && (
-                <>
-                  <th className="py-4 px-4 sm:px-6 min-w-[170px] text-neutral-200">
-                    {t("co-col-industry", "Industry")}
-                  </th>
-                  <th className="py-4 px-4 sm:px-6 min-w-[150px] text-neutral-200 text-center">
-                    {t("co-col-website", "Website")}
-                  </th>
-                </>
+                <th className="py-4 px-4 sm:px-6 min-w-[150px] text-neutral-200 text-center">
+                  {t("co-col-website", "Website")}
+                </th>
               )}
             </tr>
           </thead>
           <tbody className="divide-y divide-neutral-100 dark:divide-zinc-800 text-xs sm:text-sm font-medium">
             {isApiYear && apiLoading ? (
               <tr>
-                <td colSpan={isApiYear ? 7 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
+                <td colSpan={isApiYear ? 6 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
                   <div className="flex flex-col items-center justify-center gap-3">
                     <span className="w-7 h-7 rounded-full border-2 border-neutral-200 dark:border-zinc-700 border-t-[#C6112F] animate-spin" />
                     <span className="text-neutral-500 dark:text-zinc-400 font-bold">
@@ -231,7 +226,7 @@ export default function CompaniesView({
               </tr>
             ) : isApiYear && apiError ? (
               <tr>
-                <td colSpan={isApiYear ? 7 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
+                <td colSpan={isApiYear ? 6 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <span className="text-neutral-800 dark:text-white font-extrabold">
                       {lang === "FR"
@@ -303,34 +298,29 @@ export default function CompaniesView({
                     </div>
                   </td>
                   {isApiYear && (
-                    <>
-                      <td className="py-4 px-4 sm:px-6 align-middle text-neutral-700 dark:text-zinc-300 text-xs font-semibold leading-normal">
-                        {company.industry || "—"}
-                      </td>
-                      <td className="py-4 px-4 sm:px-6 align-middle text-center whitespace-nowrap">
-                        {company.website ? (
-                          <a
-                            href={company.website.startsWith("http") ? company.website : `https://${company.website}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center justify-center gap-1.5 bg-[#C6112F] hover:bg-[#a80d26] active:scale-95 text-white text-xs font-extrabold px-3.5 py-2 rounded-xl transition-all shadow-md hover:shadow-lg whitespace-nowrap shrink-0 min-w-max cursor-pointer"
-                          >
-                            <span className="whitespace-nowrap inline-block shrink-0">Visit Website</span>
-                            <svg className="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                            </svg>
-                          </a>
-                        ) : (
-                          <span className="text-neutral-400 dark:text-zinc-500 font-medium">—</span>
-                        )}
-                      </td>
-                    </>
+                    <td className="py-4 px-4 sm:px-6 align-middle text-center whitespace-nowrap">
+                      {company.website ? (
+                        <a
+                          href={company.website.startsWith("http") ? company.website : `https://${company.website}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center justify-center gap-1.5 bg-[#C6112F] hover:bg-[#a80d26] active:scale-95 text-white text-xs font-extrabold px-3.5 py-2 rounded-xl transition-all shadow-md hover:shadow-lg whitespace-nowrap shrink-0 min-w-max cursor-pointer"
+                        >
+                          <span className="whitespace-nowrap inline-block shrink-0">Visit Website</span>
+                          <svg className="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <span className="text-neutral-400 dark:text-zinc-500 font-medium">—</span>
+                      )}
+                    </td>
                   )}
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={isApiYear ? 7 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
+                <td colSpan={isApiYear ? 6 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
                   <div className="flex flex-col items-center justify-center gap-2">
                     <svg className="w-8 h-8 text-neutral-400 dark:text-zinc-500" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                       <circle cx="11" cy="11" r="6.5" />

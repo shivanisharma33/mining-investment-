@@ -188,51 +188,8 @@ export default function StatsAndGlimpse() {
 
   return (
     <section className="relative overflow-hidden py-14 sm:py-18 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
-      {/* ════════ HEADER SECTION MATCHING EXACT IMAGE ════════ */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-10 sm:mb-12 group">
-        <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase tracking-[0.18em] block mb-2 transition-all duration-300">
-          {isFr ? "L'ÉVÉNEMENT 2026" : "THE EVENT 2026"}
-        </span>
-        <AnimatedHeading
-          text={isFr ? "L'Événement en Chiffres" : "The Event by the Numbers"}
-          className="text-3xl sm:text-4xl md:text-[42px] font-extrabold text-[#1f2430] dark:text-white tracking-tight mb-3"
-        />
-        <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mx-auto mb-4" />
-        <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-          {isFr
-            ? "Une plateforme mondiale connectant les investisseurs, les sociétés et les leaders façonnant l'avenir de l'industrie minière et de l'investissement."
-            : "A global platform connecting investors, companies, and leaders driving the future of mining and resource investment."}
-        </p>
-      </div>
-
-      {/* ════════ SINGLE 1-LINE HORIZONTAL STATS ROW (EQUAL WIDTH ALIGNED WITH LOWER SECTION) ════════ */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1.5 sm:gap-2 lg:gap-2.5">
-          {cards.map((card, i) => (
-            <div
-              key={i}
-              className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0"
-            >
-              {/* Icon Badge with Red Arc */}
-              <StatIconBadge icon={card.icon} />
-
-              {/* Red Vertical Line Divider */}
-              <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
-
-              {/* Number & Red Label */}
-              <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-                <AnimatedNumber target={card.number} suffix={card.suffix} />
-                <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
-                  {card.label}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ════════ A GLIMPSE INSIDE THE EVENT VIDEO SECTION ════════ */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 pt-14 sm:pt-18">
+      {/* ════════ A GLIMPSE INSIDE THE EVENT VIDEO SECTION (FIRST) ════════ */}
+      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 mb-14 sm:mb-18">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 bg-white/80 dark:bg-[#131b2e]/80 p-8 sm:p-12 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xl backdrop-blur-xs">
           {/* Left Column: Text & Connected Action Buttons */}
           <div className="flex-1 flex flex-col items-start text-left max-w-[560px] lg:max-w-[520px] group">
@@ -246,7 +203,7 @@ export default function StatsAndGlimpse() {
             <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
 
             <p className="text-neutral-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-8 font-medium">
-              {t("glimpse-desc", "Step inside Canada's only Tier 1 global mining investment conference — where senior producers, emerging developers, institutional capital and the next generation of industry leaders converge under one roof.")}
+              {t("glimpse-desc", "The Mining Investment Event (THE Event) is an exclusive, invitation-only conference centered on mining investments. THE Event brings together investors, mining companies, supply chain partners, governments, and industry experts. THE Event promotes idea exchange and discussions in a private environment, fostering open dialogue on geopolitics, trade, and investment.")}
             </p>
 
             {/* Connected Dual Pill Button Bar */}
@@ -280,9 +237,9 @@ export default function StatsAndGlimpse() {
             </div>
           </div>
 
-          {/* Right Column: Video Card with Red Perimeter Frame */}
-          <div className="flex-1 w-full max-w-[580px] lg:max-w-none">
-            <div className="relative rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-md bg-neutral-900 aspect-[16/9] group card-shimmer hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(198,17,47,0.25)] transition-all duration-500 cursor-pointer">
+          {/* Right Column: Video Card with Red Perimeter Frame & Click to Watch Helper Note */}
+          <div className="flex-1 w-full max-w-[580px] lg:max-w-none flex flex-col items-center">
+            <div className="relative w-full rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-md bg-neutral-900 aspect-[16/9] group card-shimmer hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(198,17,47,0.25)] transition-all duration-500 cursor-pointer">
               <video
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 autoPlay
@@ -298,14 +255,60 @@ export default function StatsAndGlimpse() {
                 />
               </video>
             </div>
+            {/* Click to watch prompt note */}
+            <div className="mt-3.5 flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-100 dark:bg-[#1a2338] border border-neutral-200 dark:border-[#233049] text-xs font-semibold text-neutral-700 dark:text-slate-300 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-ping" />
+              <svg className="w-3.5 h-3.5 text-[#C6112F] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <span>{t("glimpse-video-note", "Click on the video to watch event highlights")}</span>
+            </div>
           </div>
         </div>
       </div>
+
+      {/* ════════ HEADER SECTION: THE EVENT 2026 BY THE NUMBERS (SECOND) ════════ */}
+      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-10 sm:mb-12 group">
+        <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase tracking-[0.18em] block mb-2 transition-all duration-300">
+          {isFr ? "L'ÉVÉNEMENT 2026" : "THE EVENT 2026"}
+        </span>
+        <AnimatedHeading
+          text={t("numbers-title", isFr ? "L'Événement 2026 en Chiffres" : "THE Event 2026 by the Numbers")}
+          className="text-3xl sm:text-4xl md:text-[42px] font-extrabold text-[#1f2430] dark:text-white tracking-tight mb-3"
+        />
+        <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mx-auto mb-4" />
+        <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
+          {t("numbers-desc", isFr
+            ? "Une plateforme mondiale connectant les investisseurs, les entreprises, les chaînes d'approvisionnement et les leaders façonnant l'avenir de l'industrie minière et de l'investissement."
+            : "A global platform connecting investors, companies, supply chains and leaders driving the future of mining and resource investment.")}
+        </p>
+      </div>
+
+      {/* ════════ SINGLE 1-LINE HORIZONTAL STATS ROW ════════ */}
+      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1.5 sm:gap-2 lg:gap-2.5">
+          {cards.map((card, i) => (
+            <div
+              key={i}
+              className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-2 sm:p-2.5 flex items-center gap-1.5 sm:gap-2 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0"
+            >
+              {/* Icon Badge with Red Arc */}
+              <StatIconBadge icon={card.icon} />
+
+              {/* Red Vertical Line Divider */}
+              <div className="w-[1px] h-7 sm:h-8 bg-[#C6112F]/30 shrink-0" />
+
+              {/* Number & Red Label */}
+              <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
+                <AnimatedNumber target={card.number} suffix={card.suffix} />
+                <span className="text-[#C6112F] font-medium text-[8px] sm:text-[9px] xl:text-[9.5px] tracking-tight uppercase leading-[1.1] mt-0.5 max-w-full">
+                  {card.label}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
-
-
-
-
-
   );
 }

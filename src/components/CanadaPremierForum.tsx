@@ -51,16 +51,9 @@ export default function CanadaPremierForum() {
             <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
 
             <p className="text-neutral-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 max-w-[500px] font-medium">
-              {lang === "FR" ? (
-                t(
-                  "forum-desc",
-                  "THE Mining Investment Event est un rassemblement sur invitation uniquement qui réunit les sociétés minières, les investisseurs, les institutions et les autorités gouvernementales les plus influents au monde dans le cadre historique de la ville de Québec."
-                )
-              ) : (
-                <>
-                  THE Mining Investment Event is an invitation-only gathering that brings together the world's most influential mining companies, investors, institutions and government authorities{" "}
-                  in the historic setting of<br className="hidden sm:inline" /> Québec City.
-                </>
+              {t(
+                "forum-desc",
+                "THE Mining Investment Event—Canada’s Only Tier 1 Global Mining Investment Conference© is held annually in Québec City, Canada. It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors, and various mining and government authorities."
               )}
             </p>
 

@@ -18,11 +18,11 @@ export default function Footer() {
           {/* Column 1: Want to Join With Us CTA */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
             <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-1 block">
-              {t("footer-questions", "WANT TO JOIN WITH US?")}
+              {t("footer-questions", "JOIN US")}
             </span>
             <div className="w-14 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
-            <p className="text-neutral-700 dark:text-white text-xs sm:text-sm font-medium leading-relaxed mb-6 max-w-[380px] break-words">
+            <p className="text-neutral-700 dark:text-white text-xs sm:text-sm font-medium leading-relaxed mb-4 max-w-[380px] break-words">
               {t("cta-desc-prefix", "For more information about 'THE Event' programming or registration, please contact")}{" "}
               <a
                 href="mailto:jchoi@irinc.ca"
@@ -39,27 +39,6 @@ export default function Footer() {
               </a>
               .
             </p>
-
-            <Link
-              href="/register"
-              className="bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider px-6 py-3 rounded-lg uppercase inline-flex items-center gap-2.5 shadow-md hover:shadow-lg transition-all"
-            >
-              <span>{t("nav-register", "REGISTER HERE")}</span>
-              <svg
-                className="w-4 h-4 text-white"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="12" cy="12" r="9.5" stroke="currentColor" strokeWidth="1.8" />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10.5 8.5L14 12L10.5 15.5M14 12H8.5"
-                />
-              </svg>
-            </Link>
 
             {/* Social Media Icons */}
             <div className="mt-6 flex flex-col items-start gap-3">
@@ -157,11 +136,6 @@ export default function Footer() {
               <li>
                 <Link href="/sheco" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("footer-link-sheco", "SHE-CO")}
-                </Link>
-              </li>
-              <li>
-                <Link href="/student" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
-                  {t("footer-link-student-volunteer", "Student Volunteer")}
                 </Link>
               </li>
               <li>

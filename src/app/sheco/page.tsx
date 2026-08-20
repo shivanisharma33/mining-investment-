@@ -201,7 +201,7 @@ export default function SheCoPage() {
                     ? "Chaque année, une portion des bénéfices de L'Événement est versée à des groupes à but non lucratif et caritatifs qualifiés. Les dons seront axés sur le soutien aux individus, groupes, institutions et/ou projets communautaires apportant une contribution positive dans la vie des gens."
                     : "Each year a portion of THE Event proceeds are donated to qualified non-profit and charitable groups. Donations will be focused on support to individuals, groups, institutions and/or community projects making a positive difference in the lives of people."}
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-white dark:bg-[#182032] p-4 rounded-2xl border border-neutral-200/80 dark:border-slate-800 shadow-xs flex items-start gap-3 hover:border-[#C6112F]/30 transition-all">
                     <div className="w-9 h-9 rounded-xl bg-[#C6112F]/10 text-[#C6112F] font-black flex items-center justify-center shrink-0 text-sm">
                       🎓
@@ -238,19 +238,6 @@ export default function SheCoPage() {
                       </h4>
                       <p className="text-xs text-neutral-500 dark:text-slate-400 font-medium">
                         {isFr ? "Cercles de tambours et soutien émotionnel" : "Drum circles & emotional healing"}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white dark:bg-[#182032] p-4 rounded-2xl border border-neutral-200/80 dark:border-slate-800 shadow-xs flex items-start gap-3 hover:border-[#C6112F]/30 transition-all">
-                    <div className="w-9 h-9 rounded-xl bg-[#C6112F]/10 text-[#C6112F] font-black flex items-center justify-center shrink-0 text-sm">
-                      🎨
-                    </div>
-                    <div>
-                      <h4 className="font-extrabold text-xs text-[#1a1f2c] dark:text-white uppercase tracking-wider mb-1">
-                        {isFr ? "Artiste en Résidence" : "Resident Artist Auction"}
-                      </h4>
-                      <p className="text-xs text-neutral-500 dark:text-slate-400 font-medium">
-                        {isFr ? "Ventes d'art au profit de SHE-Co" : "Art sales proceeds donated to SHE-Co"}
                       </p>
                     </div>
                   </div>
@@ -357,7 +344,7 @@ export default function SheCoPage() {
                 <span>{isFr ? "En savoir plus ↗" : "Learn More ↗"}</span>
               </a>
             </div>
-            <div className="bg-white dark:bg-[#182032] border border-neutral-200 dark:border-slate-800 rounded-3xl p-8 sm:p-10 shadow-lg mb-12">
+            <div className="bg-white dark:bg-[#182032] border border-neutral-200 dark:border-slate-800 rounded-3xl p-8 sm:p-10 shadow-lg">
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full">
                   {isFr ? "PROJET EN VEDETTE" : "FEATURED INITIATIVE"}
@@ -382,50 +369,6 @@ export default function SheCoPage() {
                   </>
                 )}
               </div>
-            </div>
-            <div className="bg-[#0f1117] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-neutral-800 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="flex items-center gap-3 mb-4 relative z-10">
-                <span className="w-10 h-10 rounded-xl bg-[#C6112F] text-white font-black text-sm flex items-center justify-center shadow-md">
-                  BT
-                </span>
-                <span className="text-xs font-black tracking-[0.2em] uppercase text-[#C6112F]">
-                  {isFr ? "ARTISTE EN RÉSIDENCE POUR 2026" : "THE RESIDENT ARTIST FOR 2026"}
-                </span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4 relative z-10">
-                {isFr ? "Rencontrez l'artiste en résidence pour 2026" : "Meet THE Resident Artist for 2026"}
-              </h3>
-              <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed font-normal mb-8 relative z-10">
-                <p className="font-bold text-white text-base sm:text-lg">
-                  {isFr
-                    ? "Nous sommes heureux de présenter Bertram Turmel à L'Événement."
-                    : "We are pleased to introduce Bertram Turmel to THE Event."}
-                </p>
-                <p>
-                  {isFr
-                    ? "Bertram est un artiste reconnu de Québec et l'artiste officiel du Château Frontenac à Québec. Vous pouvez également retrouver Bertram sur la rue des Trésors où il possède un studio en direct et expose plusieurs de ses toiles."
-                    : "Bertram is a well-known, recognized Quebec City Artist and the official Experience Artist of the Chateau Frontenac in Quebec City. You can also find Bertram on the rue des Tresors where he has a live studio and displays many of his fine canvases."}
-                </p>
-                <p>
-                  {isFr
-                    ? "Bertram sera l'artiste en résidence pendant L'Événement, avec un studio en direct dans le Manège militaire où les gens sont invités à le regarder peindre ses toiles."
-                    : "Bertram will be THE Resident Artist during THE Event; with a live studio in the Armoury where people are invited to view and watch him execute his canvases."}
-                </p>
-                <div className="p-4 rounded-2xl bg-[#C6112F]/15 border border-[#C6112F]/30 text-white font-bold text-sm sm:text-base">
-                  {isFr
-                    ? "Une portion de toutes les peintures vendues par Bertram lors de L'Événement sera versée à l'initiative SHE-Co."
-                    : "A portion of all paintings sold by Bertram at THE Event will be donated to the SHE-Co Initiative."}
-                </div>
-              </div>
-              <a
-                href="https://bertrandturmel.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-black tracking-[0.15em] uppercase transition-all shadow-lg shadow-[#C6112F]/30 hover:scale-105 relative z-10"
-              >
-                <span>{isFr ? "En savoir plus sur Bertram ↗" : "Read More About Bertram! ↗"}</span>
-              </a>
             </div>
           </div>
         </section>

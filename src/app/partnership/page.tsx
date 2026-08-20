@@ -53,10 +53,10 @@ export default function PartnershipPage() {
               <span className="text-[#C6112F]">›</span>
               <span className="text-neutral-500">{t("nav-programs", "Programs")}</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white">{t("tier1-breadcrumb", "Tier 1 Conference Partnership")}</span>
+              <span className="text-white">{t("tier1-breadcrumb", "THE Tier 1 Conference Partnership")}</span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
-              {t("tier1-h1-1", "Tier 1 Conference")} <span className="text-[#C6112F]">{t("tier1-h1-2", "Partnership")}</span>
+              {t("tier1-h1-1", "THE Tier 1 Conference")} <span className="text-[#C6112F]">{t("tier1-h1-2", "Partnership")}</span>
             </h1>
             <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
           </div>
@@ -77,30 +77,18 @@ export default function PartnershipPage() {
                 <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-6" />
 
                 <p className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-8">
-                  {lang === "FR"
-                    ? t("tier1-sub-desc", "Devenir un partenaire de conférence Tier 1 offre un accès inégalé aux décideurs, investisseurs et influenceurs de l'industrie minière mondiale. Nos partenariats sont conçus sur mesure pour maximiser la visibilité et l'engagement tout au long de L'Événement.")
-                    : (
-                      <>
-                        Becoming a Tier 1 Conference Partner provides unrivalled access to{" "}
-                        <span className="whitespace-nowrap font-semibold text-neutral-800 dark:text-neutral-200">decision-makers</span>, investors, and influencers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event.
-                      </>
-                    )}
+                  {t(
+                    "tier1-sub-desc",
+                    "Becoming a Tier 1 Conference Partner provides unrivalled access to decision-makers, investors, and policy makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
+                  )}
                 </p>
 
                 <div className="flex flex-wrap gap-4">
                   <a
-                    href="https://www.themininginvestmentevent.com/s/THE-Event-SPONSORS-2025-May-16pdf.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="mailto:jchoi@irinc.ca?subject=Tier 1 Partnership Inquiry"
                     className="px-6 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-bold tracking-[0.15em] uppercase shadow-lg shadow-[#C6112F]/20 hover:scale-105 transition-all duration-300 inline-flex items-center gap-2"
                   >
-                    <span>{t("tier1-cta-pdf", "Download Sponsor PDF ↗")}</span>
-                  </a>
-                  <a
-                    href="mailto:jchoi@irinc.ca?subject=Tier 1 Partnership Inquiry"
-                    className="px-6 py-3.5 rounded-xl border border-neutral-300 hover:border-[#C6112F] text-neutral-800 hover:text-[#C6112F] text-xs font-bold tracking-[0.15em] uppercase hover:bg-neutral-50 transition-all duration-300"
-                  >
-                    {t("tier1-cta-contact", "Contact Jennifer Choi")}
+                    {t("tier1-cta-contact", "Contact Jenny Choi")}
                   </a>
                 </div>
               </div>
@@ -113,7 +101,7 @@ export default function PartnershipPage() {
                   </span>
                   <h3 className="text-2xl font-black text-white mb-3">{t("tier1-sidebar-title", "Contact For Sponsorship")}</h3>
                   <p className="text-neutral-300 text-sm leading-relaxed font-light mb-6">
-                    {t("tier1-sidebar-body", "To discuss partnership opportunities, please contact Jennifer Choi directly:")}
+                    {t("tier1-sidebar-body", "Contact for partnership/sponsorship Jenny Choi:")}
                   </p>
 
                   <div className="space-y-4 pt-4 border-t border-neutral-800">

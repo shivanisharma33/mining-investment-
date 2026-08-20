@@ -75,7 +75,7 @@ export default function TravelPage() {
                   <h3 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white">
                     {t(
                       "travel-event-welcome",
-                      "Welcome to THE Mining Investment EVENT, taking place Tuesday, June 2 to Thursday, June 4, 2026 at the Centre des congrès de Québec (“QCC”)"
+                      "Welcome to THE Mining Investment EVENT, taking place at the Centre des congrès de Québec (“QCC”)"
                     )}
                   </h3>
                   <p className="text-neutral-700 dark:text-slate-300 text-sm sm:text-base font-medium leading-relaxed">

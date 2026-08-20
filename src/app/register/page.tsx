@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
@@ -233,7 +232,7 @@ export default function RegisterPage() {
                 {isFr ? "CHOISISSEZ VOTRE PARCOURS DE PARTICIPATION" : "CHOOSE YOUR PARTICIPATION TRACK"}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] tracking-tight">
-                {isFr ? "Un accès sur mesure pour investisseurs et sociétés" : "Tailored Access for Investors & Companies"}
+                {isFr ? "Un accès sur mesure pour investisseurs et sociétés" : "Tier 1 Access for Investors & Companies"}
               </h2>
               <div className="w-16 h-[3px] bg-[#C6112F] mx-auto mt-4 rounded-full" />
             </div>
@@ -287,7 +286,7 @@ export default function RegisterPage() {
                     activeTrack === "investor" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
                   }`}
                 >
-                  {t("register-investor-cta", "Register as Investor")}
+                  {t("register-investor-cta", "Register as an Investor")}
                 </button>
               </div>
 
@@ -339,7 +338,7 @@ export default function RegisterPage() {
                     activeTrack === "company" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
                   }`}
                 >
-                  {t("register-company-cta", "Register a Company")}
+                  {t("register-company-cta", "Register as a Company")}
                 </button>
               </div>
             </div>
@@ -478,10 +477,11 @@ export default function RegisterPage() {
                     {/* Business Title */}
                     <div>
                       <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                        {isFr ? "Titre professionnel" : "Business Title"}
+                        {isFr ? "Titre professionnel" : "Business Title"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                       </label>
                       <input
                         type="text"
+                        required
                         value={investorFormData.businessTitle}
                         onChange={(e) =>
                           setInvestorFormData({ ...investorFormData, businessTitle: e.target.value })
@@ -495,10 +495,11 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          {isFr ? "Ville" : "City"}
+                          {isFr ? "Ville" : "City"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <input
                           type="text"
+                          required
                           value={investorFormData.city}
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, city: e.target.value })
@@ -509,10 +510,11 @@ export default function RegisterPage() {
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          {isFr ? "Pays" : "Country"}
+                          {isFr ? "Pays" : "Country"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <input
                           type="text"
+                          required
                           value={investorFormData.country}
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, country: e.target.value })
@@ -542,10 +544,11 @@ export default function RegisterPage() {
                       </div>
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          {isFr ? "Téléphone" : "Phone"}
+                          {isFr ? "Téléphone" : "Phone"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <input
                           type="tel"
+                          required
                           value={investorFormData.phone}
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, phone: e.target.value })
@@ -560,9 +563,10 @@ export default function RegisterPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          {isFr ? "Actifs sous gestion" : "Assets Under Management"}
+                          {isFr ? "Actifs sous gestion" : "Assets Under Management"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <select
+                          required
                           value={investorFormData.aum}
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, aum: e.target.value })
@@ -581,9 +585,10 @@ export default function RegisterPage() {
 
                       <div>
                         <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                          {isFr ? "Type d'investisseur" : "Investor Type"}
+                          {isFr ? "Type d'investisseur" : "Investor Type"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <select
+                          required
                           value={investorFormData.investorType}
                           onChange={(e) =>
                             setInvestorFormData({ ...investorFormData, investorType: e.target.value })
@@ -604,9 +609,10 @@ export default function RegisterPage() {
                     {/* Tell Us About Yourself */}
                     <div>
                       <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-                        {isFr ? "Parlez-nous de vous" : "Tell Us About Yourself"}
+                        {isFr ? "Parlez-nous de vous" : "Tell Us About Yourself"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                       </label>
                       <textarea
+                        required
                         rows={4}
                         maxLength={5000}
                         value={investorFormData.tellUsAboutYourself}
@@ -931,7 +937,7 @@ export default function RegisterPage() {
                   <div className="text-xs font-bold text-[#C6112F] uppercase tracking-wider mb-2">
                     {isFr ? "Contact pour commandites" : "Sponsorship Contact"}
                   </div>
-                  <div className="text-base font-black text-white mb-2">Jennifer Choi</div>
+                  <div className="text-base font-black text-white mb-2">Jenny Choi</div>
                   <p className="text-xs text-neutral-400 mb-4">
                     {isFr
                       ? "Pour discuter des forfaits de commandite de Niveau 1 ou d'options sur mesure :"
