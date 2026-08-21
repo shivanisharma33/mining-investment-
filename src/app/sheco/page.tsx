@@ -196,52 +196,11 @@ export default function SheCoPage() {
                     ? "Soutenir des projets d'éducation, de santé et de bien-être qui en valent la peine"
                     : "Supporting Worthy Educational, Health and Wellness Projects"}
                 </p>
-                <p className="text-neutral-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-medium mb-8">
+                <p className="text-neutral-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
                   {isFr
                     ? "Chaque année, une portion des bénéfices de L'Événement est versée à des groupes à but non lucratif et caritatifs qualifiés. Les dons seront axés sur le soutien aux individus, groupes, institutions et/ou projets communautaires apportant une contribution positive dans la vie des gens."
                     : "Each year a portion of THE Event proceeds are donated to qualified non-profit and charitable groups. Donations will be focused on support to individuals, groups, institutions and/or community projects making a positive difference in the lives of people."}
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="bg-white dark:bg-[#182032] p-4 rounded-2xl border border-neutral-200/80 dark:border-slate-800 shadow-xs flex items-start gap-3 hover:border-[#C6112F]/30 transition-all">
-                    <div className="w-9 h-9 rounded-xl bg-[#C6112F]/10 text-[#C6112F] font-black flex items-center justify-center shrink-0 text-sm">
-                      🎓
-                    </div>
-                    <div>
-                      <h4 className="font-extrabold text-xs text-[#1a1f2c] dark:text-white uppercase tracking-wider mb-1">
-                        {isFr ? "Éducation & Jeunesse" : "Education & Youth"}
-                      </h4>
-                      <p className="text-xs text-neutral-500 dark:text-slate-400 font-medium">
-                        {isFr ? "Soutien aux études et formations" : "Supporting study and vocational training"}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white dark:bg-[#182032] p-4 rounded-2xl border border-neutral-200/80 dark:border-slate-800 shadow-xs flex items-start gap-3 hover:border-[#C6112F]/30 transition-all">
-                    <div className="w-9 h-9 rounded-xl bg-[#C6112F]/10 text-[#C6112F] font-black flex items-center justify-center shrink-0 text-sm">
-                      🩺
-                    </div>
-                    <div>
-                      <h4 className="font-extrabold text-xs text-[#1a1f2c] dark:text-white uppercase tracking-wider mb-1">
-                        {isFr ? "Santé & Sécurité" : "Health & Wellness"}
-                      </h4>
-                      <p className="text-xs text-neutral-500 dark:text-slate-400 font-medium">
-                        {isFr ? "Aide alimentaire et bien-être" : "Food security and essential assistance"}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-white dark:bg-[#182032] p-4 rounded-2xl border border-neutral-200/80 dark:border-slate-800 shadow-xs flex items-start gap-3 hover:border-[#C6112F]/30 transition-all">
-                    <div className="w-9 h-9 rounded-xl bg-[#C6112F]/10 text-[#C6112F] font-black flex items-center justify-center shrink-0 text-sm">
-                      🥁
-                    </div>
-                    <div>
-                      <h4 className="font-extrabold text-xs text-[#1a1f2c] dark:text-white uppercase tracking-wider mb-1">
-                        {isFr ? "Culture Autochtone" : "First Nations & Culture"}
-                      </h4>
-                      <p className="text-xs text-neutral-500 dark:text-slate-400 font-medium">
-                        {isFr ? "Cercles de tambours et soutien émotionnel" : "Drum circles & emotional healing"}
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

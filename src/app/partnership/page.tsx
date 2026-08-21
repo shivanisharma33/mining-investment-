@@ -56,7 +56,7 @@ export default function PartnershipPage() {
                 <p className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-8">
                   {t(
                     "tier1-sub-desc",
-                    "Becoming a Tier 1 Conference Partner provides unrivalled access to decision-makers, investors, and policy makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
+                    "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u00A0makers, investors, and policy\u00A0makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
                   )}
                 </p>
 

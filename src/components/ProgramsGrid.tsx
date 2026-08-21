@@ -48,7 +48,7 @@ export default function ProgramsGrid() {
       title: t("prog-inst-title", "THE Tier 1 Conference Partnership"),
       description: t(
         "prog-inst-desc",
-        "Becoming a Tier 1 Conference Partner provides unrivalled access to decision-makers, investors, and policy makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
+        "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u00A0makers, investors, and policy\u00A0makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
       ),
       cta: t("prog-inst-cta", "PARTNERSHIP INFO"),
       link: "/partnership",
