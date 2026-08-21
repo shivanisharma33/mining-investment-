@@ -18,6 +18,7 @@ const flights = [
 export default function TravelPage() {
   const { t, lang } = useLanguage();
   const isFr = lang === "FR";
+  const [isAirReadMore, setIsAirReadMore] = React.useState(false);
 
   return (
     <>
@@ -381,23 +382,23 @@ export default function TravelPage() {
             </div>
           </section>
 
-          {/* ════════ ORDER 6: FLIGHT & TRAIN OPTIONS ════════ */}
+          {/* ════════ ORDER 6: FLIGHT, TRAIN & DRIVING OPTIONS ════════ */}
           <section id="flight-train" className="relative w-full">
             <div className="mb-6">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-                {isFr ? "AVION ET TRAIN" : "TRANSIT OPTIONS"}
+                {t("travel-transit-section-label", isFr ? "OPTIONS DE TRANSPORT ET CONDUITE" : "FLIGHT, TRAIN & DRIVING OPTIONS")}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-2">
-                {isFr ? "Options de Vols et de Train" : "Flight & Train Options"}
+                {t("travel-transit-section-title", isFr ? "Options de Vols, Train et Conduite" : "Flight, Train & Driving Options")}
               </h2>
               <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
               {/* AIR TRAVEL CARD */}
-              <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm">
-                <div>
-                  <div className="w-full h-44 rounded-2xl overflow-hidden bg-neutral-900 mb-6 relative">
+              <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm h-full">
+                <div className="flex-1 flex flex-col">
+                  <div className="w-full h-44 rounded-2xl overflow-hidden bg-neutral-900 mb-6 relative shrink-0">
                     <img
                       src="/travle-1.webp"
                       alt="Air Travel to YQB"
@@ -408,10 +409,10 @@ export default function TravelPage() {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-black text-neutral-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-black text-neutral-900 dark:text-white mb-2 min-h-[3rem] flex items-center">
                     {t("travel-air-title", "Air Travel direct to Quebec (YQB) estimated times")}
                   </h3>
-                  <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-4" />
+                  <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-4 shrink-0" />
 
                   {/* Flight Times Grid */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
@@ -421,33 +422,49 @@ export default function TravelPage() {
                         className="flex items-center justify-between bg-slate-100 dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 rounded-xl px-3 py-2 text-xs font-semibold"
                       >
                         <span>{f.city}</span>
-                        <span className="text-[#C6112F] dark:text-[#ff4d6d] font-extrabold">{f.time}</span>
+                        <span className="text-[#C6112F] dark:text-[#ff4d6d]" style={{ fontWeight: 800 }}>{f.time}</span>
                       </div>
                     ))}
                   </div>
 
-                  <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-medium mb-6">
-                    {t(
-                      "travel-air-carrier-note",
-                      "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB. Some carriers fly direct to YQB, Please check with your carrier of choice. Jean Lesage International airport in Quebec City is a 20 minute taxi ride to/from The Chateau Frontenac."
-                    )}
-                  </p>
+                  <div className="mb-6">
+                    <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-medium">
+                      {isAirReadMore
+                        ? t(
+                            "travel-air-carrier-note",
+                            "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB. Some carriers fly direct to YQB, Please check with your carrier of choice. Jean Lesage International airport in Quebec City is a 20 minute taxi ride to/from THE Event venue."
+                          )
+                        : t(
+                            "travel-air-carrier-note-short",
+                            "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB."
+                          )}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => setIsAirReadMore(!isAirReadMore)}
+                      className="mt-1.5 text-xs font-extrabold text-[#C6112F] dark:text-[#ff4d6d] hover:underline inline-flex items-center gap-1 cursor-pointer focus:outline-none"
+                    >
+                      {isAirReadMore
+                        ? (isFr ? "Réduire ‹" : "Read Less ‹")
+                        : (isFr ? "En savoir plus ›" : "Read More ›")}
+                    </button>
+                  </div>
                 </div>
 
                 <a
                   href="https://www.aeroportdequebec.com/en/flights-and-destinations/destinations-served"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-full text-center"
+                  className="mt-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-black tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-full text-center whitespace-nowrap"
                 >
-                  <span>{t("travel-air-link-btn", "Check YQB destinations")} ↗</span>
+                  <span>{t("travel-air-link-btn", "Check YQB Destinations")} ↗</span>
                 </a>
               </div>
 
               {/* TRAIN TRAVEL CARD */}
-              <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm">
-                <div>
-                  <div className="w-full h-44 rounded-2xl overflow-hidden bg-neutral-900 mb-6 relative">
+              <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm h-full">
+                <div className="flex-1 flex flex-col">
+                  <div className="w-full h-44 rounded-2xl overflow-hidden bg-neutral-900 mb-6 relative shrink-0">
                     <img
                       src="/travle-2.webp"
                       alt="Train Travel VIA Rail"
@@ -458,10 +475,10 @@ export default function TravelPage() {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-black text-neutral-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-black text-neutral-900 dark:text-white mb-2 min-h-[3rem] flex items-center">
                     {t("travel-train-title", "Train Travel to Quebec (YQB) estimated times:")}
                   </h3>
-                  <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-4" />
+                  <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-4 shrink-0" />
 
                   <div className="space-y-2 text-xs sm:text-sm font-semibold mb-4 bg-slate-100 dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 p-3.5 rounded-xl">
                     <p className="flex justify-between items-center text-neutral-900 dark:text-slate-100">
@@ -483,9 +500,54 @@ export default function TravelPage() {
                   href="https://www.viarail.ca/en/travel-info/booking/buy-train-ticket"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-full text-center"
+                  className="mt-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-black tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-full text-center whitespace-nowrap"
                 >
-                  <span>{t("travel-train-btn", "Book tickets online at Via Rail")} ↗</span>
+                  <span>{t("travel-train-btn", "Book VIA Rail Tickets")} ↗</span>
+                </a>
+              </div>
+
+              {/* DRIVING / CAR TRAVEL CARD */}
+              <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm h-full">
+                <div className="flex-1 flex flex-col">
+                  <div className="w-full h-44 rounded-2xl overflow-hidden bg-neutral-900 mb-6 relative shrink-0">
+                    <img
+                      src="/travle-3.webp"
+                      alt="Driving to Quebec City"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border border-white/20">
+                      {isFr ? "CONDUITE / VOITURE" : "DRIVING / CAR TRAVEL"}
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-black text-neutral-900 dark:text-white mb-2 min-h-[3rem] flex items-center">
+                    {t("travel-drive-title", "Driving to Quebec City estimated times:")}
+                  </h3>
+                  <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-4 shrink-0" />
+
+                  <div className="space-y-2 text-xs sm:text-sm font-semibold mb-4 bg-slate-100 dark:bg-slate-800/90 border border-neutral-200/80 dark:border-slate-700/80 p-3.5 rounded-xl">
+                    <p className="flex justify-between items-center text-neutral-900 dark:text-slate-100">
+                      <span>• From Montreal:</span>
+                      <span className="font-extrabold text-[#C6112F] dark:text-[#ff4d6d]">2.5 - 3 hrs</span>
+                    </p>
+                    <p className="flex justify-between items-center border-t border-neutral-200/60 dark:border-slate-700/60 pt-2 text-neutral-900 dark:text-slate-100">
+                      <span>• From Toronto:</span>
+                      <span className="font-extrabold text-[#C6112F] dark:text-[#ff4d6d]">7.5 - 8 hrs</span>
+                    </p>
+                  </div>
+
+                  <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-medium mb-6">
+                    {t("travel-drive-note", "Driving? It is an estimated 2.5 hour drive from Montreal to Quebec City.")}
+                  </p>
+                </div>
+
+                <a
+                  href="https://www.google.com/maps/dir/Montreal,+QC/Quebec+City,+QC"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-black tracking-wider uppercase shadow-md hover:shadow-lg transition-all w-full text-center whitespace-nowrap"
+                >
+                  <span>{t("travel-drive-btn", "View Driving Directions")} ↗</span>
                 </a>
               </div>
             </div>

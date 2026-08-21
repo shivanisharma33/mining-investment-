@@ -210,7 +210,7 @@ export default function StudentApplyPage() {
                   <p className="text-neutral-600 dark:text-neutral-300 text-sm max-w-lg mx-auto mb-8 leading-relaxed font-medium">
                     {t(
                       "student-form-success-desc",
-                      "Thank you for applying to THE Glencore Student Sponsorship Program. Our team will review your application and contact you with next steps shortly."
+                      "Thank you for applying to THE Student Partnership Program. Our team will review your application and contact you with next steps shortly."
                     )}
                   </p>
                   {registrationNumber && (

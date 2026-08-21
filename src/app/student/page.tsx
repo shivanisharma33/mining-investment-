@@ -420,24 +420,8 @@ export default function StudentPage() {
                     <img
                       src={photo.src}
                       alt={photo.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
-
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-[10px] font-extrabold uppercase tracking-widest">
-                        {photo.category}
-                      </span>
-                    </div>
-
-                    <div className="absolute bottom-0 inset-x-0 p-5 z-10 text-white">
-                      <h4 className="text-base font-bold tracking-tight mb-1 group-hover:text-[#ff4d6d] transition-colors">
-                        {photo.title}
-                      </h4>
-                      <p className="text-xs text-neutral-300 font-light line-clamp-2">
-                        {photo.caption}
-                      </p>
-                    </div>
                   </div>
                 ))}
               </div>

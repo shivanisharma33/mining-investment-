@@ -124,48 +124,28 @@ export default function SheCoPage() {
               </span>
             </div>
 
-            {/* 2-Column Hero Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
-              {/* Left Column: Headings & Subtitles */}
-              <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#C6112F]/15 border border-[#C6112F]/30 text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
-                  <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
-                  <span>
-                    {isFr ? "L'INITIATIVE CARITATIVE DE L'ÉVÉNEMENT" : "THE EVENT’S CHARITABLE INITIATIVE"}
-                  </span>
-                </div>
-
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-4">
-                  SHE-Co <span className="text-[#C6112F]">Initiative</span>
-                </h1>
-
-                <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#C6112F] mb-4 tracking-tight">
-                  &ldquo;{isFr ? "Habiliter les communautés" : "Empowering communities"}&rdquo;
-                </p>
-
-                <p className="text-neutral-300 text-base sm:text-lg font-semibold leading-relaxed max-w-2xl">
-                  {isFr
-                    ? "Soutenir des projets d'éducation, de santé et de bien-être qui en valent la peine"
-                    : "Supporting Worthy Educational, Health and Wellness Projects"}
-                </p>
+            {/* Hero Content */}
+            <div className="max-w-4xl">
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#C6112F]/15 border border-[#C6112F]/30 text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
+                <span>
+                  {isFr ? "L'INITIATIVE CARITATIVE DE L'ÉVÉNEMENT" : "THE EVENT’S CHARITABLE INITIATIVE"}
+                </span>
               </div>
 
-              {/* Right Column: She-Co Logo Card */}
-              <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-[420px] bg-gradient-to-b from-white/15 to-white/5 backdrop-blur-xl border border-white/20 p-8 sm:p-10 rounded-3xl shadow-2xl shadow-[#C6112F]/25 flex flex-col items-center justify-center text-center group">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,17,47,0.2),transparent_70%)] rounded-3xl pointer-events-none" />
-                  
-                  <div className="relative z-10 w-full max-w-[300px] p-6 bg-white dark:bg-slate-900 rounded-2xl border border-white/30 dark:border-slate-700 shadow-xl group-hover:scale-105 transition-transform duration-500">
-                    <img
-                      src="/sheco1.webp"
-                      alt="SHE-Co Official Logo"
-                      className="w-full h-auto object-contain select-none mx-auto"
-                    />
-                  </div>
-                </div>
-              </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-4">
+                SHE-Co <span className="text-[#C6112F]">Initiative</span>
+              </h1>
 
+              <p className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#C6112F] mb-4 tracking-tight">
+                &ldquo;{isFr ? "Habiliter les communautés" : "Empowering communities"}&rdquo;
+              </p>
+
+              <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-semibold leading-relaxed max-w-3xl">
+                {isFr
+                  ? "Soutenir des projets d'éducation, de santé et de bien-être qui en valent la peine"
+                  : "Supporting Worthy Educational, Health and Wellness Projects"}
+              </p>
             </div>
           </div>
         </section>
@@ -177,10 +157,16 @@ export default function SheCoPage() {
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#C6112F]/10 blur-[100px] pointer-events-none rounded-full" />
               
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-                <div className="w-16 h-16 rounded-2xl bg-[#C6112F] text-white font-black text-2xl flex items-center justify-center shrink-0 shadow-lg shadow-[#C6112F]/30">
-                  ❤️
+                {/* SHE-Co Logo Card */}
+                <div className="w-full md:w-auto max-w-[280px] sm:max-w-[320px] p-5 sm:p-6 bg-white rounded-2xl border border-white/30 shadow-2xl shrink-0">
+                  <img
+                    src="/sheco1.webp"
+                    alt="SHE-Co Official Logo"
+                    className="w-full h-auto object-contain select-none mx-auto"
+                  />
                 </div>
-                <div className="space-y-3 text-center md:text-left">
+
+                <div className="space-y-3 text-center md:text-left flex-1">
                   <span className="text-[#ff4d6d] text-xs font-black tracking-[0.25em] uppercase block">
                     {isFr ? "À PROPOS DE L'INITIATIVE SHE-CO" : "WHAT SHE-CO IS ABOUT"}
                   </span>
