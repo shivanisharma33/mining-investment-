@@ -19,6 +19,7 @@ export type ProjectStage =
   | "Developer"
   | "Producer"
   | "Royalty"
+  | "Royalty/Streaming"
   | "Project Generator";
 
 export interface CompanyRegistrationPayload {

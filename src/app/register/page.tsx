@@ -783,7 +783,7 @@ export default function RegisterPage() {
                           <option value="Explorer">{isFr ? "Exploration" : "Explorer"}</option>
                           <option value="Developer">{isFr ? "Développement" : "Developer"}</option>
                           <option value="Producer">{isFr ? "Production" : "Producer"}</option>
-                          <option value="Royalty">{isFr ? "Redevances" : "Royalty"}</option>
+                          <option value="Royalty/Streaming">{isFr ? "Redevances / Streaming" : "Royalty/Streaming"}</option>
                           <option value="Project Generator">{isFr ? "Générateur de projets" : "Project Generator"}</option>
                         </select>
                       </div>

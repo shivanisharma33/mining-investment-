@@ -212,14 +212,7 @@ export default function StatsAndGlimpse() {
                 />
               </video>
             </div>
-            {/* Click to watch prompt note */}
-            <div className="mt-3.5 flex items-center gap-2 px-4 py-1.5 rounded-full bg-neutral-100 dark:bg-[#1a2338] border border-neutral-200 dark:border-[#233049] text-xs font-semibold text-neutral-700 dark:text-slate-300 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-ping" />
-              <svg className="w-3.5 h-3.5 text-[#C6112F] shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              <span>{t("glimpse-video-note", "Click on the video to watch event highlights")}</span>
-            </div>
+
           </div>
         </div>
       </div>
