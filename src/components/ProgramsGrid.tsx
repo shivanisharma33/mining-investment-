@@ -82,6 +82,9 @@ export default function ProgramsGrid() {
           p.id === activeTab.toLowerCase()
       );
 
+
+
+
   return (
     <section className="relative w-full bg-white dark:bg-[#090d16] py-14 sm:py-18 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
