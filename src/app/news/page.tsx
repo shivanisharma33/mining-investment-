@@ -1244,41 +1244,51 @@ function NewsSection({
         </div>
       )}
 
-      {/* ── 4-Column Grid ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      {/* ── 2-Column Horizontal Cards Grid ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-10">
         {grid.map((item) => (
           <article
             key={item.id}
             onClick={() => handleArticleClick(item)}
-            className="group cursor-pointer flex flex-col justify-between text-left"
+            className="group cursor-pointer bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-neutral-300 dark:hover:border-slate-700 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all text-left"
           >
-            <div>
-              <div className="w-full h-44 sm:h-48 rounded-xl overflow-hidden mb-3 bg-neutral-200 dark:bg-slate-800 border border-neutral-200/80 dark:border-slate-700 relative">
-                <img
-                  src={item.image}
-                  alt={getItemTitle(item)}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
-                />
-                {item.sponsored && (
-                  <span className="absolute top-2 right-2 bg-neutral-900/70 text-white text-[8px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded-full">
-                    AD
-                  </span>
-                )}
-              </div>
-              <h4 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-3">
-                {getItemTitle(item)}
-              </h4>
-            </div>
-            <div className="mt-2">
-              <span className="text-[#C6112F] text-xs font-bold block">
-                {getItemDate(item)}&nbsp;·&nbsp;{getItemReadTime(item)}
+            {/* Left: Thumbnail Image */}
+            <div className="w-full sm:w-44 md:w-48 lg:w-52 h-44 sm:h-36 rounded-xl overflow-hidden bg-neutral-200 dark:bg-slate-800 shrink-0 relative">
+              <img
+                src={item.image}
+                alt={getItemTitle(item)}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
+              />
+              <span className="absolute top-2 left-2 bg-[#C6112F] text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-full shadow-xs">
+                {getItemCategory(item)}
               </span>
-              {item.source && (
-                <span className="text-neutral-500 dark:text-slate-400 text-[11px] font-semibold block mt-0.5 truncate">
-                  Source: {item.source}
+              {item.sponsored && (
+                <span className="absolute top-2 right-2 bg-neutral-900/70 text-white text-[8px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded-full">
+                  AD
                 </span>
               )}
+            </div>
+
+            {/* Right: Content details */}
+            <div className="flex flex-col justify-between flex-grow min-w-0">
+              <div>
+                <h4 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-1.5 group-hover:text-[#C6112F] transition-colors line-clamp-2">
+                  {getItemTitle(item)}
+                </h4>
+                <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed line-clamp-2 mb-2">
+                  {getItemSnippet(item)}
+                </p>
+              </div>
+
+              <div className="pt-2 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
+                <span className="text-[#C6112F] text-xs font-bold">
+                  {getItemDate(item)}&nbsp;·&nbsp;{getItemReadTime(item)}
+                </span>
+                <span className="text-[#C6112F] text-xs font-extrabold group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                  <span>{lang === "FR" ? "LIRE" : "READ"}</span><span>&gt;</span>
+                </span>
+              </div>
             </div>
           </article>
         ))}
@@ -1513,50 +1523,53 @@ function SectionPressReleaseView({
           )}
 
           {/* Press Release Cards Grid matching Press Release Page */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 text-left">
             {grid.map((item) => (
               <article
                 key={item.id}
                 onClick={() => handleArticleClick(item)}
-                className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-neutral-300 dark:hover:border-slate-700 rounded-3xl p-6 flex flex-col justify-between shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+                className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] hover:border-neutral-300 dark:hover:border-slate-700 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4 sm:gap-5 shadow-xs hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer"
               >
-                <div>
-                  <div className="w-full h-48 rounded-2xl overflow-hidden mb-4 bg-neutral-200 dark:bg-slate-800 relative">
-                    <img
-                      src={item.image}
-                      alt={getItemTitle(item)}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
-                    />
-                    {isVideoSection && (
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 flex items-center justify-center transition-colors">
-                        <div className="w-10 h-10 rounded-xl bg-[#C6112F] text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
-                          <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z" />
-                          </svg>
-                        </div>
+                {/* Left Image */}
+                <div className="w-full sm:w-44 md:w-52 h-44 sm:h-36 rounded-xl overflow-hidden bg-neutral-200 dark:bg-slate-800 shrink-0 relative">
+                  <img
+                    src={item.image}
+                    alt={getItemTitle(item)}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => { (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800"; }}
+                  />
+                  {isVideoSection && (
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 flex items-center justify-center transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-[#C6112F] text-white flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                        <svg className="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
                       </div>
-                    )}
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-2 group-hover:text-[#C6112F] transition-colors line-clamp-2">
-                    {getItemTitle(item)}
-                  </h3>
-
-                  <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-4 line-clamp-3">
-                    {getItemSnippet(item)}
-                  </p>
+                    </div>
+                  )}
                 </div>
 
-                <div className="pt-4 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
-                  <span className="text-neutral-500 dark:text-slate-400 text-xs font-bold">
-                    {getItemDate(item)}
-                  </span>
-                  <span className="text-[#C6112F] text-xs font-extrabold group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                    {isVideoSection
-                      ? (lang === "FR" ? "JOUER LA VIDÉO ▶" : "PLAY VIDEO ▶")
-                      : (lang === "FR" ? "LIRE ↗" : "READ ↗")}
-                  </span>
+                {/* Right Content */}
+                <div className="flex flex-col justify-between flex-grow min-w-0">
+                  <div>
+                    <h3 className="text-base sm:text-lg font-extrabold text-[#1f2430] dark:text-white leading-snug mb-1.5 group-hover:text-[#C6112F] transition-colors line-clamp-2">
+                      {getItemTitle(item)}
+                    </h3>
+                    <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-3 line-clamp-2">
+                      {getItemSnippet(item)}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between">
+                    <span className="text-neutral-500 dark:text-slate-400 text-xs font-bold">
+                      {getItemDate(item)}
+                    </span>
+                    <span className="text-[#C6112F] text-xs font-extrabold group-hover:translate-x-1 transition-transform flex items-center gap-1">
+                      {isVideoSection
+                        ? (lang === "FR" ? "JOUER LA VIDÉO ▶" : "PLAY VIDEO ▶")
+                        : (lang === "FR" ? "LIRE ↗" : "READ ↗")}
+                    </span>
+                  </div>
                 </div>
               </article>
             ))}
@@ -1793,16 +1806,16 @@ function YouTubeSection({
         </div>
       )}
 
-      {/* ── YouTube Grid Cards (16:9 Video Cards) ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-left">
+      {/* ── YouTube Grid Cards (Horizontal 16:9 Video Cards in 2 Columns) ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 text-left">
         {grid.map((item) => (
           <article
             key={item.id}
             onClick={() => handleSelectVideo(item)}
-            className="flex flex-col bg-white dark:bg-[#131b2e] border border-neutral-200/80 dark:border-[#233049] hover:border-neutral-300 dark:hover:border-slate-700 rounded-2xl overflow-hidden shadow-2xs hover:shadow-lg transition-all duration-300 group cursor-pointer"
+            className="flex flex-col sm:flex-row bg-white dark:bg-[#131b2e] border border-neutral-200/80 dark:border-[#233049] hover:border-neutral-300 dark:hover:border-slate-700 rounded-2xl overflow-hidden shadow-2xs hover:shadow-lg transition-all duration-300 group cursor-pointer p-3 sm:p-4 gap-4"
           >
             {/* Video 16:9 Thumbnail Box */}
-            <div className="relative w-full aspect-video bg-neutral-900 overflow-hidden shrink-0">
+            <div className="relative w-full sm:w-48 md:w-56 aspect-video bg-neutral-900 overflow-hidden rounded-xl shrink-0">
               <img
                 src={item.image}
                 alt={getItemTitle(item)}
@@ -1827,14 +1840,23 @@ function YouTubeSection({
               </span>
             </div>
 
-            {/* Video Meta Info Footer */}
-            <div className="p-4 flex flex-col justify-between flex-grow">
-              <h4 className="text-xs sm:text-sm font-bold text-[#1f2430] dark:text-white leading-snug group-hover:text-[#C6112F] transition-colors line-clamp-2 mb-2">
-                {getItemTitle(item)}
-              </h4>
+            {/* Video Meta Info */}
+            <div className="flex flex-col justify-between flex-grow min-w-0 py-0.5">
+              <div>
+                <span className="text-[#C6112F] text-[10px] font-black uppercase tracking-wider block mb-1">
+                  {getItemCategory(item)}
+                </span>
+                <h4 className="text-xs sm:text-sm font-bold text-[#1f2430] dark:text-white leading-snug group-hover:text-[#C6112F] transition-colors line-clamp-2 mb-1.5">
+                  {getItemTitle(item)}
+                </h4>
+                <p className="text-neutral-500 dark:text-slate-400 text-xs font-normal leading-relaxed line-clamp-2">
+                  {getItemSnippet(item)}
+                </p>
+              </div>
 
-              <div className="flex flex-col gap-0.5 text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
+              <div className="pt-2 border-t border-neutral-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-neutral-500 dark:text-slate-400 font-medium">
                 <span>{getItemDate(item)} · {lang === "FR" ? "1,1k vues" : "1.1K views"}</span>
+                <span className="text-[#C6112F] font-bold">WATCH ▶</span>
               </div>
             </div>
           </article>

@@ -312,11 +312,13 @@ export default function AgendaPdfViewer({
                 </div>
               ) : (
                 <object
+                  key={`${resolvedUrl}-page-${activePage}-zoom-${zoomLevel}`}
                   data={`${resolvedUrl}#page=${activePage}&zoom=${zoomLevel}&toolbar=0&navpanes=0`}
                   type="application/pdf"
                   className="w-full h-[450px] xs:h-[540px] sm:h-[680px] md:h-[780px] rounded-xl border border-neutral-200 dark:border-slate-800 transition-all duration-300"
                 >
                   <iframe
+                    key={`iframe-${resolvedUrl}-page-${activePage}-zoom-${zoomLevel}`}
                     src={`${resolvedUrl}#page=${activePage}&zoom=${zoomLevel}&toolbar=0&navpanes=0&scrollbar=1`}
                     className="w-full h-full rounded-xl border-none"
                     title={`${year} Brochure Document`}

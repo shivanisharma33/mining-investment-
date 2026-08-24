@@ -120,6 +120,7 @@ export default function CompanyArticlesShelfSection({
 
       {/* SHELF CONTAINER MATCHING SITE THEME */}
       <div className="w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] bg-white dark:bg-[#0e1626] p-6 sm:p-10 md:p-12 shadow-sm transition-colors">
+        {/* ALL COMPANY ARTICLES IN A SINGLE HORIZONTAL ROW / GRID */}
         {loading ? (
           <ShelfSkeleton count={hideCtaButton ? 4 : PREVIEW_COUNT} />
         ) : loadError ? (
@@ -134,7 +135,7 @@ export default function CompanyArticlesShelfSection({
                 : "We couldn't load the publications right now. Please try again later."}
             </p>
           </div>
-        ) : groupedByIssue.length === 0 ? (
+        ) : displayedArticles.length === 0 ? (
           <div className="py-12 text-center">
             <span className="text-4xl mb-2 block">🔍</span>
             <h3 className="text-base font-bold text-neutral-800 dark:text-white mb-1">
@@ -151,36 +152,17 @@ export default function CompanyArticlesShelfSection({
             </p>
           </div>
         ) : (
-          groupedByIssue.map(([issueLabel, issueArticles], groupIdx) => (
-            <div key={issueLabel} className={groupIdx > 0 ? "mt-12 pt-10 border-t border-neutral-200/80 dark:border-slate-800" : ""}>
-              {/* MONTH / YEAR HEADER */}
-              <div className="mb-8 flex items-center gap-3">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#C6112F] shrink-0" />
-                <span className="text-[#C6112F] dark:text-[#ff4d6d] font-black text-xs sm:text-sm tracking-[0.25em] uppercase">
-                  {issueLabel}
-                </span>
-                <span className="text-[11px] font-bold text-neutral-400 dark:text-slate-500 uppercase tracking-wider whitespace-nowrap">
-                  ({issueArticles.length}{" "}
-                  {issueArticles.length === 1
-                    ? isFr ? "Rapport" : "Report"
-                    : isFr ? "Rapports" : "Reports"})
-                </span>
-                <div className="h-px flex-1 bg-neutral-200 dark:bg-slate-800" />
-              </div>
-
-              {/* 3D BOOK COVERS GRID */}
-              <div className={gridClassFor(issueArticles.length)}>
-                {issueArticles.map((article) => (
-                  <BookCover
-                    key={article._id}
-                    article={article}
-                    onOpen={() => openArticle(article)}
-                    readLabel={isFr ? "LIRE LA PUBLICATION" : "READ PUBLICATION"}
-                  />
-                ))}
-              </div>
-            </div>
-          ))
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 justify-items-center items-end w-full">
+            {displayedArticles.map((article) => (
+              <BookCover
+                key={article._id}
+                article={article}
+                issueLabel={formatIssueLabel(article, isFr)}
+                onOpen={() => openArticle(article)}
+                readLabel={isFr ? "LIRE LA PUBLICATION" : "READ PUBLICATION"}
+              />
+            ))}
+          </div>
         )}
 
         {/* VIEW ALL ARTICLES BUTTON */}
@@ -223,10 +205,12 @@ function BookCover({
   article,
   onOpen,
   readLabel,
+  issueLabel,
 }: {
   article: ApiArticle;
   onOpen: () => void;
   readLabel: string;
+  issueLabel?: string;
 }) {
   const coverUrl = getCoverImageUrl(article);
 
@@ -275,8 +259,15 @@ function BookCover({
         </div>
       </div>
 
+      {/* ARTICLE ISSUE / DATE BADGE */}
+      {issueLabel && (
+        <span className="text-[10px] font-black tracking-widest uppercase text-[#C6112F] dark:text-[#ff4d6d] mt-3">
+          {issueLabel}
+        </span>
+      )}
+
       {/* ARTICLE TITLE LABEL BELOW */}
-      <span className="text-xs sm:text-sm font-extrabold text-[#1a1f2c] dark:text-slate-100 text-center mt-3.5 tracking-tight group-hover:text-[#C6112F] dark:group-hover:text-[#ff4d6d] transition-colors line-clamp-2">
+      <span className="text-xs sm:text-sm font-extrabold text-[#1a1f2c] dark:text-slate-100 text-center mt-1 tracking-tight group-hover:text-[#C6112F] dark:group-hover:text-[#ff4d6d] transition-colors line-clamp-2">
         {article.title}
       </span>
     </div>
