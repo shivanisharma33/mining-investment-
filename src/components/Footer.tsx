@@ -184,6 +184,16 @@ export default function Footer() {
                   {t("footer-link-our-sponsors", "Our Sponsors")}
                 </Link>
               </li>
+              <li>
+                <a
+                  href="https://www.thenoblemininginvestmentconference.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors"
+                >
+                  {t("nav-noble", "THE Noble Mining Investment Conference")}
+                </a>
+              </li>
             </ul>
           </div>
 

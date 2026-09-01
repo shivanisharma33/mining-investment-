@@ -178,36 +178,35 @@ export default function StudentPage() {
                   </button>
                 </div>
 
-                {/* 3 Program Sponsors (Glencore on top, OR Royalties & IAMGOLD below) */}
-                <div className="pt-6 border-t border-neutral-800/80 max-w-xl">
+                {/* 3 Program Sponsors (in one line) */}
+                <div className="pt-6 border-t border-neutral-800/80 max-w-2xl">
                   <span className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.25em] block mb-3">
                     PROGRAM SPONSORS
                   </span>
-                  <div className="flex flex-col gap-3">
-                    {/* Top Row: Glencore */}
-                    <div className="bg-white/95 rounded-xl px-5 py-2.5 flex items-center justify-center w-fit border border-white/20 shadow-sm">
+                  <div className="flex items-center gap-3 sm:gap-4 flex-wrap sm:flex-nowrap">
+                    {/* Glencore */}
+                    <div className="bg-white/95 rounded-xl px-4 sm:px-5 py-2 sm:py-2.5 flex items-center justify-center border border-white/20 shadow-sm h-11 sm:h-12 shrink-0">
                       <img
                         src="/sponsors/2026/glencore.svg"
                         alt="Glencore Logo"
-                        className="h-7 sm:h-8 max-w-[180px] object-contain"
+                        className="h-6 sm:h-7 max-w-[140px] sm:max-w-[170px] object-contain"
                       />
                     </div>
-                    {/* Bottom Row: OR Royalties & IAMGOLD */}
-                    <div className="flex items-center gap-3 flex-wrap">
-                      <div className="bg-[#0b0e19] rounded-xl px-4 py-2 flex items-center justify-center border border-[#d7a032]/40 shadow-sm">
-                        <img
-                          src="/sponsors/2026/or_royalties_osisko_royalties.svg"
-                          alt="OR Royalties Logo"
-                          className="h-6 sm:h-7 max-w-[120px] object-contain"
-                        />
-                      </div>
-                      <div className="bg-white/95 rounded-xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm">
-                        <img
-                          src="/sponsor image/IAMGOLD-Logo-N.png"
-                          alt="IAMGOLD Logo"
-                          className="h-6 sm:h-7 max-w-[120px] object-contain"
-                        />
-                      </div>
+                    {/* OR Royalties */}
+                    <div className="bg-[#0b0e19] rounded-xl px-3.5 sm:px-4 py-2 sm:py-2.5 flex items-center justify-center border border-[#d7a032]/40 shadow-sm h-11 sm:h-12 shrink-0">
+                      <img
+                        src="/sponsors/2026/or_royalties_osisko_royalties.svg"
+                        alt="OR Royalties Logo"
+                        className="h-5 sm:h-6 max-w-[110px] sm:max-w-[125px] object-contain"
+                      />
+                    </div>
+                    {/* IAMGOLD */}
+                    <div className="bg-white/95 rounded-xl px-3.5 sm:px-4 py-2 sm:py-2.5 flex items-center justify-center border border-white/20 shadow-sm h-11 sm:h-12 shrink-0">
+                      <img
+                        src="/sponsor image/IAMGOLD-Logo-N.png"
+                        alt="IAMGOLD Logo"
+                        className="h-5 sm:h-6 max-w-[110px] sm:max-w-[125px] object-contain"
+                      />
                     </div>
                   </div>
                 </div>
