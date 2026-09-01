@@ -37,9 +37,8 @@ export default function ProgramsGrid() {
       ),
       cta: t("prog-lead-cta", "LEARN MORE"),
       link: "/sheco",
-      image:
-        "/Centre-des-congres-Quebec-Mines-1%20(1).webp",
-      imageAlt: "SHE-Co Initiative at Centre des congrès de Québec",
+      image: "/she-co-initiative.jpg",
+      imageAlt: "SHE-Co Initiative presentation at Mining Investment Event",
       imageOnLeft: true,
     },
     {
@@ -67,7 +66,7 @@ export default function ProgramsGrid() {
       ),
       cta: t("prog-dial-cta", "MEET SPEAKERS"),
       link: "/agenda",
-      image: "/core-shack-networking.jpg",
+      image: "/coreshack.jpg",
       imageAlt: "THE Coreshack networking session",
       imageOnLeft: false,
     },
