@@ -1269,11 +1269,16 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
   const filteredSponsors = useMemo(() => {
     let list = selectedCategory === "all" ? activeList : activeList.filter((s) => s.tier === selectedCategory);
     const q = searchQuery.trim().toLowerCase();
-    if (!q) return list;
-    return list.filter(
-      (s) =>
-        s.name.toLowerCase().includes(q) ||
-        (s.tier && s.tier.toLowerCase().includes(q))
+    if (q) {
+      list = list.filter(
+        (s) =>
+          s.name.toLowerCase().includes(q) ||
+          (s.tier && s.tier.toLowerCase().includes(q))
+      );
+    }
+    // The grid reads A-Z by name; each card's tier badge still carries the ranking.
+    return [...list].sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
     );
   }, [activeList, selectedCategory, searchQuery]);
 
