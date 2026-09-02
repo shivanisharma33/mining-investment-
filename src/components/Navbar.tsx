@@ -198,8 +198,11 @@ export default function Navbar() {
     { name: t("nav-programs", "PROGRAMS"), href: "/student", active: false, hasDropdown: true, dropdownType: "programs", isExternal: false },
     { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
     { name: t("nav-gallery", "GALLERY"), href: "/media", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
-    { name: t("nav-news-main", "THE NEWS"), href: "/news", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
+    // Hidden from navbar without removing:
+    { name: t("nav-news-main", "THE NEWS"), href: "/news", active: false, hasDropdown: false, dropdownType: "none", isExternal: false, hidden: true },
   ];
+
+  const visibleNavLinks = navLinks.filter((link) => !link.hidden);
 
   return (
     <header
@@ -221,7 +224,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
-          {navLinks.map((link) => (
+          {visibleNavLinks.map((link) => (
             <div
               key={link.name}
               className="relative"
@@ -502,7 +505,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-md border-b border-neutral-200 dark:border-slate-800 shadow-xl px-6 py-6 flex flex-col gap-5 animate-fadeIn max-h-[80vh] overflow-y-auto">
           <nav className="flex flex-col gap-1">
-            {navLinks.map((link) => (
+            {visibleNavLinks.map((link) => (
               <div key={link.name}>
                 {link.hasDropdown ? (
                   <>

@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { fetchSponsorsByYear } from "@/lib/sponsorsApi";
 
 export type SponsorTier =
   | "presenting"
@@ -40,13 +41,13 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Ventum Financial",
     website: "https://ventumfinancial.com",
     tier: "platinum",
-    image: "/sponsors/2026/ventum_financial.png",
+    image: "/152.png",
   },
   {
     name: "Agnico Eagle",
     website: "https://www.agnicoeagle.com",
     tier: "platinum",
-    image: "/sponsors/2026/agnico_eagle.ico",
+    image: "/4.png",
   },
   // Gold Partners
   {
@@ -65,6 +66,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "MAXIT Capital",
     website: "https://www.maxitcapital.com/",
     tier: "gold",
+    image: "/sponsors/2026/maxit_capital.png",
   },
   {
     name: "PearTree Canada",
@@ -76,14 +78,14 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "THE MONEY CHANNEL NEW YORK CITY",
     website: "https://www.moneychannelnyc.com/",
     tier: "gold",
-    image: "/sponsors/2026/the_money_channel_new_york_city.svg",
+    image: "/sponsors/2026/the_money_channel_new_york_city.png",
   },
   // Silver Partners
   {
     name: "Atrium Research",
     website: "https://atriumresearch.ca",
     tier: "silver",
-    image: "/sponsors/2026/atrium_research.ico",
+    image: "/sponsors/2026/atrium_research.png",
   },
   {
     name: "Canadian Securities Exchange (CSE)",
@@ -95,7 +97,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Caur Technologies",
     website: "https://caurtech.com",
     tier: "silver",
-    image: "bg_banner.jpg"
+    image: "/43.png"
   },
   {
     name: "Crux Investor",
@@ -122,16 +124,10 @@ const SPONSORS_2026: SponsorItem[] = [
     image: "/sponsors/2026/government_of_newfoundland_labrador.svg",
   },
   {
-    name: "North American Niobium",
-    website: "https://northamericanniobium.com",
-    tier: "silver",
-    image: "/sponsors/2026/north_american_niobium.png",
-  },
-  {
     name: "OR Royalties (Osisko Royalties)",
     website: "https://osiskogr.com",
     tier: "silver",
-    image: "/sponsors/2026/or_royalties_osisko_royalties.svg",
+    image: "/lorroyalties.svg",
   },
   {
     name: "Red Cloud Securities",
@@ -156,13 +152,13 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Alliance Global Partners",
     website: "https://allianceg.com",
     tier: "copper",
-    image: "/sponsors/2026/alliance_global_partners.ico",
+    image: "/agp.webp",
   },
   {
     name: "Apaton Finance",
     website: "https://apatonfinance.com",
     tier: "copper",
-    image: "/sponsors/2026/apaton_finance.ico",
+    image: "/apaton-finance-logo.svg",
   },
   {
     name: "Brooks & Nelson",
@@ -198,6 +194,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "MNP",
     website: "https://www.mnp.ca",
     tier: "copper",
+    image: "/139.png",
   },
   {
     name: "Mercury Group",
@@ -276,6 +273,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Launchpad Productions",
     website: "https://www.launchpadproductions.ca/",
     tier: "media",
+    image: "/134.png",
   },
   {
     name: "Mining IR",
@@ -305,12 +303,13 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Market One Media",
     website: "https://www.marketonemedia.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_50.png",
+    image: "/135.png",
   },
   {
     name: "Podcast Minier",
     website: "https://podcastminier.com",
     tier: "media",
+    image: "/148.png",
   },
   {
     name: "NP Promotions",
@@ -334,7 +333,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "The Prospector News",
     website: "https://theprospectornews.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_53.png",
+    image: "/150.png",
   },
   {
     name: "Resource World Magazine",
@@ -365,7 +364,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Québec",
     website: "https://www.quebec.ca",
     tier: "government",
-    image: "/sponsors/2026/qu_bec.png",
+    image: "/144.png",
   },
 ];
 
@@ -1179,6 +1178,7 @@ function SponsorLogo({ sponsor }: { sponsor: SponsorItem }) {
       alt={sponsor.name}
       referrerPolicy="no-referrer"
       className="max-h-full max-w-full object-contain filter group-hover:brightness-105 transition-all"
+      style={sponsor.name === "Outside the Box Capital" ? { filter: "brightness(0)" } : undefined}
       onError={() => setHasError(true)}
     />
   );
@@ -1209,8 +1209,31 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
   const isFr = lang === "FR";
   const [selectedYear, setSelectedYear] = useState<number>(year);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [fetched2027Sponsors, setFetched2027Sponsors] = useState<SponsorItem[] | null>(null);
 
-  const hasApiSponsors = Boolean(sponsors && sponsors.length > 0);
+  useEffect(() => {
+    setSelectedYear(year);
+  }, [year]);
+
+  useEffect(() => {
+    if (selectedYear === 2027 && (!sponsors || sponsors.length === 0) && fetched2027Sponsors === null) {
+      let cancelled = false;
+      fetchSponsorsByYear(2027)
+        .then((items) => {
+          if (!cancelled) setFetched2027Sponsors(items);
+        })
+        .catch(() => {
+          if (!cancelled) setFetched2027Sponsors([]);
+        });
+      return () => {
+        cancelled = true;
+      };
+    }
+  }, [selectedYear, sponsors, fetched2027Sponsors]);
+
+  const hasApiSponsors = Boolean(
+    (sponsors && sponsors.length > 0) || (fetched2027Sponsors && fetched2027Sponsors.length > 0)
+  );
 
   const yearOptions = useMemo(
     () =>
@@ -1219,11 +1242,18 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
   );
 
   const activeList = useMemo(() => {
-    if (selectedYear === 2027 || selectedYear === year) {
-      return sponsors ?? [];
+    if (STATIC_YEARS.includes(selectedYear)) {
+      return staticSponsorsFor(selectedYear);
+    }
+    if (selectedYear === 2027) {
+      if (sponsors && sponsors.length > 0) return sponsors;
+      return fetched2027Sponsors ?? [];
+    }
+    if (sponsors && sponsors.length > 0) {
+      return sponsors;
     }
     return staticSponsorsFor(selectedYear);
-  }, [sponsors, selectedYear, year]);
+  }, [sponsors, selectedYear, fetched2027Sponsors]);
 
   const filterOptions = useMemo(() => {
     const baseOptions = [
@@ -1317,26 +1347,26 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
   const getTierLabel = (tier: string) => {
     switch (tier) {
       case "presenting":
-        return t("sp-premier", "Premier Sponsor");
+        return "PREMIER MEDIA & PARTNER";
       case "platinum":
-        return t("sp-platinum", "Platinum Sponsors").replace(/s$/, "");
+        return "PLATINUM MEDIA & PARTNER";
       case "gold":
-        return t("sp-gold", "Gold Sponsors").replace(/s$/, "");
+        return "GOLD MEDIA & PARTNER";
       case "green":
-        return t("sp-green", "Green Sponsors").replace(/s$/, "");
+        return "GREEN MEDIA & PARTNER";
       case "sustainable":
-        return t("sp-esg", "ESG Sponsor");
+        return "ESG MEDIA & PARTNER";
       case "silver":
-        return t("sp-silver", "Silver Sponsors").replace(/s$/, "");
+        return "SILVER MEDIA & PARTNER";
       case "copper":
-        return t("sp-copper", "Copper Sponsors").replace(/s$/, "");
+        return "COPPER MEDIA & PARTNER";
       case "bronze":
-        return t("sp-bronze", "Bronze Sponsors").replace(/s$/, "");
+        return "BRONZE MEDIA & PARTNER";
       case "government":
-        return selectedYear === 2025 ? t("sp-special", "Special Sponsors").replace(/s$/, "") : t("sp-government", "Government / Special");
+        return "GOVERNMENT & SPECIAL";
       case "media":
       default:
-        return t("sp-partners", "Partners").replace(/s$/, "");
+        return "MEDIA & PARTNER";
     }
   };
 
@@ -1356,11 +1386,10 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
           {/* Primary Year Button (e.g. 2027) */}
           <button
             onClick={() => handleYearChange(year)}
-            className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
-              selectedYear === year
-                ? "bg-[#C6112F] text-white shadow-xs"
-                : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-200/80 dark:hover:bg-zinc-700 border border-neutral-200/60 dark:border-zinc-700"
-            }`}
+            className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all whitespace-nowrap shrink-0 cursor-pointer ${selectedYear === year
+              ? "bg-[#C6112F] text-white shadow-xs"
+              : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-200/80 dark:hover:bg-zinc-700 border border-neutral-200/60 dark:border-zinc-700"
+              }`}
           >
             {year} {t("sp-sponsors", "Media & Partners")}
           </button>
@@ -1375,11 +1404,10 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
                   handleYearChange(Number(val));
                 }
               }}
-              className={`rounded-xl py-2 pl-3.5 pr-8 text-xs font-extrabold cursor-pointer transition-all shadow-2xs outline-none focus:outline-none focus:ring-2 focus:ring-[#C6112F]/20 appearance-none border ${
-                selectedYear !== year
-                  ? "bg-[#C6112F] text-white border-[#C6112F] shadow-xs"
-                  : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 border-neutral-200/90 dark:border-zinc-700 hover:bg-neutral-200/80 hover:text-neutral-900"
-              }`}
+              className={`rounded-xl py-2 pl-3.5 pr-8 text-xs font-extrabold cursor-pointer transition-all shadow-2xs outline-none focus:outline-none focus:ring-2 focus:ring-[#C6112F]/20 appearance-none border ${selectedYear !== year
+                ? "bg-[#C6112F] text-white border-[#C6112F] shadow-xs"
+                : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 border-neutral-200/90 dark:border-zinc-700 hover:bg-neutral-200/80 hover:text-neutral-900"
+                }`}
             >
               <option value="OTHER" className="bg-white text-neutral-800 dark:bg-zinc-800 dark:text-white font-bold">
                 {isFr ? "Autres éditions" : "Other Editions"}
@@ -1397,9 +1425,8 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
                 ))}
             </select>
             <svg
-              className={`w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none ${
-                selectedYear !== year ? "text-white" : "text-neutral-500"
-              }`}
+              className={`w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none ${selectedYear !== year ? "text-white" : "text-neutral-500"
+                }`}
               fill="none"
               stroke="currentColor"
               strokeWidth="2.5"
@@ -1449,11 +1476,10 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
             <button
               key={opt.id}
               onClick={() => setSelectedCategory(opt.id)}
-              className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-extrabold tracking-wide uppercase transition-all whitespace-nowrap border cursor-pointer ${
-                isSelected
-                  ? "bg-[#C6112F] text-white border-[#C6112F] shadow-xs"
-                  : "bg-white dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 border-neutral-200/90 dark:border-zinc-700 hover:bg-neutral-100 hover:text-neutral-900"
-              }`}
+              className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-extrabold tracking-wide uppercase transition-all whitespace-nowrap border cursor-pointer ${isSelected
+                ? "bg-[#C6112F] text-white border-[#C6112F] shadow-xs"
+                : "bg-white dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 border-neutral-200/90 dark:border-zinc-700 hover:bg-neutral-100 hover:text-neutral-900"
+                }`}
             >
               {opt.label}
             </button>
@@ -1482,13 +1508,7 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
                 style={{ backgroundColor: "#ffffff" }}
                 className="border border-neutral-200 dark:border-neutral-300 rounded-2xl p-6 flex flex-col items-center justify-between text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 group min-h-[240px]"
               >
-                <span
-                  className={`text-[9px] font-black tracking-wider uppercase px-2.5 py-0.5 rounded-full border mb-3 ${getTierBadgeStyle(
-                    sponsor.tier
-                  )}`}
-                >
-                  {getTierLabel(sponsor.tier)}
-                </span>
+
 
                 <div
                   style={{ backgroundColor: "#f8fafc" }}

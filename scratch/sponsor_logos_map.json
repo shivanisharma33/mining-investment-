@@ -13,7 +13,7 @@
   },
   {
     "name": "MAXIT Capital",
-    "image": "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/24c9f57a-fcc7-447e-b07c-73b98a6781bc/Quebec+Goverment?format=750w"
+    "image": "/sponsors/2026/maxit_capital.png"
   },
   {
     "name": "PearTree Canada",
@@ -21,11 +21,11 @@
   },
   {
     "name": "THE MONEY CHANNEL NEW YORK CITY",
-    "image": "/sponsors/2026/the_money_channel_new_york_city.svg"
+    "image": "/money_logo.webp"
   },
   {
     "name": "Atrium Research",
-    "image": "/sponsors/2026/atrium_research.ico"
+    "image": "/sponsors/2026/atrium_research.png"
   },
   {
     "name": "Canadian Securities Exchange (CSE)",
@@ -50,10 +50,6 @@
   {
     "name": "Government of Newfoundland & Labrador",
     "image": "/sponsors/2026/government_of_newfoundland_labrador.svg"
-  },
-  {
-    "name": "North American Niobium",
-    "image": "/sponsors/2026/north_american_niobium.png"
   },
   {
     "name": "OR Royalties (Osisko Royalties)",

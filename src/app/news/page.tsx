@@ -392,7 +392,7 @@ function SponsorsSection() {
       color: "#B8860B",
       logos: [
         "/sponsors/2026/peartree_canada.png",
-        "/sponsors/2026/the_money_channel_new_york_city.svg",
+        "/money_logo.webp",
         "/sponsors/2026/sponsor_gold_13.png",
         "/sponsors/2026/sponsor_gold_15.png",
         "/sponsors/2026/sponsor_gold_28.png",
