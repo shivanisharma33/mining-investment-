@@ -178,10 +178,11 @@ export default function PastEdition2026Page() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${isSelected
-                      ? "bg-[#C6112F] text-white shadow-xs"
-                      : "bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 text-neutral-700 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700"
-                      }`}
+                    className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${
+                      isSelected
+                        ? "bg-[#C6112F] text-white shadow-xs"
+                        : "bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 text-neutral-700 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700"
+                    }`}
                   >
                     <span className={isSelected ? "text-white" : "text-[#C6112F]"}>
                       {tab.icon}
@@ -205,10 +206,11 @@ export default function PastEdition2026Page() {
                         <button
                           key={tab.id}
                           onClick={() => setActiveTab(tab.id)}
-                          className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left cursor-pointer ${isSelected
-                            ? "bg-[#FCDDE1] text-[#8A1224] dark:bg-[#C6112F]/20 dark:text-rose-300 border-l-4 border-[#C6112F] shadow-xs"
-                            : "text-neutral-600 dark:text-zinc-300 hover:bg-neutral-100/90 dark:hover:bg-zinc-800 hover:text-neutral-900 dark:hover:text-white"
-                            }`}
+                          className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left cursor-pointer ${
+                            isSelected
+                              ? "bg-[#FCDDE1] text-[#8A1224] dark:bg-[#C6112F]/20 dark:text-rose-300 border-l-4 border-[#C6112F] shadow-xs"
+                              : "text-neutral-600 dark:text-zinc-300 hover:bg-neutral-100/90 dark:hover:bg-zinc-800 hover:text-neutral-900 dark:hover:text-white"
+                          }`}
                         >
                           <span className={isSelected ? "text-[#C6112F] dark:text-[#C6112F]" : "text-neutral-500 dark:text-zinc-400"}>
                             {tab.icon}
@@ -272,21 +274,25 @@ export default function PastEdition2026Page() {
               </div>
 
               {/* ═══════════════ RIGHT MAIN CONTENT AREA ═══════════════ */}
-              <div className="lg:col-span-9 p-4 xs:p-6 sm:p-8 md:p-10 flex flex-col justify-between text-left bg-white dark:bg-[#18181b]">
+              <div className="lg:col-span-9 p-5 sm:p-8 md:p-10 flex flex-col justify-between text-left bg-white dark:bg-[#141824]">
                 {activeTab === "companies" ? (
                   <div>
-                    <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                      {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
-                    </span>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white tracking-tight mb-3">
-                      {isFr ? "Entreprises participantes" : "Participating Companies"}
-                    </h1>
-                    <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
-                      {isFr
-                        ? "Connectez-vous avec les principales sociétés minières, investisseurs, fournisseurs de technologies et partenaires façonnant l'avenir de l'industrie minière."
-                        : "Connect with leading mining companies, investors, technology providers, and service partners driving the future of the mining industry."}
-                    </p>
-                    <CompaniesView initialYear={viewingEdition} />
+                    <div className="mb-6 pb-6 border-b border-neutral-200/80 dark:border-zinc-800">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C6112F]/10 border border-[#C6112F]/25 text-[#C6112F] text-[11px] font-black tracking-widest uppercase mb-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F]" />
+                        <span>{isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}</span>
+                      </div>
+                      <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 dark:text-white tracking-tight leading-tight mb-3">
+                        {isFr ? "Entreprises participantes" : "Participating Companies"}
+                      </h1>
+                      <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[760px]">
+                        {isFr
+                          ? "Connectez-vous avec les principales sociétés minières, investisseurs, fournisseurs de technologies et partenaires façonnant l'avenir de l'industrie minière."
+                          : "Connect with leading mining companies, investors, technology providers, and service partners driving the future of the mining industry."}
+                      </p>
+                    </div>
+
+                    <CompaniesView initialYear={viewingEdition} showMap={true} />
                   </div>
                 ) : activeTab === "brochures" ? (
                   <div>
@@ -473,17 +479,20 @@ export default function PastEdition2026Page() {
                   </div>
                 ) : activeTab === "sponsors" ? (
                   <div className="w-full">
-                    <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                      {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
-                    </span>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-3">
-                      {isFr ? `Médias & Partenaires de l'événement ${viewingEdition}` : `Event Media & Partners ${viewingEdition}`}
-                    </h1>
-                    <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
-                      {isFr
-                        ? "Nous remercions nos médias et partenaires pour leur généreux soutien qui fait du Mining Investment Event un succès mondial."
-                        : "We thank our media and partners for their generous support in making the Mining Investment Event a global success."}
-                    </p>
+                    <div className="mb-6 pb-6 border-b border-neutral-200/80 dark:border-zinc-800">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C6112F]/10 border border-[#C6112F]/25 text-[#C6112F] text-[11px] font-black tracking-widest uppercase mb-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F]" />
+                        <span>{isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}</span>
+                      </div>
+                      <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 dark:text-white tracking-tight leading-tight mb-3">
+                        {isFr ? `Médias & Partenaires ${viewingEdition}` : `Event Media & Partners ${viewingEdition}`}
+                      </h1>
+                      <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[760px]">
+                        {isFr
+                          ? "Nous remercions nos médias et partenaires pour leur généreux soutien qui fait du Mining Investment Event un succès mondial."
+                          : "We thank our media and partners for their generous support in making the Mining Investment Event a global success."}
+                      </p>
+                    </div>
                     <SponsorsView year={viewingEdition} />
                   </div>
                 ) : (

@@ -15,7 +15,7 @@ export default function GlobalCommunity() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a2 2 0 012-2h2a2 2 0 012 2v5m-4 0h4" />
         </svg>
       ),
-      number: "100+",
+      number: "200+",
       label: t("stat-mining-label", "MINING COMPANIES"),
     },
     {
@@ -24,7 +24,7 @@ export default function GlobalCommunity() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       ),
-      number: "800+",
+      number: "1000+",
       label: t("stat-participants", "PARTICIPANTS"),
     },
     {
@@ -36,7 +36,7 @@ export default function GlobalCommunity() {
         </svg>
       ),
       number: "50+",
-      label: t("stat-student-sponsors", "STUDENTS SPONSORS"),
+      label: t("stat-sponsors", "SPONSORS"),
     },
     {
       icon: (

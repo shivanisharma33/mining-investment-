@@ -62,7 +62,7 @@ const TRANSLATIONS = {
     "stat-participants": "Participants",
     "stat-companies": "Mining Companies",
     "stat-days": "Days of Programming",
-    "stat-student-sponsors": "Student Sponsors",
+    "stat-student-sponsors": "Sponsors",
 
     // ── Home: Programs Grid ──────────────────────────────
     "pg-education-label": "Education",

@@ -456,7 +456,7 @@ export interface RawSpeaker {
 const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", number[], string?][] = [
   ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020309526-QX5SYHPDA2F9W66H4L8Z/Keith+Bradbury.png?format=750w"],
   ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=750w"],
-  ["Kody Boils", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=750w"],
+  ["Kody Blois", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=750w"],
   ["Orin Baranowsky", "Chief Financial Officer", "NexGold Mining", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154751377-H84R1XD7U3BXAZV8CUFN/Orin%2BBaranowsky.jpg?format=750w"],
   ["Stephen Soock", "VP, Investor Relations & Development", "Heliostar Metals", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152031110-VWUNS91VR3AXA9DB7GEL/stephen+soockpng.png?format=750w"],
   ["Kiran Patankar", "President & CEO", "Maple Gold Mines", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152192018-P0QD9TACY3UWLQNIBOB6/Kiran+Patankar.jpeg?format=750w"],

@@ -145,6 +145,7 @@ const translations: Record<Language, Record<string, string>> = {
     "map-cta": "VIEW GLOBAL PARTICIPATION",
     "stat-participants": "PARTICIPANTS",
     "stat-student-sponsors": "STUDENT SPONSORS",
+    "stat-sponsors": "SPONSORS",
     "stat-program-label": "PROGRAM",
 
     // Event Highlights & Media
@@ -668,6 +669,7 @@ const translations: Record<Language, Record<string, string>> = {
     "map-cta": "VOIR LA PARTICIPATION MONDIALE",
     "stat-participants": "PARTICIPANTS",
     "stat-student-sponsors": "BOURSES ÉTUDIANTES",
+    "stat-sponsors": "COMMANDITAIRES",
     "stat-program-label": "PROGRAMME",
 
     // Event Highlights & Media
