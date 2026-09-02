@@ -35,22 +35,52 @@ function getCompanyLogoBadge(name: string) {
   );
 }
 
+function getDomainFromCompany(name: string, website?: string, email?: string): string | null {
+  if (website) {
+    try {
+      const urlStr = website.startsWith("http") ? website : `https://${website}`;
+      const hostname = new URL(urlStr).hostname.replace(/^www\./, "");
+      if (hostname) return hostname;
+    } catch {}
+  }
+  if (email && email.includes("@")) {
+    const domain = email.split("@")[1]?.trim();
+    if (domain) return domain;
+  }
+  if (name) {
+    const words = name
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, "")
+      .split(/\s+/)
+      .filter((w) => !["inc", "corp", "corporation", "ltd", "limited", "llc", "co"].includes(w));
+    if (words.length > 0) {
+      return `${words.join("")}.com`;
+    }
+  }
+  return null;
+}
+
 export default function CompanyLogoImage({
   name,
+  email,
   logo,
+  website,
 }: {
   name: string;
   email?: string;
   logo?: string;
+  website?: string;
 }) {
   const [targetImgError, setTargetImgError] = useState(false);
 
-  // Use API logo if available
-  if (logo && !targetImgError) {
+  const domain = getDomainFromCompany(name, website, email);
+  const faviconUrl = logo || (domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : null);
+
+  if (faviconUrl && !targetImgError) {
     return (
-      <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1.5 bg-white border border-neutral-200/90 rounded-xl shadow-xs shrink-0 overflow-hidden group-hover:border-[#C6112F]/40 transition-colors">
+      <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1 bg-white border border-neutral-200/90 rounded-xl shadow-xs shrink-0 overflow-hidden group-hover:border-[#C6112F]/40 transition-colors">
         <img
-          src={logo}
+          src={faviconUrl}
           alt={name}
           onError={() => setTargetImgError(true)}
           className="max-h-9 max-w-[40px] w-auto h-auto object-contain"

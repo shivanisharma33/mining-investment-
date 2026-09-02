@@ -1008,23 +1008,6 @@ export default function MediaPage() {
           </div>
         </section>
 
-        {/* ═══════════════ MEDIA ACCREDITATION CONTACT CTA ═══════════════ */}
-        <section className="relative w-full bg-[#0f1117] py-12 border-t border-white/[0.04]">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 text-center">
-            <p className="text-neutral-400 text-sm font-light mb-5">
-              {t(
-                "media-bottom-text",
-                "For full media gallery access, recent press coverage, and media accreditation inquiries:"
-              )}
-            </p>
-            <a
-              href="mailto:jchoi@irinc.ca?subject=Media Inquiry"
-              className="inline-block px-8 py-3 bg-[#C6112F] text-white text-xs font-bold tracking-[0.2em] uppercase rounded hover:bg-[#a50e27] transition-colors duration-300"
-            >
-              {t("media-bottom-cta", "Contact for Media Access")}
-            </a>
-          </div>
-        </section>
 
         <GetInTouchCTA />
         <Footer />

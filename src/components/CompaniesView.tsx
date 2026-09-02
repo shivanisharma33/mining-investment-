@@ -297,17 +297,15 @@ export default function CompaniesView({
                 <th className="py-3.5 px-5 min-w-[160px] text-neutral-200">
                   {t("co-col-commodities", isFr ? "Substances" : "Commodities")}
                 </th>
-                {isApiYear && (
-                  <th className="py-3.5 px-4 min-w-[130px] text-neutral-200 text-center">
-                    {t("co-col-website", isFr ? "Site Web" : "Website")}
-                  </th>
-                )}
+                <th className="py-3.5 px-4 min-w-[130px] text-neutral-200 text-center">
+                  {t("co-col-website", isFr ? "Site Web" : "Website")}
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-100 dark:divide-zinc-800 text-xs sm:text-sm font-medium">
               {isApiYear && apiLoading ? (
                 <tr>
-                  <td colSpan={isApiYear ? 6 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
+                  <td colSpan={6} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
                     <div className="flex flex-col items-center justify-center gap-3">
                       <span className="w-7 h-7 rounded-full border-2 border-neutral-200 dark:border-zinc-700 border-t-[#C6112F] animate-spin" />
                       <span className="text-neutral-600 dark:text-zinc-300 font-bold text-sm">
@@ -318,7 +316,7 @@ export default function CompaniesView({
                 </tr>
               ) : isApiYear && apiError ? (
                 <tr>
-                  <td colSpan={isApiYear ? 6 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
+                  <td colSpan={6} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
                     <div className="flex flex-col items-center justify-center gap-2">
                       <span className="text-neutral-800 dark:text-white font-extrabold text-sm">
                         {isFr
@@ -339,7 +337,7 @@ export default function CompaniesView({
                     <td className="py-3.5 px-5 align-middle">
                       <div className="flex items-center gap-3.5">
                         <div className="shrink-0">
-                          <CompanyLogoImage name={company.name} email={company.email} logo={company.logo} />
+                          <CompanyLogoImage name={company.name} email={company.email} logo={company.logo} website={company.website} />
                         </div>
                         <span className="text-neutral-900 dark:text-white font-extrabold text-xs sm:text-[13px] leading-snug group-hover:text-[#C6112F] dark:group-hover:text-[#ff4d6d] transition-colors">
                           {company.name}
@@ -407,11 +405,26 @@ export default function CompaniesView({
                     </td>
 
                     {/* Column 6: Website Link */}
-                    {isApiYear && (
-                      <td className="py-3.5 px-4 align-middle text-center whitespace-nowrap">
-                        {company.website ? (
+                    <td className="py-3.5 px-4 align-middle text-center whitespace-nowrap">
+                      {(() => {
+                        const candidateDomain = company.name
+                          ? company.name
+                              .toLowerCase()
+                              .replace(/[^a-z0-9\s]/g, "")
+                              .split(/\s+/)
+                              .filter((w) => !["inc", "corp", "corporation", "ltd", "limited", "llc", "co"].includes(w))
+                              .join("") + ".com"
+                          : null;
+                        const siteUrl =
+                          company.website ||
+                          (company.email && company.email.includes("@") ? `https://${company.email.split("@")[1]}` : null) ||
+                          (candidateDomain ? `https://www.${candidateDomain}` : null);
+
+                        if (!siteUrl) return <span className="text-neutral-400 dark:text-zinc-500 font-medium">—</span>;
+                        const fullUrl = siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`;
+                        return (
                           <a
-                            href={company.website.startsWith("http") ? company.website : `https://${company.website}`}
+                            href={fullUrl}
                             target="_blank"
                             rel="noreferrer"
                             className="inline-flex items-center justify-center gap-1.5 bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all shadow-2xs hover:shadow-xs whitespace-nowrap shrink-0 min-w-max cursor-pointer"
@@ -421,16 +434,14 @@ export default function CompaniesView({
                               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                             </svg>
                           </a>
-                        ) : (
-                          <span className="text-neutral-400 dark:text-zinc-500 font-medium">—</span>
-                        )}
-                      </td>
-                    )}
+                        );
+                      })()}
+                    </td>
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={isApiYear ? 6 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
+                  <td colSpan={6} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
                     <div className="flex flex-col items-center justify-center gap-2 max-w-md mx-auto">
                       <svg className="w-9 h-9 text-neutral-300 dark:text-zinc-600 mb-1" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="6.5" />
@@ -475,7 +486,7 @@ export default function CompaniesView({
             >
               <div className="flex items-start gap-3 mb-2.5">
                 <div className="shrink-0 mt-0.5">
-                  <CompanyLogoImage name={company.name} email={company.email} logo={company.logo} />
+                  <CompanyLogoImage name={company.name} email={company.email} logo={company.logo} website={company.website} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h4 className="text-xs font-extrabold text-neutral-900 dark:text-white leading-tight mb-1">
