@@ -75,7 +75,7 @@ export default function CompaniesView({
     if (isApiYear) {
       const items = apiCompanies ?? [];
       return editions?.length
-        ? items.filter((company) => company.year === selectedYear)
+        ? items.filter((company) => !company.year || company.year === selectedYear)
         : items;
     }
 
@@ -238,14 +238,21 @@ export default function CompaniesView({
       {/* ════════ DIRECTORY HEADER META COUNTER ════════ */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4 px-1">
         <div className="flex items-center gap-2.5">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-xs font-extrabold shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>
-              {filteredCompanies.length}{" "}
-              {isFr ? "Sociétés affichées" : "Confirmed Companies"}
+          {isApiYear && apiLoading ? (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 text-neutral-600 dark:text-zinc-300 text-xs font-bold shadow-2xs">
+              <span className="w-2 h-2 rounded-full border border-neutral-400 border-t-[#C6112F] animate-spin" />
+              <span>{isFr ? "Chargement des sociétés participantes…" : "Loading participating companies…"}</span>
             </span>
-          </span>
-          {hasActiveFilters && (
+          ) : (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-xs font-extrabold shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>
+                {filteredCompanies.length}{" "}
+                {isFr ? "Sociétés confirmées" : "Confirmed Companies"}
+              </span>
+            </span>
+          )}
+          {!apiLoading && hasActiveFilters && (
             <span className="text-xs font-semibold text-neutral-500 dark:text-zinc-400">
               {isFr
                 ? `(sur un total de ${editionCompanies.length})`
@@ -303,8 +310,8 @@ export default function CompaniesView({
                   <td colSpan={isApiYear ? 6 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
                     <div className="flex flex-col items-center justify-center gap-3">
                       <span className="w-7 h-7 rounded-full border-2 border-neutral-200 dark:border-zinc-700 border-t-[#C6112F] animate-spin" />
-                      <span className="text-neutral-500 dark:text-zinc-400 font-bold">
-                        {isFr ? "Chargement des sociétés…" : "Loading companies…"}
+                      <span className="text-neutral-600 dark:text-zinc-300 font-bold text-sm">
+                        {isFr ? "Chargement des entreprises participantes…" : "Loading participating companies…"}
                       </span>
                     </div>
                   </td>
@@ -313,10 +320,10 @@ export default function CompaniesView({
                 <tr>
                   <td colSpan={isApiYear ? 6 : 5} className="py-16 px-6 text-center bg-neutral-50/50 dark:bg-zinc-900/50">
                     <div className="flex flex-col items-center justify-center gap-2">
-                      <span className="text-neutral-800 dark:text-white font-extrabold">
+                      <span className="text-neutral-800 dark:text-white font-extrabold text-sm">
                         {isFr
-                          ? "Impossible de charger les sociétés"
-                          : "Unable to load the company directory"}
+                          ? "Impossible de charger les entreprises participantes. Veuillez réessayer."
+                          : "Unable to load participating companies. Please try again."}
                       </span>
                       <span className="text-xs text-neutral-500 dark:text-zinc-400 font-medium">{apiError}</span>
                     </div>
@@ -430,16 +437,16 @@ export default function CompaniesView({
                         <path d="M20 20l-4-4" />
                       </svg>
                       <p className="text-sm font-extrabold text-neutral-800 dark:text-white">
-                        {isFr ? "Aucune société trouvée" : "No companies found"}
+                        {isFr ? "Aucune entreprise participante trouvée" : "No participating companies found"}
                       </p>
                       <p className="text-xs text-neutral-500 dark:text-zinc-400 leading-relaxed">
                         {searchQuery.trim()
                           ? isFr
-                            ? "Aucune société ne correspond à vos critères de recherche. Essayez de réinitialiser le filtre."
+                            ? "Aucune entreprise ne correspond à vos critères de recherche. Essayez de réinitialiser le filtre."
                             : "No companies match your search criteria. Try adjusting your search query or filters."
                           : isFr
-                            ? `Aucune société n'a encore été publiée pour l'édition ${selectedYear}.`
-                            : `No companies have been published for the ${selectedYear} edition yet.`}
+                            ? `Aucune entreprise n'a encore été publiée pour l'édition ${selectedYear}.`
+                            : `No participating companies found.`}
                       </p>
                       {hasActiveFilters && (
                         <button

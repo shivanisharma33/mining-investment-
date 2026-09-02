@@ -1204,27 +1204,26 @@ const staticSponsorsFor = (year: number): SponsorItem[] =>
         ? SPONSORS_2024
         : SPONSORS_2023;
 
-export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProps) {
+export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProps) {
   const { t, lang } = useLanguage();
   const isFr = lang === "FR";
   const [selectedYear, setSelectedYear] = useState<number>(year);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
-  const hasApiSponsors = Boolean(sponsors?.length);
+  const hasApiSponsors = Boolean(sponsors && sponsors.length > 0);
 
   const yearOptions = useMemo(
     () =>
-      Array.from(new Set(hasApiSponsors ? [year, ...STATIC_YEARS] : STATIC_YEARS)),
-    [hasApiSponsors, year]
+      Array.from(new Set([year, ...STATIC_YEARS])).sort((a, b) => b - a),
+    [year]
   );
 
-  const activeList = useMemo(
-    () =>
-      hasApiSponsors && selectedYear === year
-        ? (sponsors as SponsorItem[])
-        : staticSponsorsFor(selectedYear),
-    [hasApiSponsors, sponsors, selectedYear, year]
-  );
+  const activeList = useMemo(() => {
+    if (selectedYear === 2027 || selectedYear === year) {
+      return sponsors ?? [];
+    }
+    return staticSponsorsFor(selectedYear);
+  }, [sponsors, selectedYear, year]);
 
   const filterOptions = useMemo(() => {
     const baseOptions = [
@@ -1349,22 +1348,22 @@ export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProp
             </span>
           </div>
 
-          {/* 2026 Compact Button */}
+          {/* Primary Year Button (e.g. 2027) */}
           <button
-            onClick={() => handleYearChange(2026)}
+            onClick={() => handleYearChange(year)}
             className={`px-3.5 py-2 rounded-xl text-xs font-extrabold transition-all whitespace-nowrap shrink-0 cursor-pointer ${
-              selectedYear === 2026
+              selectedYear === year
                 ? "bg-[#C6112F] text-white shadow-xs"
                 : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-200/80 dark:hover:bg-zinc-700 border border-neutral-200/60 dark:border-zinc-700"
             }`}
           >
-            2026 {t("sp-sponsors", "Media & Partners")}
+            {year} {t("sp-sponsors", "Media & Partners")}
           </button>
 
           {/* Other Editions Dropdown */}
           <div className="relative inline-flex items-center shrink-0">
             <select
-              value={selectedYear !== 2026 ? selectedYear : "OTHER"}
+              value={selectedYear !== year ? selectedYear : "OTHER"}
               onChange={(e) => {
                 const val = e.target.value;
                 if (val && val !== "OTHER") {
@@ -1372,7 +1371,7 @@ export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProp
                 }
               }}
               className={`rounded-xl py-2 pl-3.5 pr-8 text-xs font-extrabold cursor-pointer transition-all shadow-2xs outline-none focus:outline-none focus:ring-2 focus:ring-[#C6112F]/20 appearance-none border ${
-                selectedYear !== 2026
+                selectedYear !== year
                   ? "bg-[#C6112F] text-white border-[#C6112F] shadow-xs"
                   : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 border-neutral-200/90 dark:border-zinc-700 hover:bg-neutral-200/80 hover:text-neutral-900"
               }`}
@@ -1381,7 +1380,7 @@ export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProp
                 {isFr ? "Autres éditions" : "Other Editions"}
               </option>
               {yearOptions
-                .filter((y) => y !== 2026)
+                .filter((y) => y !== year)
                 .map((yearOption) => (
                   <option
                     key={yearOption}
@@ -1394,7 +1393,7 @@ export default function SponsorsView({ year = 2026, sponsors }: SponsorsViewProp
             </select>
             <svg
               className={`w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none ${
-                selectedYear !== 2026 ? "text-white" : "text-neutral-500"
+                selectedYear !== year ? "text-white" : "text-neutral-500"
               }`}
               fill="none"
               stroke="currentColor"

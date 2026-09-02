@@ -2,7 +2,6 @@ import type { SponsorItem, SponsorTier } from "@/components/SponsorsView";
 import {
   fetchStrapi,
   getStrapiMediaUrl,
-  matchesPublishTo,
   type StrapiListResponse,
   type StrapiMedia,
 } from "./strapi";
@@ -56,6 +55,14 @@ export function normalizeTier(entry: StrapiMediaPartner): SponsorTier {
   return matchTier(entry.Type) ?? matchTier(entry.tier) ?? "media";
 }
 
+/** Converts a year number or string into Strapi's exact Year field format (e.g. "Media & Partners 2027"). */
+export function formatMediaPartnersYear(year: number | string = 2027): string {
+  if (typeof year === "string" && year.startsWith("Media & Partners")) {
+    return year;
+  }
+  return `Media & Partners ${year}`;
+}
+
 /** Strapi stores the edition as a label ("Media & Partners 2027" or "2027"). */
 export function parseYear(value?: string): number | undefined {
   const match = value?.match(/(\d{4})/);
@@ -74,26 +81,24 @@ export function mapSponsor(entry: StrapiMediaPartner): SponsorItem {
 }
 
 export interface FetchSponsorsOptions {
-  year?: number;
+  year?: number | string;
   tier?: string;
   signal?: AbortSignal;
 }
 
 /**
- * Fetches media partners from Strapi v5 with server-side publishTo, year, and tier filtering.
+ * Fetches media partners from Strapi v5 with server-side Year and populate filtering.
  */
 export async function fetchSponsors(
   options: FetchSponsorsOptions = {}
 ): Promise<SponsorItem[]> {
-  const { year, tier, signal } = options;
+  const { year = 2027, tier, signal } = options;
+  const yearFilterValue = formatMediaPartnersYear(year);
 
-  // Build filters
-  const filters: Record<string, unknown> = {};
-
-  // Year filter if provided
-  if (year !== undefined) {
-    filters["Year"] = { $containsi: String(year) };
-  }
+  // Build server-side filters
+  const filters: Record<string, unknown> = {
+    Year: { $eq: yearFilterValue },
+  };
 
   // Tier filter: "ALL MEDIA & PARTNERS" is not a Strapi tier.
   if (tier && !tier.toUpperCase().includes("ALL")) {
@@ -106,30 +111,53 @@ export async function fetchSponsors(
     }
   }
 
-  const json = await fetchStrapi<StrapiListResponse<StrapiMediaPartner>>(
+  let page = 1;
+  const pageSize = 100;
+  const allEntries: StrapiMediaPartner[] = [];
+
+  const initialJson = await fetchStrapi<StrapiListResponse<StrapiMediaPartner>>(
     "/api/media-partners",
     {
       signal,
       queryParams: {
-        filterPublishTo: true,
+        filterPublishTo: false, // We handle exact Year query and event filtering explicitly
         populate: "*",
-        pagination: { pageSize: 200 },
+        pagination: { page, pageSize },
         filters,
       },
     }
   );
 
-  const entries = Array.isArray(json?.data) ? json.data : [];
+  const initialData = Array.isArray(initialJson?.data) ? initialJson.data : [];
+  allEntries.push(...initialData);
 
-  return entries
-    .filter((entry) => {
-      if (!matchesPublishTo(entry.publishTo)) return false;
-      if (!entry.name?.trim()) return false;
-      if (year !== undefined) {
-        const entryYear = parseYear(entry.Year);
-        // Records with no year stated still belong to the current edition
-        if (entryYear !== undefined && entryYear !== year) return false;
+  const totalPages = initialJson?.meta?.pagination?.pageCount ?? 1;
+
+  while (page < totalPages) {
+    page++;
+    const nextPageJson = await fetchStrapi<StrapiListResponse<StrapiMediaPartner>>(
+      "/api/media-partners",
+      {
+        signal,
+        queryParams: {
+          filterPublishTo: false,
+          populate: "*",
+          pagination: { page, pageSize },
+          filters,
+        },
       }
+    );
+    const nextData = Array.isArray(nextPageJson?.data) ? nextPageJson.data : [];
+    allEntries.push(...nextData);
+  }
+
+  return allEntries
+    .filter((entry) => {
+      // Exclude records belonging to other events (e.g., Noble Mining Conference)
+      if (entry.publishTo && typeof entry.publishTo === "string" && entry.publishTo.includes("Noble")) {
+        return false;
+      }
+      if (!entry.name?.trim()) return false;
       return true;
     })
     .map((entry) => ({ entry, sponsor: mapSponsor(entry) }))
@@ -150,7 +178,7 @@ export async function fetchSponsors(
  * Media & partners for a year, ordered by tier then by Strapi's displayOrder.
  */
 export async function fetchSponsorsByYear(
-  year: number,
+  year: number | string = 2027,
   signal?: AbortSignal
 ): Promise<SponsorItem[]> {
   return fetchSponsors({ year, signal });

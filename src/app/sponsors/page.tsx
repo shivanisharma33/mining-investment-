@@ -28,7 +28,7 @@ export default function SponsorsPage() {
       .catch((err: unknown) => {
         if (controller.signal.aborted) return;
         setSponsorsError(
-          err instanceof Error ? err.message : "Unable to load sponsors"
+          err instanceof Error ? err.message : "Unable to load Media & Partners."
         );
         setSponsorsLoading(false);
       });
@@ -39,7 +39,7 @@ export default function SponsorsPage() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-white">
+      <main className="flex flex-col flex-grow w-full bg-white dark:bg-[#090d16] text-neutral-900 dark:text-slate-100 transition-colors duration-300">
         {/* ═══════ HERO ═══════ */}
         <section className="relative w-full bg-[#0f1117] overflow-hidden">
           <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
@@ -60,7 +60,9 @@ export default function SponsorsPage() {
               <span className="text-[#C6112F]">›</span>
               <span className="text-neutral-400">Event</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">{isFr ? "Médias & Partenaires 2027" : "Media & Partners 2027"}</span>
+              <span className="text-white font-semibold">
+                {isFr ? "Médias & Partenaires 2027" : "THE Event 2027 Media & Partners"}
+              </span>
             </div>
             <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase block mb-3">
               2027 GLOBAL MINING LEADERSHIP & PARTNERS
@@ -90,20 +92,24 @@ export default function SponsorsPage() {
 
             {/* Shared Sponsors Component */}
             {sponsorsLoading ? (
-              <div className="rounded-2xl border border-neutral-200 bg-white p-10 flex items-center justify-center gap-3">
-                <span className="w-6 h-6 rounded-full border-2 border-neutral-200 border-t-[#C6112F] animate-spin" />
-                <span className="text-xs font-bold uppercase tracking-wider text-neutral-500">
-                  {isFr ? "Chargement des médias & partenaires…" : "Loading media & partners…"}
+              <div className="rounded-2xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-[#141824] p-12 flex flex-col items-center justify-center gap-3">
+                <span className="w-8 h-8 rounded-full border-2 border-neutral-200 dark:border-zinc-700 border-t-[#C6112F] animate-spin" />
+                <span className="text-sm font-bold text-neutral-600 dark:text-zinc-300">
+                  {isFr ? "Chargement des médias & partenaires…" : "Loading Media & Partners..."}
                 </span>
               </div>
             ) : sponsorsError ? (
-              <div className="rounded-2xl border border-neutral-200 bg-white p-10 text-center">
-                <p className="font-extrabold text-sm text-neutral-800 mb-1">
-                  {isFr
-                    ? `Impossible de charger les médias & partenaires ${SPONSORS_YEAR}`
-                    : `Unable to load the ${SPONSORS_YEAR} media & partners`}
+              <div className="rounded-2xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-[#141824] p-10 text-center">
+                <p className="font-extrabold text-sm text-neutral-800 dark:text-white mb-1">
+                  {isFr ? "Impossible de charger les médias & partenaires." : "Unable to load Media & Partners."}
                 </p>
-                <p className="text-xs text-neutral-500">{sponsorsError}</p>
+                <p className="text-xs text-neutral-500 dark:text-zinc-400">{sponsorsError}</p>
+              </div>
+            ) : sponsors.length === 0 ? (
+              <div className="rounded-2xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-[#141824] p-10 text-center">
+                <p className="font-extrabold text-sm text-neutral-800 dark:text-white">
+                  {isFr ? "Aucun média ou partenaire trouvé." : "No Media & Partners found."}
+                </p>
               </div>
             ) : (
               <SponsorsView year={SPONSORS_YEAR} sponsors={sponsors} />
@@ -117,4 +123,3 @@ export default function SponsorsPage() {
     </>
   );
 }
-

@@ -142,25 +142,28 @@ export interface FetchParticipatingCompaniesOptions {
   signal?: AbortSignal;
 }
 
-/** Every participating company, across all editions or filtered by edition/search. */
+/**
+ * Checks if a company belongs strictly to the Mining Investment Event.
+ */
+export function isMiningInvestmentEventCompany(publishTo: unknown): boolean {
+  if (publishTo === "Mining Investment Event") return true;
+  if (Array.isArray(publishTo)) {
+    return publishTo.some((v) => v === "Mining Investment Event");
+  }
+  return false;
+}
+
+/** Every participating company for Mining Investment Event, retrieving all pages if needed. */
 export async function fetchParticipatingCompanies(
   signalOrOptions?: AbortSignal | FetchParticipatingCompaniesOptions
 ): Promise<CompanyItem[]> {
   const isSignal = signalOrOptions instanceof AbortSignal;
   const signal = isSignal ? signalOrOptions : signalOrOptions?.signal;
-  const editionYear = !isSignal ? signalOrOptions?.editionYear : undefined;
   const search = !isSignal ? signalOrOptions?.search : undefined;
 
-  const filters: Record<string, unknown> = {};
-
-  if (editionYear !== undefined) {
-    filters["event_edition"] = {
-      $or: [
-        { year: { $containsi: String(editionYear) } },
-        { name: { $containsi: String(editionYear) } },
-      ],
-    };
-  }
+  const filters: Record<string, unknown> = {
+    publishTo: { $eq: "Mining Investment Event" },
+  };
 
   if (search?.trim()) {
     const q = search.trim();
@@ -172,23 +175,52 @@ export async function fetchParticipatingCompanies(
     ];
   }
 
-  const json = await fetchStrapi<StrapiListResponse<StrapiCompany>>(
+  // Initial page fetch with pageSize 100
+  let page = 1;
+  const pageSize = 100;
+  const allEntries: StrapiCompany[] = [];
+
+  const initialJson = await fetchStrapi<StrapiListResponse<StrapiCompany>>(
     "/api/participating-companies",
     {
       signal,
       queryParams: {
-        filterPublishTo: true,
+        filterPublishTo: false, // We supply exact filters[publishTo][$eq] above
         populate: "*",
         sort: "companyName:asc",
-        pagination: { pageSize: PAGE_SIZE },
+        pagination: { page, pageSize },
         filters,
       },
     }
   );
 
-  const entries = Array.isArray(json?.data) ? json.data : [];
+  const initialData = Array.isArray(initialJson?.data) ? initialJson.data : [];
+  allEntries.push(...initialData);
 
-  return entries
+  const totalPages = initialJson?.meta?.pagination?.pageCount ?? 1;
+
+  // Fetch subsequent pages if total exceeds pageSize
+  while (page < totalPages) {
+    page++;
+    const nextPageJson = await fetchStrapi<StrapiListResponse<StrapiCompany>>(
+      "/api/participating-companies",
+      {
+        signal,
+        queryParams: {
+          filterPublishTo: false,
+          populate: "*",
+          sort: "companyName:asc",
+          pagination: { page, pageSize },
+          filters,
+        },
+      }
+    );
+    const nextData = Array.isArray(nextPageJson?.data) ? nextPageJson.data : [];
+    allEntries.push(...nextData);
+  }
+
+  return allEntries
+    .filter((entry) => isMiningInvestmentEventCompany(entry.publishTo))
     .map(mapCompany)
     .filter((c): c is CompanyItem => c !== null)
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -196,10 +228,8 @@ export async function fetchParticipatingCompanies(
 
 /** Companies for a single edition. Used by the 2027-specific pages. */
 export async function fetchCompaniesByYear(
-  year: number,
+  _year: number,
   signal?: AbortSignal
 ): Promise<CompanyItem[]> {
-  return (await fetchParticipatingCompanies(signal)).filter(
-    (company) => company.year === year
-  );
+  return fetchParticipatingCompanies(signal);
 }
