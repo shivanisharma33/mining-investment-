@@ -14,7 +14,8 @@ export type SponsorTier =
   | "media"
   | "government"
   | "green"
-  | "sustainable";
+  | "sustainable"
+  | "battery_critical";
 
 export interface SponsorItem {
   name: string;
@@ -61,6 +62,12 @@ const SPONSORS_2026: SponsorItem[] = [
     website: "https://investyukon.ca",
     tier: "gold",
     image: "/Invest_Yukon.png",
+  },
+  {
+    name: "First Phosphate",
+    website: "https://firstphosphate.com",
+    tier: "gold",
+    image: "/LOGOS Mining (10).png",
   },
   {
     name: "MAXIT Capital",
@@ -418,7 +425,7 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "First Phosphate",
     website: "https://firstphosphate.com",
     tier: "gold",
-    image: "/first_phosphate.png",
+    image: "/LOGOS Mining (10).png",
   },
   {
     name: "Glencore",
@@ -664,7 +671,7 @@ const SPONSORS_2024: SponsorItem[] = [
     name: "First Phosphate",
     website: "https://firstphosphate.com",
     tier: "gold",
-    image: "/first_phosphate.png",
+    image: "/LOGOS Mining (10).png",
   },
   {
     name: "Glencore",
@@ -988,6 +995,12 @@ const SPONSORS_2023: SponsorItem[] = [
     website: "https://www.troilusgold.com",
     tier: "gold",
     image: "/LOGOS Mining (18).png",
+  },
+  {
+    name: "First Phosphate",
+    website: "https://firstphosphate.com",
+    tier: "gold",
+    image: "/LOGOS Mining (10).png",
   },
   // Silver Sponsors
   {

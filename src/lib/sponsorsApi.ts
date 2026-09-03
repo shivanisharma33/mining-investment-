@@ -36,6 +36,7 @@ export const TIER_RANK: SponsorTier[] = [
   "silver",
   "copper",
   "bronze",
+  "battery_critical",
   "government",
   "media",
 ];
