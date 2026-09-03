@@ -243,13 +243,13 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "BTV – Business Television",
     website: "https://www.b-tv.com/",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_17.png",
+    image: "/btv.png",
   },
   {
     name: "CEO.CA",
     website: "https://ceo.ca",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_35.png",
+    image: "/ceo_ca.png",
   },
   {
     name: "Canadian Mining Magazine",
@@ -303,7 +303,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "InvestorBrandNetwork (IBN)",
     website: "https://www.ibn.fm",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_48.png",
+    image: "/ibn.png",
   },
   {
     name: "Mining Hub",
@@ -345,7 +345,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "RCTV",
     website: "https://rctv.ca",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_49.png",
+    image: "/rctv.png",
   },
   {
     name: "RefinedSubstance",
@@ -363,7 +363,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Resource World Magazine",
     website: "https://resourceworld.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_25.png",
+    image: "/resource_world.png",
   },
   {
     name: "The Northern Miner",
@@ -418,7 +418,7 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "First Phosphate",
     website: "https://firstphosphate.com",
     tier: "gold",
-    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/a2d714b0-76ef-43bb-8e49-da998a92f7c4/First+Phosphate+logo?format=750w",
+    image: "/first_phosphate.png",
   },
   {
     name: "Glencore",
@@ -441,10 +441,10 @@ const SPONSORS_2025: SponsorItem[] = [
   },
   // Sustainable Sponsor
   {
-    name: "Osisko Gold Royalties",
-    website: "https://osiskogr.com",
+    name: "Osisko Mining",
+    website: "https://osiskomining.com",
     tier: "sustainable",
-    image: "/lorroyalties.svg",
+    image: "/osisko_mining.png",
   },
   // Silver Sponsors
   {
@@ -549,7 +549,7 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "BTV – Business Television",
     website: "https://www.b-tv.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_17.png",
+    image: "/btv.png",
   },
   {
     name: "Canadian Mining Magazine",
@@ -561,7 +561,7 @@ const SPONSORS_2025: SponsorItem[] = [
     name: "CEO.CA",
     website: "https://ceo.ca",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_35.png",
+    image: "/ceo_ca.png",
   },
   {
     name: "Kitco News",
@@ -652,12 +652,19 @@ const SPONSORS_2024: SponsorItem[] = [
     tier: "platinum",
     image: "/sponsor image/logo-capitalmarkets.svg",
   },
+  // Sustainable Sponsor
+  {
+    name: "Osisko Mining",
+    website: "https://osiskomining.com",
+    tier: "sustainable",
+    image: "/osisko_mining.png",
+  },
   // Gold Sponsors
   {
     name: "First Phosphate",
     website: "https://firstphosphate.com",
     tier: "gold",
-    image: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/a2d714b0-76ef-43bb-8e49-da998a92f7c4/First+Phosphate+logo?format=750w",
+    image: "/first_phosphate.png",
   },
   {
     name: "Glencore",
@@ -672,22 +679,10 @@ const SPONSORS_2024: SponsorItem[] = [
     image: "/sponsers/143.png",
   },
   {
-    name: "Kinterra Capital",
-    website: "https://kinterracapital.com",
-    tier: "gold",
-    image: "/sponsers/149.png",
-  },
-  {
     name: "O3 Mining",
     website: "https://o3mining.mediaroom.com/",
     tier: "gold",
     image: "/sponsers/LOGOS Mining (7).png",
-  },
-  {
-    name: "Osisko Mining",
-    website: "https://osiskomining.com",
-    tier: "gold",
-    image: "/sponsers/LOGOS Mining (9).png",
   },
   // Silver Sponsors
   {
@@ -822,7 +817,7 @@ const SPONSORS_2024: SponsorItem[] = [
     name: "BTV – Business Television",
     website: "https://www.b-tv.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_17.png",
+    image: "/btv.png",
   },
   {
     name: "Canadian Mining Magazine",
@@ -834,7 +829,7 @@ const SPONSORS_2024: SponsorItem[] = [
     name: "CEO.CA",
     website: "https://ceo.ca",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_35.png",
+    image: "/ceo_ca.png",
   },
   {
     name: "Ellis Martin Report",
@@ -907,6 +902,31 @@ const SPONSORS_2024: SponsorItem[] = [
     website: "https://vidconferences.com",
     tier: "media",
     image: "/sponsers/180.png",
+  },
+  {
+    name: "XPAV",
+    website: "https://xpav.ca",
+    tier: "media",
+    image: "/xpav_.png",
+  },
+  // Battery & Critical Metals
+  {
+    name: "Kinterra Capital",
+    website: "https://kinterracapital.com",
+    tier: "battery_critical",
+    image: "/sponsers/149.png",
+  },
+  {
+    name: "NIVOLT",
+    website: "https://nivolt.com",
+    tier: "battery_critical",
+    image: "/LOGOS Mining (25).png",
+  },
+  {
+    name: "NION",
+    website: "https://nion.ca",
+    tier: "battery_critical",
+    image: "/LOGOS Mining (26).png",
   },
 ];
 
@@ -1005,7 +1025,13 @@ const SPONSORS_2023: SponsorItem[] = [
     name: "Socialsuite",
     website: "https://www.socialsuitehq.com",
     tier: "sustainable",
-    image: "https://www.google.com/s2/favicons?domain=socialsuitehq.com&sz=128",
+    image: "/LOGOS Mining (24).png",
+  },
+  {
+    name: "Osisko Mining",
+    website: "https://osiskomining.com",
+    tier: "sustainable",
+    image: "/osisko_mining.png",
   },
   // Copper Sponsors
   {
@@ -1085,7 +1111,7 @@ const SPONSORS_2023: SponsorItem[] = [
     name: "BTV – Business Television",
     website: "https://www.b-tv.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_17.png",
+    image: "/btv.png",
   },
   {
     name: "Newsfile",
@@ -1115,7 +1141,7 @@ const SPONSORS_2023: SponsorItem[] = [
     name: "Resource World Magazine",
     website: "https://resourceworld.com",
     tier: "media",
-    image: "/sponsors/2026/sponsor_media_25.png",
+    image: "/resource_world.png",
   },
   {
     name: "The Northern Miner",
@@ -1158,6 +1184,31 @@ const SPONSORS_2023: SponsorItem[] = [
     website: "https://www.quebeccite.com",
     tier: "media",
     image: "/LOGOS Mining (20).png",
+  },
+  {
+    name: "VID (Focused on the investor)",
+    website: "https://vidconferences.com",
+    tier: "media",
+    image: "/sponsers/180.png",
+  },
+  // Battery & Critical Metals
+  {
+    name: "Kinterra Capital",
+    website: "https://kinterracapital.com",
+    tier: "battery_critical",
+    image: "/sponsers/149.png",
+  },
+  {
+    name: "NIVOLT",
+    website: "https://nivolt.com",
+    tier: "battery_critical",
+    image: "/LOGOS Mining (25).png",
+  },
+  {
+    name: "NION",
+    website: "https://nion.ca",
+    tier: "battery_critical",
+    image: "/LOGOS Mining (26).png",
   },
 ];
 
@@ -1275,13 +1326,14 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
       { id: "silver", label: t("sp-silver", "Silver Sponsors") },
       { id: "copper", label: t("sp-copper", "Copper Sponsors") },
       { id: "media", label: t("sp-partners", "Partners") },
-      { id: "government", label: selectedYear === 2025 ? t("sp-special", "Special Sponsors") : t("sp-government", "Government / Special") },
+      { id: "government", label: selectedYear === 2023 ? t("sp-special-participant", "Special Participants") : selectedYear === 2025 ? t("sp-special", "Special Sponsors") : t("sp-government", "Government / Special") },
     ];
 
     const hasPresenting = activeList.some((s) => s.tier === "presenting");
     const hasGreen = activeList.some((s) => s.tier === "green");
     const hasSustainable = activeList.some((s) => s.tier === "sustainable");
     const hasBronze = activeList.some((s) => s.tier === "bronze");
+    const hasBattery = activeList.some((s) => s.tier === "battery_critical");
 
     // Only offer tiers this edition actually has.
     const options = baseOptions.filter(
@@ -1295,12 +1347,17 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
       options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "green", label: t("sp-green", "Green Sponsors") });
     }
     if (hasSustainable) {
-      options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "sustainable", label: t("sp-esg", "ESG Sponsor") });
+      options.splice(options.findIndex(o => o.id === "gold") + 1, 0, { id: "sustainable", label: t("sp-sustainable", "Sustainable") });
     }
     if (hasBronze) {
       const copperIdx = options.findIndex((o) => o.id === "copper");
       const insertAt = copperIdx >= 0 ? copperIdx + 1 : options.length;
       options.splice(insertAt, 0, { id: "bronze", label: t("sp-bronze", "Bronze Sponsors") });
+    }
+    if (hasBattery) {
+      const copperIdx = options.findIndex((o) => o.id === "copper" || o.id === "bronze");
+      const insertAt = copperIdx >= 0 ? copperIdx + 1 : options.length;
+      options.splice(insertAt, 0, { id: "battery_critical", label: t("sp-battery", "Battery & Critical Metals") });
     }
 
     return options;
@@ -1318,8 +1375,20 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
           (s.tier && s.tier.toLowerCase().includes(q))
       );
     }
+    // Deduplicate cards by name to prevent showing duplicate sponsor logo cards
+    const seenNames = new Set<string>();
+    const uniqueList: SponsorItem[] = [];
+
+    for (const item of list) {
+      const cleanName = (item.name || "").toLowerCase().trim();
+      if (cleanName && !seenNames.has(cleanName)) {
+        seenNames.add(cleanName);
+        uniqueList.push(item);
+      }
+    }
+
     // The grid reads A-Z by name; each card's tier badge still carries the ranking.
-    return [...list].sort((a, b) =>
+    return uniqueList.sort((a, b) =>
       a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
     );
   }, [activeList, selectedCategory, searchQuery]);
@@ -1348,7 +1417,11 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
         return "bg-orange-500/10 text-orange-800 border-orange-500/30";
       case "bronze":
         return "bg-amber-700/10 text-amber-900 border-amber-700/30";
+      case "battery_critical":
+        return "bg-cyan-500/10 text-cyan-800 border-cyan-500/30";
       case "government":
+      case "special":
+      case "special_participant":
         return "bg-indigo-500/10 text-indigo-800 border-indigo-500/30";
       case "media":
       default:
@@ -1374,8 +1447,11 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
         return "COPPER MEDIA & PARTNER";
       case "bronze":
         return "BRONZE MEDIA & PARTNER";
+      case "battery_critical":
+        return "BATTERY & CRITICAL METALS";
       case "government":
-        return "GOVERNMENT & SPECIAL";
+      case "special_participant":
+        return selectedYear === 2023 ? "SPECIAL PARTICIPANT & GOVERNMENT" : "GOVERNMENT & SPECIAL";
       case "media":
       default:
         return "MEDIA & PARTNER";
@@ -1521,7 +1597,6 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
                 className="border border-neutral-200 dark:border-neutral-300 rounded-2xl p-6 flex flex-col items-center justify-between text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 group min-h-[240px]"
               >
 
-
                 <div
                   className="w-full h-24 flex items-center justify-center mb-4 p-2 rounded-xl border border-neutral-200 transition-colors"
                 >
@@ -1529,7 +1604,7 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
                 </div>
 
                 <div className="w-full">
-                  <h4 className="text-xs sm:text-sm font-extrabold text-neutral-900 group-hover:text-[#C6112F] transition-colors leading-snug mb-2">
+                  <h4 className="text-xs sm:text-sm font-extrabold !text-black dark:!text-black group-hover:!text-[#C6112F] dark:group-hover:!text-[#C6112F] transition-colors leading-snug mb-2">
                     {sponsor.name}
                   </h4>
                   {sponsor.website && (

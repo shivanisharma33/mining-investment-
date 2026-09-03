@@ -48,11 +48,101 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
     if (domain) return domain;
   }
   if (name) {
+    const cleanKey = name.toLowerCase().trim();
+    const DOMAIN_MAP: Record<string, string> = {
+      "agnico eagle mines limited": "agnicoeagle.com",
+      "amex exploration inc.": "amexexploration.com",
+      "archer exploration corp.": "archerexploration.com",
+      "arizona sonoran copper company inc.": "arizonasonoran.com",
+      "baselode energy corp.": "baselode.com",
+      "bonterra resources inc.": "bonterraresources.com",
+      "brunswick exploration inc.": "brunsdex.com",
+      "canada nickel company inc.": "canadanickel.com",
+      "cartier resources inc.": "ressourcescartier.com",
+      "doré copper mining corp.": "dorecopper.com",
+      "dore copper mining corp.": "dorecopper.com",
+      "emerita resources corp.": "emeritaresources.com",
+      "empress royalty corp.": "empressroyalty.com",
+      "emx royalty corp.": "emxroyalty.com",
+      "eu gold mining inc.": "eugoldmining.com",
+      "exiro minerals corp.": "exirominerals.com",
+      "exploits discovery corp.": "exploitsdiscovery.com",
+      "fireweed metals corp.": "fireweedmetals.com",
+      "first mining gold corp.": "firstmininggold.com",
+      "first phosphate corp.": "firstphosphate.com",
+      "first phosphate": "firstphosphate.com",
+      "fury gold mines limited": "furygoldmines.com",
+      "generation mining limited": "genmining.com",
+      "go metals corp.": "gometals.ca",
+      "gold royalty corp.": "goldroyalty.com",
+      "goliath resources limited": "goliathresourcesltd.com",
+      "harfang exploration inc.": "harfangexploration.com",
+      "hecla mining company": "hecla-mining.com",
+      "hycroft mining corp.": "hycroftmining.com",
+      "ion energy ltd.": "ionenergy.ca",
+      "jaguar mining inc.": "jaguarmining.com",
+      "juggernaut exploration inc.": "juggernautexploration.com",
+      "kirkland lake discoveries corp.": "kldiscoveries.com",
+      "lavras gold corp.": "lavrasgold.com",
+      "li-ft power ltd.": "li-ft.com",
+      "lithiumbank resources corp.": "lithiumbank.ca",
+      "lomiko metals inc.": "lomiko.com",
+      "maple gold mines ltd.": "maplegoldmines.com",
+      "maple gold mines": "maplegoldmines.com",
+      "midland exploration inc.": "midlandexploration.com",
+      "mundoro capital ltd.": "mundoro.com",
+      "nickel creek platinum corp.": "nickelcreekplatinum.com",
+      "northern superior resources inc.": "nsuperior.com",
+      "northwest copper corp.": "northwestcopper.ca",
+      "nouveau monde graphite inc.": "nouveaumonde.ca",
+      "nuvau minerals corp.": "nuvauminerals.com",
+      "o3 mining inc.": "o3mining.com",
+      "o3 mining": "o3mining.com",
+      "omai gold mines corp.": "omaigoldmines.com",
+      "orford mining corporation": "orfordmining.com",
+      "osisko development corp.": "osiskodev.com",
+      "osisko metals incorporated": "osiskometals.com",
+      "osisko mining inc.": "osiskomining.com",
+      "palladium one mining inc.": "palladiumoneinc.com",
+      "paramount gold nevada corp.": "paramountnevada.com",
+      "patriot battery metals inc.": "patriotbatterymetals.com",
+      "power nickel inc.": "powernickel.com",
+      "prospector metals corp.": "prospectormetals.com",
+      "qc copper & gold inc.": "qccopper.com",
+      "quebec nickel corp.": "quebecnickel.com",
+      "rackla metals inc.": "racklametals.com",
+      "red pine exploration inc.": "redpineexp.com",
+      "ridgeline minerals corp.": "ridgelineminerals.com",
+      "sayona mining limited": "sayonamining.com.au",
+      "signal gold inc.": "signalgold.com",
+      "sirios resources inc.": "sirios.com",
+      "skyharbour resources ltd.": "skyharbourltd.com",
+      "stelmine canada ltd.": "stelmine.com",
+      "steppe gold ltd.": "steppegold.com",
+      "stillwater critical minerals corp.": "criticalminerals.com",
+      "strategic resources inc.": "strategic-res.com",
+      "talisker resources ltd.": "taliskerresources.com",
+      "thunder gold corp.": "thundergoldcorp.com",
+      "troilus gold corp.": "troilusgold.com",
+      "troilus gold": "troilusgold.com",
+      "vanadiumcorp resource inc.": "vanadiumcorp.com",
+      "vanstar mining resources inc.": "vanstarmining.com",
+      "vision lithium inc.": "visionlithium.com",
+      "wallbridge mining company": "wallbridgemining.com",
+      "wesdome gold mines ltd.": "wesdome.com",
+      "west red lake gold mines ltd.": "westredlakegold.com",
+      "western copper and gold corp.": "westerncopperandgold.com"
+    };
+
+    if (DOMAIN_MAP[cleanKey]) {
+      return DOMAIN_MAP[cleanKey];
+    }
+
     const words = name
       .toLowerCase()
       .replace(/[^a-z0-9\s]/g, "")
       .split(/\s+/)
-      .filter((w) => !["inc", "corp", "corporation", "ltd", "limited", "llc", "co"].includes(w));
+      .filter((w) => !["inc", "corp", "corporation", "ltd", "limited", "llc", "co", "company"].includes(w));
     if (words.length > 0) {
       return `${words.join("")}.com`;
     }
@@ -78,12 +168,12 @@ export default function CompanyLogoImage({
 
   if (faviconUrl && !targetImgError) {
     return (
-      <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1 bg-white border border-neutral-200/90 rounded-xl shadow-xs shrink-0 overflow-hidden group-hover:border-[#C6112F]/40 transition-colors">
+      <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1.5 bg-neutral-50 dark:bg-zinc-800/80 border border-neutral-200/80 dark:border-zinc-700/80 rounded-xl shadow-2xs shrink-0 overflow-hidden group-hover:border-[#C6112F]/40 transition-all">
         <img
           src={faviconUrl}
           alt={name}
           onError={() => setTargetImgError(true)}
-          className="max-h-9 max-w-[40px] w-auto h-auto object-contain"
+          className="max-h-8 max-w-[36px] w-auto h-auto object-contain filter drop-shadow-xs"
         />
       </div>
     );
