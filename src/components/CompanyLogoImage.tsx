@@ -9,8 +9,8 @@ function getCompanyLogoBadge(name: string) {
     words.length > 1
       ? (words[0][0] + words[1][0]).toUpperCase()
       : words[0]
-      ? words[0].substring(0, 3).toUpperCase()
-      : "MIN";
+        ? words[0].substring(0, 3).toUpperCase()
+        : "MIN";
 
   const colors = [
     { bg: "bg-[#e65400]/10", text: "text-[#e65400]", border: "border-[#e65400]/30" },
@@ -28,7 +28,8 @@ function getCompanyLogoBadge(name: string) {
 
   return (
     <div
-      className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl border ${chosenColor.border} ${chosenColor.bg} flex items-center justify-center font-extrabold tracking-wider ${chosenColor.text} text-xs shadow-2xs shrink-0 select-none`}
+      style={{ backgroundColor: "#ffffff" }}
+      className={`logo-white-bg w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-neutral-200 !bg-white flex items-center justify-center font-extrabold tracking-wider ${chosenColor.text} text-xs shadow-2xs shrink-0 select-none`}
     >
       <span>{initials}</span>
     </div>
@@ -41,7 +42,7 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       const urlStr = website.startsWith("http") ? website : `https://${website}`;
       const hostname = new URL(urlStr).hostname.replace(/^www\./, "");
       if (hostname) return hostname;
-    } catch {}
+    } catch { }
   }
   if (email && email.includes("@")) {
     const domain = email.split("@")[1]?.trim();
@@ -55,8 +56,10 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "archer exploration corp.": "archerexploration.com",
       "arizona sonoran copper company inc.": "arizonasonoran.com",
       "baselode energy corp.": "baselode.com",
-      "bonterra resources inc.": "bonterraresources.com",
-      "brunswick exploration inc.": "brunsdex.com",
+      "bonterra resources inc.": "btrgold.com",
+      "bonterra resources": "btrgold.com",
+      "brunswick exploration inc.": "brwexplo.ca",
+      "brunswick exploration": "brwexplo.ca",
       "canada nickel company inc.": "canadanickel.com",
       "cartier resources inc.": "ressourcescartier.com",
       "doré copper mining corp.": "dorecopper.com",
@@ -74,6 +77,7 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "fury gold mines limited": "furygoldmines.com",
       "generation mining limited": "genmining.com",
       "go metals corp.": "gometals.ca",
+      "go metals": "gometals.ca",
       "gold royalty corp.": "goldroyalty.com",
       "goliath resources limited": "goliathresourcesltd.com",
       "harfang exploration inc.": "harfangexploration.com",
@@ -82,7 +86,8 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "ion energy ltd.": "ionenergy.ca",
       "jaguar mining inc.": "jaguarmining.com",
       "juggernaut exploration inc.": "juggernautexploration.com",
-      "kirkland lake discoveries corp.": "kldiscoveries.com",
+      "kirkland lake discoveries corp.": "kirklandlakediscoveries.com",
+      "kirkland lake discoveries": "kirklandlakediscoveries.com",
       "lavras gold corp.": "lavrasgold.com",
       "li-ft power ltd.": "li-ft.com",
       "lithiumbank resources corp.": "lithiumbank.ca",
@@ -107,7 +112,8 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "paramount gold nevada corp.": "paramountnevada.com",
       "patriot battery metals inc.": "patriotbatterymetals.com",
       "power nickel inc.": "powernickel.com",
-      "prospector metals corp.": "prospectormetals.com",
+      "prospector metals corp.": "prospectormetalscorp.com",
+      "prospector metals": "prospectormetalscorp.com",
       "qc copper & gold inc.": "qccopper.com",
       "quebec nickel corp.": "quebecnickel.com",
       "rackla metals inc.": "racklametals.com",
@@ -131,7 +137,19 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "wallbridge mining company": "wallbridgemining.com",
       "wesdome gold mines ltd.": "wesdome.com",
       "west red lake gold mines ltd.": "westredlakegold.com",
-      "western copper and gold corp.": "westerncopperandgold.com"
+      "western copper and gold corp.": "westerncopperandgold.com",
+      "steadright critical minerals inc.": "steadright.ca",
+      "steadright critical minerals": "steadright.ca",
+      "radisson mining resources inc.": "radissonmining.com",
+      "radisson mining resources": "radissonmining.com",
+      "puma exploration inc.": "explorationpuma.com",
+      "puma exploration": "explorationpuma.com",
+      "metal energy corp.": "metalenergy.ca",
+      "metal energy": "metalenergy.ca",
+      "leopard lake gold corp.": "leopardlake.ca",
+      "leopard lake gold": "leopardlake.ca",
+      "imetal resources inc.": "imetalresources.ca",
+      "imetal resources": "imetalresources.ca"
     };
 
     if (DOMAIN_MAP[cleanKey]) {
@@ -161,19 +179,40 @@ export default function CompanyLogoImage({
   logo?: string;
   website?: string;
 }) {
-  const [targetImgError, setTargetImgError] = useState(false);
+  const [imgSourceIndex, setImgSourceIndex] = useState(0);
 
   const domain = getDomainFromCompany(name, website, email);
-  const faviconUrl = logo || (domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=128` : null);
 
-  if (faviconUrl && !targetImgError) {
+  const sources = React.useMemo(() => {
+    const list: string[] = [];
+    const lowerName = (name || "").toLowerCase();
+    if (logo) {
+      list.push(logo);
+    } else if (lowerName.includes("o3 mining")) {
+      list.push("/o3_mining_logo.png");
+    }
+    if (domain) {
+      list.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
+      list.push(`https://icon.horse/icon/${domain}`);
+      list.push(`https://unavatar.io/${domain}?fallback=false`);
+    }
+    return list;
+  }, [logo, domain, name]);
+
+  const currentUrl = sources[imgSourceIndex];
+
+  if (currentUrl && imgSourceIndex < sources.length) {
     return (
-      <div className="h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1.5 bg-neutral-50 dark:bg-zinc-800/80 border border-neutral-200/80 dark:border-zinc-700/80 rounded-xl shadow-2xs shrink-0 overflow-hidden group-hover:border-[#C6112F]/40 transition-all">
+      <div
+        style={{ backgroundColor: "#ffffff" }}
+        className="logo-white-bg h-11 w-11 sm:h-12 sm:w-12 flex items-center justify-center p-1.5 bg-white border border-neutral-200 rounded-xl shadow-2xs shrink-0 overflow-hidden group-hover:border-[#C6112F]/40 transition-all"
+      >
         <img
-          src={faviconUrl}
+          src={currentUrl}
           alt={name}
-          onError={() => setTargetImgError(true)}
-          className="max-h-8 max-w-[36px] w-auto h-auto object-contain filter drop-shadow-xs"
+          onError={() => setImgSourceIndex((prev) => prev + 1)}
+          style={{ backgroundColor: "#ffffff" }}
+          className="logo-white-bg max-h-8 max-w-[36px] w-auto h-auto object-contain filter drop-shadow-xs rounded-sm"
         />
       </div>
     );

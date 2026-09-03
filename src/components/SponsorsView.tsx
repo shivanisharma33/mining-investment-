@@ -689,7 +689,7 @@ const SPONSORS_2024: SponsorItem[] = [
     name: "O3 Mining",
     website: "https://o3mining.mediaroom.com/",
     tier: "gold",
-    image: "/sponsers/LOGOS Mining (7).png",
+    image: "/o3_mining_logo.png",
   },
   // Silver Sponsors
   {
@@ -982,7 +982,7 @@ const SPONSORS_2023: SponsorItem[] = [
     name: "O3 Mining",
     website: "https://o3mining.mediaroom.com/",
     tier: "gold",
-    image: "/sponsers/LOGOS Mining (7).png",
+    image: "/o3_mining_logo.png",
   },
   {
     name: "JDS Energy & Mining Inc.",

@@ -88,8 +88,12 @@ i.fi-rr-golf-hole:before {
 }
 
 /* ── All White & Light Background Containers ── */
-.dark .bg-white {
+.dark .bg-white:not(.logo-white-bg) {
   background-color: #121215 !important;
+}
+.dark .logo-white-bg,
+.logo-white-bg {
+  background-color: #ffffff !important;
 }
 .dark :is(.bg-neutral-50, .bg-neutral-100, .bg-neutral-200, .bg-slate-50, .bg-slate-100) {
   background-color: #18181b !important;
