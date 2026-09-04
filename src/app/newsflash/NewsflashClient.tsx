@@ -110,16 +110,16 @@ export default function NewsflashClient({
         </section>
 
         {/* ═══════ NEWS FEED SECTION ═══════ */}
-        <section className="relative w-full py-16 sm:py-20 md:py-24">
+        <section className="relative w-full py-16 sm:py-20 md:py-24 bg-white dark:bg-[#09090b] transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("news-latest-label", "LATEST PRESS RELEASE")}
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
               {t("news-section-title-1", "Stay Informed with")} <span className="text-[#C6112F]">{t("news-section-title-2", "THE Press Release")}</span>
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[700px] mb-10 font-medium">
+            <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[700px] mb-10 font-medium">
               {t(
                 "news-section-desc",
                 "The latest press release, announcements and official updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates."
@@ -128,7 +128,7 @@ export default function NewsflashClient({
 
             {/* Search Row */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-              <span className="text-xs font-bold tracking-wider text-neutral-500">
+              <span className="text-xs font-bold tracking-wider text-neutral-500 dark:text-zinc-400">
                 {filteredNews.length}{" "}
                 press release
               </span>
@@ -143,7 +143,7 @@ export default function NewsflashClient({
                   placeholder={lang === "FR" ? "Rechercher..." : "Search updates..."}
                   value={searchQuery}
                   onChange={(e) => handleSearchChange(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 bg-white border border-neutral-200/90 rounded-full text-xs sm:text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
+                  className="w-full pl-10 pr-4 py-2 bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-700 rounded-full text-xs sm:text-sm text-neutral-900 dark:text-white placeholder:text-neutral-400 dark:placeholder:text-zinc-500 focus:outline-none focus:border-[#C6112F] transition-colors shadow-2xs"
                 />
               </div>
             </div>
@@ -221,14 +221,14 @@ export default function NewsflashClient({
                   return (
                     <article
                       key={item.id}
-                      className="group relative bg-white border border-neutral-200/90 rounded-2xl p-6 shadow-2xs hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between overflow-hidden text-left"
+                      className="group relative bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-6 shadow-2xs hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between overflow-hidden text-left"
                     >
                       <div className="absolute top-0 left-0 right-0 h-1 bg-[#C6112F] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                       <div>
                         {/* Date & Type Tag */}
                         <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
-                          <div className="px-3 py-1 bg-neutral-100/90 rounded-full text-neutral-600 font-semibold text-[11px] flex items-center gap-1.5">
+                          <div className="px-3 py-1 bg-neutral-100/90 dark:bg-zinc-800 rounded-full text-neutral-600 dark:text-zinc-300 font-semibold text-[11px] flex items-center gap-1.5">
                             <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                               <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                               <line x1="16" y1="2" x2="16" y2="6" />
@@ -237,7 +237,7 @@ export default function NewsflashClient({
                             <span>{item.date}</span>
                           </div>
 
-                          <span className="px-3 py-1 bg-[#C6112F]/10 text-[#C6112F] group-hover:bg-[#C6112F] group-hover:text-white text-[10px] font-bold tracking-wider uppercase rounded-full transition-colors duration-300">
+                          <span className="px-3 py-1 bg-[#C6112F]/10 dark:bg-[#C6112F]/20 text-[#C6112F] dark:text-[#ff4d6d] group-hover:bg-[#C6112F] group-hover:text-white text-[10px] font-bold tracking-wider uppercase rounded-full transition-colors duration-300">
                             Press Release
                           </span>
                         </div>
@@ -245,23 +245,23 @@ export default function NewsflashClient({
                         {/* Title */}
                         <h3
                           onClick={() => router.push(`/newsflash/${articleSlug}`)}
-                          className="text-base sm:text-lg font-black text-[#1a1f2c] leading-snug mb-3 group-hover:text-[#C6112F] transition-colors duration-300 cursor-pointer line-clamp-3"
+                          className="text-base sm:text-lg font-black text-[#1a1f2c] dark:text-white leading-snug mb-3 group-hover:text-[#C6112F] transition-colors duration-300 cursor-pointer line-clamp-3"
                         >
                           {item.title}
                         </h3>
 
                         {/* Snippet / Subheading */}
-                        <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium line-clamp-3">
+                        <p className="text-neutral-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6 font-medium line-clamp-3">
                           {item.summary || item.body}
                         </p>
                       </div>
 
                       {/* PDF Button & Read Full News Link Footer Row */}
-                      <div className="pt-4 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-2 mt-auto">
+                      <div className="pt-4 border-t border-neutral-100 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-2 mt-auto">
                         <div className="flex items-center gap-2">
                           <Link
                             href={`/newsflash/${articleSlug}`}
-                            className="text-xs font-bold tracking-wider uppercase text-neutral-800 group-hover:text-[#C6112F] transition-colors inline-flex items-center gap-1"
+                            className="text-xs font-bold tracking-wider uppercase text-neutral-800 dark:text-zinc-200 group-hover:text-[#C6112F] transition-colors inline-flex items-center gap-1"
                           >
                             <span>Read Full News</span>
                             <svg className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -293,10 +293,10 @@ export default function NewsflashClient({
 
             {/* 🌟 EXECUTIVE PAGINATION CONTROLS 🌟 */}
             {totalPages > 1 && (
-              <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white border border-neutral-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs">
+              <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-4 sm:p-5 shadow-2xs transition-colors">
                 {/* Status Readout */}
-                <div className="text-xs font-semibold text-neutral-600">
-                  Showing <span className="font-extrabold text-neutral-900">{startIndex + 1}</span> - <span className="font-extrabold text-neutral-900">{Math.min(startIndex + ITEMS_PER_PAGE, remainingNews.length)}</span> of <span className="font-extrabold text-[#C6112F]">{remainingNews.length}</span> press release
+                <div className="text-xs font-semibold text-neutral-600 dark:text-zinc-400">
+                  Showing <span className="font-extrabold text-neutral-900 dark:text-white">{startIndex + 1}</span> - <span className="font-extrabold text-neutral-900 dark:text-white">{Math.min(startIndex + ITEMS_PER_PAGE, remainingNews.length)}</span> of <span className="font-extrabold text-[#C6112F]">{remainingNews.length}</span> press release
                 </div>
 
                 {/* Controls */}
@@ -305,8 +305,8 @@ export default function NewsflashClient({
                     onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
                     disabled={currentPage === 1}
                     className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${currentPage === 1
-                        ? "bg-neutral-100 text-neutral-400 cursor-not-allowed border border-neutral-200"
-                        : "bg-white text-neutral-800 hover:bg-neutral-100 border border-neutral-300 shadow-2xs"
+                        ? "bg-neutral-100 dark:bg-zinc-900 text-neutral-400 dark:text-zinc-600 cursor-not-allowed border border-neutral-200 dark:border-zinc-800"
+                        : "bg-white dark:bg-zinc-800 text-neutral-800 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700 border border-neutral-300 dark:border-zinc-700 shadow-2xs"
                       }`}
                   >
                     ‹ Prev
@@ -320,7 +320,7 @@ export default function NewsflashClient({
                         onClick={() => setCurrentPage(pageNum)}
                         className={`w-9 h-9 rounded-xl text-xs font-black transition-all cursor-pointer ${isActive
                             ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
-                            : "bg-white text-neutral-700 hover:bg-neutral-100 border border-neutral-200 shadow-2xs"
+                            : "bg-white dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 hover:bg-neutral-100 dark:hover:bg-zinc-700 border border-neutral-200 dark:border-zinc-700 shadow-2xs"
                           }`}
                       >
                         {pageNum}
@@ -332,8 +332,8 @@ export default function NewsflashClient({
                     onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
                     disabled={currentPage === totalPages}
                     className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${currentPage === totalPages
-                        ? "bg-neutral-100 text-neutral-400 cursor-not-allowed border border-neutral-200"
-                        : "bg-white text-neutral-800 hover:bg-neutral-100 border border-neutral-300 shadow-2xs"
+                        ? "bg-neutral-100 dark:bg-zinc-900 text-neutral-400 dark:text-zinc-600 cursor-not-allowed border border-neutral-200 dark:border-zinc-800"
+                        : "bg-white dark:bg-zinc-800 text-neutral-800 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700 border border-neutral-300 dark:border-zinc-700 shadow-2xs"
                       }`}
                   >
                     Next ›
@@ -343,8 +343,8 @@ export default function NewsflashClient({
             )}
 
             {/* Subscribe footer */}
-            <div className="mt-16 text-center bg-white border border-neutral-200/80 rounded-3xl p-8 shadow-2xs">
-              <p className="text-neutral-600 text-sm font-medium">
+            <div className="mt-16 text-center bg-white dark:bg-[#121215] border border-neutral-200/80 dark:border-zinc-800 rounded-3xl p-8 shadow-2xs transition-colors">
+              <p className="text-neutral-600 dark:text-zinc-300 text-sm font-medium">
                 {t("news-subscribe-text", "For more information and to subscribe to THE Newsflash, contact")}{" "}
                 <a href="mailto:jchoi@irinc.ca" className="text-[#C6112F] font-bold hover:underline ml-1">
                   jchoi@irinc.ca

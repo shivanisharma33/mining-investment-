@@ -147,22 +147,22 @@ export default function AboutPage() {
         </section>
 
         {/* ═══════════════ SECTION 2: ABOUT LEAD + SIDEBAR ═══════════════ */}
-        <section className="relative w-full bg-white py-16 sm:py-20 md:py-24 overflow-hidden">
+        <section className="relative w-full bg-white dark:bg-[#09090b] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-16">
               {/* Left Column: Lead Content */}
               <div className="flex flex-col">
-                <p className="text-base sm:text-lg md:text-xl font-normal text-neutral-800 leading-relaxed mb-6">
+                <p className="text-base sm:text-lg md:text-xl font-normal text-neutral-800 dark:text-zinc-200 leading-relaxed mb-6">
                   {lang === "FR" ? (
                     <>
-                      <strong className="font-extrabold text-neutral-900">
+                      <strong className="font-extrabold text-neutral-900 dark:text-white">
                         L&apos;Événement d&apos;Investissement Minier—La seule conférence mondiale de niveau 1 sur l&apos;investissement minier au Canada© se tient annuellement à Québec, Canada.
                       </strong>{" "}
                       Il est détenu et associé de manière indépendante pour faciliter les réunions privées entre les sociétés minières, les investisseurs internationaux et diverses autorités minières et gouvernementales. La conférence offre une plate-forme pour entendre certains des leaders d&apos;opinion les plus influents du secteur. L&apos;Événement s&apos;engage à promouvoir la diversité, l&apos;égalité et la durabilité dans l&apos;industrie minière par l&apos;éducation et l&apos;innovation, soutenue par son programme unique de partenariat étudiant et l&apos;initiative THE SHE-Co.
                     </>
                   ) : (
                     <>
-                      <strong className="font-extrabold text-neutral-900">
+                      <strong className="font-extrabold text-neutral-900 dark:text-white">
                         THE Mining Investment Event—Canada’s Only Tier 1 Global Mining Investment Conference© is held annually in Québec City, Canada.
                       </strong>{" "}
                       It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors, and various mining and government authorities. The conference provides a platform to hear from some of the most influential thought leaders in the sector. THE Event is committed to promoting diversity, equality, and sustainability in the mining industry through education and innovation, supported by its unique Student Partnership Program and THE SHE-Co Initiative.
@@ -170,7 +170,7 @@ export default function AboutPage() {
                   )}
                 </p>
 
-                <p className="text-base sm:text-lg md:text-xl font-semibold text-neutral-800 leading-relaxed mb-8">
+                <p className="text-base sm:text-lg md:text-xl font-semibold text-neutral-800 dark:text-zinc-200 leading-relaxed mb-8">
                   {t(
                     "about-body-2",
                     "THE Event is a founding member of International Mining Week (“IMW”), also taking place in Quebec City. IMW promotes other industry-focused conferences and activities that unite global mining companies, related businesses, supply chain experts, investors, and government officials in one location for discussions and collaborative meetings across the industry."
@@ -178,11 +178,11 @@ export default function AboutPage() {
                 </p>
 
                 {/* Quote Section Right Below */}
-                <blockquote className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] bg-[#fff5f6] rounded-r-2xl p-6 sm:p-8 my-4 mb-10 shadow-sm border border-neutral-200/60">
-                  <p className="text-base sm:text-lg md:text-xl font-bold italic text-neutral-900 leading-relaxed mb-3">
+                <blockquote className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] bg-[#fff5f6] dark:bg-[#18181b] rounded-r-2xl p-6 sm:p-8 my-4 mb-10 shadow-sm border border-neutral-200/60 dark:border-zinc-800 transition-colors">
+                  <p className="text-base sm:text-lg md:text-xl font-bold italic text-neutral-900 dark:text-white leading-relaxed mb-3">
                     “Some of the most important conversations around mining are happening at THE Mining Investment Event in Canada, where government, supply chains, Indigenous communities, investors, and companies can have meaningful discussions in private.”
                   </p>
-                  <cite className="text-xs sm:text-sm font-black text-[#C6112F] uppercase tracking-wider not-italic block">
+                  <cite className="text-xs sm:text-sm font-black text-[#C6112F] dark:text-[#ff4d6d] uppercase tracking-wider not-italic block">
                     — Hon. Yvonne Rumbolt-Jones, former MP Labrador
                   </cite>
                 </blockquote>
@@ -231,8 +231,8 @@ export default function AboutPage() {
               {/* Right Column: Sidebar */}
               <div className="flex flex-col gap-6">
                 {/* Quick Facts Card */}
-                <div className="bg-[#f8fafc] border border-neutral-200 rounded-2xl p-6 sm:p-8 shadow-sm">
-                  <h3 className="text-lg font-black text-[#1a1f2c] tracking-tight mb-5 flex items-center gap-2.5">
+                <div className="bg-[#f8fafc] dark:bg-[#121215] border border-neutral-200 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 shadow-sm transition-colors">
+                  <h3 className="text-lg font-black text-[#1a1f2c] dark:text-white tracking-tight mb-5 flex items-center gap-2.5">
                     <span className="w-1.5 h-6 bg-[#C6112F] rounded-full" />
                     {t("about-quick-facts", "Quick Facts")}
                   </h3>
@@ -242,10 +242,10 @@ export default function AboutPage() {
                         key={i}
                         className="flex items-start gap-3 group/fact"
                       >
-                        <span className="mt-1 w-5 h-5 rounded-full bg-white border border-neutral-200 flex items-center justify-center shrink-0 group-hover/fact:border-[#C6112F]/30 group-hover/fact:bg-[#fef2f2] transition-all duration-300">
+                        <span className="mt-1 w-5 h-5 rounded-full bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0 group-hover/fact:border-[#C6112F]/30 group-hover/fact:bg-[#fef2f2] dark:group-hover/fact:bg-[#C6112F]/20 transition-all duration-300">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F]" />
                         </span>
-                        <span className="text-neutral-700 text-sm leading-relaxed font-medium">
+                        <span className="text-neutral-700 dark:text-zinc-300 text-sm leading-relaxed font-medium">
                           {fact}
                         </span>
                       </div>
@@ -292,14 +292,14 @@ export default function AboutPage() {
         </section>
 
         {/* ═══════════════ SECTION 4: WHAT MAKES US DIFFERENT ═══════════════ */}
-        <section className="relative w-full bg-[#f4f7fa] py-16 sm:py-20 md:py-24 overflow-hidden">
+        <section className="relative w-full bg-[#f4f7fa] dark:bg-[#09090b] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             {/* Section Header */}
             <div className="text-center mb-12 sm:mb-16">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
                 {t("about-diff-tag", "WHY THE EVENT")}
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
                 {t("about-diff-title", "What Makes Us Different")}
               </h2>
               <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto" />
@@ -310,20 +310,20 @@ export default function AboutPage() {
               {features.map((feat, i) => (
                 <div
                   key={i}
-                  className="group relative bg-white border border-neutral-200 rounded-2xl p-7 sm:p-9 hover:border-[#C6112F]/30 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
+                  className="group relative bg-white dark:bg-[#121215] border border-neutral-200 dark:border-zinc-800 rounded-2xl p-7 sm:p-9 hover:border-[#C6112F]/30 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
                 >
                   {/* Top accent bar */}
                   <div className="absolute top-0 left-8 right-8 h-[3px] bg-gradient-to-r from-transparent via-[#C6112F] to-transparent rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <div className="w-14 h-14 rounded-2xl bg-[#fef2f2] border border-[#C6112F]/10 flex items-center justify-center text-[#C6112F] mb-5 group-hover:bg-[#C6112F] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#C6112F]/20 transition-all duration-300">
+                  <div className="w-14 h-14 rounded-2xl bg-[#fef2f2] dark:bg-[#C6112F]/15 border border-[#C6112F]/10 dark:border-[#C6112F]/30 flex items-center justify-center text-[#C6112F] mb-5 group-hover:bg-[#C6112F] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[#C6112F]/20 transition-all duration-300">
                     {feat.icon}
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-black text-[#1a1f2c] mb-3 tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-black text-[#1a1f2c] dark:text-white mb-3 tracking-tight">
                     {t(feat.titleKey, feat.titleDefault)}
                   </h3>
                   <div className="w-10 h-[2px] bg-[#C6112F] rounded-full mb-4 group-hover:w-14 transition-all duration-300" />
-                  <p className="text-neutral-600 text-sm leading-relaxed font-medium">
+                  <p className="text-neutral-600 dark:text-zinc-400 text-sm leading-relaxed font-medium">
                     {t(feat.descKey, feat.descDefault)}
                   </p>
                 </div>

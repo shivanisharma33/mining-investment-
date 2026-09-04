@@ -76,13 +76,13 @@ export default async function NewsflashArticlePage({
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-[#f8fafc] text-left pt-24 sm:pt-28 pb-16">
+      <main className="flex flex-col flex-grow w-full bg-[#f8fafc] dark:bg-[#09090b] text-left pt-24 sm:pt-28 pb-16 transition-colors duration-300">
         <div className="max-w-[860px] mx-auto px-4 sm:px-6 md:px-8 w-full">
           {/* Breadcrumb + back */}
           <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
             <Link
               href="/newsflash"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white hover:bg-neutral-100 text-neutral-800 text-xs font-bold transition-all border border-neutral-200/90 shadow-2xs group"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-[#18181b] hover:bg-neutral-100 dark:hover:bg-zinc-800 text-neutral-800 dark:text-zinc-200 text-xs font-bold transition-all border border-neutral-200/90 dark:border-zinc-800 shadow-2xs group"
             >
               <svg className="w-4 h-4 text-[#C6112F] group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -90,26 +90,26 @@ export default async function NewsflashArticlePage({
               <span>All Press Release</span>
             </Link>
 
-            <nav className="flex items-center gap-2 text-xs font-semibold text-neutral-500 flex-wrap">
+            <nav className="flex items-center gap-2 text-xs font-semibold text-neutral-500 dark:text-zinc-400 flex-wrap">
               <Link href="/" className="hover:text-[#C6112F] transition-colors">Home</Link>
               <span className="text-[#C6112F]">›</span>
               <Link href="/newsflash" className="hover:text-[#C6112F] transition-colors">THE Press Release</Link>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-neutral-900 font-extrabold truncate max-w-[220px]">
+              <span className="text-neutral-900 dark:text-white font-extrabold truncate max-w-[220px]">
                 {article.title}
               </span>
             </nav>
           </div>
 
-          <article className="bg-white rounded-3xl shadow-md border border-neutral-200/90 overflow-hidden">
+          <article className="bg-white dark:bg-[#121215] rounded-3xl shadow-md border border-neutral-200/90 dark:border-zinc-800 overflow-hidden transition-colors">
             {/* Header */}
-            <header className="p-6 sm:p-10 md:p-12 border-b border-neutral-100">
+            <header className="p-6 sm:p-10 md:p-12 border-b border-neutral-100 dark:border-zinc-800">
               <div className="flex items-center gap-2.5 mb-5 flex-wrap">
-                <span className="px-3.5 py-1 bg-[#C6112F]/10 border border-[#C6112F]/20 text-[#C6112F] text-[11px] font-black uppercase tracking-[0.2em] rounded-full">
+                <span className="px-3.5 py-1 bg-[#C6112F]/10 dark:bg-[#C6112F]/20 border border-[#C6112F]/20 dark:border-[#C6112F]/30 text-[#C6112F] dark:text-[#ff4d6d] text-[11px] font-black uppercase tracking-[0.2em] rounded-full">
                   Press Release
                 </span>
                 {publishedOn && (
-                  <span className="px-3.5 py-1 bg-neutral-100 text-neutral-700 text-xs font-semibold rounded-full border border-neutral-200 flex items-center gap-1.5">
+                  <span className="px-3.5 py-1 bg-neutral-100 dark:bg-zinc-800/80 text-neutral-700 dark:text-zinc-300 text-xs font-semibold rounded-full border border-neutral-200 dark:border-zinc-700 flex items-center gap-1.5">
                     <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                       <line x1="16" y1="2" x2="16" y2="6" />
@@ -118,7 +118,7 @@ export default async function NewsflashArticlePage({
                     {publishedOn}
                   </span>
                 )}
-                <span className="px-3.5 py-1 bg-neutral-100 text-neutral-700 text-xs font-semibold rounded-full border border-neutral-200 flex items-center gap-1.5">
+                <span className="px-3.5 py-1 bg-neutral-100 dark:bg-zinc-800/80 text-neutral-700 dark:text-zinc-300 text-xs font-semibold rounded-full border border-neutral-200 dark:border-zinc-700 flex items-center gap-1.5">
                   <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="9" />
                     <polyline points="12 7 12 12 15 14" />
@@ -127,17 +127,17 @@ export default async function NewsflashArticlePage({
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl md:text-[42px] font-black text-neutral-900 leading-[1.15] tracking-tight text-balance">
+              <h1 className="text-2xl sm:text-4xl md:text-[42px] font-black text-neutral-900 dark:text-white leading-[1.15] tracking-tight text-balance">
                 {article.title}
               </h1>
 
               {article.summary && (
-                <p className="mt-5 text-base sm:text-lg text-neutral-600 leading-relaxed font-medium border-l-4 border-[#C6112F] pl-5">
+                <p className="mt-5 text-base sm:text-lg text-neutral-600 dark:text-zinc-300 leading-relaxed font-medium border-l-4 border-[#C6112F] pl-5">
                   {article.summary}
                 </p>
               )}
 
-              <div className="flex flex-wrap items-center justify-between gap-3 pt-6 mt-6 border-t border-neutral-100">
+              <div className="flex flex-wrap items-center justify-between gap-3 pt-6 mt-6 border-t border-neutral-100 dark:border-zinc-800">
                 <ShareBar title={article.title} />
 
                 {pdfUrl && (
@@ -166,18 +166,18 @@ export default async function NewsflashArticlePage({
                   dangerouslySetInnerHTML={{ __html: article.bodyHtml }}
                 />
               ) : (
-                <p className="text-sm text-neutral-500 font-medium">
+                <p className="text-sm text-neutral-500 dark:text-zinc-400 font-medium">
                   The full text of this release is available in the attached PDF.
                 </p>
               )}
 
               {pdfUrl && (
-                <div className="mt-10 p-6 bg-neutral-50 border border-neutral-200/90 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="mt-10 p-6 bg-neutral-50 dark:bg-zinc-900/60 border border-neutral-200/90 dark:border-zinc-800 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <h3 className="text-sm font-extrabold text-neutral-900 uppercase tracking-wider mb-1">
+                    <h3 className="text-sm font-extrabold text-neutral-900 dark:text-white uppercase tracking-wider mb-1">
                       Official PDF press document
                     </h3>
-                    <p className="text-xs text-neutral-600 font-medium">
+                    <p className="text-xs text-neutral-600 dark:text-zinc-400 font-medium">
                       View the official press release exactly as issued.
                     </p>
                   </div>
@@ -185,15 +185,15 @@ export default async function NewsflashArticlePage({
                     href={openPdfUrl(pdfUrl)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 px-5 py-2.5 rounded-xl bg-[#0f1117] hover:bg-[#C6112F] text-white text-xs font-black uppercase tracking-wider transition-all shadow-md"
+                    className="shrink-0 px-5 py-2.5 rounded-xl bg-[#0f1117] dark:bg-zinc-800 hover:bg-[#C6112F] dark:hover:bg-[#C6112F] text-white text-xs font-black uppercase tracking-wider transition-all shadow-md"
                   >
                     Open PDF
                   </a>
                 </div>
               )}
 
-              <div className="mt-10 pt-6 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-4">
-                <p className="text-xs text-neutral-500 font-medium">
+              <div className="mt-10 pt-6 border-t border-neutral-100 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+                <p className="text-xs text-neutral-500 dark:text-zinc-400 font-medium">
                   For media enquiries, contact{" "}
                   <a href="mailto:jchoi@irinc.ca" className="text-[#C6112F] font-bold hover:underline">
                     jchoi@irinc.ca
@@ -211,7 +211,7 @@ export default async function NewsflashArticlePage({
                 <b className="text-xs font-extrabold text-[#C6112F] tracking-[0.25em] uppercase whitespace-nowrap">
                   More Press Release
                 </b>
-                <div className="flex-grow h-px bg-neutral-200" />
+                <div className="flex-grow h-px bg-neutral-200 dark:bg-zinc-800" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -219,15 +219,15 @@ export default async function NewsflashArticlePage({
                   <Link
                     key={item.id}
                     href={`/newsflash/${item.slug}`}
-                    className="group bg-white border border-neutral-200/90 rounded-2xl p-5 shadow-2xs hover:shadow-lg hover:border-[#C6112F]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                    className="group bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-5 shadow-2xs hover:shadow-lg hover:border-[#C6112F]/40 hover:-translate-y-1 transition-all duration-300 flex flex-col"
                   >
                     <span className="text-[10px] font-black tracking-wider uppercase text-[#C6112F] mb-2">
                       Press Release
                     </span>
-                    <h3 className="text-sm font-extrabold text-[#1a1f2c] leading-snug line-clamp-3 group-hover:text-[#C6112F] transition-colors">
+                    <h3 className="text-sm font-extrabold text-[#1a1f2c] dark:text-white leading-snug line-clamp-3 group-hover:text-[#C6112F] transition-colors">
                       {item.title}
                     </h3>
-                    <span className="mt-auto pt-4 text-[11px] font-semibold text-neutral-500">
+                    <span className="mt-auto pt-4 text-[11px] font-semibold text-neutral-500 dark:text-zinc-400">
                       {item.date}
                     </span>
                   </Link>

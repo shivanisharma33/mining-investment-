@@ -526,13 +526,42 @@ export default function CompaniesView({
                     {company.commodities.split(",").slice(0, 3).map((comm, cIdx) => (
                       <span
                         key={cIdx}
-                        className="bg-neutral-100 text-neutral-700 text-[10px] px-1.5 py-0.5 rounded font-semibold"
+                        className="bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-300 text-[10px] px-1.5 py-0.5 rounded font-semibold"
                       >
                         {comm.trim()}
                       </span>
                     ))}
                   </div>
                 )}
+                {(() => {
+                  const candidateDomain = company.name
+                    ? company.name
+                        .toLowerCase()
+                        .replace(/[^a-z0-9\s]/g, "")
+                        .split(/\s+/)
+                        .filter((w) => !["inc", "corp", "corporation", "ltd", "limited", "llc", "co"].includes(w))
+                        .join("") + ".com"
+                    : null;
+                  const siteUrl =
+                    company.website ||
+                    (company.email && company.email.includes("@") ? `https://${company.email.split("@")[1]}` : null) ||
+                    (candidateDomain ? `https://www.${candidateDomain}` : null);
+                  if (!siteUrl) return null;
+                  const fullUrl = siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`;
+                  return (
+                    <a
+                      href={fullUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="ml-auto inline-flex items-center gap-1 text-[11px] font-bold text-[#C6112F] hover:underline"
+                    >
+                      <span>{isFr ? "Visiter" : "Visit"}</span>
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                      </svg>
+                    </a>
+                  );
+                })()}
               </div>
             </div>
           ))

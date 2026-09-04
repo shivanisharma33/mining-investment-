@@ -60,6 +60,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Au",
     "email": "info@abcourt.com",
+    "website": "https://www.abcourt.ca/",
+    "logo": "/abcourt.png",
     "year": 2026
   },
   {
@@ -382,6 +384,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Cu",
     "email": "info@cupanimetals.com",
+    "website": "https://cupanimetals.com/",
     "year": 2026
   },
   {
@@ -1192,6 +1195,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Li",
     "email": "info@q2metals.com",
+    "website": "https://q2metals.com/",
     "year": 2026
   },
   {
@@ -1660,6 +1664,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "GLOBAL",
     "commodities": "Au",
+    "website": "https://www.agnicoeagle.com/English/home/default.aspx",
     "year": 2023
   },
   {
@@ -1676,6 +1681,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA",
     "commodities": "Ni, Cu",
+    "website": "https://www.archerexp.com/",
     "year": 2023
   },
   {
@@ -1684,6 +1690,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "USA/AZ",
     "commodities": "Cu",
+    "website": "https://arizonasonoran.com/",
     "year": 2023
   },
   {
@@ -1692,6 +1699,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/SK",
     "commodities": "U",
+    "website": "https://geigerenergy.com/",
     "year": 2023
   },
   {
@@ -1700,6 +1708,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://btrgold.com/",
     "year": 2023
   },
   {
@@ -1708,6 +1717,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA",
     "commodities": "Li",
+    "website": "https://brwexplo.ca/",
     "year": 2023
   },
   {
@@ -1716,6 +1726,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/ON",
     "commodities": "Ni",
+    "website": "https://canadanickel.com/",
     "year": 2023
   },
   {
@@ -1724,6 +1735,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://ressourcescartier.com/",
     "year": 2023
   },
   {
@@ -1732,6 +1744,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC",
     "commodities": "Cu, Au",
+    "website": "https://www.dorecopper.com/en/category/news-releases/newsreleases2023/",
     "year": 2023
   },
   {
@@ -1820,6 +1833,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/ON",
     "commodities": "Pd, Cu, Pt",
+    "website": "https://genmining.com/",
     "year": 2023
   },
   {
@@ -1828,6 +1842,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC, YT",
     "commodities": "Ni, Cu, Co",
+    "website": "https://gometals.ca/",
     "year": 2023
   },
   {
@@ -1836,6 +1851,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTY",
     "location": "GLOBAL",
     "commodities": "Au",
+    "website": "https://www.goldroyalty.com/",
     "year": 2023
   },
   {
@@ -1844,6 +1860,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/BC",
     "commodities": "Au, Ag",
+    "website": "https://goliathresourcesltd.com/",
     "year": 2023
   },
   {
@@ -1852,6 +1869,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://harfangexploration.com/",
     "year": 2023
   },
   {
@@ -1860,6 +1878,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "USA, CANADA",
     "commodities": "Ag, Au",
+    "website": "https://www.hecla.com/",
     "year": 2023
   },
   {
@@ -1924,6 +1943,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/AB, SK",
     "commodities": "Li",
+    "website": "https://www.lithiumbank.ca/",
     "year": 2023
   },
   {
@@ -1956,6 +1976,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "EUROPE, USA",
     "commodities": "Cu, Au",
+    "website": "https://www.mundoro.com/",
     "year": 2023
   },
   {
@@ -1964,6 +1985,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/YT",
     "commodities": "Ni, Cu, Co, Pt, Pd",
+    "website": "https://www.nickelcreekplatinum.com/Home/default.aspx",
     "year": 2023
   },
   {
@@ -1980,6 +2002,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/BC",
     "commodities": "Cu, Au",
+    "website": "https://northwestcopper.ca/",
     "year": 2023
   },
   {
@@ -1988,6 +2011,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC",
     "commodities": "C",
+    "website": "https://nmg.com/",
     "year": 2023
   },
   {
@@ -2520,6 +2544,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://www.abcourt.ca/",
+    "logo": "/abcourt.png",
     "year": 2025
   },
   {
@@ -2529,6 +2555,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Cu",
+    "website": "https://www.abitibimetals.com/",
     "year": 2025
   },
   {
@@ -2538,6 +2565,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "ARGENTINA",
     "commodities": "Au, Ag",
+    "website": "https://www.abrasilver.com/",
     "year": 2025
   },
   {
@@ -2547,6 +2575,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "GLOBAL",
     "commodities": "Au",
+    "website": "https://www.agnicoeagle.com/English/home/default.aspx",
     "year": 2025
   },
   {
@@ -2556,6 +2585,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://amexexploration.com/",
     "year": 2025
   },
   {
@@ -2565,6 +2595,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "USA/CA; MEXICO; BOLIVIA",
     "commodities": "Au, Ag",
+    "website": "https://andeanpm.com/",
     "year": 2025
   },
   {
@@ -2574,6 +2605,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "USA/AZ",
     "commodities": "Au, Cu",
+    "website": "https://www.arizonametalscorp.com/",
     "year": 2025
   },
   {
@@ -2583,6 +2615,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/NV, SK",
     "commodities": "U308",
+    "website": "https://athaenergy.com/",
     "year": 2025
   },
   {
@@ -2592,6 +2625,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "ECUADOR",
     "commodities": "Au",
+    "website": "https://aurania.com/",
     "year": 2025
   },
   {
@@ -2601,6 +2635,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/QC",
     "commodities": "Li",
+    "website": "https://brwexplo.ca/",
     "year": 2025
   },
   {
@@ -2610,6 +2645,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "USA/ID, CO",
     "commodities": "Ag, Pb, Zn",
+    "website": "https://www.bunkerhillmining.com/",
     "year": 2025
   },
   {
@@ -2619,6 +2655,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/NFLD; USA; NICARAGUA",
     "commodities": "Au",
+    "website": "https://calibremining.com/",
     "year": 2025
   },
   {
@@ -2628,6 +2665,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/NFLD, AB",
     "commodities": "Cu, Zi, Pb, Au",
+    "website": "https://canterraminerals.com/",
     "year": 2025
   },
   {
@@ -2637,6 +2675,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "COLOMBIA",
     "commodities": "Au, Ag, Cu",
+    "website": "https://collectivemining.com/",
     "year": 2025
   },
   {
@@ -2646,6 +2685,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://drydengold.com/",
     "year": 2025
   },
   {
@@ -2655,6 +2695,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/NFLD",
     "commodities": "Au",
+    "website": "https://epicgoldcorp.com/",
     "year": 2025
   },
   {
@@ -2664,6 +2705,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/NFLD",
     "commodities": "Cu, Au",
+    "website": "https://fireflymetals.com.au/",
     "year": 2025
   },
   {
@@ -2673,6 +2715,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/YK, NWT",
     "commodities": "Zn, Pb, Ag, W, Ge, Ga",
+    "website": "https://fireweedmetals.com/",
     "year": 2025
   },
   {
@@ -2682,6 +2725,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/ON, QC, NFLD",
     "commodities": "Au",
+    "website": "https://www.firstmininggold.com/",
     "year": 2025
   },
   {
@@ -2691,6 +2735,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/BC; USA/NV",
     "commodities": "Au, Ag",
+    "website": "https://strikepointgold.com/",
     "year": 2025
   },
   {
@@ -2700,6 +2745,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/MB",
     "commodities": "Li, Cu, Ni",
+    "website": "https://gridmetalscorp.com/",
     "year": 2025
   },
   {
@@ -2709,6 +2755,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/GLOBAL",
     "commodities": "Cu, Ni, Zn, Pb",
+    "website": "https://www.glencore.ca/en",
     "year": 2025
   },
   {
@@ -2718,6 +2765,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTY",
     "location": "GLOBAL",
     "commodities": "Royalties",
+    "website": "https://goldroyalty.com/",
     "year": 2025
   },
   {
@@ -2727,6 +2775,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://kenorlandminerals.com/",
     "year": 2025
   },
   {
@@ -2736,6 +2785,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://kirklandlakediscoveries.com/",
     "year": 2025
   },
   {
@@ -2745,6 +2795,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "BRAZIL",
     "commodities": "Au",
+    "website": "https://lavrasgold.com/",
     "year": 2025
   },
   {
@@ -2754,6 +2805,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://maplegoldmines.com/",
     "year": 2025
   },
   {
@@ -2763,6 +2815,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/NFLD",
     "commodities": "Au",
+    "website": "https://maritimeresourcescorp.com/",
     "year": 2025
   },
   {
@@ -2772,6 +2825,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au, PGE's",
+    "website": "https://midlandexploration.com/",
     "year": 2025
   },
   {
@@ -2781,6 +2835,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "COLOMBIA; CHILE; NICARAGUA",
     "commodities": "Au",
+    "website": "https://www.mineros.com.co/",
     "year": 2025
   },
   {
@@ -2790,6 +2845,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/ON, BC",
     "commodities": "Au",
+    "website": "https://www.newgold.com/",
     "year": 2025
   },
   {
@@ -2799,6 +2855,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Zn, Cu",
+    "website": "https://nuvauminerals.com/",
     "year": 2025
   },
   {
@@ -2808,6 +2865,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/BC; USA/UT",
     "commodities": "Au",
+    "website": "https://osiskodev.com/",
     "year": 2025
   },
   {
@@ -2817,6 +2875,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTY",
     "location": "GLOBAL",
     "commodities": "Royalties",
+    "website": "https://www.osiskogr.com/",
     "year": 2025
   },
   {
@@ -2826,6 +2885,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/QC, NT",
     "commodities": "Cu, Zn",
+    "website": "https://osiskometals.com/",
     "year": 2025
   },
   {
@@ -2835,6 +2895,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPL/DEV",
     "location": "CANADA/QC",
     "commodities": "Li",
+    "website": "https://patriotbatterymetals.com/",
     "year": 2025
   },
   {
@@ -2844,6 +2905,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "USA/NV",
     "commodities": "Li",
+    "website": "https://pelotonminerals.com/",
     "year": 2025
   },
   {
@@ -2853,6 +2915,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Ni",
+    "website": "https://www.powermetallic.com/",
     "year": 2025
   },
   {
@@ -2862,6 +2925,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "COLOMBIA",
     "commodities": "Au",
+    "website": "https://www.quimbayagold.com/",
     "year": 2025
   },
   {
@@ -2871,6 +2935,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://radissonmining.com/",
     "year": 2025
   },
   {
@@ -2880,6 +2945,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://redpineexp.com/",
     "year": 2025
   },
   {
@@ -2889,6 +2955,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/QC; AUSTRALIA",
     "commodities": "Li",
+    "website": "https://sayonamining.com.au/",
     "year": 2025
   },
   {
@@ -2898,6 +2965,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPL/DEV",
     "location": "USA/NV",
     "commodities": "Ag",
+    "website": "https://silverone.com/",
     "year": 2025
   },
   {
@@ -2907,6 +2975,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://www.sirios.com/en/",
     "year": 2025
   },
   {
@@ -2916,6 +2985,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC; FINLAND",
     "commodities": "V, Ti, Fe",
+    "website": "https://strategic-res.com/",
     "year": 2025
   },
   {
@@ -2925,6 +2995,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://troilusmining.com/",
     "year": 2025
   },
   {
@@ -2934,6 +3005,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CARRIBEAN",
     "commodities": "Au",
+    "website": "https://www.unigoldinc.com/",
     "year": 2025
   },
   {
@@ -2943,6 +3015,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "MEXICO",
     "commodities": "Ag",
+    "website": "https://vizslasilver.ca/",
     "year": 2025
   },
   {
@@ -2952,6 +3025,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPL/DEV",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://www.wallbridgemining.com/",
     "year": 2025
   },
   {
@@ -2961,6 +3035,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/QC, ON",
     "commodities": "Au",
+    "website": "https://www.wesdome.com/English/overview/default.aspx",
     "year": 2025
   },
   {
@@ -2970,6 +3045,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://westredlakegold.com/",
     "year": 2025
   },
   {
@@ -2979,6 +3055,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://angusgold.com/",
     "year": 2025
   },
   {
@@ -2988,6 +3065,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "BRAZIL; COLOMBIA",
     "commodities": "Cu, Fe",
+    "website": "https://www.maxresource.com/",
     "year": 2025
   },
   {
@@ -2997,6 +3075,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/NWT, QC",
     "commodities": "Li",
+    "website": "https://li-ft.com/",
     "year": 2025
   },
   {
@@ -3006,6 +3085,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "SPAIN, ARGENTINA, BOLIVIA",
     "commodities": "Au, Cu, Ag",
+    "website": "https://orvana.com/",
     "year": 2025
   },
   {
@@ -3015,6 +3095,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/BC",
     "commodities": "Ag, Au",
+    "website": "https://www.dollyvarden.com/",
     "year": 2025
   },
   {
@@ -3024,6 +3105,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "FINLAND",
     "commodities": "Au",
+    "website": "https://valkearesources.com/",
     "year": 2025
   },
   {
@@ -3033,6 +3115,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au, Ni",
+    "website": "https://www.vior.ca/",
     "year": 2025
   },
   {
@@ -3042,6 +3125,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/QC; WEST AFRICA",
     "commodities": "Au, Ag",
+    "website": "https://www.iamgold.com/",
     "year": 2025
   },
   {
@@ -3051,6 +3135,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL/PRO",
     "location": "USA/MEXICO",
     "commodities": "Ag",
+    "website": "https://apollosilver.com/",
     "year": 2025
   },
   {
@@ -3060,6 +3145,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTIES/STREAMING",
     "location": "GLOBAL",
     "commodities": "Au",
+    "website": "https://www.wheatonpm.com/overview/default.aspx",
     "year": 2025
   },
   {
@@ -3069,6 +3155,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://emperormetals.com/",
     "year": 2025
   },
   {
@@ -3078,6 +3165,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/MB",
     "commodities": "Au, Cu, Ni",
+    "website": "https://exirominerals.com/",
     "year": 2025
   },
   {
@@ -3087,6 +3175,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/BC",
     "commodities": "Au",
+    "website": "https://goldencariboo.com/",
     "year": 2025
   },
   {
@@ -3096,6 +3185,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/ON",
     "commodities": "Ni, Cu",
+    "website": "https://magnamining.com/",
     "year": 2025
   },
   {
@@ -3105,6 +3195,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Li",
+    "website": "https://q2metals.com/",
     "year": 2025
   },
   {
@@ -3114,6 +3205,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "SWEDEN, AUSTRALIA",
     "commodities": "Au, Sb",
+    "website": "https://www.mandalayresources.com/",
     "year": 2025
   },
   {
@@ -3123,6 +3215,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "PERU",
     "commodities": "Ag, Au, Zn, Pb",
+    "website": "https://silverxmining.com/",
     "year": 2025
   },
   {
@@ -3132,6 +3225,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC",
     "commodities": "Battery, P2O5",
+    "website": "https://firstphosphate.com/",
     "year": 2025
   },
   {
@@ -3141,6 +3235,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC, ON",
     "commodities": "Nb, Ti, Ta",
+    "website": "https://niobaymetals.com/",
     "year": 2025
   },
   {
@@ -3150,6 +3245,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON, USA/NV",
     "commodities": "Au",
+    "website": "https://dynastygoldcorp.com/",
     "year": 2025
   },
   {
@@ -3159,6 +3255,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPL/DEV",
     "location": "CANADA/BC",
     "commodities": "Au, Ag",
+    "website": "https://equitymetalscorporation.com/",
     "year": 2025
   },
   {
@@ -3168,6 +3265,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON, QC",
     "commodities": "Au",
+    "website": "https://harfangexploration.com/",
     "year": 2025
   },
   {
@@ -3177,6 +3275,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Cu, Au, Ti, V, Sc, PGE",
+    "website": "https://junocorp.com/",
     "year": 2025
   },
   {
@@ -3186,6 +3285,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPL/DEV",
     "location": "CANADA/SK",
     "commodities": "U",
+    "website": "https://www.standarduranium.ca/",
     "year": 2025
   },
   {
@@ -3195,6 +3295,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/YK",
     "commodities": "Cu, Au, Ag, Pb, Zn",
+    "website": "https://www.yukonmetals.com/",
     "year": 2025
   },
   {
@@ -3213,6 +3314,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Cu",
+    "website": "https://cupanimetals.com/",
     "year": 2025
   },
   {
@@ -3222,6 +3324,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTY",
     "location": "GLOBAL",
     "commodities": "Royalties",
+    "website": "https://www.lithiumroyalty.com/",
     "year": 2025
   },
   {
@@ -3231,6 +3334,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPL/DEV",
     "location": "CANADA/QC",
     "commodities": "Cu, Ag",
+    "website": "https://xxix.ca/",
     "year": 2025
   },
   {
@@ -3240,6 +3344,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPL/DEV",
     "location": "AFRICA",
     "commodities": "Au",
+    "website": "https://newcoregold.com/",
     "year": 2025
   },
   {
@@ -3249,6 +3354,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTIES",
     "location": "GLOBAL",
     "commodities": "Au, Ag",
+    "website": "https://www.orogenroyalties.com/",
     "year": 2025
   },
   {
@@ -3258,6 +3364,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://www.opusoneresources.com/",
     "year": 2025
   },
   {
@@ -3267,6 +3374,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/QC",
     "commodities": "Au, Cu",
+    "website": "https://cygnusmetals.com/",
     "year": 2025
   },
   {
@@ -3276,6 +3384,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "BRAZIL",
     "commodities": "REEs, Ti, Au",
+    "website": "https://resouro.com/",
     "year": 2025
   },
   {
@@ -3285,6 +3394,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "CANADA/ON, MB",
     "commodities": "Au",
+    "website": "https://www.1911gold.com/",
     "year": 2025
   },
   {
@@ -3294,6 +3404,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXP/DEV",
     "location": "CANADA/BC",
     "commodities": "Au",
+    "website": "https://spanishmountaingold.com/",
     "year": 2025
   },
   {
@@ -3303,6 +3414,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/BC",
     "commodities": "Au, Cu",
+    "website": "https://northisle.ca/",
     "year": 2025
   },
   {
@@ -3312,6 +3424,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA",
     "commodities": "Au, Ag, Cu, Zn",
+    "website": "https://sunsummitminerals.com/",
     "year": 2025
   },
   {
@@ -3321,6 +3434,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/NFLD",
     "commodities": "Au",
+    "website": "https://newfoundgold.ca/",
     "year": 2025
   },
   {
@@ -3330,6 +3444,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTY",
     "location": "CANADA",
     "commodities": "Royalties",
+    "website": "https://nationsroyalty.ca/",
     "year": 2025
   },
   {
@@ -3339,6 +3454,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://probegold.com/",
     "year": 2025
   },
   {
@@ -3348,6 +3464,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL",
     "location": "USA/WY, NV,ID",
     "commodities": "Au, Cu",
+    "website": "https://usgoldcorp.com/",
     "year": 2025
   },
   {
@@ -3357,6 +3474,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "USA/MT",
     "commodities": "Ni, PGE, Cu, Co, Au",
+    "website": "https://criticalminerals.com/",
     "year": 2025
   },
   {
@@ -3366,6 +3484,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/YK, BC",
     "commodities": "Au, Ag, Cu",
+    "website": "https://cascadiaminerals.com/",
     "year": 2025
   },
   {
@@ -3375,6 +3494,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "PERU; ARGENTINA",
     "commodities": "Au, Ag, Cu",
+    "website": "https://latin-metals.com/",
     "year": 2025
   },
   {
@@ -3384,6 +3504,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "USA/NV",
     "commodities": "Au",
+    "website": "https://www.scorpiogold.com/",
     "year": 2025
   },
   {
@@ -3402,6 +3523,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA; MEXICO",
     "commodities": "Au, Ag, Cu",
+    "website": "https://pinnaclesilverandgold.com/",
     "year": 2025
   },
   {
@@ -3411,6 +3533,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "LIBERIA",
     "commodities": "Au",
+    "website": "https://www.pasofinogold.com/",
     "year": 2025
   },
   {
@@ -3420,6 +3543,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTIES",
     "location": "GLOBAL",
     "commodities": "K, C, Cu, Li, Ni, Co, U, Zi, Fe",
+    "website": "https://www.altiusminerals.com/",
     "year": 2025
   },
   {
@@ -3429,6 +3553,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Ni, Cu, Pt",
+    "website": "https://www.srqexploration.com/",
     "year": 2025
   },
   {
@@ -3438,6 +3563,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/BC",
     "commodities": "Au",
+    "website": "https://bluelagoonresources.com/",
     "year": 2025
   },
   {
@@ -3447,6 +3573,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "USA/WI",
     "commodities": "Au, Cu, Zn",
+    "website": "https://greenlightmetals.com/",
     "year": 2025
   },
   {
@@ -3456,6 +3583,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Cu, Ni, PGM",
+    "website": "https://pivotalmetals.com/",
     "year": 2025
   },
   {
@@ -3465,6 +3593,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEV/EXPL/ PRO",
     "location": "CANADA/ BC ;USA/ NV ; TURKEY",
     "commodities": "Au, Cu",
+    "website": "https://www.centerragold.com/",
     "year": 2025
   },
   {
@@ -3483,6 +3612,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/YK, ON",
     "commodities": "Ag",
+    "website": "https://onyxgold.com/",
     "year": 2025
   },
   {
@@ -3492,6 +3622,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au, Ag, Cu, Zn",
+    "website": "https://ressourcescartier.com/",
     "year": 2025
   },
   {
@@ -3501,6 +3632,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC, ON",
     "commodities": "Au",
+    "website": "https://imetalresources.ca/",
     "year": 2025
   },
   {
@@ -3510,6 +3642,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON, QC",
     "commodities": "Li",
+    "website": "https://libraenergymaterials.com/",
     "year": 2025
   },
   {
@@ -3519,6 +3652,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "ARGENTINA",
     "commodities": "Ag",
+    "website": "https://argentasilver.com/",
     "year": 2025
   },
   {
@@ -3528,6 +3662,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "USA/NEVADA",
     "commodities": "Au",
+    "website": "https://www.westernexploration.com/",
     "year": 2025
   },
   {
@@ -3537,6 +3672,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/BC, USA",
     "commodities": "Au",
+    "website": "https://axcapventures.com/",
     "year": 2025
   },
   {
@@ -3546,6 +3682,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "REEs",
+    "website": "https://commerceresources.com/",
     "year": 2025
   },
   {
@@ -3555,6 +3692,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTY",
     "location": "GLOBAL",
     "commodities": "Royalties",
+    "website": "https://empressroyalty.com/",
     "year": 2025
   },
   {
@@ -3564,6 +3702,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au, Ag, Ni, Cu",
+    "website": "https://loyalistexploration.com/",
     "year": 2025
   },
   {
@@ -3573,6 +3712,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "AFRICA/ZW; DRC",
     "commodities": "Au, Cu, Co",
+    "website": "https://namibminerals.com/",
     "year": 2025
   },
   {
@@ -3582,6 +3722,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://targaexploration.com/",
     "year": 2025
   },
   {
@@ -3591,6 +3732,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://argogold.com/",
     "year": 2025
   },
   {
@@ -3600,6 +3742,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "C",
+    "website": "https://www.e-powerresources.com/",
     "year": 2025
   },
   {
@@ -3609,6 +3752,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/BC",
     "commodities": "Ni",
+    "website": "https://fpxnickel.com/",
     "year": 2025
   },
   {
@@ -3618,6 +3762,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Fe",
+    "website": "https://metalquestmining.com/",
     "year": 2025
   },
   {
@@ -3627,6 +3772,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Ni, Cu, Co",
+    "website": "https://nicoenergy.ca/",
     "year": 2025
   },
   {
@@ -3636,6 +3782,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://loyalistexploration.com/",
     "year": 2025
   },
   {
@@ -3645,6 +3792,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "PERU",
     "commodities": "Ag, Au",
+    "website": "https://magmasilver.com/",
     "year": 2025
   },
   {
@@ -3654,6 +3802,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://www.abcourt.ca/",
+    "logo": "/abcourt.png",
     "year": 2024
   },
   {
@@ -3663,6 +3813,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://www.e-powerresources.com/",
     "year": 2024
   },
   {
@@ -3672,6 +3823,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://lode-gold.com/",
     "year": 2024
   },
   {
@@ -3699,6 +3851,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://e2gold.ca/",
     "year": 2024
   },
   {
@@ -3789,6 +3942,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://resouro.com/",
     "year": 2024
   },
   {
@@ -3798,6 +3952,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "GLOBAL",
     "commodities": "Au",
+    "website": "https://www.agnicoeagle.com/English/home/default.aspx",
     "year": 2024
   },
   {
@@ -3816,6 +3971,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPL/PRO",
     "location": "CA/NIC;SA/CHILE,COL",
     "commodities": "Au",
+    "website": "https://www.mineros.com.co/",
     "year": 2024
   },
   {
@@ -3825,6 +3981,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://sherritt.com/",
     "year": 2024
   },
   {
@@ -3852,6 +4009,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://mosaicminerals.ca/",
     "year": 2024
   },
   {
@@ -3897,6 +4055,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://www.srqexploration.com/",
     "year": 2024
   },
   {
@@ -3915,6 +4074,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://epicgoldcorp.com/",
     "year": 2024
   },
   {
@@ -3933,6 +4093,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://www.sirios.com/en/",
     "year": 2024
   },
   {
@@ -3969,6 +4130,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://starcore.com/",
     "year": 2024
   },
   {
@@ -3987,6 +4149,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/NFLD",
     "commodities": "Cu, Au",
+    "website": "https://fireflymetals.com.au/",
     "year": 2024
   },
   {
@@ -4050,6 +4213,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://www.avantigoldcorp.com/",
     "year": 2024
   },
   {
@@ -4068,6 +4232,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://nmg.com/",
     "year": 2024
   },
   {
@@ -4131,6 +4296,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/GLOBAL",
     "commodities": "Cu, Ni, Zn, Pb",
+    "website": "https://www.glencore.ca/en",
     "year": 2024
   },
   {
@@ -4140,6 +4306,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://o3mining.mediaroom.com/",
     "year": 2024
   },
   {
@@ -4149,6 +4316,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://troilusmining.com/",
     "year": 2024
   },
   {
@@ -4194,6 +4362,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://brwexplo.ca/",
     "year": 2024
   },
   {
@@ -4221,6 +4390,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://www.unigoldinc.com/",
     "year": 2024
   },
   {
@@ -4239,6 +4409,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://goldencariboo.com/",
     "year": 2024
   },
   {
@@ -4248,6 +4419,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://osiskometals.com/",
     "year": 2024
   },
   {
@@ -4257,6 +4429,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "V",
+    "website": "https://vanadiumcorp.com/overview/default.aspx",
     "year": 2024
   },
   {
@@ -4266,6 +4439,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://calistocobre.com/",
     "year": 2024
   },
   {
@@ -4275,6 +4449,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://goliathresourcesltd.com/",
     "year": 2024
   },
   {
@@ -4293,6 +4468,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://www.vior.ca/",
     "year": 2024
   },
   {
@@ -4302,6 +4478,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA / GLOBAL",
     "commodities": "Ni",
+    "website": "https://canadanickel.com/",
     "year": 2024
   },
   {
@@ -4401,6 +4578,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "CM",
+    "website": "https://www.voltametals.ca/",
     "year": 2024
   },
   {
@@ -4410,6 +4588,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://coniagas.com/",
     "year": 2024
   },
   {
@@ -4437,6 +4616,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://www.wallbridgemining.com/",
     "year": 2024
   },
   {
@@ -4446,6 +4626,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://www.deltaresources.ca/",
     "year": 2024
   },
   {
@@ -4455,6 +4636,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://imetalresources.ca/",
     "year": 2024
   },
   {
@@ -4464,6 +4646,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://powermetalscorp.com/",
     "year": 2024
   },
   {
@@ -4473,6 +4656,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://www.wesdome.com/English/overview/default.aspx",
     "year": 2024
   },
   {
@@ -4509,6 +4693,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://westredlakegold.com/",
     "year": 2024
   },
   {
@@ -4536,6 +4721,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://explorationpuma.com/en/",
     "year": 2024
   },
   {
@@ -4545,6 +4731,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "PRODUCER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://www.wheatonpm.com/overview/default.aspx",
     "year": 2024
   },
   {
@@ -4581,6 +4768,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://drydengold.com/",
     "year": 2024
   },
   {
@@ -4590,6 +4778,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Li",
+    "website": "https://www.lithiumuniverse.com/",
     "year": 2024
   },
   {
@@ -4599,6 +4788,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "U",
+    "website": "https://purepoint.ca/",
     "year": 2024
   },
   {
@@ -4608,6 +4798,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Li",
+    "website": "https://winsomeresources.ca/en/",
     "year": 2024
   },
   {
@@ -4617,6 +4808,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Li",
+    "website": "https://winsomeresources.ca/en/",
     "year": 2025
   }
 ];

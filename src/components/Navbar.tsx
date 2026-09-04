@@ -209,7 +209,7 @@ export default function Navbar() {
       className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-20 sm:h-22" : "h-24"
         }`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-12 h-full flex items-center justify-between">
+      <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 md:px-10 h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 flex items-center group">
           <Image

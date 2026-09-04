@@ -82,7 +82,7 @@ export default function PastEditionsPage() {
       <main className="min-h-screen bg-white dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100 font-sans antialiased overflow-x-hidden pt-20 sm:pt-24">
         {/* Hero Section */}
         <section className="relative w-full bg-white dark:bg-[#0c0d12] pt-2 pb-8 md:pt-4 md:pb-10 overflow-hidden border-b border-neutral-100 dark:border-neutral-800">
-          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-12 relative z-10">
+          <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column - Content */}
               <div className="lg:col-span-6 flex flex-col items-start text-left">
@@ -168,7 +168,7 @@ export default function PastEditionsPage() {
 
         {/* Editions Grid & Year Navigation Buttons */}
         <section className="pt-10 pb-16 bg-white dark:bg-[#0c0d12]">
-          <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-12">
+          <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8">
             {/* Section Header & Year Navigation Buttons (Requirement 29) */}
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
               <div>

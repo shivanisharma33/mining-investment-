@@ -101,8 +101,19 @@ i.fi-rr-golf-hole:before {
 .dark :is([class*="bg-[#f8fafc]"], [class*="bg-[#f4f7fa]"], [class*="bg-[#f0f4f8]"], [class*="bg-[#f0f3f6]"], [class*="bg-[#edf0f3]"], [class*="bg-[#eaeaea]"], [class*="bg-[#f6f8fb]"]) {
   background-color: #121215 !important;
 }
-.dark :is([class*="bg-[#fdf2f4]"], .bg-rose-50) {
+.dark :is([class*="bg-[#fdf2f4]"], [class*="bg-[#fff5f6]"], .bg-rose-50) {
   background-color: #1a0e12 !important;
+}
+
+.dark blockquote {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+}
+.dark blockquote p {
+  color: #ffffff !important;
+}
+.dark blockquote cite {
+  color: #ff4d6d !important;
 }
 
 /* ── Replace Blue-tinted Dark Backgrounds with Deep Black ── */
@@ -523,3 +534,71 @@ p, blockquote, figcaption {
   font-style: italic;
   padding: 1rem 1.5rem;
 }
+
+.dark .press-body {
+  color: #d4d4d8 !important;
+}
+.dark .press-body h1,
+.dark .press-body h2,
+.dark .press-body h3,
+.dark .press-body h4,
+.dark .press-body h5,
+.dark .press-body h6 {
+  color: #ffffff !important;
+}
+.dark .press-body strong,
+.dark .press-body b {
+  color: #ffffff !important;
+}
+.dark .press-body a {
+  color: #ff4d6d !important;
+  text-decoration-color: rgba(255, 77, 109, 0.4) !important;
+}
+.dark .press-body a:hover {
+  color: #ff758f !important;
+  text-decoration-color: #ff4d6d !important;
+}
+.dark .press-body blockquote {
+  background: #18181b !important;
+  color: #e4e4e7 !important;
+  border-left-color: #C6112F !important;
+}
+
+/* ═══════════════ DESKTOP RESPONSIVE CONTAINER EXPANSION ═══════════════ */
+/* Reduces empty space on the left and right on widescreen desktop displays across all pages */
+@media (min-width: 1280px) {
+  .\max-w-\[1240px\] {
+    max-width: min(96vw, 1560px);
+  }
+  .\max-w-\[1320px\] {
+    max-width: min(96vw, 1680px);
+  }
+  .\max-w-\[1440px\] {
+    max-width: min(96vw, 1680px);
+  }
+}
+
+@media (min-width: 1536px) {
+  .\max-w-\[1240px\] {
+    max-width: min(95vw, 1720px);
+  }
+  .\max-w-\[1320px\] {
+    max-width: min(95vw, 1800px);
+  }
+  .\max-w-\[1440px\] {
+    max-width: min(95vw, 1800px);
+  }
+}
+
+@media (min-width: 1920px) {
+  .\max-w-\[1240px\] {
+    max-width: 1780px;
+  }
+  .\max-w-\[1320px\] {
+    max-width: 1820px;
+  }
+  .\max-w-\[1440px\] {
+    max-width: 1820px;
+  }
+}
+

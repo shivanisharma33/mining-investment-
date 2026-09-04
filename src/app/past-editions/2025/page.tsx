@@ -122,7 +122,7 @@ export default function PastEdition2025Page() {
     <>
       <Navbar />
       <main className="min-h-screen bg-white text-neutral-900 font-sans antialiased overflow-x-hidden pt-20 sm:pt-24">
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 md:px-8 py-4 sm:py-6">
+        <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6">
           {/* Outer Container Card */}
           <div className="bg-white border border-neutral-200/90 rounded-2xl shadow-sm overflow-hidden mb-8">
             {/* Breadcrumb Header Bar */}

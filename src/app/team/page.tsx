@@ -185,22 +185,22 @@ function BoardCard({ member }: { member: TeamMember }) {
   const shortBio = paragraphs[0];
 
   return (
-    <div className="group bg-white border border-neutral-200/90 rounded-2xl p-6 sm:p-7 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] transition-all duration-500 flex flex-col hover:-translate-y-1.5">
+    <div className="group bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-6 sm:p-7 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] transition-all duration-500 flex flex-col hover:-translate-y-1.5">
       {/* Avatar Header */}
       <div className="flex items-start gap-4 mb-4">
         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl sm:text-2xl shrink-0 group-hover:border-[#C6112F] group-hover:scale-105 transition-all duration-300 shadow-md">
           {member.initials}
         </div>
         <div className="pt-1">
-          <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#fef2f2] px-2.5 py-0.5 rounded-full border border-[#C6112F]/15 mb-1.5 inline-block">
+          <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#fef2f2] dark:bg-[#C6112F]/15 px-2.5 py-0.5 rounded-full border border-[#C6112F]/15 dark:border-[#C6112F]/30 mb-1.5 inline-block">
             {isFr ? "CONSEIL CONSULTATIF" : "ADVISORY BOARD"}
           </span>
-          <h3 className="text-lg sm:text-xl font-black text-[#1a1f2c] tracking-tight leading-tight">
+          <h3 className="text-lg sm:text-xl font-black text-[#1a1f2c] dark:text-white tracking-tight leading-tight">
             {member.name}
           </h3>
           <p className="text-[#C6112F] text-xs sm:text-sm font-extrabold mt-0.5">{roleText}</p>
           {orgText && (
-            <p className="text-neutral-500 text-xs font-semibold mt-0.5">{orgText}</p>
+            <p className="text-neutral-500 dark:text-zinc-400 text-xs font-semibold mt-0.5">{orgText}</p>
           )}
         </div>
       </div>
@@ -209,7 +209,7 @@ function BoardCard({ member }: { member: TeamMember }) {
       <div className="w-12 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
       {/* Bio */}
-      <div className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium space-y-2.5 flex-1">
+      <div className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed font-medium space-y-2.5 flex-1">
         {expanded ? (
           paragraphs.map((p, idx) => <p key={idx}>{p}</p>)
         ) : (
@@ -221,7 +221,7 @@ function BoardCard({ member }: { member: TeamMember }) {
       {member.expandable && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="mt-4 pt-3 border-t border-neutral-100 text-[#C6112F] text-xs font-bold tracking-wider uppercase hover:underline inline-flex items-center gap-1.5 self-start transition-colors"
+          className="mt-4 pt-3 border-t border-neutral-100 dark:border-zinc-800 text-[#C6112F] dark:text-[#ff4d6d] text-xs font-bold tracking-wider uppercase hover:underline inline-flex items-center gap-1.5 self-start transition-colors"
         >
           {expanded ? t("team-read-less", "Read Less ↑") : t("team-read-more", "Read Full Bio ➔")}
         </button>
@@ -244,22 +244,22 @@ function ExecutiveCard({ member }: { member: TeamMember }) {
   const shortBio = paragraphs[0];
 
   return (
-    <div className="group bg-white border border-neutral-200/90 rounded-2xl p-6 sm:p-7 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] transition-all duration-500 flex flex-col hover:-translate-y-1.5">
+    <div className="group bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-6 sm:p-7 shadow-2xs hover:border-[#C6112F]/40 hover:shadow-[0_16px_36px_rgba(198,17,47,0.08)] transition-all duration-500 flex flex-col hover:-translate-y-1.5">
       {/* Avatar Header */}
       <div className="flex items-start gap-4 mb-4">
         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl sm:text-2xl shrink-0 group-hover:border-[#C6112F] group-hover:scale-105 transition-all duration-300 shadow-md">
           {member.initials}
         </div>
         <div className="pt-1">
-          <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#fef2f2] px-2.5 py-0.5 rounded-full border border-[#C6112F]/15 mb-1.5 inline-block">
+          <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#fef2f2] dark:bg-[#C6112F]/15 px-2.5 py-0.5 rounded-full border border-[#C6112F]/15 dark:border-[#C6112F]/30 mb-1.5 inline-block">
             {isFr ? "DIRECTION EXÉCUTIVE" : "EXECUTIVE LEADERSHIP"}
           </span>
-          <h3 className="text-lg sm:text-xl font-black text-[#1a1f2c] tracking-tight leading-tight">
+          <h3 className="text-lg sm:text-xl font-black text-[#1a1f2c] dark:text-white tracking-tight leading-tight">
             {member.name}
           </h3>
           <p className="text-[#C6112F] text-xs sm:text-sm font-extrabold mt-0.5">{roleText}</p>
           {orgText && (
-            <p className="text-neutral-500 text-xs font-semibold mt-0.5">{orgText}</p>
+            <p className="text-neutral-500 dark:text-zinc-400 text-xs font-semibold mt-0.5">{orgText}</p>
           )}
         </div>
       </div>
@@ -268,7 +268,7 @@ function ExecutiveCard({ member }: { member: TeamMember }) {
       <div className="w-12 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
       {/* Bio */}
-      <div className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-medium space-y-2.5 flex-1">
+      <div className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed font-medium space-y-2.5 flex-1">
         {expanded ? (
           paragraphs.map((p, idx) => <p key={idx}>{p}</p>)
         ) : (
@@ -280,7 +280,7 @@ function ExecutiveCard({ member }: { member: TeamMember }) {
       {member.expandable && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="mt-4 pt-3 border-t border-neutral-100 text-[#C6112F] text-xs font-bold tracking-wider uppercase hover:underline inline-flex items-center gap-1.5 self-start transition-colors"
+          className="mt-4 pt-3 border-t border-neutral-100 dark:border-zinc-800 text-[#C6112F] dark:text-[#ff4d6d] text-xs font-bold tracking-wider uppercase hover:underline inline-flex items-center gap-1.5 self-start transition-colors"
         >
           {expanded ? t("team-read-less", "Read Less ↑") : t("team-read-more", "Read Full Bio ➔")}
         </button>
@@ -334,39 +334,39 @@ export default function TeamPage() {
         </section>
 
         {/* ═══════ CATEGORY FILTER TABS ═══════ */}
-        <section className="sticky top-[72px] z-30 w-full bg-white border-b border-neutral-200 shadow-2xs">
+        <section className="sticky top-[72px] z-30 w-full bg-white dark:bg-[#121215] border-b border-neutral-200 dark:border-zinc-800 shadow-2xs transition-colors">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 py-3 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
             <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={() => setActiveTab("all")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${activeTab === "all"
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${activeTab === "all"
                   ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
-                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                  : "bg-neutral-100 dark:bg-zinc-800 text-neutral-600 dark:text-zinc-300 hover:bg-neutral-200 dark:hover:bg-zinc-700"
                   }`}
               >
                 {isFr ? `Tous les membres (${coreTeam.length + advisoryBoard.length})` : `All Members (${coreTeam.length + advisoryBoard.length})`}
               </button>
               <button
                 onClick={() => setActiveTab("executive")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${activeTab === "executive"
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${activeTab === "executive"
                   ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
-                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                  : "bg-neutral-100 dark:bg-zinc-800 text-neutral-600 dark:text-zinc-300 hover:bg-neutral-200 dark:hover:bg-zinc-700"
                   }`}
               >
                 {isFr ? `Équipe exécutive (${coreTeam.length})` : `Core Executive Team (${coreTeam.length})`}
               </button>
               <button
                 onClick={() => setActiveTab("board")}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all ${activeTab === "board"
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer ${activeTab === "board"
                   ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
-                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                  : "bg-neutral-100 dark:bg-zinc-800 text-neutral-600 dark:text-zinc-300 hover:bg-neutral-200 dark:hover:bg-zinc-700"
                   }`}
               >
                 {isFr ? `Membres du conseil (${advisoryBoard.length})` : `Advisory Board Members (${advisoryBoard.length})`}
               </button>
             </div>
 
-            <span className="hidden md:inline-block text-xs font-bold text-neutral-400 uppercase tracking-wider">
+            <span className="hidden md:inline-block text-xs font-bold text-neutral-400 dark:text-zinc-500 uppercase tracking-wider">
               {isFr ? "Ville de Québec • Canada" : "Quebec City • Canada"}
             </span>
           </div>
@@ -374,12 +374,12 @@ export default function TeamPage() {
 
         {/* ═══════ CORE TEAM SECTION ═══════ */}
         {(activeTab === "all" || activeTab === "executive") && (
-          <section className="relative w-full py-16 sm:py-20">
+          <section className="relative w-full py-16 sm:py-20 bg-white dark:bg-[#09090b] transition-colors duration-300">
             <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
                 {t("team-core-label", "Core Team")}
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
                 {t("team-core-title-1", "The People Behind")} <span className="text-[#C6112F]">{t("team-core-title-2", "THE Event")}</span>
               </h2>
               <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-10" />
@@ -395,16 +395,16 @@ export default function TeamPage() {
 
         {/* ═══════ ADVISORY BOARD SECTION (PROMINENT PORTRAIT GRID) ═══════ */}
         {(activeTab === "all" || activeTab === "board") && (
-          <section className="relative w-full py-16 sm:py-20 bg-[#ffffff] border-t border-neutral-200/80">
+          <section className="relative w-full py-16 sm:py-20 bg-white dark:bg-[#0c0c0e] border-t border-neutral-200/80 dark:border-zinc-800/80 transition-colors duration-300">
             <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
               <div className="mb-10 max-w-[720px]">
                 <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
                   {t("team-advisory-label", "Advisory Board Members")}
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-3">
+                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
                   {t("team-advisory-title", "Advisory Board")}
                 </h2>
-                <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed mb-4">
+                <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed mb-4">
                   {t("team-advisory-desc", "Distinguished mining executives, former government leaders and technical experts providing strategic direction for THE Mining Investment Event.")}
                 </p>
                 <div className="w-16 h-[3px] bg-[#C6112F] rounded-full" />
