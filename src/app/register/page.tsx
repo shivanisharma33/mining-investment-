@@ -157,18 +157,11 @@ export default function RegisterPage() {
     setSubmitError("");
   };
 
-  const scrollToForm = (track: "investor" | "company") => {
-    selectTrack(track);
-    const formElement = document.getElementById("registration-form-section");
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-white font-sans">
+      <main className="flex flex-col flex-grow w-full bg-white dark:bg-[#09090b] font-sans transition-colors duration-300">
         {/* ═══════ HERO SECTION ═══════ */}
         <section className="relative w-full bg-[#0f1117] overflow-hidden">
           <div
@@ -224,133 +217,27 @@ export default function RegisterPage() {
           </div>
         </section>
 
-        {/* ═══════ DUAL TRACK SELECTION CARDS ═══════ */}
-        <section className="relative w-full py-14 sm:py-18 bg-[#f8f9fa]">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-12">
+
+        {/* ═══════ INTERACTIVE REGISTRATION FORM SECTION ═══════ */}
+        <section id="registration-form-section" className="relative w-full py-16 sm:py-20 md:py-24 bg-white dark:bg-[#09090b] border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
+          <div className="max-w-[860px] mx-auto px-4 sm:px-6 md:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
                 {isFr ? "CHOISISSEZ VOTRE PARCOURS DE PARTICIPATION" : "CHOOSE YOUR PARTICIPATION TRACK"}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white tracking-tight">
                 {isFr ? "Un accès sur mesure pour investisseurs et sociétés" : "Tier 1 Access for Investors & Companies"}
               </h2>
               <div className="w-16 h-[3px] bg-[#C6112F] mx-auto mt-4 rounded-full" />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Investor Track Card */}
-              <div className={`group bg-white border rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${activeTrack === "investor" ? "border-[#C6112F] ring-2 ring-[#C6112F]/20 shadow-xl" : "border-neutral-200 hover:border-[#C6112F]/40"
-                }`}>
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#C6112F]" />
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-black tracking-[0.2em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1.5 rounded-full">
-                      {isFr ? "POUR LES INVESTISSEURS" : "FOR INVESTORS"}
-                    </span>
-                    <div className="w-10 h-10 rounded-2xl bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center font-bold text-lg">
-                      01
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] mb-4 group-hover:text-[#C6112F] transition-colors">
-                    {t("register-investor-title", "Investor Registration")}
-                  </h3>
-
-                  <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-8">
-                    {t(
-                      "register-investor-desc",
-                      "Register as an accredited investor, family office, institution, or fund to access privately arranged meetings with over 100 of Canada's leading mining companies."
-                    )}
-                  </p>
-
-                  <div className="space-y-3 mb-8">
-                    {[
-                      isFr ? "Rencontres privées individuelles pour dirigeants" : "1-on-1 Private Executive Meetings",
-                      isFr ? "Accès aux conférences et sessions ministérielles" : "Keynote & Ministerial Session Access",
-                      isFr ? "Réceptions VIP et dîners de réseautage" : "VIP Receptions & Networking Dinners",
-                    ].map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-3 text-xs sm:text-sm font-bold text-neutral-800">
-                        <span className="w-5 h-5 rounded-full bg-[#C6112F]/10 text-[#C6112F] flex items-center justify-center text-xs shrink-0">
-                          ✓
-                        </span>
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => scrollToForm("investor")}
-                  className={`w-full py-4 rounded-2xl text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md ${activeTrack === "investor" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
-                    }`}
-                >
-                  {t("register-investor-cta", "Register as an Investor")}
-                </button>
-              </div>
-
-              {/* Mining Company Track Card */}
-              <div className={`group bg-white border rounded-3xl p-8 sm:p-10 shadow-sm transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${activeTrack === "company" ? "border-[#C6112F] ring-2 ring-[#C6112F]/20 shadow-xl" : "border-neutral-200 hover:border-[#C6112F]/40"
-                }`}>
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#1a1f2c] group-hover:bg-[#C6112F] transition-colors" />
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-black tracking-[0.2em] uppercase text-neutral-800 bg-neutral-100 px-3.5 py-1.5 rounded-full">
-                      {isFr ? "POUR LES SOCIÉTÉS" : "FOR COMPANIES"}
-                    </span>
-                    <div className="w-10 h-10 rounded-2xl bg-neutral-100 text-neutral-800 flex items-center justify-center font-bold text-lg">
-                      02
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] mb-4 group-hover:text-[#C6112F] transition-colors">
-                    {t("register-company-title", "Company Registration")}
-                  </h3>
-
-                  <p className="text-neutral-600 text-sm sm:text-base leading-relaxed mb-8">
-                    {t(
-                      "register-company-desc",
-                      "Register your mining company to showcase your projects and connect with a curated audience of international investors, family offices, and institutional funds."
-                    )}
-                  </p>
-
-                  <div className="space-y-3 mb-8">
-                    {[
-                      isFr ? "Présentation de projets corporatifs" : "Corporate Project Showcase",
-                      isFr ? "Auditoire d'investisseurs accrédités ciblés" : "Curated Accredited Investor Audience",
-                      isFr ? "Opportunités de commandite de Niveau 1" : "Tier 1 Sponsorship Opportunities",
-                    ].map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-3 text-xs sm:text-sm font-bold text-neutral-800">
-                        <span className="w-5 h-5 rounded-full bg-[#1a1f2c]/10 text-[#1a1f2c] flex items-center justify-center text-xs shrink-0">
-                          ✓
-                        </span>
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => scrollToForm("company")}
-                  className={`w-full py-4 rounded-2xl text-xs font-extrabold tracking-[0.15em] uppercase text-center transition-all duration-300 shadow-md ${activeTrack === "company" ? "bg-[#C6112F] text-white shadow-lg" : "bg-[#1a1f2c] text-white hover:bg-[#C6112F]"
-                    }`}
-                >
-                  {t("register-company-cta", "Register as a Company")}
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════ INTERACTIVE REGISTRATION FORM SECTION ═══════ */}
-        <section id="registration-form-section" className="relative w-full py-16 sm:py-20 md:py-24 bg-white border-t border-neutral-200">
-          <div className="max-w-[860px] mx-auto px-4 sm:px-6 md:px-8">
             {/* Form Track Switcher Tabs */}
             <div className="flex justify-center gap-3 mb-10">
               <button
                 onClick={() => selectTrack("investor")}
                 className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${activeTrack === "investor"
                     ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
-                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                    : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700"
                   }`}
               >
                 {isFr ? "Formulaire Investisseur" : "Investor Registration Form"}
@@ -359,14 +246,14 @@ export default function RegisterPage() {
                 onClick={() => selectTrack("company")}
                 className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${activeTrack === "company"
                     ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
-                    : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                    : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700"
                   }`}
               >
                 {isFr ? "Formulaire Société" : "Company Registration Form"}
               </button>
             </div>
 
-            <div className="bg-white border border-neutral-200/90 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+            <div className="bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#0f1117] via-[#C6112F] to-[#0f1117]" />
 
               {submitted ? (
@@ -652,7 +539,7 @@ export default function RegisterPage() {
                     {submitError && (
                       <div
                         role="alert"
-                        className="px-5 py-4 rounded-2xl bg-rose-50 border border-[#C6112F]/30 text-[#8a091e] text-xs sm:text-sm font-semibold leading-relaxed"
+                        className="px-5 py-4 rounded-2xl bg-rose-50 dark:bg-[#1a0e12] border border-[#C6112F]/30 dark:border-[#C6112F]/50 text-[#8a091e] dark:text-[#ff8095] text-xs sm:text-sm font-semibold leading-relaxed"
                       >
                         {submitError}
                       </div>
@@ -687,16 +574,17 @@ export default function RegisterPage() {
                   </div>
 
                   {/* Please Note Callout Notice */}
-                  <div className="bg-[#fdf2f4] border-l-4 border-[#C6112F] p-4 sm:p-5 rounded-r-2xl mb-8">
-                    <h4 className="text-xs font-black uppercase text-[#C6112F] tracking-wider mb-1.5">
-                      {isFr ? "Veuillez noter*" : "Please Note*"}
+                  <div className="bg-[#fdf2f4] dark:bg-[#1a0e12] border-l-4 border-[#C6112F] border-y border-r border-transparent dark:border-[#C6112F]/20 dark:border-l-[#C6112F] p-4.5 sm:p-5 rounded-r-2xl mb-8 transition-colors duration-300">
+                    <h4 className="text-xs font-black uppercase text-[#C6112F] dark:text-[#ff4d6d] tracking-wider mb-1.5 flex items-center gap-1.5">
+                      <span className="inline-block w-2 h-2 rounded-full bg-[#C6112F] dark:bg-[#ff4d6d] animate-pulse" />
+                      <span>{isFr ? "Veuillez noter*" : "Please Note*"}</span>
                     </h4>
-                    <p className="text-xs text-neutral-800 leading-relaxed font-medium mb-2">
+                    <p className="text-xs text-neutral-800 dark:text-neutral-200 leading-relaxed font-medium mb-2">
                       {isFr
                         ? "Vous devez vous inscrire avant L'Événement. Vous devez recevoir une invitation officielle avant L'Événement pour obtenir votre badge à l'entrée."
                         : "You must register your attendance prior to THE Event. You must receive an official invitation prior to THE Event in order to receive your badge at the door."}
                     </p>
-                    <p className="text-xs font-black text-[#C6112F]">
+                    <p className="text-xs font-black text-[#C6112F] dark:text-[#ff4d6d]">
                       {isFr ? "Les entrées sans inscription ne seront pas acceptées." : "Walk-ins will not be accepted."}
                     </p>
                   </div>
@@ -871,7 +759,7 @@ export default function RegisterPage() {
                     {submitError && (
                       <div
                         role="alert"
-                        className="px-5 py-4 rounded-2xl bg-rose-50 border border-[#C6112F]/30 text-[#8a091e] text-xs sm:text-sm font-semibold leading-relaxed"
+                        className="px-5 py-4 rounded-2xl bg-rose-50 dark:bg-[#1a0e12] border border-[#C6112F]/30 dark:border-[#C6112F]/50 text-[#8a091e] dark:text-[#ff8095] text-xs sm:text-sm font-semibold leading-relaxed"
                       >
                         {submitError}
                       </div>
@@ -896,7 +784,7 @@ export default function RegisterPage() {
         </section>
 
         {/* ═══════ POLICIES & SPONSOR CONTACT ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 bg-white border-t border-neutral-200">
+        <section className="relative w-full py-12 sm:py-16 bg-white dark:bg-[#09090b] border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="bg-[#0f1117] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-neutral-800 relative overflow-hidden">
               <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">

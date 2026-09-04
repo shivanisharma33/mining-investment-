@@ -2212,6 +2212,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC",
     "commodities": "Au, Cu",
+    "website": "https://troilusmining.com/",
     "year": 2023
   },
   {
@@ -2236,6 +2237,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC, ON",
     "commodities": "Li",
+    "website": "https://visionlithium.com/",
     "year": 2023
   },
   {
@@ -2276,6 +2278,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CHILE",
     "commodities": "Au, Ag",
+    "website": "https://astra-exploration.com/",
     "year": 2023
   },
   {
@@ -2292,6 +2295,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://beaucegold.com/",
     "year": 2023
   },
   {
@@ -2300,6 +2304,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA",
     "commodities": "Cu",
+    "website": "https://calistocobre.com/",
     "year": 2023
   },
   {
@@ -2324,6 +2329,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "ZAMBIA",
     "commodities": "Cu",
+    "website": "https://www.copperzone-resources.com/",
     "year": 2023
   },
   {
@@ -2332,6 +2338,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC, ON",
     "commodities": "Au, Cu, Zn",
+    "website": "https://www.deltaresources.ca/",
     "year": 2023
   },
   {
@@ -2348,6 +2355,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://e2gold.ca/",
     "year": 2023
   },
   {
@@ -2364,6 +2372,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA",
     "commodities": "Cu, Ni",
+    "website": "https://electrometalsandmining.com/home",
     "year": 2023
   },
   {
@@ -2396,6 +2405,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/ON, QC",
     "commodities": "Au",
+    "website": "https://imetalresources.ca/",
     "year": 2023
   },
   {
@@ -2431,11 +2441,12 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "year": 2023
   },
   {
-    "name": "Platinex Inc.",
+    "name": "PTX Metals Inc.",
     "ticker": "CSE: PTX",
     "type": "EXPLORER",
     "location": "CANADA/ON",
     "commodities": "Au",
+    "website": "https://ptxmetals.com/",
     "year": 2023
   },
   {

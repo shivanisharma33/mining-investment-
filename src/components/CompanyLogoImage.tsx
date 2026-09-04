@@ -129,11 +129,14 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "strategic resources inc.": "strategic-res.com",
       "talisker resources ltd.": "taliskerresources.com",
       "thunder gold corp.": "thundergoldcorp.com",
-      "troilus gold corp.": "troilusgold.com",
-      "troilus gold": "troilusgold.com",
+      "troilus gold corp.": "troilusmining.com",
+      "troilus gold": "troilusmining.com",
+      "troilus mining corp.": "troilusmining.com",
+      "troilus mining": "troilusmining.com",
       "vanadiumcorp resource inc.": "vanadiumcorp.com",
       "vanstar mining resources inc.": "vanstarmining.com",
       "vision lithium inc.": "visionlithium.com",
+      "vision lithium": "visionlithium.com",
       "wallbridge mining company": "wallbridgemining.com",
       "wesdome gold mines ltd.": "wesdome.com",
       "west red lake gold mines ltd.": "westredlakegold.com",
@@ -149,7 +152,26 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "leopard lake gold corp.": "leopardlake.ca",
       "leopard lake gold": "leopardlake.ca",
       "imetal resources inc.": "imetalresources.ca",
-      "imetal resources": "imetalresources.ca"
+      "imetal resources": "imetalresources.ca",
+      "astra exploration inc.": "astra-exploration.com",
+      "astra exploration": "astra-exploration.com",
+      "beauce gold fields inc.": "beaucegold.com",
+      "beauce gold fields": "beaucegold.com",
+      "calisto cobre resources corp.": "calistocobre.com",
+      "calisto cobre resources": "calistocobre.com",
+      "calisto cobre": "calistocobre.com",
+      "copperzone resources limited": "copperzone-resources.com",
+      "copperzone resources": "copperzone-resources.com",
+      "delta resources limited": "deltaresources.ca",
+      "delta resources": "deltaresources.ca",
+      "e2gold inc.": "e2gold.ca",
+      "e2gold": "e2gold.ca",
+      "electro metals & mining": "electrometalsandmining.com",
+      "electro metals and mining": "electrometalsandmining.com",
+      "electro metals and mining corp.": "electrometalsandmining.com",
+      "platinex inc.": "ptxmetals.com",
+      "ptx metals inc.": "ptxmetals.com",
+      "ptx metals": "ptxmetals.com"
     };
 
     if (DOMAIN_MAP[cleanKey]) {
@@ -193,6 +215,7 @@ export default function CompanyLogoImage({
     }
     if (domain) {
       list.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
+      list.push(`https://icons.duckduckgo.com/ip3/${domain}.ico`);
       list.push(`https://icon.horse/icon/${domain}`);
       list.push(`https://unavatar.io/${domain}?fallback=false`);
     }

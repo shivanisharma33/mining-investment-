@@ -101,6 +101,9 @@ i.fi-rr-golf-hole:before {
 .dark :is([class*="bg-[#f8fafc]"], [class*="bg-[#f4f7fa]"], [class*="bg-[#f0f4f8]"], [class*="bg-[#f0f3f6]"], [class*="bg-[#edf0f3]"], [class*="bg-[#eaeaea]"], [class*="bg-[#f6f8fb]"]) {
   background-color: #121215 !important;
 }
+.dark :is([class*="bg-[#fdf2f4]"], .bg-rose-50) {
+  background-color: #1a0e12 !important;
+}
 
 /* ── Replace Blue-tinted Dark Backgrounds with Deep Black ── */
 .dark :is([class*="bg-[#090d16]"], [class*="bg-[#0e1626]"], [class*="bg-[#131b2e]"], [class*="bg-[#0a0d14]"], [class*="bg-[#0f1117]"], [class*="bg-[#1a1f2c]"], [class*="bg-[#182238]"], [class*="bg-slate-900"], [class*="bg-slate-950"], [class*="bg-slate-900/"], [class*="bg-[#131b2e]/"]) {
