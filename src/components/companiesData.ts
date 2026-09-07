@@ -394,6 +394,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "commodities": "Cu",
     "email": "info@cupanimetals.com",
     "website": "https://cupanimetals.com/",
+    "logo": "/cupani-logo.svg",
     "year": 2026
   },
   {
@@ -842,6 +843,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "commodities": "Au, REEs",
     "email": "efarr@loyalistexploration.com",
     "website": "https://loyalistexploration.com/",
+    "logo": "/loyal-logo.webp",
     "year": 2026
   },
   {
@@ -1221,6 +1223,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "commodities": "Li",
     "email": "info@q2metals.com",
     "website": "https://q2metals.com/",
+    "logo": "/q2-metals-favicon.png",
     "year": 2026
   },
   {
@@ -1815,6 +1818,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA",
     "commodities": "Ni, Cu, Co, PGE",
+    "website": "https://www.exirominerals.com/",
+    "logo": "/exiro-favicon.png",
     "year": 2023
   },
   {
@@ -1873,6 +1878,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC, YT",
     "commodities": "Ni, Cu, Co",
     "website": "https://gometals.ca/",
+    "logo": "https://www.google.com/s2/favicons?domain=gometals.ca&sz=128",
     "year": 2023
   },
   {
@@ -2186,6 +2192,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "DEVELOPER",
     "location": "CANADA/QC, AUSTRALIA",
     "commodities": "Li",
+    "website": "https://sayonamining.com.au/",
+    "logo": "/sayona-mining.png",
     "year": 2023
   },
   {
@@ -2292,6 +2300,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC, ON",
     "commodities": "Li",
     "website": "https://visionlithium.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=visionlithium.com&sz=128",
     "year": 2023
   },
   {
@@ -2384,6 +2393,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "ZAMBIA",
     "commodities": "Cu",
     "website": "https://www.copperzone-resources.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=copperzone-resources.com&sz=128",
     "year": 2023
   },
   {
@@ -2460,6 +2470,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON, QC",
     "commodities": "Au",
     "website": "https://imetalresources.ca/",
+    "logo": "https://imetalresources.ca/wp-content/uploads/2022/05/iMetal-Resources-TSXV-IMR-OTCBB-ADTFF-FSE-A7V2-icon1.png",
     "year": 2023
   },
   {
@@ -2476,6 +2487,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC, ON",
     "commodities": "Li, U",
+    "website": "https://medaromining.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=medaromining.com&sz=128",
     "year": 2023
   },
   {
@@ -2492,6 +2505,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/MB, ON",
     "commodities": "Ni, Cu, Co",
+    "website": "https://metalenergy.ca/",
+    "logo": "https://www.google.com/s2/favicons?domain=metalenergy.ca&sz=128",
     "year": 2023
   },
   {
@@ -2501,6 +2516,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON",
     "commodities": "Au",
     "website": "https://ptxmetals.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=ptxmetals.com&sz=128",
     "year": 2023
   },
   {
@@ -2517,6 +2533,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://qpmcorp.ca/",
+    "logo": "/5555.jpg",
     "year": 2023
   },
   {
@@ -2986,6 +3004,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC; AUSTRALIA",
     "commodities": "Li",
     "website": "https://sayonamining.com.au/",
+    "logo": "/sayona-mining.png",
     "year": 2025
   },
   {
@@ -3195,7 +3214,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/MB",
     "commodities": "Au, Cu, Ni",
-    "website": "https://exirominerals.com/",
+    "website": "https://www.exirominerals.com/",
+    "logo": "/exiro-favicon.png",
     "year": 2025
   },
   {
@@ -3226,6 +3246,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Li",
     "website": "https://q2metals.com/",
+    "logo": "/q2-metals-favicon.png",
     "year": 2025
   },
   {
@@ -3345,6 +3366,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Cu",
     "website": "https://cupanimetals.com/",
+    "logo": "/cupani-logo.svg",
     "year": 2025
   },
   {
@@ -3663,6 +3685,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC, ON",
     "commodities": "Au",
     "website": "https://imetalresources.ca/",
+    "logo": "https://imetalresources.ca/wp-content/uploads/2022/05/iMetal-Resources-TSXV-IMR-OTCBB-ADTFF-FSE-A7V2-icon1.png",
     "year": 2025
   },
   {
@@ -3733,6 +3756,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON",
     "commodities": "Au, Ag, Ni, Cu",
     "website": "https://loyalistexploration.com/",
+    "logo": "/loyal-logo.webp",
     "year": 2025
   },
   {
@@ -3813,6 +3837,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON",
     "commodities": "Au",
     "website": "https://loyalistexploration.com/",
+    "logo": "/loyal-logo.webp",
     "year": 2025
   },
   {
@@ -3863,6 +3888,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://qpmcorp.ca/",
+    "logo": "/5555.jpg",
     "year": 2024
   },
   {
@@ -4049,6 +4076,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Ag",
+    "website": "https://agmr.ca/",
     "year": 2024
   },
   {
@@ -4058,6 +4086,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://alliedgold.com/overview/default.aspx",
     "year": 2024
   },
   {
@@ -4067,6 +4096,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://www.exirominerals.com/",
+    "logo": "/exiro-favicon.png",
     "year": 2024
   },
   {
@@ -4076,6 +4107,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://www.nevadaphosphate.com/",
     "year": 2024
   },
   {
@@ -4189,6 +4221,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://nsuperior.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=nsuperior.com&sz=128",
     "year": 2024
   },
   {
@@ -4290,6 +4324,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://geovicmining.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=geovicmining.com&sz=128",
     "year": 2024
   },
   {
@@ -4317,6 +4353,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://blackbirdcm.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=blackbirdcm.com&sz=128",
     "year": 2024
   },
   {
@@ -4356,6 +4394,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
+    "website": "https://bluethundermining.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=bluethundermining.com&sz=128",
     "year": 2024
   },
   {
@@ -4411,6 +4451,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTY",
     "location": "CANADA / GLOBAL",
     "commodities": "Au",
+    "website": "https://www.osiskogr.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=osiskogr.com&sz=128",
     "year": 2024
   },
   {
@@ -4536,6 +4578,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA / GLOBAL",
     "commodities": "Li",
+    "website": "https://visionlithium.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=visionlithium.com&sz=128",
     "year": 2024
   },
   {
@@ -4667,6 +4711,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
     "website": "https://imetalresources.ca/",
+    "logo": "https://imetalresources.ca/wp-content/uploads/2022/05/iMetal-Resources-TSXV-IMR-OTCBB-ADTFF-FSE-A7V2-icon1.png",
     "year": 2024
   },
   {
@@ -4780,6 +4825,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "ROYALTY",
     "location": "CANADA / GLOBAL",
     "commodities": "Li",
+    "website": "https://www.lithiumroyalty.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=lithiumroyalty.com&sz=128",
     "year": 2024
   },
   {
