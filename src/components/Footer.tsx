@@ -139,19 +139,19 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
-                  {t("nav-news", "News")}
-                </Link>
-              </li>
-              <li>
                 <Link href="/newsflash" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-newsflash", "THE Press Release")}
                 </Link>
               </li>
               <li>
-                <Link href="/imw" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
+                <a
+                  href="https://mining-international-weekly.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors"
+                >
                   {t("nav-imw", "International Mining Week")}
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

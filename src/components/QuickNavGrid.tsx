@@ -47,7 +47,8 @@ export default function QuickNavGrid() {
     },
     {
       label: isFr ? "SEMAINE INTERNATIONALE DE LA MINE" : "INTERNATIONAL MINING WEEK",
-      href: "/imw",
+      href: "https://mining-international-weekly.vercel.app/",
+      isExternal: true,
       isPrimary: false,
       icon: (
         <svg className="w-4.5 h-4.5 text-neutral-800 dark:text-neutral-200 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

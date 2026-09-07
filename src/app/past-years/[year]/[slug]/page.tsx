@@ -173,8 +173,8 @@ export default function PastYearDocumentPage() {
                   <button
                     onClick={() => setViewMode("pdf")}
                     className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${viewMode === "pdf"
-                        ? "bg-[#0f1117] text-white shadow-sm"
-                        : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                      ? "bg-[#0f1117] text-white shadow-sm"
+                      : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
                       }`}
                   >
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -185,8 +185,8 @@ export default function PastYearDocumentPage() {
                   <button
                     onClick={() => setViewMode("interactive")}
                     className={`px-4 py-2 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 ${viewMode === "interactive"
-                        ? "bg-[#0f1117] text-white shadow-sm"
-                        : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
+                      ? "bg-[#0f1117] text-white shadow-sm"
+                      : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-200/60"
                       }`}
                   >
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

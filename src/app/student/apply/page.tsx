@@ -94,7 +94,7 @@ export default function StudentApplyPage() {
           : "";
       setSubmitError(
         fieldMessage ||
-          (err instanceof Error ? err.message : "Something went wrong. Please try again.")
+        (err instanceof Error ? err.message : "Something went wrong. Please try again.")
       );
     } finally {
       setIsSubmitting(false);

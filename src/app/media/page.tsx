@@ -780,9 +780,8 @@ export default function MediaPage() {
                 <div
                   key={i}
                   onClick={() => openLightbox(i)}
-                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-900 shadow-[0_8px_25px_rgba(0,0,0,0.06)] transition-all duration-500 hover:border-[#C6112F]/50 hover:shadow-[0_20px_45px_rgba(198,17,47,0.2)] hover:-translate-y-1 ${
-                    tile.featured ? "sm:col-span-2" : ""
-                  }`}
+                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-900 shadow-[0_8px_25px_rgba(0,0,0,0.06)] transition-all duration-500 hover:border-[#C6112F]/50 hover:shadow-[0_20px_45px_rgba(198,17,47,0.2)] hover:-translate-y-1 ${tile.featured ? "sm:col-span-2" : ""
+                    }`}
                   style={{ aspectRatio: tile.featured ? "8/3" : "4/3" }}
                 >
                   <img
@@ -801,7 +800,7 @@ export default function MediaPage() {
         {/* ═══════════════ 2. MAIN FEATURED YOUTUBE SECTION (EXACT MATCH TO USER'S ATTACHED IMAGE) ═══════════════ */}
         <section id="main-featured-player" className="relative w-full py-8 sm:py-12 bg-white dark:bg-[#0b101d] border-t border-b border-neutral-200/80 dark:border-neutral-800 scroll-mt-28">
           <div className="max-w-[1340px] mx-auto px-4 sm:px-6 md:px-8">
-            
+
             {/* Category Tabs & Search/Sort Bar */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8 pb-4 border-b border-neutral-200/80 dark:border-neutral-800">
               {/* Filter Tabs */}
@@ -816,11 +815,10 @@ export default function MediaPage() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveCategory(tab.id)}
-                    className={`relative pb-2 text-xs sm:text-sm font-extrabold tracking-wider uppercase transition-colors shrink-0 cursor-pointer ${
-                      activeCategory === tab.id
+                    className={`relative pb-2 text-xs sm:text-sm font-extrabold tracking-wider uppercase transition-colors shrink-0 cursor-pointer ${activeCategory === tab.id
                         ? "text-[#C6112F]"
                         : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
-                    }`}
+                      }`}
                   >
                     {tab.label}
                     {activeCategory === tab.id && (
@@ -860,10 +858,10 @@ export default function MediaPage() {
 
             {/* 2-Column Main Player & Playlist Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
-              
+
               {/* ─── LEFT COLUMN: BIG YOUTUBE CARD & DETAILS (8 Cols) ─── */}
               <div className="lg:col-span-8 flex flex-col">
-                
+
                 {/* Cinema Video Player Container */}
                 <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-xl border border-neutral-200/80 dark:border-neutral-800">
                   <iframe
@@ -909,7 +907,7 @@ export default function MediaPage() {
 
               {/* ─── RIGHT COLUMN: VISIBLE PLAYLIST CARD (4 Cols - EXACT MATCH TO IMAGE) ─── */}
               <div className="lg:col-span-4 bg-white dark:bg-[#131a2b] border border-neutral-200 dark:border-slate-800 rounded-xl p-4 sm:p-5 shadow-sm flex flex-col justify-between h-full min-h-[520px] max-h-[640px]">
-                
+
                 {/* Playlist Header */}
                 <div className="flex items-start justify-between border-b border-neutral-100 dark:border-slate-800 pb-3">
                   <div>
@@ -936,21 +934,18 @@ export default function MediaPage() {
                       <div
                         key={vid.id}
                         onClick={() => handlePlayVideo(vid.id)}
-                        className={`flex items-start gap-3 p-1.5 rounded-lg cursor-pointer transition-all ${
-                          isPlaying
+                        className={`flex items-start gap-3 p-1.5 rounded-lg cursor-pointer transition-all ${isPlaying
                             ? "bg-neutral-50 dark:bg-slate-800/80"
                             : "hover:bg-neutral-50/80 dark:hover:bg-slate-800/40"
-                        }`}
+                          }`}
                       >
-                        <span className={`text-xs font-bold w-4 text-center shrink-0 pt-1 ${
-                          isPlaying ? "text-[#C6112F]" : "text-neutral-800 dark:text-slate-300"
-                        }`}>
+                        <span className={`text-xs font-bold w-4 text-center shrink-0 pt-1 ${isPlaying ? "text-[#C6112F]" : "text-neutral-800 dark:text-slate-300"
+                          }`}>
                           {idx + 1}
                         </span>
 
-                        <div className={`relative w-24 sm:w-28 aspect-video rounded-md overflow-hidden bg-neutral-900 shrink-0 shadow-2xs ${
-                          isPlaying ? "border-2 border-[#C6112F]" : "border border-neutral-200 dark:border-slate-800"
-                        }`}>
+                        <div className={`relative w-24 sm:w-28 aspect-video rounded-md overflow-hidden bg-neutral-900 shrink-0 shadow-2xs ${isPlaying ? "border-2 border-[#C6112F]" : "border border-neutral-200 dark:border-slate-800"
+                          }`}>
                           <img
                             src={vid.thumb}
                             alt={vid.title}

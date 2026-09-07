@@ -431,13 +431,13 @@ export default function TravelPage() {
                     <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-medium">
                       {isAirReadMore
                         ? t(
-                            "travel-air-carrier-note",
-                            "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB. Some carriers fly direct to YQB, Please check with your carrier of choice. Jean Lesage International airport in Quebec City is a 20 minute taxi ride to/from THE Event venue."
-                          )
+                          "travel-air-carrier-note",
+                          "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB. Some carriers fly direct to YQB, Please check with your carrier of choice. Jean Lesage International airport in Quebec City is a 20 minute taxi ride to/from THE Event venue."
+                        )
                         : t(
-                            "travel-air-carrier-note-short",
-                            "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB."
-                          )}
+                          "travel-air-carrier-note-short",
+                          "All major carriers fly to Toronto or Montreal, where you may do a quick connection to YQB."
+                        )}
                     </p>
                     <button
                       type="button"

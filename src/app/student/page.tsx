@@ -110,7 +110,7 @@ export default function StudentPage() {
     <>
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100">
-        
+
         {/* ═══════════════ 1. HERO SECTION ═══════════════ */}
         <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-32 sm:pt-36 md:pt-44 pb-20 sm:pb-24 border-b border-neutral-800">
           {/* Background Grid Pattern */}
@@ -185,27 +185,27 @@ export default function StudentPage() {
                   </span>
                   <div className="flex items-center gap-3 sm:gap-4 flex-wrap sm:flex-nowrap">
                     {/* Glencore */}
-                    <div className="bg-white/95 rounded-xl px-4 sm:px-5 py-2 sm:py-2.5 flex items-center justify-center border border-white/20 shadow-sm h-11 sm:h-12 shrink-0">
+                    <div className="w-[155px] sm:w-[175px] h-12 sm:h-14 bg-white/95 rounded-2xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0">
                       <img
                         src="/sponsors/2026/glencore.svg"
                         alt="Glencore Logo"
-                        className="h-6 sm:h-7 max-w-[140px] sm:max-w-[170px] object-contain"
+                        className="h-6 sm:h-7 max-w-full w-auto object-contain"
                       />
                     </div>
                     {/* OR Royalties */}
-                    <div className="bg-[#0b0e19] rounded-xl px-3.5 sm:px-4 py-2 sm:py-2.5 flex items-center justify-center border border-[#d7a032]/40 shadow-sm h-11 sm:h-12 shrink-0">
+                    <div className="w-[155px] sm:w-[175px] h-12 sm:h-14 bg-[#0b0e19] rounded-2xl flex items-center justify-center border border-[#d7a032]/40 shadow-sm shrink-0 overflow-hidden">
                       <img
                         src="/sponsors/2026/or_royalties_osisko_royalties.svg"
                         alt="OR Royalties Logo"
-                        className="h-5 sm:h-6 max-w-[110px] sm:max-w-[125px] object-contain"
+                        className="h-9 sm:h-10 w-auto object-contain scale-[1.28]"
                       />
                     </div>
                     {/* IAMGOLD */}
-                    <div className="bg-white/95 rounded-xl px-3.5 sm:px-4 py-2 sm:py-2.5 flex items-center justify-center border border-white/20 shadow-sm h-11 sm:h-12 shrink-0">
+                    <div className="w-[155px] sm:w-[175px] h-12 sm:h-14 bg-white/95 rounded-2xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0">
                       <img
                         src="/sponsor image/IAMGOLD-Logo-N.png"
                         alt="IAMGOLD Logo"
-                        className="h-5 sm:h-6 max-w-[110px] sm:max-w-[125px] object-contain"
+                        className="h-6 sm:h-7 max-w-full w-auto object-contain"
                       />
                     </div>
                   </div>
@@ -261,40 +261,80 @@ export default function StudentPage() {
         {/* ═══════════════ 3. LETTER FROM THE CEO SECTION ═══════════════ */}
         <section id="ceo-letter-section" className="relative w-full py-16 sm:py-24 bg-[#0b0f19] text-white overflow-hidden scroll-mt-28">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="relative bg-gradient-to-br from-neutral-900 via-[#151924] to-[#0b0f19] border border-neutral-800 rounded-3xl p-8 sm:p-14 shadow-2xl overflow-hidden">
+            <div className="relative bg-gradient-to-br from-neutral-900 via-[#151924] to-[#0b0f19] border border-neutral-800 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#C6112F]/10 blur-[100px] rounded-full pointer-events-none" />
-              
-              <div className="relative z-10 max-w-4xl">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="px-3.5 py-1 rounded-full bg-[#C6112F]/20 border border-[#C6112F]/40 text-[#ff4d6d] text-[11px] font-black uppercase tracking-widest">
-                    EXECUTIVE PERSPECTIVE
-                  </span>
-                  <span className="text-xs text-neutral-400 font-semibold">
-                    THE Mining Investment Event
-                  </span>
-                </div>
 
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-8">
-                  Letter from our Founder & CEO
-                </h2>
-
-                <div className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] space-y-6">
-                  <p className="text-neutral-200 text-base sm:text-lg md:text-xl font-normal leading-relaxed italic">
-                    Joanne Jobin, Founder and CEO, stated, “I am deeply grateful to the 2026 Student Program Partners for their commitment to funding this program and for taking the time to meet and interact directly with our students. Since its launch in 2023, the program has introduced approximately 200 students to the mining industry, with many returning annually to network, learn more, or volunteer. It is now recognized as one of the largest fully funded conference programs in North America, offering students interested in mining a unique opportunity to participate in THE Event. Program Partners and Industry Leaders facilitate this platform for knowledge sharing, networking, and experiential learning. This program is vital to THE Event’s dedication to making real social impacts and supporting the goal of ensuring that potential future mining leaders have ample opportunities to be identified and to succeed.”
-                  </p>
-
-                  <p className="text-neutral-200 text-base sm:text-lg md:text-xl font-normal leading-relaxed italic">
-                    Jobin added, "As part of our ongoing dedication to industry sustainability through fostering the next generation of mining professionals, we plan to seek another partner to provide additional funding to create an opportunity for international students to participate in our 2027 program."
-                  </p>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-neutral-800 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#C6112F] text-white flex items-center justify-center font-black text-lg shadow-md">
-                    JJ
-                  </div>
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                {/* Left Column: Letter & Quote Content */}
+                <div className="lg:col-span-7 flex flex-col justify-between">
                   <div>
-                    <h4 className="text-base font-extrabold text-white">Joanne Jobin</h4>
-                    <p className="text-xs text-neutral-400 font-medium">Founder & CEO, THE Mining Investment Event</p>
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="px-3.5 py-1 rounded-full bg-[#C6112F]/20 border border-[#C6112F]/40 text-[#ff4d6d] text-[11px] font-black uppercase tracking-widest">
+                        EXECUTIVE PERSPECTIVE
+                      </span>
+                      <span className="text-xs text-neutral-400 font-semibold">
+                        THE Mining Investment Event
+                      </span>
+                    </div>
+
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-8">
+                      Letter from our Founder & CEO
+                    </h2>
+
+                    <div className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] space-y-6">
+                      <p className="text-neutral-200 text-base sm:text-lg font-normal leading-relaxed italic">
+                        Joanne Jobin, Founder and CEO, stated, “I am deeply grateful to the 2026 Student Program Partners for their commitment to funding this program and for taking the time to meet and interact directly with our students. Since its launch in 2023, the program has introduced approximately 200 students to the mining industry, with many returning annually to network, learn more, or volunteer. It is now recognized as one of the largest fully funded conference programs in North America, offering students interested in mining a unique opportunity to participate in THE Event. Program Partners and Industry Leaders facilitate this platform for knowledge sharing, networking, and experiential learning. This program is vital to THE Event’s dedication to making real social impacts and supporting the goal of ensuring that potential future mining leaders have ample opportunities to be identified and to succeed.”
+                      </p>
+
+                      <p className="text-neutral-200 text-base sm:text-lg font-normal leading-relaxed italic">
+                        Jobin added, "As part of our ongoing dedication to industry sustainability through fostering the next generation of mining professionals, we plan to seek another partner to provide additional funding to create an opportunity for international students to participate in our 2027 program."
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-neutral-800 flex items-center gap-4">
+                    <div
+                      className="w-12 h-12 rounded-full ring-2 ring-[#C6112F] shadow-md shrink-0 bg-[#0b0f19] overflow-hidden"
+                      style={{
+                        backgroundImage:
+                          "url('/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-15.jpg')",
+                        backgroundPosition: "50% 23%",
+                        backgroundSize: "420%",
+                      }}
+                      role="img"
+                      aria-label="Joanne Jobin"
+                    />
+                    <div>
+                      <h4 className="text-base font-extrabold text-white">Joanne Jobin</h4>
+                      <p className="text-xs text-neutral-400 font-medium">
+                        Founder & CEO, THE Mining Investment Event
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Live Event Keynote Photo */}
+                <div className="lg:col-span-5 flex flex-col justify-center">
+                  <div className="relative rounded-3xl overflow-hidden border border-neutral-800 shadow-2xl group bg-neutral-950">
+                    <div className="aspect-[4/3] sm:aspect-[16/11] relative overflow-hidden">
+                      <img
+                        src="/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-15.jpg"
+                        alt="Joanne Jobin addressing students at THE Mining Investment Event"
+                        className="w-full h-full object-cover object-[48%_38%] scale-[1.3] group-hover:scale-[1.34] transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
+
+                      <div className="absolute top-3.5 left-3.5 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-neutral-700/80 text-[10px] font-black uppercase tracking-wider text-white flex items-center gap-1.5 pointer-events-none shadow-md">
+                        <span className="w-2 h-2 rounded-full bg-[#C6112F]" />
+                        Student Program Address
+                      </div>
+
+                      <div className="absolute bottom-3 left-3 right-3 p-3 rounded-2xl bg-black/70 backdrop-blur-md border border-white/10 text-left pointer-events-none">
+                        <p className="text-xs text-neutral-200 font-medium leading-snug">
+                          Joanne Jobin delivering the address at the Student Partnership Program in Québec City.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -397,11 +437,10 @@ export default function StudentPage() {
                     <button
                       key={cat}
                       onClick={() => setActiveCategory(cat)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
-                        activeCategory === cat
+                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${activeCategory === cat
                           ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
                           : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:border-[#C6112F]"
-                      }`}
+                        }`}
                     >
                       {cat}
                     </button>
@@ -513,7 +552,7 @@ export default function StudentPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* 2025 Card */}
               <Link
-                href="/past-years/2025"
+                href="/past-editions/2025"
                 className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
@@ -535,7 +574,7 @@ export default function StudentPage() {
 
               {/* 2024 Card */}
               <Link
-                href="/past-years/2024"
+                href="/past-editions/2024"
                 className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
@@ -557,7 +596,7 @@ export default function StudentPage() {
 
               {/* 2023 Card */}
               <Link
-                href="/past-years/2023"
+                href="/past-editions/2023"
                 className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>

@@ -107,8 +107,8 @@ export default function BrochurePage() {
                     {isDownloading
                       ? "Preparing Download…"
                       : brochure?.pdfUrl
-                      ? "Download Official PDF Brochure"
-                      : "Brochure Coming Soon"}
+                        ? "Download Official PDF Brochure"
+                        : "Brochure Coming Soon"}
                   </span>
                 </button>
               </div>

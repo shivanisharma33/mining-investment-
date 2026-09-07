@@ -236,8 +236,8 @@ export default function RegisterPage() {
               <button
                 onClick={() => selectTrack("investor")}
                 className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${activeTrack === "investor"
-                    ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
-                    : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                  ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
+                  : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700"
                   }`}
               >
                 {isFr ? "Formulaire Investisseur" : "Investor Registration Form"}
@@ -245,8 +245,8 @@ export default function RegisterPage() {
               <button
                 onClick={() => selectTrack("company")}
                 className={`px-6 py-3 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${activeTrack === "company"
-                    ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
-                    : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                  ? "bg-[#C6112F] text-white shadow-lg shadow-[#C6112F]/20 scale-105"
+                  : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700"
                   }`}
               >
                 {isFr ? "Formulaire Société" : "Company Registration Form"}

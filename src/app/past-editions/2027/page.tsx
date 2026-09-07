@@ -516,7 +516,9 @@ export default function PastEdition2027Page() {
                           <span>{isFr ? "BROCHURE" : "BROCHURE"}</span>
                         </button>
                         <a
-                          href="/imw"
+                          href="https://mining-international-weekly.vercel.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="flex items-center justify-center gap-2.5 px-4 py-3 bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 hover:border-[#C6112F] rounded-xl text-xs font-extrabold uppercase tracking-wider text-neutral-800 dark:text-zinc-200 transition-all shadow-2xs hover:shadow-md cursor-pointer"
                         >
                           <span>🌐</span>

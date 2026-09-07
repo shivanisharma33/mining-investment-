@@ -419,10 +419,13 @@ export default function CompanyLogoImage({
       list.push("https://icons.duckduckgo.com/ip3/qpmcorp.ca.ico");
       list.push("https://icon.horse/icon/qpmcorp.ca");
     } else if (lowerName.includes("go metals")) {
+      list.unshift("https://www.google.com/s2/favicons?domain=gometals.ca&sz=128");
       list.push("https://www.google.com/s2/favicons?domain=gometals.ca&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/gometals.ca.ico");
       list.push("https://icon.horse/icon/gometals.ca");
+      list.push("https://gometals.ca/img/go_logo.png");
       list.push("https://gometals.ca/favicon.ico");
+      list.push("/go-metals-favicon.svg");
     } else if (lowerName.includes("copperzone")) {
       list.push("https://www.google.com/s2/favicons?domain=copperzone-resources.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/copperzone-resources.com.ico");

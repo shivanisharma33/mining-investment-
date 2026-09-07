@@ -71,8 +71,8 @@ export default function PastEditionsPage() {
       searchQuery.trim() === ""
         ? true
         : c.year.toString().includes(searchQuery.trim()) ||
-          c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          c.desc.toLowerCase().includes(searchQuery.toLowerCase());
+        c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        c.desc.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesYearFilter && matchesSearch;
   });
 
@@ -187,11 +187,10 @@ export default function PastEditionsPage() {
                   <button
                     key={yr}
                     onClick={() => setSelectedYear(yr)}
-                    className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all duration-300 cursor-pointer ${
-                      selectedYear === yr
+                    className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all duration-300 cursor-pointer ${selectedYear === yr
                         ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/25 scale-105"
                         : "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-[#C6112F]/10 hover:text-[#C6112F]"
-                    }`}
+                      }`}
                   >
                     {yr === "ALL" ? (isFr ? "TOUTES LES ANNEES" : "ALL YEARS") : yr}
                   </button>

@@ -95,7 +95,7 @@ export default function SheCoPage() {
     <>
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
-        
+
         {/* ════════════════ HERO HEADER SECTION ════════════════ */}
         <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-32 sm:pt-36 md:pt-40 pb-20 sm:pb-24 border-b border-neutral-800">
           {/* Subtle radial dot pattern overlay */}
@@ -155,7 +155,7 @@ export default function SheCoPage() {
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="bg-gradient-to-r from-neutral-900 via-[#161c2b] to-[#0f1420] text-white p-8 sm:p-12 rounded-3xl border border-neutral-800 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#C6112F]/10 blur-[100px] pointer-events-none rounded-full" />
-              
+
               <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
                 {/* SHE-Co Logo Card */}
                 <div className="w-full md:w-auto max-w-[280px] sm:max-w-[320px] p-5 sm:p-6 bg-white rounded-2xl border border-white/30 shadow-2xl shrink-0">
@@ -184,7 +184,7 @@ export default function SheCoPage() {
         {/* ════════════════ RECENT CHARITY DETAILS (2026 - MOISSON RIVE-SUD) ════════════════ */}
         <section className="relative w-full py-16 sm:py-20 md:py-24 bg-[#f8fafc] dark:bg-[#0c0f17]">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            
+
             {/* Section Header */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C6112F]/10 border border-[#C6112F]/20 text-[#C6112F] text-xs font-black tracking-widest uppercase mb-3">
@@ -198,7 +198,7 @@ export default function SheCoPage() {
 
             {/* Main Content 2-Column Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-              
+
               {/* Left Column: Cheque Presentation Photo & Summary Card */}
               <div className="lg:col-span-5 relative">
                 <div className="sticky top-28 bg-white dark:bg-[#151c2c] border border-neutral-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl group">
@@ -209,7 +209,7 @@ export default function SheCoPage() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-                    
+
                     {/* Badge Overlay */}
                     <div className="absolute top-4 left-4">
                       <span className="px-3.5 py-1.5 rounded-xl bg-[#C6112F] text-white font-black text-xs uppercase tracking-wider shadow-lg">
@@ -232,7 +232,7 @@ export default function SheCoPage() {
                     <h4 className="text-xs font-black tracking-[0.2em] text-[#C6112F] uppercase mb-4">
                       {isFr ? "VENTILATION DU DON DE 20 000 $" : "C$20,000 DONATION MATCHING BREAKDOWN"}
                     </h4>
-                    
+
                     <div className="space-y-3 text-xs sm:text-sm font-semibold text-neutral-700 dark:text-slate-300">
                       <div className="flex justify-between items-center py-1.5 border-b border-neutral-100 dark:border-slate-800">
                         <span>THE She-Co Initiative Donation</span>
@@ -263,7 +263,7 @@ export default function SheCoPage() {
               {/* Right Column: Full Recipient Story */}
               <div className="lg:col-span-7 space-y-6">
                 <div className="bg-white dark:bg-[#151c2c] border border-neutral-200/80 dark:border-slate-800 rounded-3xl p-8 sm:p-10 shadow-lg space-y-6">
-                  
+
                   <p className="text-base sm:text-lg leading-relaxed text-neutral-700 dark:text-slate-200 font-medium">
                     {isFr
                       ? "L'initiative She-Co de L'Événement est notre moyen de continuer à faire une différence positive dans diverses communautés, en reconnaissant que les sociétés minières opèrent partout et que le secteur minier touche presque tous les aspects de la vie."
@@ -317,7 +317,7 @@ export default function SheCoPage() {
         {/* ════════════════ ANNUAL DONATIONS & HISTORICAL IMPACT ════════════════ */}
         <section className="relative w-full py-16 sm:py-20 md:py-24 bg-white dark:bg-[#121824] border-t border-neutral-200/60 dark:border-slate-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            
+
             {/* Section Header & Year Filter Tabs */}
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4">
               <div>
@@ -335,11 +335,10 @@ export default function SheCoPage() {
                   <button
                     key={yr}
                     onClick={() => setSelectedYear(yr)}
-                    className={`px-4 py-2 rounded-xl text-xs font-black tracking-wider uppercase transition-all cursor-pointer ${
-                      selectedYear === yr
+                    className={`px-4 py-2 rounded-xl text-xs font-black tracking-wider uppercase transition-all cursor-pointer ${selectedYear === yr
                         ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20 scale-105"
                         : "bg-neutral-100 dark:bg-[#182032] border border-neutral-200 dark:border-slate-800 text-neutral-700 dark:text-slate-300 hover:border-[#C6112F]"
-                    }`}
+                      }`}
                   >
                     {yr === "ALL" ? (isFr ? "Tous les ans" : "All Years") : yr}
                   </button>
@@ -409,11 +408,11 @@ export default function SheCoPage() {
                 </span>
                 <span className="text-xs font-bold text-neutral-500 dark:text-slate-400">Quesnel, BC</span>
               </div>
-              
+
               <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-4">
                 Quesnel Education and Employment Society
               </h3>
-              
+
               <p className="text-neutral-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-medium mb-6">
                 {isFr ? (
                   <>
@@ -425,7 +424,7 @@ export default function SheCoPage() {
                   </>
                 )}
               </p>
-              
+
               <a
                 href="https://dakelheed.wordpress.com/"
                 target="_blank"
@@ -444,11 +443,11 @@ export default function SheCoPage() {
                 </span>
                 <span className="text-xs font-bold text-neutral-500 dark:text-slate-400">St. John&apos;s, NL</span>
               </div>
-              
+
               <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-4">
                 THE Drum Circle – Bishop Field Elementary
               </h3>
-              
+
               <div className="space-y-4 text-neutral-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-medium">
                 {isFr ? (
                   <p>
