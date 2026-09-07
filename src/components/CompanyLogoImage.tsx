@@ -211,6 +211,7 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "vanadiumcorp resource inc.": "vanadiumcorp.com",
       "vanstar mining resources inc.": "vanstarmining.com",
       "vision lithium inc.": "visionlithium.com",
+      "vision lithium inc": "visionlithium.com",
       "vision lithium": "visionlithium.com",
       "wallbridge mining company": "wallbridgemining.com",
       "wesdome gold mines ltd.": "wesdome.com",
@@ -335,10 +336,7 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "orezone": "orezone.com",
       "or royalties inc": "orroyalties.com",
       "or royalties inc.": "orroyalties.com",
-      "or royalties": "orroyalties.com",
-      "vision lithium inc.": "visionlithium.com",
-      "vision lithium inc": "visionlithium.com",
-      "vision lithium": "visionlithium.com"
+      "or royalties": "orroyalties.com"
     };
 
     if (DOMAIN_MAP[cleanKey]) {
