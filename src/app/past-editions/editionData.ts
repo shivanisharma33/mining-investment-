@@ -454,7 +454,7 @@ export interface RawSpeaker {
 }
 
 const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", number[], string?][] = [
-  ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020309526-QX5SYHPDA2F9W66H4L8Z/Keith+Bradbury.png?format=750w"],
+  ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4], "/fwdboardmemberphotos/keith.jpg"],
   ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=750w"],
   ["Kody Blois", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=750w"],
   ["Orin Baranowsky", "Chief Financial Officer", "NexGold Mining", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154751377-H84R1XD7U3BXAZV8CUFN/Orin%2BBaranowsky.jpg?format=750w"],
@@ -464,8 +464,7 @@ const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", 
   ["Trey Wasser", "CEO & Director", "Dryden Gold", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152087328-3IEDUWQAZN7FRHOYN72Q/Trey+Wasser.jpeg?format=750w"],
   ["Matt Manson", "President, CEO & Director", "Radisson Mining Resources", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152105728-3L0X4W8DGX5XWVEAL52Q/Matt+Manson.jpeg?format=750w"],
   ["Adrian Day", "Founder", "Adrian Day Asset Management", "fin", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152125012-7SK02444ZFZPGYTDHGZ2/Adrian+Day.png?format=750w"],
-  ["Angie Stockley", "Moderator", "SAAF Exploration", "mod", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152139934-OX277RDRXB0N19CLA62L/Angie+Stockley.jpeg?format=750w"],
-  ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154321498-HRRWVXWAPTI4B28ZB95H/person-icon-person-icon-17.jpg?format=750w"],
+  ["Angie Stockley", "Moderator", "SAAF Exploration", "mod", [4], "/fwdboardmemberphotos/angie-stockley-.webp"],
   ["The Honourable Kody Blois", "Parliamentary Secretary to the Prime Minister", "Government of Canada", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152804896-BAYM70NN1UJXLTLZVCTH/Blois-Kody-1024x682.jpg?format=750w"],
   ["Terry Salman", "Chief Executive Officer", "Salman Partners", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152865058-OHGA6KGQIOMQJHPDWNOZ/Terry-Salman-bio.jpg?format=750w"],
   ["Jon Wiesblatt", "Panelist", "Trident Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152251014-SJ6PK3OGF73YI0AMCU5P/jon-wiesblatt.jpg?format=750w"],
@@ -474,17 +473,17 @@ const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", 
   ["Nicholas Van Dyk", "Chief Financial Officer", "NorthIsle Copper & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152289756-MJRXGJP73508HW8MZFPA/Nicholas+Van+Dyk.jpeg?format=750w"],
   ["Guy Goulet", "Chief Executive Officer", "Cerro de Pasco Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152903562-UT8YIE0I4C4GF4KXIU5E/1587480594080.jpg?format=750w"],
   ["Craig Hallworth", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152320287-2BX2RIBDR1GGODOY785X/Craig+Hallworth.png?format=750w"],
-  ["Dr. Nicole Adshead-Bell", "Moderator", "Independent", "mod", [3, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152336983-B62UFIKOO4UWHP3ZMXMZ/Nicole+Adshead-Bell.jpg?format=750w"],
+  ["Dr. Nicole Adshead-Bell", "Moderator", "Independent", "mod", [3, 4], "/fwdboardmemberphotos/nichole.jpg"],
   ["Thomas Bachand", "Moderator", "Banque Nationale", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152353737-EAEERWWF6KV4FMPJ1B76/Thomas+Bachand.jpeg?format=750w"],
   ["Shawn Khunkhun", "President", "Contango Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152369364-3RKA28ISR7CDCP87UQRM/Shawn+Khunkhun.webp?format=750w"],
   ["Robert Bruggeman", "President & CEO", "Outcrop Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152435695-QIR2I2IER6SDI2XN09AR/Robert+Bruggeman.jpeg?format=750w"],
   ["Peter Lekich", "Director, Capital Markets & Corporate Development", "New Pacific Metals", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152400695-KX6U5I2OW2G43E9GVDN6/Peter+Lekich.jpeg?format=750w"],
-  ["Phillips S. Baker", "Panel Moderator", "Independent", "mod", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152417703-UHGRZRTEPTOB0CLW96R2/Philip+S+Baker.jpeg?format=750w"],
+  ["Phillips S. Baker", "Panel Moderator", "Independent", "mod", [3], "/fwdboardmemberphotos/philips.jpg"],
   ["Pete Hoekstra", "U.S. Ambassador to Canada", "United States of America", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153031756-KN0U3M0NY8U5WAWV2VNS/C._Piet_Hoekstra.jpg?format=750w"],
   ["Neil B. Jacobson", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154332594-N1M6PZIYE1QH8HV8R7HC/person-icon-person-icon-17.jpg?format=750w"],
   ["The Hon. Jagrup Brar", "Minister of Mining and Critical Minerals", "Government of British Columbia", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153106640-XBB2RYRPB52P16L7HBS6/images.jpg?format=750w"],
-  ["Anthony Vaccaro", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152496454-F5ZIJUJDW8WOOZJYN6DO/Anthony-V.webp?format=750w"],
-  ["Matt Gordon", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152557029-40KJWI0JISGP1NPIR9LA/Matt+Gordon.webp?format=750w"],
+  ["Anthony Vaccaro", "Speaker", "Mining Industry Executive", "exec", [2], "/fwdboardmemberphotos/anthony.jpg"],
+  ["Matt Gordon", "Speaker & Industry Expert", "Crux Investor", "fin", [2], "/fwdboardmemberphotos/matt.jpg"],
   ["Erhen Cory", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152570884-7IWX1PCRB0WV89P0V5WN/Ehren+Cory.png?format=750w"],
   ["Melanie Lalonde", "Fireside Speaker", "HATCH", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152588562-WBBCXU8B07GDRSMOJ5VB/Melanie+Lalonde.jpeg?format=750w"],
   ["Alain Zubinsky", "Fireside Speaker", "CAUR Technologies", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154388298-JGQKIBZOPZML1N50IRYC/person-icon-person-icon-17.jpg?format=750w"],
@@ -827,7 +826,6 @@ export const SPEAKERS_2025: RawSpeaker[] = [
       2,
       3
     ],
-    "image": "/fwdboardmemberphotos/matt.jpg",
     "year": 2025
   }
 ];
@@ -1089,8 +1087,7 @@ export const SPEAKERS_2024: RawSpeaker[] = [
       2,
       3
     ],
-    "year": 2024,
-    "image": "/fwdboardmemberphotos/matt.jpg"
+    "year": 2024
   },
   {
     "name": "Jamie Strauss",

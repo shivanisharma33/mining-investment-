@@ -55,8 +55,20 @@ function translateSpeakerTitle(title: string, isFr: boolean): string {
     .replace(/Parliamentary Secretary/gi, "Secrétaire parlementaire");
 }
 
+function cleanOrgName(org: string): string {
+  if (!org) return "";
+  const cleaned = org.trim();
+  // Fix known client typo where Crux Investor was written as "Crux Investo"
+  if (/^crux investo\b/i.test(cleaned)) {
+    return "Crux Investor";
+  }
+  return cleaned;
+}
+
 function translateSpeakerOrg(org: string, isFr: boolean): string {
-  if (!isFr || !org) return org;
+  if (!org) return "";
+  const cleaned = cleanOrgName(org);
+  if (!isFr) return cleaned;
 
   const translations: Record<string, string> = {
     "Government of Newfoundland & Labrador": "Gouvernement de Terre-Neuve-et-Labrador",
@@ -66,9 +78,133 @@ function translateSpeakerOrg(org: string, isFr: boolean): string {
     "United States of America": "États-Unis d'Amérique",
     "Mining Industry Executive": "Cadre de l'industrie minière",
     "Independent": "Indépendant",
+    "Crux Investor": "Crux Investor",
   };
 
-  return translations[org] || org;
+  return translations[cleaned] || cleaned;
+}
+
+function getCategoryStyles(category: string, lang: string) {
+  switch (category) {
+    case "gov":
+      return {
+        label: lang === "FR" ? "CONFÉRENCIER" : "KEYNOTE",
+        avGrad: "from-[#C6112F] to-[#7A0011]",
+        badge: "bg-[#C6112F]/10 text-[#C6112F] border border-[#C6112F]/30",
+      };
+    case "exec":
+      return {
+        label: lang === "FR" ? "DIRIGEANT" : "EXECUTIVE",
+        avGrad: "from-slate-700 to-slate-900",
+        badge: "bg-slate-100 text-slate-700 dark:bg-zinc-800 dark:text-zinc-300 border border-slate-300 dark:border-zinc-700",
+      };
+    case "fin":
+      return {
+        label: lang === "FR" ? "FINANCE" : "INVESTOR",
+        avGrad: "from-neutral-800 to-black",
+        badge: "bg-neutral-100 text-neutral-800 dark:bg-zinc-800 dark:text-zinc-200 border border-neutral-300 dark:border-zinc-700",
+      };
+    case "mod":
+      return {
+        label: lang === "FR" ? "MODÉRATEUR" : "MODERATOR",
+        avGrad: "from-[#C6112F]/80 to-neutral-900",
+        badge: "bg-neutral-100 text-neutral-700 dark:bg-zinc-800 dark:text-zinc-300 border border-neutral-200 dark:border-zinc-700",
+      };
+    default:
+      return {
+        label: lang === "FR" ? "CONFÉRENCIER" : "SPEAKER",
+        avGrad: "from-[#C6112F] to-slate-900",
+        badge: "bg-[#C6112F]/10 text-[#C6112F] border border-[#C6112F]/30",
+      };
+  }
+}
+
+function getInitials(name: string) {
+  const cleaned = name
+    .replace(/^(The Hon.|The Honourable|Grand Chief|Dr.)\s+/i, "")
+    .split(" ")
+    .filter(Boolean);
+  if (cleaned.length === 0) return "";
+  const first = cleaned[0][0];
+  const last = cleaned.length > 1 ? cleaned[cleaned.length - 1][0] : "";
+  return (first + last).toUpperCase();
+}
+
+function SpeakerCard({
+  speaker,
+  lang,
+}: {
+  speaker: RawSpeaker;
+  lang: string;
+}) {
+  const [imgError, setImgError] = useState(false);
+  const styles = getCategoryStyles(speaker.category, lang);
+  const initials = getInitials(speaker.name);
+
+  // Normalize organization - fix "Crux Investo" typo
+  const orgName = cleanOrgName(speaker.organization);
+  const displayOrg = translateSpeakerOrg(orgName, lang === "FR");
+  const displayTitle = translateSpeakerTitle(speaker.title, lang === "FR");
+
+  const hasImage = Boolean(speaker.image) && !imgError;
+
+  return (
+    <article className="bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-5 sm:p-6 text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full group">
+      <div>
+        {/* Speaker Photo / Avatar: Generous framing & top-aligned positioning so heads aren't chopped off */}
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-4">
+          {hasImage ? (
+            <div className="w-full h-full rounded-full p-1 ring-2 ring-neutral-200/90 dark:ring-zinc-700 group-hover:ring-[#C6112F]/60 group-hover:shadow-lg transition-all duration-300 bg-white dark:bg-zinc-800 shadow-sm overflow-hidden">
+              <img
+                src={speaker.image}
+                alt={speaker.name}
+                className="w-full h-full rounded-full object-cover transition-transform duration-500 group-hover:scale-105"
+                style={{ objectPosition: "50% 12%" }}
+                loading="lazy"
+                onError={() => setImgError(true)}
+              />
+            </div>
+          ) : (
+            <div
+              className={`w-full h-full rounded-full flex items-center justify-center font-black text-2xl sm:text-3xl text-white shadow-md bg-gradient-to-br ${styles.avGrad} border-4 border-white dark:border-zinc-800 ring-2 ring-neutral-200 dark:ring-zinc-700 group-hover:ring-[#C6112F]/50 transition-all`}
+            >
+              {initials}
+            </div>
+          )}
+        </div>
+
+        {/* Name - strictly balanced height for grid alignment */}
+        <div className="min-h-[44px] flex items-center justify-center mb-1.5 px-1">
+          <h3 className="text-sm sm:text-base font-extrabold text-neutral-900 dark:text-white tracking-tight leading-snug line-clamp-2 group-hover:text-[#C6112F] transition-colors">
+            {speaker.name}
+          </h3>
+        </div>
+
+        {/* Title / Role - strictly balanced height for grid alignment */}
+        <div className="h-10 sm:h-12 flex items-center justify-center mb-2 px-1">
+          <p className="text-[11px] sm:text-xs text-neutral-500 dark:text-zinc-400 font-medium leading-tight line-clamp-2 text-center">
+            {displayTitle}
+          </p>
+        </div>
+
+        {/* Company/Org - strictly balanced height for grid alignment */}
+        <div className="h-6 flex items-center justify-center mb-4 px-1">
+          <span className="text-xs font-extrabold text-[#C6112F] tracking-wide line-clamp-1 text-center">
+            {displayOrg}
+          </span>
+        </div>
+      </div>
+
+      {/* Badges - pinned to bottom */}
+      <div className="flex justify-center gap-1.5 flex-wrap pt-3 border-t border-neutral-100 dark:border-zinc-800/80">
+        <span
+          className={`text-[9px] font-black tracking-wider px-2.5 py-0.5 rounded-full uppercase ${styles.badge}`}
+        >
+          {styles.label}
+        </span>
+      </div>
+    </article>
+  );
 }
 
 export default function SpeakersView({ year = 2027 }: { year?: number }) {
@@ -118,58 +254,13 @@ export default function SpeakersView({ year = 2027 }: { year?: number }) {
     return [];
   }, [selectedYear, apiSpeakers]);
 
-  const getCategoryStyles = (category: string) => {
-    switch (category) {
-      case "gov":
-        return {
-          label: lang === "FR" ? "CONFÉRENCIER" : "KEYNOTE",
-          avGrad: "from-[#C6112F] to-[#7A0011]",
-          badge: "bg-[#C6112F]/10 text-[#C6112F] border border-[#C6112F]/30",
-        };
-      case "exec":
-        return {
-          label: lang === "FR" ? "DIRIGEANT" : "EXECUTIVE",
-          avGrad: "from-slate-700 to-slate-900",
-          badge: "bg-slate-100 text-slate-700 dark:bg-zinc-800 dark:text-zinc-300 border border-slate-300 dark:border-zinc-700",
-        };
-      case "fin":
-        return {
-          label: lang === "FR" ? "FINANCE" : "INVESTOR",
-          avGrad: "from-neutral-800 to-black",
-          badge: "bg-neutral-100 text-neutral-800 dark:bg-zinc-800 dark:text-zinc-200 border border-neutral-300 dark:border-zinc-700",
-        };
-      case "mod":
-        return {
-          label: lang === "FR" ? "MODÉRATEUR" : "MODERATOR",
-          avGrad: "from-[#C6112F]/80 to-neutral-900",
-          badge: "bg-neutral-100 text-neutral-700 dark:bg-zinc-800 dark:text-zinc-300 border border-neutral-200 dark:border-zinc-700",
-        };
-      default:
-        return {
-          label: lang === "FR" ? "CONFÉRENCIER" : "SPEAKER",
-          avGrad: "from-[#C6112F] to-slate-900",
-          badge: "bg-[#C6112F]/10 text-[#C6112F] border border-[#C6112F]/30",
-        };
-    }
-  };
-
-  const getInitials = (name: string) => {
-    const cleaned = name
-      .replace(/^(The Hon.|The Honourable|Grand Chief|Dr.)\s+/i, "")
-      .split(" ")
-      .filter(Boolean);
-    if (cleaned.length === 0) return "";
-    const first = cleaned[0][0];
-    const last = cleaned.length > 1 ? cleaned[cleaned.length - 1][0] : "";
-    return (first + last).toUpperCase();
-  };
-
   const filteredSpeakers = useMemo(() => {
     return speakersList.filter((sp) => {
+      const org = cleanOrgName(sp.organization);
       const matchSearch =
         sp.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         sp.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        sp.organization.toLowerCase().includes(searchTerm.toLowerCase());
+        org.toLowerCase().includes(searchTerm.toLowerCase());
       const matchCat = categoryFilter ? sp.category === categoryFilter : true;
       return matchSearch && matchCat;
     });
@@ -354,61 +445,13 @@ export default function SpeakersView({ year = 2027 }: { year?: number }) {
           {/* Speakers Cards Grid */}
           {filteredSpeakers.length > 0 ? (
             <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-              {filteredSpeakers.map((speaker, idx) => {
-                const styles = getCategoryStyles(speaker.category);
-                return (
-                  <article
-                    key={idx}
-                    className="bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-6 text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
-                  >
-                    <div>
-                      {/* Speaker Photo / Avatar */}
-                      {speaker.image ? (
-                        <div className="relative w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4">
-                          <img
-                            src={speaker.image}
-                            alt={speaker.name}
-                            className="w-full h-full rounded-full object-cover shadow-md border-4 border-white ring-2 ring-neutral-200 group-hover:ring-[#C6112F]/50 group-hover:scale-105 transition-all"
-                            onError={(e) => {
-                              (e.target as HTMLElement).style.display = "none";
-                            }}
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4 flex items-center justify-center font-black text-2xl text-white shadow-md bg-gradient-to-br ${styles.avGrad} border-4 border-white ring-2 ring-neutral-200 group-hover:ring-[#C6112F]/40 transition-all`}
-                        >
-                          {getInitials(speaker.name)}
-                        </div>
-                      )}
-
-                      {/* Name */}
-                      <h3 className="text-sm sm:text-base font-extrabold text-neutral-900 dark:text-white tracking-tight mb-1 group-hover:text-[#C6112F] transition-colors">
-                        {speaker.name}
-                      </h3>
-
-                      {/* Title / Role */}
-                      <div className="text-[11px] sm:text-xs text-neutral-500 dark:text-zinc-400 font-medium leading-relaxed mb-2 min-h-[28px] flex items-center justify-center text-center">
-                        {translateSpeakerTitle(speaker.title, lang === "FR")}
-                      </div>
-
-                      {/* Company/Org */}
-                      <div className="text-xs font-bold text-[#C6112F] mb-4 text-center">
-                        {translateSpeakerOrg(speaker.organization, lang === "FR")}
-                      </div>
-                    </div>
-
-                    {/* Badges */}
-                    <div className="flex justify-center gap-1.5 flex-wrap pt-3 border-t border-neutral-100 dark:border-zinc-800">
-                      <span
-                        className={`text-[9px] font-black tracking-wider px-2.5 py-0.5 rounded-full uppercase ${styles.badge}`}
-                      >
-                        {styles.label}
-                      </span>
-                    </div>
-                  </article>
-                );
-              })}
+              {filteredSpeakers.map((speaker, idx) => (
+                <SpeakerCard
+                  key={`${speaker.name}-${speaker.year ?? selectedYear}-${idx}`}
+                  speaker={speaker}
+                  lang={lang}
+                />
+              ))}
             </div>
           ) : (
             <div className="text-center py-16 bg-neutral-50 dark:bg-zinc-900/50 rounded-2xl border border-neutral-200 dark:border-zinc-800">

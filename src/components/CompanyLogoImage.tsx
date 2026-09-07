@@ -243,7 +243,67 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "pinnacle silver and gold corp": "pinnaclesilverandgold.com",
       "pinnacle silver and gold": "pinnaclesilverandgold.com",
       "pinnacle silver & gold corp.": "pinnaclesilverandgold.com",
-      "pinnacle silver & gold": "pinnaclesilverandgold.com"
+      "pinnacle silver & gold": "pinnaclesilverandgold.com",
+      "capitan silver corp.": "capitansilver.com",
+      "capitan silver corp": "capitansilver.com",
+      "capitan silver": "capitansilver.com",
+      "wallbridge mining company limited": "wallbridgemining.com",
+      "south kirkland gold": "southkirklandgold.com",
+      "tocvan ventures corp.": "tocvan.com",
+      "tocvan ventures corp": "tocvan.com",
+      "tocvan ventures": "tocvan.com",
+      "questcorp mining inc.": "questcorpmining.ca",
+      "questcorp mining inc": "questcorpmining.ca",
+      "thunder gold corp": "thundergoldcorp.com",
+      "mont royal resources limited": "montroyalres.com",
+      "mont royal resources": "montroyalres.com",
+      "loyalist exploration limited": "loyalistexploration.com",
+      "loyalist exploration": "loyalistexploration.com",
+      "juno corp.": "junocorp.com",
+      "juno corp": "junocorp.com",
+      "gt resources inc.": "gtresourcesinc.com",
+      "gt resources": "gtresourcesinc.com",
+      "gr silver mining ltd.": "grsilvermining.com",
+      "gr silver mining": "grsilvermining.com",
+      "globex mining enterprises inc.": "globexmining.com",
+      "globex mining enterprises": "globexmining.com",
+      "globex mining": "globexmining.com",
+      "equity metals corporation": "equitymetalscorporation.com",
+      "equity metals": "equitymetalscorporation.com",
+      "critical elements lithium corporation": "cecorp.ca",
+      "critical elements lithium": "cecorp.ca",
+      "bluejay gold inc.": "bluejaygoldcorp.com",
+      "bluejay gold": "bluejaygoldcorp.com",
+      "arizona metals corp.": "arizonametalscorp.com",
+      "arizona metals corp": "arizonametalscorp.com",
+      "arizona gold & silver inc.": "arizonagoldsilver.com",
+      "arizona gold & silver inc": "arizonagoldsilver.com",
+      "arizona gold & silver": "arizonagoldsilver.com",
+      "consolidated lithium metals inc.": "consolidatedlithium.com",
+      "consolidated lithium metals": "consolidatedlithium.com",
+      "contango silver & gold inc.": "contangoore.com",
+      "contango silver & gold": "contangoore.com",
+      "contango ore": "contangoore.com",
+      "glencore plc / glencore canada": "glencore.ca",
+      "glencore plc/glencore canada": "glencore.ca",
+      "glencore canada": "glencore.ca",
+      "glencore": "glencore.ca",
+      "gr silver mining ltd.": "grsilvermining.com",
+      "gr silver mining": "grsilvermining.com",
+      "loyalist exploration limited": "loyalistexploration.com",
+      "loyalist exploration": "loyalistexploration.com",
+      "morocco strategic minerals corporation": "moroccosm.com",
+      "morocco strategic minerals": "moroccosm.com",
+      "morocco": "moroccosm.com",
+      "orezone gold corporation": "orezone.com",
+      "orezone gold": "orezone.com",
+      "orezone": "orezone.com",
+      "or royalties inc": "orroyalties.com",
+      "or royalties inc.": "orroyalties.com",
+      "or royalties": "orroyalties.com",
+      "q2 metals corp.": "q2metals.com",
+      "q2 metals corp": "q2metals.com",
+      "q2 metals": "q2metals.com"
     };
 
     if (DOMAIN_MAP[cleanKey]) {
@@ -286,11 +346,65 @@ export default function CompanyLogoImage({
     const lowerName = (name || "").toLowerCase();
     if (logo) {
       list.push(logo);
+    }
+    if (lowerName.includes("glencore")) {
+      list.push("/sponsors/2026/glencore.svg");
+      list.push("https://www.google.com/s2/favicons?domain=glencore.ca&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/glencore.ca.ico");
+      list.push("https://glencore.ca/favicon.ico");
+    } else if (lowerName.includes("gr silver")) {
+      list.push("https://www.google.com/s2/favicons?domain=grsilvermining.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/grsilvermining.com.ico");
+      list.push("https://icon.horse/icon/grsilvermining.com");
+      list.push("https://grsilvermining.com/favicon.ico");
+    } else if (lowerName.includes("loyalist")) {
+      list.push("https://www.google.com/s2/favicons?domain=loyalistexploration.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/loyalistexploration.com.ico");
+      list.push("https://icon.horse/icon/loyalistexploration.com");
+      list.push("https://loyalistexploration.com/favicon.ico");
+    } else if (lowerName.includes("morocco")) {
+      list.push("/Morocco.svg");
+      list.push("https://www.google.com/s2/favicons?domain=moroccosm.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/moroccosm.com.ico");
+      list.push("https://www.moroccosm.com/favicon.ico");
+    } else if (lowerName.includes("orezone")) {
+      list.push("/Orezone.png");
+      list.push("https://www.google.com/s2/favicons?domain=orezone.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/orezone.com.ico");
+      list.push("https://orezone.com/favicon.ico");
+    } else if (lowerName.includes("or royalties")) {
+      list.push("/sponsors/2026/or_royalties_osisko_royalties.svg");
+      list.push("/logo-orroyalties.svg");
+      list.push("https://www.google.com/s2/favicons?domain=orroyalties.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/orroyalties.com.ico");
+      list.push("https://orroyalties.com/favicon.ico");
+    } else if (lowerName.includes("q2 metals")) {
+      list.push("https://www.google.com/s2/favicons?domain=q2metals.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/q2metals.com.ico");
+      list.push("https://icon.horse/icon/q2metals.com");
+      list.push("https://q2metals.com/favicon.ico");
     } else if (lowerName.includes("o3 mining")) {
       list.push("/o3_mining_logo.png");
     } else if (lowerName.includes("abcourt")) {
       list.push("/abcourt.png");
       list.push("https://www.abcourt.ca/wp-content/uploads/2024/06/ABCOURTMINESINC-LogoVectorization-02.png");
+    } else if (lowerName.includes("capitan silver")) {
+      list.push("/capitansilver-favicon.png");
+    } else if (lowerName.includes("tocvan")) {
+      list.push("/TOC_Logo_500.png");
+    } else if (lowerName.includes("questcorp")) {
+      list.push("/quest-corp.png");
+    } else if (lowerName.includes("thunder gold")) {
+      list.push("/thunder.jpeg");
+    } else if (lowerName.includes("juno")) {
+      list.push("/juno-logo.svg");
+    } else if (lowerName.includes("nouveau monde")) {
+      list.push("/NMG_Log.png");
+    } else if (lowerName.includes("arizona gold")) {
+      list.push("/arizona-gold.png");
+    } else if (lowerName.includes("arizona metals")) {
+      list.push("/arizona-metals-favicon.ico");
+      list.push("/arizona-logo.png");
     }
     if (domain) {
       list.push(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
@@ -311,6 +425,7 @@ export default function CompanyLogoImage({
   const currentUrl = sources[imgSourceIndex];
 
   if (currentUrl && imgSourceIndex < sources.length) {
+    const isWhiteOnTransparent = Boolean(currentUrl && currentUrl.includes("arizona-logo.png"));
     return (
       <div
         style={{ backgroundColor: "#ffffff" }}
@@ -321,7 +436,9 @@ export default function CompanyLogoImage({
           alt={name}
           onError={() => setImgSourceIndex((prev) => prev + 1)}
           style={{ backgroundColor: "#ffffff" }}
-          className="logo-white-bg max-h-8 max-w-[36px] w-auto h-auto object-contain filter drop-shadow-xs rounded-sm"
+          className={`logo-white-bg max-h-8 max-w-[36px] w-auto h-auto object-contain filter drop-shadow-xs rounded-sm ${
+            isWhiteOnTransparent ? "brightness-0" : ""
+          }`}
         />
       </div>
     );

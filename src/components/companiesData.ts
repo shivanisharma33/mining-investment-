@@ -122,8 +122,9 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "USA/AZ, NV",
     "commodities": "Au, Ag",
     "email": "info@arizonagoldsilver.com",
+    "website": "https://arizonagoldsilver.com/",
     "year": 2026,
-    "logo": "/arizona-logo.png"
+    "logo": "/arizona-gold.png"
   },
   {
     "name": "ARIZONA METALS CORP.",
@@ -133,8 +134,9 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "USA/AZ",
     "commodities": "Au,Cu,Zn",
     "email": "info@arizonametals.com",
+    "website": "https://www.arizonametalscorp.com/",
     "year": 2026,
-    "logo": "/arizona-logo.png"
+    "logo": "/arizona-metals-favicon.ico"
   },
   {
     "name": "ASTRA EXPLORATION INC",
@@ -224,6 +226,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON, YK",
     "commodities": "Au, Ag",
     "email": "info@bluejaygold.com",
+    "website": "https://bluejaygoldcorp.com/",
     "year": 2026
   },
   {
@@ -264,6 +267,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "MEXICO",
     "commodities": "Ag",
     "email": "info@capitansilver.com",
+    "website": "https://www.capitansilver.com",
+    "logo": "/capitansilver-favicon.png",
     "year": 2026
   },
   {
@@ -344,6 +349,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Li",
     "email": "info@consolidatedlithiummetals.com",
+    "website": "https://consolidatedlithium.com/",
     "year": 2026
   },
   {
@@ -354,6 +360,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ BC",
     "commodities": "Ag, Au",
     "email": "info@contangosilvergold.com",
+    "website": "https://contangoore.com/",
     "year": 2026
   },
   {
@@ -364,6 +371,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Li",
     "email": "info@consolidatedlithiummetals.com",
+    "website": "https://consolidatedlithium.com/",
     "year": 2026
   },
   {
@@ -374,6 +382,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Li",
     "email": "info@celithium.com",
+    "website": "https://www.cecorp.ca/en/",
     "year": 2026
   },
   {
@@ -495,6 +504,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/BC, NT, SK",
     "commodities": "Au, Ag, Cu",
     "email": "info@mnxltd.com",
+    "website": "https://equitymetalscorporation.com/",
     "year": 2026
   },
   {
@@ -605,6 +615,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/GLOBAL",
     "commodities": "Cu, Ni, Zn, Pb",
     "email": "info@glencoreglencorecanada.com",
+    "website": "https://www.glencore.ca/en",
+    "logo": "/sponsors/2026/glencore.svg",
     "year": 2026
   },
   {
@@ -615,6 +627,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC/ON; USA",
     "commodities": "Polymetallic",
     "email": "info@globexminingenterprises.com",
+    "website": "https://globexmining.com/",
     "year": 2026
   },
   {
@@ -635,6 +648,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "MEXICO",
     "commodities": "Ag",
     "email": "info@grsilvermining.com",
+    "website": "https://grsilvermining.com/",
     "year": 2026
   },
   {
@@ -655,6 +669,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "FINLAND",
     "commodities": "Cu, Ni, Pd, Co, Au, Pt",
     "email": "info@gtresources.com",
+    "website": "https://gtresourcesinc.com/",
     "year": 2026
   },
   {
@@ -735,6 +750,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ ON",
     "commodities": "Cu, Au, Ti, V, Sc, PGE",
     "email": "info@junocorp.ca",
+    "website": "https://junocorp.com/",
     "year": 2026
   },
   {
@@ -825,6 +841,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON",
     "commodities": "Au, REEs",
     "email": "efarr@loyalistexploration.com",
+    "website": "https://loyalistexploration.com/",
     "year": 2026
   },
   {
@@ -915,6 +932,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "REEs",
     "email": "info@montroyalresources.com",
+    "website": "https://montroyalres.com/",
     "year": 2026
   },
   {
@@ -925,6 +943,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "MOROCCO; CANADA/QC",
     "commodities": "Li, Au, Cu",
     "email": "info@moroccostrategicminerals.com",
+    "website": "https://www.moroccosm.com/",
+    "logo": "/Morocco.svg",
     "year": 2026
   },
   {
@@ -1015,6 +1035,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "C",
     "email": "info@nouveaumondegraphite.com",
+    "website": "https://nmg.com/",
     "year": 2026
   },
   {
@@ -1065,6 +1086,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC; AFRICA",
     "commodities": "Au",
     "email": "info@orezonegold.com",
+    "website": "https://orezone.com/",
+    "logo": "/Orezone.png",
     "year": 2026
   },
   {
@@ -1075,6 +1098,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "GLOBAL",
     "commodities": "Royalties",
     "email": "info@ORroyalties.com",
+    "website": "https://orroyalties.com/",
+    "logo": "/sponsors/2026/or_royalties_osisko_royalties.svg",
     "year": 2026
   },
   {
@@ -1206,6 +1231,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/BC; MEXICO",
     "commodities": "Cu, Au",
     "email": "info@questcorpmining.com",
+    "website": "https://questcorpmining.ca/",
     "year": 2026
   },
   {
@@ -1356,6 +1382,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON",
     "commodities": "Au",
     "email": "info@southkirkland.com",
+    "website": "https://southkirklandgold.com/",
     "year": 2026
   },
   {
@@ -1436,6 +1463,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "MEXICO",
     "commodities": "Au, Ag",
     "email": "info@tocvanventures.com",
+    "website": "https://tocvan.com/",
     "year": 2026
   },
   {
@@ -1476,6 +1504,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON",
     "commodities": "Au",
     "email": "info@thundergold.com",
+    "website": "https://thundergoldcorp.com/",
     "year": 2026
   },
   {
@@ -1586,6 +1615,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC",
     "commodities": "Au",
     "email": "info@wallbridgeminingcompany.com",
+    "website": "https://www.wallbridgemining.com/",
     "year": 2026
   },
   {
