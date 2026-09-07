@@ -650,6 +650,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "commodities": "Ag",
     "email": "info@grsilvermining.com",
     "website": "https://grsilvermining.com/",
+    "logo": "https://www.google.com/s2/favicons?domain=grsilvermining.com&sz=128",
     "year": 2026
   },
   {
@@ -1101,7 +1102,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "commodities": "Royalties",
     "email": "info@ORroyalties.com",
     "website": "https://orroyalties.com/",
-    "logo": "/sponsors/2026/or_royalties_osisko_royalties.svg",
+    "logo": "https://www.google.com/s2/favicons?domain=orroyalties.com&sz=128",
     "year": 2026
   },
   {
@@ -1132,6 +1133,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "COLOMBIA",
     "commodities": "Ag",
     "email": "info@outcropsilvergold.com",
+    "website": "https://outcropsilver.com/",
+    "logo": "https://outcropsilver.com/site/templates/build/img/favicon.png",
     "year": 2026
   },
   {
@@ -1878,7 +1881,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC, YT",
     "commodities": "Ni, Cu, Co",
     "website": "https://gometals.ca/",
-    "logo": "https://www.google.com/s2/favicons?domain=gometals.ca&sz=128",
+    "logo": "/go_logo.png",
     "year": 2023
   },
   {
@@ -2030,6 +2033,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC, ON",
     "commodities": "Au",
+    "website": "https://nsuperior.com/",
+    "logo": "/northen.png",
     "year": 2023
   },
   {
@@ -2300,7 +2305,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/QC, ON",
     "commodities": "Li",
     "website": "https://visionlithium.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=visionlithium.com&sz=128",
+    "logo": "/Vision_Lithium.jpg",
     "year": 2023
   },
   {
@@ -2393,7 +2398,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "ZAMBIA",
     "commodities": "Cu",
     "website": "https://www.copperzone-resources.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=copperzone-resources.com&sz=128",
+    "logo": "https://www.google.com/s2/favicons?domain=www.copperzone-resources.com&sz=128",
     "year": 2023
   },
   {
@@ -2453,6 +2458,8 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "type": "EXPLORER",
     "location": "CANADA/QC",
     "commodities": "Au",
+    "website": "https://fokusmining.com/",
+    "logo": "/fokusmininglogo.png",
     "year": 2023
   },
   {
@@ -4222,7 +4229,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
     "website": "https://nsuperior.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=nsuperior.com&sz=128",
+    "logo": "/northen.png",
     "year": 2024
   },
   {
@@ -4395,7 +4402,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA / GLOBAL",
     "commodities": "Au, Cu",
     "website": "https://bluethundermining.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=bluethundermining.com&sz=128",
+    "logo": "/blue_thunder.png",
     "year": 2024
   },
   {
@@ -4579,7 +4586,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA / GLOBAL",
     "commodities": "Li",
     "website": "https://visionlithium.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=visionlithium.com&sz=128",
+    "logo": "/Vision_Lithium.jpg",
     "year": 2024
   },
   {

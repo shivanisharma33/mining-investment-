@@ -152,6 +152,12 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "omai gold mines corp.": "omaigoldmines.com",
       "orford mining corporation": "orfordmining.com",
       "osisko development corp.": "osiskodev.com",
+      "outcrop silver & gold corporation": "outcropsilver.com",
+      "outcrop silver & gold": "outcropsilver.com",
+      "outcrop silver and gold corporation": "outcropsilver.com",
+      "outcrop silver and gold": "outcropsilver.com",
+      "outcrop silver": "outcropsilver.com",
+      "outcrop": "outcropsilver.com",
       "osisko gold royalties ltd.": "osiskogr.com",
       "osisko gold royalties": "osiskogr.com",
       "osisko metals incorporated": "osiskometals.com",
@@ -230,8 +236,12 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "calisto cobre resources corp.": "calistocobre.com",
       "calisto cobre resources": "calistocobre.com",
       "calisto cobre": "calistocobre.com",
-      "copperzone resources limited": "copperzone-resources.com",
-      "copperzone resources": "copperzone-resources.com",
+      "copperzone resources limited": "www.copperzone-resources.com",
+      "copperzone resources": "www.copperzone-resources.com",
+      "copperzone": "www.copperzone-resources.com",
+      "fokus mining corporation": "fokusmining.com",
+      "fokus mining": "fokusmining.com",
+      "fokus": "fokusmining.com",
       "delta resources limited": "deltaresources.ca",
       "delta resources": "deltaresources.ca",
       "e2gold inc.": "e2gold.ca",
@@ -325,7 +335,10 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "orezone": "orezone.com",
       "or royalties inc": "orroyalties.com",
       "or royalties inc.": "orroyalties.com",
-      "or royalties": "orroyalties.com"
+      "or royalties": "orroyalties.com",
+      "vision lithium inc.": "visionlithium.com",
+      "vision lithium inc": "visionlithium.com",
+      "vision lithium": "visionlithium.com"
     };
 
     if (DOMAIN_MAP[cleanKey]) {
@@ -375,7 +388,9 @@ export default function CompanyLogoImage({
       list.push("https://icons.duckduckgo.com/ip3/glencore.ca.ico");
       list.push("https://glencore.ca/favicon.ico");
     } else if (lowerName.includes("gr silver")) {
+      list.unshift("https://www.google.com/s2/favicons?domain=grsilvermining.com&sz=128");
       list.push("https://www.google.com/s2/favicons?domain=grsilvermining.com&sz=128");
+      list.push("https://grsilvermining.com/wp-content/uploads/2020/01/GR-Silver-Logo.png");
       list.push("https://icons.duckduckgo.com/ip3/grsilvermining.com.ico");
       list.push("https://icon.horse/icon/grsilvermining.com");
       list.push("https://grsilvermining.com/favicon.ico");
@@ -392,10 +407,21 @@ export default function CompanyLogoImage({
       list.push("https://icons.duckduckgo.com/ip3/lithiumroyalty.com.ico");
       list.push("https://icon.horse/icon/lithiumroyalty.com");
     } else if (lowerName.includes("ptx metals")) {
+      list.unshift("https://www.google.com/s2/favicons?domain=ptxmetals.com&sz=128");
       list.push("https://www.google.com/s2/favicons?domain=ptxmetals.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/ptxmetals.com.ico");
       list.push("https://icon.horse/icon/ptxmetals.com");
       list.push("https://ptxmetals.com/favicon.ico");
+      list.push("https://www.google.com/s2/favicons?domain=www.ptxmetals.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/www.ptxmetals.com.ico");
+      list.push("https://www.ptxmetals.com/favicon.ico");
+    } else if (lowerName.includes("fokus")) {
+      list.unshift("/fokusmininglogo.png");
+      list.push("/fokusmininglogo.png");
+      list.push("https://www.google.com/s2/favicons?domain=fokusmining.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/fokusmining.com.ico");
+      list.push("https://icon.horse/icon/fokusmining.com");
+      list.push("https://fokusmining.com/favicon.ico");
     } else if (lowerName.includes("metal energy") || lowerName.includes("metals energy")) {
       list.push("https://www.google.com/s2/favicons?domain=metalenergy.ca&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/metalenergy.ca.ico");
@@ -407,6 +433,8 @@ export default function CompanyLogoImage({
       list.push("https://icon.horse/icon/medaromining.com");
       list.push("https://medaromining.com/favicon.ico");
     } else if (lowerName.includes("vision lithium")) {
+      list.unshift("/Vision_Lithium.jpg");
+      list.push("/Vision_Lithium.jpg");
       list.push("https://www.google.com/s2/favicons?domain=visionlithium.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/visionlithium.com.ico");
       list.push("https://icon.horse/icon/visionlithium.com");
@@ -419,17 +447,24 @@ export default function CompanyLogoImage({
       list.push("https://icons.duckduckgo.com/ip3/qpmcorp.ca.ico");
       list.push("https://icon.horse/icon/qpmcorp.ca");
     } else if (lowerName.includes("go metals")) {
-      list.unshift("https://www.google.com/s2/favicons?domain=gometals.ca&sz=128");
+      list.unshift("/go_logo.png");
+      list.push("/go_logo.png");
+      list.push("/gometals-logo.png");
+      list.push("https://gometals.ca/img/go_logo.png");
       list.push("https://www.google.com/s2/favicons?domain=gometals.ca&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/gometals.ca.ico");
       list.push("https://icon.horse/icon/gometals.ca");
-      list.push("https://gometals.ca/img/go_logo.png");
       list.push("https://gometals.ca/favicon.ico");
       list.push("/go-metals-favicon.svg");
     } else if (lowerName.includes("copperzone")) {
+      list.unshift("https://www.google.com/s2/favicons?domain=www.copperzone-resources.com&sz=128");
+      list.push("https://www.google.com/s2/favicons?domain=www.copperzone-resources.com&sz=128");
       list.push("https://www.google.com/s2/favicons?domain=copperzone-resources.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/www.copperzone-resources.com.ico");
       list.push("https://icons.duckduckgo.com/ip3/copperzone-resources.com.ico");
+      list.push("https://icon.horse/icon/www.copperzone-resources.com");
       list.push("https://icon.horse/icon/copperzone-resources.com");
+      list.push("https://www.copperzone-resources.com/favicon.ico");
       list.push("https://copperzone-resources.com/favicon.ico");
     } else if (lowerName.includes("osisko gold royalties") || lowerName === "osisko gold") {
       list.push("/sponsors/2026/or_royalties_osisko_royalties.svg");
@@ -438,6 +473,8 @@ export default function CompanyLogoImage({
       list.push("https://icon.horse/icon/osiskogr.com");
       list.push("https://www.osiskogr.com/favicon.ico");
     } else if (lowerName.includes("northern superior")) {
+      list.unshift("/northen.png");
+      list.push("/northen.png");
       list.push("https://www.google.com/s2/favicons?domain=nsuperior.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/nsuperior.com.ico");
       list.push("https://icon.horse/icon/nsuperior.com");
@@ -453,6 +490,10 @@ export default function CompanyLogoImage({
       list.push("https://icon.horse/icon/blackbirdcm.com");
       list.push("https://blackbirdcm.com/favicon.ico");
     } else if (lowerName.includes("blue thunder")) {
+      list.unshift("/TSXV_BLUE _ Stock Discussion _ Blue Thunder Mining Inc_.png");
+      list.unshift("/blue_thunder.png");
+      list.push("/blue_thunder.png");
+      list.push("/TSXV_BLUE _ Stock Discussion _ Blue Thunder Mining Inc_.png");
       list.push("https://www.google.com/s2/favicons?domain=bluethundermining.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/bluethundermining.com.ico");
       list.push("https://icon.horse/icon/bluethundermining.com");
@@ -482,11 +523,20 @@ export default function CompanyLogoImage({
       list.push("https://icons.duckduckgo.com/ip3/orezone.com.ico");
       list.push("https://orezone.com/favicon.ico");
     } else if (lowerName.includes("or royalties")) {
-      list.push("/sponsors/2026/or_royalties_osisko_royalties.svg");
-      list.push("/logo-orroyalties.svg");
+      list.unshift("https://www.google.com/s2/favicons?domain=orroyalties.com&sz=128");
       list.push("https://www.google.com/s2/favicons?domain=orroyalties.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/orroyalties.com.ico");
       list.push("https://orroyalties.com/favicon.ico");
+      list.push("/sponsors/2026/or_royalties_osisko_royalties.svg");
+      list.push("/logo-orroyalties.svg");
+    } else if (lowerName.includes("outcrop")) {
+      list.unshift("https://outcropsilver.com/site/templates/build/img/favicon.png");
+      list.unshift("https://www.google.com/s2/favicons?domain=outcropsilver.com&sz=128");
+      list.push("https://outcropsilver.com/site/templates/build/img/favicon.png");
+      list.push("https://www.google.com/s2/favicons?domain=outcropsilver.com&sz=128");
+      list.push("https://icons.duckduckgo.com/ip3/outcropsilver.com.ico");
+      list.push("https://icon.horse/icon/outcropsilver.com");
+      list.push("https://outcropsilver.com/favicon.ico");
     } else if (lowerName.includes("q2 metals")) {
       list.push("/q2-metals-favicon.png");
       list.push("/q2-metals-logo.svg");
