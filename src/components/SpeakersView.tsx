@@ -447,8 +447,8 @@ export default function SpeakersView({ year = 2027 }: { year?: number }) {
             <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {filteredSpeakers.map((speaker, idx) => (
                 <SpeakerCard
-                  key={`${speaker.name}-${speaker.year ?? selectedYear}-${idx}`}
-                  speaker={speaker}
+                  key={`${speaker.name}-${selectedYear}-${idx}`}
+                  speaker={speaker as RawSpeaker}
                   lang={lang}
                 />
               ))}

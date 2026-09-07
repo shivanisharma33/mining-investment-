@@ -87,6 +87,7 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "first phosphate": "firstphosphate.com",
       "fury gold mines limited": "furygoldmines.com",
       "generation mining limited": "genmining.com",
+      "glencore plc / glencore canada": "glencore.ca",
       "glencore plc/glencore canada": "glencore.ca",
       "glencore plc": "glencore.ca",
       "glencore canada": "glencore.ca",
@@ -284,14 +285,6 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "contango silver & gold inc.": "contangoore.com",
       "contango silver & gold": "contangoore.com",
       "contango ore": "contangoore.com",
-      "glencore plc / glencore canada": "glencore.ca",
-      "glencore plc/glencore canada": "glencore.ca",
-      "glencore canada": "glencore.ca",
-      "glencore": "glencore.ca",
-      "gr silver mining ltd.": "grsilvermining.com",
-      "gr silver mining": "grsilvermining.com",
-      "loyalist exploration limited": "loyalistexploration.com",
-      "loyalist exploration": "loyalistexploration.com",
       "morocco strategic minerals corporation": "moroccosm.com",
       "morocco strategic minerals": "moroccosm.com",
       "morocco": "moroccosm.com",
@@ -300,10 +293,7 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "orezone": "orezone.com",
       "or royalties inc": "orroyalties.com",
       "or royalties inc.": "orroyalties.com",
-      "or royalties": "orroyalties.com",
-      "q2 metals corp.": "q2metals.com",
-      "q2 metals corp": "q2metals.com",
-      "q2 metals": "q2metals.com"
+      "or royalties": "orroyalties.com"
     };
 
     if (DOMAIN_MAP[cleanKey]) {
