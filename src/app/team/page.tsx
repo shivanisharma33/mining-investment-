@@ -334,7 +334,7 @@ export default function TeamPage() {
         </section>
 
         {/* ═══════ CATEGORY FILTER TABS ═══════ */}
-        <section className="sticky top-[72px] z-30 w-full bg-white dark:bg-[#121215] border-b border-neutral-200 dark:border-zinc-800 shadow-2xs transition-colors">
+        <section className="relative w-full bg-white dark:bg-[#121215] border-b border-neutral-200 dark:border-zinc-800 shadow-2xs transition-colors">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 py-3 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
             <div className="flex items-center gap-2 sm:gap-3">
               <button

@@ -130,6 +130,152 @@ function getInitials(name: string) {
   return (first + last).toUpperCase();
 }
 
+/**
+ * Normalizes speaker names into canonical keys to detect duplicates regardless of
+ * honorifics (The Honourable, The Hon., Dr., Grand Chief), case, punctuation, or accents.
+ */
+export function normalizeSpeakerKey(name: string): string {
+  if (!name) return "";
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/^(the\s+hon(\.|ourable)?|hon(\.|ourable)?|dr\.|grand\s+chief|mr\.|ms\.|mrs\.)\s+/i, "")
+    .replace(/[^a-z0-9]/g, "")
+    .trim();
+}
+
+/**
+ * Resolves blurry or duplicate speaker portraits to official, sharp, high-res images.
+ * Also upgrades Squarespace CDN images from low-res thumbnails to 1000w format.
+ */
+export function getCleanSpeakerImage(name: string, currentImage?: string): string | undefined {
+  const norm = normalizeSpeakerKey(name);
+
+  // 1. Explicit high-resolution overrides for key speakers
+  if (norm.includes("kodyblois")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=1000w";
+  }
+  if (norm.includes("claudeguay")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=1000w";
+  }
+  if (norm.includes("jagrupbrar")) {
+    return "https://www2.gov.bc.ca/assets/gov/government/ministries-organizations/premier-cabinet-mlas/minister-large/Jagrup_Brar_large.jpg";
+  }
+  if (norm.includes("neiljacobson") || norm.includes("neilbjacobson")) {
+    return "/fwdboardmemberphotos/neil.jpg";
+  }
+  if (norm.includes("katerichampagne")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153163108-MAGJ09R669W36K87R14L/champagne-jourdain-flourish.webp?format=1000w";
+  }
+
+  if (!currentImage) return undefined;
+
+  // 2. Filter out generic clip-art placeholder silhouettes to let initials avatar render cleanly
+  if (currentImage.includes("person-icon-person-icon-17.jpg") || currentImage.includes("placeholder")) {
+    return undefined;
+  }
+
+  // 3. Intercept known blurry filenames from external API/CMS
+  if (currentImage.includes("1743299125281.jpg")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=1000w";
+  }
+  if (currentImage.includes("Blois-Kody") || currentImage.includes("BloisKody")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=1000w";
+  }
+
+  // 4. Upgrade Squarespace CDN image format to high-res format=1000w
+  if (currentImage.includes("images.squarespace-cdn.com")) {
+    if (currentImage.includes("format=")) {
+      return currentImage.replace(/format=\d+w/, "format=1000w");
+    } else {
+      const sep = currentImage.includes("?") ? "&" : "?";
+      return `${currentImage}${sep}format=1000w`;
+    }
+  }
+
+  return currentImage;
+}
+
+/**
+ * Client-side deduplication logic that merges duplicate speaker entries returned by
+ * the Strapi API or local datasets. Retains official titles, verified government orgs,
+ * merged event days, and high-resolution portraits.
+ */
+export function deduplicateAndCleanSpeakers(speakers: RawSpeaker[]): RawSpeaker[] {
+  const map = new Map<string, RawSpeaker>();
+
+  for (const sp of speakers) {
+    if (!sp || !sp.name) continue;
+    const key = normalizeSpeakerKey(sp.name);
+    if (!key) continue;
+
+    const cleanImg = getCleanSpeakerImage(sp.name, sp.image);
+    const cleanedOrg = cleanOrgName(sp.organization);
+
+    if (!map.has(key)) {
+      map.set(key, {
+        ...sp,
+        image: cleanImg,
+        organization: cleanedOrg,
+      });
+    } else {
+      const existing = map.get(key)!;
+
+      // 1. Merge active days
+      const days = Array.from(new Set([...(existing.days || []), ...(sp.days || [])]));
+
+      // 2. Select the most formal/complete name (e.g. keep "The Honourable")
+      const spHasHon = /^(the\s+hon|hon|dr|grand\s+chief)/i.test(sp.name);
+      const exHasHon = /^(the\s+hon|hon|dr|grand\s+chief)/i.test(existing.name);
+      let name = existing.name;
+      if (spHasHon && !exHasHon) {
+        name = sp.name;
+      } else if (!exHasHon && sp.name.length > existing.name.length) {
+        name = sp.name;
+      }
+
+      // 3. Select the most descriptive title (avoid generic "Speaker")
+      const isGeneric = (t: string) => !t || /^(speaker|mining industry executive|executive)$/i.test(t.trim());
+      let title = existing.title;
+      if (isGeneric(existing.title) && !isGeneric(sp.title)) {
+        title = sp.title;
+      } else if (!isGeneric(sp.title) && sp.title.length > existing.title.length) {
+        title = sp.title;
+      }
+
+      // 4. Select the official organization
+      const orgIsGeneric = (o: string) => !o || /^(mining industry executive|speaker)$/i.test(o.trim());
+      let organization = existing.organization;
+      if (orgIsGeneric(existing.organization) && !orgIsGeneric(cleanedOrg)) {
+        organization = cleanedOrg;
+      } else if (!orgIsGeneric(cleanedOrg) && cleanedOrg.length > existing.organization.length) {
+        organization = cleanedOrg;
+      }
+
+      // 5. Prefer specific category
+      const category = (existing.category === "exec" && sp.category && sp.category !== "exec")
+        ? sp.category
+        : existing.category;
+
+      // 6. Prefer high-res image
+      const image = cleanImg || existing.image;
+
+      map.set(key, {
+        ...existing,
+        name,
+        title,
+        organization,
+        category,
+        days,
+        image,
+      });
+    }
+  }
+
+  return Array.from(map.values());
+}
+
 function SpeakerCard({
   speaker,
   lang,
@@ -141,12 +287,13 @@ function SpeakerCard({
   const styles = getCategoryStyles(speaker.category, lang);
   const initials = getInitials(speaker.name);
 
-  // Normalize organization - fix "Crux Investo" typo
+  // Normalize organization & clean high-res image
+  const cleanImg = getCleanSpeakerImage(speaker.name, speaker.image);
   const orgName = cleanOrgName(speaker.organization);
   const displayOrg = translateSpeakerOrg(orgName, lang === "FR");
   const displayTitle = translateSpeakerTitle(speaker.title, lang === "FR");
 
-  const hasImage = Boolean(speaker.image) && !imgError;
+  const hasImage = Boolean(cleanImg) && !imgError;
 
   return (
     <article className="bg-white dark:bg-[#18181b] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-5 sm:p-6 text-center shadow-2xs hover:shadow-xl hover:border-[#C6112F]/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full group">
@@ -156,7 +303,7 @@ function SpeakerCard({
           {hasImage ? (
             <div className="w-full h-full rounded-full p-1 ring-2 ring-neutral-200/90 dark:ring-zinc-700 group-hover:ring-[#C6112F]/60 group-hover:shadow-lg transition-all duration-300 bg-white dark:bg-zinc-800 shadow-sm overflow-hidden">
               <img
-                src={speaker.image}
+                src={cleanImg}
                 alt={speaker.name}
                 className="w-full h-full rounded-full object-cover transition-transform duration-500 group-hover:scale-105"
                 style={{ objectPosition: "50% 12%" }}
@@ -241,17 +388,21 @@ export default function SpeakersView({ year = 2027 }: { year?: number }) {
   }, [selectedYear]);
 
   const speakersList = useMemo(() => {
+    let raw: RawSpeaker[] = [];
     if (selectedYear === 2027) {
-      return apiSpeakers;
+      raw = apiSpeakers;
+    } else if (apiSpeakers.length > 0) {
+      raw = apiSpeakers;
+    } else if (selectedYear === 2026) {
+      raw = SPEAKERS || [];
+    } else if (selectedYear === 2025) {
+      raw = SPEAKERS_2025 || [];
+    } else if (selectedYear === 2024) {
+      raw = SPEAKERS_2024 || [];
+    } else if (selectedYear === 2023) {
+      raw = SPEAKERS_2023 || [];
     }
-    if (apiSpeakers.length > 0) {
-      return apiSpeakers;
-    }
-    if (selectedYear === 2026) return SPEAKERS || [];
-    if (selectedYear === 2025) return SPEAKERS_2025 || [];
-    if (selectedYear === 2024) return SPEAKERS_2024 || [];
-    if (selectedYear === 2023) return SPEAKERS_2023 || [];
-    return [];
+    return deduplicateAndCleanSpeakers(raw);
   }, [selectedYear, apiSpeakers]);
 
   const filteredSpeakers = useMemo(() => {

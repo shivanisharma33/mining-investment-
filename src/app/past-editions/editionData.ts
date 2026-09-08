@@ -455,51 +455,183 @@ export interface RawSpeaker {
 
 const rawSpeakersData: [string, string, string, "gov" | "exec" | "fin" | "mod", number[], string?][] = [
   ["Keith Bradbury", "Department of Energy and Mines", "Government of Newfoundland & Labrador", "gov", [4], "/fwdboardmemberphotos/keith.jpg"],
-  ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=750w"],
-  ["Kody Blois", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=750w"],
-  ["Orin Baranowsky", "Chief Financial Officer", "NexGold Mining", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154751377-H84R1XD7U3BXAZV8CUFN/Orin%2BBaranowsky.jpg?format=750w"],
-  ["Stephen Soock", "VP, Investor Relations & Development", "Heliostar Metals", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152031110-VWUNS91VR3AXA9DB7GEL/stephen+soockpng.png?format=750w"],
-  ["Kiran Patankar", "President & CEO", "Maple Gold Mines", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152192018-P0QD9TACY3UWLQNIBOB6/Kiran+Patankar.jpeg?format=750w"],
-  ["Rana Vig", "President & CEO", "Blue Lagoon Resources", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152153453-R8IKXYPPMUT66Q4SM11X/RanaVig.webp?format=750w"],
-  ["Trey Wasser", "CEO & Director", "Dryden Gold", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152087328-3IEDUWQAZN7FRHOYN72Q/Trey+Wasser.jpeg?format=750w"],
-  ["Matt Manson", "President, CEO & Director", "Radisson Mining Resources", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152105728-3L0X4W8DGX5XWVEAL52Q/Matt+Manson.jpeg?format=750w"],
-  ["Adrian Day", "Founder", "Adrian Day Asset Management", "fin", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152125012-7SK02444ZFZPGYTDHGZ2/Adrian+Day.png?format=750w"],
+  ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=1000w"],
+  ["Orin Baranowsky", "Chief Financial Officer", "NexGold Mining", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154751377-H84R1XD7U3BXAZV8CUFN/Orin%2BBaranowsky.jpg?format=1000w"],
+  ["Stephen Soock", "VP, Investor Relations & Development", "Heliostar Metals", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152031110-VWUNS91VR3AXA9DB7GEL/stephen+soockpng.png?format=1000w"],
+  ["Kiran Patankar", "President & CEO", "Maple Gold Mines", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152192018-P0QD9TACY3UWLQNIBOB6/Kiran+Patankar.jpeg?format=1000w"],
+  ["Rana Vig", "President & CEO", "Blue Lagoon Resources", "exec", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152153453-R8IKXYPPMUT66Q4SM11X/RanaVig.webp?format=1000w"],
+  ["Trey Wasser", "CEO & Director", "Dryden Gold", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152087328-3IEDUWQAZN7FRHOYN72Q/Trey+Wasser.jpeg?format=1000w"],
+  ["Matt Manson", "President, CEO & Director", "Radisson Mining Resources", "exec", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152105728-3L0X4W8DGX5XWVEAL52Q/Matt+Manson.jpeg?format=1000w"],
+  ["Adrian Day", "Founder", "Adrian Day Asset Management", "fin", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152125012-7SK02444ZFZPGYTDHGZ2/Adrian+Day.png?format=1000w"],
   ["Angie Stockley", "Moderator", "SAAF Exploration", "mod", [4], "/fwdboardmemberphotos/angie-stockley-.webp"],
-  ["The Honourable Kody Blois", "Parliamentary Secretary to the Prime Minister", "Government of Canada", "gov", [4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152804896-BAYM70NN1UJXLTLZVCTH/Blois-Kody-1024x682.jpg?format=750w"],
-  ["Terry Salman", "Chief Executive Officer", "Salman Partners", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152865058-OHGA6KGQIOMQJHPDWNOZ/Terry-Salman-bio.jpg?format=750w"],
-  ["Jon Wiesblatt", "Panelist", "Trident Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152251014-SJ6PK3OGF73YI0AMCU5P/jon-wiesblatt.jpg?format=750w"],
-  ["Peter Espig", "Chief Executive Officer", "Nicola Mining", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152260885-BO5UNNG0V7GXP8HOWWO8/Peter+Espig.jpeg?format=750w"],
-  ["Joseph Carrabba", "Panelist", "North American Niobium", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152273641-ZX8VGN8PGH8ACOPCAQ3O/Joseph+Carrabbajpg.webp?format=750w"],
-  ["Nicholas Van Dyk", "Chief Financial Officer", "NorthIsle Copper & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152289756-MJRXGJP73508HW8MZFPA/Nicholas+Van+Dyk.jpeg?format=750w"],
-  ["Guy Goulet", "Chief Executive Officer", "Cerro de Pasco Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152903562-UT8YIE0I4C4GF4KXIU5E/1587480594080.jpg?format=750w"],
-  ["Craig Hallworth", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152320287-2BX2RIBDR1GGODOY785X/Craig+Hallworth.png?format=750w"],
+  ["The Honourable Kody Blois", "Parliamentary Secretary to the Prime Minister", "Government of Canada", "gov", [2, 4], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=1000w"],
+  ["Terry Salman", "Chief Executive Officer", "Salman Partners", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152865058-OHGA6KGQIOMQJHPDWNOZ/Terry-Salman-bio.jpg?format=1000w"],
+  ["Jon Wiesblatt", "Panelist", "Trident Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152251014-SJ6PK3OGF73YI0AMCU5P/jon-wiesblatt.jpg?format=1000w"],
+  ["Peter Espig", "Chief Executive Officer", "Nicola Mining", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152260885-BO5UNNG0V7GXP8HOWWO8/Peter+Espig.jpeg?format=1000w"],
+  ["Joseph Carrabba", "Panelist", "North American Niobium", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152273641-ZX8VGN8PGH8ACOPCAQ3O/Joseph+Carrabbajpg.webp?format=1000w"],
+  ["Nicholas Van Dyk", "Chief Financial Officer", "NorthIsle Copper & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152289756-MJRXGJP73508HW8MZFPA/Nicholas+Van+Dyk.jpeg?format=1000w"],
+  ["Guy Goulet", "Chief Executive Officer", "Cerro de Pasco Resources", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152903562-UT8YIE0I4C4GF4KXIU5E/1587480594080.jpg?format=1000w"],
+  ["Craig Hallworth", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152320287-2BX2RIBDR1GGODOY785X/Craig+Hallworth.png?format=1000w"],
   ["Dr. Nicole Adshead-Bell", "Moderator", "Independent", "mod", [3, 4], "/fwdboardmemberphotos/nichole.jpg"],
-  ["Thomas Bachand", "Moderator", "Banque Nationale", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152353737-EAEERWWF6KV4FMPJ1B76/Thomas+Bachand.jpeg?format=750w"],
-  ["Shawn Khunkhun", "President", "Contango Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152369364-3RKA28ISR7CDCP87UQRM/Shawn+Khunkhun.webp?format=750w"],
-  ["Robert Bruggeman", "President & CEO", "Outcrop Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152435695-QIR2I2IER6SDI2XN09AR/Robert+Bruggeman.jpeg?format=750w"],
-  ["Peter Lekich", "Director, Capital Markets & Corporate Development", "New Pacific Metals", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152400695-KX6U5I2OW2G43E9GVDN6/Peter+Lekich.jpeg?format=750w"],
+  ["Thomas Bachand", "Moderator", "Banque Nationale", "fin", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152353737-EAEERWWF6KV4FMPJ1B76/Thomas+Bachand.jpeg?format=1000w"],
+  ["Shawn Khunkhun", "President", "Contango Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152369364-3RKA28ISR7CDCP87UQRM/Shawn+Khunkhun.webp?format=1000w"],
+  ["Robert Bruggeman", "President & CEO", "Outcrop Silver & Gold", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152435695-QIR2I2IER6SDI2XN09AR/Robert+Bruggeman.jpeg?format=1000w"],
+  ["Peter Lekich", "Director, Capital Markets & Corporate Development", "New Pacific Metals", "exec", [3], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152400695-KX6U5I2OW2G43E9GVDN6/Peter+Lekich.jpeg?format=1000w"],
   ["Phillips S. Baker", "Panel Moderator", "Independent", "mod", [3], "/fwdboardmemberphotos/philips.jpg"],
-  ["Pete Hoekstra", "U.S. Ambassador to Canada", "United States of America", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153031756-KN0U3M0NY8U5WAWV2VNS/C._Piet_Hoekstra.jpg?format=750w"],
-  ["Neil B. Jacobson", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154332594-N1M6PZIYE1QH8HV8R7HC/person-icon-person-icon-17.jpg?format=750w"],
-  ["The Hon. Jagrup Brar", "Minister of Mining and Critical Minerals", "Government of British Columbia", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153106640-XBB2RYRPB52P16L7HBS6/images.jpg?format=750w"],
+  ["Pete Hoekstra", "U.S. Ambassador to Canada", "United States of America", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153031756-KN0U3M0NY8U5WAWV2VNS/C._Piet_Hoekstra.jpg?format=1000w"],
+  ["Neil B. Jacobson", "Speaker", "Mining Industry Executive", "exec", [2], "/fwdboardmemberphotos/neil.jpg"],
+  ["The Hon. Jagrup Brar", "Minister of Mining and Critical Minerals", "Government of British Columbia", "gov", [2], "https://www2.gov.bc.ca/assets/gov/government/ministries-organizations/premier-cabinet-mlas/minister-large/Jagrup_Brar_large.jpg"],
   ["Anthony Vaccaro", "Speaker", "Mining Industry Executive", "exec", [2], "/fwdboardmemberphotos/anthony.jpg"],
   ["Matt Gordon", "Speaker & Industry Expert", "Crux Investor", "fin", [2], "/fwdboardmemberphotos/matt.jpg"],
-  ["Erhen Cory", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152570884-7IWX1PCRB0WV89P0V5WN/Ehren+Cory.png?format=750w"],
-  ["Melanie Lalonde", "Fireside Speaker", "HATCH", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152588562-WBBCXU8B07GDRSMOJ5VB/Melanie+Lalonde.jpeg?format=750w"],
-  ["Alain Zubinsky", "Fireside Speaker", "CAUR Technologies", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779154388298-JGQKIBZOPZML1N50IRYC/person-icon-person-icon-17.jpg?format=750w"],
-  ["Jean Robitalle", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152619513-RXNE5B7DMFP5MS2TC7XN/Jean+Robitialle.+jpeg.jpeg?format=750w"],
-  ["Kateri Chamagne-Jourdain", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153163108-MAGJ09R669W36K87R14L/champagne-jourdain-flourish.webp?format=750w"],
-  ["Claude Guay", "Parliamentary Secretary to the Minister of Energy & Natural Resources", "Government of Québec", "gov", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153239106-275B133ALL4V6JUO5RSF/1743299125281.jpg?format=750w"]
+  ["Erhen Cory", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152570884-7IWX1PCRB0WV89P0V5WN/Ehren+Cory.png?format=1000w"],
+  ["Melanie Lalonde", "Fireside Speaker", "HATCH", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152588562-WBBCXU8B07GDRSMOJ5VB/Melanie+Lalonde.jpeg?format=1000w"],
+  ["Alain Zubinsky", "Fireside Speaker", "CAUR Technologies", "exec", [2]],
+  ["Jean Robitalle", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779152619513-RXNE5B7DMFP5MS2TC7XN/Jean+Robitialle.+jpeg.jpeg?format=1000w"],
+  ["Kateri Champagne-Jourdain", "Speaker", "Mining Industry Executive", "exec", [2], "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153163108-MAGJ09R669W36K87R14L/champagne-jourdain-flourish.webp?format=1000w"]
 ];
 
-export const SPEAKERS = rawSpeakersData.map(([name, title, organization, category, days, image]) => ({
-  name,
-  title,
-  organization,
-  category,
-  days,
-  image,
-}));
+export function cleanOrgName(org: string): string {
+  if (!org) return "";
+  const cleaned = org.trim();
+  if (/^crux investo\b/i.test(cleaned)) {
+    return "Crux Investor";
+  }
+  return cleaned;
+}
+
+export function normalizeSpeakerKey(name: string): string {
+  if (!name) return "";
+  return name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/^(the\s+hon(\.|ourable)?|hon(\.|ourable)?|dr\.|grand\s+chief|mr\.|ms\.|mrs\.)\s+/i, "")
+    .replace(/[^a-z0-9]/g, "")
+    .trim();
+}
+
+export function getCleanSpeakerImage(name: string, currentImage?: string): string | undefined {
+  const norm = normalizeSpeakerKey(name);
+
+  if (norm.includes("kodyblois")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=1000w";
+  }
+  if (norm.includes("claudeguay")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=1000w";
+  }
+  if (norm.includes("jagrupbrar")) {
+    return "https://www2.gov.bc.ca/assets/gov/government/ministries-organizations/premier-cabinet-mlas/minister-large/Jagrup_Brar_large.jpg";
+  }
+  if (norm.includes("neiljacobson") || norm.includes("neilbjacobson")) {
+    return "/fwdboardmemberphotos/neil.jpg";
+  }
+  if (norm.includes("katerichampagne")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779153163108-MAGJ09R669W36K87R14L/champagne-jourdain-flourish.webp?format=1000w";
+  }
+
+  if (!currentImage) return undefined;
+
+  if (currentImage.includes("person-icon-person-icon-17.jpg") || currentImage.includes("placeholder")) {
+    return undefined;
+  }
+
+  if (currentImage.includes("1743299125281.jpg")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1780020166474-LQ2NQJ8289B41QQW075X/GuayClaude_Portrait.jpg?format=1000w";
+  }
+  if (currentImage.includes("Blois-Kody") || currentImage.includes("BloisKody")) {
+    return "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1779502996098-IWVGMFK8BKMBOQ9VOE9R/BloisKody_Lib.jpg?format=1000w";
+  }
+
+  if (currentImage.includes("images.squarespace-cdn.com")) {
+    if (currentImage.includes("format=")) {
+      return currentImage.replace(/format=\d+w/, "format=1000w");
+    } else {
+      const sep = currentImage.includes("?") ? "&" : "?";
+      return `${currentImage}${sep}format=1000w`;
+    }
+  }
+
+  return currentImage;
+}
+
+export function deduplicateAndCleanSpeakers(speakers: RawSpeaker[]): RawSpeaker[] {
+  const map = new Map<string, RawSpeaker>();
+
+  for (const sp of speakers) {
+    if (!sp || !sp.name) continue;
+    const key = normalizeSpeakerKey(sp.name);
+    if (!key) continue;
+
+    const cleanImg = getCleanSpeakerImage(sp.name, sp.image);
+    const cleanedOrg = cleanOrgName(sp.organization);
+
+    if (!map.has(key)) {
+      map.set(key, {
+        ...sp,
+        image: cleanImg,
+        organization: cleanedOrg,
+      });
+    } else {
+      const existing = map.get(key)!;
+
+      const days = Array.from(new Set([...(existing.days || []), ...(sp.days || [])]));
+
+      const spHasHon = /^(the\s+hon|hon|dr|grand\s+chief)/i.test(sp.name);
+      const exHasHon = /^(the\s+hon|hon|dr|grand\s+chief)/i.test(existing.name);
+      let name = existing.name;
+      if (spHasHon && !exHasHon) {
+        name = sp.name;
+      } else if (!exHasHon && sp.name.length > existing.name.length) {
+        name = sp.name;
+      }
+
+      const isGeneric = (t: string) => !t || /^(speaker|mining industry executive|executive)$/i.test(t.trim());
+      let title = existing.title;
+      if (isGeneric(existing.title) && !isGeneric(sp.title)) {
+        title = sp.title;
+      } else if (!isGeneric(sp.title) && sp.title.length > existing.title.length) {
+        title = sp.title;
+      }
+
+      const orgIsGeneric = (o: string) => !o || /^(mining industry executive|speaker)$/i.test(o.trim());
+      let organization = existing.organization;
+      if (orgIsGeneric(existing.organization) && !orgIsGeneric(cleanedOrg)) {
+        organization = cleanedOrg;
+      } else if (!orgIsGeneric(cleanedOrg) && cleanedOrg.length > existing.organization.length) {
+        organization = cleanedOrg;
+      }
+
+      const category = (existing.category === "exec" && sp.category && sp.category !== "exec")
+        ? sp.category
+        : existing.category;
+
+      const image = cleanImg || existing.image;
+
+      map.set(key, {
+        ...existing,
+        name,
+        title,
+        organization,
+        category,
+        days,
+        image,
+      });
+    }
+  }
+
+  return Array.from(map.values());
+}
+
+export const SPEAKERS = deduplicateAndCleanSpeakers(
+  rawSpeakersData.map(([name, title, organization, category, days, image]) => ({
+    name,
+    title,
+    organization,
+    category,
+    days,
+    image,
+  }))
+);
 
 
 export const SPEAKERS_2025: RawSpeaker[] = [

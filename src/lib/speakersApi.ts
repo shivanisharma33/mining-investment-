@@ -2,7 +2,7 @@
  * Event speakers, served by the Strapi v5 collection
  * /api/speakers
  */
-import { RawSpeaker } from "@/app/past-editions/editionData";
+import { RawSpeaker, deduplicateAndCleanSpeakers } from "@/app/past-editions/editionData";
 import {
   fetchStrapi,
   getStrapiMediaUrl,
@@ -139,11 +139,11 @@ export async function fetchSpeakersFromApi(
     },
   });
 
-  const entries = Array.isArray(json?.data) ? json.data : [];
-
-  return entries
+  const mapped = entries
     .map(mapSpeaker)
     .filter((sp): sp is RawSpeaker => sp !== null);
+
+  return deduplicateAndCleanSpeakers(mapped);
 }
 
 export async function fetchSpeakersByYear(

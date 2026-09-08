@@ -769,10 +769,16 @@ export default function MediaPage() {
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[700px] mb-8">
-              {t(
-                "media-gallery-desc",
-                "Explore recent coverage, photography and media from THE Mining Investment Event. For media inquiries and press accreditation, please contact our team directly."
-              )}
+              <span>
+                {lang === "FR"
+                  ? "Explorez la couverture médiatique récente, les photos et les médias de THE Mining Investment Event."
+                  : "Explore recent coverage, photography and media from THE Mining Investment Event."}
+              </span>
+              <span className="block mt-1">
+                {lang === "FR"
+                  ? "Pour toute demande des médias et accréditation de presse, veuillez contacter notre équipe directement."
+                  : "For media inquiries and press accreditation, please contact our team directly."}
+              </span>
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

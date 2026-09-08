@@ -288,7 +288,7 @@ const translations: Record<Language, Record<string, string>> = {
     "media-gallery-label": "Gallery & Media",
     "media-gallery-title-1": "THE Event in",
     "media-gallery-title-2": "Pictures & Press",
-    "media-gallery-desc": "Explore recent coverage, photography and media from THE Mining Investment Event. For media inquiries and press accreditation, please contact our team directly.",
+    "media-gallery-desc": "Explore recent coverage, photography and media from THE Mining Investment Event.\nFor media inquiries and press accreditation, please contact our team directly.",
     "media-tile-conference-floor": "Conference Floor",
     "media-tile-keynote-speakers": "Keynote Speakers",
     "media-tile-networking-events": "Networking Events",

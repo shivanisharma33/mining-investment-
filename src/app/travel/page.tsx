@@ -224,7 +224,7 @@ export default function TravelPage() {
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     </div>
-                    <span className="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 text-[10px] font-black uppercase tracking-wider">
+                    <span className="px-3 py-1 rounded-full bg-[#C6112F]/10 dark:bg-[#C6112F]/20 text-[#C6112F] dark:text-[#ff4d6d] border border-[#C6112F]/30 text-[10px] font-black uppercase tracking-wider">
                       HISTORIC LUXURY HOTEL
                     </span>
                   </div>
@@ -273,38 +273,60 @@ export default function TravelPage() {
               <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full" />
             </div>
 
-            <div className="bg-gradient-to-br from-[#800016] via-[#730214] to-[#54020e] rounded-3xl p-8 sm:p-10 md:p-12 text-white shadow-xl border border-white/20">
-              <div className="max-w-4xl space-y-5">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 text-white text-xs sm:text-sm font-black tracking-widest uppercase border border-white/30">
-                  <span>SPECIAL DELEGATE RATES</span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight">
-                  {isFr ? "Tarifs de Chambres Réservés aux Participants" : "Discounted Room Blocks for Registered Delegates"}
-                </h3>
-                <p className="text-white text-base sm:text-lg md:text-xl font-bold leading-relaxed">
-                  {t(
-                    "travel-notice-1",
-                    "Discounted block rates available for registered participants only."
-                  )}
-                </p>
-                <p className="text-white/95 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
-                  {t(
-                    "travel-notice-2",
-                    "You are responsible for coordinating all your own travel and lodging arrangements. Please check with individual properties regarding cancellation policy, deposit requirement and taxes/fees."
-                  )}
-                </p>
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#800016] via-[#6d0213] to-[#48010c] text-white shadow-xl border border-white/20 p-6 sm:p-8 md:p-10 lg:p-12">
+              {/* Subtle ambient lighting */}
+              <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-black/20 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="pt-6 border-t border-white/25 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="flex items-start gap-3.5 bg-white/15 p-4 sm:p-5 rounded-2xl border border-white/20 shadow-sm">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 mt-1.5 shrink-0" />
+              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                {/* Left Column: Heading & Notices (Strictly original data) */}
+                <div className="lg:col-span-7 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 text-white text-xs sm:text-sm font-black tracking-widest uppercase border border-white/25">
+                    <span>{isFr ? "TARIFS SPÉCIAUX DÉLÉGUÉS" : "SPECIAL DELEGATE RATES"}</span>
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight">
+                    {isFr
+                      ? "Tarifs de Chambres Réservés aux Participants"
+                      : "Discounted Room Blocks for Registered Delegates"}
+                  </h3>
+
+                  <p className="text-white text-base sm:text-lg md:text-xl font-bold leading-relaxed">
+                    {t(
+                      "travel-notice-1",
+                      "Discounted block rates available for registered participants only."
+                    )}
+                  </p>
+
+                  <p className="text-white/90 text-xs sm:text-sm md:text-base font-normal leading-relaxed">
+                    {t(
+                      "travel-notice-2",
+                      "You are responsible for coordinating all your own travel and lodging arrangements. Please check with individual properties regarding cancellation policy, deposit requirement and taxes/fees."
+                    )}
+                  </p>
+                </div>
+
+                {/* Right Column: The Two Cards (Strictly original data, zero yellow) */}
+                <div className="lg:col-span-5 flex flex-col gap-4">
+                  <div className="flex items-start gap-4 bg-white/15 hover:bg-white/20 p-5 rounded-2xl border border-white/20 shadow-sm transition-all duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0 shadow-xs border border-white/30">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.75a1.5 1.5 0 011.5-1.5h1.5a1.5 1.5 0 011.5 1.5V21" />
+                      </svg>
+                    </div>
                     <span className="text-sm sm:text-base text-white font-semibold leading-relaxed">
                       {isFr
                         ? "Offres spéciales dans les hôtels partenaires officiels à quelques pas du centre de congrès."
                         : "Special group rate links sent upon registration for official conference hotels."}
                     </span>
                   </div>
-                  <div className="flex items-start gap-3.5 bg-white/15 p-4 sm:p-5 rounded-2xl border border-white/20 shadow-sm">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400 mt-1.5 shrink-0" />
+
+                  <div className="flex items-start gap-4 bg-white/15 hover:bg-white/20 p-5 rounded-2xl border border-white/20 shadow-sm transition-all duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-white/20 text-white flex items-center justify-center shrink-0 shadow-xs border border-white/30">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z" />
+                      </svg>
+                    </div>
                     <span className="text-sm sm:text-base text-white font-semibold leading-relaxed">
                       {isFr
                         ? "Rabais exclusifs délégués dans les restaurants et attractions de la ville de Québec."
