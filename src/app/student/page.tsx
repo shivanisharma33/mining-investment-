@@ -77,7 +77,7 @@ const studentGalleryPhotos = [
     src: "/student/STUDENTS/MINING INVESTMENT EVENT 2026_DAY 1_STUDENTS-38.jpg",
     title: "Industry Roundtable Discussions",
     category: "Panels",
-    caption: "Interactive breakout workshops on ESG, innovation, and mine technology.",
+    caption: "Interactive breakout workshops on ESG, innovation and mine technology.",
   },
 ];
 
@@ -112,7 +112,7 @@ export default function StudentPage() {
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100">
 
         {/* ═══════════════ 1. HERO SECTION ═══════════════ */}
-        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-32 sm:pt-36 md:pt-44 pb-20 sm:pb-24 border-b border-neutral-800">
+        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 border-b border-neutral-800">
           {/* Background Grid Pattern */}
           <div
             className="absolute inset-0 opacity-[0.05] pointer-events-none"
@@ -151,7 +151,7 @@ export default function StudentPage() {
                 </h1>
 
                 <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-8">
-                  Empowering university and college students in geology, finance, and engineering with fully funded access to Canada's Tier 1 global mining investment event.
+                  Empowering university and college students in geology, finance and engineering with fully funded access to Canada's Tier 1 global mining investment event.
                 </p>
 
                 {/* Hero Action Buttons */}
@@ -234,7 +234,7 @@ export default function StudentPage() {
         </section>
 
         {/* ═══════════════ 2. PROGRAM OVERVIEW TEXT SECTION ═══════════════ */}
-        <section className="relative w-full py-16 sm:py-24 bg-white dark:bg-[#0f1117]">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117]">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="max-w-4xl mx-auto bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-8 sm:p-12 shadow-xl">
               <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-3 block">
@@ -247,11 +247,11 @@ export default function StudentPage() {
 
               <div className="space-y-6 text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed font-normal">
                 <p>
-                  <strong>THE Student Partnership Program</strong> aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada’s only Tier 1 global mining investment conference, held June 2-4, 2026, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking, and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada.
+                  <strong>THE Student Partnership Program</strong> aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada’s only Tier 1 global mining investment conference, held June 2-4, 2026, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada.
                 </p>
 
                 <p>
-                  Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at <strong>no cost</strong>. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition, and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals.
+                  Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at <strong>no cost</strong>. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals.
                 </p>
               </div>
             </div>
@@ -259,7 +259,7 @@ export default function StudentPage() {
         </section>
 
         {/* ═══════════════ 3. LETTER FROM THE CEO SECTION ═══════════════ */}
-        <section id="ceo-letter-section" className="relative w-full py-16 sm:py-24 bg-[#0b0f19] text-white overflow-hidden scroll-mt-28">
+        <section id="ceo-letter-section" className="relative w-full py-12 sm:py-14 md:py-16 bg-[#0b0f19] text-white overflow-hidden scroll-mt-28">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="relative bg-gradient-to-br from-neutral-900 via-[#151924] to-[#0b0f19] border border-neutral-800 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#C6112F]/10 blur-[100px] rounded-full pointer-events-none" />
@@ -283,7 +283,7 @@ export default function StudentPage() {
 
                     <div className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] space-y-6">
                       <p className="text-neutral-200 text-base sm:text-lg font-normal leading-relaxed italic">
-                        Joanne Jobin, Founder and CEO, stated, “I am deeply grateful to the 2026 Student Program Partners for their commitment to funding this program and for taking the time to meet and interact directly with our students. Since its launch in 2023, the program has introduced approximately 200 students to the mining industry, with many returning annually to network, learn more, or volunteer. It is now recognized as one of the largest fully funded conference programs in North America, offering students interested in mining a unique opportunity to participate in THE Event. Program Partners and Industry Leaders facilitate this platform for knowledge sharing, networking, and experiential learning. This program is vital to THE Event’s dedication to making real social impacts and supporting the goal of ensuring that potential future mining leaders have ample opportunities to be identified and to succeed.”
+                        Joanne Jobin, Founder and CEO, stated, “I am deeply grateful to the 2026 Student Program Partners for their commitment to funding this program and for taking the time to meet and interact directly with our students. Since its launch in 2023, the program has introduced approximately 200 students to the mining industry, with many returning annually to network, learn more, or volunteer. It is now recognized as one of the largest fully funded conference programs in North America, offering students interested in mining a unique opportunity to participate in THE Event. Program Partners and Industry Leaders facilitate this platform for knowledge sharing, networking and experiential learning. This program is vital to THE Event’s dedication to making real social impacts and supporting the goal of ensuring that potential future mining leaders have ample opportunities to be identified and to succeed.”
                       </p>
 
                       <p className="text-neutral-200 text-base sm:text-lg font-normal leading-relaxed italic">
@@ -343,7 +343,7 @@ export default function StudentPage() {
         </section>
 
         {/* ═══════════════ 4. 2026 WINNERS & PHOTO GALLERY ═══════════════ */}
-        <section className="relative w-full py-16 sm:py-24 bg-[#f8f9fa] dark:bg-[#12141c] border-t border-b border-neutral-200/80 dark:border-neutral-800">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-[#f8f9fa] dark:bg-[#12141c] border-t border-b border-neutral-200/80 dark:border-neutral-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="max-w-3xl mb-12">
               <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
@@ -533,7 +533,7 @@ export default function StudentPage() {
         </section>
 
         {/* ═══════════════ 5. PREVIOUS YEARS SECTION (BOTTOM) ═══════════════ */}
-        <section className="relative w-full py-16 sm:py-20 bg-white dark:bg-[#0f1117] border-b border-neutral-200/80 dark:border-neutral-800">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117] border-b border-neutral-200/80 dark:border-neutral-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
@@ -544,7 +544,7 @@ export default function StudentPage() {
               </h2>
               <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mx-auto mb-4" />
               <p className="text-neutral-600 dark:text-neutral-400 text-sm font-medium">
-                Explore past student delegations, case study archives, and award recipient honors since the program's inaugural launch in 2023.
+                Explore past student delegations, case study archives and award recipient honors since the program's inaugural launch in 2023.
               </p>
             </div>
 
@@ -620,7 +620,7 @@ export default function StudentPage() {
         </section>
 
         {/* ═══════════════ 6. CONTACT & SUPPORT FOOTER CTA ═══════════════ */}
-        <section className="relative w-full py-16 sm:py-20 bg-[#0b0f19] text-white">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-[#0b0f19] text-white">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="bg-[#151821] border border-neutral-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div className="max-w-2xl">

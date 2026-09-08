@@ -51,7 +51,7 @@ export default function AgendaPdfViewer({
   fileName = "agenda.pdf",
   year = 2027,
   title = "Event Agenda",
-  description = "Explore the complete agenda to discover event details, key themes, speaker highlights, session schedule, and networking opportunities.",
+  description = "Explore the complete agenda to discover event details, key themes, speaker highlights, session schedule and networking opportunities.",
   fileSize = "0.9 MB",
   remote = false,
   eventDates,

@@ -41,7 +41,7 @@ export default function SheCoPage() {
       location: "Longueuil, QC",
       selectedBy: "Mathieu Savard (President & CEO, Vior Gold Corporation)",
       image: "/MINING INVESTMENT EVENT 2026_DAY 1_MAIN EVENT-41.jpg",
-      desc: "Moisson Rive-Sud is the primary non-profit food bank serving Longueuil, Quebec, and nearby areas, dedicated to reducing food insecurity among local residents.",
+      desc: "Moisson Rive-Sud is the primary non-profit food bank serving Longueuil, Quebec and nearby areas, dedicated to reducing food insecurity among local residents.",
       descFr: "Moisson Rive-Sud est la principale banque alimentaire à but non lucratif desservant Longueuil et ses environs, visant à réduire l'insécurité alimentaire.",
     },
     {
@@ -57,7 +57,7 @@ export default function SheCoPage() {
       link: "https://dakelheed.wordpress.com/",
       linkText: "Visit Society Website ↗",
       linkTextFr: "Visiter le Site Web ↗",
-      desc: "Established by the Lhoosk’uz Dene Nation, Lhtako Dene Nation, and Nazko Nation to support education, skills training, and employment for community members.",
+      desc: "Established by the Lhoosk’uz Dene Nation, Lhtako Dene Nation and Nazko Nation to support education, skills training and employment for community members.",
       descFr: "Créée par la Nation Lhoosk’uz Dene, la Nation Lhtako Dene et la Nation Nazko pour soutenir l'éducation, la formation et l'emploi.",
     },
     {
@@ -97,7 +97,7 @@ export default function SheCoPage() {
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
 
         {/* ════════════════ HERO HEADER SECTION ════════════════ */}
-        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-32 sm:pt-36 md:pt-40 pb-20 sm:pb-24 border-b border-neutral-800">
+        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 border-b border-neutral-800">
           {/* Subtle radial dot pattern overlay */}
           <div
             className="absolute inset-0 opacity-[0.06] pointer-events-none"
@@ -151,7 +151,7 @@ export default function SheCoPage() {
         </section>
 
         {/* ════════════════ SHE-CO OVERVIEW BLURB BANNER ════════════════ */}
-        <section className="relative w-full py-12 sm:py-16 bg-white dark:bg-[#121824] border-b border-neutral-200/80 dark:border-slate-800">
+        <section className="relative w-full py-10 sm:py-12 md:py-14 bg-white dark:bg-[#121824] border-b border-neutral-200/80 dark:border-slate-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="bg-gradient-to-r from-neutral-900 via-[#161c2b] to-[#0f1420] text-white p-8 sm:p-12 rounded-3xl border border-neutral-800 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#C6112F]/10 blur-[100px] pointer-events-none rounded-full" />
@@ -182,7 +182,7 @@ export default function SheCoPage() {
         </section>
 
         {/* ════════════════ RECENT CHARITY DETAILS (2026 - MOISSON RIVE-SUD) ════════════════ */}
-        <section className="relative w-full py-16 sm:py-20 md:py-24 bg-[#f8fafc] dark:bg-[#0c0f17]">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-[#f8fafc] dark:bg-[#0c0f17]">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
 
             {/* Section Header */}
@@ -280,7 +280,7 @@ export default function SheCoPage() {
                     <p className="text-base sm:text-lg leading-relaxed text-neutral-800 dark:text-slate-100 font-medium">
                       {isFr
                         ? "Cette année, Mathieu Savard, président et chef de la direction de Vior Gold Corporation, a choisi Moisson Rive-Sud, une banque alimentaire à but non lucratif desservant Longueuil, Québec, et les régions avoisinantes. L'objectif principal de la banque alimentaire est de réduire l'insécurité alimentaire parmi les résidents locaux."
-                        : "This year, Mathieu Savard, President and CEO of Vior Gold Corporation, selected Moisson Rive-Sud, a non-profit food bank serving Longueil, Quebec, and nearby areas. The food bank's primary focus is to reduce food insecurity among the local residents."}
+                        : "This year, Mathieu Savard, President and CEO of Vior Gold Corporation, selected Moisson Rive-Sud, a non-profit food bank serving Longueil, Quebec and nearby areas. The food bank's primary focus is to reduce food insecurity among the local residents."}
                     </p>
                   </div>
 
@@ -315,7 +315,7 @@ export default function SheCoPage() {
         </section>
 
         {/* ════════════════ ANNUAL DONATIONS & HISTORICAL IMPACT ════════════════ */}
-        <section className="relative w-full py-16 sm:py-20 md:py-24 bg-white dark:bg-[#121824] border-t border-neutral-200/60 dark:border-slate-800">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#121824] border-t border-neutral-200/60 dark:border-slate-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
 
             {/* Section Header & Year Filter Tabs */}
@@ -455,7 +455,7 @@ export default function SheCoPage() {
                   </p>
                 ) : (
                   <p>
-                    Through our SHE-Co Initiative, we proudly supported &ldquo;THE Drum Circle&rdquo; at Bishop Field Elementary in St John’s, Newfoundland. This program is for students in Grades 4-6 with social and emotional needs who require support for issues such as anxiety, trauma, or grief. Our donation helped fund the purchase of 10 First Nations drum kits and a facilitator to incorporate drumming, chanting, and rhythmic movement into the children’s sharing circles.
+                    Through our SHE-Co Initiative, we proudly supported &ldquo;THE Drum Circle&rdquo; at Bishop Field Elementary in St John’s, Newfoundland. This program is for students in Grades 4-6 with social and emotional needs who require support for issues such as anxiety, trauma, or grief. Our donation helped fund the purchase of 10 First Nations drum kits and a facilitator to incorporate drumming, chanting and rhythmic movement into the children’s sharing circles.
                   </p>
                 )}
               </div>

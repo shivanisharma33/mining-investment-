@@ -34,7 +34,7 @@ const allNewsStories: NewsStory[] = [
     snippetFR: "THE Mining Investment Event annonce ses conférenciers principaux et la liste des panels pour la conférence 2026 à Québec.",
     fullBodyEN: `THE Mining Investment Event of the North is pleased to announce its distinguished keynote speakers and executive panel line-up for the upcoming 2026 conference at the Centre des congrès de Québec.
 
-Featuring top industry leaders, government officials, institutional fund managers, and technical specialists, the 2026 program addresses key trends in critical minerals, ESG innovation, capital markets, and global resource development.
+Featuring top industry leaders, government officials, institutional fund managers and technical specialists, the 2026 program addresses key trends in critical minerals, ESG innovation, capital markets and global resource development.
 
 Key agenda highlights for the 2026 conference include:
 • Critical Minerals & Energy Transition Capital Flows
@@ -42,7 +42,7 @@ Key agenda highlights for the 2026 conference include:
 • ESG Innovation & Indigenous Partnership Frameworks
 • Advanced Exploration Technologies & Geochemical Analytics
 
-"We are delighted to bring together the global mining investment community in Quebec City once again," said conference organizers. "The 2026 edition expands our focus on high-impact issuer presentations, targeted 1-on-1 investor meetings, and high-level panel discussions."`,
+"We are delighted to bring together the global mining investment community in Quebec City once again," said conference organizers. "The 2026 edition expands our focus on high-impact issuer presentations, targeted 1-on-1 investor meetings and high-level panel discussions."`,
     fullBodyFR: "THE Mining Investment Event of the North est heureux d'annoncer ses conférenciers principaux et la liste des panels exécutifs pour la prochaine conférence 2026 au Centre des congrès de Québec.",
     image: "/news/hero_1.png",
     readTime: "4 MIN READ",
@@ -58,9 +58,9 @@ Key agenda highlights for the 2026 conference include:
     snippetFR: "THE Mining Investment Event dévoile sa liste d'émetteurs 2026 et accueille ses partenaires nouveaux et renouvelés avant la conférence à Québec.",
     fullBodyEN: `Organizers of THE Mining Investment Event are proud to unveil the initial lineup of participating public mining companies and corporate sponsors for the 2026 edition in Quebec City.
 
-Presenting issuers represent high-quality exploration, development, and production companies spanning gold, copper, battery metals, uranium, and critical minerals across North and South America.
+Presenting issuers represent high-quality exploration, development and production companies spanning gold, copper, battery metals, uranium and critical minerals across North and South America.
 
-Over 300 participating mining issuers will connect directly with accredited investors, family offices, and buy-side analysts through pre-arranged 1-on-1 meetings and executive corporate presentations.`,
+Over 300 participating mining issuers will connect directly with accredited investors, family offices and buy-side analysts through pre-arranged 1-on-1 meetings and executive corporate presentations.`,
     fullBodyFR: "Les organisateurs de THE Mining Investment Event sont fiers de dévoiler la liste initiale des sociétés minières cotées et des commanditaires participants pour l'édition 2026 à Québec.",
     image: "/news/copper_mine.png",
     readTime: "3 MIN READ",
@@ -76,7 +76,7 @@ Over 300 participating mining issuers will connect directly with accredited inve
     snippetFR: "THE Mining Investment Event, en collaboration avec l'ITFA et l'AMQ, annonce la Semaine internationale des mines à Québec.",
     fullBodyEN: `THE Mining Investment Event, together with the International Trade and Finance Association (ITFA) and Association minière du Québec (AMQ), is thrilled to announce Quebec City's inaugural International Mining Week.
 
-This landmark week-long initiative will unite global mining executives, institutional financiers, government delegations, and technical innovators for a series of high-level summits, corporate showcases, and networking forums.`,
+This landmark week-long initiative will unite global mining executives, institutional financiers, government delegations and technical innovators for a series of high-level summits, corporate showcases and networking forums.`,
     fullBodyFR: "THE Mining Investment Event, en collaboration avec l'Association internationale du commerce et de la finance (ITFA) et l'Association minière du Québec (AMQ), est ravi d'annoncer la première Semaine internationale des mines de Québec.",
     image: "/news/hero_2.png",
     readTime: "5 MIN READ",
@@ -90,9 +90,9 @@ This landmark week-long initiative will unite global mining executives, institut
     headlineFR: "Annonce des lauréats du programme étudiant Glencore 2025",
     snippetEN: "THE Event is proud to announce the recipients of the 2025 Glencore Student Program Awards, recognizing outstanding students from universities across Canada.",
     snippetFR: "THE Event est fier d'annoncer les récipiendaires des prix du programme étudiant Glencore 2025, soulignant l'excellence d'étudiants d'universités canadiennes.",
-    fullBodyEN: `The Student Sponsorship Program, generously supported by Glencore Canada, awards top geology, mining engineering, and finance students full sponsorship to attend THE Event, participate in mentorship sessions, and connect directly with corporate leadership.
+    fullBodyEN: `The Student Sponsorship Program, generously supported by Glencore Canada, awards top geology, mining engineering and finance students full sponsorship to attend THE Event, participate in mentorship sessions and connect directly with corporate leadership.
 
-Recipients were selected based on academic excellence, leadership initiative, and commitment to driving innovation within the natural resource sector.`,
+Recipients were selected based on academic excellence, leadership initiative and commitment to driving innovation within the natural resource sector.`,
     fullBodyFR: "Le programme de parrainage étudiant, généreusement soutenu par Glencore Canada, accorde aux meilleurs étudiants en géologie, en génie minier et en finance un parrainage complet.",
     image: "/news/hero_3.png",
     readTime: "3 MIN READ",
@@ -108,7 +108,7 @@ Recipients were selected based on academic excellence, leadership initiative, an
     snippetFR: "Inscrivez la date à vos agendas — THE Mining Investment Event revient à Québec du 1er au 3 juin 2027 au Centre des congrès de Québec.",
     fullBodyEN: `Mark your calendars — THE Mining Investment Event of the North returns to Quebec City for its 6th annual conference, June 1–3, 2027, at the Centre des congrès de Québec.
 
-Building upon record participation from global investors and mining issuers, the 2027 event will feature expanded meeting facilities, enhanced technical showcases, and an unparalleled lineup of executive keynote presentations.`,
+Building upon record participation from global investors and mining issuers, the 2027 event will feature expanded meeting facilities, enhanced technical showcases and an unparalleled lineup of executive keynote presentations.`,
     fullBodyFR: "Inscrivez la date à vos agendas — THE Mining Investment Event revient à Québec du 1er au 3 juin 2027 au Centre des congrès de Québec.",
     image: "/news/banner_1.png",
     readTime: "2 MIN READ",
@@ -122,9 +122,9 @@ Building upon record participation from global investors and mining issuers, the
     headlineFR: "THE Mining Investment Event annonce les participants 2025 et accueille ses commanditaires",
     snippetEN: "Organizers release the full list of participating mining companies and sponsors for the upcoming conference.",
     snippetFR: "Les organisateurs publient la liste complète des sociétés minières et commanditaires participants.",
-    fullBodyEN: `THE Mining Investment Event has released its official 2025 roster of participating public mining companies, institutional investors, and global sponsors.
+    fullBodyEN: `THE Mining Investment Event has released its official 2025 roster of participating public mining companies, institutional investors and global sponsors.
 
-The multi-day conference features structured 1-on-1 capital matching sessions, issuer presentation stages, and exclusive executive networking events in the heart of Quebec City.`,
+The multi-day conference features structured 1-on-1 capital matching sessions, issuer presentation stages and exclusive executive networking events in the heart of Quebec City.`,
     fullBodyFR: "THE Mining Investment Event a publié sa liste officielle 2025 de sociétés minières cotées et d'investisseurs institutionnels.",
     image: "/news/banner_2.png",
     readTime: "4 MIN READ",
@@ -136,11 +136,11 @@ The multi-day conference features structured 1-on-1 capital matching sessions, i
     dateFR: "2 avril 2025",
     headlineEN: "Keynote Speaker Lineup Unveiled for THE Event 2025",
     headlineFR: "Dévoilement des conférenciers principaux pour L'Événement 2025",
-    snippetEN: "Leading global economists, mining CEOs, and portfolio managers confirmed as keynote speakers for the June conference.",
+    snippetEN: "Leading global economists, mining CEOs and portfolio managers confirmed as keynote speakers for the June conference.",
     snippetFR: "Des économistes de renom, des PDG miniers et des gestionnaires de portefeuille sont confirmés.",
     fullBodyEN: `An extraordinary roster of keynote speakers has been confirmed for THE Mining Investment Event 2025.
 
-Featured speakers include chief economists from major global financial institutions, CEOs of multi-billion dollar producing mining corporations, and prominent resource portfolio managers discussing macroeconomic shifts, metal price cycles, and strategic M&A trends.`,
+Featured speakers include chief economists from major global financial institutions, CEOs of multi-billion dollar producing mining corporations and prominent resource portfolio managers discussing macroeconomic shifts, metal price cycles and strategic M&A trends.`,
     fullBodyFR: "Une liste extraordinaire de conférenciers principaux a été confirmée pour THE Mining Investment Event 2025.",
     image: "/news/banner_3.png",
     readTime: "3 MIN READ",
@@ -152,11 +152,11 @@ Featured speakers include chief economists from major global financial instituti
     dateFR: "15 mai 2025",
     headlineEN: "Executive Panels Announced: The Future of Critical Minerals & Battery Metals",
     headlineFR: "Panels exécutifs annoncés : L'avenir des minéraux critiques et des métaux pour batteries",
-    snippetEN: "Expert panels to focus on supply chain security, lithium & nickel demand, and government incentive programs.",
+    snippetEN: "Expert panels to focus on supply chain security, lithium & nickel demand and government incentive programs.",
     snippetFR: "Des panels d'experts se concentreront sur la sécurité de la chaîne d'approvisionnement et la demande.",
     fullBodyEN: `THE Mining Investment Event 2025 will feature specialized executive panel sessions dedicated to critical minerals and battery technology supply chains.
 
-Panels will address North American processing capacity, government policy incentives, ESG compliance standards, and strategic off-take agreements between mining issuers and electric vehicle OEMs.`,
+Panels will address North American processing capacity, government policy incentives, ESG compliance standards and strategic off-take agreements between mining issuers and electric vehicle OEMs.`,
     fullBodyFR: "THE Mining Investment Event 2025 proposera des séances de panels exécutifs spécialisés consacrées aux minéraux critiques.",
     image: "/news/hero_1.png",
     readTime: "4 MIN READ",
@@ -172,7 +172,7 @@ Panels will address North American processing capacity, government policy incent
     snippetFR: "Le petit-déjeuner de réseautage annuel SHE-CO met en lumière le leadership exécutif féminin.",
     fullBodyEN: `The SHE-CO Initiative proudly hosted its annual leadership breakfast at THE Mining Investment Event in Quebec City.
 
-The event gathered female executives, board directors, and institutional investors to celebrate women leading capital growth, technical innovation, and governance excellence across the global mining industry.`,
+The event gathered female executives, board directors and institutional investors to celebrate women leading capital growth, technical innovation and governance excellence across the global mining industry.`,
     fullBodyFR: "L'initiative SHE-CO a fièrement organisé son petit-déjeuner annuel de leadership lors de THE Mining Investment Event à Québec.",
     image: "/news/hero_2.png",
     readTime: "3 MIN READ",
@@ -188,7 +188,7 @@ The event gathered female executives, board directors, and institutional investo
     snippetFR: "Des sociétés d'exploration remarquables ont été récompensées lors de la présentation 2026 à Québec.",
     fullBodyEN: `THE Mining Investment Event of the North is thrilled to announce the official winners of THE Pitch 2026 competition.
 
-Presenting exploration companies were evaluated by a distinguished panel of institutional fund managers, mining analysts, and corporate development executives. The winning companies demonstrated exceptional geological potential, strong management execution, and disciplined capital allocation.`,
+Presenting exploration companies were evaluated by a distinguished panel of institutional fund managers, mining analysts and corporate development executives. The winning companies demonstrated exceptional geological potential, strong management execution and disciplined capital allocation.`,
     fullBodyFR: "THE Mining Investment Event of the North est ravi d'annoncer les gagnants officiels du concours THE Pitch 2026.",
     image: "/news/hero_1.png",
     readTime: "4 MIN READ",
@@ -204,7 +204,7 @@ Presenting exploration companies were evaluated by a distinguished panel of inst
     snippetFR: "La demande croissante pour les métaux de la transition énergétique stimule les transactions dans le cuivre.",
     fullBodyEN: `Growing global copper deficits continue to drive strategic M&A activity among major producing mining companies looking to replenish resource reserves.
 
-Key industry presentations at THE Event highlighted copper exploration assets in Quebec, Ontario, and South America receiving increased institutional capital allocations.`,
+Key industry presentations at THE Event highlighted copper exploration assets in Quebec, Ontario and South America receiving increased institutional capital allocations.`,
     fullBodyFR: "Les déficits mondiaux croissants en cuivre continuent de stimuler l'activité de fusion-acquisition stratégique.",
     image: "/news/copper_mine.png",
     readTime: "3 MIN READ",
@@ -252,7 +252,7 @@ Presenting issuers at THE Mining Investment Event 2026 will showcase high-grade 
     snippetFR: "Shell double son profit trimestriel grâce à une forte production en amont au Brésil et à des prix élevés de l'énergie, annonçant un rachat d'actions de 3 G$. (Source : Shell Investor Relations / Reuters)",
     fullBodyEN: `Shell reported strong second-quarter 2026 financial results on July 30, 2026, delivering adjusted earnings of $9.8 billion, more than double the $4.4 billion recorded in the same period of 2025.
 
-The surge in profitability was primarily fueled by strong upstream production volumes from deepwater assets in Brazil, elevated global commodity prices, and robust trading performance across its integrated gas portfolio.
+The surge in profitability was primarily fueled by strong upstream production volumes from deepwater assets in Brazil, elevated global commodity prices and robust trading performance across its integrated gas portfolio.
 
 Accompanying the financial results, Shell announced a new $3.0 billion share buyback program scheduled for completion by the third quarter of 2026, maintaining its policy of returning 40-50% of operating cash flow to shareholders.
 
@@ -268,11 +268,11 @@ Source: Shell Investor Relations / Reuters News Agency`,
     dateFR: "28 juillet 2026",
     headlineEN: "Expand Energy Beats Q2 Estimates with $1.33 EPS, Announces $1.25B Twin Eagle Acquisition",
     headlineFR: "Expand Energy dépasse les prévisions au T2 et annonce l'acquisition de Twin Eagle pour 1,25 G$",
-    snippetEN: "Expand Energy transforms into a fully integrated natural gas powerhouse combining 7.5 Bcfe/d production with marketing, storage, and logistics capabilities across North America. (Source: Oil & Gas Journal)",
+    snippetEN: "Expand Energy transforms into a fully integrated natural gas powerhouse combining 7.5 Bcfe/d production with marketing, storage and logistics capabilities across North America. (Source: Oil & Gas Journal)",
     snippetFR: "Expand Energy devient un géant du gaz naturel en combinant une production de 7,5 Bcfe/d avec des actifs de stockage et de logistique.",
     fullBodyEN: `Expand Energy reported strong second-quarter 2026 earnings on July 28, beating Wall Street consensus with adjusted net income of $1.33 per share.
 
-The company announced a definitive agreement to acquire Twin Eagle Holdings for $1.25 billion. The strategic acquisition adds extensive natural gas storage, pipeline capacity, and logistics assets to Expand's 7.5 Bcfe/d production footprint.
+The company announced a definitive agreement to acquire Twin Eagle Holdings for $1.25 billion. The strategic acquisition adds extensive natural gas storage, pipeline capacity and logistics assets to Expand's 7.5 Bcfe/d production footprint.
 
 Management reaffirmed its full-year capital expenditure plan while highlighting continued commitment to free cash flow generation and disciplined capital allocation.
 
@@ -312,7 +312,7 @@ Source: BP Corporate Press Office / Rigzone`,
     snippetFR: "Suncor Énergie affiche un flux de trésorerie disponible élevé et une efficacité des actifs avant la publication des résultats du T2.",
     fullBodyEN: `Suncor Energy highlighted record operating reliability and mill throughput across its Fort Hills and Firebag oil sands operations ahead of its upcoming Q2 earnings release.
 
-The company's focus on operational discipline, cost reduction per barrel, and capital efficiency has generated substantial free cash flow, supporting ongoing share repurchases and balance sheet deleveraging.
+The company's focus on operational discipline, cost reduction per barrel and capital efficiency has generated substantial free cash flow, supporting ongoing share repurchases and balance sheet deleveraging.
 
 Source: Suncor Investor Relations / TSX Market News`,
     fullBodyFR: "Suncor Énergie a souligné une fiabilité opérationnelle record dans l'ensemble de ses installations de sables bitumineux.",

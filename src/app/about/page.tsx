@@ -85,7 +85,7 @@ const features = [
     titleDefault: "Private 1-on-1 Meetings",
     descKey: "about-feat2-desc",
     descDefault:
-      "Privately arranged meetings between mining companies, international investors, and various mining government authorities — curated well before doors open.",
+      "Privately arranged meetings between mining companies, international investors and various mining government authorities — curated well before doors open.",
   },
   {
     icon: (
@@ -124,7 +124,7 @@ export default function AboutPage() {
           {/* Gradient wash */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/15 via-transparent to-transparent" />
 
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-14 sm:pb-18 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             {/* Breadcrumb */}
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">
@@ -147,7 +147,7 @@ export default function AboutPage() {
         </section>
 
         {/* ═══════════════ SECTION 2: ABOUT LEAD + SIDEBAR ═══════════════ */}
-        <section className="relative w-full bg-white dark:bg-[#09090b] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
+        <section className="relative w-full bg-white dark:bg-[#09090b] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-12 lg:gap-16">
               {/* Left Column: Lead Content */}
@@ -165,7 +165,7 @@ export default function AboutPage() {
                       <strong className="font-extrabold text-neutral-900 dark:text-white">
                         THE Mining Investment Event—Canada’s Only Tier 1 Global Mining Investment Conference© is held annually in Québec City, Canada.
                       </strong>{" "}
-                      It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors, and various mining and government authorities. The conference provides a platform to hear from some of the most influential thought leaders in the sector. THE Event is committed to promoting diversity, equality, and sustainability in the mining industry through education and innovation, supported by its unique Student Partnership Program and THE SHE-Co Initiative.
+                      It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors and various mining and government authorities. The conference provides a platform to hear from some of the most influential thought leaders in the sector. THE Event is committed to promoting diversity, equality and sustainability in the mining industry through education and innovation, supported by its unique Student Partnership Program and THE SHE-Co Initiative.
                     </>
                   )}
                 </p>
@@ -173,14 +173,14 @@ export default function AboutPage() {
                 <p className="text-base sm:text-lg md:text-xl font-semibold text-neutral-800 dark:text-zinc-200 leading-relaxed mb-8">
                   {t(
                     "about-body-2",
-                    "THE Event is a founding member of International Mining Week (“IMW”), also taking place in Quebec City. IMW promotes other industry-focused conferences and activities that unite global mining companies, related businesses, supply chain experts, investors, and government officials in one location for discussions and collaborative meetings across the industry."
+                    "THE Event is a founding member of International Mining Week (“IMW”), also taking place in Quebec City. IMW promotes other industry-focused conferences and activities that unite global mining companies, related businesses, supply chain experts, investors and government officials in one location for discussions and collaborative meetings across the industry."
                   )}
                 </p>
 
                 {/* Quote Section Right Below */}
                 <blockquote className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] bg-[#fff5f6] dark:bg-[#18181b] rounded-r-2xl p-6 sm:p-8 my-4 mb-10 shadow-sm border border-neutral-200/60 dark:border-zinc-800 transition-colors">
                   <p className="text-base sm:text-lg md:text-xl font-bold italic text-neutral-900 dark:text-white leading-relaxed mb-3">
-                    “Some of the most important conversations around mining are happening at THE Mining Investment Event in Canada, where government, supply chains, Indigenous communities, investors, and companies can have meaningful discussions in private.”
+                    “Some of the most important conversations around mining are happening at THE Mining Investment Event in Canada, where government, supply chains, Indigenous communities, investors and companies can have meaningful discussions in private.”
                   </p>
                   <cite className="text-xs sm:text-sm font-black text-[#C6112F] dark:text-[#ff4d6d] uppercase tracking-wider not-italic block">
                     — Hon. Yvonne Rumbolt-Jones, former MP Labrador

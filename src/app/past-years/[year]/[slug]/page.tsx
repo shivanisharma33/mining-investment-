@@ -25,7 +25,7 @@ const DOCUMENTS_DATA: Record<
     category: "Brochure",
     title: "Event Brochure 2027",
     description:
-      "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview, and sponsorship opportunities.",
+      "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview and sponsorship opportunities.",
     file: "/documents/2026-brochure.pdf",
     bytes: 2126464,
   },
@@ -118,9 +118,9 @@ export default function PastYearDocumentPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white text-neutral-900 font-sans pt-24">
+      <main className="min-h-screen bg-white text-neutral-900 font-sans">
         {/* ══════ HERO ══════ */}
-        <section className="relative w-full bg-[#0f1117] text-white py-16 sm:py-20 border-b border-[#C6112F]">
+        <section className="relative w-full bg-[#0f1117] text-white pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 border-b border-[#C6112F]">
           <div
             className="absolute inset-0 opacity-[0.05]"
             style={{
@@ -164,7 +164,7 @@ export default function PastYearDocumentPage() {
         </section>
 
         {/* ══════ MAIN CONTENT ══════ */}
-        <section className="py-12 bg-neutral-50 min-h-[700px]">
+        <section className="py-12 sm:py-14 md:py-16 bg-neutral-50 min-h-[700px]">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             {/* If agenda, show optional view mode toggle at top */}
             {isAgenda && (

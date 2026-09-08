@@ -69,7 +69,7 @@ export default function BrochurePage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-12 sm:pb-16">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">
                 {t("nav-home", "Home")}

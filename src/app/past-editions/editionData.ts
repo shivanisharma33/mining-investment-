@@ -265,7 +265,7 @@ export const AGENDA_DAYS: AgendaDay[] = [
         t: "11:15 – 11:30",
         type: "pres",
         co: "Silver X Mining Corp.",
-        sp: "Jose Garcia, President, CEO, and Co-Founder",
+        sp: "Jose Garcia, President, CEO and Co-Founder",
       },
       { t: "11:30 – 11:45", type: "pres", co: "Silver One Resources Inc.", sp: "Greg Crowe, President & CEO" },
       { t: "11:45 – 12:00", type: "pres", co: "Lavras Gold Corp.", sp: "Jonathan Hill, Interim VP Exploration" },

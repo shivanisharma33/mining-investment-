@@ -235,8 +235,8 @@ export default function PastEdition2027Page() {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all cursor-pointer ${isSelected
-                        ? "bg-[#C6112F] text-white shadow-xs"
-                        : "bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 text-neutral-700 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700"
+                      ? "bg-[#C6112F] text-white shadow-xs"
+                      : "bg-white dark:bg-zinc-800 border border-neutral-200 dark:border-zinc-700 text-neutral-700 dark:text-zinc-200 hover:bg-neutral-100 dark:hover:bg-zinc-700"
                       }`}
                   >
                     <span className={isSelected ? "text-white" : "text-[#C6112F]"}>
@@ -262,8 +262,8 @@ export default function PastEdition2027Page() {
                           key={tab.id}
                           onClick={() => setActiveTab(tab.id)}
                           className={`w-full flex items-center gap-3.5 px-4 py-3.5 rounded-lg text-xs sm:text-sm font-bold transition-all text-left cursor-pointer ${isSelected
-                              ? "bg-[#FCDDE1] text-[#8A1224] dark:bg-[#C6112F]/20 dark:text-rose-300 border-l-4 border-[#C6112F] shadow-xs"
-                              : "text-neutral-600 dark:text-zinc-300 hover:bg-neutral-100/90 dark:hover:bg-zinc-800 hover:text-neutral-900 dark:hover:text-white"
+                            ? "bg-[#FCDDE1] text-[#8A1224] dark:bg-[#C6112F]/20 dark:text-rose-300 border-l-4 border-[#C6112F] shadow-xs"
+                            : "text-neutral-600 dark:text-zinc-300 hover:bg-neutral-100/90 dark:hover:bg-zinc-800 hover:text-neutral-900 dark:hover:text-white"
                             }`}
                         >
                           <span className={isSelected ? "text-[#C6112F] dark:text-[#C6112F]" : "text-neutral-500 dark:text-zinc-400"}>
@@ -340,7 +340,7 @@ export default function PastEdition2027Page() {
                     <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
                       {isFr
                         ? "Connectez-vous avec les principales sociétés minières, investisseurs, fournisseurs de technologies et partenaires façonnant l'avenir de l'industrie minière."
-                        : "Connect with leading mining companies, investors, technology providers, and service partners driving the future of the mining industry."}
+                        : "Connect with leading mining companies, investors, technology providers and service partners driving the future of the mining industry."}
                     </p>
                     <CompaniesView
                       initialYear={viewingEdition}
@@ -361,7 +361,7 @@ export default function PastEdition2027Page() {
                     <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
                       {isFr
                         ? `Consultez ou téléchargez la brochure officielle de L'Événement ${viewingEdition} pour tous les détails de la conférence, la liste des conférenciers et les opportunités de partenariat.`
-                        : `View or download the official brochure for THE Event ${viewingEdition} covering full conference details, speaker lineups, and partnership opportunities.`}
+                        : `View or download the official brochure for THE Event ${viewingEdition} covering full conference details, speaker lineups and partnership opportunities.`}
                     </p>
                     <AgendaPdfViewer
                       pdfUrl={agenda?.pdfUrl || "/AGENDA_june_2026.pdf"}
@@ -386,8 +386,8 @@ export default function PastEdition2027Page() {
                         <button
                           onClick={() => setAgendaMode("pdf")}
                           className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${agendaMode === "pdf"
-                              ? "bg-[#C6112F] text-white shadow-xs"
-                              : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900"
+                            ? "bg-[#C6112F] text-white shadow-xs"
+                            : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900"
                             }`}
                         >
                           📄 PDF View
@@ -395,8 +395,8 @@ export default function PastEdition2027Page() {
                         <button
                           onClick={() => setAgendaMode("interactive")}
                           className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${agendaMode === "interactive"
-                              ? "bg-[#C6112F] text-white shadow-xs"
-                              : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900"
+                            ? "bg-[#C6112F] text-white shadow-xs"
+                            : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900"
                             }`}
                         >
                           📅 Interactive Schedule
@@ -431,7 +431,7 @@ export default function PastEdition2027Page() {
                     <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
                       {isFr
                         ? "Rencontrez les leaders de l'industrie, les experts exécutifs et les visionnaires qui ont partagé leurs perspectives lors de cette édition."
-                        : "Meet the industry leaders, executive experts, and visionaries who shared insights at this edition."}
+                        : "Meet the industry leaders, executive experts and visionaries who shared insights at this edition."}
                     </p>
                     <SpeakersView year={viewingEdition} />
                   </div>
@@ -587,7 +587,7 @@ export default function PastEdition2027Page() {
                       <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm leading-relaxed mb-6 font-medium max-w-[760px]">
                         {isFr
                           ? "L'Événement d'Investissement Minier 2027 est la plus importante conférence d'investissement minier au monde, où le capital mondial rencontre l'opportunité. Rejoignez des dirigeants miniers, investisseurs, analystes, représentants gouvernementaux et fournisseurs de services pour trois jours de transactions, de discussions enrichissantes et de réseautage stratégique."
-                          : "Mining Investment Event 2027 is the world's leading mining investment conference, where global capital meets opportunity. Join top mining executives, investors, analysts, government representatives and service providers for three days of deal-making, insightful discussions, and strategic networking."}
+                          : "Mining Investment Event 2027 is the world's leading mining investment conference, where global capital meets opportunity. Join top mining executives, investors, analysts, government representatives and service providers for three days of deal-making, insightful discussions and strategic networking."}
                       </p>
 
                       <div className="space-y-3 text-xs sm:text-sm text-neutral-700 dark:text-zinc-300 font-medium max-w-[500px]">

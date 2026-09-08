@@ -363,7 +363,7 @@ export default function PastEditionsPage() {
                   THE Snapshot Report
                 </h3>
                 <p className="text-neutral-300 text-xs sm:text-sm font-light leading-relaxed mb-4">
-                  Read the official FlippingBook digital report featuring executive interviews, conference highlights, photo galleries, and market statistics.
+                  Read the official FlippingBook digital report featuring executive interviews, conference highlights, photo galleries and market statistics.
                 </p>
               </div>
 

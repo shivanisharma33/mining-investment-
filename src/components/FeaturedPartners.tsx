@@ -11,67 +11,61 @@ const partnerData: Record<TierKey, string[]> = {
   PLATINUM: [
     "/sponsors/2026/glencore.svg",
     "/sponsor image/logo-capitalmarkets.svg",
-    "/sponsors/2026/ventum_financial.png",
+    "/Ventum.webp",
     "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
   ],
   GOLD: [
-    "/sponsers/Gold%20Partners/1.pdf%20(1).png",
-    "/sponsers/Gold%20Partners/1.pdf.png",
-    "/sponsers/Gold%20Partners/12%20(1).png",
-    "/sponsers/Gold%20Partners/peartree.8c0c95cff01a.png",
-    "/sponsers/Gold%20Partners/SPONSORS%2B04.09.26%2B(1).pdf.png",
+    "/altitude.png",
+    "/Invest_Yukon.png",
+    "/LOGOS Mining (10).png",
+    "/sponsors/2026/maxit_capital.png",
+    "/peartree_0c7d9a1777.png",
+    "/sponsors/2026/the_money_channel_new_york_city.png",
   ],
   SILVER: [
-    "/sponsers/Silver%20Partners/12.png",
-    "/sponsers/Silver%20Partners/12%20(2).png",
-    "/sponsers/Silver%20Partners/12%20(3).png",
-    "/sponsers/Silver%20Partners/12%20(4).png",
-    "/sponsers/Silver%20Partners/12%20(7).png",
-    "/sponsers/Silver%20Partners/12%20(8).png",
-    "/sponsers/Silver%20Partners/12%20(9).png",
-    "/sponsers/Silver%20Partners/12%20(10).png",
-    "/sponsers/Silver%20Partners/3.png",
-    "/sponsers/Silver%20Partners/642e8adf6f6728bf086ca90e_logo.svg",
-    "/sponsers/Silver%20Partners/790205.avif",
+    "/sponsors/2026/atrium_research.png",
+    "/sponsors/2026/canadian_securities_exchange_cse.svg",
+    "/43.png",
+    "/sponsors/2026/crux_investor.svg",
+    "/sponsors/2026/hatch.png",
+    "/sponsor image/IAMGOLD-Logo-N.png",
+    "/sponsors/2026/government_of_newfoundland_labrador.svg",
+    "/lorroyalties.svg",
+    "/sponsers/LOGOS Mining (3).png",
+    "/sponsors/2026/stifel.svg",
+    "/sponsers/176.png",
   ],
   COPPER: [
-    "/sponsers/Copper%20Partners/11.png",
-    "/sponsers/Copper%20Partners/12.png",
-    "/sponsers/Copper%20Partners/13.png",
-    "/sponsers/Copper%20Partners/14.png",
-    "/sponsers/Copper%20Partners/15.png",
-    "/sponsers/Copper%20Partners/16.png",
-    "/sponsers/Copper%20Partners/17.png",
-    "/sponsers/Copper%20Partners/18.png",
-    "/sponsers/Copper%20Partners/19.png",
-    "/sponsers/Copper%20Partners/20.png",
-    "/sponsers/Copper%20Partners/21.png",
-    "/sponsers/Copper%20Partners/22.png",
+    "/agp.webp",
+    "/apaton-finance-logo.svg",
+    "/brooks-nelson.png",
+    "/sponsers/128.png",
+    "/sponsers/cassels.svg",
+    "/sponsers/center.svg",
+    "/sponsor image/inforfg-logo-f.png",
+    "/sponsors/2026/la_caisse_cdpq.svg",
+    "/139.png",
+    "/sponsers/38.png",
+    "/sponsers/pal_airlines.svg",
+    "/sponsors/2026/outside_the_box_capital.png",
+    "/151.png",
+    "/sponsors/2026/40.png",
   ],
   MEDIA: [
-    "/sponsers/Media%20Partners/1.pdf.png",
-    "/sponsers/Media%20Partners/24.png",
     "/sponsors/2026/mining_discovery.webp",
-    "/sponsers/Media%20Partners/25.png",
-    "/sponsers/Media%20Partners/26.png",
-    "/sponsers/Media%20Partners/27.png",
-    "/sponsers/Media%20Partners/28.png",
-    "/sponsers/Media%20Partners/29.png",
-    "/sponsers/Media%20Partners/30.png",
-    "/sponsers/Media%20Partners/31.png",
-    "/sponsers/Media%20Partners/32.png",
-    "/sponsers/Media%20Partners/33.png",
-    "/sponsers/Media%20Partners/34.png",
-    "/sponsers/Media%20Partners/35.png",
-    "/sponsers/Media%20Partners/36.png",
-    "/sponsers/Media%20Partners/37.png",
-    "/sponsers/Media%20Partners/39.png",
-    "/sponsers/Media%20Partners/40.png",
-    "/sponsers/Media%20Partners/41.png",
-    "/sponsers/Media%20Partners/42.png",
-    "/sponsers/Media%20Partners/43.png",
-    "/sponsers/Media%20Partners/44.png",
-    "/sponsers/Media%20Partners/45.png",
+    "/btv.png",
+    "/ceo_ca.png",
+    "/cmj.png",
+    "/sponsers/150.png",
+    "/sponsers/itg.png",
+    "/134.png",
+    "/sponsors/2026/sponsor_media_20.png",
+    "/sponsers/157.png",
+    "/sponsor image/ibn.svg",
+    "/gbr.webp",
+    "/sponsors/2026/newsfile.png",
+    "/sponsors/2026/the_prospector_news.png",
+    "/tnm.png",
   ],
 };
 
@@ -115,7 +109,7 @@ export default function FeaturedPartners() {
   };
 
   return (
-    <section className="relative w-full bg-[#f0f4f8] dark:bg-[#090d16] py-16 sm:py-20 overflow-hidden transition-colors duration-300">
+    <section className="relative w-full bg-[#f0f4f8] dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
@@ -128,9 +122,12 @@ export default function FeaturedPartners() {
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
             {t("partners-title", "Featured Partners")} <span className="capitalize">({activeTier.toLowerCase()})</span>
           </h2>
-          <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-6" />
-          <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm max-w-[540px] mx-auto leading-relaxed font-medium">
-            {t("partners-sub", "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters.")}
+          <div className="w-16 h-1 bg-[#C6112F] mx-auto mb-4 rounded-full" />
+          <p className="max-w-xl mx-auto text-xs sm:text-sm text-neutral-600 dark:text-slate-400 font-medium leading-relaxed">
+            {t(
+              "partners-desc",
+              "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters."
+            )}
           </p>
         </div>
 

@@ -41,6 +41,7 @@ export default function CompaniesView({
   const [selectedYear, setSelectedYear] = useState<number>(initialYear);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedType, setSelectedType] = useState<CompanyTypeFilter>("ALL");
+  const [isMapActive, setIsMapActive] = useState<boolean>(false);
 
   // Years Strapi answers for; everything else comes from the bundled dataset.
   const apiYears = useMemo(() => {
@@ -125,7 +126,47 @@ export default function CompaniesView({
     <div className="w-full text-left font-sans">
       {/* ════════ MAP DIRECTORY IFRAME (Optional) ════════ */}
       {shouldShowMap && (
-        <div className="w-full mb-8 bg-white dark:bg-[#18181b] rounded-2xl overflow-hidden shadow-xl border border-neutral-200/90 dark:border-zinc-800 p-2 relative z-10">
+        <div
+          className="w-full mb-8 bg-white dark:bg-[#18181b] rounded-2xl overflow-hidden shadow-xl border border-neutral-200/90 dark:border-zinc-800 p-2 relative z-10 group"
+          onMouseLeave={() => setIsMapActive(false)}
+        >
+          {/* Status Badge & Unlock Button */}
+          <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+            {!isMapActive ? (
+              <button
+                type="button"
+                onClick={() => setIsMapActive(true)}
+                className="px-3.5 py-1.5 rounded-xl bg-neutral-900/85 hover:bg-neutral-900 text-white backdrop-blur-md text-xs font-extrabold tracking-wide uppercase shadow-lg border border-white/20 transition-all transform hover:scale-105 flex items-center gap-1.5 cursor-pointer"
+              >
+                <svg className="w-3.5 h-3.5 text-[#C6112F]" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+                <span>{isFr ? "Cliquer pour interagir" : "Click to interact with map"}</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setIsMapActive(false)}
+                className="px-3.5 py-1.5 rounded-xl bg-[#C6112F] text-white text-xs font-extrabold tracking-wide uppercase shadow-lg border border-white/20 transition-all transform hover:scale-105 flex items-center gap-1.5 cursor-pointer"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+                <span>{isFr ? "Verrouiller le défilement" : "Lock map scroll"}</span>
+              </button>
+            )}
+          </div>
+
+          {/* Click Overlay to activate if not active */}
+          {!isMapActive && (
+            <div
+              onClick={() => setIsMapActive(true)}
+              className="absolute inset-0 z-10 cursor-pointer bg-transparent"
+              title={isFr ? "Cliquer pour interagir avec la carte" : "Click to interact with map"}
+            />
+          )}
+
           <iframe
             src="https://mininghub.com/custom-map/the-mining-investment-event"
             width="100%"
@@ -133,7 +174,9 @@ export default function CompaniesView({
             frameBorder="0"
             allowFullScreen={true}
             allow="fullscreen"
-            className="w-full rounded-xl h-[380px] xs:h-[450px] sm:h-[550px] md:h-[600px]"
+            className={`w-full rounded-xl h-[380px] xs:h-[450px] sm:h-[550px] md:h-[600px] transition-all ${
+              isMapActive ? "pointer-events-auto" : "pointer-events-none"
+            }`}
             style={{ border: "0" }}
           />
         </div>

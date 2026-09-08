@@ -94,13 +94,17 @@ export default function NewsflashClient({
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/15 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-14 sm:pb-18 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">{t("nav-home", "Home")}</a>
               <span className="text-[#C6112F]">›</span>
               <span className="text-neutral-500">{t("nav-about", "About")}</span>
               <span className="text-[#C6112F]">›</span>
               <span className="text-white">{t("nav-newsflash", "THE Press Release")}</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C6112F]/20 border border-[#C6112F]/40 text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
+              {t("news-hero-badge", "OFFICIAL MEDIA HUB")}
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
               {t("news-hero-title-1", "THE")} <span className="text-[#C6112F]">{t("news-hero-title-2", "Press Release")}</span>
@@ -110,7 +114,7 @@ export default function NewsflashClient({
         </section>
 
         {/* ═══════ NEWS FEED SECTION ═══════ */}
-        <section className="relative w-full py-16 sm:py-20 md:py-24 bg-white dark:bg-[#09090b] transition-colors duration-300">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#09090b] transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("news-latest-label", "LATEST PRESS RELEASE")}
@@ -122,7 +126,7 @@ export default function NewsflashClient({
             <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[700px] mb-10 font-medium">
               {t(
                 "news-section-desc",
-                "The latest press release, announcements and official updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements, and initiative updates."
+                "The latest press release, announcements and official updates from THE Mining Investment Event. Subscribe to stay current with conference programming, speaker announcements and initiative updates."
               )}
             </p>
 

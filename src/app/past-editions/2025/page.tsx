@@ -266,7 +266,7 @@ export default function PastEdition2025Page() {
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
                       {isFr
                         ? "Connectez-vous avec les principales sociétés minières, investisseurs, fournisseurs de technologies et partenaires façonnant l'avenir de l'industrie minière."
-                        : "Connect with leading mining companies, investors, technology providers, and service partners driving the future of the mining industry."}
+                        : "Connect with leading mining companies, investors, technology providers and service partners driving the future of the mining industry."}
                     </p>
                     <CompaniesView initialYear={viewingEdition} />
                   </div>
@@ -281,7 +281,7 @@ export default function PastEdition2025Page() {
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
                       {isFr
                         ? "Explorez la brochure complète pour découvrir les détails de l'événement, les thèmes clés, les conférenciers vedettes, l'ordre du jour et les opportunités de commandite."
-                        : "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview, and sponsorship opportunities."}
+                        : "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview and sponsorship opportunities."}
                     </p>
 
                     <div className="flex flex-wrap items-center gap-6 md:gap-10 pb-8 mb-8 border-b border-neutral-200 text-xs sm:text-sm font-medium text-neutral-700">
@@ -429,7 +429,7 @@ export default function PastEdition2025Page() {
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
                       {isFr
                         ? "Quatre jours de conférences, présentations d'entreprises, tables rondes et réseautage réunissant producteurs, développeurs et explorateurs de toute l'industrie."
-                        : "Four days of keynotes, corporate presentations, panels, and networking bringing together producers, developers, and explorers from across the industry."}
+                        : "Four days of keynotes, corporate presentations, panels and networking bringing together producers, developers and explorers from across the industry."}
                     </p>
 
                     {agendaMode === "pdf" ? (
@@ -526,7 +526,7 @@ export default function PastEdition2025Page() {
                       <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium max-w-[760px]">
                         {isFr
                           ? "Mining Investment Event 2025 est la principale conférence d'investissement minier au monde, où le capital mondial rencontre l'opportunité. Rejoignez les meilleurs dirigeants miniers, investisseurs, analystes, représentants gouvernementaux et fournisseurs de services pour trois jours d'affaires, de discussions perspicaces et de réseautage stratégique."
-                          : "Mining Investment Event 2025 is the world&apos;s leading mining investment conference, where global capital meets opportunity. Join top mining executives, investors, analysts, government representatives and service providers for three days of deal-making, insightful discussions, and strategic networking."}
+                          : "Mining Investment Event 2025 is the world&apos;s leading mining investment conference, where global capital meets opportunity. Join top mining executives, investors, analysts, government representatives and service providers for three days of deal-making, insightful discussions and strategic networking."}
                       </p>
 
                       <div className="space-y-3 text-xs sm:text-sm text-neutral-700 font-medium max-w-[500px]">
@@ -593,7 +593,7 @@ export default function PastEdition2025Page() {
                             GROW
                           </h4>
                           <p className="text-xs text-white/80 leading-relaxed font-medium mt-2">
-                            Stay ahead with exclusive insights, market updates, and expert-led discussions.
+                            Stay ahead with exclusive insights, market updates and expert-led discussions.
                           </p>
                         </div>
                       </div>

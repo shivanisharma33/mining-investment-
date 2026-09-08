@@ -140,7 +140,7 @@ export default function InternationalMiningWeekPage() {
           </div>
 
           {/* Hero Content */}
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-10 sm:pt-14 pb-8 w-full my-auto text-left flex flex-col justify-between h-full">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-4 sm:pt-6 pb-8 w-full my-auto text-left flex flex-col justify-between h-full">
             <div>
               {/* Tagline */}
               <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.2em] uppercase block mb-4">

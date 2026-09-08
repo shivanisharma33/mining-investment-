@@ -27,7 +27,7 @@ export default function SpeakersPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-14 sm:pb-18 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">
                 {t("nav-home", isFr ? "Accueil" : "Home")}
@@ -55,7 +55,7 @@ export default function SpeakersPage() {
         </section>
 
         {/* ═══════ SPEAKERS LISTING ═══════ */}
-        <section className="relative w-full py-14 sm:py-18 md:py-22">
+        <section className="relative w-full py-12 sm:py-14 md:py-16">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               {isFr ? "SCÈNE EN VEDETTE - ÉDITION 2027" : "2027 EDITION FEATURED STAGE"}
@@ -69,7 +69,7 @@ export default function SpeakersPage() {
             <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
               {isFr
                 ? "Ministres, ambassadeurs, PDG, investisseurs et analystes de premier plan sur scène pendant quatre jours de sessions à fort impact à Québec."
-                : "Ministers, ambassadors, CEOs, investors, and leading analysts taking the stage across four days of high-impact sessions in Quebec City."}
+                : "Ministers, ambassadors, CEOs, investors and leading analysts taking the stage across four days of high-impact sessions in Quebec City."}
             </p>
 
             {/* Dynamic searchable and filterable speakers component */}
@@ -90,7 +90,7 @@ export default function SpeakersPage() {
                 <p className="text-neutral-300 text-xs sm:text-sm max-w-xl mx-auto mb-8 leading-relaxed font-medium">
                   {isFr
                     ? "Les créneaux de présentation à L'Événement offrent une visibilité inégalée auprès des investisseurs accrédités, des dirigeants d'entreprises et des cadres miniers mondiaux."
-                    : "Speaking slots at THE Event provide unrivalled visibility before accredited investors, corporate leaders, and global mining executives."}
+                    : "Speaking slots at THE Event provide unrivalled visibility before accredited investors, corporate leaders and global mining executives."}
                 </p>
                 <a
                   href="mailto:jchoi@irinc.ca?subject=Speaking Inquiry"

@@ -174,7 +174,7 @@ export default function RegisterPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent" />
 
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-16 sm:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">{t("nav-home", "Home")}</a>
               <span className="text-[#C6112F]">›</span>
@@ -209,7 +209,7 @@ export default function RegisterPage() {
                 <p className="text-neutral-300 text-xs mt-2 leading-relaxed font-normal">
                   {t(
                     "register-save-date-sub",
-                    "Canada's invitation-only Tier 1 Conference for mining companies, accredited investors, family offices, institutions, and funds."
+                    "Canada's invitation-only Tier 1 Conference for mining companies, accredited investors, family offices, institutions and funds."
                   )}
                 </p>
               </div>
@@ -219,7 +219,7 @@ export default function RegisterPage() {
 
 
         {/* ═══════ INTERACTIVE REGISTRATION FORM SECTION ═══════ */}
-        <section id="registration-form-section" className="relative w-full py-16 sm:py-20 md:py-24 bg-white dark:bg-[#09090b] border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
+        <section id="registration-form-section" className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#09090b] border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
           <div className="max-w-[860px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
@@ -784,7 +784,7 @@ export default function RegisterPage() {
         </section>
 
         {/* ═══════ POLICIES & SPONSOR CONTACT ═══════ */}
-        <section className="relative w-full py-12 sm:py-16 bg-white dark:bg-[#09090b] border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#09090b] border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="bg-[#0f1117] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-neutral-800 relative overflow-hidden">
               <div className="flex flex-col lg:flex-row gap-8 items-start justify-between">

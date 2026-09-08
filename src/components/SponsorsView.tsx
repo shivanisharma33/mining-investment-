@@ -42,7 +42,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Ventum Financial",
     website: "https://ventumfinancial.com",
     tier: "platinum",
-    image: "/sponsors/2026/ventum_financial_exact.png",
+    image: "/Ventum.webp",
   },
   {
     name: "Agnico Eagle",
@@ -1655,7 +1655,7 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
             {t("sp-become-partner-title", "Partnering for a Stronger Mining Future")}
           </h4>
           <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed font-medium max-w-xl">
-            {t("sp-become-partner-desc", "Our sponsors play a vital role in driving innovation, ESG excellence, and sustainable mining practices across global capital markets.")}
+            {t("sp-become-partner-desc", "Our sponsors play a vital role in driving innovation, ESG excellence and sustainable mining practices across global capital markets.")}
           </p>
         </div>
         <div className="flex flex-col items-center sm:items-end gap-3 shrink-0 relative z-10 w-full sm:w-auto">

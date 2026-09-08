@@ -50,7 +50,7 @@ export default function GlobalCommunity() {
   ];
 
   return (
-    <section className="relative w-full bg-white dark:bg-[#090d16] py-8 sm:py-12 overflow-hidden transition-colors duration-300">
+    <section className="relative w-full bg-white dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
@@ -69,7 +69,7 @@ export default function GlobalCommunity() {
             <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-5" />
 
             <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed mb-5 max-w-[420px]">
-              {t("map-desc", "Explore the international network of companies, investors, and delegations gathering in Québec City.")}
+              {t("map-desc", "Explore the international network of companies, investors and delegations gathering in Québec City.")}
             </p>
 
             <Link

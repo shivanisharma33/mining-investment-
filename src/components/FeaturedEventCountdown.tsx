@@ -55,7 +55,7 @@ export default function FeaturedEventCountdown() {
   ];
 
   return (
-    <section className="relative w-full bg-white dark:bg-[#0b101c] py-16 sm:py-20 md:py-24 overflow-hidden border-y border-neutral-200/80 dark:border-[#233049] transition-colors duration-300">
+    <section className="relative w-full bg-white dark:bg-[#0b101c] py-12 sm:py-14 md:py-16 overflow-hidden border-y border-neutral-200/80 dark:border-[#233049] transition-colors duration-300">
       {/* Background Watermark Text: COMING SOON (Stacked behind countdown) */}
       <div className="absolute top-28 sm:top-32 left-0 right-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden opacity-[0.06] z-0">
         <span className="text-[50px] xs:text-[80px] sm:text-[160px] md:text-[210px] lg:text-[250px] font-black tracking-[0.18em] leading-[0.8] text-neutral-900 uppercase">

@@ -271,7 +271,7 @@ export default function PastEdition2024Page() {
                     <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
                       {isFr
                         ? "Connectez-vous avec les principales sociétés minières, investisseurs, fournisseurs de technologies et partenaires façonnant l'avenir de l'industrie minière."
-                        : "Connect with leading mining companies, investors, technology providers, and service partners driving the future of the mining industry."}
+                        : "Connect with leading mining companies, investors, technology providers and service partners driving the future of the mining industry."}
                     </p>
                     <CompaniesView initialYear={viewingEdition} />
                   </div>
@@ -286,7 +286,7 @@ export default function PastEdition2024Page() {
                     <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
                       {isFr
                         ? "Explorez la brochure complète pour découvrir les détails de l'événement, les thèmes clés, les conférenciers vedettes, l'ordre du jour et les opportunités de commandite."
-                        : "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview, and sponsorship opportunities."}
+                        : "Explore the complete brochure to discover event details, key themes, speaker highlights, agenda overview and sponsorship opportunities."}
                     </p>
 
                     <div className="flex flex-wrap items-center gap-6 md:gap-10 pb-8 mb-8 border-b border-neutral-200 text-xs sm:text-sm font-medium text-neutral-700">
@@ -434,7 +434,7 @@ export default function PastEdition2024Page() {
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
                       {isFr
                         ? "Quatre jours de conférences, présentations d'entreprises, tables rondes et réseautage réunissant producteurs, développeurs et explorateurs de toute l'industrie."
-                        : "Four days of keynotes, corporate presentations, panels, and networking bringing together producers, developers, and explorers from across the industry."}
+                        : "Four days of keynotes, corporate presentations, panels and networking bringing together producers, developers and explorers from across the industry."}
                     </p>
 
                     {agendaMode === "pdf" ? (

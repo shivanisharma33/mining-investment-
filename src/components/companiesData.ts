@@ -1102,7 +1102,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "commodities": "Royalties",
     "email": "info@ORroyalties.com",
     "website": "https://orroyalties.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=orroyalties.com&sz=128",
+    "logo": "https://orroyalties.com/app/themes/osisko/favicon.ico",
     "year": 2026
   },
   {
@@ -2523,7 +2523,7 @@ export const PARTICIPATING_COMPANIES: CompanyItem[] = [
     "location": "CANADA/ON",
     "commodities": "Au",
     "website": "https://ptxmetals.com/",
-    "logo": "https://www.google.com/s2/favicons?domain=ptxmetals.com&sz=128",
+    "logo": "/ptx-metals-logo.png",
     "year": 2023
   },
   {

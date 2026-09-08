@@ -35,7 +35,7 @@ export default function TravelPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/15 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-14 sm:pb-18 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">
                 {t("nav-home", "Home")}
@@ -53,7 +53,7 @@ export default function TravelPage() {
         </section>
 
         {/* ═══════ MAIN CONTENT IN CLIENT SPECIFIED ORDER ═══════ */}
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 py-14 sm:py-18 md:py-20 space-y-16 sm:space-y-20">
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-14 md:py-16 space-y-12 sm:space-y-14 md:space-y-16">
 
           {/* ════════ ORDER 1: QUÉBEC CITY CONVENTION CENTRE (QCC) DETAILS ════════ */}
           <section id="convention-centre" className="relative w-full">
@@ -105,11 +105,6 @@ export default function TravelPage() {
                     alt="Centre des congrès de Québec (QCC)"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-bold flex items-center justify-between">
-                    <span>Centre des congrès de Québec</span>
-                    <span className="text-[10px] bg-[#C6112F] px-2 py-0.5 rounded font-black uppercase tracking-wider">QCC VENUE</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -198,7 +193,7 @@ export default function TravelPage() {
                   <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-4">
                     {t(
                       "travel-delta-desc",
-                      "Conveniently located near the Québec City Convention Centre (QCC), Delta Hotels Québec offers premium guest rooms, modern amenities, on-site dining, and exclusive group rates for conference delegates."
+                      "Conveniently located near the Québec City Convention Centre (QCC), Delta Hotels Québec offers premium guest rooms, modern amenities, on-site dining and exclusive group rates for conference delegates."
                     )}
                   </p>
 
@@ -242,7 +237,7 @@ export default function TravelPage() {
                   <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-4">
                     {t(
                       "travel-fairmont-desc",
-                      "Perched high above Old Québec, Fairmont Le Château Frontenac is one of Canada's most iconic luxury landmark hotels. Enjoy world-class hospitality, gourmet dining, and breathtaking views of the St. Lawrence River, located just minutes from the Québec City Convention Centre."
+                      "Perched high above Old Québec, Fairmont Le Château Frontenac is one of Canada's most iconic luxury landmark hotels. Enjoy world-class hospitality, gourmet dining and breathtaking views of the St. Lawrence River, located just minutes from the Québec City Convention Centre."
                     )}
                   </p>
 
@@ -295,7 +290,7 @@ export default function TravelPage() {
                 <p className="text-white/95 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
                   {t(
                     "travel-notice-2",
-                    "You are responsible for coordinating all your own travel and lodging arrangements. Please check with individual properties regarding cancellation policy, deposit requirement, and taxes/fees."
+                    "You are responsible for coordinating all your own travel and lodging arrangements. Please check with individual properties regarding cancellation policy, deposit requirement and taxes/fees."
                   )}
                 </p>
 

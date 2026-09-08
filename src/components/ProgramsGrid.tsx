@@ -47,7 +47,7 @@ export default function ProgramsGrid() {
       title: t("prog-inst-title", "THE Tier 1 Conference Partnership"),
       description: t(
         "prog-inst-desc",
-        "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u00A0makers, investors, and policy\u00A0makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
+        "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u00A0makers, investors and policy\u00A0makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
       ),
       cta: t("prog-inst-cta", "PARTNERSHIP INFO"),
       link: "/partnership",
@@ -85,7 +85,7 @@ export default function ProgramsGrid() {
 
 
   return (
-    <section className="relative w-full bg-white dark:bg-[#090d16] py-14 sm:py-18 overflow-hidden transition-colors duration-300">
+    <section className="relative w-full bg-white dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 

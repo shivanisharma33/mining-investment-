@@ -29,7 +29,7 @@ const coreTeam: TeamMember[] = [
     roleFr: "Fondatrice et PDG",
     organization: "IR.INC & VID Media",
     organizationFr: "IR.INC & VID Media",
-    bio: "Joanne is a seasoned Capital Markets and Communications executive with over 25 years of dedicated experience. She is the Principal and Founder of IR.INC, Capital Markets Advisory, VID Media Incorporated and THE Mining Investment Event of the North. She began her career in the fledgling investor relations industry in 1987 with Barrick Gold, where she helped develop its early IR and marketing programs.\n\nSince then, she has worked in the natural resources sector and managed the investor relations, corporate affairs and communications programs for a number of publicly traded companies, including J.P. Morgan & Co. (Canada), Canadian Tire Corporation, and Meridian Credit Union. Ms. Jobin has held senior IRO positions in several companies, including IAMGOLD, Yamana Gold, Noront Resources, Excellon Resources, Schwazze, and Jaguar Mining.\n\nIR.INC is an Advisory firm dedicated to providing capital markets and IR advice to select natural resource and financial industry clients. VID Media is focused on providing companies with an unparalleled direct investor experience through its unique flagship products including VID Town Hall Forums. THE Mining Investment Event of the North is Canada's only Tier 1 Mining Investment Conference, held annually in Quebec City, hosting 800+ participants including issuers, investors, financial institutions, sponsors and governments of all levels.",
+    bio: "Joanne is a seasoned Capital Markets and Communications executive with over 25 years of dedicated experience. She is the Principal and Founder of IR.INC, Capital Markets Advisory, VID Media Incorporated and THE Mining Investment Event of the North. She began her career in the fledgling investor relations industry in 1987 with Barrick Gold, where she helped develop its early IR and marketing programs.\n\nSince then, she has worked in the natural resources sector and managed the investor relations, corporate affairs and communications programs for a number of publicly traded companies, including J.P. Morgan & Co. (Canada), Canadian Tire Corporation and Meridian Credit Union. Ms. Jobin has held senior IRO positions in several companies, including IAMGOLD, Yamana Gold, Noront Resources, Excellon Resources, Schwazze and Jaguar Mining.\n\nIR.INC is an Advisory firm dedicated to providing capital markets and IR advice to select natural resource and financial industry clients. VID Media is focused on providing companies with an unparalleled direct investor experience through its unique flagship products including VID Town Hall Forums. THE Mining Investment Event of the North is Canada's only Tier 1 Mining Investment Conference, held annually in Quebec City, hosting 800+ participants including issuers, investors, financial institutions, sponsors and governments of all levels.",
     bioFr: "Joanne est une dirigeante chevronnée des marchés des capitaux et des communications avec plus de 25 ans d'expérience dédiée. Elle est la dirigeante et fondatrice d'IR.INC, Capital Markets Advisory, VID Media Incorporated et THE Mining Investment Event of the North. Elle a débuté sa carrière dans l'industrie émergente des relations avec les investisseurs en 1987 chez Barrick Gold, où elle a contribué au développement de ses premiers programmes de relations avec les investisseurs et de marketing.\n\nDepuis lors, elle a travaillé dans le secteur des ressources naturelles et a géré les programmes de relations avec les investisseurs, d'affaires corporatives et de communications pour plusieurs sociétés cotées en bourse, notamment J.P. Morgan & Co. (Canada), Canadian Tire Corporation et Meridian Credit Union. Mme Jobin a occupé des postes de direction en RI au sein de plusieurs entreprises, dont IAMGOLD, Yamana Gold, Noront Resources, Excellon Resources, Schwazze et Jaguar Mining.\n\nIR.INC est un cabinet de conseil dédié à fournir des conseils en marchés des capitaux et RI à des clients sélectionnés des secteurs des ressources naturelles et de la finance. VID Media se concentre sur la fourniture d'une expérience d'investisseur direct inégalée grâce à ses produits phares uniques, dont les forums VID Town Hall. THE Mining Investment Event of the North est la seule conférence d'investissement minier de Niveau 1 au Canada, tenue annuellement à la ville de Québec, accueillant plus de 800 participants, y compris des émetteurs, des investisseurs, des institutions financières, des commanditaires et des gouvernements de tous niveaux.",
     expandable: true,
     category: "executive",
@@ -53,7 +53,7 @@ const coreTeam: TeamMember[] = [
     roleFr: "Directrice des services de production",
     organization: "IR INC & VID Media",
     organizationFr: "IR INC & VID Media",
-    bio: "Sydney is the Manager, Production Services at IR INC and VID Media, where she oversees production operations and leads the social media team for THE Mining Investment Event. With a background in media, communications, and public affairs, she brings a structured, detail-oriented approach to managing complex projects and stakeholder-driven initiatives.\n\nShe is a graduate of the University of Western Ontario, holding a BA in Political Science and Media Information (2024), and is currently pursuing a Graduate Certificate in Government Relations at Seneca Polytechnic.\n\nAlongside her professional work, Sydney is actively engaged in public service. She volunteers with her local MPP's office and serves as an administrative assistant to the executive team at the Caledonia Royal Canadian Legion.",
+    bio: "Sydney is the Manager, Production Services at IR INC and VID Media, where she oversees production operations and leads the social media team for THE Mining Investment Event. With a background in media, communications and public affairs, she brings a structured, detail-oriented approach to managing complex projects and stakeholder-driven initiatives.\n\nShe is a graduate of the University of Western Ontario, holding a BA in Political Science and Media Information (2024) and is currently pursuing a Graduate Certificate in Government Relations at Seneca Polytechnic.\n\nAlongside her professional work, Sydney is actively engaged in public service. She volunteers with her local MPP's office and serves as an administrative assistant to the executive team at the Caledonia Royal Canadian Legion.",
     bioFr: "Sydney est directrice des services de production chez IR INC et VID Media, où elle supervise les opérations de production et dirige l'équipe des médias sociaux pour THE Mining Investment Event. Avec une formation en médias, communications et affaires publiques, elle apporte une approche structurée et axée sur les détails à la gestion de projets complexes et d'initiatives axées sur les parties prenantes.\n\nDiplômée de l'Université Western Ontario, elle est titulaire d'un baccalauréat en sciences politiques et informations média (2024), et poursuit actuellement un certificat d'études supérieures en relations gouvernementales au Seneca Polytechnic.\n\nEn parallèle de son travail professionnel, Sydney s'engage activement dans le service public. Elle est bénévole auprès du bureau de son député provincial local et agit en tant qu'assistante administrative auprès de l'équipe exécutive de la Légion royale canadienne de Caledonia.",
     expandable: true,
     category: "executive",
@@ -65,7 +65,7 @@ const coreTeam: TeamMember[] = [
     roleFr: "Directrice des services clients",
     organization: "THE Mining Investment EVENT",
     organizationFr: "THE Mining Investment EVENT",
-    bio: "Jackie Fitos is an accomplished professional with a diverse background in direct sales and client service relationships. Jackie has excelled in her various job roles as supervisor and liaison, bridging the gap between her former companies, clients, and employees. Jackie has identified her commitment to excellence, strong communication skills, and dedication to ensuring client satisfaction as her most valuable assets in her current work with THE Event.",
+    bio: "Jackie Fitos is an accomplished professional with a diverse background in direct sales and client service relationships. Jackie has excelled in her various job roles as supervisor and liaison, bridging the gap between her former companies, clients and employees. Jackie has identified her commitment to excellence, strong communication skills and dedication to ensuring client satisfaction as her most valuable assets in her current work with THE Event.",
     bioFr: "Jackie Fitos est une professionnelle accomplie possédant un parcours diversifié dans les ventes directes et les relations de service à la clientèle. Jackie s'est distinguée dans ses divers rôles de superviseure et de liaison, comblant le fossé entre ses anciennes entreprises, ses clients et ses employés. Sa rigueur, ses solides compétences en communication et son dévouement envers la satisfaction client sont ses atouts les plus précieux dans son travail avec L'Événement.",
     expandable: false,
     category: "executive",
@@ -77,7 +77,7 @@ const coreTeam: TeamMember[] = [
     roleFr: "Directrice des services administratifs",
     organization: "IR INC",
     organizationFr: "IR INC",
-    bio: "Ada brings a wealth of administrative and operational experience, with a strong focus on business efficiency, organization, and strategic support. Throughout her career, she has demonstrated an exceptional ability to manage multiple priorities, streamline processes, and support leadership in achieving organizational goals. Known for her professionalism, reliability, and strong communication skills, Ada plays a key role in maintaining effective operations and fostering a productive work environment.\n\nShe brings a results-driven approach to her work, ensuring that daily operations run efficiently while maintaining a high standard of professionalism and client service. Ada is skilled at coordinating teams, managing complex schedules, and supporting business growth through thoughtful planning and attention to detail.",
+    bio: "Ada brings a wealth of administrative and operational experience, with a strong focus on business efficiency, organization and strategic support. Throughout her career, she has demonstrated an exceptional ability to manage multiple priorities, streamline processes and support leadership in achieving organizational goals. Known for her professionalism, reliability and strong communication skills, Ada plays a key role in maintaining effective operations and fostering a productive work environment.\n\nShe brings a results-driven approach to her work, ensuring that daily operations run efficiently while maintaining a high standard of professionalism and client service. Ada is skilled at coordinating teams, managing complex schedules and supporting business growth through thoughtful planning and attention to detail.",
     bioFr: "Ada apporte une vaste expérience administrative et opérationnelle, fortement axée sur l'efficacité commerciale, l'organisation et le soutien stratégique. Tout au long de sa carrière, elle a démontré une capacité exceptionnelle à gérer de multiples priorités, à rationaliser les processus et à soutenir la direction dans l'atteinte des objectifs organisationnels. Reconnue pour son professionnalisme, sa fiabilité et ses solides compétences en communication, Ada joue un rôle clé dans le maintien d'opérations efficaces et la création d'un environnement de travail productif.\n\nElle apporte une approche axée sur les résultats à son travail, veillant à ce que les opérations quotidiennes se déroulent efficacement tout en maintenant un niveau élevé de professionnalisme et de service client. Ada excelle dans la coordination d'équipes, la gestion d'horaires complexes et le soutien de la croissance des entreprises.",
     expandable: true,
     category: "executive",
@@ -89,7 +89,7 @@ const coreTeam: TeamMember[] = [
     roleFr: "Associée",
     organization: "THE Mining Investment EVENT",
     organizationFr: "THE Mining Investment EVENT",
-    bio: "Taylor Zimmerman serves as Associate at THE Mining Investment Event, supporting operational planning, delegate relations, and event logistics for Canada's premier mining investment conference.",
+    bio: "Taylor Zimmerman serves as Associate at THE Mining Investment Event, supporting operational planning, delegate relations and event logistics for Canada's premier mining investment conference.",
     bioFr: "Taylor Zimmerman agit à titre d'associée chez THE Mining Investment Event, appuyant la planification opérationnelle, les relations avec les délégués et la logistique de la plus importante conférence d'investissement minier au Canada.",
     expandable: false,
     category: "executive",
@@ -104,7 +104,7 @@ const advisoryBoard: TeamMember[] = [
     roleFr: "Membre du conseil consultatif",
     organization: "Former MP of Labrador & Cabinet Minister",
     organizationFr: "Ancienne députée du Labrador et ministre du Cabinet",
-    bio: "Yvonne Rumbolt-Jones is a senior public policy and governance leader with more than thirty years of experience advancing sustainable development, Indigenous partnerships, and community–industry relations in Northern and Arctic Canada. A former Member of Parliament for Labrador, Member of the House of Assembly, Cabinet Minister, and Leader of the Liberal Party of Newfoundland and Labrador, she has built a distinguished career at the intersection of government, Indigenous communities, and the mining and energy sectors.\n\nThroughout her public service, Yvonne championed the inclusion of women and Indigenous peoples in resource development. As Parliamentary Secretary for Natural Resources, she contributed to Canada's Critical Minerals Strategy, supporting Indigenous equity participation, community-benefit frameworks, and responsible mining and energy development in northern and Arctic regions.",
+    bio: "Yvonne Rumbolt-Jones is a senior public policy and governance leader with more than thirty years of experience advancing sustainable development, Indigenous partnerships and community–industry relations in Northern and Arctic Canada. A former Member of Parliament for Labrador, Member of the House of Assembly, Cabinet Minister and Leader of the Liberal Party of Newfoundland and Labrador, she has built a distinguished career at the intersection of government, Indigenous communities and the mining and energy sectors.\n\nThroughout her public service, Yvonne championed the inclusion of women and Indigenous peoples in resource development. As Parliamentary Secretary for Natural Resources, she contributed to Canada's Critical Minerals Strategy, supporting Indigenous equity participation, community-benefit frameworks and responsible mining and energy development in northern and Arctic regions.",
     bioFr: "Yvonne Rumbolt-Jones est une dirigeante de haut niveau en politiques publiques et gouvernance comptant plus de trente ans d'expérience dans l'avancement du développement durable, des partenariats autochtones et des relations communauté-industrie dans le Nord et l'Arctique canadien. Ancienne députée du Labrador, membre de l'Assemblée législative, ministre du Cabinet et chef du Parti libéral de Terre-Neuve-et-Labrador, elle s'est bâtie une carrière distinguée à l'intersection du gouvernement, des communautés autochtones et des secteurs minier et énergétique.\n\nTout au long de son service public, Yvonne a préconisé l'inclusion des femmes et des peuples autochtones dans le développement des ressources. En tant que secrétaire parlementaire des Ressources naturelles, elle a contribué à la Stratégie canadienne sur les minéraux critiques.",
     expandable: true,
     category: "board",
@@ -128,7 +128,7 @@ const advisoryBoard: TeamMember[] = [
     roleFr: "Membre du conseil consultatif",
     organization: "CEO & Founder, XV Solutions",
     organizationFr: "PDG et fondatrice, XV Solutions",
-    bio: "Daniele is an international mining industry executive with a technical background in geology and over 30 years of experience in mineral exploration, team building, and corporate leadership across public companies, M&A transitions, and not-for-profits. She is a co-founder of Warrior Gold Inc., taking it from private to public.\n\nShe currently serves as Secretary and Director of the Ontario Prospectors Association, helping to rebuild its governance, leadership, and strategic direction.",
+    bio: "Daniele is an international mining industry executive with a technical background in geology and over 30 years of experience in mineral exploration, team building and corporate leadership across public companies, M&A transitions and not-for-profits. She is a co-founder of Warrior Gold Inc., taking it from private to public.\n\nShe currently serves as Secretary and Director of the Ontario Prospectors Association, helping to rebuild its governance, leadership and strategic direction.",
     bioFr: "Daniele est une dirigeante internationale de l'industrie minière avec une formation technique en géologie et plus de 30 ans d'expérience dans l'exploration minérale, la création d'équipes et la direction d'entreprises publiques, les transitions de fusion-acquisition et les organismes à but non lucratif. Elle est cofondatrice de Warrior Gold Inc., l'ayant fait passer du statut privé à public.\n\nElle occupe actuellement les fonctions de secrétaire et directrice de l'Ontario Prospectors Association, aidant à reconstruire sa gouvernance, son leadership et sa direction stratégique.",
     expandable: true,
     category: "board",
@@ -152,7 +152,7 @@ const advisoryBoard: TeamMember[] = [
     roleFr: "Membre du conseil consultatif",
     organization: "Executive Director, ICEMD",
     organizationFr: "Directrice générale, ICEMD",
-    bio: "Jenny-Lou Campbell is Anishinaabe-Kwe and a proud member of Serpent River First Nation. She grew up in the Ontario mining communities of Elliot Lake and Marathon. Her career in mining has taken her to Hemlo Ontario, Thompson Manitoba, and Sudbury Ontario.\n\nCurrently as the Executive Director of the Indigenous Centre of Excellence for Mineral Development (ICEMD), Jenny is leading efforts to support First Nation participation in the mining sector.",
+    bio: "Jenny-Lou Campbell is Anishinaabe-Kwe and a proud member of Serpent River First Nation. She grew up in the Ontario mining communities of Elliot Lake and Marathon. Her career in mining has taken her to Hemlo Ontario, Thompson Manitoba and Sudbury Ontario.\n\nCurrently as the Executive Director of the Indigenous Centre of Excellence for Mineral Development (ICEMD), Jenny is leading efforts to support First Nation participation in the mining sector.",
     bioFr: "Jenny-Lou Campbell est Anishinaabe-Kwe et fière membre de la Première Nation de Serpent River. Elle a grandi dans les communautés minières ontariennes d'Elliot Lake et de Marathon. Sa carrière dans le secteur minier l'a amenée à Hemlo (Ontario), Thompson (Manitoba) et Sudbury (Ontario).\n\nActuellement directrice générale du Centre d'excellence autochtone pour le développement minéral (ICEMD), Jenny dirige les efforts visant à soutenir la participation des Premières Nations dans le secteur minier.",
     expandable: true,
     category: "board",
@@ -164,7 +164,7 @@ const advisoryBoard: TeamMember[] = [
     roleFr: "Membre du conseil consultatif",
     organization: "Regional Director, Eastern Canada, Hatch",
     organizationFr: "Directrice régionale, Est du Canada, Hatch",
-    bio: "Stéfanie Vo is a senior process engineer with two decades of experience in consulting engineering, specializing in mineral processing and process optimization. Her career includes more than four years on-site at an iron ore concentrator. She currently serves as Regional Director, Mining and Metals for Eastern Canada at Hatch, and contributes to the Board of Directors for CIM's Canadian Mineral Processors (CMP) Society.",
+    bio: "Stéfanie Vo is a senior process engineer with two decades of experience in consulting engineering, specializing in mineral processing and process optimization. Her career includes more than four years on-site at an iron ore concentrator. She currently serves as Regional Director, Mining and Metals for Eastern Canada at Hatch and contributes to the Board of Directors for CIM's Canadian Mineral Processors (CMP) Society.",
     bioFr: "Stéfanie Vo est une ingénieure de procédé senior comptant deux décennies d'expérience en ingénierie-conseil, spécialisée dans le traitement des minerais et l'optimisation des procédés. Sa carrière comprend plus de quatre ans sur le terrain dans un concentrateur de minerai de fer. Elle occupe actuellement le poste de directrice régionale, Mines et métaux pour l'Est du Canada chez Hatch, et siège au conseil d'administration de la Société des minéralurgistes du Canada (CMP) de l'ICM.",
     expandable: false,
     category: "board",
@@ -309,7 +309,7 @@ export default function TeamPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-16 sm:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">{t("nav-home", "Home")}</a>
               <span className="text-[#C6112F]">›</span>
@@ -327,7 +327,7 @@ export default function TeamPage() {
             <p className="text-neutral-300 text-sm sm:text-base md:text-lg max-w-[720px] font-medium leading-relaxed mb-8">
               {isFr
                 ? "Rencontrez les dirigeants visionnaires, les vétérans de l'industrie et les membres distingués du conseil qui guident la première conférence d'investissement minier de Niveau 1 au Canada."
-                : "Meet the visionary leaders, industry veterans, and distinguished board members guiding Canada's premier Tier 1 mining investment conference."}
+                : "Meet the visionary leaders, industry veterans and distinguished board members guiding Canada's premier Tier 1 mining investment conference."}
             </p>
             <div className="w-20 h-[3px] bg-[#C6112F] rounded-full" />
           </div>
@@ -344,7 +344,7 @@ export default function TeamPage() {
                   : "bg-neutral-100 dark:bg-zinc-800 text-neutral-600 dark:text-zinc-300 hover:bg-neutral-200 dark:hover:bg-zinc-700"
                   }`}
               >
-                {isFr ? `Tous les membres (${coreTeam.length + advisoryBoard.length})` : `All Members (${coreTeam.length + advisoryBoard.length})`}
+                {t("team-tab-all", "All Members")}
               </button>
               <button
                 onClick={() => setActiveTab("executive")}
@@ -353,7 +353,7 @@ export default function TeamPage() {
                   : "bg-neutral-100 dark:bg-zinc-800 text-neutral-600 dark:text-zinc-300 hover:bg-neutral-200 dark:hover:bg-zinc-700"
                   }`}
               >
-                {isFr ? `Équipe exécutive (${coreTeam.length})` : `Core Executive Team (${coreTeam.length})`}
+                {t("team-tab-exec", "Core Team")}
               </button>
               <button
                 onClick={() => setActiveTab("board")}
@@ -362,11 +362,12 @@ export default function TeamPage() {
                   : "bg-neutral-100 dark:bg-zinc-800 text-neutral-600 dark:text-zinc-300 hover:bg-neutral-200 dark:hover:bg-zinc-700"
                   }`}
               >
-                {isFr ? `Membres du conseil (${advisoryBoard.length})` : `Advisory Board Members (${advisoryBoard.length})`}
+                {t("team-tab-board", "Advisory Board")}
               </button>
             </div>
 
-            <span className="hidden md:inline-block text-xs font-bold text-neutral-400 dark:text-zinc-500 uppercase tracking-wider">
+            <span className="hidden md:inline-flex items-center gap-1.5 text-xs font-bold text-neutral-400">
+              <i className="fi fi-rr-marker text-[#C6112F] text-sm" />
               {isFr ? "Ville de Québec • Canada" : "Quebec City • Canada"}
             </span>
           </div>
@@ -374,7 +375,7 @@ export default function TeamPage() {
 
         {/* ═══════ CORE TEAM SECTION ═══════ */}
         {(activeTab === "all" || activeTab === "executive") && (
-          <section className="relative w-full py-16 sm:py-20 bg-white dark:bg-[#09090b] transition-colors duration-300">
+          <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#09090b] transition-colors duration-300">
             <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
               <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
                 {t("team-core-label", "Core Team")}
@@ -395,7 +396,7 @@ export default function TeamPage() {
 
         {/* ═══════ ADVISORY BOARD SECTION (PROMINENT PORTRAIT GRID) ═══════ */}
         {(activeTab === "all" || activeTab === "board") && (
-          <section className="relative w-full py-16 sm:py-20 bg-white dark:bg-[#0c0c0e] border-t border-neutral-200/80 dark:border-zinc-800/80 transition-colors duration-300">
+          <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0c0c0e] border-t border-neutral-200/80 dark:border-zinc-800/80 transition-colors duration-300">
             <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
               <div className="mb-10 max-w-[720px]">
                 <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">

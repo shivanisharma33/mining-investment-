@@ -89,17 +89,17 @@ export default function PrivacyPolicyPage() {
   ] : [
     {
       title: "1. Introduction",
-      content: "This Privacy Policy describes how THE Mining Investment Event (\"we,\" \"our,\" or \"the Event\") collects, uses, discloses, and protects the personal information of visitors to our website, event attendees, and individuals who interact with our services. THE Mining Investment Event is organized by IR Inc. and is independently sponsored by the Government of Québec, and the financial and mining communities at large."
+      content: "This Privacy Policy describes how THE Mining Investment Event (\"we,\" \"our,\" or \"the Event\") collects, uses, discloses and protects the personal information of visitors to our website, event attendees and individuals who interact with our services. THE Mining Investment Event is organized by IR Inc. and is independently sponsored by the Government of Québec and the financial and mining communities at large."
     },
     {
       title: "2. Information We Collect",
       content: "We may collect the following types of personal information:",
       list: [
-        "Identification Information: full name, job title, company name, business email address, phone number, and mailing address.",
-        "Registration Information: event attendance details, dietary preferences, accessibility requirements, and session selections.",
+        "Identification Information: full name, job title, company name, business email address, phone number and mailing address.",
+        "Registration Information: event attendance details, dietary preferences, accessibility requirements and session selections.",
         "Payment Information: credit card and billing data are processed securely through third-party payment processors and are not stored on our servers.",
-        "Website Usage Data: IP address, browser type, pages visited, time spent on pages, and links clicked.",
-        "Communications: email correspondence, contact form submissions, and survey responses."
+        "Website Usage Data: IP address, browser type, pages visited, time spent on pages and links clicked.",
+        "Communications: email correspondence, contact form submissions and survey responses."
       ]
     },
     {
@@ -107,10 +107,10 @@ export default function PrivacyPolicyPage() {
       content: "We use the personal information collected for the following purposes:",
       list: [
         "Processing event registrations and managing attendance.",
-        "Sending event confirmations, updates, schedule changes, and logistics information.",
+        "Sending event confirmations, updates, schedule changes and logistics information.",
         "Providing personalized content and recommendations based on your industry interests.",
-        "Improving our website, events, and services through analytics and feedback.",
-        "Communicating with you about upcoming events, sponsorship opportunities, and related services.",
+        "Improving our website, events and services through analytics and feedback.",
+        "Communicating with you about upcoming events, sponsorship opportunities and related services.",
         "Complying with legal obligations and protecting our rights."
       ]
     },
@@ -118,19 +118,19 @@ export default function PrivacyPolicyPage() {
       title: "4. Sharing Your Information",
       content: "We may share your personal information with:",
       list: [
-        "Event Sponsors & Partners: your name, title, and company may be shared with event sponsors for networking purposes, unless you opt out.",
-        "Service Providers: third-party vendors who assist us with event registration, payment processing, email marketing, and website hosting.",
+        "Event Sponsors & Partners: your name, title and company may be shared with event sponsors for networking purposes, unless you opt out.",
+        "Service Providers: third-party vendors who assist us with event registration, payment processing, email marketing and website hosting.",
         "Government Authorities: when required by law or in response to valid legal processes.",
         "Business Partners: with your consent, we may share your contact details with selected third parties offering products or services relevant to the mining industry."
       ]
     },
     {
       title: "5. Cookies & Tracking Technologies",
-      content: "Our website uses cookies and similar tracking technologies to enhance your browsing experience, analyze site traffic, and understand visitor engagement. You can control cookie preferences through your browser settings. Please note that disabling certain cookies may affect website functionality."
+      content: "Our website uses cookies and similar tracking technologies to enhance your browsing experience, analyze site traffic and understand visitor engagement. You can control cookie preferences through your browser settings. Please note that disabling certain cookies may affect website functionality."
     },
     {
       title: "6. Data Security",
-      content: "We implement appropriate technical and organizational security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. These measures include encryption, firewalls, and secure data storage practices. However, no method of transmission over the Internet or electronic storage is completely secure, and we cannot guarantee absolute security."
+      content: "We implement appropriate technical and organizational security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. These measures include encryption, firewalls and secure data storage practices. However, no method of transmission over the Internet or electronic storage is completely secure and we cannot guarantee absolute security."
     },
     {
       title: "7. Data Retention",
@@ -171,7 +171,7 @@ export default function PrivacyPolicyPage() {
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-white dark:bg-[#0e1626] transition-colors duration-300">
         {/* ══════ HERO SECTION ══════ */}
-        <section className="relative w-full bg-[#0f1117] text-white py-20 sm:py-24 pt-32 sm:pt-36 border-b-[3px] border-[#C6112F]">
+        <section className="relative w-full bg-[#0f1117] text-white pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 border-b-[3px] border-[#C6112F]">
           <div
             className="absolute inset-0 opacity-[0.05]"
             style={{
@@ -210,13 +210,13 @@ export default function PrivacyPolicyPage() {
             <p className="text-neutral-300 text-sm sm:text-base max-w-[760px] font-medium leading-relaxed">
               {lang === "FR"
                 ? "Ce document explique comment THE Mining Investment Event recueille, utilise et protège vos renseignements personnels. Dernière mise à jour : juillet 2026."
-                : "This document explains how THE Mining Investment Event collects, uses, and protects your personal information. Last updated: July 2026."}
+                : "This document explains how THE Mining Investment Event collects, uses and protects your personal information. Last updated: July 2026."}
             </p>
           </div>
         </section>
 
         {/* ══════ PRIVACY POLICY CONTENT ══════ */}
-        <section className="py-12 sm:py-16 bg-neutral-50 dark:bg-[#090d16] min-h-[600px] transition-colors duration-300">
+        <section className="py-12 sm:py-14 md:py-16 bg-neutral-50 dark:bg-[#090d16] min-h-[600px] transition-colors duration-300">
           <div className="max-w-[860px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="bg-white dark:bg-[#131b2e] border border-neutral-200/90 dark:border-[#233049] rounded-3xl p-6 sm:p-10 shadow-xl">
               {sections.map((section, idx) => (

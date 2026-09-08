@@ -17,7 +17,7 @@ export default function GolfPage() {
       title: lang === "FR" ? "Enregistrement & Petit-Déjeuner des Joueurs" : "Player Registration & Networking Breakfast",
       desc: lang === "FR"
         ? "Accueil des participants, remise des coffrets cadeaux et échauffement sur le champ de pratique."
-        : "Welcome desk check-in, distribution of premium player gift packs, and warm-ups on the driving range.",
+        : "Welcome desk check-in, distribution of premium player gift packs and warm-ups on the driving range.",
     },
     {
       time: "08:00 AM",
@@ -31,14 +31,14 @@ export default function GolfPage() {
       title: lang === "FR" ? "Dîner sur le Parcours & Concours d'Hablité" : "On-Course Lunch & Hole Contests",
       desc: lang === "FR"
         ? "Stations gourmandes sur le parcours, concours du coup le plus long et du coup le plus près de la coupe."
-        : "Gourmet food stations along the fairway, longest drive contest, and closest-to-the-pin challenges.",
+        : "Gourmet food stations along the fairway, longest drive contest and closest-to-the-pin challenges.",
     },
     {
       time: "02:30 PM – 03:30 PM",
       title: lang === "FR" ? "Cocktail de Réception & Remise des Prix" : "Cocktail Reception & Awards Ceremony",
       desc: lang === "FR"
         ? "Célébration des gagnants, réseautage d'affaires et mot de clôture des partenaires."
-        : "Celebration of tournament winners, high-level executive networking, and partner closing remarks.",
+        : "Celebration of tournament winners, high-level executive networking and partner closing remarks.",
     },
   ];
 
@@ -61,7 +61,7 @@ export default function GolfPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 z-10" />
 
           {/* Main Hero Content Box */}
-          <div className="relative z-20 max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 flex flex-col justify-between h-full">
+          <div className="relative z-20 max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 pt-6 sm:pt-8 md:pt-10 pb-12 sm:pb-16 flex flex-col justify-between h-full">
             <div className="max-w-2xl">
               {/* Dual Language Heading matching mockup */}
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase leading-[1.1] drop-shadow-md">

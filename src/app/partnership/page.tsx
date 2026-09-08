@@ -24,7 +24,7 @@ export default function PartnershipPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/15 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-14 sm:pb-18 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">{t("nav-home", "Home")}</a>
               <span className="text-[#C6112F]">›</span>
@@ -40,7 +40,7 @@ export default function PartnershipPage() {
         </section>
 
         {/* ═══════ PARTNERSHIP OVERVIEW & SIDEBAR ═══════ */}
-        <section className="relative w-full py-16 sm:py-20 md:py-24">
+        <section className="relative w-full py-12 sm:py-14 md:py-16">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
               {/* Left Main Content */}
@@ -56,7 +56,7 @@ export default function PartnershipPage() {
                 <p className="text-neutral-600 text-base sm:text-lg leading-relaxed mb-8">
                   {t(
                     "tier1-sub-desc",
-                    "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u00A0makers, investors, and policy\u00A0makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
+                    "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u00A0makers, investors and policy\u00A0makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
                   )}
                 </p>
 

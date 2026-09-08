@@ -45,7 +45,7 @@ const rawNewsData: RawNewsItem[] = [
     headlineFR: "Annonce des conférenciers principaux et des panels",
     snippetEN: "THE Mining Investment Event announces its keynote speakers and panel line-up for the 2026 conference in Quebec City.",
     snippetFR: "THE Mining Investment Event annonce ses conférenciers principaux et la liste des panels pour la conférence 2026 à Québec.",
-    fullBodyEN: "THE Mining Investment Event of the North is pleased to announce its distinguished keynote speakers and executive panel line-up for the upcoming 2026 conference at the Centre des congrès de Québec. Featuring top industry leaders, government officials, and institutional investors, the 2026 program addresses key trends in critical minerals, ESG innovation, capital markets, and global resource development.",
+    fullBodyEN: "THE Mining Investment Event of the North is pleased to announce its distinguished keynote speakers and executive panel line-up for the upcoming 2026 conference at the Centre des congrès de Québec. Featuring top industry leaders, government officials and institutional investors, the 2026 program addresses key trends in critical minerals, ESG innovation, capital markets and global resource development.",
     fullBodyFR: "THE Mining Investment Event of the North est heureux d'annoncer ses conférenciers principaux et la liste des panels exécutifs pour la prochaine conférence 2026 au Centre des congrès de Québec.",
     image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200",
   },
@@ -138,7 +138,7 @@ const heroSlides = [
     featuredTag: "FEATURED",
     headlineEN: "Glencore & Osisko Expand Student Sponsorship Program",
     headlineFR: "Glencore et Osisko élargissent le programme de bourse étudiante",
-    snippetEN: "Empowering the next generation of geology, engineering, and finance leaders across North American universities.",
+    snippetEN: "Empowering the next generation of geology, engineering and finance leaders across North American universities.",
     snippetFR: "Soutenir la prochaine génération de leaders en géologie, génie et finance dans les universités.",
     image: "/news/hero_3.png",
     buttonTextEN: "READ FULL STORY",
@@ -381,7 +381,7 @@ function SponsorsSection() {
         "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
         "/sponsors/2026/glencore.svg",
         "/sponsors/2026/national_bank_financial_markets.png",
-        "/sponsors/2026/ventum_financial.png",
+        "/Ventum.webp",
         "/sponsors/2026/sponsor_platinum_10.png",
         "/sponsors/2026/sponsor_platinum_12.png",
         "/sponsors/2026/sponsor_platinum_29.png",
@@ -722,7 +722,7 @@ const companyArticles = [
     dateFR: "28 juillet 2026",
     readTime: "4 min read",
     readTimeFR: "4 min de lecture",
-    snippet: "Expand Energy transforms into a fully integrated natural gas powerhouse combining 7.5 Bcfe/d production with marketing, storage, and logistics capabilities across North America.",
+    snippet: "Expand Energy transforms into a fully integrated natural gas powerhouse combining 7.5 Bcfe/d production with marketing, storage and logistics capabilities across North America.",
     snippetFR: "Expand Energy devient un géant du gaz naturel en combinant une production de 7,5 Bcfe/d avec des actifs de stockage et de logistique.",
     image: "https://images.unsplash.com/photo-1509391365360-2e959784a276?q=80&w=800",
     source: "Oil & Gas Journal",
@@ -804,7 +804,7 @@ const companyInterviews = [
     readTime: "09:30",
     readTimeFR: "09:30",
     youtubeId: "dQw4w9WgXcQ",
-    snippet: "VID Conferences executive interview detailing project updates, resource expansion, and Tier-1 infrastructure advantages.",
+    snippet: "VID Conferences executive interview detailing project updates, resource expansion and Tier-1 infrastructure advantages.",
     snippetFR: "Interview exécutive VID Conferences détaillant les mises à jour du projet et l'expansion des ressources.",
     image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-10.jpg",
     sponsored: true,
@@ -820,7 +820,7 @@ const companyInterviews = [
     readTime: "08:15",
     readTimeFR: "08:15",
     youtubeId: "3JZ_D3ELwOQ",
-    snippet: "Exclusive VID Media interview discussing technical milestones, economic studies, and market outlook for precious & industrial metals.",
+    snippet: "Exclusive VID Media interview discussing technical milestones, economic studies and market outlook for precious & industrial metals.",
     snippetFR: "Interview exclusive VID Media discutant des jalons techniques, des études économiques et des perspectives de marché.",
     image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-18.jpg",
     sponsored: true,
@@ -852,7 +852,7 @@ const companyInterviews = [
     readTime: "10:05",
     readTimeFR: "10:05",
     youtubeId: "dQw4w9WgXcQ",
-    snippet: "Executive presentation at VID Conferences highlighting operational progress, cash flow potential, and strategic partnerships.",
+    snippet: "Executive presentation at VID Conferences highlighting operational progress, cash flow potential and strategic partnerships.",
     snippetFR: "Présentation exécutive aux conférences VID soulignant les progrès opérationnels et le potentiel de trésorerie.",
     image: "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-28.jpg",
     sponsored: true,
@@ -1377,7 +1377,7 @@ function SectionPressReleaseView({
   return (
     <div className="w-full flex flex-col min-h-screen bg-[#f4f7fa] dark:bg-[#090d16] text-neutral-900 dark:text-white transition-colors duration-300 relative">
       {/* Hero Header matching Press Release Page */}
-      <section className="relative w-full bg-[#0f1117] text-white overflow-hidden pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 md:px-8">
+      <section className="relative w-full bg-[#0f1117] text-white overflow-hidden pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 px-4 sm:px-6 md:px-8">
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -1961,22 +1961,22 @@ export default function NewsPage() {
       ) : (
         <main className="flex flex-col flex-grow w-full bg-[#f4f7fa] dark:bg-[#090d16] pb-16 sm:pb-24 transition-colors duration-300">
           {/* ═══════ HERO SLIDER SECTION ═══════ */}
-          <section className="relative w-full pt-28 sm:pt-36 pb-8 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full pt-28 sm:pt-30 md:pt-32 pb-6 sm:pb-8 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <HeroNewsSlider lang={lang} />
           </section>
 
           {/* ═══════ BANNER SLIDER SECTION ═══════ */}
-          <section className="relative w-full py-8 sm:py-12 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <BannerSliderSection />
           </section>
 
           {/* ═══════ SECTION 2: SPONSORS & PARTNERS GRID ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <SponsorsSection />
           </section>
 
           {/* ═══════ SECTION 3: MINING NEWS (FIRST BELOW SPONSORS) ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
               sectionLabel={lang === "FR" ? "SECTEUR DES RESSOURCES" : "RESOURCE SECTOR"}
               title={lang === "FR" ? "Nouvelles Minières" : "Mining News"}
@@ -1996,7 +1996,7 @@ export default function NewsPage() {
           </section>
 
           {/* ═══════ SECTION 4: OIL & GAS NEWS ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
               sectionLabel={lang === "FR" ? "SECTEUR ÉNERGÉTIQUE" : "ENERGY SECTOR"}
               title={lang === "FR" ? "Pétrole & Gaz" : "Oil & Gas News"}
@@ -2016,7 +2016,7 @@ export default function NewsPage() {
           </section>
 
           {/* ═══════ SECTION 5: GOVERNMENTS ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
               sectionLabel={lang === "FR" ? "LES DERNIÈRES NOUVELLES" : "THE LATEST"}
               title={lang === "FR" ? "Gouvernements" : "Governments"}
@@ -2048,7 +2048,7 @@ export default function NewsPage() {
           />
 
           {/* ═══════ SECTION 5: COMPANY INTERVIEWS (YOUTUBE UI STYLE) ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <YouTubeSection
               sectionLabel={lang === "FR" ? "CONTENU EXCLUSIF" : "EXCLUSIVE CONTENT"}
               title={lang === "FR" ? "Interviews d'Entreprises" : "Company Interviews"}
@@ -2062,7 +2062,7 @@ export default function NewsPage() {
           </section>
 
           {/* ═══════ SECTION 6: UPCOMING CONFERENCES (SIMPLE CLEAN STYLE) ═══════ */}
-          <section className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <NewsSection
               sectionLabel={lang === "FR" ? "ÉVÉNEMENTS & CONFÉRENCES" : "EVENTS & CONFERENCES"}
               title={lang === "FR" ? "Conférences à Venir" : "Upcoming Conferences"}

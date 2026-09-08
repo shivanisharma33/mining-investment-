@@ -144,7 +144,7 @@ export default function StatsAndGlimpse() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-14 sm:py-18 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
+    <section className="relative overflow-hidden py-12 sm:py-14 md:py-16 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
       {/* ════════ A GLIMPSE INSIDE THE EVENT VIDEO SECTION (FIRST) ════════ */}
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 mb-14 sm:mb-18">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 bg-white/80 dark:bg-[#131b2e]/80 p-8 sm:p-12 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xl backdrop-blur-xs">
@@ -160,7 +160,7 @@ export default function StatsAndGlimpse() {
             <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
 
             <p className="text-neutral-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-8 font-medium">
-              {t("glimpse-desc", "The Mining Investment Event (THE Event) is an exclusive, invitation-only conference centered on mining investments. THE Event brings together investors, mining companies, supply chain partners, governments, and industry experts. THE Event promotes idea exchange and discussions in a private environment, fostering open dialogue on geopolitics, trade, and investment.")}
+              {t("glimpse-desc", "The Mining Investment Event (THE Event) is an exclusive, invitation-only conference centered on mining investments. THE Event brings together investors, mining companies, supply chain partners, governments and industry experts. THE Event promotes idea exchange and discussions in a private environment, fostering open dialogue on geopolitics, trade and investment.")}
             </p>
 
             {/* Connected Dual Pill Button Bar */}

@@ -336,7 +336,9 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "orezone": "orezone.com",
       "or royalties inc": "orroyalties.com",
       "or royalties inc.": "orroyalties.com",
-      "or royalties": "orroyalties.com"
+      "or royalties": "orroyalties.com",
+      "osisko gold royalties": "orroyalties.com",
+      "osisko royalties": "orroyalties.com"
     };
 
     if (DOMAIN_MAP[cleanKey]) {
@@ -405,7 +407,8 @@ export default function CompanyLogoImage({
       list.push("https://icons.duckduckgo.com/ip3/lithiumroyalty.com.ico");
       list.push("https://icon.horse/icon/lithiumroyalty.com");
     } else if (lowerName.includes("ptx metals")) {
-      list.unshift("https://www.google.com/s2/favicons?domain=ptxmetals.com&sz=128");
+      list.unshift("/ptx-metals-logo.png");
+      list.push("/ptx-metals-logo.png");
       list.push("https://www.google.com/s2/favicons?domain=ptxmetals.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/ptxmetals.com.ico");
       list.push("https://icon.horse/icon/ptxmetals.com");
@@ -520,11 +523,21 @@ export default function CompanyLogoImage({
       list.push("https://www.google.com/s2/favicons?domain=orezone.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/orezone.com.ico");
       list.push("https://orezone.com/favicon.ico");
-    } else if (lowerName.includes("or royalties")) {
+    } else if (
+      lowerName.includes("or royalties") ||
+      lowerName.includes("osisko royalties") ||
+      lowerName.includes("osisko gold royalties")
+    ) {
+      list.unshift("/lorroyalties.svg");
+      list.unshift("https://icons.duckduckgo.com/ip3/orroyalties.com.ico");
       list.unshift("https://www.google.com/s2/favicons?domain=orroyalties.com&sz=128");
+      list.unshift("https://orroyalties.com/app/themes/osisko/favicon.ico");
+      list.push("https://orroyalties.com/app/themes/osisko/favicon.ico");
       list.push("https://www.google.com/s2/favicons?domain=orroyalties.com&sz=128");
       list.push("https://icons.duckduckgo.com/ip3/orroyalties.com.ico");
+      list.push("https://icon.horse/icon/orroyalties.com");
       list.push("https://orroyalties.com/favicon.ico");
+      list.push("/lorroyalties.svg");
       list.push("/sponsors/2026/or_royalties_osisko_royalties.svg");
       list.push("/logo-orroyalties.svg");
     } else if (lowerName.includes("outcrop")) {

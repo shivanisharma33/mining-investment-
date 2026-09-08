@@ -335,7 +335,7 @@ export default function SpeakersView({ year = 2027 }: { year?: number }) {
             <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed font-medium mb-8 max-w-xl">
               {lang === "FR"
                 ? "La liste officielle des conférenciers de L'Événement 2027 est en cours de finalisation. Revenez bientôt pour découvrir les conférenciers vedettes et les dirigeants de l'industrie !"
-                : "The official speaker lineup for Mining Investment Event 2027 is currently being finalized. Check back soon for announcements on keynote presenters, industry leaders, and executive panelists!"}
+                : "The official speaker lineup for Mining Investment Event 2027 is currently being finalized. Check back soon for announcements on keynote presenters, industry leaders and executive panelists!"}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">

@@ -66,7 +66,7 @@ export default function CompaniesPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-14 sm:pb-18 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">
                 {t("nav-home", "Home")}
@@ -99,7 +99,7 @@ export default function CompaniesPage() {
             </h2>
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
             <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
-              Producers, developers, and explorers connecting with global capital across four days in Quebec City. Check back for daily updates.
+              Producers, developers and explorers connecting with global capital across four days in Quebec City. Check back for daily updates.
             </p>
 
             {/* Render Table Component */}

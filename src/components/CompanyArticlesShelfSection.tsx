@@ -96,7 +96,7 @@ export default function CompanyArticlesShelfSection({
         <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed font-medium">
           {isFr
             ? "Découvrez les derniers rapports, analyses et publications exclusives des entreprises minières participantes."
-            : "Explore in-depth corporate reports, development updates, and exclusive publications from participating mining leaders."}
+            : "Explore in-depth corporate reports, development updates and exclusive publications from participating mining leaders."}
         </p>
       </div>
 

@@ -47,7 +47,7 @@ export default function WhyAttend() {
   ];
 
   return (
-    <section className="relative bg-white dark:bg-[#090d16] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
+    <section className="relative bg-white dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 

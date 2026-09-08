@@ -106,7 +106,7 @@ export default function StudentApplyPage() {
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100 selection:bg-[#C6112F] selection:text-white">
         {/* ═══════ HERO SECTION ═══════ */}
-        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-32 sm:pt-36 md:pt-44 pb-20 border-b border-neutral-800">
+        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 border-b border-neutral-800">
           {/* Ambient Lighting & Pattern Effects */}
           <div
             className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -146,7 +146,7 @@ export default function StudentApplyPage() {
                 </h1>
 
                 <p className="text-neutral-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
-                  Unlock fully funded attendance to Canada's Tier 1 global mining event in Quebec City. Open to university and college students in geology, finance, and engineering.
+                  Unlock fully funded attendance to Canada's Tier 1 global mining event in Quebec City. Open to university and college students in geology, finance and engineering.
                 </p>
               </div>
 
@@ -175,7 +175,7 @@ export default function StudentApplyPage() {
         </section>
 
         {/* ═══════ APPLICATION FORM CONTAINER ═══════ */}
-        <section className="relative w-full py-14 sm:py-24 bg-white dark:bg-[#0f1117]">
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117]">
           <div className="max-w-[920px] mx-auto px-4 sm:px-6 md:px-8">
             {/* Visual Step Indicator Header */}
             {!submitted && (
@@ -571,7 +571,7 @@ export default function StudentApplyPage() {
                 <div className="p-6 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
                   <h4 className="text-sm font-bold text-[#1a1f2c] dark:text-white mb-2">What does sponsorship cover?</h4>
                   <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                    100% of your conference ticket, technical session passes, round-trip travel arrangements to Quebec City, and hotel stay throughout the event.
+                    100% of your conference ticket, technical session passes, round-trip travel arrangements to Quebec City and hotel stay throughout the event.
                   </p>
                 </div>
               </div>

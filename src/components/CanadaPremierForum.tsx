@@ -33,7 +33,7 @@ export default function CanadaPremierForum() {
   ];
 
   return (
-    <section className="relative bg-[#f4f7fa] dark:bg-[#090d16] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
+    <section className="relative bg-[#f4f7fa] dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
@@ -53,7 +53,7 @@ export default function CanadaPremierForum() {
             <p className="text-neutral-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 max-w-[500px] font-medium">
               {t(
                 "forum-desc",
-                "THE Mining Investment Event—Canada’s Only Tier 1 Global Mining Investment Conference© is held annually in Québec City, Canada. It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors, and various mining and government authorities."
+                "THE Mining Investment Event—Canada’s Only Tier 1 Global Mining Investment Conference© is held annually in Québec City, Canada. It is independently owned and partnered to facilitate privately arranged meetings among mining companies, international investors and various mining and government authorities."
               )}
             </p>
 

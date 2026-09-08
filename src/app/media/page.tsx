@@ -110,7 +110,7 @@ const playlistsData = [
     categoryTag: "INTERVIEW",
     title: "The Mining Investment Event 2026 VID Interviews",
     titleFR: "The Mining Investment Event 2026 Entretiens Exclusifs VID",
-    description: "Exclusive 1-on-1 interviews from THE Mining Investment Event 2026, presented by VID. Hear directly from industry leaders, CEOs, and innovators shaping the future of mining, critical metals, and resource investment.",
+    description: "Exclusive 1-on-1 interviews from THE Mining Investment Event 2026, presented by VID. Hear directly from industry leaders, CEOs and innovators shaping the future of mining, critical metals and resource investment.",
     descriptionFR: "Entretiens exclusifs individuels de THE Mining Investment Event 2026, présentés par VID. Écoutez directement les leaders de l'industrie, les PDG et les innovateurs...",
     videos: [
       {
@@ -246,7 +246,7 @@ const playlistsData = [
         duration: "32:18",
         channel: "VID TV",
         categoryTag: "PRESENTATION",
-        description: "Watch Orezone's presentation on multi-asset gold growth, production expansion, and long-term capital allocation strategies at THE Mining Investment Event 2026.",
+        description: "Watch Orezone's presentation on multi-asset gold growth, production expansion and long-term capital allocation strategies at THE Mining Investment Event 2026.",
         descriptionFR: "Regardez la présentation d'Orezone sur la croissance de la production d'or multi-actifs et l'allocation stratégique de capital lors de THE Mining Investment Event 2026.",
         views: "209 views",
         viewsFR: "209 vues",
@@ -334,7 +334,7 @@ const playlistsData = [
     categoryTag: "PANEL DISCUSSION",
     title: "THE Mining Investment Event 2026 – Day 2 Presentations | Critical Metals, ESG & Royalties",
     titleFR: "THE Mining Investment Event 2026 – Présentations du Jour 2 | Minéraux Critiques, ESG & Redevances",
-    description: "Watch full Day 2 sessions covering critical minerals, battery metals supply chains, royalty streaming panels, SHE-Co initiatives, and ESG best practices.",
+    description: "Watch full Day 2 sessions covering critical minerals, battery metals supply chains, royalty streaming panels, SHE-Co initiatives and ESG best practices.",
     descriptionFR: "Regardez les sessions intégrales du Jour 2 couvrant les minéraux critiques, les chaînes d'approvisionnement en métaux de batterie, les redevances et l'initiative SHE-Co.",
     videos: [
       {
@@ -444,7 +444,7 @@ const playlistsData = [
     categoryTag: "HIGHLIGHTS",
     title: "THE Mining Investment Event 2026 – Day 3 Presentations | Explorers, Developers & Spotlights",
     titleFR: "THE Mining Investment Event 2026 – Présentations du Jour 3 | Explorateurs, Développeurs & Vitrines",
-    description: "Explore Day 3 presentations showcasing high-grade discoveries, junior mining pitches, student sponsorship award ceremonies, and closing remarks.",
+    description: "Explore Day 3 presentations showcasing high-grade discoveries, junior mining pitches, student sponsorship award ceremonies and closing remarks.",
     descriptionFR: "Explorez les présentations du Jour 3 présentant des découvertes à haute teneur, des présentations de projets juniors et la cérémonie de clôture.",
     videos: [
       {
@@ -682,7 +682,7 @@ export default function MediaPage() {
   const [activeVideoId, setActiveVideoId] = useState<string>("UjKV33kdUbA");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortBy, setSortBy] = useState<string>("newest");
-  const [showMoreDesc, setShowMoreDesc] = useState<boolean>(false);
+  const [showMoreDesc, setShowMoreDesc] = useState<boolean>(true);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
   /* All videos flattened */
@@ -742,7 +742,7 @@ export default function MediaPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/15 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-12 sm:pt-16 md:pt-20 pb-12 sm:pb-16 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-6 sm:pt-8 md:pt-10 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">{t("nav-home", "Home")}</a>
               <span className="text-[#C6112F]">›</span>
@@ -758,7 +758,7 @@ export default function MediaPage() {
         </section>
 
         {/* ═══════════════ 1. PHOTO GALLERY GRID (VISIBLE FIRST) ═══════════════ */}
-        <section className="relative w-full bg-white py-16 sm:py-20">
+        <section className="relative w-full bg-white py-12 sm:py-14 md:py-16">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               {t("media-gallery-label", "Gallery & Media")}
@@ -771,7 +771,7 @@ export default function MediaPage() {
             <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[700px] mb-8">
               {t(
                 "media-gallery-desc",
-                "Explore recent coverage, photography, and media from THE Mining Investment Event. For media inquiries and press accreditation, please contact our team directly."
+                "Explore recent coverage, photography and media from THE Mining Investment Event. For media inquiries and press accreditation, please contact our team directly."
               )}
             </p>
 
@@ -797,14 +797,14 @@ export default function MediaPage() {
           </div>
         </section>
 
-        {/* ═══════════════ 2. MAIN FEATURED YOUTUBE SECTION (EXACT MATCH TO USER'S ATTACHED IMAGE) ═══════════════ */}
-        <section id="main-featured-player" className="relative w-full py-8 sm:py-12 bg-white dark:bg-[#0b101d] border-t border-b border-neutral-200/80 dark:border-neutral-800 scroll-mt-28">
-          <div className="max-w-[1340px] mx-auto px-4 sm:px-6 md:px-8">
+        {/* ═══════════════ 2. MAIN FEATURED YOUTUBE SECTION (MATCHES SHELVES SECTION ON DESKTOP) ═══════════════ */}
+        <section id="main-featured-player" className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0b101d] border-t border-b border-neutral-200/80 dark:border-neutral-800 scroll-mt-28">
+          <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-8">
 
             {/* Category Tabs & Search/Sort Bar */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8 pb-4 border-b border-neutral-200/80 dark:border-neutral-800">
               {/* Filter Tabs */}
-              <div className="flex items-center gap-4 sm:gap-8 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
+              <div className="flex items-center gap-4 sm:gap-6 xl:gap-8 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
                 {[
                   { id: "ALL", label: "ALL" },
                   { id: "PRESENTATIONS", label: "PRESENTATIONS" },
@@ -816,8 +816,8 @@ export default function MediaPage() {
                     key={tab.id}
                     onClick={() => setActiveCategory(tab.id)}
                     className={`relative pb-2 text-xs sm:text-sm font-extrabold tracking-wider uppercase transition-colors shrink-0 cursor-pointer ${activeCategory === tab.id
-                        ? "text-[#C6112F]"
-                        : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
+                      ? "text-[#C6112F]"
+                      : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
                       }`}
                   >
                     {tab.label}
@@ -857,59 +857,73 @@ export default function MediaPage() {
             </div>
 
             {/* 2-Column Main Player & Playlist Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-8 items-stretch">
 
-              {/* ─── LEFT COLUMN: BIG YOUTUBE CARD & DETAILS (8 Cols) ─── */}
-              <div className="lg:col-span-8 flex flex-col">
+              {/* ─── LEFT COLUMN: BIG YOUTUBE CARD & DETAILS (7 Cols on lg, 8 Cols on xl+) ─── */}
+              <div className="lg:col-span-7 xl:col-span-8 flex flex-col justify-between">
 
-                {/* Cinema Video Player Container */}
-                <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-xl border border-neutral-200/80 dark:border-neutral-800">
-                  <iframe
-                    src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
-                    title={isFr && activeVideoObj.titleFR ? activeVideoObj.titleFR : activeVideoObj.title}
-                    className="w-full h-full border-0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-
-                {/* Metadata Below Video Player Card */}
-                <div className="mt-4">
-                  {/* Red Category Tag */}
-                  <span className="text-[11px] font-black tracking-widest text-[#C6112F] uppercase block mb-1">
-                    {activeVideoObj.categoryTag || "KEYNOTE PRESENTATION"}
-                  </span>
-
-                  {/* Main Video Title */}
-                  <h2 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white leading-tight mb-2">
-                    {isFr && activeVideoObj.titleFR ? activeVideoObj.titleFR : activeVideoObj.title}
-                  </h2>
-
-
-
-                  {/* Description Paragraph & Toggle */}
-                  <div className="mt-3 text-xs sm:text-sm text-neutral-600 dark:text-slate-300 leading-relaxed font-medium">
-                    <p className={showMoreDesc ? "" : "line-clamp-2"}>
-                      {activeVideoObj.videoDesc || activeVideoObj.playlistDesc}
-                    </p>
-                    <button
-                      onClick={() => setShowMoreDesc(!showMoreDesc)}
-                      className="mt-2 text-[#C6112F] font-bold text-xs hover:underline cursor-pointer uppercase tracking-wider flex items-center gap-1"
-                    >
-                      <span>SHOW MORE</span>
-                      <span>∨</span>
-                    </button>
+                <div>
+                  {/* Cinema Video Player Container */}
+                  <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-xl border border-neutral-200/80 dark:border-neutral-800">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
+                      title={isFr && activeVideoObj.titleFR ? activeVideoObj.titleFR : activeVideoObj.title}
+                      className="w-full h-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
                   </div>
 
+                  {/* Metadata Below Video Player Card */}
+                  <div className="mt-4">
+                    {/* Red Category Tag */}
+                    <span className="text-[11px] font-black tracking-widest text-[#C6112F] uppercase block mb-1">
+                      {activeVideoObj.categoryTag || "KEYNOTE PRESENTATION"}
+                    </span>
+
+                    {/* Main Video Title */}
+                    <h2 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white leading-tight mb-2">
+                      {isFr && activeVideoObj.titleFR ? activeVideoObj.titleFR : activeVideoObj.title}
+                    </h2>
+
+                    {/* Description Paragraph with Full Text & Clear Toggle */}
+                    <div className="mt-3 text-xs sm:text-sm text-neutral-600 dark:text-slate-300 leading-relaxed font-medium">
+                      <p className={showMoreDesc ? "leading-relaxed" : "line-clamp-2 leading-relaxed"}>
+                        {activeVideoObj.videoDesc || activeVideoObj.playlistDesc}
+                      </p>
+                      <div className="mt-2.5 flex items-center gap-2">
+                        <button
+                          onClick={() => setShowMoreDesc(!showMoreDesc)}
+                          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#C6112F]/10 hover:bg-[#C6112F] text-[#C6112F] hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-2xs group"
+                          title={showMoreDesc ? (isFr ? "Réduire la description" : "Collapse description") : (isFr ? "Afficher toute la description" : "Show full description")}
+                        >
+                          {showMoreDesc ? (
+                            <>
+                              <span>{isFr ? "AFFICHER MOINS" : "SHOW LESS"}</span>
+                              <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#C6112F] group-hover:bg-white text-white group-hover:text-[#C6112F] text-[10px] font-black leading-none transition-colors">✕</span>
+                            </>
+                          ) : (
+                            <>
+                              <span>{isFr ? "AFFICHER PLUS" : "SHOW MORE"}</span>
+                              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
 
               </div>
 
-              {/* ─── RIGHT COLUMN: VISIBLE PLAYLIST CARD (4 Cols - EXACT MATCH TO IMAGE) ─── */}
-              <div className="lg:col-span-4 bg-white dark:bg-[#131a2b] border border-neutral-200 dark:border-slate-800 rounded-xl p-4 sm:p-5 shadow-sm flex flex-col justify-between h-full min-h-[520px] max-h-[640px]">
+              {/* ─── RIGHT COLUMN: VISIBLE PLAYLIST CARD (5 Cols on lg, 4 Cols on xl+) ─── */}
+              <div className="lg:col-span-5 xl:col-span-4 bg-white dark:bg-[#131a2b] border border-neutral-200 dark:border-slate-800 rounded-xl p-4 sm:p-5 shadow-sm flex flex-col justify-between h-full min-h-[480px] lg:min-h-0 lg:max-h-none">
 
                 {/* Playlist Header */}
-                <div className="flex items-start justify-between border-b border-neutral-100 dark:border-slate-800 pb-3">
+                <div className="flex items-start justify-between border-b border-neutral-100 dark:border-slate-800 pb-3 shrink-0">
                   <div>
                     <h3 className="text-base font-bold text-neutral-900 dark:text-white">
                       Playlist
@@ -927,7 +941,7 @@ export default function MediaPage() {
                 </div>
 
                 {/* Playlist Video List */}
-                <div className="flex-1 overflow-y-auto space-y-3.5 my-3 pr-1">
+                <div className="flex-1 overflow-y-auto space-y-3.5 my-3 pr-1 max-h-[480px] lg:max-h-[520px] xl:max-h-[560px]">
                   {activePlaylist.videos.map((vid, idx) => {
                     const isPlaying = vid.id === activeVideoId;
                     return (
@@ -935,8 +949,8 @@ export default function MediaPage() {
                         key={vid.id}
                         onClick={() => handlePlayVideo(vid.id)}
                         className={`flex items-start gap-3 p-1.5 rounded-lg cursor-pointer transition-all ${isPlaying
-                            ? "bg-neutral-50 dark:bg-slate-800/80"
-                            : "hover:bg-neutral-50/80 dark:hover:bg-slate-800/40"
+                          ? "bg-neutral-50 dark:bg-slate-800/80"
+                          : "hover:bg-neutral-50/80 dark:hover:bg-slate-800/40"
                           }`}
                       >
                         <span className={`text-xs font-bold w-4 text-center shrink-0 pt-1 ${isPlaying ? "text-[#C6112F]" : "text-neutral-800 dark:text-slate-300"
@@ -944,7 +958,7 @@ export default function MediaPage() {
                           {idx + 1}
                         </span>
 
-                        <div className={`relative w-24 sm:w-28 aspect-video rounded-md overflow-hidden bg-neutral-900 shrink-0 shadow-2xs ${isPlaying ? "border-2 border-[#C6112F]" : "border border-neutral-200 dark:border-slate-800"
+                        <div className={`relative w-24 sm:w-26 xl:w-28 aspect-video rounded-md overflow-hidden bg-neutral-900 shrink-0 shadow-2xs ${isPlaying ? "border-2 border-[#C6112F]" : "border border-neutral-200 dark:border-slate-800"
                           }`}>
                           <img
                             src={vid.thumb}
@@ -957,7 +971,7 @@ export default function MediaPage() {
                         </div>
 
                         <div className="flex-1 min-w-0">
-                          <h4 className="text-xs font-bold leading-snug line-clamp-2 text-neutral-900 dark:text-white">
+                          <h4 className="text-xs xl:text-[13px] font-bold leading-snug line-clamp-2 text-neutral-900 dark:text-white">
                             {isFr && vid.titleFR ? vid.titleFR : vid.title}
                           </h4>
                           <span className="text-[11px] font-medium text-neutral-500 dark:text-slate-400 mt-1 block">
@@ -970,7 +984,7 @@ export default function MediaPage() {
                 </div>
 
                 {/* Bottom Red Outlined Button */}
-                <div className="pt-2">
+                <div className="pt-2 shrink-0">
                   <a
                     href="https://www.youtube.com/@VIDCONFERENCES"
                     target="_blank"
@@ -989,7 +1003,7 @@ export default function MediaPage() {
         </section>
 
         {/* ═══════════════ 3. STACKED YOUTUBE PLAYLIST SHELVES ═══════════════ */}
-        <section className="relative w-full bg-[#0f0f0f] text-white py-14 sm:py-18 border-b border-neutral-800">
+        <section className="relative w-full bg-[#0f0f0f] text-white py-12 sm:py-14 md:py-16 border-b border-neutral-800">
           <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="space-y-4">
               {playlistsData.map((playlist) => (

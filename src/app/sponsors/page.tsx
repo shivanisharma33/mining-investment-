@@ -52,7 +52,7 @@ export default function SponsorsPage() {
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-br from-[#C6112F]/20 via-transparent to-transparent" />
-          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-32 sm:pt-36 md:pt-40 pb-14 sm:pb-18 md:pb-20">
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14">
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">
                 {t("nav-home", "Home")}
@@ -75,7 +75,7 @@ export default function SponsorsPage() {
         </section>
 
         {/* ═══════ SPONSORS VIEW CONTENT ═══════ */}
-        <section className="relative w-full py-14 sm:py-18 md:py-22">
+        <section className="relative w-full py-12 sm:py-14 md:py-16">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
               SUPPORT & INDUSTRY PARTNERSHIPS 2027
@@ -87,7 +87,7 @@ export default function SponsorsPage() {
             <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
               {isFr
                 ? "Nous remercions nos médias et partenaires de classe mondiale pour leur soutien généreux afin de faire de L'Événement d'Investissement Minier une plateforme mondiale de premier plan."
-                : "We thank our world-class media and partners for their generous support in making the Mining Investment Event a premier global platform for collaboration, innovation, and sustainable capital growth."}
+                : "We thank our world-class media and partners for their generous support in making the Mining Investment Event a premier global platform for collaboration, innovation and sustainable capital growth."}
             </p>
 
             {/* Shared Sponsors Component */}
