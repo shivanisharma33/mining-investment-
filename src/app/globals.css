@@ -602,3 +602,42 @@ p, blockquote, figcaption {
   }
 }
 
+/* ═══════════════ ENGAGING SCROLL INDICATOR ANIMATIONS ═══════════════ */
+@keyframes scrollWheel {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+}
+
+@keyframes chevronCascade {
+  0%, 100% {
+    opacity: 0.25;
+    transform: translateY(-2px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(3px);
+  }
+}
+
+.animate-scroll-wheel {
+  animation: scrollWheel 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.animate-chevron-1 {
+  animation: chevronCascade 1.5s ease-in-out infinite;
+}
+
+.animate-chevron-2 {
+  animation: chevronCascade 1.5s ease-in-out infinite 0.25s;
+}
+

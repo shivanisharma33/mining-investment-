@@ -50,7 +50,7 @@ const TRANSLATIONS = {
 
     // ── Home: Global Map ─────────────────────────────────
     "global-map-label": "Worldwide",
-    "global-map-title": "Where the World's Mining <em>Converges</em>",
+    "global-map-title": "THE Nexus of International Mining",
     "global-map-sub": "Explore the international network of companies, investors and delegations gathering in Québec City. Pan and zoom the interactive map to discover THE Event's global reach.",
     "gp-hint": "Drag to pan · Scroll to zoom",
     "gp-hint-touch": "Tap a marker to explore",
@@ -198,7 +198,7 @@ const TRANSLATIONS = {
     "team-role-mgr-admin": "Manager, Administration Services",
     "team-advisory-label": "Advisory Board Members",
     "team-role-yvonne": "Advisory Board Member · Former MP of Labrador",
-    "team-role-daniella": "Advisory Board Member · Chief Strategy & Risk Officer, Equinox Gold Corp.",
+    "team-role-daniella": "Advisory Board Member · Chief Corporate Development, Sustainability and Risk Officer, Equinox Gold Corp.",
     "team-role-daniele": "Advisory Board Member · CEO & Founder, XV Solutions",
     "team-role-angie": "Advisory Board Member · President & CCO, SSAF Exploration",
     "team-role-jenny": "Advisory Board Member · Executive Director, ICEMD",
@@ -519,7 +519,7 @@ const TRANSLATIONS = {
 
     // ── Home: Global Map ─────────────────────────────────
     "global-map-label": "International",
-    "global-map-title": "Là où l'Industrie Minière Mondiale <em>Converge</em>",
+    "global-map-title": "LE Nexus du Secteur Minier International",
     "global-map-sub": "Explorez le réseau international de compagnies, d'investisseurs et de délégations réunis à Québec. Déplacez et zoomez la carte interactive pour découvrir la portée mondiale de l'événement.",
     "gp-hint": "Glissez pour déplacer · Défilez pour zoomer",
     "gp-hint-touch": "Touchez un marqueur pour explorer",
@@ -615,7 +615,7 @@ const TRANSLATIONS = {
     "team-role-mgr-admin": "Gestionnaire, Services Administratifs",
     "team-advisory-label": "Membres du Conseil Consultatif",
     "team-role-yvonne": "Membre du Conseil Consultatif · Ancienne Députée du Labrador",
-    "team-role-daniella": "Membre du Conseil Consultatif · Chef de la Stratégie et des Risques, Equinox Gold Corp.",
+    "team-role-daniella": "Membre du Conseil Consultatif · Directrice du développement d'entreprise, de la durabilité et des risques, Equinox Gold Corp.",
     "team-role-daniele": "Membre du Conseil Consultatif · PDG et Fondatrice, XV Solutions",
     "team-role-angie": "Membre du Conseil Consultatif · Présidente et CCO, SSAF Exploration",
     "team-role-jenny": "Membre du Conseil Consultatif · Directrice Exécutive, ICEMD",

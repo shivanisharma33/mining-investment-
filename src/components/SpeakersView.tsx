@@ -27,6 +27,7 @@ function translateSpeakerTitle(title: string, isFr: boolean): string {
     "Vice President, Investor Relations": "Vice-présidente, Relations avec les investisseurs",
     "Managing Director & CEO": "Directeur général et PDG",
     "Chief Strategy & Risk Officer": "Directrice de la stratégie et des risques",
+    "Chief Corporate Development, Sustainability and Risk Officer": "Directrice du développement d'entreprise, de la durabilité et des risques",
     "EVP, Chief Strategy & Technology Officer": "VPE, Directeur de la stratégie et de la technologie",
     "Vice President, Corporate Development & IR": "Vice-président, Développement d'entreprise et RI",
     "Director, Capital Markets & Corporate Development": "Directeur, Marchés des capitaux et développement",

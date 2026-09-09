@@ -63,7 +63,7 @@ export default function GlobalCommunity() {
               {t("map-tag", "GLOBAL PRESENCE")}
             </span>
             <AnimatedHeading
-              text={t("map-title", "Where the World's Mining Converges")}
+              text={t("map-title", "THE Nexus of International Mining")}
               className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3"
             />
             <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-5" />

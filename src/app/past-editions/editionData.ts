@@ -85,7 +85,7 @@ export const AGENDA_DAYS: AgendaDay[] = [
         t: "9:15 – 9:30",
         type: "pres",
         co: "Equinox Gold Mines",
-        sp: "Daniella Dimitrov, Chief Strategy & Risk Officer",
+        sp: "Daniella Dimitrov, Chief Corporate Development, Sustainability and Risk Officer",
       },
       {
         t: "9:30 – 9:45",

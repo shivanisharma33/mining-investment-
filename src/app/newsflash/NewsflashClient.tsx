@@ -131,12 +131,7 @@ export default function NewsflashClient({
             </p>
 
             {/* Search Row */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-              <span className="text-xs font-bold tracking-wider text-neutral-500 dark:text-zinc-400">
-                {filteredNews.length}{" "}
-                press release
-              </span>
-
+            <div className="flex flex-col md:flex-row md:items-center justify-end gap-4 mb-10">
               {/* Search Box */}
               <div className="relative w-full md:w-72 shrink-0">
                 <svg className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -300,7 +295,7 @@ export default function NewsflashClient({
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 bg-white dark:bg-[#121215] border border-neutral-200/90 dark:border-zinc-800 rounded-2xl p-4 sm:p-5 shadow-2xs transition-colors">
                 {/* Status Readout */}
                 <div className="text-xs font-semibold text-neutral-600 dark:text-zinc-400">
-                  Showing <span className="font-extrabold text-neutral-900 dark:text-white">{startIndex + 1}</span> - <span className="font-extrabold text-neutral-900 dark:text-white">{Math.min(startIndex + ITEMS_PER_PAGE, remainingNews.length)}</span> of <span className="font-extrabold text-[#C6112F]">{remainingNews.length}</span> press release
+                  Page <span className="font-extrabold text-[#C6112F]">{currentPage}</span> of <span className="font-extrabold text-neutral-900 dark:text-white">{totalPages}</span>
                 </div>
 
                 {/* Controls */}

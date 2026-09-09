@@ -144,7 +144,7 @@ export default function StatsAndGlimpse() {
   ];
 
   return (
-    <section className="relative overflow-hidden py-12 sm:py-14 md:py-16 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
+    <section id="glimpse-section" className="relative overflow-hidden py-12 sm:py-14 md:py-16 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
       {/* ════════ A GLIMPSE INSIDE THE EVENT VIDEO SECTION (FIRST) ════════ */}
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 mb-14 sm:mb-18">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 bg-white/80 dark:bg-[#131b2e]/80 p-8 sm:p-12 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xl backdrop-blur-xs">
