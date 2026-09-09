@@ -139,6 +139,8 @@ export async function fetchSpeakersFromApi(
     },
   });
 
+  const entries = Array.isArray(json?.data) ? json.data : [];
+
   const mapped = entries
     .map(mapSpeaker)
     .filter((sp): sp is RawSpeaker => sp !== null);

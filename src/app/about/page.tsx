@@ -85,7 +85,7 @@ const features = [
     titleDefault: "Private 1-on-1 Meetings",
     descKey: "about-feat2-desc",
     descDefault:
-      "Privately arranged meetings between mining companies, international investors and various mining government authorities — curated well before doors open.",
+      "Privately arranged meetings between investors, mining companies and policy makers.",
   },
   {
     icon: (
@@ -94,10 +94,10 @@ const features = [
       </svg>
     ),
     titleKey: "about-feat3-title",
-    titleDefault: "ESG & Sustainability",
+    titleDefault: "Sustainability",
     descKey: "about-feat3-desc",
     descDefault:
-      "Committed to promoting sustainability via the Student Sponsorship and SHE-Co Initiatives, highlighting ESG innovation and equality in the mining sector.",
+      "THE Event is committed to promoting diversity, equality, and sustainability in the mining industry through education and innovation, through its unique Student Partnership Program and SHE-Co Initiatives.",
   },
 ];
 
@@ -194,18 +194,6 @@ export default function AboutPage() {
                     alt="Delegates and industry leaders networking at THE Mining Investment Event"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#C6112F] bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm">
-                      {t("about-figure-label", "Québec City · Est. Annual")}
-                    </span>
-                    <p className="text-white text-xs sm:text-sm font-medium mt-2.5 leading-relaxed max-w-[480px]">
-                      {t(
-                        "about-figure-caption",
-                        "Privately arranged meetings between mining companies, international investors and government authorities."
-                      )}
-                    </p>
-                  </div>
                 </div>
 
                 {/* CTA Buttons */}
@@ -254,32 +242,57 @@ export default function AboutPage() {
                 </div>
 
                 {/* Contact Card */}
-                <div className="bg-[#0f1117] border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
+                <div className="bg-[#0f1117] border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-lg relative overflow-hidden">
                   {/* Subtle gradient accent */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#C6112F] via-[#e8354f] to-[#C6112F]" />
-                  <h3 className="text-lg font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
+                  <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#C6112F] via-[#e8354f] to-[#C6112F]" />
+                  <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-4 flex items-center gap-2.5">
                     <span className="w-1.5 h-6 bg-[#C6112F] rounded-full" />
                     {t("about-contact-title", "Contact")}
                   </h3>
-                  <p className="text-neutral-400 text-sm leading-relaxed">
+                  <p className="text-neutral-200 text-base sm:text-lg leading-relaxed mb-5 font-normal">
                     {t(
                       "about-contact-body",
                       "For more information about 'THE Event' programming or registration, please contact"
-                    )}{" "}
+                    )}
+                  </p>
+
+                  <div className="flex flex-col gap-3">
                     <a
                       href="mailto:jchoi@irinc.ca"
-                      className="text-[#C6112F] hover:text-[#e8354f] hover:underline font-semibold transition-colors"
+                      className="group/contact flex items-center gap-3.5 p-3.5 rounded-xl bg-white/[0.07] hover:bg-[#C6112F]/20 border border-white/10 hover:border-[#C6112F]/60 transition-all duration-300"
                     >
-                      jchoi@irinc.ca
-                    </a>{" "}
-                    {t("about-contact-or", "or call")}{" "}
+                      <div className="w-10 h-10 rounded-lg bg-[#C6112F]/20 border border-[#C6112F]/40 flex items-center justify-center text-[#ff4d6d] group-hover/contact:bg-[#C6112F] group-hover/contact:text-white transition-all shrink-0">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                      </div>
+                      <div className="min-w-0 flex flex-col">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400">Email</span>
+                        <span className="text-lg sm:text-xl font-bold text-white group-hover/contact:text-[#ff6b81] transition-colors break-all">
+                          jchoi@irinc.ca
+                        </span>
+                      </div>
+                    </a>
+
                     <a
                       href="tel:+19055153508"
-                      className="text-[#C6112F] hover:text-[#e8354f] hover:underline font-semibold transition-colors"
+                      className="group/contact flex items-center gap-3.5 p-3.5 rounded-xl bg-white/[0.07] hover:bg-[#C6112F]/20 border border-white/10 hover:border-[#C6112F]/60 transition-all duration-300"
                     >
-                      +1-905-515-3508
+                      <div className="w-10 h-10 rounded-lg bg-[#C6112F]/20 border border-[#C6112F]/40 flex items-center justify-center text-[#ff4d6d] group-hover/contact:bg-[#C6112F] group-hover/contact:text-white transition-all shrink-0">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                        </svg>
+                      </div>
+                      <div className="min-w-0 flex flex-col">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400">
+                          {lang === "FR" ? "Téléphone" : "Phone"}
+                        </span>
+                        <span className="text-lg sm:text-xl font-bold text-white group-hover/contact:text-[#ff6b81] transition-colors whitespace-nowrap">
+                          +1-905-515-3508
+                        </span>
+                      </div>
                     </a>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

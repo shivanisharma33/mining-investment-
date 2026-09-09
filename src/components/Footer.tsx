@@ -22,18 +22,18 @@ export default function Footer() {
             </span>
             <div className="w-14 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
-            <p className="text-neutral-700 dark:text-white text-xs sm:text-sm font-medium leading-relaxed mb-4 max-w-[380px] break-words">
+            <p className="text-neutral-700 dark:text-white text-sm sm:text-base font-medium leading-relaxed mb-4 max-w-[420px] break-words">
               {t("cta-desc-prefix", "For more information about 'THE Event' programming or registration, please contact")}{" "}
               <a
                 href="mailto:jchoi@irinc.ca"
-                className="underline font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors break-all"
+                className="underline decoration-[#C6112F] decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#ff4d6d] text-sm sm:text-base transition-colors break-all"
               >
                 jchoi@irinc.ca
               </a>{" "}
               {t("cta-desc-or", "or call")}{" "}
               <a
                 href="tel:+19055153508"
-                className="underline font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors whitespace-nowrap"
+                className="underline decoration-[#C6112F] decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#ff4d6d] text-sm sm:text-base transition-colors whitespace-nowrap"
               >
                 +1-905-515-3508
               </a>

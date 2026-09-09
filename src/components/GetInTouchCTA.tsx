@@ -34,18 +34,18 @@ export default function GetInTouchCTA() {
           </h2>
           <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
 
-          <p className="text-neutral-800 dark:text-white font-semibold text-xs sm:text-[13px] leading-relaxed mb-6 break-words">
+          <p className="text-neutral-800 dark:text-white font-medium text-sm sm:text-base md:text-[17px] leading-relaxed mb-6 break-words">
             {t("cta-desc-prefix", "For more information about 'THE Event' programming or registration, please contact")}{" "}
             <a
               href="mailto:jchoi@irinc.ca"
-              className="underline font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors break-all"
+              className="underline decoration-[#C6112F] decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#ff4d6d] text-base sm:text-lg md:text-xl transition-colors break-all inline-block"
             >
               jchoi@irinc.ca
             </a>{" "}
             {t("cta-desc-or", "or call")}{" "}
             <a
               href="tel:+19055153508"
-              className="underline font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors whitespace-nowrap"
+              className="underline decoration-[#C6112F] decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#ff4d6d] text-base sm:text-lg md:text-xl transition-colors whitespace-nowrap inline-block"
             >
               +1-905-515-3508
             </a>

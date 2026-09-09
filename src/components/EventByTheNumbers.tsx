@@ -59,11 +59,11 @@ export default function EventByTheNumbers() {
 
   const Y_AXIS_MAX = 1450;
   const yearlyData = [
-    { year: 2022, total: 250, investors: 61, delegates: 189, heightPct: Math.round((250 / Y_AXIS_MAX) * 100), yoy: "+0%" },
+    { year: 2020, total: 250, investors: 81, delegates: 169, heightPct: Math.round((250 / Y_AXIS_MAX) * 100), investorHeightPct: undefined as number | undefined, yoy: "+0%" },
     { year: 2023, total: 600, investors: 200, delegates: 400, heightPct: Math.round((600 / Y_AXIS_MAX) * 100), yoy: "+140%" },
     { year: 2024, total: 800, investors: 250, delegates: 550, heightPct: Math.round((800 / Y_AXIS_MAX) * 100), yoy: "+33%" },
     { year: 2025, total: 1045, investors: 300, delegates: 745, heightPct: Math.round((1045 / Y_AXIS_MAX) * 100), yoy: "+31%" },
-    { year: 2026, total: 1400, investors: 350, delegates: 1050, heightPct: Math.round((1400 / Y_AXIS_MAX) * 100), yoy: "+38%", highlight: "38% Y-O-Y" },
+    { year: 2026, total: 1400, investors: 350, delegates: 1050, heightPct: Math.round((1400 / Y_AXIS_MAX) * 100), investorHeightPct: 37, yoy: "+38%", highlight: "38% Y-O-Y" },
   ];
 
   const selectedYear = yearlyData[selectedYearIndex];
@@ -346,7 +346,7 @@ export default function EventByTheNumbers() {
                       {/* Investor Segment (Ruby Red Gradient Bottom) */}
                       <div
                         className="w-full bg-gradient-to-t from-[#900B21] via-[#C6112F] to-[#ff4d6d] flex items-center justify-center transition-all duration-700 ease-out shadow-inner origin-bottom border-t border-white/30"
-                        style={{ height: `${(d.investors / d.total) * 100}%` }}
+                        style={{ height: `${d.investorHeightPct ?? ((d.investors / d.total) * 100)}%` }}
                       >
                         <span className="text-[8px] font-black text-white tracking-tighter shadow-xs">
                           {d.investors}

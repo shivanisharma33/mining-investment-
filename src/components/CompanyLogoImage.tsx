@@ -158,8 +158,8 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "outcrop silver and gold": "outcropsilver.com",
       "outcrop silver": "outcropsilver.com",
       "outcrop": "outcropsilver.com",
-      "osisko gold royalties ltd.": "osiskogr.com",
-      "osisko gold royalties": "osiskogr.com",
+      "osisko gold royalties ltd.": "orroyalties.com",
+      "osisko gold royalties": "orroyalties.com",
       "osisko metals incorporated": "osiskometals.com",
       "osisko mining inc.": "osiskomining.com",
       "palladium one mining inc.": "palladiumoneinc.com",
@@ -337,7 +337,6 @@ function getDomainFromCompany(name: string, website?: string, email?: string): s
       "or royalties inc": "orroyalties.com",
       "or royalties inc.": "orroyalties.com",
       "or royalties": "orroyalties.com",
-      "osisko gold royalties": "orroyalties.com",
       "osisko royalties": "orroyalties.com"
     };
 

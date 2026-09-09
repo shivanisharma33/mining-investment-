@@ -74,32 +74,6 @@ const aboutDropdown = [
       </svg>
     ),
   },
-  {
-    titleKey: "nav-imw",
-    titleDefault: "International Mining Week",
-    descKey: "nav-imw-desc",
-    descDefault: "One week of infinite mining opportunities in Quebec City",
-    href: "https://mining-international-weekly.vercel.app/",
-    isExternal: true,
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
-      </svg>
-    ),
-  },
-  {
-    titleKey: "nav-noble",
-    titleDefault: "THE Noble Mining Investment Conference",
-    descKey: "nav-noble-desc",
-    descDefault: "Discover THE Noble Mining Investment Conference",
-    href: "https://www.thenoblemininginvestmentconference.com/",
-    isExternal: true,
-    icon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-      </svg>
-    ),
-  },
 ];
 
 /* Programs dropdown sub-items */
@@ -198,6 +172,8 @@ export default function Navbar() {
     { name: t("nav-programs", "PROGRAMS"), href: "/student", active: false, hasDropdown: true, dropdownType: "programs", isExternal: false },
     { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
     { name: t("nav-gallery", "GALLERY"), href: "/media", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
+    { name: t("nav-florida", "FLORIDA"), href: "https://www.thenoblemininginvestmentconference.com/", active: false, hasDropdown: false, dropdownType: "none", isExternal: true },
+    { name: t("nav-imw-short", "IMW"), href: "https://mining-international-weekly.vercel.app/", active: false, hasDropdown: false, dropdownType: "none", isExternal: true },
     // Hidden from navbar without removing:
     { name: t("nav-news-main", "THE NEWS"), href: "/news", active: false, hasDropdown: false, dropdownType: "none", isExternal: false, hidden: true },
   ];
@@ -223,7 +199,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-8">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8">
           {visibleNavLinks.map((link) => (
             <div
               key={link.name}
@@ -247,6 +223,15 @@ export default function Navbar() {
                   className="relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                 >
                   <span>{link.name}</span>
+                  <svg
+                    className="w-3 h-3 text-neutral-400 group-hover:text-[#C6112F] transition-colors shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
                   <span className="absolute bottom-0 left-0 h-[2px] bg-[#C6112F] transition-all duration-300 w-0 group-hover:w-full" />
                 </a>
               ) : (
@@ -619,9 +604,17 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors block text-neutral-800 dark:text-slate-100 hover:text-[#C6112F]"
+                    className="py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors flex items-center justify-between text-neutral-800 dark:text-slate-100 hover:text-[#C6112F]"
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+                    <svg
+                      className="w-4 h-4 text-neutral-400 stroke-current"
+                      fill="none"
+                      strokeWidth="2.5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
                   </a>
                 ) : (
                   <Link
