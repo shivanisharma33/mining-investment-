@@ -803,8 +803,10 @@ export default function MediaPage() {
           </div>
         </section>
 
-        {/* ═══════════════ 2. MAIN FEATURED YOUTUBE SECTION (MATCHES SHELVES SECTION ON DESKTOP) ═══════════════ */}
-        <section id="main-featured-player" className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0b101d] border-t border-b border-neutral-200/80 dark:border-neutral-800 scroll-mt-28">
+        {/* ═══════════════ 2. MAIN FEATURED YOUTUBE SECTION (HIDDEN AT THIS TIME) ═══════════════ */}
+        {false && (
+          <>
+            <section id="main-featured-player" className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0b101d] border-t border-b border-neutral-200/80 dark:border-neutral-800 scroll-mt-28">
           <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-8">
 
             {/* Category Tabs & Search/Sort Bar */}
@@ -872,7 +874,7 @@ export default function MediaPage() {
                   {/* Cinema Video Player Container */}
                   <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black shadow-xl border border-neutral-200/80 dark:border-neutral-800">
                     <iframe
-                      src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
+                      src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=0&mute=1&rel=0`}
                       title={isFr && activeVideoObj.titleFR ? activeVideoObj.titleFR : activeVideoObj.title}
                       className="w-full h-full border-0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1022,6 +1024,8 @@ export default function MediaPage() {
             </div>
           </div>
         </section>
+          </>
+        )}
 
 
         <GetInTouchCTA />

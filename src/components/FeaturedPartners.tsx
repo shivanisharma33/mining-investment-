@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
-type TierKey = "PLATINUM" | "GOLD" | "SILVER" | "COPPER" | "MEDIA";
+type TierKey = "ALL" | "PLATINUM" | "GOLD" | "SILVER" | "COPPER" | "MEDIA";
 
-const tiers: TierKey[] = ["PLATINUM", "GOLD", "SILVER", "COPPER", "MEDIA"];
+const tiers: TierKey[] = ["ALL", "PLATINUM", "GOLD", "SILVER", "COPPER", "MEDIA"];
 
-const partnerData: Record<TierKey, string[]> = {
+const partnerData: Record<Exclude<TierKey, "ALL">, string[]> = {
   PLATINUM: [
     "/sponsors/2026/glencore.svg",
     "/sponsor image/logo-capitalmarkets.svg",
@@ -17,7 +17,6 @@ const partnerData: Record<TierKey, string[]> = {
   GOLD: [
     "/altitude.png",
     "/Invest_Yukon.png",
-    "/LOGOS Mining (10).png",
     "/sponsors/2026/maxit_capital.png",
     "/peartree_0c7d9a1777.png",
     "/sponsors/2026/the_money_channel_new_york_city.png",
@@ -55,72 +54,76 @@ const partnerData: Record<TierKey, string[]> = {
     "/sponsors/2026/mining_discovery.webp",
     "/btv.png",
     "/ceo_ca.png",
-    "/cmj.png",
+    "/sponsers/137.png",
     "/sponsers/150.png",
     "/sponsers/itg.png",
     "/134.png",
     "/sponsors/2026/sponsor_media_20.png",
     "/sponsers/157.png",
-    "/sponsor image/ibn.svg",
-    "/gbr.webp",
+    "/ibn.png",
+    "/sponsors/2026/sponsor_media_26.png",
     "/sponsors/2026/newsfile.png",
-    "/sponsors/2026/the_prospector_news.png",
-    "/tnm.png",
+    "/pros.png",
+    "/sponsors/2026/sponsor_media_54.png",
   ],
 };
 
 export default function FeaturedPartners() {
   const { t } = useLanguage();
-  const [activeTier, setActiveTier] = useState<TierKey>("PLATINUM");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [activeTier, setActiveTier] = useState<TierKey>("ALL");
 
-  const currentLogos = (partnerData[activeTier] || []).filter(Boolean);
-
-  // Ensure displayLogos has enough items to fill the viewport track completely
-  let displayLogos: string[] = [];
-  if (currentLogos.length > 0) {
-    while (displayLogos.length < 20) {
-      displayLogos = [...displayLogos, ...currentLogos];
+  const baseLogos = useMemo(() => {
+    if (activeTier === "ALL") {
+      return Object.values(partnerData).flat();
     }
-  }
+    return partnerData[activeTier] || [];
+  }, [activeTier]);
 
-  useEffect(() => {
-    if (isPaused) return;
+  const { marqueeLogos, duration } = useMemo(() => {
+    const list = baseLogos.filter(Boolean);
+    if (list.length === 0) return { marqueeLogos: [], duration: 30 };
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % currentLogos.length);
-    }, 2500);
+    // Build Set A with at least 16 items so it comfortably exceeds any screen width
+    let setA: string[] = [];
+    while (setA.length < 16) {
+      setA = [...setA, ...list];
+    }
 
-    return () => clearInterval(interval);
-  }, [isPaused, currentLogos.length, activeTier]);
+    // Duplicate Set A to create seamless infinite loop [Set A, Set A]
+    const fullTrack = [...setA, ...setA];
+    // Smooth, elegant rolling speed (~2.2s per card, minimum 26s)
+    const dur = Math.max(26, Math.round(setA.length * 2.2));
+
+    return { marqueeLogos: fullTrack, duration: dur };
+  }, [baseLogos]);
 
   const handleTabChange = (tier: TierKey) => {
     setActiveTier(tier);
-    setCurrentIndex(0);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? currentLogos.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % currentLogos.length);
   };
 
   return (
-    <section id="home-content" className="relative w-full bg-[#f0f4f8] dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
+    <section
+      id="home-content"
+      className="relative w-full bg-[#f0f4f8] dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300"
+    >
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
 
+      {/* Edge Gradient Vignette Overlays for smooth entry/exit */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 md:w-36 bg-gradient-to-r from-[#f0f4f8] dark:from-[#090d16] to-transparent z-10" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 md:w-36 bg-gradient-to-l from-[#f0f4f8] dark:from-[#090d16] to-transparent z-10" />
+
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-8 sm:mb-10">
           <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-2 block">
             {t("partners-tag", "FEATURED")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
-            {t("partners-title", "Featured Partners")} <span className="capitalize">({activeTier.toLowerCase()})</span>
+            {t("partners-title", "Featured Partners")}{" "}
+            {activeTier !== "ALL" && (
+              <span className="capitalize">({activeTier.toLowerCase()})</span>
+            )}
           </h2>
           <div className="w-16 h-1 bg-[#C6112F] mx-auto mb-4 rounded-full" />
           <p className="max-w-xl mx-auto text-xs sm:text-sm text-neutral-600 dark:text-slate-400 font-medium leading-relaxed">
@@ -132,84 +135,50 @@ export default function FeaturedPartners() {
         </div>
 
         {/* Tier Selector Tabs Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8 sm:mb-10 relative z-20">
           {tiers.map((tier) => {
             const isActive = tier === activeTier;
             return (
               <button
                 key={tier}
                 onClick={() => handleTabChange(tier)}
-                className={`px-5 sm:px-7 py-2.5 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all duration-300 cursor-pointer ${isActive
-                  ? "bg-[#C6112F] text-white shadow-md scale-105"
-                  : "bg-white dark:bg-[#131b2e] text-neutral-700 dark:text-slate-200 hover:bg-neutral-100 dark:hover:bg-[#1e293b] hover:text-neutral-900 dark:hover:text-white border border-neutral-200/80 dark:border-[#233049] shadow-2xs"
-                  }`}
+                className={`px-4 sm:px-6 py-2 rounded-full text-xs font-extrabold tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "bg-[#C6112F] text-white shadow-md scale-105"
+                    : "bg-white dark:bg-[#131b2e] text-neutral-700 dark:text-slate-200 hover:bg-neutral-100 dark:hover:bg-[#1e293b] hover:text-neutral-900 dark:hover:text-white border border-neutral-200/80 dark:border-[#233049] shadow-2xs"
+                }`}
               >
                 {tier}
               </button>
             );
           })}
         </div>
+      </div>
 
-        {/* Partner Logos Physical Track Slider Row */}
+      {/* Continually Rolling Sponsors Marquee Track */}
+      <div className="sponsor-marquee-container relative w-full overflow-hidden py-3">
         <div
-          className="relative flex items-center gap-4 sm:gap-6"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
+          key={activeTier}
+          className="animate-sponsor-roll flex items-center gap-4 sm:gap-6"
+          style={{ "--marquee-duration": `${duration}s` } as React.CSSProperties}
         >
-          {/* Left Carousel Arrow Button */}
-          <button
-            onClick={handlePrev}
-            aria-label="Previous partner"
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-          </button>
-
-          {/* Viewport Mask for 5 Card Display */}
-          <div className="w-full overflow-hidden py-4 px-1">
+          {marqueeLogos.map((logoPath, idx) => (
             <div
-              className="flex items-center gap-4 sm:gap-6 transition-transform duration-700 ease-in-out"
-              style={{
-                transform: `translateX(calc(-${currentIndex} * (100% / 5 + 1rem)))`,
-              }}
+              key={`${logoPath}-${idx}`}
+              style={{ backgroundColor: "#ffffff" }}
+              className="shrink-0 w-44 sm:w-52 md:w-56 h-24 sm:h-28 rounded-2xl flex items-center justify-center p-4 border border-neutral-200/90 dark:border-neutral-300/40 shadow-xs hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
             >
-              {displayLogos.map((logoPath, idx) => {
-                const relativeIndex = (idx - currentIndex + displayLogos.length) % currentLogos.length;
-                const isCenter = relativeIndex === 2;
-                return (
-                  <div
-                    key={`${logoPath}-${idx}`}
-                    style={{ backgroundColor: "#ffffff" }}
-                    className={`shrink-0 w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(20%-1rem)] rounded-2xl flex items-center justify-center p-4 transition-all duration-500 transform ${isCenter
-                      ? "h-32 sm:h-36 border-2 border-[#C6112F] scale-105 z-20"
-                      : "h-26 sm:h-28 border border-neutral-200 dark:border-neutral-300 opacity-95 hover:opacity-100"
-                      }`}
-                  >
-                    <img
-                      src={logoPath}
-                      alt={`${activeTier} Partner Logo ${idx + 1}`}
-                      className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-108"
-                    />
-                  </div>
-                );
-              })}
+              <img
+                src={logoPath}
+                alt={`Partner Logo ${idx + 1}`}
+                loading="lazy"
+                className="max-h-full max-w-full object-contain pointer-events-none"
+              />
             </div>
-          </div>
-
-          {/* Right Carousel Arrow Button */}
-          <button
-            onClick={handleNext}
-            aria-label="Next partner"
-            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shrink-0 shadow-md cursor-pointer z-30"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-            </svg>
-          </button>
+          ))}
         </div>
       </div>
+
     </section>
   );
 }

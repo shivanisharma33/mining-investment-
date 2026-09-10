@@ -64,6 +64,48 @@ export default function StatsAndGlimpse() {
   const { lang, t } = useLanguage();
   const isFr = lang === "FR";
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  const handleToggleSoundAndPlay = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (isMuted) {
+      v.muted = false;
+      v.volume = 1;
+      v.currentTime = 0;
+      v.play();
+      setIsMuted(false);
+      setIsPlaying(true);
+    } else {
+      if (v.paused) {
+        v.play();
+        setIsPlaying(true);
+      } else {
+        v.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  const handleToggleMuteOnly = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = !v.muted;
+    setIsMuted(v.muted);
+  };
+
+  const handleFullscreen = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.requestFullscreen) {
+      v.requestFullscreen();
+    }
+  };
+
   const cards = [
     {
       icon: <i className="fi fi-rr-user-salary text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
@@ -163,6 +205,7 @@ export default function StatsAndGlimpse() {
               {t("glimpse-desc", "The Mining Investment Event (THE Event) is an exclusive, invitation-only conference centered on mining investments. THE Event brings together investors, mining companies, supply chain partners, governments and industry experts. THE Event promotes idea exchange and discussions in a private environment, fostering open dialogue on geopolitics, trade and investment.")}
             </p>
 
+
             {/* Connected Dual Pill Button Bar */}
             <div className="inline-flex items-stretch border border-neutral-300 dark:border-[#233049] rounded-lg overflow-hidden shadow-2xs hover:shadow-xs transition-shadow bg-[#C6112F]">
               <Link
@@ -194,25 +237,116 @@ export default function StatsAndGlimpse() {
             </div>
           </div>
 
-          {/* Right Column: Video Card with Red Perimeter Frame & Click to Watch Helper Note */}
-          <div className="flex-1 w-full max-w-[580px] lg:max-w-none flex flex-col items-center">
-            <div className="relative w-full rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-md bg-neutral-900 aspect-[16/9] group card-shimmer hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(198,17,47,0.25)] transition-all duration-500 cursor-pointer">
+          {/* Right Column: Prominent Interactive Video Showcase */}
+          <div className="flex-1 w-full max-w-[620px] lg:max-w-none flex flex-col items-center">
+            <div
+              id="event-video-card"
+              onClick={handleToggleSoundAndPlay}
+              className="relative w-full rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-2xl bg-black aspect-[16/9] group hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(198,17,47,0.35)] transition-all duration-500 cursor-pointer select-none"
+            >
               <video
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                ref={videoRef}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none"
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="metadata"
-                controls
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
               >
                 <source
                   src="/output_progressive_17378ef1-fb4d-4325-a4f2-b0379c3cd087.mp4"
                   type="video/mp4"
                 />
               </video>
+
+              {/* Floating Top-Left Ribbon: Official Event Video */}
+              <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-white text-[10.5px] sm:text-xs font-black tracking-wider uppercase shadow-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C6112F] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C6112F]"></span>
+                </span>
+                <span>{t("video-official-tag", "OFFICIAL HIGHLIGHT REEL")}</span>
+              </div>
+
+              {/* Floating Top-Right Sound Status Badge Button */}
+              <button
+                type="button"
+                onClick={handleToggleMuteOnly}
+                className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/85 hover:bg-black backdrop-blur-md border border-white/25 text-white text-[11px] font-bold tracking-wider transition-all duration-200 cursor-pointer shadow-md"
+              >
+                {isMuted ? (
+                  <>
+                    <svg className="w-3.5 h-3.5 text-neutral-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-3l4.5-4.5v15l-4.5-4.5H4.5a1.5 1.5 0 01-1.5-1.5v-3a1.5 1.5 0 011.5-1.5h4.5z" />
+                    </svg>
+                    <span>{t("video-unmute-btn", "Turn Sound On")}</span>
+                  </>
+                ) : (
+                  <>
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" />
+                    </svg>
+                    <span className="text-emerald-400 font-extrabold">Sound ON</span>
+                  </>
+                )}
+              </button>
+
+              {/* Center Play / Unmute Visual Callout Overlay (Visible when muted or paused) */}
+              {(isMuted || !isPlaying) && (
+                <div className="absolute inset-0 z-10 bg-black/40 backdrop-blur-[1.5px] flex flex-col items-center justify-center p-4 transition-all duration-300 group-hover:bg-black/30">
+                  {/* Glowing Radar Pulse Play Button */}
+                  <div className="relative flex items-center justify-center">
+                    <span className="absolute w-22 h-22 sm:w-28 sm:h-28 rounded-full bg-[#C6112F]/40 animate-ping pointer-events-none" />
+                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#e11d48] via-[#C6112F] to-[#990a20] text-white flex items-center justify-center shadow-[0_0_40px_rgba(198,17,47,0.85)] border-2 border-white/40 transform group-hover:scale-110 transition-all duration-300">
+                      <svg className="w-8 h-8 sm:w-10 sm:h-10 translate-x-0.5 fill-white" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* High-Contrast Action Banner */}
+                  <div className="mt-4 px-5 py-2.5 rounded-full bg-black/90 backdrop-blur-md border border-white/30 text-white flex items-center gap-2.5 shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white">
+                      {t("video-watch-sound", "CLICK TO WATCH WITH SOUND")}
+                    </span>
+                    <span className="text-base">🔊</span>
+                  </div>
+                </div>
+              )}
             </div>
 
+            {/* Bottom Controls Bar & Metadata */}
+            <div className="w-full mt-3 flex items-center justify-between text-xs text-neutral-600 dark:text-neutral-400 px-1">
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-neutral-800 dark:text-neutral-200">THE Event Video</span>
+                <span className="text-neutral-300 dark:text-neutral-700">•</span>
+                <span className="text-[11px] font-bold text-[#C6112F]">Full HD with Audio</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={handleToggleSoundAndPlay}
+                  className="font-bold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors cursor-pointer flex items-center gap-1 text-[11px] uppercase tracking-wider"
+                >
+                  {isMuted ? "🔊 Turn Sound On" : "🔇 Mute"}
+                </button>
+                <span className="text-neutral-300 dark:text-neutral-700">•</span>
+                <button
+                  type="button"
+                  onClick={handleFullscreen}
+                  className="font-bold text-[#C6112F] hover:underline transition-colors cursor-pointer flex items-center gap-1 text-[11px] uppercase tracking-wider"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                  </svg>
+                  {t("video-fullscreen", "Fullscreen")}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

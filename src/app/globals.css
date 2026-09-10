@@ -641,3 +641,24 @@ p, blockquote, figcaption {
   animation: chevronCascade 1.5s ease-in-out infinite 0.25s;
 }
 
+/* ═══════════════ CONTINUOUS SPONSORS ROLL MARQUEE ═══════════════ */
+@keyframes sponsorMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-sponsor-roll {
+  display: flex;
+  width: max-content;
+  animation: sponsorMarquee var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.sponsor-marquee-container:hover .animate-sponsor-roll {
+  animation-play-state: paused;
+}
+

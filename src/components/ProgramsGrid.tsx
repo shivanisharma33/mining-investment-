@@ -52,8 +52,8 @@ export default function ProgramsGrid() {
       cta: t("prog-inst-cta", "PARTNERSHIPS INFO"),
       link: "/partnership",
       image:
-        "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-8.jpg",
-      imageAlt: "Partnership presentation at Mining Investment Event",
+        "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-21.jpg",
+      imageAlt: "THE Tier 1 Conference Partnerships presentation stage at Mining Investment Event",
       imageOnLeft: false,
     },
     {

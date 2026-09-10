@@ -1,11 +1,11 @@
 // ─── PARTICLES ───
-const pContainer=document.getElementById('particles');
+const pContainer = document.getElementById('particles');
 
 if (pContainer) {
-    for (let i=0; i < 30; i++) {
-        const p=document.createElement('span');
+    for (let i = 0; i < 30; i++) {
+        const p = document.createElement('span');
 
-        p.style.cssText=`left:$ {
+        p.style.cssText = `left:$ {
             Math.random()*100
         }
 
@@ -43,7 +43,7 @@ if (pContainer) {
 
     const tryPlay = () => {
         const p = v.play();
-        if (p && typeof p.catch === 'function') p.catch(() => {});
+        if (p && typeof p.catch === 'function') p.catch(() => { });
     };
     const fail = () => v.classList.remove('is-playing');
 
@@ -56,9 +56,9 @@ if (pContainer) {
 })();
 
 // ─── NAV SCROLL ───
-window.addEventListener('scroll', ()=> {
-        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
-    });
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
 
 // ─── MOBILE MENU ───
 function toggleMobile() {
@@ -158,32 +158,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ─── NAVIGATION ───
-let currentPage='home';
+let currentPage = 'home';
 // The document pages (/past-years/<year>/<slug>) all share one container,
 // #page-document, whose contents are rendered per document. `currentDoc`
 // is what distinguishes one from another — without it, navigating from
 // 2025 Brochure to 2024 Brochure would look like navigating to the page
 // you are already on, and the early return below would swallow it.
-let currentDoc=null;
+let currentDoc = null;
 
 function navigate(page, docId) {
-    if (page===currentPage && (docId||null)===currentDoc) {
+    if (page === currentPage && (docId || null) === currentDoc) {
         window.scrollTo({
-            top:0, behavior:'smooth'
+            top: 0, behavior: 'smooth'
         });
-    return;
-}
+        return;
+    }
 
-const overlay=document.getElementById('pageTransition');
-overlay.classList.add('active');
+    const overlay = document.getElementById('pageTransition');
+    overlay.classList.add('active');
 
-setTimeout(()=> {
-        document.querySelectorAll('.page').forEach(p=> p.classList.remove('active'));
-        const target=document.getElementById('page-' + page);
+    setTimeout(() => {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        const target = document.getElementById('page-' + page);
 
         if (target) {
-            target.classList.add('active'); currentPage=page;
-            currentDoc = (page === 'document') ? (docId||null) : null;
+            target.classList.add('active'); currentPage = page;
+            currentDoc = (page === 'document') ? (docId || null) : null;
             if (page === 'companies') {
                 loadCompaniesWithLoader();
             }
@@ -207,7 +207,7 @@ setTimeout(()=> {
         updateRoute(page, docId);
     }
 
-    , 300);
+        , 300);
 }
 
 // ─── URL routing (additive, non-breaking) ───
@@ -277,13 +277,13 @@ function initFadeUps() {
         entries.forEach(e => {
             if (e.isIntersecting) {
                 e.target.classList.add('visible');
-                
+
                 // Trigger counter if it's a stat item
                 const num = e.target.querySelector('.stat-num');
                 if (num && num.hasAttribute('data-target')) {
                     animateCounter(num);
                 }
-                
+
                 obs.unobserve(e.target);
             }
         });
@@ -306,11 +306,11 @@ function animateCounter(el) {
     function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        
+
         // Easing function (outQuad)
         const ease = progress * (2 - progress);
         const currentNum = Math.floor(ease * target);
-        
+
         el.innerHTML = currentNum + suffix;
 
         if (progress < 1) {
@@ -328,7 +328,7 @@ setTimeout(initFadeUps, 100);
 
 // ─── TEAM BIO TOGGLE ───
 function toggleBio(btn, id) {
-    const bio=document.getElementById(id);
+    const bio = document.getElementById(id);
     bio.classList.toggle('expanded');
     const expanded = bio.classList.contains('expanded');
     const lang = (typeof currentLang !== 'undefined' && currentLang) || 'en';
@@ -535,11 +535,11 @@ function renderCompanies(rows) {
 
     body.innerHTML = rows.map(r =>
         '<tr>' +
-            '<td class="company-name">' + highlightCompanyName(r[0]) + '</td>' +
-            '<td class="ticker">' + r[1] + '</td>' +
-            '<td class="type">' + r[2] + '</td>' +
-            '<td class="location">' + r[3] + '</td>' +
-            '<td class="commodities">' + r[4] + '</td>' +
+        '<td class="company-name">' + highlightCompanyName(r[0]) + '</td>' +
+        '<td class="ticker">' + r[1] + '</td>' +
+        '<td class="type">' + r[2] + '</td>' +
+        '<td class="location">' + r[3] + '</td>' +
+        '<td class="commodities">' + r[4] + '</td>' +
         '</tr>'
     ).join('');
 }
@@ -710,16 +710,16 @@ function renderSponsorsPage() {
                 const alt = altForSponsor(section.title, file);
                 return (
                     '<button type="button" class="sp-card" ' +
-                        'data-src="' + src + '" ' +
-                        'data-caption="' + section.title + '" ' +
-                        'aria-label="Preview ' + alt + '">' +
-                        '<span class="sp-card-badge">' + section.title.replace(/ Partners$/i, '') + '</span>' +
-                        '<img class="sp-card-img" ' +
-                            'src="' + src + '" ' +
-                            'alt="' + alt + '" ' +
-                            'loading="lazy" ' +
-                            'decoding="async" ' +
-                            'referrerpolicy="no-referrer" />' +
+                    'data-src="' + src + '" ' +
+                    'data-caption="' + section.title + '" ' +
+                    'aria-label="Preview ' + alt + '">' +
+                    '<span class="sp-card-badge">' + section.title.replace(/ Partners$/i, '') + '</span>' +
+                    '<img class="sp-card-img" ' +
+                    'src="' + src + '" ' +
+                    'alt="' + alt + '" ' +
+                    'loading="lazy" ' +
+                    'decoding="async" ' +
+                    'referrerpolicy="no-referrer" />' +
                     '</button>'
                 );
             }).join('')
@@ -728,14 +728,14 @@ function renderSponsorsPage() {
         const sectionId = 'tier-' + section.title.toLowerCase().replace(/\s+/g, '-');
         return (
             '<section class="sp-section fade-up" id="' + sectionId + '" data-tier="' + section.title + '">' +
-                '<header class="sp-section-head">' +
-                    '<div class="sp-section-eyebrow">Tier</div>' +
-                    '<h2 class="sp-section-title">' +
-                        section.title.replace(/^(\w+)/, '<em>$1</em>') +
-                    '</h2>' +
-                    '<div class="gold-rule sp-section-rule" aria-hidden="true"></div>' +
-                '</header>' +
-                '<div class="sp-grid">' + cards + '</div>' +
+            '<header class="sp-section-head">' +
+            '<div class="sp-section-eyebrow">Tier</div>' +
+            '<h2 class="sp-section-title">' +
+            section.title.replace(/^(\w+)/, '<em>$1</em>') +
+            '</h2>' +
+            '<div class="gold-rule sp-section-rule" aria-hidden="true"></div>' +
+            '</header>' +
+            '<div class="sp-grid">' + cards + '</div>' +
             '</section>'
         );
     }).join('');
@@ -1211,63 +1211,63 @@ document.addEventListener('DOMContentLoaded', initFeaturedPartnersCarousel);
 let currentLang = localStorage.getItem('siteLanguage') || 'en';
 
 function setLanguage(lang) {
-  currentLang = lang;
-  localStorage.setItem('siteLanguage', lang);
-  
-  // Update toggle UI
-  document.querySelectorAll('.lang-option').forEach(opt => {
-    opt.classList.toggle('is-active', opt.dataset.lang === lang);
-  });
+    currentLang = lang;
+    localStorage.setItem('siteLanguage', lang);
 
-  // Update HTML lang attribute
-  document.documentElement.lang = lang;
-
-  // Update tagged elements. Always use innerHTML so keys containing markup
-  // (spans, <br>, <em>, entities like &nbsp;) render correctly.
-  const elements = document.querySelectorAll('[data-t]');
-  elements.forEach(el => {
-    const key = el.getAttribute('data-t');
-    if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key] !== undefined) {
-      el.innerHTML = TRANSLATIONS[lang][key];
-    }
-  });
-
-  // Update placeholder/value attributes via [data-t-attr="placeholder:key,title:key2"]
-  document.querySelectorAll('[data-t-attr]').forEach(el => {
-    const spec = el.getAttribute('data-t-attr');
-    spec.split(',').forEach(pair => {
-      const [attr, key] = pair.split(':').map(s => s.trim());
-      if (attr && key && TRANSLATIONS[lang] && TRANSLATIONS[lang][key] !== undefined) {
-        el.setAttribute(attr, TRANSLATIONS[lang][key]);
-      }
+    // Update toggle UI
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.toggle('is-active', opt.dataset.lang === lang);
     });
-  });
 
-  // Re-run any specific dynamic renders if needed (e.g. Sponsors)
-  if (currentPage === 'sponsors') {
-    sponsorsRendered = false; // Force re-render to pick up new tier names
-    renderSponsorsPage();
-  }
+    // Update HTML lang attribute
+    document.documentElement.lang = lang;
+
+    // Update tagged elements. Always use innerHTML so keys containing markup
+    // (spans, <br>, <em>, entities like &nbsp;) render correctly.
+    const elements = document.querySelectorAll('[data-t]');
+    elements.forEach(el => {
+        const key = el.getAttribute('data-t');
+        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key] !== undefined) {
+            el.innerHTML = TRANSLATIONS[lang][key];
+        }
+    });
+
+    // Update placeholder/value attributes via [data-t-attr="placeholder:key,title:key2"]
+    document.querySelectorAll('[data-t-attr]').forEach(el => {
+        const spec = el.getAttribute('data-t-attr');
+        spec.split(',').forEach(pair => {
+            const [attr, key] = pair.split(':').map(s => s.trim());
+            if (attr && key && TRANSLATIONS[lang] && TRANSLATIONS[lang][key] !== undefined) {
+                el.setAttribute(attr, TRANSLATIONS[lang][key]);
+            }
+        });
+    });
+
+    // Re-run any specific dynamic renders if needed (e.g. Sponsors)
+    if (currentPage === 'sponsors') {
+        sponsorsRendered = false; // Force re-render to pick up new tier names
+        renderSponsorsPage();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize language
-  setLanguage(currentLang);
+    // Initialize language
+    setLanguage(currentLang);
 
-  // Toggle click handlers (Desktop & Mobile)
-  const toggles = ['langToggle', 'langToggleMobile'];
-  toggles.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.querySelectorAll('.lang-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-          const lang = opt.dataset.lang;
-          if (lang !== currentLang) {
-            setLanguage(lang);
-          }
-        });
-      });
-    }
-  });
+    // Toggle click handlers (Desktop & Mobile)
+    const toggles = ['langToggle', 'langToggleMobile'];
+    toggles.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.querySelectorAll('.lang-option').forEach(opt => {
+                opt.addEventListener('click', () => {
+                    const lang = opt.dataset.lang;
+                    if (lang !== currentLang) {
+                        setLanguage(lang);
+                    }
+                });
+            });
+        }
+    });
 });
-
+

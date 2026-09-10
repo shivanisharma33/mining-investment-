@@ -147,6 +147,7 @@ export default function Hero() {
             </svg>
           </Link>
 
+
           {/* Agenda */}
           <Link
             href="/agenda"
