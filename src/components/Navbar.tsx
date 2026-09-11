@@ -80,7 +80,7 @@ const aboutDropdown = [
 const programsDropdown = [
   {
     titleKey: "nav-student",
-    titleDefault: "The Student Sponsorship Program",
+    titleDefault: "THE Student Partnership Program",
     descKey: "nav-student-desc",
     descDefault: "Exposure to the mining industry for university and college students",
     href: "/student",

@@ -8,17 +8,62 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
 // 2026 Award Recipients Data
-const winningTeamMembers = [
-  { name: "Alp Tastekin", school: "Queen's University" },
-  { name: "Aynaz Aghbash", school: "Université du Québec en Abitibi-Témiscamingue" },
-  { name: "Ann Presley", school: "École de Technologie Supérieure" },
-  { name: "Chao Feng", school: "Laurentian University" },
-  { name: "Édouard Comtois", school: "Laval University" },
-];
+const mvpStudent = {
+  name: "Raymond Bhushan",
+  school: "University of Toronto",
+  award: "Student MVP Award 2026",
+};
 
 const outstandingStudents = [
-  { name: "Aleksander Strazisar", school: "Toronto Metropolitan University" },
-  { name: "Aisha Mohammed", school: "University of Waterloo" },
+  { name: "Penda-Anna Diagne", school: "University of Ottawa" },
+  { name: "Jean Thomas Parizeau-Breton", school: "Laval University" },
+];
+
+const trackWinners = [
+  {
+    id: "glencore",
+    trackTitle: "GLENCORE Track Winners & Overall Winning Team",
+    teamName: "Team 2",
+    sponsorName: "GLENCORE",
+    sponsorLogo: "/sponsors/2026/glencore.svg",
+    isOverallWinner: true,
+    members: [
+      { name: "Gerarldo Aventian", school: "Queen's University" },
+      { name: "Alika Elliott", school: "University of British Columbia" },
+      { name: "Anne-Peniel Michel", school: "University of Ottawa" },
+      { name: "Mikael Ouare", school: "Metropolitan State University" },
+      { name: "Stanislaus Farrel Kumalaputra", school: "British Columbia Institute of Technology" },
+    ],
+  },
+  {
+    id: "iamgold",
+    trackTitle: "IAMGOLD Track Winners",
+    teamName: "Team 8",
+    sponsorName: "IAMGOLD",
+    sponsorLogo: "/sponsor image/IAMGOLD-Logo-N.png",
+    isOverallWinner: false,
+    members: [
+      { name: "Justin Paquette", school: "Laval University" },
+      { name: "Iyesha Rupasinha Arachchige", school: "University of Toronto" },
+      { name: "Yuyu Guo", school: "Laurentian University" },
+      { name: "Ridouane Maiga", school: "Laval University" },
+      { name: "Yanxi Lin", school: "Queen's University" },
+    ],
+  },
+  {
+    id: "or-royalties",
+    trackTitle: "OR Royalties Track Winners",
+    teamName: "Team 10",
+    sponsorName: "OR Royalties",
+    sponsorLogo: "/lorroyalties.svg",
+    isOverallWinner: false,
+    members: [
+      { name: "Erik Giswold", school: "Queen's University" },
+      { name: "Angelia Chin", school: "University of Toronto" },
+      { name: "Jose Del Castillo", school: "University of British Columbia" },
+      { name: "Mohamed Dhaoudi", school: "Institut national de la recherche scientifique" },
+    ],
+  },
 ];
 
 // Student Event Gallery Photos from 2026
@@ -185,7 +230,10 @@ export default function StudentPage() {
                   </span>
                   <div className="flex items-center gap-3 sm:gap-4 flex-wrap sm:flex-nowrap">
                     {/* Glencore */}
-                    <div className="w-[155px] sm:w-[175px] h-12 sm:h-14 bg-white/95 rounded-2xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0">
+                    <div
+                      className="w-[155px] sm:w-[175px] h-12 sm:h-14 logo-white-bg !bg-white rounded-2xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
+                      style={{ backgroundColor: "#ffffff" }}
+                    >
                       <img
                         src="/sponsors/2026/glencore.svg"
                         alt="Glencore Logo"
@@ -201,7 +249,10 @@ export default function StudentPage() {
                       />
                     </div>
                     {/* IAMGOLD */}
-                    <div className="w-[155px] sm:w-[175px] h-12 sm:h-14 bg-white/95 rounded-2xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0">
+                    <div
+                      className="w-[155px] sm:w-[175px] h-12 sm:h-14 logo-white-bg !bg-white rounded-2xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
+                      style={{ backgroundColor: "#ffffff" }}
+                    >
                       <img
                         src="/sponsor image/IAMGOLD-Logo-N.png"
                         alt="IAMGOLD Logo"
@@ -358,68 +409,162 @@ export default function StudentPage() {
               </p>
             </div>
 
-            {/* MVP Featured Card */}
-            <div className="bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/30 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 px-6 py-2 bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-widest rounded-bl-2xl shadow-md">
-                ⭐ Student MVP Winner
-              </div>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            {/* Individual Honors: MVP & Outstanding Students */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+              {/* MVP Featured Card */}
+              <div className="lg:col-span-5 bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-transparent border-2 border-amber-500/30 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
+                <div className="absolute top-0 right-0 px-5 py-1.5 bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-widest rounded-bl-2xl shadow-md">
+                  ⭐ Student MVP Winner
+                </div>
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-1">
-                    Anna Dalton-Framst
+                  <span className="text-[10px] font-black tracking-[0.25em] uppercase text-amber-600 dark:text-amber-400 block mb-3">
+                    PEER & EXECUTIVE SELECTION
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-2">
+                    {mvpStudent.name}
                   </h3>
-                  <p className="text-neutral-600 dark:text-neutral-300 text-sm font-semibold">
-                    University of Ottawa
+                  <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base font-semibold">
+                    {mvpStudent.school}
                   </p>
                 </div>
-                <div className="px-4 py-2 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-xs font-bold text-amber-600 dark:text-amber-400 shrink-0">
-                  Student MVP Award 2026
+                <div className="mt-6 pt-4 border-t border-amber-500/20 flex items-center justify-between">
+                  <span className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-neutral-900 border border-amber-500/30 text-xs font-bold text-amber-600 dark:text-amber-400 shadow-2xs">
+                    {mvpStudent.award}
+                  </span>
+                  <span className="text-2xl">🏆</span>
+                </div>
+              </div>
+
+              {/* Outstanding Students Recognition */}
+              <div className="lg:col-span-7 bg-white dark:bg-[#181a24] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full">
+                      Outstanding Student Recognition
+                    </span>
+                    <span className="text-xs text-neutral-400 font-semibold hidden sm:inline">
+                      Exceptional Contributions
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-black text-[#1a1f2c] dark:text-white mb-4">
+                    Special Academic & Leadership Honors
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {outstandingStudents.map((std, i) => (
+                      <div
+                        key={i}
+                        className="p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800 hover:border-[#C6112F]/40 transition-all"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-bold text-xs flex items-center justify-center mb-3">
+                          0{i + 1}
+                        </div>
+                        <div className="text-base sm:text-lg font-black text-[#1a1f2c] dark:text-white mb-1">
+                          {std.name}
+                        </div>
+                        <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
+                          {std.school}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Winning Team 9 */}
-            <div className="bg-white dark:bg-[#181a24] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-8">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="px-3.5 py-1 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-black text-[10px] uppercase tracking-widest">
-                  Case Study Competition Winners — Team 9
-                </span>
+            {/* Case Study Competition Track Winners Section */}
+            <div className="space-y-8 mb-14">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-6 bg-[#C6112F] rounded-full" />
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white tracking-tight">
+                    Case Study Competition Track Winners
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-medium mt-0.5">
+                    Recognizing the winning student teams across the sponsor-led competition tracks.
+                  </p>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {winningTeamMembers.map((member, i) => (
-                  <div
-                    key={i}
-                    className="p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800 hover:border-[#C6112F]/40 transition-all"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-bold text-xs flex items-center justify-center mb-3">
-                      0{i + 1}
+              {trackWinners.map((track) => (
+                <div
+                  key={track.id}
+                  className={`bg-white dark:bg-[#181a24] rounded-3xl p-7 sm:p-9 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden ${
+                    track.isOverallWinner
+                      ? "border-2 border-amber-500/50 ring-1 ring-amber-500/20"
+                      : "border border-neutral-200/80 dark:border-neutral-800"
+                  }`}
+                >
+                  {/* Top Header Row of the Track Card */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7 pb-5 border-b border-neutral-200/80 dark:border-neutral-800/80">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span
+                        className={`px-3.5 py-1.5 rounded-full font-black text-[11px] uppercase tracking-wider ${
+                          track.isOverallWinner
+                            ? "bg-amber-500 text-slate-950 shadow-sm"
+                            : "bg-[#C6112F]/10 text-[#C6112F]"
+                        }`}
+                      >
+                        {track.trackTitle}
+                      </span>
+                      {track.isOverallWinner && (
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C6112F]/10 text-[#C6112F] text-[10px] font-extrabold uppercase tracking-wider">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] animate-pulse" />
+                          Overall Champions
+                        </span>
+                      )}
                     </div>
-                    <div className="text-base font-black text-[#1a1f2c] dark:text-white mb-1">
-                      {member.name}
-                    </div>
-                    <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                      {member.school}
+
+                    {/* Track Sponsor Logo Badge */}
+                    <div className="flex items-center gap-2.5 self-start sm:self-auto shrink-0">
+                      <span className="text-[10px] uppercase font-extrabold text-neutral-400 tracking-wider">
+                        Track Sponsor
+                      </span>
+                      <div
+                        className="h-11 px-3.5 py-1.5 rounded-xl border border-neutral-200 dark:border-neutral-700/60 shadow-2xs flex items-center justify-center logo-white-bg !bg-white"
+                        style={{ backgroundColor: "#ffffff" }}
+                      >
+                        <img
+                          src={track.sponsorLogo}
+                          alt={`${track.sponsorName} Logo`}
+                          className="h-6 sm:h-7 max-w-[130px] w-auto object-contain"
+                        />
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Outstanding Students */}
-            <div className="bg-white dark:bg-[#181a24] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 mb-14">
-              <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full inline-block mb-6">
-                Outstanding Student Recognition
-              </span>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {outstandingStudents.map((std, i) => (
-                  <div key={i} className="p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800">
-                    <div className="text-lg font-black text-[#1a1f2c] dark:text-white mb-1">{std.name}</div>
-                    <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">{std.school}</div>
+                  {/* Team Members Grid */}
+                  <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${
+                    track.members.length === 5 ? "xl:grid-cols-5" : "xl:grid-cols-4"
+                  } gap-4`}>
+                    {track.members.map((member, i) => (
+                      <div
+                        key={i}
+                        className={`p-5 rounded-2xl transition-all ${
+                          track.isOverallWinner
+                            ? "bg-gradient-to-b from-amber-500/5 to-transparent border border-amber-500/30 hover:border-amber-500/60"
+                            : "bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800 hover:border-[#C6112F]/40"
+                        }`}
+                      >
+                        <div
+                          className={`w-8 h-8 rounded-full font-bold text-xs flex items-center justify-center mb-3 ${
+                            track.isOverallWinner
+                              ? "bg-amber-500/15 text-amber-700 dark:text-amber-400"
+                              : "bg-[#C6112F]/10 text-[#C6112F]"
+                          }`}
+                        >
+                          0{i + 1}
+                        </div>
+                        <div className="text-base font-black text-[#1a1f2c] dark:text-white mb-1 leading-snug">
+                          {member.name}
+                        </div>
+                        <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
+                          {member.school}
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
 
             {/* 2026 Photo Gallery */}
@@ -532,7 +677,9 @@ export default function StudentPage() {
           </div>
         </section>
 
-        {/* ═══════════════ 5. PREVIOUS YEARS SECTION (BOTTOM) ═══════════════ */}
+        {/* ═══════════════ 5. PREVIOUS YEARS SECTION (TEMPORARILY HIDDEN) ═══════════════ */}
+        {/* Hidden until team confirms details about previous years' student program winners & photos */}
+        {/*
         <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117] border-b border-neutral-200/80 dark:border-neutral-800">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
@@ -548,9 +695,7 @@ export default function StudentPage() {
               </p>
             </div>
 
-            {/* 3 Grid Cards for Previous Years */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* 2025 Card */}
               <Link
                 href="/past-editions/2025"
                 className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
@@ -572,7 +717,6 @@ export default function StudentPage() {
                 </div>
               </Link>
 
-              {/* 2024 Card */}
               <Link
                 href="/past-editions/2024"
                 className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
@@ -594,7 +738,6 @@ export default function StudentPage() {
                 </div>
               </Link>
 
-              {/* 2023 Card */}
               <Link
                 href="/past-editions/2023"
                 className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
@@ -618,6 +761,7 @@ export default function StudentPage() {
             </div>
           </div>
         </section>
+        */}
 
         {/* ═══════════════ 6. CONTACT & SUPPORT FOOTER CTA ═══════════════ */}
         <section className="relative w-full py-12 sm:py-14 md:py-16 bg-[#0b0f19] text-white">
