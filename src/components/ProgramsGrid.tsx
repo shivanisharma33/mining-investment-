@@ -1,14 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
-const categories = ["ALL", "EDUCATION", "LEADERSHIP", "INSTITUTIONAL", "DIALOGUE"];
-
 export default function ProgramsGrid() {
-  const [activeTab, setActiveTab] = useState("ALL");
   const { t } = useLanguage();
 
   const programs = [
@@ -64,25 +61,13 @@ export default function ProgramsGrid() {
         "prog-dial-desc",
         "An intimate networking experience designed to connect Canada's exploration community with international investors"
       ),
-      cta: t("prog-dial-cta", "LEARN MORE"),
-      link: "/agenda",
+      cta: t("prog-dial-cta", "CONTACT JENNY CHOI"),
+      link: "mailto:jchoi@irinc.ca?subject=THE Coreshack Inquiry",
       image: "/coreshack.jpg",
       imageAlt: "THE Coreshack networking session",
       imageOnLeft: false,
     },
   ];
-
-  const filteredPrograms =
-    activeTab === "ALL"
-      ? programs
-      : programs.filter(
-        (p) =>
-          p.category.replace(/\s+/g, "") === activeTab ||
-          p.id === activeTab.toLowerCase()
-      );
-
-
-
 
   return (
     <section className="relative w-full bg-white dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
@@ -98,28 +83,12 @@ export default function ProgramsGrid() {
           text={t("programs-title", "Key Event Programs")}
           className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3"
         />
-        <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mx-auto mb-8" />
-
-        {/* Program Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={`px-4 sm:px-5 py-2 rounded-full text-xs font-extrabold tracking-wider transition-all duration-300 ${activeTab === cat
-                ? "bg-[#C6112F] text-white shadow-md scale-105"
-                : "bg-neutral-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300 hover:bg-neutral-200 dark:hover:bg-slate-700 hover:text-neutral-900 dark:hover:text-white"
-                }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mx-auto" />
       </div>
 
       {/* 2x2 100% Full Width Edge-to-Edge Grid Container — no gaps */}
       <div className="w-full grid grid-cols-1 md:grid-cols-2 rounded-none overflow-hidden border-none shadow-none gap-0">
-        {filteredPrograms.map((item) => (
+        {programs.map((item) => (
           <div
             key={item.id}
             className="flex flex-col sm:flex-row w-full h-auto sm:min-h-[380px] lg:min-h-[420px] rounded-none group relative border-none card-shimmer cursor-pointer"
@@ -162,13 +131,23 @@ export default function ProgramsGrid() {
 
                   {/* Red Text Link with Arrow */}
                   <div className="relative z-10 pt-2 mt-auto">
-                    <Link
-                      href={item.link}
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
-                    >
-                      <span>{item.cta}</span>
-                      <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
-                    </Link>
+                    {item.link.startsWith("mailto:") ? (
+                      <a
+                        href={item.link}
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+                      >
+                        <span>{item.cta}</span>
+                        <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.link}
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+                      >
+                        <span>{item.cta}</span>
+                        <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </>
@@ -198,13 +177,23 @@ export default function ProgramsGrid() {
 
                   {/* Red Text Link with Arrow */}
                   <div className="relative z-10 pt-2 mt-auto">
-                    <Link
-                      href={item.link}
-                      className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
-                    >
-                      <span>{item.cta}</span>
-                      <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
-                    </Link>
+                    {item.link.startsWith("mailto:") ? (
+                      <a
+                        href={item.link}
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+                      >
+                        <span>{item.cta}</span>
+                        <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.link}
+                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+                      >
+                        <span>{item.cta}</span>
+                        <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                      </Link>
+                    )}
                   </div>
                 </div>
 

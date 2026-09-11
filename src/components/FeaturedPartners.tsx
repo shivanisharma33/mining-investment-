@@ -15,7 +15,7 @@ const partnerData: Record<Exclude<TierKey, "ALL">, string[]> = {
     "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
   ],
   GOLD: [
-    "/altitude.png",
+    "/LOGOS Mining (27).png",
     "/Invest_Yukon.png",
     "/sponsors/2026/maxit_capital.png",
     "/peartree_0c7d9a1777.png",

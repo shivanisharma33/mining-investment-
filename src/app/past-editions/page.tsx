@@ -183,18 +183,29 @@ export default function PastEditionsPage() {
 
               {/* Year Navigation Pill Buttons */}
               <div className="flex flex-wrap items-center gap-2">
-                {yearOptions.map((yr) => (
-                  <button
-                    key={yr}
-                    onClick={() => setSelectedYear(yr)}
-                    className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all duration-300 cursor-pointer ${selectedYear === yr
-                        ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/25 scale-105"
-                        : "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-[#C6112F]/10 hover:text-[#C6112F]"
-                      }`}
-                  >
-                    {yr === "ALL" ? (isFr ? "TOUTES LES ANNEES" : "ALL YEARS") : yr}
-                  </button>
-                ))}
+                {yearOptions.map((yr) =>
+                  yr === "ALL" ? (
+                    <button
+                      key={yr}
+                      type="button"
+                      onClick={() => setSelectedYear("ALL")}
+                      className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all duration-300 cursor-pointer ${selectedYear === "ALL"
+                          ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/25 scale-105"
+                          : "bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-[#C6112F]/10 hover:text-[#C6112F]"
+                        }`}
+                    >
+                      {isFr ? "TOUTES LES ANNÉES" : "ALL YEARS"}
+                    </button>
+                  ) : (
+                    <Link
+                      key={yr}
+                      href={`/past-editions/${yr}`}
+                      className="px-4 py-2.5 rounded-xl text-xs font-black tracking-wider transition-all duration-300 cursor-pointer bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-[#C6112F] hover:text-white hover:shadow-md hover:shadow-[#C6112F]/25 hover:scale-105"
+                    >
+                      {yr}
+                    </Link>
+                  )
+                )}
               </div>
             </div>
 

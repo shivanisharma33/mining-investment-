@@ -49,7 +49,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero-title-2": "Mining",
     "hero-title-3": "Investment",
     "hero-title-4": "Event",
-    "hero-subtitle": "Meet investors, discover projects, secure partnerships and shape the future of mining.",
+    "hero-subtitle": "THE Nexus of International Mining",
     "hero-date": "1-3 JUNE 2027 · QUÉBEC CITY, CANADA",
     "hero-register": "REGISTER NOW",
     "hero-program": "VIEW AGENDA",
@@ -117,7 +117,7 @@ const translations: Record<Language, Record<string, string>> = {
     "prog-dial-cat": "DIALOGUE",
     "prog-dial-title": "THE Coreshack",
     "prog-dial-desc": "An intimate networking experience designed to connect Canada's exploration community with international investors",
-    "prog-dial-cta": "LEARN MORE",
+    "prog-dial-cta": "CONTACT JENNY CHOI",
 
     // Featured Event Countdown
     "feat-event-tag": "FEATURED EVENT",
@@ -502,7 +502,7 @@ const translations: Record<Language, Record<string, string>> = {
     "golf-includes-desc": "18 holes of golf with cart, lunch & on-course refreshments, awards dinner, networking cocktail reception, branded golf gift package and access to exclusive sponsor activations.",
     "golf-schedule-title": "Schedule Overview",
     "golf-schedule-desc": "10:00 AM Registration & Practice Range · 11:30 AM Shotgun Start · 5:00 PM Awards Ceremony & Cocktail · 7:00 PM Gala Dinner",
-    
+
     // Speaker modal & extra
     "spk-modal-bio": "Bio & Keynotes",
     "spk-modal-company": "Company",
@@ -587,7 +587,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero-title-2": "d'Investissement",
     "hero-title-3": "Minier",
     "hero-title-4": "",
-    "hero-subtitle": "Rencontrer des investisseurs, découvrir des projets, sécuriser des partenariats et façonner l'avenir minier.",
+    "hero-subtitle": "LE Nexus du Secteur Minier International",
     "hero-date": "1-3 JUIN 2027 · VILLE DE QUÉBEC, CANADA",
     "hero-register": "S'INSCRIRE MAINTENANT",
     "hero-program": "VOIR L'ORDRE DU JOUR",
@@ -655,7 +655,7 @@ const translations: Record<Language, Record<string, string>> = {
     "prog-dial-cat": "DIALOGUE",
     "prog-dial-title": "THE Coreshack",
     "prog-dial-desc": "Une expérience de réseautage intime conçue pour connecter la communauté d'exploration du Canada avec les investisseurs internationaux.",
-    "prog-dial-cta": "EN SAVOIR PLUS",
+    "prog-dial-cta": "CONTACTER JENNY CHOI",
 
     // Featured Event Countdown
     "feat-event-tag": "ÉVÉNEMENT EN VEDETTE",

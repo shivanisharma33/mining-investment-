@@ -55,7 +55,7 @@ const SPONSORS_2026: SponsorItem[] = [
     name: "Altitude Capital Partners",
     website: "https://altitudecapitalpartners.ca/",
     tier: "gold",
-    image: "/altitude.png",
+    image: "/LOGOS Mining (27).png",
   },
   {
     name: "Invest Yukon",

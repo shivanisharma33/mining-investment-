@@ -46,7 +46,7 @@ function useCounter(target: number, duration = 2000, startOnView = true) {
 const quickFacts = [
   "Canada's Only Tier I Global Mining Investment Conference",
   "Held annually in Québec City, Canada",
-  "200 participating mining companies",
+  "200+ participating mining companies",
   "Invitation only — walk-ins not accepted",
   "Independently sponsored by various financial and industry groups as well as domestic and international governments",
   "1,400+ participants including issuers, investors and governments",
@@ -55,7 +55,7 @@ const quickFacts = [
 const quickFactsFr = [
   "La seule conférence mondiale de niveau I sur l'investissement minier au Canada",
   "Se tient annuellement à Québec, Canada",
-  "200 sociétés minières participantes",
+  "200+ sociétés minières participantes",
   "Sur invitation uniquement — les visiteurs sans invitation ne sont pas acceptés",
   "Parrainée indépendamment par divers groupes financiers et industriels ainsi que des gouvernements nationaux et internationaux",
   "1 400+ participants, y compris émetteurs, investisseurs et gouvernements",

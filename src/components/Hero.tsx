@@ -112,14 +112,12 @@ export default function Hero() {
         </h1>
 
         {/* Subheading / Description */}
-        <p className="text-white/95 text-xs sm:text-sm md:text-base lg:text-lg max-w-[740px] mx-auto text-center font-normal leading-relaxed mb-6 md:mb-8 animate-fade-in-up delay-5">
-          {lang === "FR" ? (
-            t("hero-subtitle", "Rencontrer des investisseurs, découvrir des projets, sécuriser des partenariats et façonner l'avenir minier.")
-          ) : (
-            <>
-              Meet investors, discover projects, secure partnerships
-              <br className="hidden sm:inline" /> and shape the future of mining.
-            </>
+        <p className="text-white/95 text-sm sm:text-base md:text-lg lg:text-xl font-medium tracking-wide max-w-[740px] mx-auto text-center leading-relaxed mb-6 md:mb-8 animate-fade-in-up delay-5">
+          {t(
+            "hero-subtitle",
+            lang === "FR"
+              ? "LE Nexus du Secteur Minier International"
+              : "THE Nexus of International Mining"
           )}
         </p>
 

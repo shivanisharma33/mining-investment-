@@ -662,3 +662,26 @@ p, blockquote, figcaption {
   animation-play-state: paused;
 }
 
+/* ═══════════════ HOST VENUE BADGE OVERRIDE ═══════════════
+   Placed at the very end of the stylesheet with high specificity
+   to ensure the text is 100% pitch black in both Light and Dark mode. */
+.dark .host-venue-capsule,
+.host-venue-capsule {
+  background-color: #ffffff !important;
+}
+
+.dark span.host-venue-text,
+span.host-venue-text,
+.dark .host-venue-text,
+.host-venue-text {
+  color: #000000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block !important;
+}
+
+.dark .host-venue-divider,
+.host-venue-divider {
+  background-color: #94a3b8 !important;
+}
+

@@ -216,14 +216,28 @@ export default function PastEdition2027Page() {
                 <span className="text-neutral-900 font-extrabold">{viewingEdition}</span>
               </nav>
 
-              <Link
-                href="/past-editions"
-                className="text-[11px] sm:text-xs font-bold text-[#C6112F] hover:underline flex items-center gap-1 group ml-auto sm:ml-0"
-              >
-                <span className="transform group-hover:-translate-x-0.5 transition-transform">
-                  &larr; {isFr ? "Retour aux éditions" : "Back to all editions"}
-                </span>
-              </Link>
+              {/* Direct Year Switcher Pills */}
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 ml-auto">
+                <Link
+                  href="/past-editions"
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-bold text-neutral-600 dark:text-neutral-300 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-zinc-800 transition-colors"
+                >
+                  &larr; {isFr ? "Toutes les éditions" : "All Editions"}
+                </Link>
+                {[2027, 2026, 2025, 2024, 2023].map((yr) => (
+                  <Link
+                    key={yr}
+                    href={`/past-editions/${yr}`}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-black tracking-wider transition-all ${
+                      viewingEdition === yr
+                        ? "bg-[#C6112F] text-white shadow-xs scale-105"
+                        : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-200 hover:bg-[#C6112F]/10 hover:text-[#C6112F]"
+                    }`}
+                  >
+                    {yr}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             {/* Mobile Pill Nav */}

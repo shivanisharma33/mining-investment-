@@ -12,44 +12,7 @@ export default function GolfPage() {
 
   const pdfUrl = "/GOLF+SPONSORSHIP+BANNER[40].pdf";
 
-  const golfSchedule = [
-    {
-      time: "06:45 AM – 07:45 AM",
-      title: isFr
-        ? "Enregistrement & Petit-Déjeuner des Joueurs"
-        : "Player Registration & Networking Breakfast",
-      desc: isFr
-        ? "Accueil des participants, remise des coffrets cadeaux et échauffement sur le champ de pratique."
-        : "Welcome desk check-in, distribution of premium player gift packs and warm-ups on the driving range.",
-    },
-    {
-      time: "08:00 AM",
-      title: isFr
-        ? "Départ Simultané (Shotgun Start)"
-        : "Shotgun Start – Tournament Launch",
-      desc: isFr
-        ? "Coup d'envoi officiel du Tournoi Doré sur le parcours de championnat de 18 trous."
-        : "Official tournament tee-off across the 18-hole championship course at Golf Club La Tempête.",
-    },
-    {
-      time: "12:30 PM – 01:30 PM",
-      title: isFr
-        ? "Dîner sur le Parcours & Concours d'Habileté"
-        : "On-Course Lunch & Hole Contests",
-      desc: isFr
-        ? "Stations gourmandes sur le parcours, concours du coup le plus long et du coup le plus près de la coupe."
-        : "Gourmet food stations along the fairway, longest drive contest and closest-to-the-pin challenges.",
-    },
-    {
-      time: "02:30 PM – 03:30 PM",
-      title: isFr
-        ? "Cocktail de Réception & Remise des Prix"
-        : "Cocktail Reception & Awards Ceremony",
-      desc: isFr
-        ? "Célébration des gagnants, réseautage d'affaires et mot de clôture des partenaires."
-        : "Celebration of tournament winners, high-level executive networking and partner closing remarks.",
-    },
-  ];
+
 
   return (
     <>
@@ -73,15 +36,15 @@ export default function GolfPage() {
           <div className="relative z-20 max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 pt-8 pb-14 sm:pb-16 flex flex-col justify-between h-full">
             <div className="max-w-2xl">
               {/* Host Venue Badge featuring Le Tempête Logo */}
-              <div className="inline-flex items-center gap-3 px-3.5 py-2 rounded-full bg-white/95 dark:bg-white/95 backdrop-blur-md border border-white/20 shadow-md mb-5">
-                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-neutral-700">
+              <div className="host-venue-capsule inline-flex items-center gap-3 px-4 py-2 rounded-full shadow-lg border border-neutral-200/80 mb-5 select-none">
+                <span className="host-venue-text text-xs sm:text-sm font-black uppercase tracking-wider">
                   {isFr ? "Club Hôte" : "Host Venue"}
                 </span>
-                <span className="text-neutral-300">|</span>
+                <span className="host-venue-divider w-[1.5px] h-4.5 shrink-0" />
                 <img
                   src="/La+Tempete.webp"
                   alt="Club de Golf La Tempête"
-                  className="h-7 sm:h-8 w-auto object-contain"
+                  className="h-8 sm:h-9 w-auto object-contain"
                 />
               </div>
 
@@ -367,132 +330,7 @@ export default function GolfPage() {
           </div>
         </section>
 
-        {/* ═══════ GOLF DAY PHOTOS & VENUE SECTION ═══════ */}
-        <section className="relative w-full py-14 sm:py-18 bg-[#f6f8fb] dark:bg-[#090d16] border-y border-neutral-200/80 dark:border-slate-800/80 transition-colors duration-300">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              {/* Left Column: Golf Day Photo Card */}
-              <div className="lg:col-span-7">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-neutral-200 dark:border-slate-700 group">
-                  <img
-                    src="/MINING INVESTMENT EVENT 2026_DAY 1_GOLF-19.jpg"
-                    alt="Tournament participants at Golf Club La Tempête"
-                    className="w-full h-auto object-cover group-hover:scale-103 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <span className="inline-block bg-[#C6112F] text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider mb-1.5">
-                      THE Iconic Golf Day
-                    </span>
-                    <h3 className="text-base sm:text-lg font-bold leading-snug">
-                      {isFr
-                        ? "Moments du tournoi sur le vert du Golf Club La Tempête"
-                        : "Tournament moments on the green at Golf Club La Tempête"}
-                    </h3>
-                  </div>
-                </div>
-              </div>
 
-              {/* Right Column: Venue Details + Le Tempête Logo */}
-              <div className="lg:col-span-5 flex flex-col items-start">
-                {/* Le Tempête Logo Card */}
-                <div className="bg-white dark:bg-[#131b2e] p-5 sm:p-6 rounded-2xl border border-neutral-200 dark:border-slate-800 shadow-md w-full mb-6 flex items-center justify-between gap-4">
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#C6112F] block mb-1">
-                      {isFr ? "CLUB DE GOLF HÔTE" : "HOST GOLF CLUB"}
-                    </span>
-                    <h4 className="text-base sm:text-lg font-extrabold text-[#1a1f2c] dark:text-white">
-                      Golf Club La Tempête
-                    </h4>
-                    <p className="text-xs text-neutral-500 dark:text-slate-400">
-                      Lévis, Québec, Canada
-                    </p>
-                  </div>
-                  <div className="bg-white p-2 sm:p-2.5 rounded-xl border border-neutral-200 shadow-2xs shrink-0 flex items-center justify-center">
-                    <img
-                      src="/La+Tempete.webp"
-                      alt="Club de Golf La Tempête Logo"
-                      className="h-12 sm:h-14 w-auto object-contain"
-                    />
-                  </div>
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-3">
-                  {isFr
-                    ? "Un Parcours de Championnat de Renommée Mondiale"
-                    : "A World-Class Championship Setting"}
-                </h3>
-                <div className="w-14 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-                <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm font-medium leading-relaxed mb-6">
-                  {isFr
-                    ? "Golf Club La Tempête offre une expérience de calibre international dans un décor spectaculaire. Cet événement réunit les plus hauts dirigeants miniers, investisseurs et partenaires dans une atmosphère sportive et conviviale."
-                    : "Golf Club La Tempête provides an international tournament-caliber course surrounded by natural beauty. THE Iconic Golf Day convenes senior mining executives, financiers, and institutional leaders for premier networking on the fairways."}
-                </p>
-
-                {/* 4some Registration CTA link */}
-                <a
-                  href="mailto:ada@irinc.ca?subject=Register%20Golf%204some%20-%20THE%20Iconic%20Golf%20Day"
-                  className="inline-flex items-center gap-2 bg-[#C6112F] hover:bg-[#a80d26] text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-md hover:scale-105"
-                >
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.199l-.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
-                    />
-                  </svg>
-                  <span>
-                    {isFr
-                      ? "Inscrire votre 4some (ada@irinc.ca)"
-                      : "Register your 4some (ada@irinc.ca)"}
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════ SCHEDULE TIMELINE ═══════ */}
-        <section className="relative w-full py-16 sm:py-20 bg-white dark:bg-[#0e1626] transition-colors duration-300">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-2 block">
-                {isFr ? "PROGRAMME DE LA JOURNÉE" : "DAY PROGRAM SCHEDULE"}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#1a1f2c] dark:text-white mb-3">
-                {isFr ? "Horaire du Tournoi" : "Tournament Schedule"}
-              </h2>
-              <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {golfSchedule.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-neutral-50 dark:bg-[#131b2e] border border-neutral-200 dark:border-slate-800/80 p-6 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-                >
-                  <div>
-                    <span className="inline-block bg-[#C6112F]/10 dark:bg-[#C6112F]/20 text-[#C6112F] font-black text-xs px-3 py-1 rounded-full mb-4">
-                      {item.time}
-                    </span>
-                    <h3 className="text-lg font-bold text-[#1a1f2c] dark:text-white mb-2.5 leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-neutral-600 dark:text-slate-400 text-xs leading-relaxed font-medium">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ═══════ GET IN TOUCH & FOOTER ═══════ */}
         <GetInTouchCTA />
