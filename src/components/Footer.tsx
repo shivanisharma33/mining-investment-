@@ -146,6 +146,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/newsroom" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
+                  {t("nav-newsroom", "THE Newsroom")}
+                </Link>
+              </li>
+              <li>
                 <a
                   href="https://mining-international-weekly.vercel.app/"
                   target="_blank"
@@ -225,6 +230,11 @@ export default function Footer() {
               <li>
                 <Link href="/newsflash" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
                   {t("nav-newsflash", "THE Press Release")}
+                </Link>
+              </li>
+              <li>
+                <Link href="/newsroom" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
+                  {t("nav-newsroom", "THE Newsroom")}
                 </Link>
               </li>
             </ul>

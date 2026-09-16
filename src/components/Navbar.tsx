@@ -62,6 +62,19 @@ const aboutDropdown = [
     ),
   },
   {
+    titleKey: "nav-news",
+    titleDefault: "THE News",
+    descKey: "nav-news-desc",
+    descDefault: "Latest mining news, government updates, company articles & interviews",
+    href: "/news",
+    isExternal: false,
+    icon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5" />
+      </svg>
+    ),
+  },
+  {
     titleKey: "nav-newsflash",
     titleDefault: "THE Press Release",
     descKey: "nav-newsflash-desc",
@@ -186,8 +199,8 @@ export default function Navbar() {
     { name: t("nav-programs", "PROGRAMS"), href: "/student", active: false, hasDropdown: true, dropdownType: "programs", isExternal: false },
     { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
     { name: t("nav-gallery", "GALLERY"), href: "/media", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
-    // Hidden from navbar without removing:
-    { name: t("nav-news-main", "THE NEWS"), href: "/news", active: false, hasDropdown: false, dropdownType: "none", isExternal: false, hidden: true },
+    { name: t("nav-news", "NEWS"), href: "/news", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
+    { name: t("nav-newsroom", "THE NEWSROOM"), href: "/newsroom", active: false, hasDropdown: false, dropdownType: "none", isExternal: false, hidden: true },
   ];
 
   const visibleNavLinks = navLinks.filter((link) => !link.hidden);
