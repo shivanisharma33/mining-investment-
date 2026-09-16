@@ -12,7 +12,7 @@ import SponsorsView from "@/components/SponsorsView";
 import CompaniesView from "@/components/CompaniesView";
 import { useLanguage } from "@/context/LanguageContext";
 
-const years = [2027, 2026, 2025, 2024, 2023];
+const years = [2027, 2026, 2025, 2024, 2023, 2022];
 
 const sidebarTabs = [
   {
@@ -167,15 +167,14 @@ export default function PastEdition2023Page() {
                 >
                   &larr; {isFr ? "Toutes les éditions" : "All Editions"}
                 </Link>
-                {[2027, 2026, 2025, 2024, 2023].map((yr) => (
+                {years.map((yr) => (
                   <Link
                     key={yr}
                     href={`/past-editions/${yr}`}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-black tracking-wider transition-all ${
-                      viewingEdition === yr
+                    className={`px-3 py-1.5 rounded-lg text-xs font-black tracking-wider transition-all ${viewingEdition === yr
                         ? "bg-[#C6112F] text-white shadow-xs scale-105"
                         : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-200 hover:bg-[#C6112F]/10 hover:text-[#C6112F]"
-                    }`}
+                      }`}
                   >
                     {yr}
                   </Link>

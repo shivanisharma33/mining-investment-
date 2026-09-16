@@ -34,150 +34,169 @@ export default function GolfPage() {
 
           {/* Main Hero Content */}
           <div className="relative z-20 max-w-[1240px] mx-auto w-full px-4 sm:px-6 md:px-8 pt-8 pb-14 sm:pb-16 flex flex-col justify-between h-full">
-            <div className="max-w-2xl">
-              {/* Host Venue Badge featuring Le Tempête Logo */}
-              <div className="host-venue-capsule inline-flex items-center gap-3 px-4 py-2 rounded-full shadow-lg border border-neutral-200/80 mb-5 select-none">
-                <span className="host-venue-text text-xs sm:text-sm font-black uppercase tracking-wider">
-                  {isFr ? "Club Hôte" : "Host Venue"}
-                </span>
-                <span className="host-venue-divider w-[1.5px] h-4.5 shrink-0" />
-                <img
-                  src="/La+Tempete.webp"
-                  alt="Club de Golf La Tempête"
-                  className="h-8 sm:h-9 w-auto object-contain"
-                />
-              </div>
-
-              {/* Title: THE Iconic Golf Day / Le Tournoi Doré */}
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase leading-[1.08] drop-shadow-md">
-                <span className="text-[#C6112F]">THE</span> ICONIC GOLF DAY
-                <br />
-                <span className="text-white/90 text-2xl sm:text-4xl md:text-5xl font-extrabold">
-                  LE TOURNOI DORÉ
-                </span>
-              </h1>
-
-              {/* Red Accent Line */}
-              <div className="w-24 sm:w-28 h-[3.5px] bg-[#C6112F] my-4 sm:my-5 rounded-full shadow-xs" />
-
-              {/* Subtitle */}
-              <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-200 uppercase mb-6 sm:mb-8 drop-shadow-sm">
-                {isFr
-                  ? "L'Événement de Golf Exclusif · Golf Club La Tempête"
-                  : "The Exclusive Golf Gathering · Golf Club La Tempête"}
-              </p>
-
-              {/* Action Buttons: Register 4some + PDF Banner */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
-                {/* Register 4some Mail CTA */}
-                <a
-                  href="mailto:ada@irinc.ca?subject=Register%20Golf%204some%20-%20THE%20Iconic%20Golf%20Day"
-                  className="inline-flex items-center gap-2.5 bg-[#C6112F] hover:bg-[#a80d26] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#C6112F]/40 hover:scale-[1.03] cursor-pointer"
-                >
-                  <svg
-                    className="w-4 h-4 text-white shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                    />
-                  </svg>
-                  <span>
-                    {isFr ? "INSCRIRE VOTRE 4SOME" : "REGISTER YOUR 4SOME"}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Column (8 cols): Title, Subtitle, CTAs, Date */}
+              <div className="lg:col-span-8 max-w-2xl">
+                {/* Tournament Badge Eyebrow */}
+                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-6 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
+                  <span className="text-[11px] sm:text-xs font-black tracking-widest uppercase text-neutral-100">
+                    {isFr ? "TOURNOI DE GOLF OFFICIEL · JUIN 2026" : "OFFICIAL GOLF TOURNAMENT · JUNE 2026"}
                   </span>
-                </a>
-
-                {/* View PDF Sponsorship Banner */}
-                <a
-                  href={pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 bg-white/15 hover:bg-white/25 text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-lg uppercase tracking-wider transition-all duration-300 backdrop-blur-md border border-white/25 hover:border-white/40 shadow-md"
-                >
-                  <svg
-                    className="w-4 h-4 text-[#ff4d6d] shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-                    />
-                  </svg>
-                  <span>
-                    {isFr
-                      ? "BANNIÈRE DE COMMANDITE (PDF)"
-                      : "SPONSORSHIP BANNER (PDF)"}
-                  </span>
-                </a>
-              </div>
-
-              {/* Event Date & Location Info Row */}
-              <div className="flex flex-wrap items-center gap-6 text-white pt-3 border-t border-white/15 max-w-lg">
-                {/* Date */}
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0">
-                    <svg
-                      className="w-5 h-5 text-[#ff3b5c]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <rect x="3" y="4" width="18" height="16" rx="2" />
-                      <path strokeLinecap="round" d="M16 2v4M8 2v4M3 9h18" />
-                      <circle cx="8" cy="14" r="1" fill="currentColor" />
-                      <circle cx="12" cy="14" r="1" fill="currentColor" />
-                      <circle cx="16" cy="14" r="1" fill="currentColor" />
-                    </svg>
-                  </div>
-                  <div className="flex flex-col text-xs sm:text-sm font-semibold leading-snug">
-                    <span className="text-neutral-300">
-                      {isFr ? "Lundi" : "Monday"}
-                    </span>
-                    <span className="font-bold text-white">
-                      {isFr ? "1er Juin 2026" : "June 1, 2026"}
-                    </span>
-                  </div>
                 </div>
 
-                {/* Vertical Divider */}
-                <div className="hidden sm:block h-9 w-[1px] bg-white/25" />
+                {/* Title: THE Iconic Golf Day / Le Tournoi Doré */}
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase leading-[1.08] drop-shadow-md">
+                  <span className="text-[#C6112F]">THE</span> ICONIC GOLF DAY
+                  <br />
+                  <span className="text-white/90 text-2xl sm:text-4xl md:text-5xl font-extrabold">
+                    LE TOURNOI DORÉ
+                  </span>
+                </h1>
 
-                {/* Location with Venue Name */}
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0">
+                {/* Red Accent Line */}
+                <div className="w-24 sm:w-28 h-[3.5px] bg-[#C6112F] my-4 sm:my-5 rounded-full shadow-xs" />
+
+                {/* Subtitle */}
+                <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-200 uppercase mb-6 sm:mb-8 drop-shadow-sm">
+                  {isFr
+                    ? "L'Événement de Golf Exclusif · Golf Club La Tempête"
+                    : "The Exclusive Golf Gathering · Golf Club La Tempête"}
+                </p>
+
+                {/* Action Buttons: Register 4some + PDF Banner */}
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
+                  {/* Register 4some Mail CTA */}
+                  <a
+                    href="mailto:ada@irinc.ca?subject=Register%20Golf%204some%20-%20THE%20Iconic%20Golf%20Day"
+                    className="inline-flex items-center gap-2.5 bg-[#C6112F] hover:bg-[#a80d26] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-lg uppercase tracking-wider transition-all duration-300 shadow-lg shadow-[#C6112F]/40 hover:scale-[1.03] cursor-pointer"
+                  >
                     <svg
-                      className="w-5 h-5 text-[#ff3b5c]"
+                      className="w-4 h-4 text-white shrink-0"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="2"
+                      strokeWidth="2.2"
                       viewBox="0 0 24 24"
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                       />
+                    </svg>
+                    <span>
+                      {isFr ? "INSCRIRE VOTRE 4SOME" : "REGISTER YOUR 4SOME"}
+                    </span>
+                  </a>
+
+                  {/* View PDF Sponsorship Banner */}
+                  <a
+                    href={pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 bg-white/15 hover:bg-white/25 text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-lg uppercase tracking-wider transition-all duration-300 backdrop-blur-md border border-white/25 hover:border-white/40 shadow-md"
+                  >
+                    <svg
+                      className="w-4 h-4 text-[#ff4d6d] shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      viewBox="0 0 24 24"
+                    >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                        d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
                       />
                     </svg>
+                    <span>
+                      {isFr
+                        ? "BANNIÈRE DE COMMANDITE (PDF)"
+                        : "SPONSORSHIP BANNER (PDF)"}
+                    </span>
+                  </a>
+                </div>
+
+                {/* Event Date & Venue Location Details */}
+                <div className="flex flex-wrap items-center gap-6 text-white pt-4 border-t border-white/15 max-w-lg">
+                  {/* Date */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0">
+                      <svg
+                        className="w-5 h-5 text-[#ff3b5c]"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <path strokeLinecap="round" d="M16 2v4M8 2v4M3 9h18" />
+                        <circle cx="8" cy="14" r="1" fill="currentColor" />
+                        <circle cx="12" cy="14" r="1" fill="currentColor" />
+                        <circle cx="16" cy="14" r="1" fill="currentColor" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col text-xs sm:text-sm font-semibold leading-snug">
+                      <span className="text-neutral-300 text-[11px] uppercase tracking-wider">
+                        {isFr ? "Lundi" : "Monday"}
+                      </span>
+                      <span className="font-extrabold text-white">
+                        {isFr ? "1er Juin 2026" : "June 1, 2026"}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex flex-col text-xs sm:text-sm font-semibold leading-snug">
-                    <span className="text-neutral-300">Golf Club La Tempête</span>
-                    <span className="font-bold text-white">Lévis, Québec</span>
+
+                  {/* Vertical Divider */}
+                  <div className="hidden sm:block h-9 w-[1px] bg-white/25" />
+
+                  {/* Location with Venue Name */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shrink-0">
+                      <svg
+                        className="w-5 h-5 text-[#ff3b5c]"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col text-xs sm:text-sm font-semibold leading-snug">
+                      <span className="text-neutral-300">Golf Club La Tempête</span>
+                      <span className="font-bold text-white">Lévis, Québec</span>
+                    </div>
                   </div>
+                </div>
+              </div>
+
+              {/* Right Column (4 cols): Host Venue Showcase Card on Right Side */}
+              <div className="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
+                <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/60 text-center flex flex-col items-center max-w-[280px] sm:max-w-[310px] w-full transition-all duration-300 hover:scale-105 select-none">
+                  <span className="text-[11px] font-black text-[#C6112F] uppercase tracking-[0.25em] mb-4 block">
+                    {isFr ? "CLUB HÔTE" : "HOST VENUE"}
+                  </span>
+                  <img
+                    src="/La+Tempete.webp"
+                    alt="Club de Golf La Tempête"
+                    className="h-20 sm:h-24 w-auto object-contain mb-4 drop-shadow-sm"
+                  />
+                  <div className="w-12 h-[2.5px] bg-[#C6112F] mb-3 rounded-full" />
+                  <span className="text-base sm:text-lg font-black text-neutral-900 leading-tight block">
+                    Golf Club La Tempête
+                  </span>
+                  <span className="text-xs font-semibold text-neutral-500 mt-1 block">
+                    Lévis, Québec · Canada
+                  </span>
                 </div>
               </div>
             </div>
@@ -226,6 +245,74 @@ export default function GolfPage() {
             </div>
           </div>
         </section>
+
+        {/* ═══════ HOST VENUE SPOTLIGHT: GOLF CLUB LA TEMPÊTE ═══════ */}
+        <section className="relative w-full py-12 sm:py-16 bg-neutral-50 dark:bg-[#111827]/60 border-b border-neutral-200/80 dark:border-neutral-800 transition-colors duration-300">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
+            <div className="bg-white dark:bg-[#181f2f] rounded-3xl p-6 sm:p-10 border border-neutral-200/90 dark:border-neutral-800 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Left Column: Venue Details */}
+              <div className="lg:col-span-8 flex flex-col items-start text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#C6112F]/10 text-[#C6112F] text-xs font-black uppercase tracking-widest mb-3">
+                  {isFr ? "CLUB HÔTE OFFICIEL" : "OFFICIAL CHAMPIONSHIP HOST VENUE"}
+                </div>
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-4">
+                  Golf Club La Tempête
+                </h3>
+                <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base font-medium leading-relaxed mb-6 max-w-2xl">
+                  {isFr
+                    ? "Situé à Lévis, à quelques minutes de Québec, le Club de Golf La Tempête est un parcours de championnat de renommée internationale ayant accueilli le Circuit des Champions de la PGA."
+                    : "Located in Lévis just minutes from Quebec City, Golf Club La Tempête is an internationally acclaimed championship venue designed to PGA Tour standards and former host of the PGA Champions Tour."}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#FCDDE1] dark:bg-[#C6112F]/20 flex items-center justify-center text-[#C6112F] shrink-0">
+                      ⛳
+                    </div>
+                    <div className="text-left">
+                      <b className="block text-xs sm:text-sm font-black text-neutral-900 dark:text-white">18 Holes</b>
+                      <span className="text-[11px] text-neutral-500 dark:text-neutral-400">Championship Layout</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#FCDDE1] dark:bg-[#C6112F]/20 flex items-center justify-center text-[#C6112F] shrink-0">
+                      🏆
+                    </div>
+                    <div className="text-left">
+                      <b className="block text-xs sm:text-sm font-black text-neutral-900 dark:text-white">PGA Caliber</b>
+                      <span className="text-[11px] text-neutral-500 dark:text-neutral-400">Champions Tour Host</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#FCDDE1] dark:bg-[#C6112F]/20 flex items-center justify-center text-[#C6112F] shrink-0">
+                      📍
+                    </div>
+                    <div className="text-left">
+                      <b className="block text-xs sm:text-sm font-black text-neutral-900 dark:text-white">Lévis, QC</b>
+                      <span className="text-[11px] text-neutral-500 dark:text-neutral-400">Greater Québec Area</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Logo Feature Card */}
+              <div className="lg:col-span-4 flex flex-col items-center justify-center bg-neutral-50 dark:bg-neutral-900/60 p-8 rounded-2xl border border-neutral-200/90 dark:border-neutral-800 text-center">
+                <img
+                  src="/La+Tempete.webp"
+                  alt="Golf Club La Tempête Logo"
+                  className="h-20 sm:h-24 w-auto object-contain mb-4 drop-shadow-sm"
+                />
+                <span className="text-xs font-black uppercase tracking-widest text-[#C6112F] block">
+                  Club Hôte Officiel
+                </span>
+                <span className="text-xs text-neutral-500 dark:text-neutral-400 font-semibold mt-1">
+                  Le Tournoi Doré 2026
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
         {/* ═══════ SPONSORSHIP BANNER PDF PRESENTATION (REPLACES LOGO CAROUSEL) ═══════ */}
         <section

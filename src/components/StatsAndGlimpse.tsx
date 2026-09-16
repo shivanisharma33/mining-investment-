@@ -306,15 +306,6 @@ export default function StatsAndGlimpse() {
                       </svg>
                     </div>
                   </div>
-
-                  {/* High-Contrast Action Banner */}
-                  <div className="mt-4 px-5 py-2.5 rounded-full bg-black/90 backdrop-blur-md border border-white/30 text-white flex items-center gap-2.5 shadow-2xl group-hover:scale-105 transition-transform duration-300">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white">
-                      {t("video-watch-sound", "CLICK TO WATCH WITH SOUND")}
-                    </span>
-                    <span className="text-base">🔊</span>
-                  </div>
                 </div>
               )}
             </div>

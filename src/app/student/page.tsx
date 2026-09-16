@@ -55,7 +55,7 @@ const trackWinners = [
     trackTitle: "OR Royalties Track Winners",
     teamName: "Team 10",
     sponsorName: "OR Royalties",
-    sponsorLogo: "/lorroyalties.svg",
+    sponsorLogo: "/or-royalties-logo.png",
     isOverallWinner: false,
     members: [
       { name: "Erik Giswold", school: "Queen's University" },
@@ -228,35 +228,35 @@ export default function StudentPage() {
                   <span className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.25em] block mb-3">
                     PROGRAM SPONSORS
                   </span>
-                  <div className="flex items-center gap-3 sm:gap-4 flex-wrap sm:flex-nowrap">
+                  <div className="flex items-center gap-4 sm:gap-5 flex-wrap sm:flex-nowrap">
                     {/* Glencore */}
                     <div
-                      className="w-[155px] sm:w-[175px] h-12 sm:h-14 logo-white-bg !bg-white rounded-2xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
+                      className="w-[185px] sm:w-[220px] h-16 sm:h-[72px] logo-white-bg !bg-white rounded-2xl px-5 py-2.5 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
                       style={{ backgroundColor: "#ffffff" }}
                     >
                       <img
                         src="/sponsors/2026/glencore.svg"
                         alt="Glencore Logo"
-                        className="h-6 sm:h-7 max-w-full w-auto object-contain"
+                        className="h-8 sm:h-10 max-w-full w-auto object-contain"
                       />
                     </div>
                     {/* OR Royalties */}
-                    <div className="w-[155px] sm:w-[175px] h-12 sm:h-14 bg-[#0b0e19] rounded-2xl flex items-center justify-center border border-[#d7a032]/40 shadow-sm shrink-0 overflow-hidden">
+                    <div className="w-[185px] sm:w-[220px] h-16 sm:h-[72px] bg-[#0b0e19] rounded-2xl flex items-center justify-center border border-[#d7a032]/40 shadow-sm shrink-0 overflow-hidden">
                       <img
                         src="/sponsors/2026/or_royalties_osisko_royalties.svg"
                         alt="OR Royalties Logo"
-                        className="h-9 sm:h-10 w-auto object-contain scale-[1.28]"
+                        className="h-12 sm:h-14 w-auto object-contain scale-[1.55]"
                       />
                     </div>
                     {/* IAMGOLD */}
                     <div
-                      className="w-[155px] sm:w-[175px] h-12 sm:h-14 logo-white-bg !bg-white rounded-2xl px-4 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
+                      className="w-[185px] sm:w-[220px] h-16 sm:h-[72px] logo-white-bg !bg-white rounded-2xl px-5 py-2.5 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
                       style={{ backgroundColor: "#ffffff" }}
                     >
                       <img
                         src="/sponsor image/IAMGOLD-Logo-N.png"
                         alt="IAMGOLD Logo"
-                        className="h-6 sm:h-7 max-w-full w-auto object-contain"
+                        className="h-8 sm:h-10 max-w-full w-auto object-contain"
                       />
                     </div>
                   </div>
@@ -520,13 +520,19 @@ export default function StudentPage() {
                         Track Sponsor
                       </span>
                       <div
-                        className="h-11 px-3.5 py-1.5 rounded-xl border border-neutral-200 dark:border-neutral-700/60 shadow-2xs flex items-center justify-center logo-white-bg !bg-white"
+                        className={`h-14 sm:h-16 rounded-xl border border-neutral-200 dark:border-neutral-700/60 shadow-2xs flex items-center justify-center logo-white-bg !bg-white overflow-hidden ${
+                          track.id === "or-royalties" ? "px-2.5 py-0.5 sm:px-3 sm:py-1" : "px-5 py-2"
+                        }`}
                         style={{ backgroundColor: "#ffffff" }}
                       >
                         <img
                           src={track.sponsorLogo}
                           alt={`${track.sponsorName} Logo`}
-                          className="h-6 sm:h-7 max-w-[130px] w-auto object-contain"
+                          className={
+                            track.id === "or-royalties"
+                              ? "h-12 sm:h-14 max-w-[190px] w-auto object-contain scale-125 sm:scale-130 transition-transform"
+                              : "h-9 sm:h-11 max-w-[160px] w-auto object-contain"
+                          }
                         />
                       </div>
                     </div>

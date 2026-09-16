@@ -54,6 +54,15 @@ const editionCards = [
     image: "/news/banner_1.png",
     isGrayscale: false,
   },
+  {
+    year: 2022,
+    title: "The Founding Edition",
+    titleFr: "L'édition fondatrice",
+    desc: "The inaugural edition that launched Canada's premier mining investment conference.",
+    descFr: "L'édition inaugurale qui a lancé la première conférence d'investissement minier du Canada.",
+    image: "/news/banner_1.png",
+    isGrayscale: false,
+  },
 ];
 
 export default function PastEditionsPage() {
@@ -62,7 +71,7 @@ export default function PastEditionsPage() {
   const [selectedYear, setSelectedYear] = useState<string>("ALL");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  const yearOptions = ["ALL", "2027", "2026", "2025", "2024", "2023"];
+  const yearOptions = ["ALL", "2027", "2026", "2025", "2024", "2023", "2022"];
 
   const filteredCards = editionCards.filter((c) => {
     const matchesYearFilter =

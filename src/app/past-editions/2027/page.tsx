@@ -22,7 +22,7 @@ import {
 } from "@/lib/eventsApi";
 import { fetchSponsorsByYear } from "@/lib/sponsorsApi";
 
-const years = [2027, 2026, 2025, 2024, 2023];
+const years = [2027, 2026, 2025, 2024, 2023, 2022];
 
 export default function PastEdition2027Page() {
   const { lang } = useLanguage();
@@ -224,7 +224,7 @@ export default function PastEdition2027Page() {
                 >
                   &larr; {isFr ? "Toutes les éditions" : "All Editions"}
                 </Link>
-                {[2027, 2026, 2025, 2024, 2023].map((yr) => (
+                {years.map((yr) => (
                   <Link
                     key={yr}
                     href={`/past-editions/${yr}`}
