@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -174,6 +175,7 @@ const pastYearsDropdown = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
@@ -193,33 +195,68 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock background scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  // Automatically close mobile menu on route changes
+  useEffect(() => {
+    setIsOpen(false);
+    setMobileAboutOpen(false);
+    setMobileProgramsOpen(false);
+    setMobilePastYearsOpen(false);
+  }, [pathname]);
+
+  // Close mobile menu on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const isLinkActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname?.startsWith(href + "/");
+  };
+
   const navLinks = [
-    { name: t("nav-home", "HOME"), href: "/", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
-    { name: t("nav-about", "ABOUT"), href: "/about", active: false, hasDropdown: true, dropdownType: "about", isExternal: false },
-    { name: t("nav-programs", "PROGRAMS"), href: "/student", active: false, hasDropdown: true, dropdownType: "programs", isExternal: false },
-    { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
-    { name: t("nav-gallery", "GALLERY"), href: "/media", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
-    { name: t("nav-news", "NEWS"), href: "/news", active: false, hasDropdown: false, dropdownType: "none", isExternal: false },
-    { name: t("nav-newsroom", "THE NEWSROOM"), href: "/newsroom", active: false, hasDropdown: false, dropdownType: "none", isExternal: false, hidden: true },
+    { name: t("nav-home", "HOME"), href: "/", hasDropdown: false, dropdownType: "none", isExternal: false },
+    { name: t("nav-about", "ABOUT"), href: "/about", hasDropdown: true, dropdownType: "about", isExternal: false },
+    { name: t("nav-programs", "PROGRAMS"), href: "/student", hasDropdown: true, dropdownType: "programs", isExternal: false },
+    { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", hasDropdown: false, dropdownType: "none", isExternal: false },
+    { name: t("nav-gallery", "GALLERY"), href: "/media", hasDropdown: false, dropdownType: "none", isExternal: false },
+    { name: t("nav-news", "NEWS"), href: "/news", hasDropdown: false, dropdownType: "none", isExternal: false },
+    { name: t("nav-newsroom", "THE NEWSROOM"), href: "/newsroom", hasDropdown: false, dropdownType: "none", isExternal: false, hidden: true },
   ];
 
   const visibleNavLinks = navLinks.filter((link) => !link.hidden);
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-20 sm:h-22" : "h-24"
-        }`}
+      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${
+        scrolled ? "shadow-md h-16 sm:h-20 md:h-22" : "h-18 sm:h-22 md:h-24"
+      }`}
     >
-      <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 md:px-10 h-full flex items-center justify-between">
+      <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-3 sm:px-6 md:px-10 h-full flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center group">
+        <Link href="/" className="flex-shrink-0 flex items-center group py-1">
           <Image
             src="/MainPageLogo.webp"
             alt="The Mining Investment Event"
             width={240}
             height={90}
             priority
-            className="object-contain h-12 xs:h-16 sm:h-20 md:h-[76px] max-h-[80%] w-auto group-hover:scale-105 transition-transform duration-300 dark:brightness-110"
+            className="object-contain h-10 sm:h-14 md:h-16 lg:h-[72px] max-h-[85%] w-auto group-hover:scale-105 transition-transform duration-300 dark:brightness-110"
           />
         </Link>
 
@@ -262,7 +299,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 ${link.active ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+                  className={`relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                     }`}
                 >
                   <span>{link.name}</span>
@@ -284,7 +321,7 @@ export default function Navbar() {
                   )}
                   {/* Animated Underline Effect */}
                   <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-[#C6112F] transition-all duration-300 ${link.active ? "w-full" : "w-0 group-hover:w-full"
+                    className={`absolute bottom-0 left-0 h-[2px] bg-[#C6112F] transition-all duration-300 ${isLinkActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                   />
                 </Link>
@@ -462,298 +499,318 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop & Action Buttons Container */}
-        <div className="flex items-center gap-2.5 sm:gap-3 xl:gap-4 shrink-0">
-
-
-          {/* The Noble Button */}
+        <div className="flex items-center gap-2 sm:gap-2.5 xl:gap-3.5 shrink-0">
+          {/* The Noble Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
           <a
             href="https://www.thenoblemininginvestmentconference.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3.5 py-2 sm:px-4 sm:py-2.5 xl:px-5 xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider uppercase inline-flex items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0"
+            className="hidden xl:inline-flex px-3.5 py-2 xl:px-4 xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[11px] xl:text-xs font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer"
           >
             <span>{t("nav-noble-btn", "The Noble")}</span>
           </a>
 
-          {/* International Mining Week Button */}
+          {/* International Mining Week Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
           <a
             href="https://mining-international-weekly.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3.5 py-2 sm:px-4 sm:py-2.5 xl:px-5 xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider uppercase inline-flex items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0"
+            className="hidden xl:inline-flex px-3.5 py-2 xl:px-4 xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[11px] xl:text-xs font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer"
           >
             <span>{t("nav-imw-btn", "International Mining Week")}</span>
           </a>
 
-          {/* Day / Night Mode Toggle Switch (Right Corner) */}
+          {/* Day / Night Mode Toggle Switch (Responsive compact sizing on mobile) */}
           <button
             onClick={toggleTheme}
-            className="relative flex items-center justify-between px-1.5 w-[72px] sm:w-[78px] xl:w-[86px] h-[32px] sm:h-[34px] xl:h-[38px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group overflow-hidden"
+            className="relative flex items-center justify-between px-1.5 w-[62px] sm:w-[72px] xl:w-[82px] h-[30px] sm:h-[34px] xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group overflow-hidden shrink-0"
             aria-label={`Switch to ${theme === "light" ? "Night" : "Day"} mode`}
             title={theme === "light" ? "Switch to Night mode" : "Switch to Day mode"}
           >
             {/* Sliding Indicator Circle */}
             <span
-              className="absolute top-[2px] h-[24px] sm:h-[26px] xl:h-[30px] w-[24px] sm:w-[26px] xl:w-[30px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs z-20"
+              className="absolute top-[2px] h-[22px] sm:h-[26px] xl:h-[28px] w-[22px] sm:w-[26px] xl:w-[28px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs z-20"
               style={{
                 left: theme === "light" ? "2px" : "calc(100% - 2px)",
                 transform: theme === "light" ? "translateX(0)" : "translateX(-100%)",
               }}
             >
               {theme === "light" ? (
-                <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-amber-300 fill-amber-300" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-amber-300 fill-amber-300" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="4" />
                   <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
                 </svg>
               ) : (
-                <svg className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-indigo-100 fill-indigo-100" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-indigo-100 fill-indigo-100" viewBox="0 0 24 24">
                   <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
                 </svg>
               )}
             </span>
             {/* Sun Icon */}
             <span className={`relative z-10 flex-1 flex justify-center transition-opacity duration-300 ${theme === "light" ? "opacity-0" : "opacity-70 text-amber-400"}`}>
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.78a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.414l-.708-.707a1 1 0 010-1.414zm2.78 4.22a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-2.78 5.636a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.415 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-5.636-2.78a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 10a1 1 0 01-1-1V8a1 1 0 112 0v1a1 1 0 01-1 1zm2.78-5.636a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM10 6a4 4 0 100 8 4 4 0 000-8z" clipRule="evenodd" />
               </svg>
             </span>
             {/* Moon Icon */}
             <span className={`relative z-10 flex-1 flex justify-center transition-opacity duration-300 ${theme === "dark" ? "opacity-0" : "opacity-70 text-indigo-600"}`}>
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
               </svg>
             </span>
           </button>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Hamburger Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] focus:outline-none transition-colors"
-            aria-label="Toggle Menu"
+            className="lg:hidden w-10 h-10 rounded-xl flex items-center justify-center text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800 border border-neutral-200/80 dark:border-slate-700/80 focus:outline-none transition-all cursor-pointer shrink-0 shadow-2xs"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Drawer & Backdrop */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-md border-b border-neutral-200 dark:border-slate-800 shadow-xl px-6 py-6 flex flex-col gap-5 animate-fadeIn max-h-[80vh] overflow-y-auto">
-          <nav className="flex flex-col gap-1">
-            {visibleNavLinks.map((link) => (
-              <div key={link.name}>
-                {link.hasDropdown ? (
-                  <>
-                    <button
-                      onClick={() => {
-                        if (link.dropdownType === "about") setMobileAboutOpen(!mobileAboutOpen);
-                        if (link.dropdownType === "programs") setMobileProgramsOpen(!mobileProgramsOpen);
-                        if (link.dropdownType === "past-years") setMobilePastYearsOpen(!mobilePastYearsOpen);
-                      }}
-                      className="w-full flex items-center justify-between py-2.5 text-sm font-extrabold tracking-wider uppercase text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] transition-colors"
-                    >
-                      <span>{link.name}</span>
-                      <svg
-                        className={`w-4 h-4 transition-transform duration-200 ${(link.dropdownType === "about" && mobileAboutOpen) ||
-                          (link.dropdownType === "programs" && mobileProgramsOpen) ||
-                          (link.dropdownType === "past-years" && mobilePastYearsOpen)
-                          ? "rotate-180 text-[#C6112F]"
-                          : ""
+        <>
+          {/* Clickable Backdrop overlay to close when tapping outside */}
+          <div
+            className="fixed inset-0 top-[72px] sm:top-20 md:top-22 bg-black/40 backdrop-blur-xs z-40 lg:hidden"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Mobile Drawer Menu */}
+          <div className="fixed top-[72px] sm:top-20 md:top-22 left-0 w-full max-h-[calc(100dvh-4.5rem)] sm:max-h-[calc(100dvh-5.5rem)] overflow-y-auto bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-slate-800 shadow-2xl px-4 sm:px-8 py-5 flex flex-col gap-4 z-50 lg:hidden">
+            <nav className="flex flex-col gap-1">
+              {visibleNavLinks.map((link) => {
+                const active = isLinkActive(link.href);
+                return (
+                  <div key={link.name}>
+                    {link.hasDropdown ? (
+                      <>
+                        <button
+                          onClick={() => {
+                            if (link.dropdownType === "about") setMobileAboutOpen(!mobileAboutOpen);
+                            if (link.dropdownType === "programs") setMobileProgramsOpen(!mobileProgramsOpen);
+                            if (link.dropdownType === "past-years") setMobilePastYearsOpen(!mobilePastYearsOpen);
+                          }}
+                          className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors cursor-pointer ${
+                            active
+                              ? "text-[#C6112F] bg-[#C6112F]/5"
+                              : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
                           }`}
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        viewBox="0 0 24 24"
+                        >
+                          <span>{link.name}</span>
+                          <svg
+                            className={`w-4 h-4 transition-transform duration-200 ${
+                              (link.dropdownType === "about" && mobileAboutOpen) ||
+                              (link.dropdownType === "programs" && mobileProgramsOpen) ||
+                              (link.dropdownType === "past-years" && mobilePastYearsOpen)
+                                ? "rotate-180 text-[#C6112F]"
+                                : "text-neutral-400"
+                            }`}
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                          </svg>
+                        </button>
+
+                        {/* About Submenu */}
+                        {link.dropdownType === "about" && mobileAboutOpen && (
+                          <div className="pl-3 pr-1 py-2 flex flex-col gap-1.5 ml-3 my-1 border-l-2 border-[#C6112F]/30">
+                            {aboutDropdown.map((item) => {
+                              const isSubActive = pathname === item.href;
+                              if (item.isExternal) {
+                                return (
+                                  <a
+                                    key={item.titleKey}
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setIsOpen(false)}
+                                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#fef2f2] dark:hover:bg-slate-800/80 transition-colors"
+                                  >
+                                    <div className="w-8 h-8 rounded-lg bg-[#f4f7fa] dark:bg-slate-800 text-[#C6112F] flex items-center justify-center shrink-0 mt-0.5">
+                                      {item.icon}
+                                    </div>
+                                    <div className="flex flex-col">
+                                      <span className="text-xs font-bold text-neutral-900 dark:text-white">
+                                        {t(item.titleKey, item.titleDefault)}
+                                      </span>
+                                      <span className="text-[11px] text-neutral-500 dark:text-slate-400 line-clamp-1">
+                                        {t(item.descKey, item.descDefault)}
+                                      </span>
+                                    </div>
+                                  </a>
+                                );
+                              }
+                              return (
+                                <Link
+                                  key={item.titleKey}
+                                  href={item.href}
+                                  onClick={() => setIsOpen(false)}
+                                  className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${
+                                    isSubActive
+                                      ? "bg-[#C6112F]/10 text-[#C6112F]"
+                                      : "hover:bg-[#fef2f2] dark:hover:bg-slate-800/80"
+                                  }`}
+                                >
+                                  <div className="w-8 h-8 rounded-lg bg-[#f4f7fa] dark:bg-slate-800 text-[#C6112F] flex items-center justify-center shrink-0 mt-0.5">
+                                    {item.icon}
+                                  </div>
+                                  <div className="flex flex-col">
+                                    <span className="text-xs font-bold text-neutral-900 dark:text-white">
+                                      {t(item.titleKey, item.titleDefault)}
+                                    </span>
+                                    <span className="text-[11px] text-neutral-500 dark:text-slate-400 line-clamp-1">
+                                      {t(item.descKey, item.descDefault)}
+                                    </span>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        )}
+
+                        {/* Programs Submenu */}
+                        {link.dropdownType === "programs" && mobileProgramsOpen && (
+                          <div className="pl-3 pr-1 py-2 flex flex-col gap-1.5 ml-3 my-1 border-l-2 border-[#C6112F]/30">
+                            {programsDropdown.map((item) => {
+                              const isSubActive = pathname === item.href;
+                              if (item.isExternal) {
+                                return (
+                                  <a
+                                    key={item.titleKey}
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setIsOpen(false)}
+                                    className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#fef2f2] dark:hover:bg-slate-800/80 transition-colors"
+                                  >
+                                    <div className="w-8 h-8 rounded-lg bg-[#f4f7fa] dark:bg-slate-800 text-[#C6112F] flex items-center justify-center shrink-0 mt-0.5">
+                                      {item.icon}
+                                    </div>
+                                    <div className="flex flex-col">
+                                      <span className="text-xs font-bold text-neutral-900 dark:text-white flex items-center gap-1">
+                                        {t(item.titleKey, item.titleDefault)}
+                                        <svg className="w-3 h-3 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                        </svg>
+                                      </span>
+                                      <span className="text-[11px] text-neutral-500 dark:text-slate-400 line-clamp-1">
+                                        {t(item.descKey, item.descDefault)}
+                                      </span>
+                                    </div>
+                                  </a>
+                                );
+                              }
+                              return (
+                                <Link
+                                  key={item.titleKey}
+                                  href={item.href}
+                                  onClick={() => setIsOpen(false)}
+                                  className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${
+                                    isSubActive
+                                      ? "bg-[#C6112F]/10 text-[#C6112F]"
+                                      : "hover:bg-[#fef2f2] dark:hover:bg-slate-800/80"
+                                  }`}
+                                >
+                                  <div className="w-8 h-8 rounded-lg bg-[#f4f7fa] dark:bg-slate-800 text-[#C6112F] flex items-center justify-center shrink-0 mt-0.5">
+                                    {item.icon}
+                                  </div>
+                                  <div className="flex flex-col">
+                                    <span className="text-xs font-bold text-neutral-900 dark:text-white">
+                                      {t(item.titleKey, item.titleDefault)}
+                                    </span>
+                                    <span className="text-[11px] text-neutral-500 dark:text-slate-400 line-clamp-1">
+                                      {t(item.descKey, item.descDefault)}
+                                    </span>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </>
+                    ) : link.isExternal ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsOpen(false)}
+                        className="px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors flex items-center justify-between text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                      </svg>
-                    </button>
-                    {link.dropdownType === "about" && mobileAboutOpen && (
-                      <div className="pl-4 flex flex-col gap-1 mb-2 border-l-2 border-[#C6112F]/20">
-                        {aboutDropdown.map((item) => {
-                          if (item.isExternal) {
-                            return (
-                              <a
-                                key={item.titleKey}
-                                href={item.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
-                              >
-                                <span className="text-[#C6112F]">{item.icon}</span>
-                                <span>{t(item.titleKey, item.titleDefault)}</span>
-                              </a>
-                            );
-                          }
-                          return (
-                            <Link
-                              key={item.titleKey}
-                              href={item.href}
-                              onClick={() => setIsOpen(false)}
-                              className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
-                            >
-                              <span className="text-[#C6112F]">{item.icon}</span>
-                              <span>{t(item.titleKey, item.titleDefault)}</span>
-                            </Link>
-                          );
-                        })}
-                      </div>
+                        <span>{link.name}</span>
+                        <svg
+                          className="w-4 h-4 text-neutral-400 stroke-current"
+                          fill="none"
+                          strokeWidth="2.5"
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors block ${
+                          active
+                            ? "text-[#C6112F] bg-[#C6112F]/10"
+                            : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
                     )}
-                    {link.dropdownType === "programs" && mobileProgramsOpen && (
-                      <div className="pl-4 flex flex-col gap-1 mb-2 border-l-2 border-[#C6112F]/20">
-                        {programsDropdown.map((item) => {
-                          if (item.isExternal) {
-                            return (
-                              <a
-                                key={item.titleKey}
-                                href={item.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
-                              >
-                                <span className="text-[#C6112F]">{item.icon}</span>
-                                <span className="flex items-center gap-1.5">
-                                  {t(item.titleKey, item.titleDefault)}
-                                  <svg className="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                                  </svg>
-                                </span>
-                              </a>
-                            );
-                          }
-                          return (
-                            <Link
-                              key={item.titleKey}
-                              href={item.href}
-                              onClick={() => setIsOpen(false)}
-                              className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
-                            >
-                              <span className="text-[#C6112F]">{item.icon}</span>
-                              <span>{t(item.titleKey, item.titleDefault)}</span>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    )}
-                    {link.dropdownType === "past-years" && mobilePastYearsOpen && (
-                      <div className="pl-4 flex flex-col gap-1 mb-2 border-l-2 border-[#C6112F]/20">
-                        {pastYearsDropdown.map((item) => {
-                          if (item.isExternal) {
-                            return (
-                              <a
-                                key={item.titleKey}
-                                href={item.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setIsOpen(false)}
-                                className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
-                              >
-                                <span className="text-[#C6112F]">{item.icon}</span>
-                                <span>{t(item.titleKey, item.titleDefault)}</span>
-                              </a>
-                            );
-                          }
-                          return (
-                            <Link
-                              key={item.titleKey}
-                              href={item.href}
-                              onClick={() => setIsOpen(false)}
-                              className="flex items-center gap-3 py-2 text-sm font-semibold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors"
-                            >
-                              <span className="text-[#C6112F]">{item.icon}</span>
-                              <span>{t(item.titleKey, item.titleDefault)}</span>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </>
-                ) : link.isExternal ? (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => setIsOpen(false)}
-                    className="py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors flex items-center justify-between text-neutral-800 dark:text-slate-100 hover:text-[#C6112F]"
-                  >
-                    <span>{link.name}</span>
-                    <svg
-                      className="w-4 h-4 text-neutral-400 stroke-current"
-                      fill="none"
-                      strokeWidth="2.5"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                    </svg>
-                  </a>
-                ) : (
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`py-2.5 text-sm font-extrabold tracking-wider uppercase transition-colors block ${link.active ? "text-[#C6112F]" : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F]"
-                      }`}
-                  >
-                    {link.name}
-                  </Link>
-                )}
+                  </div>
+                );
+              })}
+            </nav>
+
+            {/* Mobile Footer CTAs and Action Controls */}
+            <div className="pt-4 border-t border-neutral-200 dark:border-slate-800 flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch gap-2.5 w-full">
+                <a
+                  href="https://www.thenoblemininginvestmentconference.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full sm:w-1/2 py-3 px-4 rounded-xl bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-xs font-extrabold tracking-wider uppercase text-center flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+                >
+                  <span>{t("nav-noble-btn", "The Noble")}</span>
+                  <svg className="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
+                </a>
+                <a
+                  href="https://mining-international-weekly.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full sm:w-1/2 py-3 px-4 rounded-xl bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-extrabold tracking-wider uppercase text-center flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+                >
+                  <span>{t("nav-imw-btn", "International Mining Week")}</span>
+                  <svg className="w-3.5 h-3.5 text-white/80" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                  </svg>
+                </a>
               </div>
-            ))}
-          </nav>
-
-          <div className="pt-4 border-t border-neutral-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
-            {/* Mobile Actions: Theme & Language */}
-            <div className="flex items-center gap-3">
-              {/* Mobile Theme Toggle Button */}
-              <button
-                onClick={toggleTheme}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-extrabold border border-[#C6112F] text-neutral-800 dark:text-slate-100 bg-neutral-50 dark:bg-slate-800 transition-colors shadow-2xs"
-              >
-                {theme === "light" ? (
-                  <>
-                    <span className="text-amber-500">☀️</span>
-                    <span>Day</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="text-indigo-400">🌙</span>
-                    <span>Night</span>
-                  </>
-                )}
-              </button>
-
-
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-stretch gap-2 w-full mt-2">
-              <a
-                href="https://www.thenoblemininginvestmentconference.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-xs font-extrabold tracking-wider uppercase text-center flex items-center justify-center transition-colors"
-              >
-                <span>{t("nav-noble-btn", "The Noble")}</span>
-              </a>
-              <a
-                href="https://mining-international-weekly.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="px-4 py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs font-extrabold tracking-wider uppercase text-center flex items-center justify-center transition-colors shadow-xs"
-              >
-                <span>{t("nav-imw-btn", "International Mining Week")}</span>
-              </a>
             </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   );
