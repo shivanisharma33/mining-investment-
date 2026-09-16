@@ -1884,10 +1884,10 @@ export default function NewsPage() {
             <BannerSliderSection />
           </section>
 
-          {/* ═══════ SECTION 2: SPONSORS & PARTNERS GRID ═══════ */}
-          <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          {/* ═══════ SECTION 2: SPONSORS & PARTNERS GRID (HIDDEN) ═══════ */}
+          {/* <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <SponsorsSection />
-          </section>
+          </section> */}
 
           {/* ═══════ SECTION 3: MINING NEWS (FIRST BELOW SPONSORS) ═══════ */}
           <section className="relative w-full py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
