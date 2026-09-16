@@ -517,7 +517,7 @@ export default function PastEdition2025Page() {
 
                     <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border-2 border-[#C6112F]/40 shadow-sm mb-8 bg-neutral-900">
                       <img
-                        src="/image%2015%20(2).avif"
+                        src="/2025.png"
                         alt="Québec City Event"
                         className="w-full h-full object-cover"
                       />

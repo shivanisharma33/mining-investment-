@@ -418,7 +418,7 @@ export default function PastEdition2022Page() {
 
                     <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border-2 border-[#C6112F]/40 shadow-sm mb-8 bg-neutral-900">
                       <img
-                        src="/news/banner_1.png"
+                        src="/2022.png"
                         alt="Québec City Event"
                         className="w-full h-full object-cover"
                       />

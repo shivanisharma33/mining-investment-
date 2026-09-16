@@ -94,7 +94,7 @@ This landmark week-long initiative will unite global mining executives, institut
 
 Recipients were selected based on academic excellence, leadership initiative and commitment to driving innovation within the natural resource sector.`,
     fullBodyFR: "Le programme de parrainage étudiant, généreusement soutenu par Glencore Canada, accorde aux meilleurs étudiants en géologie, en génie minier et en finance un parrainage complet.",
-    image: "/news/hero_3.png",
+    image: "/student-hero.jpg",
     readTime: "3 MIN READ",
   },
   {

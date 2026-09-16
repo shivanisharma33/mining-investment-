@@ -24,6 +24,11 @@ const sidebarTabs = [
       </svg>
     ),
   },
+
+
+
+
+
   {
     id: "companies",
     label: "Participating Companies",
@@ -171,11 +176,10 @@ export default function PastEdition2024Page() {
                   <Link
                     key={yr}
                     href={`/past-editions/${yr}`}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-black tracking-wider transition-all ${
-                      viewingEdition === yr
+                    className={`px-3 py-1.5 rounded-lg text-xs font-black tracking-wider transition-all ${viewingEdition === yr
                         ? "bg-[#C6112F] text-white shadow-xs scale-105"
                         : "bg-neutral-100 dark:bg-zinc-800 text-neutral-700 dark:text-zinc-200 hover:bg-[#C6112F]/10 hover:text-[#C6112F]"
-                    }`}
+                      }`}
                   >
                     {yr}
                   </Link>
@@ -522,7 +526,7 @@ export default function PastEdition2024Page() {
 
                     <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border-2 border-[#C6112F]/40 shadow-sm mb-8 bg-neutral-900">
                       <img
-                        src="/news/critical_minerals.png"
+                        src="/2024.png"
                         alt="Québec City Event"
                         className="w-full h-full object-cover"
                       />

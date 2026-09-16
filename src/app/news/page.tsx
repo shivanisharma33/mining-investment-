@@ -118,7 +118,7 @@ const heroSlides = [
     headlineFR: "L'investissement minier mondial atteint un nouveau sommet en 2025",
     snippetEN: "Exploration spending rises across gold, copper and critical minerals as investor confidence strengthens.",
     snippetFR: "Les dépenses d'exploration augmentent dans l'or, le cuivre et les minéraux critiques avec la confiance des investisseurs.",
-    image: "/news/hero_1.png",
+    image: "/MINING%20INVESTMENT%20EVENT%202026_DAY%202_MAIN%20EVENT-101.jpg",
     buttonTextEN: "READ FULL STORY",
     buttonTextFR: "LIRE L'HISTOIRE COMPLÈTE",
   },
@@ -140,7 +140,7 @@ const heroSlides = [
     headlineFR: "Glencore et Osisko élargissent le programme de bourse étudiante",
     snippetEN: "Empowering the next generation of geology, engineering and finance leaders across North American universities.",
     snippetFR: "Soutenir la prochaine génération de leaders en géologie, génie et finance dans les universités.",
-    image: "/news/hero_3.png",
+    image: "/student-hero.jpg",
     buttonTextEN: "READ FULL STORY",
     buttonTextFR: "LIRE L'HISTOIRE COMPLÈTE",
   },
@@ -232,55 +232,8 @@ function HeroNewsSlider({ lang }: { lang: string }) {
   );
 }
 
-const bannerSlides = [
-  {
-    id: "banner-1",
-    titleEN: "Global Mining Capital Markets Summit",
-    titleFR: "Sommet mondial des marchés des capitaux miniers",
-    subtitleEN: "Connecting Issuers, Investors & Global Mining Leaders",
-    subtitleFR: "Connecter les émetteurs, les investisseurs et les dirigeants miniers mondiaux",
-    image: "/news/banner_1.png",
-  },
-  {
-    id: "banner-2",
-    titleEN: "Critical Minerals & ESG Innovation Showcase",
-    titleFR: "Vitrine des minéraux critiques et de l'innovation ESG",
-    subtitleEN: "Shaping the Future of Sustainable Mining & Energy Transition",
-    subtitleFR: "Façonner l'avenir de l'exploitation minière durable et de la transition énergétique",
-    image: "/news/banner_2.png",
-  },
-  {
-    id: "banner-3",
-    titleEN: "Quebec City Convention & Executive Networking",
-    titleFR: "Congrès de Québec et réseautez entre dirigeants",
-    subtitleEN: "Canada's Premier Mining Investment Gathering",
-    subtitleFR: "Le premier rassemblement d'investissement minier au Canada",
-    image: "/news/banner_3.png",
-  },
-];
-
 function BannerSliderSection() {
   const { lang, t } = useLanguage();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? bannerSlides.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % bannerSlides.length);
-  };
-
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % bannerSlides.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const current = bannerSlides[currentIndex];
 
   return (
     <div className="w-full text-center">
@@ -294,74 +247,35 @@ function BannerSliderSection() {
         </h2>
         <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mb-4" />
         <p className="text-neutral-500 dark:text-slate-300 text-xs sm:text-sm font-medium max-w-xl mx-auto leading-relaxed">
-          {t("partners-sub", "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters.")}
+          {t(
+            "partners-sub",
+            "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters."
+          )}
         </p>
       </div>
 
-      {/* Banner Carousel Slider matching width of top Hero Banner */}
-      <div
-        className="relative w-full max-w-[1240px] mx-auto"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
-        {/* Left Arrow Button - Positioned outside banner content */}
-        <button
-          onClick={prevSlide}
-          aria-label="Previous Banner"
-          className="absolute -left-3 sm:-left-5 md:-left-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-xl shrink-0 cursor-pointer z-30"
-        >
-          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-        </button>
+      {/* Coming Soon Card */}
+      <div className="w-full max-w-[1240px] mx-auto">
+        <div className="relative w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] bg-gradient-to-br from-white via-slate-50 to-neutral-100 dark:from-[#131b2e] dark:via-[#0f172a] dark:to-[#17223b] py-14 sm:py-20 px-6 sm:px-10 text-center shadow-md relative overflow-hidden flex flex-col items-center justify-center">
+          <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Banner Display Box matching hero banner width */}
-        <div className="relative w-full rounded-2xl sm:rounded-3xl border border-neutral-200/90 dark:border-[#233049] overflow-hidden shadow-lg bg-neutral-900 h-44 sm:h-56 md:h-64 group">
-          <img
-            src={current.image}
-            alt={lang === "FR" ? current.titleFR : current.titleEN}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-            decoding="async"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-10 text-left">
-            <span className="text-white bg-neutral-900/80 dark:bg-slate-800/90 text-[9px] sm:text-[10px] font-black tracking-widest uppercase px-3 py-1 rounded-full self-start mb-2 shadow-2xs backdrop-blur-sm border border-white/10">
-              {lang === "FR" ? "ÉVÉNEMENT EN VEDETTE" : "FEATURED EVENT"}
+          <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#C6112F]/15 text-[#C6112F] text-xs font-black tracking-[0.2em] uppercase mb-4 border border-[#C6112F]/20">
+              {lang === "FR" ? "À VENIR" : "COMING SOON"}
             </span>
-            <h3 className="text-xl sm:text-3xl font-extrabold text-white leading-snug drop-shadow-md">
-              {lang === "FR" ? current.titleFR : current.titleEN}
+
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1a1f2c] dark:text-white tracking-tight leading-tight mb-3">
+              {lang === "FR" ? "Bientôt Disponible" : "Coming Soon"}
             </h3>
-            <p className="text-neutral-200 text-xs sm:text-sm font-medium mt-1 drop-shadow-sm max-w-2xl line-clamp-1">
-              {lang === "FR" ? current.subtitleFR : current.subtitleEN}
+
+            <p className="text-neutral-600 dark:text-slate-300 text-xs sm:text-sm sm:text-base leading-relaxed font-medium max-w-md">
+              {lang === "FR"
+                ? "Les annonces et détails pour cette section seront bientôt disponibles."
+                : "Partner announcements and details for this section will be revealed soon."}
             </p>
           </div>
         </div>
-
-        {/* Right Arrow Button - Positioned outside banner content */}
-        <button
-          onClick={nextSlide}
-          aria-label="Next Banner"
-          className="absolute -right-3 sm:-right-5 md:-right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-[#C6112F] bg-white dark:bg-[#131b2e] flex items-center justify-center text-[#C6112F] hover:bg-[#C6112F] hover:text-white transition-all shadow-xl shrink-0 cursor-pointer z-30"
-        >
-          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Red Pagination Indicator Dots matching mockup */}
-      <div className="flex justify-center items-center gap-3 pt-6">
-        {bannerSlides.map((b, idx) => (
-          <button
-            key={b.id}
-            onClick={() => setCurrentIndex(idx)}
-            aria-label={`Go to banner ${idx + 1}`}
-            className={`transition-all duration-300 cursor-pointer ${idx === currentIndex
-              ? "w-3.5 h-3.5 rounded-full bg-[#C6112F] scale-110 shadow-sm"
-              : "w-2.5 h-2.5 rounded-full bg-neutral-300 dark:bg-slate-700 hover:bg-[#C6112F]/60"
-              }`}
-          />
-        ))}
       </div>
     </div>
   );
@@ -948,7 +862,7 @@ const miningNewsArticles = [
     readTimeFR: "5 min de lecture",
     snippet: "James Bay lithium corridor sees record drilling results as automakers move to secure domestic battery raw materials supply chains.",
     snippetFR: "Le corridor de lithium de la Baie-James enregistre des résultats de forage records pour les chaînes de batteries.",
-    image: "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200",
+    image: "/gallery%20photos/MAIN%20EVENT/speaker-podium.jpg",
     featured: true,
   },
   {
@@ -963,7 +877,7 @@ const miningNewsArticles = [
     readTimeFR: "4 min de lecture",
     snippet: "Tier-1 gold producers step up brownfield development and strategic M&A to replace depleted oz reserves.",
     snippetFR: "Les producteurs d'or de premier ordre accélèrent le développement et les acquisitions stratégiques.",
-    image: "https://images.unsplash.com/photo-1610375461246-83df859d849d?q=80&w=800",
+    image: "/news/gold_discovery.png",
   },
   {
     id: "mining-3",
@@ -977,7 +891,7 @@ const miningNewsArticles = [
     readTimeFR: "5 min de lecture",
     snippet: "Expanded processing mills at major Chilean deposits increase annual output by 18% in Q2.",
     snippetFR: "Les usines de traitement agrandies dans les principaux gisements chiliens augmentent la production de 18 % au T2.",
-    image: "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?q=80&w=800",
+    image: "/news/copper_mine.png",
   },
   {
     id: "mining-4",

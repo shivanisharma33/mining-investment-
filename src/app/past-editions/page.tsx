@@ -15,7 +15,7 @@ const editionCards = [
     titleFr: "Édition à venir 2027",
     desc: "Canada's Tier 1 Global Mining Investment Conference in Quebec City.",
     descFr: "La première conférence mondiale d'investissement minier au Canada à Québec.",
-    image: "/news/edition_2026.png",
+    image: "/MINING%20INVESTMENT%20EVENT%202026_DAY%202_MAIN%20EVENT-101.jpg",
     isGrayscale: false,
   },
   {
@@ -24,7 +24,7 @@ const editionCards = [
     titleFr: "La plus grande édition à ce jour",
     desc: "Uniting global leaders for impactful conversations and investments.",
     descFr: "Rassembler les dirigeants mondiaux pour des conversations et des investissements impactants.",
-    image: "/news/edition_2026.png",
+    image: "/2026.jpg.jpeg",
     isGrayscale: false,
   },
   {
@@ -33,7 +33,7 @@ const editionCards = [
     titleFr: "Propulser l'investissement mondial",
     desc: "Connecting capital with opportunity across the mining value chain.",
     descFr: "Connecter le capital aux opportunités dans toute la chaîne de valeur minière.",
-    image: "/news/edition_2025.png",
+    image: "/2025.png",
     isGrayscale: false,
   },
   {
@@ -42,7 +42,7 @@ const editionCards = [
     titleFr: "Focus sur les minéraux critiques",
     desc: "Exploring the future of critical minerals and sustainable growth.",
     descFr: "Explorer l'avenir des minéraux critiques et de la croissance durable.",
-    image: "/news/critical_minerals.png",
+    image: "/2024.png",
     isGrayscale: false,
   },
   {
@@ -51,7 +51,7 @@ const editionCards = [
     titleFr: "Bâtir de nouveaux partenariats",
     desc: "Strengthening relationships that drive the mining industry forward.",
     descFr: "Renforcer les relations qui font progresser l'industrie minière.",
-    image: "/news/banner_1.png",
+    image: "/2023.png",
     isGrayscale: false,
   },
   {
@@ -60,7 +60,7 @@ const editionCards = [
     titleFr: "L'édition fondatrice",
     desc: "The inaugural edition that launched Canada's premier mining investment conference.",
     descFr: "L'édition inaugurale qui a lancé la première conférence d'investissement minier du Canada.",
-    image: "/news/banner_1.png",
+    image: "/2022.png",
     isGrayscale: false,
   },
 ];
@@ -229,7 +229,7 @@ export default function PastEditionsPage() {
                     {/* Left Widescreen Media Container */}
                     <div className="lg:col-span-7 relative min-h-[300px] sm:min-h-[380px] lg:min-h-[440px] overflow-hidden bg-neutral-950">
                       <Image
-                        src="/news/edition_2026.png"
+                        src="/MINING%20INVESTMENT%20EVENT%202026_DAY%202_MAIN%20EVENT-101.jpg"
                         alt="Upcoming Edition 2027"
                         fill
                         sizes="(max-width: 1024px) 100vw, 60vw"

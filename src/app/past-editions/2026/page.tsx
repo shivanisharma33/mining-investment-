@@ -544,7 +544,7 @@ export default function PastEdition2026Page() {
 
                     <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden border-2 border-[#C6112F]/40 shadow-sm mb-8 bg-neutral-900">
                       <img
-                        src="/Mining%20Investment%20Post%202.avif"
+                        src="/2026.jpg.jpeg"
                         alt="Québec City Event"
                         className="w-full h-full object-cover"
                       />
