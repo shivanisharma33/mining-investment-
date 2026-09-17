@@ -5,7 +5,6 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
-import AgendaView from "@/components/AgendaView";
 import AgendaPdfViewer from "@/components/AgendaPdfViewer";
 import SpeakersView from "@/components/SpeakersView";
 import SponsorsView, { SponsorItem } from "@/components/SponsorsView";
@@ -14,12 +13,7 @@ import type { CompanyItem } from "@/components/companiesData";
 import { useLanguage } from "@/context/LanguageContext";
 import { fetchCompaniesByYear } from "@/lib/companiesApi";
 import { fetchPdfAgendaByYear, AgendaApiItem } from "@/lib/agendaApi";
-import {
-  fetchEventByYear,
-  mapEventAgendaToDays,
-  formatEventDates,
-  EventApiItem,
-} from "@/lib/eventsApi";
+import { fetchBrochureByYear, BrochureApiItem } from "@/lib/brochuresApi";
 import { fetchSponsorsByYear } from "@/lib/sponsorsApi";
 
 const years = [2027, 2026, 2025, 2024, 2023, 2022];
@@ -34,16 +28,36 @@ export default function PastEdition2027Page() {
   const [companiesLoading, setCompaniesLoading] = useState<boolean>(true);
   const [companiesError, setCompaniesError] = useState<string>("");
 
+  const [brochure, setBrochure] = useState<BrochureApiItem | null>(null);
+  const [brochureLoading, setBrochureLoading] = useState<boolean>(true);
+  const [brochureError, setBrochureError] = useState<string>("");
+
   const [agenda, setAgenda] = useState<AgendaApiItem | null>(null);
   const [agendaLoading, setAgendaLoading] = useState<boolean>(true);
   const [agendaError, setAgendaError] = useState<string>("");
 
-  const [event, setEvent] = useState<EventApiItem | null>(null);
-  const [eventLoading, setEventLoading] = useState<boolean>(true);
-
   const [sponsors, setSponsors] = useState<SponsorItem[]>([]);
   const [sponsorsLoading, setSponsorsLoading] = useState<boolean>(true);
   const [sponsorsError, setSponsorsError] = useState<string>("");
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetchBrochureByYear(viewingEdition, controller.signal)
+      .then((item) => {
+        setBrochure(item);
+        setBrochureLoading(false);
+      })
+      .catch((err: unknown) => {
+        if (controller.signal.aborted) return;
+        setBrochureError(
+          err instanceof Error ? err.message : "Unable to load brochure"
+        );
+        setBrochureLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [viewingEdition]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -86,23 +100,6 @@ export default function PastEdition2027Page() {
   useEffect(() => {
     const controller = new AbortController();
 
-    fetchEventByYear(viewingEdition, controller.signal)
-      .then((item) => {
-        setEvent(item);
-        setEventLoading(false);
-      })
-      .catch((err: unknown) => {
-        if (controller.signal.aborted) return;
-        console.error("Event schedule request failed:", err);
-        setEventLoading(false);
-      });
-
-    return () => controller.abort();
-  }, [viewingEdition]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
     fetchSponsorsByYear(viewingEdition, controller.signal)
       .then((items) => {
         setSponsors(items);
@@ -118,9 +115,6 @@ export default function PastEdition2027Page() {
 
     return () => controller.abort();
   }, [viewingEdition]);
-
-  const eventDays = event ? mapEventAgendaToDays(event) : undefined;
-  const eventDatesFormatted = event ? formatEventDates(event) : undefined;
 
   const sidebarTabs = [
     {
@@ -180,7 +174,6 @@ export default function PastEdition2027Page() {
   ];
 
   const [activeTab, setActiveTab] = useState<string>("companies");
-  const [agendaMode, setAgendaMode] = useState<"pdf" | "interactive">("interactive");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -377,61 +370,108 @@ export default function PastEdition2027Page() {
                         ? `Consultez ou téléchargez la brochure officielle de L'Événement ${viewingEdition} pour tous les détails de la conférence, la liste des conférenciers et les opportunités de partenariat.`
                         : `View or download the official brochure for THE Event ${viewingEdition} covering full conference details, speaker lineups and partnership opportunities.`}
                     </p>
-                    <AgendaPdfViewer
-                      pdfUrl={agenda?.pdfUrl || "/AGENDA_june_2026.pdf"}
-                      year={viewingEdition}
-                      title={agenda?.title || `Event Brochure ${viewingEdition}`}
-                      remote={Boolean(agenda?.pdfUrl)}
-                      hideHeader={true}
-                    />
-                  </div>
-                ) : activeTab === "agenda" ? (
-                  <div>
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                      <div>
-                        <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                          {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
-                        </span>
-                        <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white tracking-tight">
-                          {isFr ? "Ordre du jour de la conférence" : "Conference Agenda"}
-                        </h1>
-                      </div>
-                      <div className="flex items-center gap-2 p-1 bg-neutral-100 dark:bg-zinc-800 rounded-xl border border-neutral-200 dark:border-zinc-700 self-start sm:self-auto">
-                        <button
-                          onClick={() => setAgendaMode("pdf")}
-                          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${agendaMode === "pdf"
-                            ? "bg-[#C6112F] text-white shadow-xs"
-                            : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900"
-                            }`}
-                        >
-                          📄 PDF View
-                        </button>
-                        <button
-                          onClick={() => setAgendaMode("interactive")}
-                          className={`px-4 py-2 rounded-lg text-xs font-bold transition-all cursor-pointer ${agendaMode === "interactive"
-                            ? "bg-[#C6112F] text-white shadow-xs"
-                            : "text-neutral-600 dark:text-zinc-300 hover:text-neutral-900"
-                            }`}
-                        >
-                          📅 Interactive Schedule
-                        </button>
-                      </div>
-                    </div>
 
-                    {agendaMode === "pdf" ? (
+                    {brochureLoading ? (
+                      <div className="rounded-3xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-[#141824] p-12 text-center flex flex-col items-center justify-center min-h-[320px]">
+                        <span className="w-10 h-10 rounded-full border-3 border-neutral-200 dark:border-zinc-700 border-t-[#C6112F] animate-spin mb-4" />
+                        <p className="text-sm font-bold text-neutral-500 dark:text-zinc-400 uppercase tracking-wider">
+                          {isFr ? "Vérification de la brochure officielle…" : "Checking for official brochure…"}
+                        </p>
+                      </div>
+                    ) : brochure?.pdfUrl ? (
                       <AgendaPdfViewer
-                        pdfUrl={agenda?.pdfUrl || "/AGENDA_june_2026.pdf"}
-                        year={viewingEdition}
-                        title={agenda?.title || `Conference Agenda ${viewingEdition}`}
-                        remote={Boolean(agenda?.pdfUrl)}
+                        pdfUrl={brochure.pdfUrl}
+                        year={brochure.year ?? viewingEdition}
+                        title={brochure.title || (isFr ? `Brochure de l'événement ${viewingEdition}` : `Event Brochure ${viewingEdition}`)}
+                        fileName={brochure.slug ? `${brochure.slug}.pdf` : `brochure-${viewingEdition}.pdf`}
+                        eventDates={brochure.eventDates}
+                        venue={brochure.venue}
+                        remote={true}
                         hideHeader={true}
                       />
                     ) : (
-                      <AgendaView
+                      /* ══════════ COMING SOON CARD ══════════ */
+                      <div className="rounded-3xl border border-neutral-200/90 dark:border-zinc-800 bg-gradient-to-br from-white via-slate-50 to-neutral-100 dark:from-[#131b2e] dark:via-[#0f172a] dark:to-[#17223b] p-8 sm:p-14 text-center shadow-lg relative overflow-hidden">
+                        <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none" />
+                        <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-[#C6112F]/10 rounded-full blur-3xl pointer-events-none" />
+
+                        <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+                          <div className="w-20 h-20 rounded-2xl bg-[#C6112F]/10 text-[#C6112F] border border-[#C6112F]/20 flex items-center justify-center mb-6 shadow-inner">
+                            <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                          </div>
+
+                          <span className="inline-block px-4 py-1.5 rounded-full bg-[#C6112F]/15 text-[#C6112F] text-xs font-black tracking-[0.2em] uppercase mb-4 border border-[#C6112F]/20">
+                            {isFr ? "BIENTÔT DISPONIBLE" : "COMING SOON"}
+                          </span>
+
+                          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-neutral-900 dark:text-white tracking-tight leading-tight mb-4">
+                            {isFr
+                              ? `Brochure officielle ${viewingEdition} bientôt disponible`
+                              : `Official Brochure ${viewingEdition} Coming Soon`}
+                          </h3>
+
+                          <p className="text-neutral-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-medium mb-8 max-w-xl">
+                            {isFr
+                              ? `La brochure officielle de L'Événement ${viewingEdition} est en cours de finalisation. Dès qu'elle sera publiée depuis l'administration, elle sera automatiquement affichée ici pour consultation et téléchargement.`
+                              : `The official brochure for THE Event ${viewingEdition} is currently being prepared. Once published from the backend, it will automatically appear here for viewing and download.`}
+                          </p>
+
+                          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                            <a
+                              href="/register"
+                              className="w-full sm:w-auto px-8 py-3.5 bg-[#C6112F] hover:bg-[#a80e27] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase rounded-xl shadow-md hover:shadow-lg transition-all text-center transform hover:-translate-y-0.5 cursor-pointer"
+                            >
+                              {isFr ? "S'INSCRIRE MAINTENANT" : "REGISTER NOW"}
+                            </a>
+
+                            <button
+                              onClick={() => setActiveTab("agenda")}
+                              className="w-full sm:w-auto px-8 py-3.5 bg-white dark:bg-zinc-800 border border-neutral-300 dark:border-zinc-700 hover:bg-neutral-50 dark:hover:bg-zinc-700 text-neutral-900 dark:text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase rounded-xl shadow-xs hover:shadow-md transition-all text-center cursor-pointer"
+                            >
+                              {isFr ? "VOIR L'ORDRE DU JOUR" : "SEE EVENT AGENDA"}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : activeTab === "agenda" ? (
+                  <div>
+                    <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
+                      {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
+                    </span>
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white tracking-tight mb-3">
+                      {isFr ? "Ordre du jour de la conférence" : "Conference Agenda"}
+                    </h1>
+                    <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[720px] mb-8">
+                      {isFr
+                        ? `Consultez ou téléchargez l'ordre du jour officiel de la conférence ${viewingEdition}.`
+                        : `View or download the official conference agenda for THE Event ${viewingEdition}.`}
+                    </p>
+
+                    {agendaLoading ? (
+                      <div className="rounded-3xl border border-neutral-200 dark:border-zinc-800 bg-white dark:bg-[#141824] p-12 text-center flex flex-col items-center justify-center min-h-[300px]">
+                        <span className="w-10 h-10 rounded-full border-3 border-neutral-200 dark:border-zinc-700 border-t-[#C6112F] animate-spin mb-4" />
+                        <p className="text-sm font-bold text-neutral-500 dark:text-zinc-400 uppercase tracking-wider">
+                          {isFr ? "Chargement de l'ordre du jour…" : "Loading agenda…"}
+                        </p>
+                      </div>
+                    ) : agenda?.pdfUrl ? (
+                      <AgendaPdfViewer
+                        pdfUrl={agenda.pdfUrl}
                         year={viewingEdition}
-                        days={eventDays}
-                        eventDates={eventDatesFormatted}
+                        title={agenda?.title || `Conference Agenda ${viewingEdition}`}
+                        remote={true}
+                        hideHeader={true}
                       />
+                    ) : (
+                      <div className="rounded-2xl border border-neutral-200/90 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900 p-8 text-center">
+                        <p className="text-sm font-bold text-neutral-600 dark:text-zinc-400">
+                          {isFr ? "PDF de l'ordre du jour bientôt disponible." : "PDF Agenda Coming Soon."}
+                        </p>
+                      </div>
                     )}
                   </div>
                 ) : activeTab === "speakers" ? (
