@@ -68,33 +68,52 @@ export default function StatsAndGlimpse() {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const handleToggleSoundAndPlay = () => {
+  const handleToggleMute = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     const v = videoRef.current;
     if (!v) return;
-    if (isMuted) {
-      v.muted = false;
+    const nextMuted = !v.muted;
+    v.muted = nextMuted;
+    if (!nextMuted) {
       v.volume = 1;
-      v.currentTime = 0;
-      v.play();
-      setIsMuted(false);
+    }
+    // Crucial: ensure video continues playing smoothly without pausing
+    if (v.paused) {
+      v.play().catch(() => {});
+      setIsPlaying(true);
+    }
+    setIsMuted(nextMuted);
+  };
+
+  const handleTogglePlayPause = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.play().catch(() => {});
       setIsPlaying(true);
     } else {
-      if (v.paused) {
-        v.play();
-        setIsPlaying(true);
-      } else {
-        v.pause();
-        setIsPlaying(false);
-      }
+      v.pause();
+      setIsPlaying(false);
     }
   };
 
-  const handleToggleMuteOnly = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleCardClick = () => {
     const v = videoRef.current;
     if (!v) return;
-    v.muted = !v.muted;
-    setIsMuted(v.muted);
+    if (v.paused) {
+      v.play().catch(() => {});
+      setIsPlaying(true);
+    } else if (isMuted) {
+      // If playing muted, clicking the video card unmutes with sound
+      v.muted = false;
+      v.volume = 1;
+      setIsMuted(false);
+    } else {
+      // If playing with sound, clicking pauses
+      v.pause();
+      setIsPlaying(false);
+    }
   };
 
   const handleFullscreen = (e: React.MouseEvent) => {
@@ -241,7 +260,7 @@ export default function StatsAndGlimpse() {
           <div className="flex-1 w-full max-w-[620px] lg:max-w-none flex flex-col items-center">
             <div
               id="event-video-card"
-              onClick={handleToggleSoundAndPlay}
+              onClick={handleCardClick}
               className="relative w-full rounded-2xl overflow-hidden border-[3px] border-[#C6112F] shadow-2xl bg-black aspect-[16/9] group hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(198,17,47,0.35)] transition-all duration-500 cursor-pointer select-none"
             >
               <video
@@ -262,7 +281,7 @@ export default function StatsAndGlimpse() {
               </video>
 
               {/* Floating Top-Left Ribbon: Official Event Video */}
-              <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-white text-[10.5px] sm:text-xs font-black tracking-wider uppercase shadow-md">
+              <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-white text-[10.5px] sm:text-xs font-black tracking-wider uppercase shadow-md pointer-events-none">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C6112F] opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C6112F]"></span>
@@ -273,8 +292,9 @@ export default function StatsAndGlimpse() {
               {/* Floating Top-Right Sound Status Badge Button */}
               <button
                 type="button"
-                onClick={handleToggleMuteOnly}
-                className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/85 hover:bg-black backdrop-blur-md border border-white/25 text-white text-[11px] font-bold tracking-wider transition-all duration-200 cursor-pointer shadow-md"
+                onClick={handleToggleMute}
+                className="absolute top-3.5 right-3.5 z-20 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/85 hover:bg-black backdrop-blur-md border border-white/25 text-white text-[11px] font-bold tracking-wider transition-all duration-200 cursor-pointer shadow-md hover:scale-105"
+                title={isMuted ? "Turn sound on" : "Mute audio"}
               >
                 {isMuted ? (
                   <>
@@ -289,18 +309,18 @@ export default function StatsAndGlimpse() {
                     <svg className="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.757 3.63 8.25 4.51 8.25H6.75z" />
                     </svg>
-                    <span className="text-emerald-400 font-extrabold">Sound ON</span>
+                    <span className="text-emerald-400 font-extrabold">{isFr ? "Son ACTIVÉ" : "Sound ON"}</span>
                   </>
                 )}
               </button>
 
-              {/* Center Play / Unmute Visual Callout Overlay (Visible when muted or paused) */}
-              {(isMuted || !isPlaying) && (
-                <div className="absolute inset-0 z-10 bg-black/40 backdrop-blur-[1.5px] flex flex-col items-center justify-center p-4 transition-all duration-300 group-hover:bg-black/30">
+              {/* Center Play Icon Overlay (ONLY visible when video is paused) */}
+              {!isPlaying && (
+                <div className="absolute inset-0 z-10 bg-black/45 backdrop-blur-[1px] flex flex-col items-center justify-center p-4 transition-all duration-300">
                   {/* Glowing Radar Pulse Play Button */}
                   <div className="relative flex items-center justify-center">
                     <span className="absolute w-22 h-22 sm:w-28 sm:h-28 rounded-full bg-[#C6112F]/40 animate-ping pointer-events-none" />
-                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#e11d48] via-[#C6112F] to-[#990a20] text-white flex items-center justify-center shadow-[0_0_40px_rgba(198,17,47,0.85)] border-2 border-white/40 transform group-hover:scale-110 transition-all duration-300">
+                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#e11d48] via-[#C6112F] to-[#990a20] text-white flex items-center justify-center shadow-[0_0_40px_rgba(198,17,47,0.85)] border-2 border-white/40 transform hover:scale-110 transition-all duration-300">
                       <svg className="w-8 h-8 sm:w-10 sm:h-10 translate-x-0.5 fill-white" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
@@ -318,10 +338,22 @@ export default function StatsAndGlimpse() {
                 <span className="text-[11px] font-bold text-[#C6112F]">Full HD with Audio</span>
               </div>
               <div className="flex items-center gap-3">
+                {/* Play / Pause Toggle Button */}
                 <button
                   type="button"
-                  onClick={handleToggleSoundAndPlay}
+                  onClick={handleTogglePlayPause}
                   className="font-bold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors cursor-pointer flex items-center gap-1 text-[11px] uppercase tracking-wider"
+                  title={isPlaying ? "Pause video" : "Play video"}
+                >
+                  {isPlaying ? "⏸ Pause" : "▶ Play"}
+                </button>
+                <span className="text-neutral-300 dark:text-neutral-700">•</span>
+                {/* Dedicated Audio Mute / Unmute Button */}
+                <button
+                  type="button"
+                  onClick={handleToggleMute}
+                  className="font-bold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors cursor-pointer flex items-center gap-1 text-[11px] uppercase tracking-wider"
+                  title={isMuted ? "Turn sound on" : "Mute audio"}
                 >
                   {isMuted ? "🔊 Turn Sound On" : "🔇 Mute"}
                 </button>

@@ -243,9 +243,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${
-        scrolled ? "shadow-md h-16 sm:h-20 md:h-22" : "h-18 sm:h-22 md:h-24"
-      }`}
+      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-16 sm:h-20 md:h-22" : "h-18 sm:h-22 md:h-24"
+        }`}
     >
       <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-3 sm:px-6 md:px-10 h-full flex items-center justify-between">
         {/* Logo */}
@@ -500,14 +499,15 @@ export default function Navbar() {
 
         {/* Desktop & Action Buttons Container */}
         <div className="flex items-center gap-2 sm:gap-2.5 xl:gap-3.5 shrink-0">
-          {/* The Noble Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
+          {/* The Noble Mining Investment Conference Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
           <a
             href="https://www.thenoblemininginvestmentconference.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden xl:inline-flex px-3.5 py-2 xl:px-4 xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[11px] xl:text-xs font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer"
+            title="THE NOBLE MINING INVESTMENT CONFERENCE"
+            className="hidden xl:inline-flex px-3.5 py-2 xl:px-4 xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[10.5px] xl:text-[11.5px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
-            <span>{t("nav-noble-btn", "The Noble")}</span>
+            <span>THE NOBLE MINING INVESTMENT CONFERENCE</span>
           </a>
 
           {/* International Mining Week Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
@@ -603,21 +603,19 @@ export default function Navbar() {
                             if (link.dropdownType === "programs") setMobileProgramsOpen(!mobileProgramsOpen);
                             if (link.dropdownType === "past-years") setMobilePastYearsOpen(!mobilePastYearsOpen);
                           }}
-                          className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors cursor-pointer ${
-                            active
+                          className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors cursor-pointer ${active
                               ? "text-[#C6112F] bg-[#C6112F]/5"
                               : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
-                          }`}
+                            }`}
                         >
                           <span>{link.name}</span>
                           <svg
-                            className={`w-4 h-4 transition-transform duration-200 ${
-                              (link.dropdownType === "about" && mobileAboutOpen) ||
-                              (link.dropdownType === "programs" && mobileProgramsOpen) ||
-                              (link.dropdownType === "past-years" && mobilePastYearsOpen)
+                            className={`w-4 h-4 transition-transform duration-200 ${(link.dropdownType === "about" && mobileAboutOpen) ||
+                                (link.dropdownType === "programs" && mobileProgramsOpen) ||
+                                (link.dropdownType === "past-years" && mobilePastYearsOpen)
                                 ? "rotate-180 text-[#C6112F]"
                                 : "text-neutral-400"
-                            }`}
+                              }`}
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="2.5"
@@ -661,11 +659,10 @@ export default function Navbar() {
                                   key={item.titleKey}
                                   href={item.href}
                                   onClick={() => setIsOpen(false)}
-                                  className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${
-                                    isSubActive
+                                  className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${isSubActive
                                       ? "bg-[#C6112F]/10 text-[#C6112F]"
                                       : "hover:bg-[#fef2f2] dark:hover:bg-slate-800/80"
-                                  }`}
+                                    }`}
                                 >
                                   <div className="w-8 h-8 rounded-lg bg-[#f4f7fa] dark:bg-slate-800 text-[#C6112F] flex items-center justify-center shrink-0 mt-0.5">
                                     {item.icon}
@@ -721,11 +718,10 @@ export default function Navbar() {
                                   key={item.titleKey}
                                   href={item.href}
                                   onClick={() => setIsOpen(false)}
-                                  className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${
-                                    isSubActive
+                                  className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${isSubActive
                                       ? "bg-[#C6112F]/10 text-[#C6112F]"
                                       : "hover:bg-[#fef2f2] dark:hover:bg-slate-800/80"
-                                  }`}
+                                    }`}
                                 >
                                   <div className="w-8 h-8 rounded-lg bg-[#f4f7fa] dark:bg-slate-800 text-[#C6112F] flex items-center justify-center shrink-0 mt-0.5">
                                     {item.icon}
@@ -766,11 +762,10 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         onClick={() => setIsOpen(false)}
-                        className={`px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors block ${
-                          active
+                        className={`px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors block ${active
                             ? "text-[#C6112F] bg-[#C6112F]/10"
                             : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
-                        }`}
+                          }`}
                       >
                         {link.name}
                       </Link>
@@ -788,10 +783,10 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="w-full sm:w-1/2 py-3 px-4 rounded-xl bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-xs font-extrabold tracking-wider uppercase text-center flex items-center justify-center gap-2 shadow-xs transition-colors cursor-pointer"
+                  className="w-full sm:w-1/2 py-3 px-3 rounded-xl bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[11px] sm:text-xs font-extrabold tracking-wider uppercase text-center flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer whitespace-nowrap overflow-hidden"
                 >
-                  <span>{t("nav-noble-btn", "The Noble")}</span>
-                  <svg className="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <span className="truncate">THE NOBLE MINING INVESTMENT CONFERENCE</span>
+                  <svg className="w-3.5 h-3.5 text-neutral-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                   </svg>
                 </a>
