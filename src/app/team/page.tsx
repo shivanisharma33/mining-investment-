@@ -106,6 +106,11 @@ const coreTeam: TeamMember[] = [
     expandable: true,
     category: "executive",
   },
+
+
+
+
+  
   {
     initials: "AN",
     name: "Adam Nouri",
