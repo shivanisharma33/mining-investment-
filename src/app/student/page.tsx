@@ -769,6 +769,96 @@ export default function StudentPage() {
         </section>
         */}
 
+        {/* ═══════════════ 5. STUDENT PROGRAM CONSULTANTS SECTION ═══════════════ */}
+        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117] border-t border-b border-neutral-200/80 dark:border-neutral-800">
+          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
+            <div className="max-w-3xl mb-10">
+              <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
+                STUDENT PROGRAM OUTREACH & LEADERSHIP
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-3">
+                Student Program Consultants
+              </h2>
+              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mb-4" />
+              <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base">
+                Leading national student outreach, community engagement, and candidate campaigns for THE Student Partnership Program.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Dalena Vo */}
+              <div className="bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl shrink-0 shadow-md">
+                      DV
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#C6112F]/10 px-2.5 py-0.5 rounded-full inline-block mb-1">
+                        Student Program Consultant
+                      </span>
+                      <h3 className="text-2xl font-black text-neutral-900 dark:text-white tracking-tight">
+                        Dalena Vo
+                      </h3>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 font-semibold mt-0.5">
+                        Queen’s Mining Engineering '24
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
+                    Dalena (alongside Adam) leads national student outreach and campaigns. As a graduate of THE Student Partnership Program in its inaugural year and former Student Liaison (2024–2026), she combines technical field experience with a strong commitment to cultivating the next generation of industry talent.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 flex items-center justify-between">
+                  <Link
+                    href="/team"
+                    className="text-xs font-bold text-[#C6112F] dark:text-[#ff4d6d] hover:underline flex items-center gap-1"
+                  >
+                    <span>Read Full Bio in Team Page</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Adam Nouri */}
+              <div className="bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl shrink-0 shadow-md">
+                      AN
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#C6112F]/10 px-2.5 py-0.5 rounded-full inline-block mb-1">
+                        Student Program Consultant
+                      </span>
+                      <h3 className="text-2xl font-black text-neutral-900 dark:text-white tracking-tight">
+                        Adam Nouri
+                      </h3>
+                      <p className="text-xs text-neutral-500 dark:text-neutral-400 font-semibold mt-0.5">
+                        Polytechnique Montréal • CFA Level I
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
+                    Adam (alongside Dalena) leads national student outreach and campaigns. As an inaugural graduate of THE Student Partnership Program and former Student Liaison (2024–2026), he brings a strong foundation in both technical mining operations and financial analysis.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 flex items-center justify-between">
+                  <Link
+                    href="/team"
+                    className="text-xs font-bold text-[#C6112F] dark:text-[#ff4d6d] hover:underline flex items-center gap-1"
+                  >
+                    <span>Read Full Bio in Team Page</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ═══════════════ 6. CONTACT & SUPPORT FOOTER CTA ═══════════════ */}
         <section className="relative w-full py-12 sm:py-14 md:py-16 bg-[#0b0f19] text-white">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">

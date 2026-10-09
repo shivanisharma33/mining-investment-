@@ -94,6 +94,30 @@ const coreTeam: TeamMember[] = [
     expandable: false,
     category: "executive",
   },
+  {
+    initials: "DV",
+    name: "Dalena Vo",
+    role: "Student Program Consultant",
+    roleFr: "Consultante en programmes étudiants",
+    organization: "THE Student Partnership Program",
+    organizationFr: "Programme de partenariat étudiant THE",
+    bio: "As a Student Program Consultant, Dalena (alongside Adam) leads national student outreach and campaigns. Together, they focus on connecting with and expanding the ever-growing community established at the program's inception in June 2023. As a graduate of the THE Student Partnership Program in its inaugural year, Dalena previously served as a Student Liaison with the program from 2024 to 2026.\n\nDalena graduated from Queen’s Mining Engineering in 2024, combining technical field experience with a strong commitment to cultivating the next generation of industry talent. Her background spans industry research, mine design, costing, project management, communications, mining equipment, and mining technologies with companies like Canadian Natural Resources Limited, Toromont CAT, and the Canadian Institute of Mining, Metallurgy and Petroleum.\n\nOutside of her professional endeavors, Dalena is deeply immersed in her community and personal pursuits. Whether she is designing workshops for engineering camps, spending her summers paddling with her dragon boat team, or exploring Montreal's food scene, she brings energy and focus to everything she does.\n\nPassionate about bridging technical innovation, education, and community engagement, Dalena is dedicated to advancing the mining sector while fostering meaningful connections across the industry.",
+    bioFr: "En tant que consultante en programmes étudiants, Dalena (aux côtés d'Adam) dirige la sensibilisation des étudiants et les campagnes au niveau national. Ensemble, ils s'attachent à se connecter avec la communauté constante et grandissante établie lors du lancement du programme en juin 2023 et à l'élargir. Diplômée du programme de partenariat étudiant THE lors de son année inaugurale, Dalena a auparavant occupé le poste de liaison étudiante avec le programme de 2024 à 2026.\n\nDalena est diplômée en génie minier de l'Université Queen's en 2024, alliant une expérience technique sur le terrain à un engagement fort à cultiver la prochaine génération de talents de l'industrie. Son parcours couvre la recherche industrielle, la conception minière, le calcul des coûts, la gestion de projet, les communications, l'équipement minier et les technologies minières avec des entreprises comme Canadian Natural Resources Limited, Toromont CAT et l'Institut canadien des mines, de la métallurgie et du pétrole.\n\nEn dehors de ses activités professionnelles, Dalena est profondément immergée dans sa communauté et ses passions personnelles. Qu'elle conçoive des ateliers pour des camps d'ingénierie, passe ses étés à pagayer avec son équipe de bateau-dragon ou explore la scène gastronomique de Montréal, elle apporte énergie et rigueur à tout ce qu'elle entreprend.\n\nPassionnée par le rapprochement entre l'innovation technique, l'éducation et l'engagement communautaire, Dalena se consacre à l'avancement du secteur minier tout en favorisant des liens significatifs à travers l'industrie.",
+    expandable: true,
+    category: "executive",
+  },
+  {
+    initials: "AN",
+    name: "Adam Nouri",
+    role: "Student Program Consultant",
+    roleFr: "Consultant en programmes étudiants",
+    organization: "THE Student Partnership Program",
+    organizationFr: "Programme de partenariat étudiant THE",
+    bio: "As a Student Program Consultant, Adam (alongside Dalena) leads national student outreach and campaigns. Together, they focus on connecting with and expanding the ever-growing community established at the program's inception in June 2023. As a graduate of the THE Student Partnership Program in its inaugural year, Adam previously served as a Student Liaison with the program from 2024 to 2026.\n\nA graduate of Polytechnique Montréal with a Bachelor’s in Mining Engineering and a CFA Level I holder, Adam brings a strong foundation in both technical mining operations and financial analysis. His professional background spans underground mining, short-term planning, and multi-site internships in Quebec. Adam’s passion for finance and investment began when he joined PolyFinances, a student-run investment fund, where he led the fundraising team in securing nearly $120,000 in sponsorships.\n\nOutside of his professional pursuits, Adam enjoys reading and swimming. He brings energy and enthusiasm to everything he does.",
+    bioFr: "En tant que consultant en programmes étudiants, Adam (aux côtés de Dalena) dirige la sensibilisation des étudiants et les campagnes au niveau national. Ensemble, ils s'attachent à se connecter avec la communauté constante et grandissante établie lors du lancement du programme en juin 2023 et à l'élargir. Diplômé du programme de partenariat étudiant THE lors de son année inaugurale, Adam a auparavant occupé le poste de liaison étudiante avec le programme de 2024 à 2026.\n\nDiplômé de Polytechnique Montréal avec un baccalauréat en génie minier et titulaire du niveau I du CFA, Adam apporte une base solide à la fois dans les opérations minières techniques et dans l'analyse financière. Son parcours professionnel couvre l'exploitation minière souterraine, la planification à court terme et plusieurs stages sur plusieurs sites au Québec. La passion d'Adam pour la finance et l'investissement a débuté lorsqu'il a rejoint PolyFinances, un fonds d'investissement géré par des étudiants, où il a dirigé l'équipe de collecte de fonds pour obtenir près de 120 000 $ en commandites.\n\nEn dehors de ses activités professionnelles, Adam aime la lecture et la natation. Il apporte énergie et enthousiasme à tout ce qu'il entreprend.",
+    expandable: true,
+    category: "executive",
+  },
 ];
 
 const advisoryBoard: TeamMember[] = [
