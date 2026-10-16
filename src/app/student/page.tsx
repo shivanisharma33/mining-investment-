@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
+import StudentApplicationForm from "@/components/StudentApplicationForm";
 
 // 2026 Award Recipients Data
 const mvpStudent = {
@@ -151,6 +152,13 @@ export default function StudentPage() {
     }
   };
 
+  const scrollToApply = () => {
+    const el = document.getElementById("apply");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -201,15 +209,16 @@ export default function StudentPage() {
 
                 {/* Hero Action Buttons */}
                 <div className="flex flex-wrap items-center gap-4 mb-10">
-                  <Link
-                    href="/student/apply"
-                    className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3"
+                  <button
+                    onClick={scrollToApply}
+                    type="button"
+                    className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3 cursor-pointer"
                   >
                     <span>Apply Now</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
-                  </Link>
+                  </button>
 
                   <button
                     onClick={scrollToCeoLetter}
@@ -859,6 +868,26 @@ export default function StudentPage() {
           </div>
         </section>
 
+        {/* ═══════════════ APPLICATION FORM SECTION ═══════════════ */}
+        <section id="apply" className="relative w-full py-14 sm:py-16 md:py-20 bg-neutral-100/70 dark:bg-[#0a0c10] border-t border-neutral-200 dark:border-neutral-800 scroll-mt-24">
+          <div className="max-w-[960px] mx-auto px-4 sm:px-6 md:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-2 block">
+                APPLICATION PORTAL
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-3">
+                Apply for THE Student Partnership Program
+              </h2>
+              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mx-auto mb-4" />
+              <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base font-normal">
+                Submit your application below to attend Canada&apos;s premier Tier 1 global mining event in Québec City with 100% funded tuition pass, hotel stay, and coach transportation.
+              </p>
+            </div>
+
+            <StudentApplicationForm showBackToOverview={false} />
+          </div>
+        </section>
+
         {/* ═══════════════ 6. CONTACT & SUPPORT FOOTER CTA ═══════════════ */}
         <section className="relative w-full py-12 sm:py-14 md:py-16 bg-[#0b0f19] text-white">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
@@ -882,12 +911,13 @@ export default function StudentPage() {
               </div>
 
               <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
-                <Link
-                  href="/student/apply"
-                  className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-extrabold tracking-widest uppercase shadow-xl hover:scale-105 transition-all"
+                <button
+                  onClick={scrollToApply}
+                  type="button"
+                  className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-extrabold tracking-widest uppercase shadow-xl hover:scale-105 transition-all cursor-pointer"
                 >
                   Apply Now
-                </Link>
+                </button>
                 <span className="text-[11px] text-neutral-400 font-medium">
                   Applications for 2026 student cohort are open
                 </span>

@@ -1,11 +1,26 @@
 export interface StudentRegistrationPayload {
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
   email: string;
   phone?: string;
   schoolInstitution?: string;
+  collegeUniversity?: string;
+  province?: string;
+  degreeLevel?: string;
+  areaOfStudy?: string;
+  expectedGraduationDate?: string;
   programYearOfStudy?: string;
   preferredLanguage?: string;
+  language?: string;
+  linkedinProfile?: string;
+  whyAttend?: string;
+  uniqueSkills?: string;
+  futureGoals?: string;
+  availableDates?: string;
+  travelManagement?: string;
+  travelOrigin?: string;
+  commitmentAgreed?: boolean | string;
   letterOfInterest?: string;
   newsletterOptIn?: boolean;
   /** Strapi upload id of the resume file, from uploadStudentFile(). */
@@ -107,11 +122,11 @@ export async function submitStudentRegistration(
 
   const json: ApiResponse = await res
     .json()
-    .catch(() => ({ success: false, message: `Registration failed (${res.status})` }));
+    .catch(() => ({ success: false, message: `Application submission failed (${res.status})` }));
 
   if (!res.ok || !json?.success) {
     throw new StudentRegistrationError(
-      json?.message || `Registration failed (${res.status})`,
+      json?.message || `Application submission failed (${res.status})`,
       json?.errors ?? []
     );
   }
