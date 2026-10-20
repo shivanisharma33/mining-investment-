@@ -75,7 +75,7 @@ export default function Hero() {
               <line x1="3" y1="10" x2="21" y2="10" />
             </svg>
             <span className="text-xs sm:text-sm font-bold text-white tracking-wider uppercase font-sans">
-              JUNE 1 – 3, 2027
+              {lang === "FR" ? "1 – 3 JUIN 2027" : "JUNE 1 – 3, 2027"}
             </span>
           </div>
 
@@ -86,29 +86,19 @@ export default function Hero() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
             </svg>
             <span className="text-xs sm:text-sm font-bold text-white tracking-wider uppercase font-sans">
-              QUÉBEC CITY, CANADA
+              {lang === "FR" ? "VILLE DE QUÉBEC, CANADA" : "QUÉBEC CITY, CANADA"}
             </span>
           </div>
         </div>
 
-        {/* Main Title - 2 Lines in French */}
+        {/* Main Title - The Mining Investment Event (Always stays in English) */}
         <h1 className="text-xl xs:text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.18] mb-3 md:mb-4 text-center">
-          {lang === "FR" ? (
-            <div className="flex flex-col items-center text-center">
-              <span className="block animate-text-reveal delay-1">L&apos;Événement</span>
-              <span className="block mt-1 sm:mt-2 text-primary">
-                <span className="animate-text-reveal delay-2">d&apos;Investissement</span>{" "}
-                <span className="animate-text-reveal delay-3">Minier</span>
-              </span>
-            </div>
-          ) : (
-            <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-x-1.5 xs:gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full text-center sm:whitespace-nowrap">
-              <span className="animate-text-reveal delay-1">The</span>{" "}
-              <span className="animate-text-reveal delay-2">Mining</span>{" "}
-              <span className="animate-text-reveal delay-3">Investment</span>{" "}
-              <span className="animate-text-reveal delay-4">Event</span>
-            </div>
-          )}
+          <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-x-1.5 xs:gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full text-center sm:whitespace-nowrap">
+            <span className="animate-text-reveal delay-1">The</span>{" "}
+            <span className="animate-text-reveal delay-2">Mining</span>{" "}
+            <span className="animate-text-reveal delay-3">Investment</span>{" "}
+            <span className="animate-text-reveal delay-4">Event</span>
+          </div>
         </h1>
 
         {/* Subheading / Description */}

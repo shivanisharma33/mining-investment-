@@ -128,7 +128,7 @@ export default function FeaturedPartners() {
           <div className="w-16 h-1 bg-[#C6112F] mx-auto mb-4 rounded-full" />
           <p className="max-w-xl mx-auto text-xs sm:text-sm text-neutral-600 dark:text-slate-400 font-medium leading-relaxed">
             {t(
-              "partners-desc",
+              "partners-sub",
               "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters."
             )}
           </p>
@@ -148,7 +148,7 @@ export default function FeaturedPartners() {
                     : "bg-white dark:bg-[#131b2e] text-neutral-700 dark:text-slate-200 hover:bg-neutral-100 dark:hover:bg-[#1e293b] hover:text-neutral-900 dark:hover:text-white border border-neutral-200/80 dark:border-[#233049] shadow-2xs"
                 }`}
               >
-                {tier}
+                {tier === "ALL" && t("news-filter-all", "All") !== "All" ? t("news-filter-all", "Tous") : tier}
               </button>
             );
           })}

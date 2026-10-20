@@ -86,7 +86,7 @@ export default function SponsorsPage() {
             <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
             <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed max-w-[720px] mb-10">
               {isFr
-                ? "Nous remercions nos médias et partenaires de classe mondiale pour leur soutien généreux afin de faire de L'Événement d'Investissement Minier une plateforme mondiale de premier plan."
+                ? "Nous remercions nos médias et partenaires de classe mondiale pour leur soutien généreux afin de faire de The Mining Investment Event une plateforme mondiale de premier plan pour la collaboration, l'innovation et la croissance durable des capitaux."
                 : "We thank our world-class media and partners for their generous support in making the Mining Investment Event a premier global platform for collaboration, innovation and sustainable capital growth."}
             </p>
 

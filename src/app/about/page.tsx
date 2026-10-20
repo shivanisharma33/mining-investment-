@@ -156,9 +156,9 @@ export default function AboutPage() {
                   {lang === "FR" ? (
                     <>
                       <strong className="font-extrabold text-neutral-900 dark:text-white">
-                        L&apos;Événement d&apos;Investissement Minier—La seule conférence mondiale de niveau 1 sur l&apos;investissement minier au Canada© se tient annuellement à Québec, Canada.
+                        THE Mining Investment Event—La seule conférence mondiale de niveau 1 sur l&apos;investissement minier au Canada© se tient annuellement à Québec, Canada.
                       </strong>{" "}
-                      Il est détenu et associé de manière indépendante pour faciliter les réunions privées entre les sociétés minières, les investisseurs internationaux et diverses autorités minières et gouvernementales. La conférence offre une plate-forme pour entendre certains des leaders d&apos;opinion les plus influents du secteur. L&apos;Événement s&apos;engage à promouvoir la diversité, l&apos;égalité et la durabilité dans l&apos;industrie minière par l&apos;éducation et l&apos;innovation, soutenue par son programme unique de partenariat étudiant et l&apos;initiative THE SHE-Co.
+                      Il est détenu et associé de manière indépendante pour faciliter les réunions privées entre les sociétés minières, les investisseurs internationaux et diverses autorités minières et gouvernementales. La conférence offre une plate-forme pour entendre certains des leaders d&apos;opinion les plus influents du secteur. THE Event s&apos;engage à promouvoir la diversité, l&apos;égalité et la durabilité dans l&apos;industrie minière par l&apos;éducation et l&apos;innovation, soutenue par son programme unique de partenariat étudiant et l&apos;initiative THE SHE-Co.
                     </>
                   ) : (
                     <>

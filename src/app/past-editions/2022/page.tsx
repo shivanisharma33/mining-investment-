@@ -386,7 +386,7 @@ export default function PastEdition2022Page() {
                   /* ═══════════════ OVERVIEW TAB ═══════════════ */
                   <div>
                     <span className="text-[#C6112F] text-[11px] sm:text-xs font-extrabold tracking-[0.3em] uppercase mb-2 block">
-                      {isFr ? "L'ÉVÉNEMENT D'INVESTISSEMENT MINIER" : "THE MINING INVESTMENT EVENT"}
+                      THE MINING INVESTMENT EVENT
                     </span>
                     <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] tracking-tight mb-2">
                       {isFr ? `Édition ${viewingEdition}` : `${viewingEdition} Edition`}

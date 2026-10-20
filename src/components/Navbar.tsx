@@ -520,6 +520,40 @@ export default function Navbar() {
             <span>{t("nav-imw-btn", "International Mining Week")}</span>
           </a>
 
+          {/* English / French Language Switcher Button */}
+          <div
+            className="inline-flex items-center p-0.5 sm:p-1 h-[30px] sm:h-[34px] xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm shadow-xs shrink-0"
+            role="group"
+            aria-label="Language selection"
+          >
+            <button
+              type="button"
+              onClick={() => setLang("EN")}
+              className={`px-2 sm:px-2.5 h-full rounded-full text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${
+                lang === "EN"
+                  ? "bg-[#C6112F] text-white shadow-xs"
+                  : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+              }`}
+              aria-label="Switch to English"
+              title="English"
+            >
+              EN
+            </button>
+            <button
+              type="button"
+              onClick={() => setLang("FR")}
+              className={`px-2 sm:px-2.5 h-full rounded-full text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${
+                lang === "FR"
+                  ? "bg-[#C6112F] text-white shadow-xs"
+                  : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+              }`}
+              aria-label="Passer en Français"
+              title="Français"
+            >
+              FR
+            </button>
+          </div>
+
           {/* Day / Night Mode Toggle Switch (Responsive compact sizing on mobile) */}
           <button
             onClick={toggleTheme}
@@ -590,6 +624,37 @@ export default function Navbar() {
 
           {/* Mobile Drawer Menu */}
           <div className="fixed top-[72px] sm:top-20 md:top-22 left-0 w-full max-h-[calc(100dvh-4.5rem)] sm:max-h-[calc(100dvh-5.5rem)] overflow-y-auto bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-slate-800 shadow-2xl px-4 sm:px-8 py-5 flex flex-col gap-4 z-50 lg:hidden">
+            {/* Mobile Language Switcher Row */}
+            <div className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-neutral-100/80 dark:bg-slate-800/80 border border-neutral-200 dark:border-slate-700">
+              <span className="text-xs font-extrabold tracking-wider uppercase text-neutral-600 dark:text-slate-300">
+                {lang === "FR" ? "Langue" : "Language"}
+              </span>
+              <div className="inline-flex items-center p-0.5 rounded-full border-2 border-[#C6112F] bg-white dark:bg-slate-900 shadow-xs">
+                <button
+                  type="button"
+                  onClick={() => setLang("EN")}
+                  className={`px-3 py-1 rounded-full text-xs font-extrabold tracking-wider transition-all cursor-pointer ${
+                    lang === "EN"
+                      ? "bg-[#C6112F] text-white shadow-xs"
+                      : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F]"
+                  }`}
+                >
+                  English
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang("FR")}
+                  className={`px-3 py-1 rounded-full text-xs font-extrabold tracking-wider transition-all cursor-pointer ${
+                    lang === "FR"
+                      ? "bg-[#C6112F] text-white shadow-xs"
+                      : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F]"
+                  }`}
+                >
+                  Français
+                </button>
+              </div>
+            </div>
+
             <nav className="flex flex-col gap-1">
               {visibleNavLinks.map((link) => {
                 const active = isLinkActive(link.href);

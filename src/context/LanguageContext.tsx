@@ -555,7 +555,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Nav
     "nav-home": "Accueil",
     "nav-about": "À Propos",
-    "nav-about-event": "À Propos de L'Événement",
+    "nav-about-event": "À Propos de The Mining Investment Event",
     "nav-team": "L'Équipe",
     "nav-travel": "Voyage et Hébergement",
     "nav-media": "Médias Récents",
@@ -587,10 +587,10 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero-eyebrow": "La Seule Conférence d'Investissement Minier de Niveau I au Canada",
-    "hero-title-1": "L'Événement",
-    "hero-title-2": "d'Investissement",
-    "hero-title-3": "Minier",
-    "hero-title-4": "",
+    "hero-title-1": "The",
+    "hero-title-2": "Mining",
+    "hero-title-3": "Investment",
+    "hero-title-4": "Event",
     "hero-subtitle": "LE Nexus du Secteur Minier International",
     "hero-date": "1-3 JUIN 2027 · VILLE DE QUÉBEC, CANADA",
     "hero-register": "S'INSCRIRE MAINTENANT",
@@ -607,7 +607,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Stats & Glimpse
     "welcome-tag": "BIENVENUE",
     "glimpse-title": "Un Aperçu de L'Événement",
-    "glimpse-desc": "L'Événement d'Investissement Minier (THE Event) est une conférence exclusive sur invitation centrée sur les investissements miniers. THE Event réunit des investisseurs, des sociétés minières, des partenaires de la chaîne d'approvisionnement, des gouvernements et des experts du secteur.",
+    "glimpse-desc": "The Mining Investment Event (THE Event) est une conférence exclusive sur invitation centrée sur les investissements miniers. THE Event réunit des investisseurs, des sociétés minières, des partenaires de la chaîne d'approvisionnement, des gouvernements et des experts du secteur.",
     "hero-watch-video": "VOIR LA VIDÉO",
     "video-watch-sound": "CLIQUER POUR ÉCOUTER AVEC LE SON",
     "video-official-tag": "VIDÉO OFFICIELLE",
@@ -615,7 +615,7 @@ const translations: Record<Language, Record<string, string>> = {
     "video-mute-btn": "Couper le son",
     "video-fullscreen": "Plein écran",
     "video-watch-now": "VOIR LA VIDÉO",
-    "numbers-title": "L'Événement 2026 en Chiffres",
+    "numbers-title": "The Mining Investment Event 2026 en Chiffres",
     "numbers-desc": "Une plateforme mondiale connectant les investisseurs, les entreprises, les chaînes d'approvisionnement et les leaders façonnant l'avenir de l'industrie minière et de l'investissement.",
     "discover-event": "DÉCOUVRIR L'ÉVÉNEMENT",
     "stat-years-label": "ANNÉES",
@@ -663,7 +663,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Featured Event Countdown
     "feat-event-tag": "ÉVÉNEMENT EN VEDETTE",
-    "feat-event-title": "L'ÉVÉNEMENT D'INVESTISSEMENT MINIER",
+    "feat-event-title": "THE MINING INVESTMENT EVENT",
     "feat-event-date": "1-3 JUIN 2027",
     "feat-event-loc": "VILLE DE QUÉBEC, CANADA",
     "feat-event-agenda": "VOIR L'ORDRE DU JOUR",
@@ -677,12 +677,12 @@ const translations: Record<Language, Record<string, string>> = {
     // Featured Partners
     "partners-tag": "EN VEDETTE",
     "partners-title": "Partenaires en Vedette",
-    "partners-sub": "Un coup de projecteur sur les partenaires propulsant L'Événement d'Investissement Minier. Changez de niveau pour explorer chaque cercle de supporters.",
+    "partners-sub": "Un coup de projecteur sur les partenaires propulsant The Mining Investment Event. Changez de niveau pour explorer chaque cercle de supporters.",
 
     // Canada Premier Forum
     "forum-tag": "LA CONFÉRENCE",
     "forum-title": "Premier Forum Minier du Canada",
-    "forum-desc": "L'Événement d'Investissement Minier est un rassemblement sur invitation réunissant les sociétés minières et investisseurs les plus influents au monde dans le cadre historique de la ville de Québec.",
+    "forum-desc": "The Mining Investment Event est un rassemblement sur invitation réunissant les sociétés minières et investisseurs les plus influents au monde dans le cadre historique de la ville de Québec.",
     "forum-highlight": "Parrainé indépendamment par le gouvernement du Québec ainsi que la communauté financière et minière dans son ensemble.",
     "forum-bullet-1": "Rencontres privées 1 à 1 organisées entre sociétés minières et investisseurs internationaux",
     "forum-bullet-2": "Conférenciers principaux et leaders d'opinion de l'industrie venus du monde entier",
@@ -769,7 +769,7 @@ const translations: Record<Language, Record<string, string>> = {
     "footer-link-registration": "Informations d'Inscription",
     "footer-link-our-sponsors": "Médias & Partenaires",
     "footer-follow-us": "SUIVEZ-NOUS",
-    "footer-disclaimer-text": "Ce site Web, les événements, les informations et les documents relatifs à L'Événement d'Investissement Minier ne constituent pas et ne doivent pas être interprétés comme une offre d'achat ou de vente.",
+    "footer-disclaimer-text": "Ce site Web, les événements, les informations et les documents relatifs à The Mining Investment Event ne constituent pas et ne doivent pas être interprétés comme une offre d'achat ou de vente.",
 
     // Navbar dropdown descriptions
     "nav-about-event-desc": "En savoir plus sur la première conférence minière du Canada",
@@ -782,7 +782,7 @@ const translations: Record<Language, Record<string, string>> = {
     "about-breadcrumb-event": "À Propos de L'Événement",
     "about-hero-title-1": "À Propos de",
     "about-hero-title-2": "L'Événement",
-    "about-lead": "L'Événement d'Investissement Minier—la seule conférence mondiale de niveau 1 sur l'investissement minier au Canada© a lieu annuellement à Québec, Canada.",
+    "about-lead": "The Mining Investment Event — la seule conférence mondiale de niveau 1 sur l'investissement minier au Canada© a lieu annuellement à Québec, Canada.",
     "about-body-1": "Il appartient de manière indépendante et est en partenariat pour faciliter les réunions privées entre les sociétés minières, les investisseurs internationaux et les autorités minières et gouvernementales. La conférence offre une plateforme pour entendre certains des leaders d'opinion les plus influents du secteur. L'Événement s'engage à promouvoir la diversité, l'égalité et la durabilité dans l'industrie minière grâce à l'éducation et l'innovation, soutenu par son programme unique de Bourses Étudiantes et l'initiative SHE-Co.",
     "about-body-2": "L'Événement est un membre fondateur de la Semaine Internationale de la Mine (« IMW »), se déroulant également à Québec. L'IMW promeut d'autres conférences et activités axées sur l'industrie qui rassemblent des sociétés minières mondiales, des entreprises connexes, des experts de la chaîne d'approvisionnement, des investisseurs et des fonctionnaires gouvernementaux en un seul lieu pour des discussions et des réunions collaboratives dans l'ensemble de l'industrie.",
     "about-highlight": "Parrainé indépendamment par divers groupes financiers et industriels ainsi que des gouvernements nationaux et internationaux.",
@@ -817,7 +817,7 @@ const translations: Record<Language, Record<string, string>> = {
     "team-core-title-2": "L'Événement",
     "team-advisory-label": "MEMBRES DU CONSEIL CONSULTATIF",
     "team-advisory-title": "Conseil Consultatif",
-    "team-advisory-desc": "Dirigeants miniers éminents, anciens leaders gouvernementaux et experts techniques apportant une orientation stratégique à L'Événement d'Investissement Minier.",
+    "team-advisory-desc": "Dirigeants miniers éminents, anciens leaders gouvernementaux et experts techniques apportant une orientation stratégique à The Mining Investment Event.",
     "team-read-more": "Lire Plus ↓",
     "team-read-less": "Lire Moins ↑",
 
@@ -826,7 +826,7 @@ const translations: Record<Language, Record<string, string>> = {
     "travel-hero-title-2": "Hébergement",
     "travel-venue-label": "VOYAGE ET HÉBERGEMENT",
     "travel-main-heading": "Voyage et Hébergement",
-    "travel-event-welcome": "Bienvenue à L'ÉVÉNEMENT d'investissement minier, se déroulant au Centre des congrès de Québec (« QCC »)",
+    "travel-event-welcome": "Bienvenue à The Mining Investment Event, se déroulant au Centre des congrès de Québec (« QCC »)",
     "travel-about-qcc": "À propos du Centre des congrès de Québec",
     "travel-notice-1": "Tarifs de groupe réduits disponibles pour les participants inscrits seulement.",
     "travel-notice-2": "Vous êtes responsable de la coordination de l'ensemble de vos déplacements et de votre hébergement. Veuillez vérifier auprès de chaque établissement la politique d'annulation, les exigences de dépôt et les taxes/frais.",
@@ -870,7 +870,7 @@ const translations: Record<Language, Record<string, string>> = {
     "news-latest-label": "DERNIERS COMMUNIQUÉS DE PRESSE",
     "news-section-title-1": "Restez Informé avec",
     "news-section-title-2": "THE Communiqués de Presse",
-    "news-section-desc": "Les derniers communiqués de presse, annonces et mises à jour de L'Événement d'Investissement Minier. Abonnez-vous pour rester au courant de la programmation, des annonces de conférenciers et des mises à jour des initiatives.",
+    "news-section-desc": "Les derniers communiqués de presse, annonces et mises à jour de The Mining Investment Event. Abonnez-vous pour rester au courant de la programmation, des annonces de conférenciers et des mises à jour des initiatives.",
     "news-read-more": "Lire Plus",
     "news-subscribe-text": "Pour plus d'informations et pour vous abonner aux communiqués de presse, contactez",
     "news-filter-all": "Tous",
@@ -882,7 +882,7 @@ const translations: Record<Language, Record<string, string>> = {
     "student-hero-title-2": "Bourses Étudiantes",
     "student-tag-label": "DEVENEZ L'AVENIR DE L'INDUSTRIE MINIÈRE",
     "student-main-subtitle": "Postulez dès maintenant pour la promotion 2026 du Programme de Bourses Étudiantes Glencore",
-    "student-body-p1": "Le programme de bourses étudiantes Glencore vise à offrir une exposition unique à l'industrie minière grâce à une participation à L'Événement d'Investissement Minier (L'Événement), la seule conférence d'investissement minier mondiale de Niveau 1 au Canada, qui se tiendra du 1er au 3 juin 2027 à Québec. Cet événement annuel sert de point de rencontre pour les leaders de l'industrie et les investisseurs.",
+    "student-body-p1": "Le programme de bourses étudiantes Glencore vise à offrir une exposition unique à l'industrie minière grâce à une participation à The Mining Investment Event (THE Event), la seule conférence d'investissement minier mondiale de Niveau 1 au Canada, qui se tiendra du 1er au 3 juin 2027 à Québec. Cet événement annuel sert de point de rencontre pour les leaders de l'industrie et les investisseurs.",
     "student-body-p1-sub": "Le programme est désormais reconnu comme l'un des plus grands programmes de conférences entièrement financés au Canada.",
     "student-body-p2": "Jusqu'à 50 étudiants universitaires ou collégiens passionnés de géologie, finance ou génie auront la chance d'assister à la conférence sans aucun coût. Notre objectif est de favoriser l'apprentissage expérientiel en exposant les étudiants aux conférenciers d'honneur et panels de l'industrie.",
     "student-cta-apply": "Postuler ici",
@@ -1023,20 +1023,79 @@ const translations: Record<Language, Record<string, string>> = {
     "golf-hero-label": "TOURNOI DE GOLF ANNUEL",
     "golf-hero-title-1": "La Journée",
     "golf-hero-title-2": "de Golf de",
-    "golf-hero-title-3": "L'Événement Minier",
+    "golf-hero-title-3": "The Mining Investment Event",
     "golf-hero-sub": "Rejoignez les leaders de l'industrie, investisseurs et dirigeants miniers pour une journée exclusive sur le parcours d'un des plus beaux clubs de Québec.",
     "golf-hero-date": "1er juin 2027 — Club de Golf de Cap-Rouge, Ville de Québec",
     "golf-register-btn": "S'inscrire à la Journée Golf",
     "golf-details-btn": "Voir les Détails du Tournoi",
     "golf-about-label": "À PROPOS DU TOURNOI",
     "golf-about-title": "Une Journée de Réseautage sur le Parcours",
-    "golf-about-desc": "La Journée Golf de L'Événement Minier est une expérience de réseautage premium conçue pour réunir les dirigeants miniers seniors, investisseurs institutionnels et leaders de l'industrie dans un cadre informel avant le début de la conférence principale.",
+    "golf-about-desc": "La Journée Golf de The Mining Investment Event est une expérience de réseautage premium conçue pour réunir les dirigeants miniers seniors, investisseurs institutionnels et leaders de l'industrie dans un cadre informel avant le début de la conférence principale.",
     "golf-format-title": "Format du Tournoi",
     "golf-format-desc": "Meilleure Balle (Scramble) — 18 trous de compétition amicale avec des quatuors jumelant sociétés minières et investisseurs. Tous les niveaux sont bienvenus.",
     "golf-includes-title": "L'inscription Comprend",
     "golf-includes-desc": "18 trous de golf avec voiturette, déjeuner et rafraîchissements sur le parcours, souper de remise de prix, cocktail de réseautage, ensemble-cadeau golf de marque, et accès aux activations exclusives des commanditaires.",
     "golf-schedule-title": "Aperçu de l'Horaire",
     "golf-schedule-desc": "10h00 Inscription & Aire de Pratique · 11h30 Départ Simultané · 17h00 Cérémonie de Remise de Prix & Cocktail · 19h00 Souper de Gala",
+
+    // Travel Delta
+    "travel-delta-title": "Delta Hotels by Marriott Québec (Hôtel Partenaire Recommandé)",
+    "travel-delta-desc": "Idéalement situé à proximité du Centre des congrès de Québec (« QCC »), le Delta Hotels Québec propose des chambres haut de gamme, des installations modernes, une restauration sur place et des tarifs de groupe exclusifs pour les délégués de la conférence.",
+    "travel-delta-note": "Hôtel partenaire recommandé avec des tarifs spéciaux pour les délégués réservés aux participants inscrits.",
+    "travel-delta-link": "Voir le Site de l'Hôtel Delta ↗",
+
+    // Media
+    "media-videos-label": "Vidéos Récentes",
+
+    // News
+    "news-press-label": "COMMUNIQUÉS DE PRESSE ET ANNONCES",
+
+    // Sponsors
+    "sp-sponsors-partners": "MÉDIAS ET PARTENAIRES",
+    "sp-no-sponsors": "Aucun média ou partenaire trouvé dans cette catégorie.",
+
+    // Speakers Modal & Search
+    "spk-modal-bio": "Biographie & Conférences",
+    "spk-modal-company": "Entreprise",
+    "spk-modal-position": "Fonction",
+    "spk-modal-sessions": "Présentations & Panels",
+    "spk-search-ph": "Rechercher des conférenciers par nom, entreprise, fonction...",
+
+    // Companies columns
+    "co-col-website-btn": "Visiter le Site Web",
+    "co-col-industry": "Secteur",
+    "co-col-website": "Site Web",
+
+    // Footer & Common UI
+    "footer-subscribe-ph": "Entrez votre adresse courriel...",
+    "footer-subscribe-btn": "S'abonner",
+    "footer-rights": "Tous droits réservés",
+    "footer-credit": "Conçu et développé pour The Mining Investment Event",
+
+    // PDF Viewer & Document Controls
+    "pdf-page": "Page",
+    "pdf-of": "sur",
+    "pdf-zoom-in": "Zoomer",
+    "pdf-zoom-out": "Dézoomer",
+    "pdf-fullscreen": "Plein Écran",
+    "pdf-download": "Télécharger le PDF",
+    "pdf-close": "Fermer le Document",
+
+    // News & Media Extra
+    "news-cat-all": "Toutes les Mises à Jour",
+    "news-cat-press": "Communiqués de Presse",
+    "news-cat-articles": "Articles",
+    "news-cat-media": "Médias",
+    "news-published-on": "Publié le",
+    "news-read-time": "min de lecture",
+    "news-related": "Nouvelles et Mises à Jour Connexes",
+
+    // General Common
+    "btn-close": "Fermer",
+    "btn-back": "Retour",
+    "btn-apply": "Postuler",
+    "btn-learn-more": "En Savoir Plus",
+    "btn-register-here": "S'inscrire",
 
     // Footer
     "footer-privacy-policy": "Politique de Confidentialité",
@@ -1046,29 +1105,48 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang] = useState<Language>("EN");
+  const [lang, setLangState] = useState<Language>("EN");
 
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = "en";
+    try {
+      const saved = localStorage.getItem("preferredLanguage");
+      if (saved === "EN" || saved === "FR") {
+        setLangState(saved);
+      }
+    } catch {
+      // LocalStorage access may fail in private mode or SSR
     }
   }, []);
 
-  const setLang = (_newLang: Language) => {
-    // Language locked to EN per client request
-    localStorage.setItem("preferredLanguage", "EN");
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = lang.toLowerCase();
+    }
+  }, [lang]);
+
+  const setLang = (newLang: Language) => {
+    setLangState(newLang);
+    try {
+      localStorage.setItem("preferredLanguage", newLang);
+    } catch {
+      // ignore
+    }
   };
 
   const t = (key: string, fallback?: string): string => {
-    const langDict = translations["EN"];
+    const langDict = translations[lang];
     if (langDict && langDict[key]) {
       return langDict[key];
+    }
+    const enDict = translations["EN"];
+    if (enDict && enDict[key]) {
+      return enDict[key];
     }
     return fallback || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ lang: "EN", setLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang, t }}>
       {children}
     </LanguageContext.Provider>
   );
