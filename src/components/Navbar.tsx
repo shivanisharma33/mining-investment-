@@ -248,23 +248,23 @@ export default function Navbar() {
     >
       <div className="w-full px-[40px] h-full flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center group py-1">
+        <Link href="/" className="flex-shrink-0 flex items-center group py-1 mr-3 xl:mr-4 2xl:mr-8">
           <Image
             src="/MainPageLogo.webp"
             alt="The Mining Investment Event"
             width={240}
             height={90}
             priority
-            className="object-contain h-10 sm:h-14 md:h-16 lg:h-[72px] max-h-[85%] w-auto group-hover:scale-105 transition-transform duration-300 dark:brightness-110"
+            className="object-contain h-10 sm:h-12 md:h-14 lg:h-[56px] xl:h-[60px] 2xl:h-[72px] max-h-[85%] w-auto group-hover:scale-105 transition-transform duration-300 dark:brightness-110"
           />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8">
+        <nav className="hidden lg:flex items-center gap-2.5 lg:gap-3 xl:gap-3.5 2xl:gap-6 shrink-0">
           {visibleNavLinks.map((link) => (
             <div
               key={link.name}
-              className="relative"
+              className="relative shrink-0"
               onMouseEnter={() => {
                 if (link.dropdownType === "about") setAboutOpen(true);
                 if (link.dropdownType === "programs") setProgramsOpen(true);
@@ -281,9 +281,9 @@ export default function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+                  className="relative py-1 text-[11px] lg:text-[11.5px] xl:text-[12px] 2xl:text-[13.5px] font-extrabold tracking-tight xl:tracking-normal 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F] shrink-0"
                 >
-                  <span>{link.name}</span>
+                  <span className="whitespace-nowrap">{link.name}</span>
                   <svg
                     className="w-3 h-3 text-neutral-400 group-hover:text-[#C6112F] transition-colors shrink-0"
                     fill="none"
@@ -298,10 +298,10 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative py-1 text-[11px] xl:text-sm font-extrabold tracking-wide xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+                  className={`relative py-1 text-[11px] lg:text-[11.5px] xl:text-[12px] 2xl:text-[13.5px] font-extrabold tracking-tight xl:tracking-normal 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 shrink-0 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                     }`}
                 >
-                  <span>{link.name}</span>
+                  <span className="whitespace-nowrap">{link.name}</span>
                   {link.hasDropdown && (
                     <svg
                       className={`w-3 h-3 transition-transform duration-200 ${(link.dropdownType === "about" && aboutOpen) ||
@@ -498,16 +498,17 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop & Action Buttons Container */}
-        <div className="flex items-center gap-2 sm:gap-2.5 xl:gap-3.5 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-2.5 xl:gap-2.5 2xl:gap-3.5 shrink-0 ml-3 xl:ml-4 2xl:ml-6">
           {/* The Noble Mining Investment Conference Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
           <a
             href="https://www.thenoblemininginvestmentconference.com/"
             target="_blank"
             rel="noopener noreferrer"
             title="THE NOBLE MINING INVESTMENT CONFERENCE"
-            className="hidden xl:inline-flex px-3.5 py-2 xl:px-4 xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[10.5px] xl:text-[11.5px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
+            className="hidden xl:inline-flex px-2.5 py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[10px] 2xl:text-[11.5px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
-            <span>THE NOBLE MINING INVESTMENT CONFERENCE</span>
+            <span className="hidden 2xl:inline">THE NOBLE MINING INVESTMENT CONFERENCE</span>
+            <span className="inline 2xl:hidden">NOBLE CONFERENCE</span>
           </a>
 
           {/* International Mining Week Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
@@ -515,9 +516,11 @@ export default function Navbar() {
             href="https://mining-international-weekly.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden xl:inline-flex px-3.5 py-2 xl:px-4 xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[11px] xl:text-xs font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer"
+            title={lang === "FR" ? "Semaine Internationale des Mines" : "International Mining Week"}
+            className="hidden xl:inline-flex px-2.5 py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[10px] 2xl:text-xs font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
-            <span>{t("nav-imw-btn", "International Mining Week")}</span>
+            <span className="hidden 2xl:inline">{t("nav-imw-btn", "International Mining Week")}</span>
+            <span className="inline 2xl:hidden">{lang === "FR" ? "SEMAINE DES MINES" : "MINING WEEK"}</span>
           </a>
 
           {/* English / French Language Switcher Button */}
