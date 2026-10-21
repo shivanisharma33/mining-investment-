@@ -74,7 +74,7 @@ export default function StatsAndGlimpse() {
     <section id="glimpse-section" className="relative overflow-hidden py-12 sm:py-14 md:py-16 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
       {/* ════════ A GLIMPSE INSIDE THE EVENT VIDEO SECTION ════════ */}
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 bg-white/80 dark:bg-[#131b2e]/80 p-8 sm:p-12 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xl backdrop-blur-xs">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-14 bg-white/80 dark:bg-[#131b2e]/80 p-4 sm:p-8 md:p-12 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xl backdrop-blur-xs">
           {/* Left Column: Text & Connected Action Buttons */}
           <div className="flex-1 flex flex-col items-start text-left max-w-[560px] lg:max-w-[580px] group">
             <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase mb-2 block transition-all duration-300 group-hover:tracking-[0.32em]">
@@ -188,42 +188,57 @@ export default function StatsAndGlimpse() {
             </div>
 
             {/* Bottom Controls Bar & Metadata */}
-            <div className="w-full mt-3 flex items-center justify-between text-xs text-neutral-600 dark:text-neutral-400 px-1">
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-neutral-800 dark:text-neutral-200">THE Event Video</span>
+            <div className="w-full mt-3 sm:mt-3.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-4 text-xs text-neutral-600 dark:text-neutral-400 px-0.5 sm:px-1">
+              {/* Left Info: Title & Quality Badge */}
+              <div className="flex items-center justify-between sm:justify-start gap-2 flex-wrap">
+                <span className="font-bold text-neutral-800 dark:text-neutral-200 text-xs sm:text-[13px] tracking-tight whitespace-nowrap">
+                  {isFr ? "Vidéo de L'Événement" : "THE Event Video"}
+                </span>
                 <span className="text-neutral-300 dark:text-neutral-700">•</span>
-                <span className="text-[11px] font-bold text-[#C6112F]">Full HD with Audio</span>
+                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-500/10 dark:bg-red-500/15 border border-[#C6112F]/25 text-[10px] sm:text-[11px] font-bold text-[#C6112F] whitespace-nowrap">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] animate-pulse" />
+                  {isFr ? "Full HD avec Audio" : "Full HD with Audio"}
+                </span>
               </div>
-              <div className="flex items-center gap-3">
+
+              {/* Right Controls: Play/Pause, Sound, Fullscreen */}
+              <div className="flex items-center justify-between sm:justify-end gap-1.5 sm:gap-3 pt-2 sm:pt-0 border-t border-neutral-200/70 dark:border-neutral-800/70 sm:border-t-0">
                 {/* Play / Pause Toggle Button */}
                 <button
                   type="button"
                   onClick={handleTogglePlayPause}
-                  className="font-bold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors cursor-pointer flex items-center gap-1 text-[11px] uppercase tracking-wider"
-                  title={isPlaying ? "Pause video" : "Play video"}
+                  className="font-bold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors cursor-pointer flex items-center gap-1 text-[10px] sm:text-[11px] uppercase tracking-wider whitespace-nowrap py-1 px-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/60"
+                  title={isPlaying ? (isFr ? "Mettre en pause" : "Pause video") : (isFr ? "Lire la vidéo" : "Play video")}
                 >
-                  {isPlaying ? "⏸ Pause" : "▶ Play"}
+                  <span className="text-xs">{isPlaying ? "⏸" : "▶"}</span>
+                  <span>{isPlaying ? (isFr ? "PAUSE" : "PAUSE") : (isFr ? "LIRE" : "PLAY")}</span>
                 </button>
-                <span className="text-neutral-300 dark:text-neutral-700">•</span>
+
+                <span className="text-neutral-300 dark:text-neutral-700 select-none">•</span>
+
                 {/* Dedicated Audio Mute / Unmute Button */}
                 <button
                   type="button"
                   onClick={handleToggleMute}
-                  className="font-bold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] transition-colors cursor-pointer flex items-center gap-1 text-[11px] uppercase tracking-wider"
-                  title={isMuted ? "Turn sound on" : "Mute audio"}
+                  className="font-bold text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors cursor-pointer flex items-center gap-1 text-[10px] sm:text-[11px] uppercase tracking-wider whitespace-nowrap py-1 px-1.5 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800/60"
+                  title={isMuted ? (isFr ? "Activer le son" : "Turn sound on") : (isFr ? "Couper le son" : "Mute audio")}
                 >
-                  {isMuted ? "🔊 Turn Sound On" : "🔇 Mute"}
+                  <span className="text-xs">{isMuted ? "🔊" : "🔇"}</span>
+                  <span>{isMuted ? (isFr ? "ACTIVER SON" : "TURN SOUND ON") : (isFr ? "COUPER SON" : "MUTE")}</span>
                 </button>
-                <span className="text-neutral-300 dark:text-neutral-700">•</span>
+
+                <span className="text-neutral-300 dark:text-neutral-700 select-none">•</span>
+
+                {/* Fullscreen Button */}
                 <button
                   type="button"
                   onClick={handleFullscreen}
-                  className="font-bold text-[#C6112F] hover:underline transition-colors cursor-pointer flex items-center gap-1 text-[11px] uppercase tracking-wider"
+                  className="font-bold text-[#C6112F] hover:text-[#990a20] transition-colors cursor-pointer flex items-center gap-1 text-[10px] sm:text-[11px] uppercase tracking-wider whitespace-nowrap py-1 px-1.5 rounded-md hover:bg-red-50 dark:hover:bg-red-950/30"
                 >
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
                   </svg>
-                  {t("video-fullscreen", "Fullscreen")}
+                  <span>{t("video-fullscreen", "FULLSCREEN")}</span>
                 </button>
               </div>
             </div>

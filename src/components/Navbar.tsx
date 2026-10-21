@@ -246,7 +246,7 @@ export default function Navbar() {
       className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-16 sm:h-20 md:h-22" : "h-18 sm:h-22 md:h-24"
         }`}
     >
-      <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-3 sm:px-6 md:px-10 h-full flex items-center justify-between">
+      <div className="w-full px-[40px] h-full flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 flex items-center group py-1">
           <Image
@@ -621,7 +621,7 @@ export default function Navbar() {
           />
 
           {/* Mobile Drawer Menu */}
-          <div className="fixed top-[72px] sm:top-20 md:top-22 left-0 w-full max-h-[calc(100dvh-4.5rem)] sm:max-h-[calc(100dvh-5.5rem)] overflow-y-auto bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-slate-800 shadow-2xl px-4 sm:px-8 py-5 flex flex-col gap-4 z-50 lg:hidden">
+          <div className="fixed top-[72px] sm:top-20 md:top-22 left-0 w-full max-h-[calc(100dvh-4.5rem)] sm:max-h-[calc(100dvh-5.5rem)] overflow-y-auto bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-slate-800 shadow-2xl px-[40px] py-5 flex flex-col gap-4 z-50 lg:hidden">
             {/* Mobile Language Switcher Row */}
             <div className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-neutral-100/80 dark:bg-slate-800/80 border border-neutral-200 dark:border-slate-700">
               <span className="text-xs font-extrabold tracking-wider uppercase text-neutral-600 dark:text-slate-300">
