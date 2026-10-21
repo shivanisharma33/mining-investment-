@@ -43,7 +43,6 @@ const partnerData: Record<Exclude<TierKey, "ALL">, string[]> = {
     "/sponsers/center.svg",
     "/sponsor image/inforfg-logo-f.png",
     "/sponsors/2026/la_caisse_cdpq.svg",
-    "/139.png",
     "/sponsers/38.png",
     "/sponsers/pal_airlines.svg",
     "/sponsors/2026/outside_the_box_capital.png",
@@ -120,7 +119,7 @@ export default function FeaturedPartners() {
             {t("partners-tag", "FEATURED")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
-            {t("partners-title", "Featured Partners")}{" "}
+            {t("partners-title", "2027 Featured Partners")}{" "}
             {activeTier !== "ALL" && (
               <span className="capitalize">({activeTier.toLowerCase()})</span>
             )}

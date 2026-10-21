@@ -104,6 +104,10 @@ const translations: Record<Language, Record<string, string>> = {
     // Featured Programs Grid
     "programs-tag": "FEATURED INITIATIVES",
     "programs-title": "Key Event Programs",
+    "prog-meeting-cat": "NETWORKING",
+    "prog-meeting-title": "1x1 Meeting Program",
+    "prog-meeting-desc": "Facilitating thousands of private, pre-scheduled one-on-one meetings connecting participating mining companies, global institutional investors and key decision-makers.",
+    "prog-meeting-cta": "LEARN MORE",
     "prog-edu-cat": "EDUCATION",
     "prog-edu-title": "Student Sponsorship Program",
     "prog-edu-desc": "Offering a one-of-a-kind exposure to the mining industry for up to 50 university and college students passionate about geology, finance and engineering.",
@@ -112,10 +116,6 @@ const translations: Record<Language, Record<string, string>> = {
     "prog-lead-title": "SHE-Co Initiative",
     "prog-lead-desc": "Fostering industry-wide progress through ESG innovation and diversity, highlighting the achievements of women in the global mining sector.",
     "prog-lead-cta": "LEARN MORE",
-    "prog-inst-cat": "INSTITUTIONAL",
-    "prog-inst-title": "THE Tier 1 Conference Partnerships",
-    "prog-inst-desc": "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u00A0makers, investors and policy\u00A0makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event.",
-    "prog-inst-cta": "PARTNERSHIPS INFO",
     "prog-dial-cat": "DIALOGUE",
     "prog-dial-title": "THE Coreshack",
     "prog-dial-desc": "An intimate networking experience designed to connect Canada's exploration community with international investors",
@@ -136,7 +136,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Featured Partners
     "partners-tag": "FEATURED",
-    "partners-title": "Featured Partners",
+    "partners-title": "2027 Featured Partners",
     "partners-sub": "A spotlight on the partners powering THE Mining Investment Event. Switch tiers to explore each circle of supporters.",
 
     // Canada Premier Forum
@@ -184,7 +184,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Get In Touch CTA
     "cta-tag": "HAVE A QUESTION?",
     "cta-title": "Get in Touch",
-    "cta-desc-prefix": "For more information about 'THE Event' programming or registration, please contact",
+    "cta-desc-prefix": "For more information about 'THE Event' programming, registration or sponsorship opportunities, please contact",
     "cta-desc-or": "or call",
 
     // Footer
@@ -644,6 +644,10 @@ const translations: Record<Language, Record<string, string>> = {
     // Featured Programs Grid
     "programs-tag": "INITIATIVES EN VEDETTE",
     "programs-title": "Programmes Principaux",
+    "prog-meeting-cat": "RÉSEAUTAGE",
+    "prog-meeting-title": "Programme de Rencontres 1-à-1",
+    "prog-meeting-desc": "Faciliter des milliers de réunions privées individuelles préétablies reliant les sociétés minières, les investisseurs institutionnels mondiaux et les décideurs.",
+    "prog-meeting-cta": "EN SAVOIR PLUS",
     "prog-edu-cat": "ÉDUCATION",
     "prog-edu-title": "Programme de Bourses Étudiantes",
     "prog-edu-desc": "Offrant une exposition unique à l'industrie minière pour jusqu'à 50 étudiants universitaires passionnés par la géologie et la finance.",
@@ -652,10 +656,6 @@ const translations: Record<Language, Record<string, string>> = {
     "prog-lead-title": "Initiative SHE-Co",
     "prog-lead-desc": "Favoriser le progrès de l'industrie grâce à l'innovation ESG et à la diversité des femmes dans le secteur minier.",
     "prog-lead-cta": "EN SAVOIR PLUS",
-    "prog-inst-cat": "INSTITUTIONNEL",
-    "prog-inst-title": "Partenariats de Niveau 1",
-    "prog-inst-desc": "Opportunités sur mesure conçues pour maximiser la visibilité auprès des sociétés minières et investisseurs influents.",
-    "prog-inst-cta": "INFO PARTENARIATS",
     "prog-dial-cat": "DIALOGUE",
     "prog-dial-title": "THE Coreshack",
     "prog-dial-desc": "Une expérience de réseautage intime conçue pour connecter la communauté d'exploration du Canada avec les investisseurs internationaux.",
@@ -676,7 +676,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Featured Partners
     "partners-tag": "EN VEDETTE",
-    "partners-title": "Partenaires en Vedette",
+    "partners-title": "Partenaires en Vedette 2027",
     "partners-sub": "Un coup de projecteur sur les partenaires propulsant The Mining Investment Event. Changez de niveau pour explorer chaque cercle de supporters.",
 
     // Canada Premier Forum
@@ -754,7 +754,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Get In Touch CTA
     "cta-tag": "UNE QUESTION ?",
     "cta-title": "Contactez-Nous",
-    "cta-desc-prefix": "Pour plus d'informations sur le programme de 'L'Événement' ou l'inscription, veuillez contacter",
+    "cta-desc-prefix": "Pour plus d'informations sur le programme de 'L'Événement', l'inscription ou les opportunités de commandite, veuillez contacter",
     "cta-desc-or": "ou appeler le",
 
     // Footer

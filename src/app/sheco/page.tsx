@@ -40,7 +40,7 @@ export default function SheCoPage() {
       amount: "C$20,000",
       location: "Longueuil, QC",
       selectedBy: "Mathieu Savard (President & CEO, Vior Gold Corporation)",
-      image: "/MINING INVESTMENT EVENT 2026_DAY 1_MAIN EVENT-41.jpg",
+      image: "/PHOTO10.jpg",
       desc: "Moisson Rive-Sud is the primary non-profit food bank serving Longueuil, Quebec and nearby areas, dedicated to reducing food insecurity among local residents.",
       descFr: "Moisson Rive-Sud est la principale banque alimentaire à but non lucratif desservant Longueuil et ses environs, visant à réduire l'insécurité alimentaire.",
     },
@@ -204,8 +204,8 @@ export default function SheCoPage() {
                 <div className="sticky top-28 bg-white dark:bg-[#151c2c] border border-neutral-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl group">
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
                     <img
-                      src="/MINING INVESTMENT EVENT 2026_DAY 1_MAIN EVENT-41.jpg"
-                      alt="2026 SHE-Co Presentation Cheque to Moisson Rive-Sud"
+                      src="/PHOTO10.jpg"
+                      alt="Moisson Rive-Sud Community Team with SHE-Co Initiative"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
@@ -213,7 +213,7 @@ export default function SheCoPage() {
                     {/* Badge Overlay */}
                     <div className="absolute top-4 left-4">
                       <span className="px-3.5 py-1.5 rounded-xl bg-[#C6112F] text-white font-black text-xs uppercase tracking-wider shadow-lg">
-                        2026 CHEQUE PRESENTATION
+                        MOISSON RIVE-SUD TEAM
                       </span>
                     </div>
 
@@ -222,7 +222,7 @@ export default function SheCoPage() {
                         {isFr ? "Banque Alimentaire Longueuil, Québec" : "Food Bank – Longueuil, Quebec"}
                       </span>
                       <h4 className="text-lg font-black text-white">
-                        Moisson Rive-Sud Presentation
+                        Moisson Rive-Sud Facility & Team
                       </h4>
                     </div>
                   </div>
@@ -289,6 +289,22 @@ export default function SheCoPage() {
                       ? "Nous sommes fiers d'annoncer que l'initiative SHE-Co a fait un don de 5 000 $ CAD à Moisson Rive-Sud. Ce montant a été égalé par Vior Gold Corporation et à nouveau égalé personnellement par le PDG Mathieu Savard ainsi que par Sean Roosen, PDG d'Osisko Development (qui a également sélectionné le récipiendaire SHE-Co 2025). En conséquence, le don total versé à Moisson Rive-Sud a atteint 20 000 $ CAD."
                       : "We are proud to share that THE She-Co Initiative donated C$5,000 to Moisson Rive-Sud. This amount was matched by Vior Gold Corporation and again was matched personally by CEO Mathieu Savard and by Sean Roosen, CEO of Osisko Development, who also previously selected the 2025 SHE-Co recipient. As a result, the total donation to Moisson Rive-Sud reached C$20,000."}
                   </p>
+
+                  {/* Cheque Presentation Photo Callout */}
+                  <div className="rounded-2xl overflow-hidden border border-neutral-200 dark:border-slate-800 shadow-md">
+                    <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-900">
+                      <img
+                        src="/MINING INVESTMENT EVENT 2026_DAY 1_MAIN EVENT-41.jpg"
+                        alt="2026 SHE-Co Presentation Cheque to Moisson Rive-Sud"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+                      <div className="absolute bottom-3 left-4 right-4 text-white text-xs sm:text-sm font-bold flex items-center justify-between">
+                        <span>{isFr ? "Remise officielle du chèque de 20 000 $ à L'Événement 2026" : "Official C$20,000 Cheque Presentation at THE Event 2026"}</span>
+                        <span className="text-[#C6112F] font-black uppercase text-[11px] bg-white px-2 py-0.5 rounded">C$20,000</span>
+                      </div>
+                    </div>
+                  </div>
 
                   {/* Future CEO Selection Note */}
                   <div className="p-6 rounded-2xl bg-[#121826] text-white border border-neutral-800 flex items-start gap-4">

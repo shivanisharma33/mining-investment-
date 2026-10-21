@@ -746,12 +746,10 @@ export default function MediaPage() {
             <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
               <a href="/" className="hover:text-white transition-colors">{t("nav-home", "Home")}</a>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-neutral-500">{t("nav-about", "About")}</span>
-              <span className="text-[#C6112F]">›</span>
-              <span className="text-white">{t("nav-media", "Recent Media")}</span>
+              <span className="text-white">{t("nav-gallery", "Gallery")}</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none">
-              {t("media-hero-title-1", "Recent")} <span className="text-[#C6112F]">{t("media-hero-title-2", "Media & Playlists")}</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none uppercase">
+              {t("nav-gallery", "Gallery")}
             </h1>
             <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mt-6" />
           </div>
@@ -760,27 +758,6 @@ export default function MediaPage() {
         {/* ═══════════════ 1. PHOTO GALLERY GRID (VISIBLE FIRST) ═══════════════ */}
         <section className="relative w-full bg-white py-12 sm:py-14 md:py-16">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
-              {t("media-gallery-label", "Gallery & Media")}
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#1a1f2c] tracking-tight mb-1">
-              {t("media-gallery-title-1", "THE Event in")}{" "}
-              <span className="text-[#C6112F]">{t("media-gallery-title-2", "Pictures & Press")}</span>
-            </h2>
-            <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
-            <p className="text-neutral-600 text-sm sm:text-base leading-relaxed max-w-[700px] mb-8">
-              <span>
-                {lang === "FR"
-                  ? "Explorez la couverture médiatique récente, les photos et les médias de THE Mining Investment Event."
-                  : "Explore recent coverage, photography and media from THE Mining Investment Event."}
-              </span>
-              <span className="block mt-1">
-                {lang === "FR"
-                  ? "Pour toute demande des médias et accréditation de presse, veuillez contacter notre équipe directement."
-                  : "For media inquiries and press accreditation, please contact our team directly."}
-              </span>
-            </p>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {galleryTiles.map((tile, i) => (
                 <div

@@ -50,10 +50,10 @@ const aboutDropdown = [
     ),
   },
   {
-    titleKey: "nav-media",
-    titleDefault: "Recent Media",
+    titleKey: "nav-gallery",
+    titleDefault: "Gallery",
     descKey: "nav-media-desc",
-    descDefault: "Latest media coverage and press",
+    descDefault: "Event photo gallery and highlights",
     href: "/media",
     isExternal: false,
     icon: (
@@ -235,7 +235,7 @@ export default function Navbar() {
     { name: t("nav-programs", "PROGRAMS"), href: "/student", hasDropdown: true, dropdownType: "programs", isExternal: false },
     { name: t("nav-past-years", "PAST YEARS"), href: "/past-editions", hasDropdown: false, dropdownType: "none", isExternal: false },
     { name: t("nav-gallery", "GALLERY"), href: "/media", hasDropdown: false, dropdownType: "none", isExternal: false },
-    { name: t("nav-news", "NEWS"), href: "/news", hasDropdown: false, dropdownType: "none", isExternal: false },
+    { name: t("nav-news", "NEWS"), href: "/news", hasDropdown: false, dropdownType: "none", isExternal: false, hidden: true },
     { name: t("nav-newsroom", "THE NEWSROOM"), href: "/newsroom", hasDropdown: false, dropdownType: "none", isExternal: false, hidden: true },
   ];
 
@@ -529,11 +529,10 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setLang("EN")}
-              className={`px-2 sm:px-2.5 h-full rounded-full text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${
-                lang === "EN"
-                  ? "bg-[#C6112F] text-white shadow-xs"
-                  : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
-              }`}
+              className={`px-2 sm:px-2.5 h-full rounded-full text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${lang === "EN"
+                ? "bg-[#C6112F] text-white shadow-xs"
+                : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+                }`}
               aria-label="Switch to English"
               title="English"
             >
@@ -542,11 +541,10 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setLang("FR")}
-              className={`px-2 sm:px-2.5 h-full rounded-full text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${
-                lang === "FR"
-                  ? "bg-[#C6112F] text-white shadow-xs"
-                  : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
-              }`}
+              className={`px-2 sm:px-2.5 h-full rounded-full text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${lang === "FR"
+                ? "bg-[#C6112F] text-white shadow-xs"
+                : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+                }`}
               aria-label="Passer en Français"
               title="Français"
             >
@@ -633,22 +631,20 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => setLang("EN")}
-                  className={`px-3 py-1 rounded-full text-xs font-extrabold tracking-wider transition-all cursor-pointer ${
-                    lang === "EN"
-                      ? "bg-[#C6112F] text-white shadow-xs"
-                      : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F]"
-                  }`}
+                  className={`px-3 py-1 rounded-full text-xs font-extrabold tracking-wider transition-all cursor-pointer ${lang === "EN"
+                    ? "bg-[#C6112F] text-white shadow-xs"
+                    : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F]"
+                    }`}
                 >
                   English
                 </button>
                 <button
                   type="button"
                   onClick={() => setLang("FR")}
-                  className={`px-3 py-1 rounded-full text-xs font-extrabold tracking-wider transition-all cursor-pointer ${
-                    lang === "FR"
-                      ? "bg-[#C6112F] text-white shadow-xs"
-                      : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F]"
-                  }`}
+                  className={`px-3 py-1 rounded-full text-xs font-extrabold tracking-wider transition-all cursor-pointer ${lang === "FR"
+                    ? "bg-[#C6112F] text-white shadow-xs"
+                    : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F]"
+                    }`}
                 >
                   Français
                 </button>
@@ -669,17 +665,17 @@ export default function Navbar() {
                             if (link.dropdownType === "past-years") setMobilePastYearsOpen(!mobilePastYearsOpen);
                           }}
                           className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors cursor-pointer ${active
-                              ? "text-[#C6112F] bg-[#C6112F]/5"
-                              : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
+                            ? "text-[#C6112F] bg-[#C6112F]/5"
+                            : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
                             }`}
                         >
                           <span>{link.name}</span>
                           <svg
                             className={`w-4 h-4 transition-transform duration-200 ${(link.dropdownType === "about" && mobileAboutOpen) ||
-                                (link.dropdownType === "programs" && mobileProgramsOpen) ||
-                                (link.dropdownType === "past-years" && mobilePastYearsOpen)
-                                ? "rotate-180 text-[#C6112F]"
-                                : "text-neutral-400"
+                              (link.dropdownType === "programs" && mobileProgramsOpen) ||
+                              (link.dropdownType === "past-years" && mobilePastYearsOpen)
+                              ? "rotate-180 text-[#C6112F]"
+                              : "text-neutral-400"
                               }`}
                             fill="none"
                             stroke="currentColor"
@@ -725,8 +721,8 @@ export default function Navbar() {
                                   href={item.href}
                                   onClick={() => setIsOpen(false)}
                                   className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${isSubActive
-                                      ? "bg-[#C6112F]/10 text-[#C6112F]"
-                                      : "hover:bg-[#fef2f2] dark:hover:bg-slate-800/80"
+                                    ? "bg-[#C6112F]/10 text-[#C6112F]"
+                                    : "hover:bg-[#fef2f2] dark:hover:bg-slate-800/80"
                                     }`}
                                 >
                                   <div className="w-8 h-8 rounded-lg bg-[#f4f7fa] dark:bg-slate-800 text-[#C6112F] flex items-center justify-center shrink-0 mt-0.5">
@@ -784,8 +780,8 @@ export default function Navbar() {
                                   href={item.href}
                                   onClick={() => setIsOpen(false)}
                                   className={`flex items-start gap-3 p-2.5 rounded-xl transition-colors ${isSubActive
-                                      ? "bg-[#C6112F]/10 text-[#C6112F]"
-                                      : "hover:bg-[#fef2f2] dark:hover:bg-slate-800/80"
+                                    ? "bg-[#C6112F]/10 text-[#C6112F]"
+                                    : "hover:bg-[#fef2f2] dark:hover:bg-slate-800/80"
                                     }`}
                                 >
                                   <div className="w-8 h-8 rounded-lg bg-[#f4f7fa] dark:bg-slate-800 text-[#C6112F] flex items-center justify-center shrink-0 mt-0.5">
@@ -828,8 +824,8 @@ export default function Navbar() {
                         href={link.href}
                         onClick={() => setIsOpen(false)}
                         className={`px-3.5 py-3 rounded-xl text-sm font-extrabold tracking-wider uppercase transition-colors block ${active
-                            ? "text-[#C6112F] bg-[#C6112F]/10"
-                            : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
+                          ? "text-[#C6112F] bg-[#C6112F]/10"
+                          : "text-neutral-800 dark:text-slate-100 hover:text-[#C6112F] hover:bg-neutral-100 dark:hover:bg-slate-800/60"
                           }`}
                       >
                         {link.name}

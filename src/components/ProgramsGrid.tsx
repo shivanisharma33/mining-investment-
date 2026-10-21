@@ -10,6 +10,21 @@ export default function ProgramsGrid() {
 
   const programs = [
     {
+      id: "meeting",
+      category: t("prog-meeting-cat", "N E T W O R K I N G"),
+      title: t("prog-meeting-title", "1x1 Meeting Program"),
+      description: t(
+        "prog-meeting-desc",
+        "Facilitating thousands of private, pre-scheduled one-on-one meetings connecting participating mining companies, global institutional investors and key decision-makers."
+      ),
+      cta: t("prog-meeting-cta", "LEARN MORE"),
+      link: "",
+      image:
+        "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-10.jpg",
+      imageAlt: "1x1 Meeting Program at THE Mining Investment Event",
+      imageOnLeft: true,
+    },
+    {
       id: "education",
       category: t("prog-edu-cat", "E D U C A T I O N"),
       title: t("prog-edu-title", "Student Sponsorship Program"),
@@ -34,23 +49,9 @@ export default function ProgramsGrid() {
       ),
       cta: t("prog-lead-cta", "LEARN MORE"),
       link: "/sheco",
-      image: "/she-co-initiative.jpg",
-      imageAlt: "SHE-Co Initiative presentation at Mining Investment Event",
-      imageOnLeft: true,
-    },
-    {
-      id: "institutional",
-      category: t("prog-inst-cat", "I N S T I T U T I O N A L"),
-      title: t("prog-inst-title", "THE Tier 1 Conference Partnerships"),
-      description: t(
-        "prog-inst-desc",
-        "Becoming a Tier 1 Conference Partner provides unrivalled access to decision\u00A0makers, investors and policy\u00A0makers across the global mining industry. Our partnerships are tailored to maximize visibility and engagement throughout THE Event."
-      ),
-      cta: t("prog-inst-cta", "PARTNERSHIPS INFO"),
-      link: "/partnership",
-      image:
-        "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-21.jpg",
-      imageAlt: "THE Tier 1 Conference Partnerships presentation stage at Mining Investment Event",
+      image: "/PHOTO10.jpg",
+      imageAlt: "SHE-Co Initiative community engagement at Moisson Rive-Sud",
+      imagePosition: "object-[center_25%]",
       imageOnLeft: false,
     },
     {
@@ -91,7 +92,7 @@ export default function ProgramsGrid() {
         {programs.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col sm:flex-row w-full h-auto sm:min-h-[380px] lg:min-h-[420px] rounded-none group relative border-none card-shimmer cursor-pointer"
+            className={`flex flex-col sm:flex-row w-full h-auto sm:min-h-[380px] lg:min-h-[420px] rounded-none group relative border-none card-shimmer ${item.link ? "cursor-pointer" : ""}`}
           >
             {item.imageOnLeft ? (
               <>
@@ -100,7 +101,7 @@ export default function ProgramsGrid() {
                   <img
                     src={item.image}
                     alt={item.imageAlt}
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 rounded-none"
+                    className={`w-full h-full object-cover ${item.imagePosition || "object-center"} group-hover:scale-108 transition-transform duration-700 rounded-none`}
                     loading="lazy"
                     decoding="async"
                   />
@@ -129,26 +130,35 @@ export default function ProgramsGrid() {
                     </p>
                   </div>
 
-                  {/* Red Text Link with Arrow */}
-                  <div className="relative z-10 pt-2 mt-auto">
-                    {item.link.startsWith("mailto:") ? (
-                      <a
-                        href={item.link}
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
-                      >
-                        <span>{item.cta}</span>
-                        <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
-                      </a>
-                    ) : (
-                      <Link
-                        href={item.link}
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
-                      >
-                        <span>{item.cta}</span>
-                        <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
-                      </Link>
-                    )}
-                  </div>
+                  {/* Red Text Link / CTA with Arrow */}
+                  {item.cta && (
+                    <div className="relative z-10 pt-2 mt-auto">
+                      {item.link ? (
+                        item.link.startsWith("mailto:") ? (
+                          <a
+                            href={item.link}
+                            className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+                          >
+                            <span>{item.cta}</span>
+                            <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                          </a>
+                        ) : (
+                          <Link
+                            href={item.link}
+                            className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+                          >
+                            <span>{item.cta}</span>
+                            <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                          </Link>
+                        )
+                      ) : (
+                        <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] uppercase tracking-wider select-none">
+                          <span>{item.cta}</span>
+                          <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </>
             ) : (
@@ -175,26 +185,35 @@ export default function ProgramsGrid() {
                     </p>
                   </div>
 
-                  {/* Red Text Link with Arrow */}
-                  <div className="relative z-10 pt-2 mt-auto">
-                    {item.link.startsWith("mailto:") ? (
-                      <a
-                        href={item.link}
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
-                      >
-                        <span>{item.cta}</span>
-                        <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
-                      </a>
-                    ) : (
-                      <Link
-                        href={item.link}
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
-                      >
-                        <span>{item.cta}</span>
-                        <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
-                      </Link>
-                    )}
-                  </div>
+                  {/* Red Text Link / CTA with Arrow */}
+                  {item.cta && (
+                    <div className="relative z-10 pt-2 mt-auto">
+                      {item.link ? (
+                        item.link.startsWith("mailto:") ? (
+                          <a
+                            href={item.link}
+                            className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+                          >
+                            <span>{item.cta}</span>
+                            <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                          </a>
+                        ) : (
+                          <Link
+                            href={item.link}
+                            className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] hover:text-[#a80d26] uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+                          >
+                            <span>{item.cta}</span>
+                            <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                          </Link>
+                        )
+                      ) : (
+                        <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-black text-[#C6112F] uppercase tracking-wider select-none">
+                          <span>{item.cta}</span>
+                          <span className="text-base leading-none group-hover:translate-x-1.5 transition-transform duration-300">➔</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Image Block (Right Half) */}
@@ -202,7 +221,7 @@ export default function ProgramsGrid() {
                   <img
                     src={item.image}
                     alt={item.imageAlt}
-                    className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 rounded-none"
+                    className={`w-full h-full object-cover ${item.imagePosition || "object-center"} group-hover:scale-108 transition-transform duration-700 rounded-none`}
                     loading="lazy"
                     decoding="async"
                   />

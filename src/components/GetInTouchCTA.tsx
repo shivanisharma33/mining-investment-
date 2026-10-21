@@ -26,7 +26,7 @@ export default function GetInTouchCTA() {
       {/* Main Content Box */}
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
         <div className="max-w-[440px] flex flex-col items-start text-left py-12">
-          <span className="text-[#C6112F] text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
+          <span className="text-neutral-700 dark:text-neutral-300 text-xs font-bold tracking-[0.25em] uppercase mb-2 block">
             {t("cta-tag", "HAVE A QUESTION?")}
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-[#1a1f2c] dark:text-white leading-[1.2] mb-3">
@@ -35,17 +35,17 @@ export default function GetInTouchCTA() {
           <div className="w-16 h-[3px] bg-[#C6112F] rounded-full mb-4" />
 
           <p className="text-neutral-800 dark:text-white font-medium text-sm sm:text-base md:text-[17px] leading-relaxed mb-6 break-words">
-            {t("cta-desc-prefix", "For more information about 'THE Event' programming or registration, please contact")}{" "}
+            {t("cta-desc-prefix", "For more information about 'THE Event' programming, registration or sponsorship opportunities, please contact")}{" "}
             <a
               href="mailto:jchoi@irinc.ca"
-              className="underline decoration-[#C6112F] decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#ff4d6d] text-base sm:text-lg md:text-xl transition-colors break-all inline-block"
+              className="underline decoration-neutral-400 dark:decoration-neutral-500 decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 text-base sm:text-lg md:text-xl transition-colors break-all inline-block"
             >
               jchoi@irinc.ca
             </a>{" "}
             {t("cta-desc-or", "or call")}{" "}
             <a
               href="tel:+19055153508"
-              className="underline decoration-[#C6112F] decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#ff4d6d] text-base sm:text-lg md:text-xl transition-colors whitespace-nowrap inline-block"
+              className="underline decoration-neutral-400 dark:decoration-neutral-500 decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 text-base sm:text-lg md:text-xl transition-colors whitespace-nowrap inline-block"
             >
               +1-905-515-3508
             </a>

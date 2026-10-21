@@ -108,38 +108,12 @@ export default function FeaturedEventCountdown() {
           ))}
         </div>
 
-        {/* Date and Location Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm sm:text-base font-extrabold text-[#1a1f2c] dark:text-slate-100 mb-10">
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-neutral-800 dark:text-slate-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-              <line x1="16" y1="2" x2="16" y2="6" />
-              <line x1="8" y1="2" x2="8" y2="6" />
-              <line x1="3" y1="10" x2="21" y2="10" />
-            </svg>
-            <span>{t("feat-event-date", "3-6 JUNE 2027")}</span>
-          </div>
-
-          <span className="text-neutral-300 font-normal">|</span>
-
-          <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-neutral-800 dark:text-slate-300" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-            </svg>
-            <span>{t("feat-event-loc", "QUÉBEC CITY, CANADA")}</span>
-          </div>
-        </div>
-
-        {/* Subtitle & Description */}
-        <div className="max-w-2xl mx-auto mb-10">
-          <h3 className="text-xl sm:text-3xl font-extrabold text-[#1a1f2c] dark:text-white mb-1">
+        {/* Section Title - Single Line */}
+        <div className="w-full max-w-5xl mx-auto mt-4 mb-8 sm:mb-10 px-2">
+          <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-[34px] lg:text-[38px] xl:text-[42px] font-black text-[#1a1f2c] dark:text-white tracking-tight leading-tight sm:whitespace-nowrap text-center">
             {t("countdown-subtitle", "Where Global Mining Leaders Connect")}
           </h3>
-          <div className="w-14 sm:w-16 h-[3px] bg-[#C6112F] rounded-full mx-auto mt-2.5 mb-4" />
-          <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed">
-            {t("countdown-desc", "A premier gathering of investors, mining companies, government, innovators and industry experts driving the future of mining.")}
-          </p>
+          <div className="w-16 sm:w-20 h-[3.5px] bg-[#C6112F] rounded-full mx-auto mt-3.5 sm:mt-4" />
         </div>
 
         {/* 8 Action Buttons Grid */}

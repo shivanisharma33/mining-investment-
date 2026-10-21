@@ -5,61 +5,6 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
-function AnimatedNumber({ target, suffix }: { target: string; suffix: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const hasAnimated = useRef(false);
-  const numericTarget = parseInt(target.replace(/,/g, ""), 10);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          const duration = 1800;
-          const steps = 60;
-          const increment = numericTarget / steps;
-          let current = 0;
-          const interval = setInterval(() => {
-            current += increment;
-            if (current >= numericTarget) {
-              setCount(numericTarget);
-              clearInterval(interval);
-            } else {
-              setCount(Math.floor(current));
-            }
-          }, duration / steps);
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [numericTarget]);
-
-  const formatted = count.toLocaleString();
-
-  return (
-    <div ref={ref} className="text-base sm:text-lg md:text-xl font-black text-neutral-900 dark:text-white leading-tight tracking-tight">
-      {formatted}
-      <span>{suffix}</span>
-    </div>
-  );
-}
-
-function StatIconBadge({ icon }: { icon: React.ReactNode }) {
-  return (
-    <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-neutral-100 dark:bg-zinc-800/90 border border-neutral-200 dark:border-zinc-700 flex items-center justify-center shrink-0">
-      {/* Red Arc Accent in Top Right */}
-      <div className="absolute -top-[1.5px] -right-[1.5px] w-4.5 h-4.5 border-t-2 border-r-2 border-[#C6112F] rounded-tr-full pointer-events-none" />
-      <div className="text-neutral-700 dark:text-zinc-200 flex items-center justify-center">
-        {icon}
-      </div>
-    </div>
-  );
-}
-
 export default function StatsAndGlimpse() {
   const { lang, t } = useLanguage();
   const isFr = lang === "FR";
@@ -125,92 +70,13 @@ export default function StatsAndGlimpse() {
     }
   };
 
-  const cards = [
-    {
-      icon: <i className="fi fi-rr-user-salary text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
-      number: "350",
-      suffix: "",
-      label: isFr ? (
-        <>
-          INVESTISSEURS<br />QUALIFIÉS
-        </>
-      ) : (
-        <>
-          QUALIFIED<br />INVESTORS
-        </>
-      ),
-    },
-    {
-      icon: <i className="fi fi-rs-building text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
-      number: "200",
-      suffix: "+",
-      label: isFr ? (
-        <>
-          SOCIÉTÉS<br />REPRÉSENTÉES
-        </>
-      ) : (
-        <>
-          COMPANIES<br />REPRESENTED
-        </>
-      ),
-    },
-    {
-      icon: <i className="fi fi-rr-chart-user text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
-      number: "65",
-      suffix: "",
-      label: isFr ? "PRÉSENTATIONS" : "PRESENTATIONS",
-    },
-    {
-      icon: <i className="fi fi-rs-circle-microphone text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
-      number: "17",
-      suffix: "",
-      label: isFr ? (
-        <>
-          PANELS ET<br />CONFÉRENCES
-        </>
-      ) : (
-        <>
-          PANELS &<br />KEYNOTES
-        </>
-      ),
-    },
-    {
-      icon: <i className="fi fi-rr-handshake text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
-      number: "60",
-      suffix: "+",
-      label: isFr ? (
-        <>
-          MÉDIAS<br />& PARTENAIRES
-        </>
-      ) : (
-        <>
-          MEDIA &<br />PARTNERS
-        </>
-      ),
-    },
-    {
-      icon: <i className="fi fi-rr-coworking text-sm sm:text-base leading-none text-neutral-700 dark:text-zinc-200" />,
-      number: "3,500",
-      suffix: "",
-      label: isFr ? (
-        <>
-          RÉUNIONS 1-À-1 /<br />3 JOURS
-        </>
-      ) : (
-        <>
-          1X1 MEETINGS /<br />3 DAYS
-        </>
-      ),
-    },
-  ];
-
   return (
     <section id="glimpse-section" className="relative overflow-hidden py-12 sm:py-14 md:py-16 transition-colors duration-300 bg-gradient-to-b from-[#f8f9fa] via-[#f1f3f7] to-[#f8f9fa] dark:from-[#0d111a] dark:via-[#131926] dark:to-[#0d111a]">
-      {/* ════════ A GLIMPSE INSIDE THE EVENT VIDEO SECTION (FIRST) ════════ */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 mb-14 sm:mb-18">
+      {/* ════════ A GLIMPSE INSIDE THE EVENT VIDEO SECTION ════════ */}
+      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14 bg-white/80 dark:bg-[#131b2e]/80 p-8 sm:p-12 rounded-3xl border border-neutral-200/90 dark:border-[#233049] shadow-xl backdrop-blur-xs">
           {/* Left Column: Text & Connected Action Buttons */}
-          <div className="flex-1 flex flex-col items-start text-left max-w-[560px] lg:max-w-[520px] group">
+          <div className="flex-1 flex flex-col items-start text-left max-w-[560px] lg:max-w-[580px] group">
             <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase mb-2 block transition-all duration-300 group-hover:tracking-[0.32em]">
               {t("welcome-tag", "WELCOME")}
             </span>
@@ -220,7 +86,7 @@ export default function StatsAndGlimpse() {
             />
             <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
 
-            <p className="text-neutral-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-8 font-medium">
+            <p className="text-neutral-800 dark:text-slate-200 text-base sm:text-lg md:text-[19px] lg:text-xl leading-relaxed sm:leading-[1.7] mb-8 font-normal sm:font-medium">
               {t("glimpse-desc", "The Mining Investment Event (THE Event) is an exclusive, invitation-only conference centered on mining investments. THE Event brings together investors, mining companies, supply chain partners, governments and industry experts. THE Event promotes idea exchange and discussions in a private environment, fostering open dialogue on geopolitics, trade and investment.")}
             </p>
 
@@ -279,15 +145,6 @@ export default function StatsAndGlimpse() {
                   type="video/mp4"
                 />
               </video>
-
-              {/* Floating Top-Left Ribbon: Official Event Video */}
-              <div className="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-white text-[10.5px] sm:text-xs font-black tracking-wider uppercase shadow-md pointer-events-none">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C6112F] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C6112F]"></span>
-                </span>
-                <span>{t("video-official-tag", "OFFICIAL HIGHLIGHT REEL")}</span>
-              </div>
 
               {/* Floating Top-Right Sound Status Badge Button */}
               <button
@@ -371,49 +228,6 @@ export default function StatsAndGlimpse() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* ════════ HEADER SECTION: THE EVENT 2026 BY THE NUMBERS (SECOND) ════════ */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 text-center mb-10 sm:mb-12 group">
-        <span className="heading-badge text-xs sm:text-sm font-extrabold uppercase tracking-[0.18em] block mb-2 transition-all duration-300">
-          {isFr ? "L'ÉVÉNEMENT 2026" : "THE EVENT 2026"}
-        </span>
-        <AnimatedHeading
-          text={t("numbers-title", isFr ? "L'Événement 2026 en Chiffres" : "THE Event 2026 by the Numbers")}
-          className="text-3xl sm:text-4xl md:text-[42px] font-extrabold text-[#1f2430] dark:text-white tracking-tight mb-3"
-        />
-        <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mx-auto mb-4" />
-        <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-          {t("numbers-desc", isFr
-            ? "Une plateforme mondiale connectant les investisseurs, les entreprises, les chaînes d'approvisionnement et les leaders façonnant l'avenir de l'industrie minière et de l'investissement."
-            : "A global platform connecting investors, companies, supply chains and leaders driving the future of mining and resource investment.")}
-        </p>
-      </div>
-
-      {/* ════════ SINGLE 1-LINE HORIZONTAL STATS ROW ════════ */}
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 items-stretch">
-          {cards.map((card, i) => (
-            <div
-              key={i}
-              className="bg-white dark:bg-[#141824] border border-neutral-200/90 dark:border-zinc-800 rounded-xl p-3 sm:p-3.5 flex items-center gap-2 sm:gap-2.5 shadow-2xs hover:shadow-md hover:border-[#C6112F]/40 hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer overflow-hidden min-w-0 h-full"
-            >
-              {/* Icon Badge with Red Arc */}
-              <StatIconBadge icon={card.icon} />
-
-              {/* Red Vertical Line Divider */}
-              <div className="w-[1px] h-8 sm:h-9 bg-[#C6112F]/30 shrink-0" />
-
-              {/* Number & Red Label */}
-              <div className="flex flex-col items-start justify-center overflow-hidden min-w-0 flex-1">
-                <AnimatedNumber target={card.number} suffix={card.suffix} />
-                <span className="text-[#C6112F] font-bold text-[9px] sm:text-[10px] xl:text-[10.5px] tracking-tight uppercase leading-[1.15] mt-0.5 max-w-full">
-                  {card.label}
-                </span>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

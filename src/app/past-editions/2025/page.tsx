@@ -274,14 +274,9 @@ export default function PastEdition2025Page() {
                     <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
                       {isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}
                     </span>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white tracking-tight mb-3">
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-[#111827] dark:text-white tracking-tight mb-8">
                       {isFr ? "Entreprises participantes" : "Participating Companies"}
                     </h1>
-                    <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-8">
-                      {isFr
-                        ? "Connectez-vous avec les principales sociétés minières, investisseurs, fournisseurs de technologies et partenaires façonnant l'avenir de l'industrie minière."
-                        : "Connect with leading mining companies, investors, technology providers and service partners driving the future of the mining industry."}
-                    </p>
                     <CompaniesView initialYear={viewingEdition} />
                   </div>
                 ) : activeTab === "brochures" ? (

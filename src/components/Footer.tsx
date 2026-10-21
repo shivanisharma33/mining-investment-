@@ -17,23 +17,23 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 border-b border-neutral-300/70 dark:border-zinc-800">
           {/* Column 1: Want to Join With Us CTA */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
-            <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-1 block">
+            <span className="text-neutral-900 dark:text-white text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-1 block">
               {t("footer-questions", "JOIN US")}
             </span>
             <div className="w-14 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
 
             <p className="text-neutral-700 dark:text-white text-sm sm:text-base font-medium leading-relaxed mb-4 max-w-[420px] break-words">
-              {t("cta-desc-prefix", "For more information about 'THE Event' programming or registration, please contact")}{" "}
+              {t("cta-desc-prefix", "For more information about 'THE Event' programming, registration or sponsorship opportunities, please contact")}{" "}
               <a
                 href="mailto:jchoi@irinc.ca"
-                className="underline decoration-[#C6112F] decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#ff4d6d] text-sm sm:text-base transition-colors break-all"
+                className="underline decoration-neutral-400 dark:decoration-neutral-500 decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 text-sm sm:text-base transition-colors break-all"
               >
                 jchoi@irinc.ca
               </a>{" "}
               {t("cta-desc-or", "or call")}{" "}
               <a
                 href="tel:+19055153508"
-                className="underline decoration-[#C6112F] decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-[#C6112F] dark:hover:text-[#ff4d6d] text-sm sm:text-base transition-colors whitespace-nowrap"
+                className="underline decoration-neutral-400 dark:decoration-neutral-500 decoration-2 underline-offset-4 font-bold text-neutral-900 dark:text-white hover:text-neutral-600 dark:hover:text-neutral-300 text-sm sm:text-base transition-colors whitespace-nowrap"
               >
                 +1-905-515-3508
               </a>
@@ -124,7 +124,7 @@ export default function Footer() {
 
           {/* Column 2: INITIATIVES */}
           <div className="lg:col-span-2 flex flex-col items-start text-left">
-            <h3 className="text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-wider uppercase mb-1">
+            <h3 className="text-neutral-900 dark:text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase mb-1">
               {t("footer-initiatives", "INITIATIVES")}
             </h3>
             <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
@@ -165,7 +165,7 @@ export default function Footer() {
 
           {/* Column 3: ABOUT */}
           <div className="lg:col-span-2 flex flex-col items-start text-left">
-            <h3 className="text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-wider uppercase mb-1">
+            <h3 className="text-neutral-900 dark:text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase mb-1">
               {t("footer-about", "ABOUT")}
             </h3>
             <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
@@ -206,7 +206,7 @@ export default function Footer() {
 
           {/* Column 4: PROGRAM */}
           <div className="lg:col-span-3 flex flex-col items-start text-left">
-            <h3 className="text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-wider uppercase mb-1">
+            <h3 className="text-neutral-900 dark:text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase mb-1">
               {t("footer-program", "PROGRAM")}
             </h3>
             <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
@@ -224,7 +224,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/media" className="text-neutral-700 dark:text-white hover:text-[#C6112F] dark:hover:text-[#C6112F] transition-colors">
-                  {t("nav-media", "Recent Media")}
+                  {t("nav-gallery", "Gallery")}
                 </Link>
               </li>
               <li>
@@ -244,13 +244,13 @@ export default function Footer() {
         {/* Bottom Section: Copyright, Legal Disclaimer & Privacy Policy */}
         <div className="pt-8 text-left">
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3">
-            <h4 className="text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-wider uppercase">
+            <h4 className="text-neutral-700 dark:text-zinc-300 font-extrabold text-xs sm:text-sm tracking-wider uppercase">
               © 2026 THE MINING INVESTMENT EVENT | {t("footer-disclaimer", "DISCLAIMER")}
             </h4>
             <span className="hidden sm:inline text-neutral-400 dark:text-zinc-600">|</span>
             <Link
               href="/privacy-policy"
-              className="text-[#C6112F] dark:text-white hover:text-[#a80d26] dark:hover:text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-colors inline-flex items-center gap-1.5"
+              className="text-neutral-700 dark:text-zinc-300 hover:text-neutral-950 dark:hover:text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-colors inline-flex items-center gap-1.5"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />

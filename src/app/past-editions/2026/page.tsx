@@ -296,14 +296,9 @@ export default function PastEdition2026Page() {
                         <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F]" />
                         <span>{isFr ? `ÉDITION ${viewingEdition}` : `${viewingEdition} EDITION`}</span>
                       </div>
-                      <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 dark:text-white tracking-tight leading-tight mb-3">
+                      <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-black text-neutral-900 dark:text-white tracking-tight leading-tight mb-8">
                         {isFr ? "Entreprises participantes" : "Participating Companies"}
                       </h1>
-                      <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[760px]">
-                        {isFr
-                          ? "Connectez-vous avec les principales sociétés minières, investisseurs, fournisseurs de technologies et partenaires façonnant l'avenir de l'industrie minière."
-                          : "Connect with leading mining companies, investors, technology providers and service partners driving the future of the mining industry."}
-                      </p>
                     </div>
 
                     <CompaniesView initialYear={viewingEdition} showMap={true} />
