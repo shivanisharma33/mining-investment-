@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useId } from "react";
+import React, { useState, useId, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import {
@@ -17,32 +17,32 @@ interface StudentApplicationFormProps {
 }
 
 const CANADIAN_PROVINCES = [
-  "Alberta",
-  "British Columbia",
-  "Manitoba",
-  "New Brunswick",
-  "Newfoundland and Labrador",
-  "Nova Scotia",
-  "Ontario",
-  "Prince Edward Island",
-  "Quebec",
-  "Saskatchewan",
-  "Northwest Territories",
-  "Nunavut",
-  "Yukon",
-  "Other / Outside Canada",
+  { en: "Alberta", fr: "Alberta" },
+  { en: "British Columbia", fr: "Colombie-Britannique" },
+  { en: "Manitoba", fr: "Manitoba" },
+  { en: "New Brunswick", fr: "Nouveau-Brunswick" },
+  { en: "Newfoundland and Labrador", fr: "Terre-Neuve-et-Labrador" },
+  { en: "Nova Scotia", fr: "Nouvelle-Écosse" },
+  { en: "Ontario", fr: "Ontario" },
+  { en: "Prince Edward Island", fr: "Île-du-Prince-Édouard" },
+  { en: "Quebec", fr: "Québec" },
+  { en: "Saskatchewan", fr: "Saskatchewan" },
+  { en: "Northwest Territories", fr: "Territoires du Nord-Ouest" },
+  { en: "Nunavut", fr: "Nunavut" },
+  { en: "Yukon", fr: "Yukon" },
+  { en: "Other / Outside Canada", fr: "Autre / Hors du Canada" },
 ];
 
 const DEGREE_LEVELS = [
-  { id: "Bachelors", label: "Bachelors" },
-  { id: "Masters", label: "Masters" },
-  { id: "PhD", label: "PhD" },
+  { id: "Bachelors", labelEn: "Bachelors", labelFr: "Baccalauréat" },
+  { id: "Masters", labelEn: "Masters", labelFr: "Maîtrise" },
+  { id: "PhD", labelEn: "PhD", labelFr: "Doctorat" },
 ];
 
 const LANGUAGE_OPTIONS = [
-  { id: "French", label: "French" },
-  { id: "English", label: "English" },
-  { id: "Both", label: "Both" },
+  { id: "French", labelEn: "French", labelFr: "Français" },
+  { id: "English", labelEn: "English", labelFr: "Anglais" },
+  { id: "Both", labelEn: "Both", labelFr: "Les deux" },
 ];
 
 const EMPTY_FORM = {
@@ -86,7 +86,7 @@ export default function StudentApplicationForm({
   className = "",
   showBackToOverview = true,
 }: StudentApplicationFormProps) {
-  const { t } = useLanguage();
+  const { lang, isFr } = useLanguage();
   const formId = useId();
 
   const [formData, setFormData] = useState(EMPTY_FORM);
@@ -96,6 +96,19 @@ export default function StudentApplicationForm({
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string>("");
   const [applicationRef, setApplicationRef] = useState<string>("");
+
+  // Sync initial language preference with current app language if untouched
+  useEffect(() => {
+    setFormData((prev) => {
+      if (prev.fullName === "" && prev.email === "") {
+        return {
+          ...prev,
+          language: isFr ? "French" : "English",
+        };
+      }
+      return prev;
+    });
+  }, [isFr]);
 
   const wordsWhyAttend = countWords(formData.whyAttend);
   const wordsUniqueSkills = countWords(formData.uniqueSkills);
@@ -109,7 +122,11 @@ export default function StudentApplicationForm({
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] ?? null;
     if (file && file.size > MAX_UPLOAD_BYTES) {
-      setSubmitError(`"${file.name}" exceeds the 10MB limit. Please upload a smaller document.`);
+      setSubmitError(
+        isFr
+          ? `« ${file.name} » dépasse la limite de 10 Mo. Veuillez téléverser un fichier plus petit.`
+          : `"${file.name}" exceeds the 10MB limit. Please upload a smaller document.`
+      );
       e.target.value = "";
       setResumeFile(null);
       return;
@@ -123,12 +140,20 @@ export default function StudentApplicationForm({
     if (isSubmitting) return;
 
     if (hasWordLimitError) {
-      setSubmitError("Please ensure all essay responses are within the 500-word limit.");
+      setSubmitError(
+        isFr
+          ? "Veuillez vous assurer que toutes les réponses respectent la limite de 500 mots."
+          : "Please ensure all essay responses are within the 500-word limit."
+      );
       return;
     }
 
     if (!resumeFile) {
-      setSubmitError("Please upload your resume / CV document.");
+      setSubmitError(
+        isFr
+          ? "Veuillez téléverser votre curriculum vitae (CV)."
+          : "Please upload your resume / CV document."
+      );
       return;
     }
 
@@ -147,48 +172,53 @@ export default function StudentApplicationForm({
         language: formData.language,
         preferredLanguage: formData.language,
         linkedinProfile: formData.linkedinProfile.trim(),
-
         collegeUniversity: formData.collegeUniversity.trim(),
         province: formData.province,
         degreeLevel: formData.degreeLevel,
         areaOfStudy: formData.areaOfStudy.trim(),
         expectedGraduationDate: formData.expectedGraduationDate.trim(),
-
         whyAttend: formData.whyAttend.trim(),
         uniqueSkills: formData.uniqueSkills.trim(),
         futureGoals: formData.futureGoals.trim(),
-
         availableDates: formData.availableDates,
         travelManagement: formData.travelManagement,
         travelOrigin: formData.travelOrigin.trim(),
-        commitmentAgreed: formData.commitmentAgreed === "Yes",
-
+        commitmentAgreed: formData.commitmentAgreed,
         newsletterOptIn: formData.signUpForNews,
         resumeCv: resumeUpload.id,
       });
 
-      const refNumber = result.registrationNumber || `APP-${Date.now().toString().slice(-6)}`;
-      setApplicationRef(refNumber);
+      const refNum = result.registrationNumber || `STU-${Date.now().toString().slice(-6)}`;
+      setApplicationRef(refNum);
       setSubmitted(true);
-      if (onSuccess) {
-        onSuccess(refNumber);
-      }
+      if (onSuccess) onSuccess(refNum);
     } catch (err) {
-      const fieldMessage =
-        err instanceof StudentRegistrationError && err.fieldErrors.length > 0
-          ? err.fieldErrors.map((fe) => fe.message).join(" · ")
-          : "";
-      setSubmitError(
-        fieldMessage ||
-        (err instanceof Error ? err.message : "Something went wrong submitting your application. Please try again.")
-      );
+      console.error("Student registration failed:", err);
+      if (err instanceof StudentRegistrationError) {
+        if (err.fieldErrors.length > 0) {
+          setSubmitError(err.fieldErrors.map((f) => f.message).join(" · "));
+        } else {
+          setSubmitError(err.message);
+        }
+      } else if (err instanceof Error) {
+        setSubmitError(err.message);
+      } else {
+        setSubmitError(
+          isFr
+            ? "Une erreur inattendue est survenue. Veuillez vérifier votre connexion et réessayer."
+            : "An unexpected error occurred. Please check your connection and try again."
+        );
+      }
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleReset = () => {
-    setFormData(EMPTY_FORM);
+    setFormData({
+      ...EMPTY_FORM,
+      language: isFr ? "French" : "English",
+    });
     setResumeFile(null);
     setSubmitted(false);
     setSubmitError("");
@@ -205,27 +235,37 @@ export default function StudentApplicationForm({
         </div>
 
         <span className="text-[11px] font-black uppercase tracking-[0.25em] text-[#C6112F] bg-[#C6112F]/10 px-4 py-1.5 rounded-full inline-block mb-3">
-          Application Received
+          {isFr ? "Candidature Reçue" : "Application Received"}
         </span>
 
         <h3 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-4">
-          Thank You for Applying!
+          {isFr ? "Merci d'avoir postulé !" : "Thank You for Applying!"}
         </h3>
 
         <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed font-normal">
-          Your application for <strong className="text-neutral-900 dark:text-white">THE Student Partnership Program</strong> has been successfully registered in our candidate review portal.
+          {isFr ? (
+            <>
+              Votre candidature pour le <strong className="text-neutral-900 dark:text-white">Programme de Partenariat Étudiant</strong> a été enregistrée avec succès dans notre portail d'évaluation.
+            </>
+          ) : (
+            <>
+              Your application for <strong className="text-neutral-900 dark:text-white">THE Student Partnership Program</strong> has been successfully registered in our candidate review portal.
+            </>
+          )}
         </p>
 
         {applicationRef && (
           <div className="max-w-md mx-auto mb-8 p-6 rounded-2xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-inner">
             <span className="block text-[10px] font-black uppercase tracking-[0.25em] text-neutral-400 mb-1">
-              Application Reference Number
+              {isFr ? "Numéro de référence de candidature" : "Application Reference Number"}
             </span>
             <b className="text-2xl sm:text-3xl font-black text-[#C6112F] tracking-wider font-mono">
               {applicationRef}
             </b>
             <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
-              Please save this reference number for all future communications with our student delegation coordinators.
+              {isFr
+                ? "Veuillez conserver ce numéro de référence pour toute correspondance future avec notre comité de coordination."
+                : "Please save this reference number for all future communications with our student delegation coordinators."}
             </p>
           </div>
         )}
@@ -233,12 +273,22 @@ export default function StudentApplicationForm({
         <div className="max-w-md mx-auto mb-10 p-5 rounded-2xl bg-neutral-100/70 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800 text-left">
           <h4 className="text-xs font-black uppercase tracking-wider text-neutral-900 dark:text-white mb-2 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#C6112F]" />
-            What Happens Next?
+            {isFr ? "Prochaines étapes :" : "What Happens Next?"}
           </h4>
           <ul className="text-xs text-neutral-600 dark:text-neutral-400 space-y-2 list-disc list-inside">
-            <li>Our executive selection committee evaluates all candidate responses and resumes.</li>
-            <li>Selected candidates will receive travel confirmation and coach bus schedule details.</li>
-            <li>Cohort announcements will be sent directly via email.</li>
+            {isFr ? (
+              <>
+                <li>Notre comité exécutif de sélection examine attentivement tous les dossiers et CV.</li>
+                <li>Les candidats retenus recevront leur confirmation et l'horaire de l'autocar.</li>
+                <li>Les annonces officielles de la cohorte seront communiquées directement par courriel.</li>
+              </>
+            ) : (
+              <>
+                <li>Our executive selection committee evaluates all candidate responses and resumes.</li>
+                <li>Selected candidates will receive travel confirmation and coach bus schedule details.</li>
+                <li>Cohort announcements will be sent directly via email.</li>
+              </>
+            )}
           </ul>
         </div>
 
@@ -247,14 +297,14 @@ export default function StudentApplicationForm({
             onClick={handleReset}
             className="px-8 py-4 rounded-xl bg-[#0f1117] dark:bg-white text-white dark:text-neutral-900 text-xs font-black uppercase tracking-widest hover:bg-[#C6112F] dark:hover:bg-[#C6112F] dark:hover:text-white transition-all duration-300 cursor-pointer shadow-lg"
           >
-            Submit Another Application
+            {isFr ? "Soumettre une autre candidature" : "Submit Another Application"}
           </button>
           {showBackToOverview && (
             <Link
               href="/student"
               className="px-8 py-4 rounded-xl border border-neutral-300 dark:border-neutral-700 text-neutral-800 dark:text-white text-xs font-black uppercase tracking-widest hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-300"
             >
-              Back to Student Overview
+              {isFr ? "Retour à l'aperçu étudiant" : "Back to Student Overview"}
             </Link>
           )}
         </div>
@@ -271,13 +321,15 @@ export default function StudentApplicationForm({
       <div className="mb-10 text-center sm:text-left">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#C6112F]/10 border border-[#C6112F]/30 text-[#C6112F] dark:text-[#ff4d6d] text-xs font-black uppercase tracking-widest mb-3">
           <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
-          <span>Official Application Form</span>
+          <span>{isFr ? "Formulaire officiel de candidature" : "Official Application Form"}</span>
         </div>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-neutral-900 dark:text-white tracking-tight">
-          Apply to THE Student Partnership Program
+          {isFr ? "Postuler au Programme de Partenariat Étudiant" : "Apply to THE Student Partnership Program"}
         </h2>
         <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-2 font-normal max-w-2xl">
-          Complete the sections below to apply for Canada&apos;s premier fully funded student mining conference experience in Québec City.
+          {isFr
+            ? "Remplissez les sections ci-dessous pour postuler au programme de conférence minière entièrement financé pour étudiants à Québec."
+            : "Complete the sections below to apply for Canada's premier fully funded student mining conference experience in Québec City."}
         </p>
       </div>
 
@@ -290,10 +342,12 @@ export default function StudentApplicationForm({
             </span>
             <div>
               <h3 className="text-sm sm:text-base font-black uppercase tracking-wider text-neutral-900 dark:text-white">
-                Student Information
+                {isFr ? "Informations sur l'étudiant" : "Student Information"}
               </h3>
               <p className="text-[11px] text-neutral-500 font-normal">
-                Your direct contact details and professional background.
+                {isFr
+                  ? "Vos coordonnées directes et vos antécédents professionnels."
+                  : "Your direct contact details and professional background."}
               </p>
             </div>
           </div>
@@ -302,14 +356,14 @@ export default function StudentApplicationForm({
             {/* Full Name */}
             <div className="sm:col-span-2">
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Full Name <span className="text-[#C6112F]">*</span>
+                {isFr ? "Nom complet" : "Full Name"} <span className="text-[#C6112F]">*</span>
               </label>
               <input
                 type="text"
                 required
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                placeholder="e.g. Sarah Tremblay"
+                placeholder={isFr ? "ex. Sarah Tremblay" : "e.g. Sarah Tremblay"}
                 className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all"
               />
             </div>
@@ -317,14 +371,14 @@ export default function StudentApplicationForm({
             {/* Email */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Email Address <span className="text-[#C6112F]">*</span>
+                {isFr ? "Adresse courriel" : "Email Address"} <span className="text-[#C6112F]">*</span>
               </label>
               <input
                 type="email"
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="e.g. sarah.tremblay@university.ca"
+                placeholder={isFr ? "ex. sarah.tremblay@universite.ca" : "e.g. sarah.tremblay@university.ca"}
                 className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all"
               />
             </div>
@@ -332,7 +386,7 @@ export default function StudentApplicationForm({
             {/* Phone */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Phone Number <span className="text-[#C6112F]">*</span>
+                {isFr ? "Numéro de téléphone" : "Phone Number"} <span className="text-[#C6112F]">*</span>
               </label>
               <input
                 type="tel"
@@ -347,21 +401,21 @@ export default function StudentApplicationForm({
             {/* Language Selection */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Language <span className="text-[#C6112F]">*</span>
+                {isFr ? "Langue" : "Language"} <span className="text-[#C6112F]">*</span>
               </label>
               <div className="grid grid-cols-3 gap-2">
-                {LANGUAGE_OPTIONS.map((lang) => (
+                {LANGUAGE_OPTIONS.map((opt) => (
                   <button
-                    key={lang.id}
+                    key={opt.id}
                     type="button"
-                    onClick={() => setFormData({ ...formData, language: lang.id })}
-                    className={`py-3 px-2 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all text-center ${
-                      formData.language === lang.id
+                    onClick={() => setFormData({ ...formData, language: opt.id })}
+                    className={`py-3 px-2 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all text-center cursor-pointer ${
+                      formData.language === opt.id
                         ? "bg-[#C6112F] text-white border-[#C6112F] shadow-md shadow-[#C6112F]/25"
                         : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F]"
                     }`}
                   >
-                    {lang.label}
+                    {isFr ? opt.labelFr : opt.labelEn}
                   </button>
                 ))}
               </div>
@@ -370,7 +424,7 @@ export default function StudentApplicationForm({
             {/* LinkedIn Profile */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                LinkedIn Profile <span className="text-[#C6112F]">*</span>
+                {isFr ? "Profil LinkedIn" : "LinkedIn Profile"} <span className="text-[#C6112F]">*</span>
               </label>
               <div className="relative">
                 <input
@@ -394,7 +448,7 @@ export default function StudentApplicationForm({
             {/* Resume Upload */}
             <div className="sm:col-span-2">
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Resume / CV <span className="text-[#C6112F]">*</span>
+                {isFr ? "Curriculum Vitae (CV)" : "Resume / CV"} <span className="text-[#C6112F]">*</span>
               </label>
               <div className="relative border-2 border-dashed border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F] rounded-2xl p-6 transition-all text-center bg-white dark:bg-neutral-900 group">
                 <input
@@ -413,19 +467,19 @@ export default function StudentApplicationForm({
                   {resumeFile ? (
                     <div className="text-center">
                       <span className="text-xs font-black text-emerald-600 dark:text-emerald-400 block">
-                        ✓ Attached: {resumeFile.name}
+                        {isFr ? "✓ Fichier joint :" : "✓ Attached:"} {resumeFile.name}
                       </span>
                       <span className="text-[10px] text-neutral-400 font-medium">
-                        ({(resumeFile.size / (1024 * 1024)).toFixed(2)} MB) · Click or drop to replace
+                        ({(resumeFile.size / (1024 * 1024)).toFixed(2)} MB) · {isFr ? "Cliquer ou déposer pour remplacer" : "Click or drop to replace"}
                       </span>
                     </div>
                   ) : (
                     <div>
                       <span className="text-xs font-bold text-neutral-800 dark:text-neutral-200 block mb-0.5">
-                        Click or Drag &amp; Drop Resume File
+                        {isFr ? "Cliquez ou glissez-déposez votre CV" : "Click or Drag & Drop Resume File"}
                       </span>
                       <span className="text-[11px] text-neutral-500 font-normal block">
-                        Accepted: PDF, DOC, DOCX (Max 10MB)
+                        {isFr ? "Formats acceptés : PDF, DOC, DOCX (Max 10 Mo)" : "Accepted: PDF, DOC, DOCX (Max 10MB)"}
                       </span>
                     </div>
                   )}
@@ -443,10 +497,12 @@ export default function StudentApplicationForm({
             </span>
             <div>
               <h3 className="text-sm sm:text-base font-black uppercase tracking-wider text-neutral-900 dark:text-white">
-                Schooling Details
+                {isFr ? "Détails sur les études" : "Schooling Details"}
               </h3>
               <p className="text-[11px] text-neutral-500 font-normal">
-                Academic institution, program of study, and expected graduation.
+                {isFr
+                  ? "Établissement d'enseignement, programme d'études et diplomation prévue."
+                  : "Academic institution, program of study, and expected graduation."}
               </p>
             </div>
           </div>
@@ -455,14 +511,14 @@ export default function StudentApplicationForm({
             {/* College / University */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                College / University <span className="text-[#C6112F]">*</span>
+                {isFr ? "Collège / Université" : "College / University"} <span className="text-[#C6112F]">*</span>
               </label>
               <input
                 type="text"
                 required
                 value={formData.collegeUniversity}
                 onChange={(e) => setFormData({ ...formData, collegeUniversity: e.target.value })}
-                placeholder="e.g. Queen's University / Polytechnique Montréal"
+                placeholder={isFr ? "ex. Université Laval / Polytechnique Montréal" : "e.g. Queen's University / Polytechnique Montréal"}
                 className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all"
               />
             </div>
@@ -470,7 +526,7 @@ export default function StudentApplicationForm({
             {/* Province */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Province <span className="text-[#C6112F]">*</span>
+                {isFr ? "Province / Territoire" : "Province"} <span className="text-[#C6112F]">*</span>
               </label>
               <select
                 required
@@ -478,10 +534,10 @@ export default function StudentApplicationForm({
                 onChange={(e) => setFormData({ ...formData, province: e.target.value })}
                 className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all cursor-pointer"
               >
-                <option value="">Select Province / Territory</option>
+                <option value="">{isFr ? "Sélectionnez une province ou un territoire" : "Select Province / Territory"}</option>
                 {CANADIAN_PROVINCES.map((prov) => (
-                  <option key={prov} value={prov}>
-                    {prov}
+                  <option key={prov.en} value={prov.en}>
+                    {isFr ? prov.fr : prov.en}
                   </option>
                 ))}
               </select>
@@ -490,7 +546,7 @@ export default function StudentApplicationForm({
             {/* Degree Level */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Degree Level <span className="text-[#C6112F]">*</span>
+                {isFr ? "Niveau d'études" : "Degree Level"} <span className="text-[#C6112F]">*</span>
               </label>
               <div className="grid grid-cols-3 gap-2">
                 {DEGREE_LEVELS.map((deg) => (
@@ -498,13 +554,13 @@ export default function StudentApplicationForm({
                     key={deg.id}
                     type="button"
                     onClick={() => setFormData({ ...formData, degreeLevel: deg.id })}
-                    className={`py-3 px-2 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all text-center ${
+                    className={`py-3 px-2 rounded-xl text-xs font-bold uppercase tracking-wider border transition-all text-center cursor-pointer ${
                       formData.degreeLevel === deg.id
                         ? "bg-[#C6112F] text-white border-[#C6112F] shadow-md shadow-[#C6112F]/25"
                         : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F]"
                     }`}
                   >
-                    {deg.label}
+                    {isFr ? deg.labelFr : deg.labelEn}
                   </button>
                 ))}
               </div>
@@ -513,14 +569,14 @@ export default function StudentApplicationForm({
             {/* Area of Study */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Area of Study <span className="text-[#C6112F]">*</span>
+                {isFr ? "Domaine d'études" : "Area of Study"} <span className="text-[#C6112F]">*</span>
               </label>
               <input
                 type="text"
                 required
                 value={formData.areaOfStudy}
                 onChange={(e) => setFormData({ ...formData, areaOfStudy: e.target.value })}
-                placeholder="e.g. Mining Engineering, Geology, Finance, Metallurgy"
+                placeholder={isFr ? "ex. Génie minier, Géologie, Finance, Métallurgie" : "e.g. Mining Engineering, Geology, Finance, Metallurgy"}
                 className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all"
               />
             </div>
@@ -528,14 +584,14 @@ export default function StudentApplicationForm({
             {/* Expected Graduation Date */}
             <div className="sm:col-span-2">
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Expected Graduation Date <span className="text-[#C6112F]">*</span>
+                {isFr ? "Date d'obtention prévue du diplôme" : "Expected Graduation Date"} <span className="text-[#C6112F]">*</span>
               </label>
               <input
                 type="text"
                 required
                 value={formData.expectedGraduationDate}
                 onChange={(e) => setFormData({ ...formData, expectedGraduationDate: e.target.value })}
-                placeholder="e.g. May 2027 or Spring 2026"
+                placeholder={isFr ? "ex. Mai 2027 ou Printemps 2026" : "e.g. May 2027 or Spring 2026"}
                 className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all"
               />
             </div>
@@ -551,15 +607,17 @@ export default function StudentApplicationForm({
               </span>
               <div>
                 <h3 className="text-sm sm:text-base font-black uppercase tracking-wider text-neutral-900 dark:text-white">
-                  Application Questions
+                  {isFr ? "Questions de candidature" : "Application Questions"}
                 </h3>
                 <p className="text-[11px] text-neutral-500 font-normal">
-                  Provide thoughtful responses to help our selection committee learn more about you.
+                  {isFr
+                    ? "Fournissez des réponses réfléchies pour aider notre comité de sélection à mieux vous connaître."
+                    : "Provide thoughtful responses to help our selection committee learn more about you."}
                 </p>
               </div>
             </div>
             <span className="text-[11px] font-black uppercase tracking-wider text-[#C6112F] bg-[#C6112F]/10 px-3 py-1 rounded-full">
-              500 Words Max Each
+              {isFr ? "500 Mots Max Chacune" : "500 Words Max Each"}
             </span>
           </div>
 
@@ -568,7 +626,10 @@ export default function StudentApplicationForm({
             <div>
               <div className="flex items-center justify-between mb-2 gap-2">
                 <label className="text-xs font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider">
-                  Why do you want to attend THE Student Partnership Program? <span className="text-[#C6112F]">*</span>
+                  {isFr
+                    ? "Pourquoi souhaitez-vous participer au Programme de Partenariat Étudiant ?"
+                    : "Why do you want to attend THE Student Partnership Program ?"}{" "}
+                  <span className="text-[#C6112F]">*</span>
                 </label>
                 <span
                   className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-md ${
@@ -579,7 +640,7 @@ export default function StudentApplicationForm({
                       : "text-neutral-400"
                   }`}
                 >
-                  {wordsWhyAttend} / 500 words
+                  {wordsWhyAttend} / 500 {isFr ? "mots" : "words"}
                 </span>
               </div>
               <textarea
@@ -587,7 +648,11 @@ export default function StudentApplicationForm({
                 required
                 value={formData.whyAttend}
                 onChange={(e) => setFormData({ ...formData, whyAttend: e.target.value })}
-                placeholder="Explain what motivates you to participate in THE Student Partnership Program, your interests in the mining and resource industry, and how this fully funded opportunity will impact your academic and career journey..."
+                placeholder={
+                  isFr
+                    ? "Expliquez ce qui vous motive à participer au Programme de Partenariat Étudiant, votre intérêt pour l'industrie minière et la façon dont cette opportunité soutiendra votre parcours..."
+                    : "Explain what motivates you to participate in THE Student Partnership Program, your interests in the mining and resource industry, and how this fully funded opportunity will impact your academic and career journey..."
+                }
                 className={`w-full px-4 py-3.5 rounded-xl border bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:ring-2 outline-none transition-all resize-y ${
                   isWhyAttendOver
                     ? "border-rose-500 focus:ring-rose-500/20"
@@ -596,7 +661,9 @@ export default function StudentApplicationForm({
               />
               {isWhyAttendOver && (
                 <p className="text-[11px] text-rose-600 dark:text-rose-400 font-semibold mt-1">
-                  Response exceeds the 500-word limit. Please edit your answer before submitting.
+                  {isFr
+                    ? "La réponse dépasse la limite de 500 mots. Veuillez modifier votre texte avant de soumettre."
+                    : "Response exceeds the 500-word limit. Please edit your answer before submitting."}
                 </p>
               )}
             </div>
@@ -605,7 +672,10 @@ export default function StudentApplicationForm({
             <div>
               <div className="flex items-center justify-between mb-2 gap-2">
                 <label className="text-xs font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider">
-                  What unique skills/ perspective would you bring to THE Program? <span className="text-[#C6112F]">*</span>
+                  {isFr
+                    ? "Quelles compétences ou perspectives uniques apporteriez-vous au Programme ?"
+                    : "What unique skills/ perspective would you bring to THE Program ?"}{" "}
+                  <span className="text-[#C6112F]">*</span>
                 </label>
                 <span
                   className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-md ${
@@ -616,7 +686,7 @@ export default function StudentApplicationForm({
                       : "text-neutral-400"
                   }`}
                 >
-                  {wordsUniqueSkills} / 500 words
+                  {wordsUniqueSkills} / 500 {isFr ? "mots" : "words"}
                 </span>
               </div>
               <textarea
@@ -624,7 +694,11 @@ export default function StudentApplicationForm({
                 required
                 value={formData.uniqueSkills}
                 onChange={(e) => setFormData({ ...formData, uniqueSkills: e.target.value })}
-                placeholder="Highlight your background, hands-on field experience, analytical capabilities, team collaboration, leadership, diverse perspective, or technical skills that will contribute to the student case study challenge and cohort dynamics..."
+                placeholder={
+                  isFr
+                    ? "Mettez en valeur votre parcours, votre expérience de terrain, vos capacités d'analyse, votre leadership et vos compétences qui enrichiront l'étude de cas et la dynamique d'équipe..."
+                    : "Highlight your background, hands-on field experience, analytical capabilities, team collaboration, leadership, diverse perspective, or technical skills that will contribute to the student case study challenge and cohort dynamics..."
+                }
                 className={`w-full px-4 py-3.5 rounded-xl border bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:ring-2 outline-none transition-all resize-y ${
                   isUniqueSkillsOver
                     ? "border-rose-500 focus:ring-rose-500/20"
@@ -633,7 +707,9 @@ export default function StudentApplicationForm({
               />
               {isUniqueSkillsOver && (
                 <p className="text-[11px] text-rose-600 dark:text-rose-400 font-semibold mt-1">
-                  Response exceeds the 500-word limit. Please edit your answer before submitting.
+                  {isFr
+                    ? "La réponse dépasse la limite de 500 mots. Veuillez modifier votre texte avant de soumettre."
+                    : "Response exceeds the 500-word limit. Please edit your answer before submitting."}
                 </p>
               )}
             </div>
@@ -642,7 +718,10 @@ export default function StudentApplicationForm({
             <div>
               <div className="flex items-center justify-between mb-2 gap-2">
                 <label className="text-xs font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider">
-                  Where do you see yourself in the future? (continuing school, what job type, etc) <span className="text-[#C6112F]">*</span>
+                  {isFr
+                    ? "Où vous voyez-vous dans l'avenir ? (poursuite des études, type d'emploi, etc.)"
+                    : "Where do you see yourself in the future? (continuing school, what job type, etc)"}{" "}
+                  <span className="text-[#C6112F]">*</span>
                 </label>
                 <span
                   className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-md ${
@@ -653,7 +732,7 @@ export default function StudentApplicationForm({
                       : "text-neutral-400"
                   }`}
                 >
-                  {wordsFutureGoals} / 500 words
+                  {wordsFutureGoals} / 500 {isFr ? "mots" : "words"}
                 </span>
               </div>
               <textarea
@@ -661,7 +740,11 @@ export default function StudentApplicationForm({
                 required
                 value={formData.futureGoals}
                 onChange={(e) => setFormData({ ...formData, futureGoals: e.target.value })}
-                placeholder="Outline your future career aspirations (e.g. exploration geology, mining finance, mine operations, ESG consultancy, graduate studies) and how you plan to advance within the natural resources sector..."
+                placeholder={
+                  isFr
+                    ? "Décrivez vos aspirations professionnelles (ex. géologie d'exploration, finance minière, opérations, conseil ESG) et comment vous envisagez d'évoluer dans le secteur des ressources naturelles..."
+                    : "Outline your future career aspirations (e.g. exploration geology, mining finance, mine operations, ESG consultancy, graduate studies) and how you plan to advance within the natural resources sector..."
+                }
                 className={`w-full px-4 py-3.5 rounded-xl border bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:ring-2 outline-none transition-all resize-y ${
                   isFutureGoalsOver
                     ? "border-rose-500 focus:ring-rose-500/20"
@@ -670,7 +753,9 @@ export default function StudentApplicationForm({
               />
               {isFutureGoalsOver && (
                 <p className="text-[11px] text-rose-600 dark:text-rose-400 font-semibold mt-1">
-                  Response exceeds the 500-word limit. Please edit your answer before submitting.
+                  {isFr
+                    ? "La réponse dépasse la limite de 500 mots. Veuillez modifier votre texte avant de soumettre."
+                    : "Response exceeds the 500-word limit. Please edit your answer before submitting."}
                 </p>
               )}
             </div>
@@ -685,10 +770,12 @@ export default function StudentApplicationForm({
             </span>
             <div>
               <h3 className="text-sm sm:text-base font-black uppercase tracking-wider text-neutral-900 dark:text-white">
-                Availability and Logistics
+                {isFr ? "Disponibilité et logistique" : "Availability and Logistics"}
               </h3>
               <p className="text-[11px] text-neutral-500 font-normal">
-                Travel details, dates confirmation, and professional commitment.
+                {isFr
+                  ? "Détails de voyage, confirmation des dates et engagement professionnel."
+                  : "Travel details, dates confirmation, and professional commitment."}
               </p>
             </div>
           </div>
@@ -697,14 +784,18 @@ export default function StudentApplicationForm({
             {/* Availability May 31 - June 3 */}
             <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
               <label className="block text-xs font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mb-2">
-                Are you available to attend May 31 – June 3? <span className="text-[#C6112F]">*</span>
+                {isFr ? "Êtes-vous disponible pour participer du 31 mai au 3 juin ?" : "Are you available to attend May 31 – June 3?"}{" "}
+                <span className="text-[#C6112F]">*</span>
               </label>
               <div className="flex items-center gap-4">
-                {["Yes", "No"].map((option) => (
+                {[
+                  { value: "Yes", labelEn: "Yes", labelFr: "Oui" },
+                  { value: "No", labelEn: "No", labelFr: "Non" },
+                ].map((opt) => (
                   <label
-                    key={option}
+                    key={opt.value}
                     className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl border text-xs font-bold cursor-pointer transition-all ${
-                      formData.availableDates === option
+                      formData.availableDates === opt.value
                         ? "bg-[#C6112F] text-white border-[#C6112F] shadow-sm"
                         : "bg-neutral-50 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F]"
                     }`}
@@ -712,12 +803,12 @@ export default function StudentApplicationForm({
                     <input
                       type="radio"
                       name="availableDates"
-                      value={option}
-                      checked={formData.availableDates === option}
+                      value={opt.value}
+                      checked={formData.availableDates === opt.value}
                       onChange={(e) => setFormData({ ...formData, availableDates: e.target.value })}
                       className="sr-only"
                     />
-                    <span>{option}</span>
+                    <span>{isFr ? opt.labelFr : opt.labelEn}</span>
                   </label>
                 ))}
               </div>
@@ -726,17 +817,25 @@ export default function StudentApplicationForm({
             {/* Travel Responsibility to Montreal */}
             <div className="p-4 sm:p-5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
               <label className="block text-xs font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider mb-1.5 leading-relaxed">
-                You are responsible for your own travel to and from Montreal — can you manage that? <span className="text-[#C6112F]">*</span>
+                {isFr
+                  ? "Vous êtes responsable de votre propre transport vers et depuis Montréal — pouvez-vous vous en charger ?"
+                  : "You are responsible for your own travel to and from Montreal — can you manage that?"}{" "}
+                <span className="text-[#C6112F]">*</span>
               </label>
               <p className="text-[11px] text-neutral-500 dark:text-neutral-400 mb-3 font-normal">
-                (We have a complimentary coach bus to pick you up in Montreal and transport you to Québec City).
+                {isFr
+                  ? "(Nous offrons un autocar gratuit pour vous prendre en charge à Montréal et vous transporter à Québec)."
+                  : "(We have a complimentary coach bus to pick you up in Montreal and transport you to Québec City)."}
               </p>
               <div className="flex items-center gap-4">
-                {["Yes", "No"].map((option) => (
+                {[
+                  { value: "Yes", labelEn: "Yes", labelFr: "Oui" },
+                  { value: "No", labelEn: "No", labelFr: "Non" },
+                ].map((opt) => (
                   <label
-                    key={option}
+                    key={opt.value}
                     className={`flex items-center gap-2.5 px-5 py-2.5 rounded-xl border text-xs font-bold cursor-pointer transition-all ${
-                      formData.travelManagement === option
+                      formData.travelManagement === opt.value
                         ? "bg-[#C6112F] text-white border-[#C6112F] shadow-sm"
                         : "bg-neutral-50 dark:bg-neutral-800/80 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F]"
                     }`}
@@ -744,12 +843,12 @@ export default function StudentApplicationForm({
                     <input
                       type="radio"
                       name="travelManagement"
-                      value={option}
-                      checked={formData.travelManagement === option}
+                      value={opt.value}
+                      checked={formData.travelManagement === opt.value}
                       onChange={(e) => setFormData({ ...formData, travelManagement: e.target.value })}
                       className="sr-only"
                     />
-                    <span>{option}</span>
+                    <span>{isFr ? opt.labelFr : opt.labelEn}</span>
                   </label>
                 ))}
               </div>
@@ -758,14 +857,17 @@ export default function StudentApplicationForm({
             {/* Traveling from */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                Where will you be traveling from? (province / city / airport) <span className="text-[#C6112F]">*</span>
+                {isFr
+                  ? "D'où partirez-vous pour voyager ? (province / ville / aéroport)"
+                  : "Where will you be traveling from? (province / city / airport)"}{" "}
+                <span className="text-[#C6112F]">*</span>
               </label>
               <input
                 type="text"
                 required
                 value={formData.travelOrigin}
                 onChange={(e) => setFormData({ ...formData, travelOrigin: e.target.value })}
-                placeholder="e.g. Toronto, Ontario (YYZ) / Vancouver, BC (YVR)"
+                placeholder={isFr ? "ex. Montréal, QC (YUL) / Toronto, ON (YYZ)" : "e.g. Toronto, Ontario (YYZ) / Vancouver, BC (YVR)"}
                 className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all"
               />
             </div>
@@ -773,17 +875,25 @@ export default function StudentApplicationForm({
             {/* Program Commitment Statement */}
             <div className="p-5 rounded-2xl bg-[#C6112F]/5 border-2 border-[#C6112F]/25 dark:border-[#C6112F]/30">
               <label className="block text-xs font-extrabold text-neutral-900 dark:text-white uppercase tracking-wider mb-2 leading-relaxed">
-                Commitment to Full Program Participation <span className="text-[#C6112F]">*</span>
+                {isFr
+                  ? "Engagement à une participation complète au programme"
+                  : "Commitment to Full Program Participation"}{" "}
+                <span className="text-[#C6112F]">*</span>
               </label>
               <p className="text-xs text-neutral-700 dark:text-neutral-300 font-medium leading-relaxed mb-4">
-                THE Student Sponsorship Program is a fully funded opportunity and requires a significant commitment from both our team and participating students. Are you willing to commit to attending the full program, participating in scheduled student activities and representing THE Event professionally?
+                {isFr
+                  ? "Le Programme de bourses étudiantes est une opportunité entièrement financée qui requiert un engagement sérieux de la part de notre équipe et des étudiants sélectionnés. Vous engagez-vous à assister à l'ensemble du programme, à participer aux activités prévues et à faire preuve d'un professionnalisme exemplaire ?"
+                  : "THE Student Sponsorship Program is a fully funded opportunity and requires a significant commitment from both our team and participating students. Are you willing to commit to attending the full program, participating in scheduled student activities and representing THE Event professionally?"}
               </p>
               <div className="flex items-center gap-4">
-                {["Yes", "No"].map((option) => (
+                {[
+                  { value: "Yes", labelEn: "Yes", labelFr: "Oui" },
+                  { value: "No", labelEn: "No", labelFr: "Non" },
+                ].map((opt) => (
                   <label
-                    key={option}
+                    key={opt.value}
                     className={`flex items-center gap-2.5 px-6 py-2.5 rounded-xl border text-xs font-extrabold cursor-pointer transition-all ${
-                      formData.commitmentAgreed === option
+                      formData.commitmentAgreed === opt.value
                         ? "bg-[#C6112F] text-white border-[#C6112F] shadow-md shadow-[#C6112F]/25"
                         : "bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 border-neutral-300 dark:border-neutral-700 hover:border-[#C6112F]"
                     }`}
@@ -791,12 +901,12 @@ export default function StudentApplicationForm({
                     <input
                       type="radio"
                       name="commitmentAgreed"
-                      value={option}
-                      checked={formData.commitmentAgreed === option}
+                      value={opt.value}
+                      checked={formData.commitmentAgreed === opt.value}
                       onChange={(e) => setFormData({ ...formData, commitmentAgreed: e.target.value })}
                       className="sr-only"
                     />
-                    <span>{option}</span>
+                    <span>{isFr ? opt.labelFr : opt.labelEn}</span>
                   </label>
                 ))}
               </div>
@@ -812,7 +922,9 @@ export default function StudentApplicationForm({
                   className="w-4 h-4 text-[#C6112F] rounded border-neutral-300 focus:ring-[#C6112F]"
                 />
                 <span className="text-xs sm:text-sm font-semibold text-neutral-700 dark:text-neutral-300">
-                  Sign up for news and updates regarding THE Student Partnership Program
+                  {isFr
+                    ? "M'inscrire pour recevoir les actualités et informations sur le Programme de Partenariat Étudiant"
+                    : "Sign up for news and updates regarding THE Student Partnership Program"}
                 </span>
               </label>
             </div>
@@ -842,12 +954,18 @@ export default function StudentApplicationForm({
             )}
             <span>
               {isSubmitting
-                ? "Submitting Application…"
+                ? isFr
+                  ? "Envoi de la candidature en cours…"
+                  : "Submitting Application…"
+                : isFr
+                ? "Soumettre la candidature au programme étudiant"
                 : "Submit Student Sponsorship Application"}
             </span>
           </button>
           <p className="text-center text-[11px] text-neutral-400 mt-3 font-medium">
-            By submitting, your application will be reviewed for fully funded sponsorship at THE Mining Investment Event 2026.
+            {isFr
+              ? "En soumettant votre formulaire, votre dossier sera évalué pour une bourse entièrement financée à The Mining Investment Event 2026."
+              : "By submitting, your application will be reviewed for fully funded sponsorship at THE Mining Investment Event 2026."}
           </p>
         </div>
       </form>

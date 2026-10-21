@@ -13,24 +13,6 @@ export default function Hero() {
 
   const openVideoModal = useCallback(() => {
     setIsVideoModalOpen(true);
-
-    const video = modalVideoRef.current;
-    if (video) {
-      if (videoRef.current) {
-        video.currentTime = videoRef.current.currentTime || 0;
-      }
-      video.play().catch(() => {});
-    }
-
-    // Automatically launch native fullscreen by default on click
-    const target = modalContainerRef.current || video;
-    if (target) {
-      if (target.requestFullscreen) {
-        target.requestFullscreen().catch(() => {});
-      } else if ((target as unknown as { webkitRequestFullscreen?: () => void }).webkitRequestFullscreen) {
-        (target as unknown as { webkitRequestFullscreen: () => void }).webkitRequestFullscreen();
-      }
-    }
   }, []);
 
   const closeVideoModal = useCallback(() => {
@@ -90,16 +72,34 @@ export default function Hero() {
     };
   }, []);
 
-  // Sync playback time and resume when opening full-screen modal
+  // Sync playback time, start playing, and auto-request fullscreen when modal opens
   useEffect(() => {
-    if (isVideoModalOpen && modalVideoRef.current && videoRef.current) {
-      try {
-        modalVideoRef.current.currentTime = videoRef.current.currentTime || 0;
-        modalVideoRef.current.play().catch(() => {});
-      } catch {
-        // ignore autoplay restriction
+    if (!isVideoModalOpen) return;
+
+    // Use requestAnimationFrame to ensure the modal DOM has mounted
+    requestAnimationFrame(() => {
+      const video = modalVideoRef.current;
+      if (video && videoRef.current) {
+        try {
+          video.currentTime = videoRef.current.currentTime || 0;
+        } catch {
+          // ignore
+        }
       }
-    }
+      if (video) {
+        video.play().catch(() => {});
+      }
+
+      // Auto-request native fullscreen on the container (needs user-gesture chain)
+      const target = modalContainerRef.current;
+      if (target) {
+        if (target.requestFullscreen) {
+          target.requestFullscreen().catch(() => {});
+        } else if ((target as unknown as { webkitRequestFullscreen?: () => void }).webkitRequestFullscreen) {
+          (target as unknown as { webkitRequestFullscreen: () => void }).webkitRequestFullscreen();
+        }
+      }
+    });
   }, [isVideoModalOpen]);
 
   // Pause hero background video when modal is open, resume when closed
@@ -347,63 +347,64 @@ export default function Hero() {
         <span>{lang === "FR" ? "Voir la vidéo" : "Watch Full Video"}</span>
       </button>
 
-      {/* Full Screen Video Container in Full Colour — Default Edge-to-Edge Full Screen */}
-      <div
-        ref={modalContainerRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label="Full screen event video"
-        className={`fixed inset-0 z-50 w-screen h-screen bg-black flex items-center justify-center overflow-hidden transition-opacity duration-300 ${
-          isVideoModalOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        {/* Full-Screen Video (Edge-to-Edge, Full Colour) */}
-        <video
-          ref={modalVideoRef}
-          src="/fwdboardmemberphotos/hero-bg.mp4"
-          controls
-          playsInline
-          className="w-full h-full object-contain bg-black"
-        />
+      {/* Full Screen Video — Only rendered when open */}
+      {isVideoModalOpen && (
+        <div
+          ref={modalContainerRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Full screen event video"
+          className="fixed inset-0 z-50 w-screen h-screen bg-black flex items-center justify-center overflow-hidden"
+        >
+          {/* Full-Screen Video (Edge-to-Edge, Full Colour) */}
+          <video
+            ref={modalVideoRef}
+            src="/fwdboardmemberphotos/hero-bg.mp4"
+            controls
+            autoPlay
+            playsInline
+            className="w-full h-full object-contain bg-black"
+          />
 
-        {/* Floating Top Header Overlay */}
-        <div className="absolute top-0 left-0 right-0 z-20 p-4 sm:p-6 md:p-8 bg-gradient-to-b from-black/90 via-black/40 to-transparent flex items-center justify-between pointer-events-none">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse" />
-            <span className="text-xs sm:text-sm font-black tracking-widest uppercase text-white drop-shadow-md">
-              {lang === "FR" ? "Vidéo Officielle de l'Événement" : "Official Event Video"}
-            </span>
-          </div>
+          {/* Floating Top Header Overlay */}
+          <div className="absolute top-0 left-0 right-0 z-20 p-4 sm:p-6 md:p-8 bg-gradient-to-b from-black/90 via-black/40 to-transparent flex items-center justify-between pointer-events-none">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#C6112F] animate-pulse" />
+              <span className="text-xs sm:text-sm font-black tracking-widest uppercase text-white drop-shadow-md">
+                {lang === "FR" ? "Vidéo Officielle de l'Événement" : "Official Event Video"}
+              </span>
+            </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 pointer-events-auto">
-            {/* Toggle Native Full Screen button */}
-            <button
-              type="button"
-              onClick={toggleNativeFullscreen}
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full bg-black/60 hover:bg-black/90 text-white text-xs sm:text-sm font-bold transition-all cursor-pointer border border-white/25 hover:border-white/50 backdrop-blur-md hover:scale-105 shadow-lg"
-              title={lang === "FR" ? "Plein écran" : "Toggle Full Screen"}
-            >
-              <svg className="w-4 h-4 text-[#ff4d6d]" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-              </svg>
-              <span className="hidden xs:inline">{lang === "FR" ? "Plein Écran" : "Full Screen"}</span>
-            </button>
+            <div className="flex items-center gap-2 sm:gap-3 pointer-events-auto">
+              {/* Toggle Native Full Screen button */}
+              <button
+                type="button"
+                onClick={toggleNativeFullscreen}
+                className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-full bg-black/60 hover:bg-black/90 text-white text-xs sm:text-sm font-bold transition-all cursor-pointer border border-white/25 hover:border-white/50 backdrop-blur-md hover:scale-105 shadow-lg"
+                title={lang === "FR" ? "Plein écran" : "Toggle Full Screen"}
+              >
+                <svg className="w-4 h-4 text-[#ff4d6d]" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                </svg>
+                <span className="hidden xs:inline">{lang === "FR" ? "Plein Écran" : "Full Screen"}</span>
+              </button>
 
-            {/* Close Button */}
-            <button
-              type="button"
-              onClick={closeVideoModal}
-              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-bold transition-all cursor-pointer border border-white/20 hover:scale-105 shadow-lg shadow-[#C6112F]/40"
-              title={lang === "FR" ? "Fermer" : "Close"}
-            >
-              <span>{lang === "FR" ? "Fermer" : "Close"}</span>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+              {/* Close Button */}
+              <button
+                type="button"
+                onClick={closeVideoModal}
+                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-[#C6112F] hover:bg-[#a80d26] text-white text-xs sm:text-sm font-bold transition-all cursor-pointer border border-white/20 hover:scale-105 shadow-lg shadow-[#C6112F]/40"
+                title={lang === "FR" ? "Fermer" : "Close"}
+              >
+                <span>{lang === "FR" ? "Fermer" : "Close"}</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Interactive & Engaging Scroll Down Indicator */}
       <button

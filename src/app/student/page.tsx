@@ -128,7 +128,7 @@ const studentGalleryPhotos = [
 ];
 
 export default function StudentPage() {
-  const { t } = useLanguage();
+  const { t, isFr } = useLanguage();
 
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
@@ -184,9 +184,11 @@ export default function StudentPage() {
                 {t("nav-home", "Home")}
               </a>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-neutral-400">Initiatives</span>
+              <span className="text-neutral-400">{isFr ? "Initiatives" : "Initiatives"}</span>
               <span className="text-[#C6112F]">›</span>
-              <span className="text-white font-semibold">THE Student Partnership Program</span>
+              <span className="text-white font-semibold">
+                {isFr ? "Programme de Partenariat Étudiant" : "THE Student Partnership Program"}
+              </span>
             </div>
 
             {/* 2-Column Main Hero Grid */}
@@ -195,16 +197,30 @@ export default function StudentPage() {
               <div className="lg:col-span-7">
                 <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#C6112F]/15 border border-[#C6112F]/30 text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
                   <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
-                  <span>Canada's Premier Student Mining Sponsorship</span>
+                  <span>
+                    {isFr
+                      ? "Parrainage Étudiant Minier de Premier Plan au Canada"
+                      : "Canada's Premier Student Mining Sponsorship"}
+                  </span>
                 </div>
 
                 {/* Main Heading */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] mb-6">
-                  THE Student <span className="text-[#C6112F]">Partnership Program</span>
+                  {isFr ? (
+                    <>
+                      LE Programme de <span className="text-[#C6112F]">Partenariat Étudiant</span>
+                    </>
+                  ) : (
+                    <>
+                      THE Student <span className="text-[#C6112F]">Partnership Program</span>
+                    </>
+                  )}
                 </h1>
 
                 <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-8">
-                  Empowering university and college students in geology, finance and engineering with fully funded access to Canada's Tier 1 global mining investment event.
+                  {isFr
+                    ? "Offrant aux étudiants universitaires et collégiaux en géologie, finance et génie un accès entièrement financé à l'événement mondial de niveau 1 sur l'investissement minier au Canada."
+                    : "Empowering university and college students in geology, finance and engineering with fully funded access to Canada's Tier 1 global mining investment event."}
                 </p>
 
                 {/* Hero Action Buttons */}
@@ -214,7 +230,7 @@ export default function StudentPage() {
                     type="button"
                     className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3 cursor-pointer"
                   >
-                    <span>Apply Now</span>
+                    <span>{isFr ? "Postuler Maintenant" : "Apply Now"}</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
@@ -225,7 +241,7 @@ export default function StudentPage() {
                     type="button"
                     className="px-7 py-4 rounded-xl border border-neutral-700 hover:border-white text-neutral-200 hover:text-white text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm cursor-pointer"
                   >
-                    <span>Letter from our CEO</span>
+                    <span>{isFr ? "Lettre de notre PDG" : "Letter from our CEO"}</span>
                     <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
@@ -235,7 +251,7 @@ export default function StudentPage() {
                 {/* 3 Program Sponsors (in one line) */}
                 <div className="pt-6 border-t border-neutral-800/80 max-w-2xl">
                   <span className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.25em] block mb-3">
-                    PROGRAM SPONSORS
+                    {isFr ? "COMMANDITAIRES DU PROGRAMME" : "PROGRAM SPONSORS"}
                   </span>
                   <div className="flex items-center gap-4 sm:gap-5 flex-wrap sm:flex-nowrap">
                     {/* Glencore */}
@@ -298,20 +314,38 @@ export default function StudentPage() {
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="max-w-4xl mx-auto bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-8 sm:p-12 shadow-xl">
               <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-3 block">
-                ABOUT THE PROGRAM
+                {isFr ? "À PROPOS DU PROGRAMME" : "ABOUT THE PROGRAM"}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-6">
-                Investing in the Next Generation of Mining Leaders
+                {isFr
+                  ? "Investir dans la Prochaine Génération de Leaders Miniers"
+                  : "Investing in the Next Generation of Mining Leaders"}
               </h2>
               <div className="w-20 h-[3.5px] bg-[#C6112F] rounded-full mb-8" />
 
               <div className="space-y-6 text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed font-normal">
                 <p>
-                  <strong>THE Student Partnership Program</strong> aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada’s only Tier 1 global mining investment conference, held June 2-4, 2026, in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada.
+                  {isFr ? (
+                    <>
+                      <strong>Le Programme de Partenariat Étudiant</strong> vise à offrir une opportunité unique de découverte de l'industrie minière grâce à une participation à The Mining Investment Event (THE Event), la seule conférence d'investissement minier de niveau 1 au Canada, qui se tient à Québec. Cet événement annuel sert de point de rencontre pour les chefs de file de l'industrie et les investisseurs, offrant une plateforme d'échange de connaissances, de réseautage et d'apprentissage immersif.
+                    </>
+                  ) : (
+                    <>
+                      <strong>THE Student Partnership Program</strong> aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada’s only Tier 1 global mining investment conference, held in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada.
+                    </>
+                  )}
                 </p>
 
                 <p>
-                  Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at <strong>no cost</strong>. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals.
+                  {isFr ? (
+                    <>
+                      Jusqu'à 50 étudiants universitaires ou collégiaux passionnés de géologie, finance, génie ou domaines connexes ont la chance d'assister à la conférence <strong>sans frais</strong>. Notre objectif est de favoriser un apprentissage concret en exposant les étudiants aux conférenciers d'honneur, panels de l'industrie, rencontres professionnelles, concours d'études de cas et diverses activités de réseautage.
+                    </>
+                  ) : (
+                    <>
+                      Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at <strong>no cost</strong>. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals.
+                    </>
+                  )}
                 </p>
               </div>
             </div>
@@ -330,7 +364,7 @@ export default function StudentPage() {
                   <div>
                     <div className="flex items-center gap-3 mb-6">
                       <span className="px-3.5 py-1 rounded-full bg-[#C6112F]/20 border border-[#C6112F]/40 text-[#ff4d6d] text-[11px] font-black uppercase tracking-widest">
-                        EXECUTIVE PERSPECTIVE
+                        {isFr ? "PERSPECTIVE DE LA DIRECTION" : "EXECUTIVE PERSPECTIVE"}
                       </span>
                       <span className="text-xs text-neutral-400 font-semibold">
                         THE Mining Investment Event
@@ -338,16 +372,20 @@ export default function StudentPage() {
                     </div>
 
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-8">
-                      Letter from our Founder & CEO
+                      {isFr ? "Lettre de notre Fondatrice et PDG" : "Letter from our Founder & CEO"}
                     </h2>
 
                     <div className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] space-y-6">
                       <p className="text-neutral-200 text-base sm:text-lg font-normal leading-relaxed italic">
-                        Joanne Jobin, Founder and CEO, stated, “I am deeply grateful to the 2026 Student Program Partners for their commitment to funding this program and for taking the time to meet and interact directly with our students. Since its launch in 2023, the program has introduced approximately 200 students to the mining industry, with many returning annually to network, learn more, or volunteer. It is now recognized as one of the largest fully funded conference programs in North America, offering students interested in mining a unique opportunity to participate in THE Event. Program Partners and Industry Leaders facilitate this platform for knowledge sharing, networking and experiential learning. This program is vital to THE Event’s dedication to making real social impacts and supporting the goal of ensuring that potential future mining leaders have ample opportunities to be identified and to succeed.”
+                        {isFr
+                          ? 'Joanne Jobin, fondatrice et directrice générale, a déclaré : « Je suis profondément reconnaissante envers les partenaires du programme étudiant pour leur engagement à financer cette initiative et pour avoir pris le temps de rencontrer directement nos étudiants. Depuis son lancement en 2023, le programme a fait découvrir l\'industrie minière à environ 200 étudiants, dont plusieurs reviennent annuellement pour réseauter ou faire du bénévolat. Il est désormais reconnu comme l\'un des plus importants programmes de conférence entièrement financés en Amérique du Nord. »'
+                          : 'Joanne Jobin, Founder and CEO, stated, “I am deeply grateful to the Student Program Partners for their commitment to funding this program and for taking the time to meet and interact directly with our students. Since its launch in 2023, the program has introduced approximately 200 students to the mining industry, with many returning annually to network, learn more, or volunteer. It is now recognized as one of the largest fully funded conference programs in North America, offering students interested in mining a unique opportunity to participate in THE Event.”'}
                       </p>
 
                       <p className="text-neutral-200 text-base sm:text-lg font-normal leading-relaxed italic">
-                        Jobin added, "As part of our ongoing dedication to industry sustainability through fostering the next generation of mining professionals, we plan to seek another partner to provide additional funding to create an opportunity for international students to participate in our 2027 program."
+                        {isFr
+                          ? 'Mme Jobin a ajouté : « Dans le cadre de notre dévouement envers la durabilité de l\'industrie par la formation de la prochaine génération de professionnels miniers, nous poursuivons nos efforts pour étendre ces opportunités exceptionnelles. »'
+                          : 'Jobin added, "As part of our ongoing dedication to industry sustainability through fostering the next generation of mining professionals, we plan to seek another partner to provide additional funding to create an opportunity for international students to participate in our program."'}
                       </p>
                     </div>
                   </div>
@@ -367,7 +405,7 @@ export default function StudentPage() {
                     <div>
                       <h4 className="text-base font-extrabold text-white">Joanne Jobin</h4>
                       <p className="text-xs text-neutral-400 font-medium">
-                        Founder & CEO, THE Mining Investment Event
+                        {isFr ? "Fondatrice & PDG, The Mining Investment Event" : "Founder & CEO, THE Mining Investment Event"}
                       </p>
                     </div>
                   </div>
@@ -407,14 +445,16 @@ export default function StudentPage() {
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="max-w-3xl mb-12">
               <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                2026 RECOGNITION
+                {isFr ? "RECONNAISSANCE 2026" : "2026 RECOGNITION"}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-3">
-                2026 Award Winners & Highlights
+                {isFr ? "Lauréats et Faits Saillants 2026" : "2026 Award Winners & Highlights"}
               </h2>
               <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mb-4" />
               <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base">
-                Celebrating outstanding student delegates and case competition winners from THE Event 2026 in Québec City.
+                {isFr
+                  ? "Célébration des délégués étudiants exceptionnels et des gagnants du concours d'études de cas de THE Event 2026 à Québec."
+                  : "Celebrating outstanding student delegates and case competition winners from THE Event 2026 in Québec City."}
               </p>
             </div>
 
@@ -423,11 +463,11 @@ export default function StudentPage() {
               {/* MVP Featured Card */}
               <div className="lg:col-span-5 bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-transparent border-2 border-amber-500/30 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
                 <div className="absolute top-0 right-0 px-5 py-1.5 bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-widest rounded-bl-2xl shadow-md">
-                  ⭐ Student MVP Winner
+                  {isFr ? "⭐ Gagnant MVP Étudiant" : "⭐ Student MVP Winner"}
                 </div>
                 <div>
                   <span className="text-[10px] font-black tracking-[0.25em] uppercase text-amber-600 dark:text-amber-400 block mb-3">
-                    PEER & EXECUTIVE SELECTION
+                    {isFr ? "SÉLECTION PAR LES PAIRS & DIRIGEANTS" : "PEER & EXECUTIVE SELECTION"}
                   </span>
                   <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-2">
                     {mvpStudent.name}
@@ -449,14 +489,14 @@ export default function StudentPage() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full">
-                      Outstanding Student Recognition
+                      {isFr ? "Reconnaissance Étudiante Remarquable" : "Outstanding Student Recognition"}
                     </span>
                     <span className="text-xs text-neutral-400 font-semibold hidden sm:inline">
-                      Exceptional Contributions
+                      {isFr ? "Contributions Exceptionnelles" : "Exceptional Contributions"}
                     </span>
                   </div>
                   <h3 className="text-xl sm:text-2xl font-black text-[#1a1f2c] dark:text-white mb-4">
-                    Special Academic & Leadership Honors
+                    {isFr ? "Distinctions Académiques et de Leadership" : "Special Academic & Leadership Honors"}
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {outstandingStudents.map((std, i) => (
@@ -486,10 +526,12 @@ export default function StudentPage() {
                 <span className="w-2 h-6 bg-[#C6112F] rounded-full" />
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white tracking-tight">
-                    Case Study Competition Track Winners
+                    {isFr ? "Gagnants des Volets du Concours d'Études de Cas" : "Case Study Competition Track Winners"}
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-medium mt-0.5">
-                    Recognizing the winning student teams across the sponsor-led competition tracks.
+                    {isFr
+                      ? "Célébration des équipes étudiantes gagnantes pour chaque volet parrainé."
+                      : "Recognizing the winning student teams across the sponsor-led competition tracks."}
                   </p>
                 </div>
               </div>
@@ -526,7 +568,7 @@ export default function StudentPage() {
                     {/* Track Sponsor Logo Badge */}
                     <div className="flex items-center gap-2.5 self-start sm:self-auto shrink-0">
                       <span className="text-[10px] uppercase font-extrabold text-neutral-400 tracking-wider">
-                        Track Sponsor
+                        {isFr ? "Commanditaire du Volet" : "Track Sponsor"}
                       </span>
                       <div
                         className={`h-14 sm:h-16 rounded-xl border border-neutral-200 dark:border-neutral-700/60 shadow-2xs flex items-center justify-center logo-white-bg !bg-white overflow-hidden ${
@@ -587,22 +629,28 @@ export default function StudentPage() {
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-black tracking-tight">
-                    2026 Event Photos & Student Moments
+                    {isFr ? "Photos de l'Événement 2026 & Moments Étudiants" : "2026 Event Photos & Student Moments"}
                   </h3>
                   <div className="w-12 h-[3px] bg-[#C6112F] rounded-full mt-2" />
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2">
-                  {["All", "Awards", "Networking", "Panels", "Student Life"].map((cat) => (
+                  {[
+                    { id: "All", label: isFr ? "Tous" : "All" },
+                    { id: "Awards", label: isFr ? "Prix" : "Awards" },
+                    { id: "Networking", label: isFr ? "Réseautage" : "Networking" },
+                    { id: "Panels", label: isFr ? "Panels" : "Panels" },
+                    { id: "Student Life", label: isFr ? "Vie Étudiante" : "Student Life" },
+                  ].map((cat) => (
                     <button
-                      key={cat}
-                      onClick={() => setActiveCategory(cat)}
-                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${activeCategory === cat
+                      key={cat.id}
+                      onClick={() => setActiveCategory(cat.id)}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 ${activeCategory === cat.id
                           ? "bg-[#C6112F] text-white shadow-md shadow-[#C6112F]/20"
                           : "bg-white dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 hover:border-[#C6112F]"
                         }`}
                     >
-                      {cat}
+                      {cat.label}
                     </button>
                   ))}
                 </div>
@@ -783,14 +831,16 @@ export default function StudentPage() {
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="max-w-3xl mb-10">
               <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                STUDENT PROGRAM OUTREACH & LEADERSHIP
+                {isFr ? "RAYONNEMENT & LEADERSHIP DU PROGRAMME" : "STUDENT PROGRAM OUTREACH & LEADERSHIP"}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-3">
-                Student Program Consultants
+                {isFr ? "Consultants du Programme Étudiant" : "Student Program Consultants"}
               </h2>
               <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mb-4" />
               <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base">
-                Leading national student outreach, community engagement, and candidate campaigns for THE Student Partnership Program.
+                {isFr
+                  ? "Dirigeant le rayonnement étudiant national, l'engagement communautaire et les campagnes pour le Programme de Partenariat Étudiant."
+                  : "Leading national student outreach, community engagement, and candidate campaigns for THE Student Partnership Program."}
               </p>
             </div>
 
@@ -804,7 +854,7 @@ export default function StudentPage() {
                     </div>
                     <div>
                       <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#C6112F]/10 px-2.5 py-0.5 rounded-full inline-block mb-1">
-                        Student Program Consultant
+                        {isFr ? "Consultante du Programme Étudiant" : "Student Program Consultant"}
                       </span>
                       <h3 className="text-2xl font-black text-neutral-900 dark:text-white tracking-tight">
                         Dalena Vo
@@ -816,7 +866,9 @@ export default function StudentPage() {
                   </div>
                   <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
                   <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
-                    Dalena (alongside Adam) leads national student outreach and campaigns. As a graduate of THE Student Partnership Program in its inaugural year and former Student Liaison (2024–2026), she combines technical field experience with a strong commitment to cultivating the next generation of industry talent.
+                    {isFr
+                      ? "Dalena (aux côtés d'Adam) dirige le rayonnement étudiant national. Diplômée de la première cohorte du Programme et ancienne agente de liaison (2024–2026), elle allie expérience technique de terrain et engagement soutenu pour former la relève."
+                      : "Dalena (alongside Adam) leads national student outreach and campaigns. As a graduate of THE Student Partnership Program in its inaugural year and former Student Liaison (2024–2026), she combines technical field experience with a strong commitment to cultivating the next generation of industry talent."}
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 flex items-center justify-between">
@@ -824,7 +876,7 @@ export default function StudentPage() {
                     href="/team"
                     className="text-xs font-bold text-[#C6112F] dark:text-[#ff4d6d] hover:underline flex items-center gap-1"
                   >
-                    <span>Read Full Bio in Team Page</span>
+                    <span>{isFr ? "Lire la bio complète sur la page Équipe" : "Read Full Bio in Team Page"}</span>
                     <span>→</span>
                   </Link>
                 </div>
@@ -839,7 +891,7 @@ export default function StudentPage() {
                     </div>
                     <div>
                       <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#C6112F]/10 px-2.5 py-0.5 rounded-full inline-block mb-1">
-                        Student Program Consultant
+                        {isFr ? "Consultant du Programme Étudiant" : "Student Program Consultant"}
                       </span>
                       <h3 className="text-2xl font-black text-neutral-900 dark:text-white tracking-tight">
                         Adam Nouri
@@ -851,7 +903,9 @@ export default function StudentPage() {
                   </div>
                   <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
                   <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
-                    Adam (alongside Dalena) leads national student outreach and campaigns. As an inaugural graduate of THE Student Partnership Program and former Student Liaison (2024–2026), he brings a strong foundation in both technical mining operations and financial analysis.
+                    {isFr
+                      ? "Adam (aux côtés de Dalena) dirige le rayonnement étudiant national. Diplômé de la cohorte inaugurale et ancien agent de liaison (2024–2026), il apporte une solide expertise en opérations minières et analyse financière."
+                      : "Adam (alongside Dalena) leads national student outreach and campaigns. As an inaugural graduate of THE Student Partnership Program and former Student Liaison (2024–2026), he brings a strong foundation in both technical mining operations and financial analysis."}
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 flex items-center justify-between">
@@ -859,7 +913,7 @@ export default function StudentPage() {
                     href="/team"
                     className="text-xs font-bold text-[#C6112F] dark:text-[#ff4d6d] hover:underline flex items-center gap-1"
                   >
-                    <span>Read Full Bio in Team Page</span>
+                    <span>{isFr ? "Lire la bio complète sur la page Équipe" : "Read Full Bio in Team Page"}</span>
                     <span>→</span>
                   </Link>
                 </div>
@@ -873,14 +927,16 @@ export default function StudentPage() {
           <div className="max-w-[960px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="text-center max-w-2xl mx-auto mb-10">
               <span className="text-[#C6112F] text-xs font-black tracking-[0.25em] uppercase mb-2 block">
-                APPLICATION PORTAL
+                {isFr ? "PORTAIL DE CANDIDATURE" : "APPLICATION PORTAL"}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-3">
-                Apply for THE Student Partnership Program
+                {isFr ? "Postuler au Programme de Partenariat Étudiant" : "Apply for THE Student Partnership Program"}
               </h2>
               <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mx-auto mb-4" />
               <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base font-normal">
-                Submit your application below to attend Canada&apos;s premier Tier 1 global mining event in Québec City with 100% funded tuition pass, hotel stay, and coach transportation.
+                {isFr
+                  ? "Soumettez votre candidature ci-dessous pour assister à l'événement mondial de niveau 1 à Québec avec laissez-passer, hôtel et transport par autocar 100 % financés."
+                  : "Submit your application below to attend Canada's premier Tier 1 global mining event in Québec City with 100% funded tuition pass, hotel stay, and coach transportation."}
               </p>
             </div>
 
@@ -894,10 +950,12 @@ export default function StudentPage() {
             <div className="bg-[#151821] border border-neutral-800 rounded-3xl p-8 sm:p-10 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-8">
               <div className="max-w-2xl">
                 <h4 className="text-base font-extrabold text-[#ff4d6d] uppercase tracking-wider mb-2">
-                  Contact Information & Student Inquiries
+                  {isFr ? "Coordonnées et Demandes Étudiantes" : "Contact Information & Student Inquiries"}
                 </h4>
                 <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed font-light mb-4">
-                  For additional details or questions regarding the sponsorship application process, please reach out to Sydney Schuch, Manager of Production Services:
+                  {isFr
+                    ? "Pour toute question concernant le processus de candidature au programme étudiant, veuillez contacter Sydney Schuch, directrice des services de production :"
+                    : "For additional details or questions regarding the sponsorship application process, please reach out to Sydney Schuch, Manager of Production Services:"}
                 </p>
                 <div className="inline-flex items-center gap-3 bg-neutral-900 border border-neutral-800 px-4 py-2.5 rounded-xl text-xs font-mono text-neutral-200">
                   <span>Sydney@irinc.ca</span>
@@ -905,7 +963,7 @@ export default function StudentPage() {
                     onClick={handleCopyEmail}
                     className="text-[#ff4d6d] hover:underline font-sans font-bold cursor-pointer"
                   >
-                    {copiedEmail ? "✓ Copied!" : "Copy Email"}
+                    {copiedEmail ? (isFr ? "✓ Copié !" : "✓ Copied!") : isFr ? "Copier le courriel" : "Copy Email"}
                   </button>
                 </div>
               </div>
@@ -916,10 +974,10 @@ export default function StudentPage() {
                   type="button"
                   className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs font-extrabold tracking-widest uppercase shadow-xl hover:scale-105 transition-all cursor-pointer"
                 >
-                  Apply Now
+                  {isFr ? "Postuler Maintenant" : "Apply Now"}
                 </button>
                 <span className="text-[11px] text-neutral-400 font-medium">
-                  Applications for 2026 student cohort are open
+                  {isFr ? "Les candidatures sont ouvertes" : "Applications for 2026 student cohort are open"}
                 </span>
               </div>
             </div>

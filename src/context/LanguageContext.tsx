@@ -8,6 +8,7 @@ interface LanguageContextType {
   lang: Language;
   setLang: (lang: Language) => void;
   t: (key: string, fallback?: string) => string;
+  isFr: boolean;
 }
 
 const translations: Record<Language, Record<string, string>> = {
@@ -1146,7 +1147,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ lang, setLang, t, isFr: lang === "FR" }}>
       {children}
     </LanguageContext.Provider>
   );
