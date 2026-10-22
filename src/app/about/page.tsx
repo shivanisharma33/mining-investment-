@@ -1,46 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
-import EventByTheNumbers from "@/components/EventByTheNumbers";
 import { useLanguage } from "@/context/LanguageContext";
 
-/* ───────── Animated Counter Hook ───────── */
-function useCounter(target: number, duration = 2000, startOnView = true) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    if (!startOnView) return;
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting && !started.current) {
-          started.current = true;
-          const step = Math.ceil(target / (duration / 16));
-          let current = 0;
-          const id = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              current = target;
-              clearInterval(id);
-            }
-            setCount(current);
-          }, 16);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [target, duration, startOnView]);
-
-  return { count, ref };
-}
 
 /* ───────── Quick Facts Data ───────── */
 const quickFacts = [
@@ -298,13 +263,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-
-        {/* ═══════════════ SECTION 3: THE EVENT BY THE NUMBERS ═══════════════ */}
-        <section className="relative w-full bg-white dark:bg-[#09090b] py-16 sm:py-20 overflow-hidden transition-colors duration-300">
-          <EventByTheNumbers />
-        </section>
-
-        {/* ═══════════════ SECTION 4: WHAT MAKES US DIFFERENT ═══════════════ */}
+        {/* ═══════════════ SECTION 3: WHAT MAKES US DIFFERENT ═══════════════ */}
         <section className="relative w-full bg-[#f4f7fa] dark:bg-[#09090b] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             {/* Section Header */}

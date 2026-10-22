@@ -69,6 +69,7 @@ const aboutDropdown = [
     descDefault: "Latest mining news, government updates, company articles & interviews",
     href: "/news",
     isExternal: false,
+    hidden: true,
     icon: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5" />
@@ -89,6 +90,8 @@ const aboutDropdown = [
     ),
   },
 ];
+
+const visibleAboutDropdown = aboutDropdown.filter((item) => !item.hidden);
 
 /* Programs dropdown sub-items */
 const programsDropdown = [
@@ -246,21 +249,21 @@ export default function Navbar() {
       className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-16 sm:h-20 md:h-22" : "h-18 sm:h-22 md:h-24"
         }`}
     >
-      <div className="w-full px-[40px] h-full flex items-center justify-between">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-4 xl:px-6 2xl:px-[40px] h-full flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center group py-1 mr-3 xl:mr-4 2xl:mr-8">
+        <Link href="/" className="flex-shrink-0 flex items-center group py-1 mr-2 sm:mr-3 lg:mr-2 xl:mr-3 2xl:mr-8">
           <Image
             src="/MainPageLogo.webp"
             alt="The Mining Investment Event"
             width={240}
             height={90}
             priority
-            className="object-contain h-10 sm:h-12 md:h-14 lg:h-[56px] xl:h-[60px] 2xl:h-[72px] max-h-[85%] w-auto group-hover:scale-105 transition-transform duration-300 dark:brightness-110"
+            className="object-contain h-[52px] sm:h-14 md:h-14 lg:h-[48px] xl:h-[50px] 2xl:h-[72px] max-h-[88%] w-auto group-hover:scale-105 transition-transform duration-300 dark:brightness-110"
           />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-2.5 lg:gap-3 xl:gap-3.5 2xl:gap-6 shrink-0">
+        <nav className="hidden lg:flex items-center gap-1.5 lg:gap-2 xl:gap-2.5 2xl:gap-6 shrink-0">
           {visibleNavLinks.map((link) => (
             <div
               key={link.name}
@@ -281,7 +284,7 @@ export default function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative py-1 text-[11px] lg:text-[11.5px] xl:text-[12px] 2xl:text-[13.5px] font-extrabold tracking-tight xl:tracking-normal 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F] shrink-0"
+                  className="relative py-1 text-[11px] lg:text-[11px] xl:text-[11.5px] 2xl:text-[13.5px] font-extrabold tracking-tight 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F] shrink-0"
                 >
                   <span className="whitespace-nowrap">{link.name}</span>
                   <svg
@@ -298,7 +301,7 @@ export default function Navbar() {
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative py-1 text-[11px] lg:text-[11.5px] xl:text-[12px] 2xl:text-[13.5px] font-extrabold tracking-tight xl:tracking-normal 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 shrink-0 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+                  className={`relative py-1 text-[11px] lg:text-[11px] xl:text-[11.5px] 2xl:text-[13.5px] font-extrabold tracking-tight 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 shrink-0 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                     }`}
                 >
                   <span className="whitespace-nowrap">{link.name}</span>
@@ -332,7 +335,7 @@ export default function Navbar() {
                   <div className="bg-white dark:bg-[#18181b] rounded-xl border border-neutral-200 dark:border-zinc-800 shadow-2xl p-4 min-w-[340px] animate-fadeIn">
                     <div className="absolute top-3 left-4 right-4 h-[2px] bg-[#C6112F] rounded-full" />
                     <div className="flex flex-col gap-1 mt-2">
-                      {aboutDropdown.map((item) => {
+                      {visibleAboutDropdown.map((item) => {
                         if (item.isExternal) {
                           return (
                             <a
@@ -498,14 +501,14 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop & Action Buttons Container */}
-        <div className="flex items-center gap-2 sm:gap-2.5 xl:gap-2.5 2xl:gap-3.5 shrink-0 ml-3 xl:ml-4 2xl:ml-6">
+        <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-1.5 xl:gap-2 2xl:gap-3.5 shrink-0 ml-2 lg:ml-2 xl:ml-3 2xl:ml-6">
           {/* The Noble Mining Investment Conference Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
           <a
             href="https://www.thenoblemininginvestmentconference.com/"
             target="_blank"
             rel="noopener noreferrer"
             title="THE NOBLE MINING INVESTMENT CONFERENCE"
-            className="hidden xl:inline-flex px-2.5 py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[10px] 2xl:text-[11.5px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
+            className="hidden xl:inline-flex px-2 py-1.5 xl:px-2.5 xl:py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[9.5px] xl:text-[10px] 2xl:text-[11.5px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
             <span className="hidden 2xl:inline">THE NOBLE MINING INVESTMENT CONFERENCE</span>
             <span className="inline 2xl:hidden">NOBLE CONFERENCE</span>
@@ -517,7 +520,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             title={lang === "FR" ? "Semaine Internationale des Mines" : "International Mining Week"}
-            className="hidden xl:inline-flex px-2.5 py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[10px] 2xl:text-xs font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
+            className="hidden xl:inline-flex px-2 py-1.5 xl:px-2.5 xl:py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[9.5px] xl:text-[10px] 2xl:text-xs font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
             <span className="hidden 2xl:inline">{t("nav-imw-btn", "International Mining Week")}</span>
             <span className="inline 2xl:hidden">{lang === "FR" ? "SEMAINE DES MINES" : "MINING WEEK"}</span>
@@ -525,7 +528,7 @@ export default function Navbar() {
 
           {/* English / French Language Switcher Button */}
           <div
-            className="inline-flex items-center p-0.5 sm:p-1 h-[30px] sm:h-[34px] xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm shadow-xs shrink-0"
+            className="inline-flex items-center p-0.5 sm:p-1 h-[30px] sm:h-[34px] lg:h-[32px] xl:h-[32px] 2xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm shadow-xs shrink-0"
             role="group"
             aria-label="Language selection"
           >
@@ -558,13 +561,13 @@ export default function Navbar() {
           {/* Day / Night Mode Toggle Switch (Responsive compact sizing on mobile) */}
           <button
             onClick={toggleTheme}
-            className="relative flex items-center justify-between px-1.5 w-[62px] sm:w-[72px] xl:w-[82px] h-[30px] sm:h-[34px] xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group overflow-hidden shrink-0"
+            className="relative flex items-center justify-between px-1.5 w-[62px] sm:w-[72px] lg:w-[68px] xl:w-[70px] 2xl:w-[82px] h-[30px] sm:h-[34px] lg:h-[32px] xl:h-[32px] 2xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group overflow-hidden shrink-0"
             aria-label={`Switch to ${theme === "light" ? "Night" : "Day"} mode`}
             title={theme === "light" ? "Switch to Night mode" : "Switch to Day mode"}
           >
             {/* Sliding Indicator Circle */}
             <span
-              className="absolute top-[2px] h-[22px] sm:h-[26px] xl:h-[28px] w-[22px] sm:w-[26px] xl:w-[28px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs z-20"
+              className="absolute top-[2px] h-[22px] sm:h-[26px] lg:h-[24px] xl:h-[24px] 2xl:h-[28px] w-[22px] sm:w-[26px] lg:w-[24px] xl:w-[24px] 2xl:w-[28px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs z-20"
               style={{
                 left: theme === "light" ? "2px" : "calc(100% - 2px)",
                 transform: theme === "light" ? "translateX(0)" : "translateX(-100%)",
@@ -624,7 +627,7 @@ export default function Navbar() {
           />
 
           {/* Mobile Drawer Menu */}
-          <div className="fixed top-[72px] sm:top-20 md:top-22 left-0 w-full max-h-[calc(100dvh-4.5rem)] sm:max-h-[calc(100dvh-5.5rem)] overflow-y-auto bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-slate-800 shadow-2xl px-[40px] py-5 flex flex-col gap-4 z-50 lg:hidden">
+          <div className="fixed top-[72px] sm:top-20 md:top-22 left-0 w-full max-h-[calc(100dvh-4.5rem)] sm:max-h-[calc(100dvh-5.5rem)] overflow-y-auto bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-slate-800 shadow-2xl px-4 sm:px-[40px] py-5 flex flex-col gap-4 z-50 lg:hidden">
             {/* Mobile Language Switcher Row */}
             <div className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-neutral-100/80 dark:bg-slate-800/80 border border-neutral-200 dark:border-slate-700">
               <span className="text-xs font-extrabold tracking-wider uppercase text-neutral-600 dark:text-slate-300">
@@ -692,7 +695,7 @@ export default function Navbar() {
                         {/* About Submenu */}
                         {link.dropdownType === "about" && mobileAboutOpen && (
                           <div className="pl-3 pr-1 py-2 flex flex-col gap-1.5 ml-3 my-1 border-l-2 border-[#C6112F]/30">
-                            {aboutDropdown.map((item) => {
+                            {visibleAboutDropdown.map((item) => {
                               const isSubActive = pathname === item.href;
                               if (item.isExternal) {
                                 return (
