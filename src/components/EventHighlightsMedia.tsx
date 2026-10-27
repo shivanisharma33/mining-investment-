@@ -4,31 +4,31 @@ import React, { useState, useEffect, useCallback } from "react";
 
 const photos = [
   {
-    src: "/PHOTO2.jpg",
+    src: "/photo-2.webp",
     alt: "Conference infrastructure - Main event and presentation hall",
   },
   {
-    src: "/PHOTO3.jpg",
+    src: "/photo-3.webp",
     alt: "Conference infrastructure - Meeting and networking facilities",
   },
   {
-    src: "/PHOTO%204.jpg",
+    src: "/photo-4.webp",
     alt: "Conference infrastructure - Audio-visual stage and presentation setup",
   },
   {
-    src: "/PHOTO%206.jpg",
+    src: "/photo-6.webp",
     alt: "Conference infrastructure - Exhibition and delegate facilities",
   },
   {
-    src: "/PHOTO%205.jpg",
+    src: "/photo-5.webp",
     alt: "Conference infrastructure - Modern convention venue facilities",
   },
   {
-    src: "/PHOTO%207.jpg",
+    src: "/photo-7.webp",
     alt: "Conference infrastructure - Grand ballroom presentation venue",
   },
   {
-    src: "/PHOTO%208.jpg",
+    src: "/photo-8.webp",
     alt: "Conference infrastructure - Executive convention facilities",
   },
 ];

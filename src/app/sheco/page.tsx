@@ -40,7 +40,7 @@ export default function SheCoPage() {
       amount: "C$20,000",
       location: "Longueuil, QC",
       selectedBy: "Mathieu Savard (President & CEO, Vior Gold Corporation)",
-      image: "/PHOTO10.jpg",
+      image: "/photo-10.webp",
       desc: "Moisson Rive-Sud is the primary non-profit food bank serving Longueuil, Quebec and nearby areas, dedicated to reducing food insecurity among local residents.",
       descFr: "Moisson Rive-Sud est la principale banque alimentaire à but non lucratif desservant Longueuil et ses environs, visant à réduire l'insécurité alimentaire.",
     },
@@ -204,7 +204,7 @@ export default function SheCoPage() {
                 <div className="sticky top-28 bg-white dark:bg-[#151c2c] border border-neutral-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl group">
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
                     <img
-                      src="/PHOTO10.jpg"
+                      src="/photo-10.webp"
                       alt="Moisson Rive-Sud Community Team with SHE-Co Initiative"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
@@ -294,7 +294,7 @@ export default function SheCoPage() {
                   <div className="rounded-2xl overflow-hidden border border-neutral-200 dark:border-slate-800 shadow-md group">
                     <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-900">
                       <img
-                        src="/PHOTO9.jpg"
+                        src="/photo-9.webp"
                         alt="2026 SHE-Co Presentation Cheque to Moisson Rive-Sud"
                         className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                         loading="lazy"
