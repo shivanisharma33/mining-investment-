@@ -327,7 +327,7 @@ export default function StudentPage() {
                 <p>
                   {isFr ? (
                     <>
-                      <strong>Le Programme de Partenariat Étudiant</strong> vise à offrir une opportunité unique de découverte de l'industrie minière grâce à une participation à The Mining Investment Event (THE Event), la seule conférence d'investissement minier de niveau 1 au Canada, qui se tient à Québec. Cet événement annuel sert de point de rencontre pour les chefs de file de l'industrie et les investisseurs, offrant une plateforme d'échange de connaissances, de réseautage et d'apprentissage immersif.
+                      <strong>Le Programme de Partenariat Étudiant</strong> vise à offrir une opportunité unique de découverte de l'industrie minière grâce à une participation à THE Mining Investment Event (THE Event), la seule conférence d'investissement minier de niveau 1 au Canada, qui se tient à Québec. Cet événement annuel sert de point de rencontre pour les chefs de file de l'industrie et les investisseurs, offrant une plateforme d'échange de connaissances, de réseautage et d'apprentissage immersif.
                     </>
                   ) : (
                     <>
@@ -405,7 +405,7 @@ export default function StudentPage() {
                     <div>
                       <h4 className="text-base font-extrabold text-white">Joanne Jobin</h4>
                       <p className="text-xs text-neutral-400 font-medium">
-                        {isFr ? "Fondatrice & PDG, The Mining Investment Event" : "Founder & CEO, THE Mining Investment Event"}
+                        {isFr ? "Fondatrice & PDG, THE Mining Investment Event" : "Founder & CEO, THE Mining Investment Event"}
                       </p>
                     </div>
                   </div>
@@ -429,7 +429,7 @@ export default function StudentPage() {
 
                       <div className="absolute bottom-3 left-3 right-3 p-3 rounded-2xl bg-black/70 backdrop-blur-md border border-white/10 text-left pointer-events-none">
                         <p className="text-xs text-neutral-200 font-medium leading-snug">
-                          Joanne Jobin delivering the address at the Student Partnership Program in Québec City.
+                          Joanne Jobin delivering the address at THE Student Partnership Program in Québec City.
                         </p>
                       </div>
                     </div>

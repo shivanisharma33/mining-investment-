@@ -48,7 +48,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero-eyebrow": "Canada's Only Tier I Global Mining Investment Conference",
-    "hero-title-1": "The",
+    "hero-title-1": "THE",
     "hero-title-2": "Mining",
     "hero-title-3": "Investment",
     "hero-title-4": "Event",
@@ -68,7 +68,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Stats & Glimpse
     "welcome-tag": "WELCOME",
     "glimpse-title": "A Glimpse Inside THE Event",
-    "glimpse-desc": "The Mining Investment Event (THE Event) is an exclusive, invitation-only conference centered on mining investments. THE Event brings together investors, mining companies, supply chain partners, governments and industry experts. THE Event promotes idea exchange and discussions in a private environment, fostering open dialogue on geopolitics, trade and investment.",
+    "glimpse-desc": "THE Mining Investment Event (THE Event) is an exclusive, invitation-only conference centered on mining investments. THE Event brings together investors, mining companies, supply chain partners, governments and industry experts. THE Event promotes idea exchange and discussions in a private environment, fostering open dialogue on geopolitics, trade and investment.",
     "hero-watch-video": "WATCH EVENT VIDEO",
     "video-watch-sound": "CLICK TO WATCH WITH SOUND",
     "video-official-tag": "OFFICIAL HIGHLIGHT REEL",
@@ -200,7 +200,7 @@ const translations: Record<Language, Record<string, string>> = {
     "footer-link-registration": "Registration Information",
     "footer-link-our-sponsors": "Media & Partners",
     "footer-follow-us": "FOLLOW US",
-    "footer-disclaimer-text": "This website, the events, information and materials pertaining to and associated with THE Mining Investment Event, are not, and should not be construed as an offer to buy or sell, or as a solicitation of an offer to buy or sell, sponsor, advocate, endorse, promote or be construed as making any recommendation or providing investment or other advice for any regulated products, securities, or investments. A decision to invest in any regulated products, or any unregulated products, including digital currencies or digitally attached assets, securities or investments should not be made in reliance on any of the information or materials on the website, or at THE Mining investment Event. Prospective investors should seek advice from appropriately qualified and licensed financial, legal, tax and accounting advisors, taking into account their individual financial needs and circumstances and carefully considering the risks associated with any such investment decisions.",
+    "footer-disclaimer-text": "This website, the events, information and materials pertaining to and associated with THE Mining Investment Event, are not, and should not be construed as an offer to buy or sell, or as a solicitation of an offer to buy or sell, sponsor, advocate, endorse, promote or be construed as making any recommendation or providing investment or other advice for any regulated products, securities, or investments. A decision to invest in any regulated products, or any unregulated products, including digital currencies or digitally attached assets, securities or investments should not be made in reliance on any of the information or materials on the website, or at THE Mining Investment Event. Prospective investors should seek advice from appropriately qualified and licensed financial, legal, tax and accounting advisors, taking into account their individual financial needs and circumstances and carefully considering the risks associated with any such investment decisions.",
 
     // Navbar dropdown descriptions
     "nav-about-event-desc": "Learn about Canada's premier mining conference",
@@ -208,6 +208,12 @@ const translations: Record<Language, Record<string, string>> = {
     "nav-travel-desc": "Venue, hotels and travel information",
     "nav-media-desc": "Latest media coverage and press",
     "nav-newsflash-desc": "Newsletter and industry updates",
+
+    // Hotel Scam Warning
+    "travel-scam-alert-tag": "Security & Fraud Advisory",
+    "travel-scam-title": "BEWARE OF SCAM EMAILS AND UNAUTHORIZED HOTEL OFFERS",
+    "travel-scam-p1": "Please beware of people offering to sell delegate lists from our events. We would like to reassure you that we would never sell our data to third parties. We urge you not to give out credit card details or other information to anyone contacting you offering to sell details of attendees to our events as these are a scam.",
+    "travel-scam-p2": "Please note also that we do not have any authorized distributors or agents for our partner hotels. Discount hotel links for conference delegates at partner hotels should be obtained directly from THE Mining Investment Event staff listed as contacts on the website. Please refrain from providing payment details or personal information to unauthorized hotel agents.",
 
     // About page
     "about-breadcrumb-event": "About THE Event",
@@ -489,7 +495,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Golf Page
     "golf-hero-label": "ANNUAL GOLF TOURNAMENT",
-    "golf-hero-title-1": "The Mining",
+    "golf-hero-title-1": "THE Mining",
     "golf-hero-title-2": "Investment",
     "golf-hero-title-3": "Golf Day",
     "golf-hero-sub": "Join industry leaders, investors and mining executives for an exclusive day on the fairway at one of Québec City's finest courses.",
@@ -556,7 +562,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Nav
     "nav-home": "Accueil",
     "nav-about": "À Propos",
-    "nav-about-event": "À Propos de The Mining Investment Event",
+    "nav-about-event": "À Propos de THE Mining Investment Event",
     "nav-team": "L'Équipe",
     "nav-travel": "Voyage et Hébergement",
     "nav-media": "Médias Récents",
@@ -588,7 +594,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero-eyebrow": "La Seule Conférence d'Investissement Minier de Niveau I au Canada",
-    "hero-title-1": "The",
+    "hero-title-1": "THE",
     "hero-title-2": "Mining",
     "hero-title-3": "Investment",
     "hero-title-4": "Event",
@@ -608,7 +614,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Stats & Glimpse
     "welcome-tag": "BIENVENUE",
     "glimpse-title": "Un Aperçu de L'Événement",
-    "glimpse-desc": "The Mining Investment Event (THE Event) est une conférence exclusive sur invitation centrée sur les investissements miniers. THE Event réunit des investisseurs, des sociétés minières, des partenaires de la chaîne d'approvisionnement, des gouvernements et des experts du secteur.",
+    "glimpse-desc": "THE Mining Investment Event (THE Event) est une conférence exclusive sur invitation centrée sur les investissements miniers. THE Event réunit des investisseurs, des sociétés minières, des partenaires de la chaîne d'approvisionnement, des gouvernements et des experts du secteur.",
     "hero-watch-video": "VOIR LA VIDÉO",
     "video-watch-sound": "CLIQUER POUR ÉCOUTER AVEC LE SON",
     "video-official-tag": "VIDÉO OFFICIELLE",
@@ -616,7 +622,7 @@ const translations: Record<Language, Record<string, string>> = {
     "video-mute-btn": "Couper le son",
     "video-fullscreen": "Plein écran",
     "video-watch-now": "VOIR LA VIDÉO",
-    "numbers-title": "The Mining Investment Event 2026 en Chiffres",
+    "numbers-title": "THE Mining Investment Event 2026 en Chiffres",
     "numbers-desc": "Une plateforme mondiale connectant les investisseurs, les entreprises, les chaînes d'approvisionnement et les leaders façonnant l'avenir de l'industrie minière et de l'investissement.",
     "discover-event": "DÉCOUVRIR L'ÉVÉNEMENT",
     "stat-years-label": "ANNÉES",
@@ -678,12 +684,12 @@ const translations: Record<Language, Record<string, string>> = {
     // Featured Partners
     "partners-tag": "EN VEDETTE",
     "partners-title": "Partenaires en Vedette 2027",
-    "partners-sub": "Un coup de projecteur sur les partenaires propulsant The Mining Investment Event. Changez de niveau pour explorer chaque cercle de supporters.",
+    "partners-sub": "Un coup de projecteur sur les partenaires propulsant THE Mining Investment Event. Changez de niveau pour explorer chaque cercle de supporters.",
 
     // Canada Premier Forum
     "forum-tag": "LA CONFÉRENCE",
     "forum-title": "Premier Forum Minier du Canada",
-    "forum-desc": "The Mining Investment Event est un rassemblement sur invitation réunissant les sociétés minières et investisseurs les plus influents au monde dans le cadre historique de la ville de Québec.",
+    "forum-desc": "THE Mining Investment Event est un rassemblement sur invitation réunissant les sociétés minières et investisseurs les plus influents au monde dans le cadre historique de la ville de Québec.",
     "forum-highlight": "Parrainé indépendamment par le gouvernement du Québec ainsi que la communauté financière et minière dans son ensemble.",
     "forum-bullet-1": "Rencontres privées 1 à 1 organisées entre sociétés minières et investisseurs internationaux",
     "forum-bullet-2": "Conférenciers principaux et leaders d'opinion de l'industrie venus du monde entier",
@@ -779,11 +785,17 @@ const translations: Record<Language, Record<string, string>> = {
     "nav-media-desc": "Dernière couverture médiatique et presse",
     "nav-newsflash-desc": "Bulletin d'information et actualités de l'industrie",
 
+    // Hotel Scam Warning
+    "travel-scam-alert-tag": "Avis de Sécurité et Prévention des Fraudes",
+    "travel-scam-title": "ATTENTION AUX COURRIELS FRAUDULEUX ET OFFRES HÔTELIÈRES NON AUTORISÉES",
+    "travel-scam-p1": "Veuillez vous méfier des personnes proposant de vendre des listes de délégués de nos événements. Nous tenons à vous assurer que nous ne vendons jamais nos données à des tiers. Nous vous conseillons vivement de ne communiquer aucun renseignement bancaire ou autre information à quiconque vous contacte pour vous proposer d'acheter la liste des participants à nos événements, car il s'agit d'une arnaque.",
+    "travel-scam-p2": "Veuillez également noter que nous n'avons aucun distributeur ni agent autorisé pour nos hôtels partenaires. Les liens de tarifs préférentiels d'hôtel pour les délégués de la conférence dans les hôtels partenaires doivent être obtenus directement auprès de l'équipe de THE Mining Investment Event figurant dans les contacts sur le site Web. Veuillez vous abstenir de fournir des coordonnées de paiement ou des informations personnelles à des agents hôteliers non autorisés.",
+
     // About page
     "about-breadcrumb-event": "À Propos de L'Événement",
     "about-hero-title-1": "À Propos de",
     "about-hero-title-2": "L'Événement",
-    "about-lead": "The Mining Investment Event — la seule conférence mondiale de niveau 1 sur l'investissement minier au Canada© a lieu annuellement à Québec, Canada.",
+    "about-lead": "THE Mining Investment Event — la seule conférence mondiale de niveau 1 sur l'investissement minier au Canada© a lieu annuellement à Québec, Canada.",
     "about-body-1": "Il appartient de manière indépendante et est en partenariat pour faciliter les réunions privées entre les sociétés minières, les investisseurs internationaux et les autorités minières et gouvernementales. La conférence offre une plateforme pour entendre certains des leaders d'opinion les plus influents du secteur. L'Événement s'engage à promouvoir la diversité, l'égalité et la durabilité dans l'industrie minière grâce à l'éducation et l'innovation, soutenu par son programme unique de Bourses Étudiantes et l'initiative SHE-Co.",
     "about-body-2": "L'Événement est un membre fondateur de la Semaine Internationale de la Mine (« IMW »), se déroulant également à Québec. L'IMW promeut d'autres conférences et activités axées sur l'industrie qui rassemblent des sociétés minières mondiales, des entreprises connexes, des experts de la chaîne d'approvisionnement, des investisseurs et des fonctionnaires gouvernementaux en un seul lieu pour des discussions et des réunions collaboratives dans l'ensemble de l'industrie.",
     "about-highlight": "Parrainé indépendamment par divers groupes financiers et industriels ainsi que des gouvernements nationaux et internationaux.",
@@ -818,7 +830,7 @@ const translations: Record<Language, Record<string, string>> = {
     "team-core-title-2": "L'Événement",
     "team-advisory-label": "MEMBRES DU CONSEIL CONSULTATIF",
     "team-advisory-title": "Conseil Consultatif",
-    "team-advisory-desc": "Dirigeants miniers éminents, anciens leaders gouvernementaux et experts techniques apportant une orientation stratégique à The Mining Investment Event.",
+    "team-advisory-desc": "Dirigeants miniers éminents, anciens leaders gouvernementaux et experts techniques apportant une orientation stratégique à THE Mining Investment Event.",
     "team-read-more": "Lire Plus ↓",
     "team-read-less": "Lire Moins ↑",
 
@@ -827,7 +839,7 @@ const translations: Record<Language, Record<string, string>> = {
     "travel-hero-title-2": "Hébergement",
     "travel-venue-label": "VOYAGE ET HÉBERGEMENT",
     "travel-main-heading": "Voyage et Hébergement",
-    "travel-event-welcome": "Bienvenue à The Mining Investment Event, se déroulant au Centre des congrès de Québec (« QCC »)",
+    "travel-event-welcome": "Bienvenue à THE Mining Investment Event, se déroulant au Centre des congrès de Québec (« QCC »)",
     "travel-about-qcc": "À propos du Centre des congrès de Québec",
     "travel-notice-1": "Tarifs de groupe réduits disponibles pour les participants inscrits seulement.",
     "travel-notice-2": "Vous êtes responsable de la coordination de l'ensemble de vos déplacements et de votre hébergement. Veuillez vérifier auprès de chaque établissement la politique d'annulation, les exigences de dépôt et les taxes/frais.",
@@ -871,7 +883,7 @@ const translations: Record<Language, Record<string, string>> = {
     "news-latest-label": "DERNIERS COMMUNIQUÉS DE PRESSE",
     "news-section-title-1": "Restez Informé avec",
     "news-section-title-2": "THE Communiqués de Presse",
-    "news-section-desc": "Les derniers communiqués de presse, annonces et mises à jour de The Mining Investment Event. Abonnez-vous pour rester au courant de la programmation, des annonces de conférenciers et des mises à jour des initiatives.",
+    "news-section-desc": "Les derniers communiqués de presse, annonces et mises à jour de THE Mining Investment Event. Abonnez-vous pour rester au courant de la programmation, des annonces de conférenciers et des mises à jour des initiatives.",
     "news-read-more": "Lire Plus",
     "news-subscribe-text": "Pour plus d'informations et pour vous abonner aux communiqués de presse, contactez",
     "news-filter-all": "Tous",
@@ -883,7 +895,7 @@ const translations: Record<Language, Record<string, string>> = {
     "student-hero-title-2": "Bourses Étudiantes",
     "student-tag-label": "DEVENEZ L'AVENIR DE L'INDUSTRIE MINIÈRE",
     "student-main-subtitle": "Postulez dès maintenant pour la promotion 2026 du Programme de Bourses Étudiantes Glencore",
-    "student-body-p1": "Le programme de bourses étudiantes Glencore vise à offrir une exposition unique à l'industrie minière grâce à une participation à The Mining Investment Event (THE Event), la seule conférence d'investissement minier mondiale de Niveau 1 au Canada, qui se tiendra du 1er au 3 juin 2027 à Québec. Cet événement annuel sert de point de rencontre pour les leaders de l'industrie et les investisseurs.",
+    "student-body-p1": "Le programme de bourses étudiantes Glencore vise à offrir une exposition unique à l'industrie minière grâce à une participation à THE Mining Investment Event (THE Event), la seule conférence d'investissement minier mondiale de Niveau 1 au Canada, qui se tiendra du 1er au 3 juin 2027 à Québec. Cet événement annuel sert de point de rencontre pour les leaders de l'industrie et les investisseurs.",
     "student-body-p1-sub": "Le programme est désormais reconnu comme l'un des plus grands programmes de conférences entièrement financés au Canada.",
     "student-body-p2": "Jusqu'à 50 étudiants universitaires ou collégiens passionnés de géologie, finance ou génie auront la chance d'assister à la conférence sans aucun coût. Notre objectif est de favoriser l'apprentissage expérientiel en exposant les étudiants aux conférenciers d'honneur et panels de l'industrie.",
     "student-cta-apply": "Postuler ici",
@@ -1024,14 +1036,14 @@ const translations: Record<Language, Record<string, string>> = {
     "golf-hero-label": "TOURNOI DE GOLF ANNUEL",
     "golf-hero-title-1": "La Journée",
     "golf-hero-title-2": "de Golf de",
-    "golf-hero-title-3": "The Mining Investment Event",
+    "golf-hero-title-3": "THE Mining Investment Event",
     "golf-hero-sub": "Rejoignez les leaders de l'industrie, investisseurs et dirigeants miniers pour une journée exclusive sur le parcours d'un des plus beaux clubs de Québec.",
     "golf-hero-date": "1er juin 2027 — Club de Golf de Cap-Rouge, Ville de Québec",
     "golf-register-btn": "S'inscrire à la Journée Golf",
     "golf-details-btn": "Voir les Détails du Tournoi",
     "golf-about-label": "À PROPOS DU TOURNOI",
     "golf-about-title": "Une Journée de Réseautage sur le Parcours",
-    "golf-about-desc": "La Journée Golf de The Mining Investment Event est une expérience de réseautage premium conçue pour réunir les dirigeants miniers seniors, investisseurs institutionnels et leaders de l'industrie dans un cadre informel avant le début de la conférence principale.",
+    "golf-about-desc": "La Journée Golf de THE Mining Investment Event est une expérience de réseautage premium conçue pour réunir les dirigeants miniers seniors, investisseurs institutionnels et leaders de l'industrie dans un cadre informel avant le début de la conférence principale.",
     "golf-format-title": "Format du Tournoi",
     "golf-format-desc": "Meilleure Balle (Scramble) — 18 trous de compétition amicale avec des quatuors jumelant sociétés minières et investisseurs. Tous les niveaux sont bienvenus.",
     "golf-includes-title": "L'inscription Comprend",
@@ -1071,7 +1083,7 @@ const translations: Record<Language, Record<string, string>> = {
     "footer-subscribe-ph": "Entrez votre adresse courriel...",
     "footer-subscribe-btn": "S'abonner",
     "footer-rights": "Tous droits réservés",
-    "footer-credit": "Conçu et développé pour The Mining Investment Event",
+    "footer-credit": "Conçu et développé pour THE Mining Investment Event",
 
     // PDF Viewer & Document Controls
     "pdf-page": "Page",

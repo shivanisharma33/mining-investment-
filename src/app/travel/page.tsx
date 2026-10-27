@@ -122,6 +122,48 @@ export default function TravelPage() {
               <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full" />
             </div>
 
+            {/* ── FRAUD & SCAM WARNING BANNER ── */}
+            <div className="mb-10 relative overflow-hidden rounded-3xl border-2 border-[#C6112F]/40 dark:border-[#C6112F]/50 bg-gradient-to-br from-rose-50/90 via-white to-amber-50/30 dark:from-[#1b1016] dark:via-[#131b2e] dark:to-[#171320] p-6 sm:p-8 md:p-9 shadow-md transition-all">
+              {/* Decorative background glow */}
+              <div className="absolute -top-16 -right-16 w-56 h-56 bg-[#C6112F]/10 dark:bg-[#C6112F]/15 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-16 -left-16 w-56 h-56 bg-amber-500/10 dark:bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="flex flex-wrap items-center gap-2 mb-3">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C6112F]/10 dark:bg-[#C6112F]/20 text-[#C6112F] dark:text-[#ff4d6d] border border-[#C6112F]/30 text-xs font-black uppercase tracking-wider">
+                    <svg className="w-4 h-4 text-[#C6112F] dark:text-[#ff4d6d] shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                    <span>{t("travel-scam-alert-tag", isFr ? "AVIS DE SÉCURITÉ ET PRÉVENTION DES FRAUDES" : "Security & Fraud Advisory")}</span>
+                  </div>
+                  <span className="hidden sm:inline-block text-xs font-bold text-neutral-400 dark:text-neutral-500">•</span>
+                  <span className="text-xs font-semibold text-neutral-500 dark:text-neutral-400">
+                    {isFr ? "Important pour tous les participants" : "Important notice for all conference delegates"}
+                  </span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl md:text-[26px] font-black text-neutral-900 dark:text-white tracking-tight leading-snug mb-3 uppercase">
+                  {t("travel-scam-title", "BEWARE OF SCAM EMAILS AND UNAUTHORIZED HOTEL OFFERS")}
+                </h3>
+                <div className="w-12 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
+
+                <div className="space-y-3.5 text-neutral-700 dark:text-slate-200 text-sm sm:text-base font-medium leading-relaxed">
+                  <p>
+                    {t(
+                      "travel-scam-p1",
+                      "Please beware of people offering to sell delegate lists from our events. We would like to reassure you that we would never sell our data to third parties. We urge you not to give out credit card details or other information to anyone contacting you offering to sell details of attendees to our events as these are a scam."
+                    )}
+                  </p>
+                  <p>
+                    {t(
+                      "travel-scam-p2",
+                      "Please note also that we do not have any authorized distributors or agents for our partner hotels. Discount hotel links for conference delegates at partner hotels should be obtained directly from THE Mining Investment Event staff listed as contacts on the website. Please refrain from providing payment details or personal information to unauthorized hotel agents."
+                    )}
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* HILTON HOTEL */}
               <div className="bg-white dark:bg-[#131b2e] border-2 border-neutral-200 dark:border-[#233049] hover:border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">

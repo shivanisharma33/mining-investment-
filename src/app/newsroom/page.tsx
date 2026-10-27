@@ -917,7 +917,7 @@ export default function NewsroomPage() {
               <div className="text-[11px] text-neutral-400 dark:text-slate-500 font-medium">
                 {isFr
                   ? "Pour toute citation ou demande d'entrevue avec les organisateurs, mentionner : THE Mining Investment Event."
-                  : "When citing the event in print or broadcast publications, please attribute to: THE Mining Investment Event."}
+                  : "When citing THE Event in print or broadcast publications, please attribute to: THE Mining Investment Event."}
               </div>
             </div>
           </div>

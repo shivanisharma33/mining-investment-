@@ -498,8 +498,8 @@ export default function PastEdition2026Page() {
                       </h1>
                       <p className="text-neutral-600 dark:text-zinc-300 text-sm sm:text-base font-medium leading-relaxed max-w-[760px]">
                         {isFr
-                          ? "Nous remercions nos médias et partenaires pour leur généreux soutien qui fait du Mining Investment Event un succès mondial."
-                          : "We thank our media and partners for their generous support in making the Mining Investment Event a global success."}
+                          ? "Nous remercions nos médias et partenaires pour leur généreux soutien qui fait de THE Mining Investment Event un succès mondial."
+                          : "We thank our media and partners for their generous support in making THE Mining Investment Event a global success."}
                       </p>
                     </div>
                     <SponsorsView year={viewingEdition} />

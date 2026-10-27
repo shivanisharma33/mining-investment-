@@ -143,7 +143,7 @@ export interface FetchParticipatingCompaniesOptions {
 }
 
 /**
- * Checks if a company belongs strictly to the Mining Investment Event.
+ * Checks if a company belongs strictly to THE Mining Investment Event.
  */
 export function isMiningInvestmentEventCompany(publishTo: unknown): boolean {
   if (publishTo === "Mining Investment Event") return true;

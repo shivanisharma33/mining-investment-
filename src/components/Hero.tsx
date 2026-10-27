@@ -202,10 +202,10 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-20 max-w-[1100px] w-full text-center flex flex-col items-center px-4 sm:px-6 md:px-12 pt-6 pb-6 pointer-events-none">
-        {/* Main Title - The Mining Investment Event (Always stays in English) */}
+        {/* Main Title - THE Mining Investment Event (Always stays in English) */}
         <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[68px] font-extrabold text-white tracking-wide uppercase leading-[1.15] mb-3 md:mb-4 text-center">
           <div className="flex flex-wrap sm:flex-nowrap justify-center items-center gap-x-1.5 xs:gap-x-2 sm:gap-x-3 md:gap-x-4 max-w-full text-center sm:whitespace-nowrap">
-            <span className="animate-text-reveal delay-1">The</span>{" "}
+            <span className="animate-text-reveal delay-1">THE</span>{" "}
             <span className="animate-text-reveal delay-2">Mining</span>{" "}
             <span className="animate-text-reveal delay-3">Investment</span>{" "}
             <span className="animate-text-reveal delay-4">Event</span>

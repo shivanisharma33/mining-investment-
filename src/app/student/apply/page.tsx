@@ -133,7 +133,7 @@ export default function StudentApplyPage() {
                   <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                     {isFr
                       ? "100 % de votre inscription à la conférence, des accès aux sessions techniques, de l'hébergement à l'hôtel pendant l'événement et du transport par autocar entre Montréal et Québec."
-                      : "100% of your conference ticket, technical session passes, hotel stay throughout the event, and coach transportation between Montreal and Québec City."}
+                      : "100% of your conference ticket, technical session passes, hotel stay throughout THE Event, and coach transportation between Montreal and Québec City."}
                   </p>
                 </div>
 

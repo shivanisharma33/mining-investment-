@@ -254,7 +254,7 @@ export default function Navbar() {
         <Link href="/" className="flex-shrink-0 flex items-center group py-1 mr-2 sm:mr-3 lg:mr-2 xl:mr-3 2xl:mr-8">
           <Image
             src="/MainPageLogo.webp"
-            alt="The Mining Investment Event"
+            alt="THE Mining Investment Event"
             width={240}
             height={90}
             priority

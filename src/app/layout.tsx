@@ -13,7 +13,7 @@ const karla = Karla({
 });
 
 export const metadata: Metadata = {
-  title: "The Mining Investment Event",
+  title: "THE Mining Investment Event",
   description: "Canada's Only Tier I Global Mining Investment Conference",
 };
 

@@ -108,8 +108,8 @@ const playlistsData = [
     dayNum: "Interviews",
     dayNumFR: "Entretiens",
     categoryTag: "INTERVIEW",
-    title: "The Mining Investment Event 2026 VID Interviews",
-    titleFR: "The Mining Investment Event 2026 Entretiens Exclusifs VID",
+    title: "THE Mining Investment Event 2026 VID Interviews",
+    titleFR: "THE Mining Investment Event 2026 Entretiens Exclusifs VID",
     description: "Exclusive 1-on-1 interviews from THE Mining Investment Event 2026, presented by VID. Hear directly from industry leaders, CEOs and innovators shaping the future of mining, critical metals and resource investment.",
     descriptionFR: "Entretiens exclusifs individuels de THE Mining Investment Event 2026, présentés par VID. Écoutez directement les leaders de l'industrie, les PDG et les innovateurs...",
     videos: [
@@ -914,7 +914,7 @@ export default function MediaPage() {
                       Playlist
                     </h3>
                     <p className="text-xs font-semibold text-neutral-500 dark:text-slate-400 mt-0.5">
-                      The Mining Investment Event 2026
+                      THE Mining Investment Event 2026
                     </p>
                     <span className="text-[11px] font-medium text-neutral-400 dark:text-slate-500 mt-0.5 block">
                       15 / 45 videos
@@ -960,7 +960,7 @@ export default function MediaPage() {
                             {isFr && vid.titleFR ? vid.titleFR : vid.title}
                           </h4>
                           <span className="text-[11px] font-medium text-neutral-500 dark:text-slate-400 mt-1 block">
-                            The Mining Investment Event
+                            THE Mining Investment Event
                           </span>
                         </div>
                       </div>

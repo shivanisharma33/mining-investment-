@@ -964,7 +964,7 @@ export default function StudentApplicationForm({
           </button>
           <p className="text-center text-[11px] text-neutral-400 mt-3 font-medium">
             {isFr
-              ? "En soumettant votre formulaire, votre dossier sera évalué pour une bourse entièrement financée à The Mining Investment Event 2026."
+              ? "En soumettant votre formulaire, votre dossier sera évalué pour une bourse entièrement financée à THE Mining Investment Event 2026."
               : "By submitting, your application will be reviewed for fully funded sponsorship at THE Mining Investment Event 2026."}
           </p>
         </div>

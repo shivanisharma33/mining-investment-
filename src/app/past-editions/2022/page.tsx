@@ -395,7 +395,7 @@ export default function PastEdition2022Page() {
                     <p className="text-neutral-600 text-sm sm:text-base font-medium leading-relaxed max-w-[700px] mb-6">
                       {isFr
                         ? "L'édition inaugurale de l'événement d'investissement minier, posant les bases d'une plateforme mondiale pour le secteur minier canadien."
-                        : "The founding edition of the Mining Investment Event, laying the groundwork for a global platform for the Canadian mining sector."}
+                        : "The founding edition of THE Mining Investment Event, laying the groundwork for a global platform for the Canadian mining sector."}
                     </p>
 
                     <div className="flex flex-wrap items-center gap-6 sm:gap-10 text-xs sm:text-sm font-extrabold text-neutral-800 uppercase mb-8">
@@ -448,7 +448,7 @@ export default function PastEdition2022Page() {
                       <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium max-w-[760px]">
                         {isFr
                           ? "L'Événement d'Investissement Minier 2022 a marqué le lancement de la plateforme mondiale d'investissement minier au Canada."
-                          : "The Mining Investment Event 2022 marked the founding of Canada's premier global mining investment platform, bringing together industry leaders for the first time in Quebec City."}
+                          : "THE Mining Investment Event 2022 marked the founding of Canada's premier global mining investment platform, bringing together industry leaders for the first time in Quebec City."}
                       </p>
                     </div>
                   </div>
