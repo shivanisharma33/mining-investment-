@@ -3,6 +3,7 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
+  --font-karla: 'Karla', sans-serif;
   --background: #ffffff;
   --foreground: #111111;
   --card-bg: #ffffff;
