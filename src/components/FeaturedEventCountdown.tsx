@@ -39,6 +39,8 @@ export default function FeaturedEventCountdown() {
           minutes: String(m).padStart(2, "0"),
           seconds: String(s).padStart(2, "0"),
         });
+
+
       } else {
         setTimeLeft({ days: "0", hours: "00", minutes: "00", seconds: "00" });
       }
