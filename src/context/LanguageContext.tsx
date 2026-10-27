@@ -193,14 +193,14 @@ const translations: Record<Language, Record<string, string>> = {
     "footer-initiatives": "INITIATIVES",
     "footer-about": "ABOUT",
     "footer-program": "PROGRAM",
-    "footer-disclaimer": "DISCLAIMER",
+    "footer-disclaimer": "Disclaimer",
     "footer-link-student-sponsor": "Student Sponsorship",
     "footer-link-sheco": "SHE-CO",
     "footer-link-student-volunteer": "Student Volunteer",
     "footer-link-registration": "Registration Information",
     "footer-link-our-sponsors": "Media & Partners",
     "footer-follow-us": "FOLLOW US",
-    "footer-disclaimer-text": "This website, the events, information and materials pertaining to and associated with THE Mining Investment Event, are not and should not be construed as an offer to buy or sell, or as a solicitation of an offer to buy or sell, sponsor, advocate, endorse, promote or be construed as making any recommendation or providing investment or other advice for any regulated products, securities or investments.",
+    "footer-disclaimer-text": "This website, the events, information and materials pertaining to and associated with THE Mining Investment Event, are not, and should not be construed as an offer to buy or sell, or as a solicitation of an offer to buy or sell, sponsor, advocate, endorse, promote or be construed as making any recommendation or providing investment or other advice for any regulated products, securities, or investments. A decision to invest in any regulated products, or any unregulated products, including digital currencies or digitally attached assets, securities or investments should not be made in reliance on any of the information or materials on the website, or at THE Mining investment Event. Prospective investors should seek advice from appropriately qualified and licensed financial, legal, tax and accounting advisors, taking into account their individual financial needs and circumstances and carefully considering the risks associated with any such investment decisions.",
 
     // Navbar dropdown descriptions
     "nav-about-event-desc": "Learn about Canada's premier mining conference",
@@ -763,14 +763,14 @@ const translations: Record<Language, Record<string, string>> = {
     "footer-initiatives": "INITIATIVES",
     "footer-about": "À PROPOS",
     "footer-program": "PROGRAMME",
-    "footer-disclaimer": "AVIS DE NON-RESPONSABILITÉ",
+    "footer-disclaimer": "Avis de non-responsabilité",
     "footer-link-student-sponsor": "Bourses Étudiantes",
     "footer-link-sheco": "SHE-CO",
     "footer-link-student-volunteer": "Bénévoles Étudiants",
     "footer-link-registration": "Informations d'Inscription",
     "footer-link-our-sponsors": "Médias & Partenaires",
     "footer-follow-us": "SUIVEZ-NOUS",
-    "footer-disclaimer-text": "Ce site Web, les événements, les informations et les documents relatifs à The Mining Investment Event ne constituent pas et ne doivent pas être interprétés comme une offre d'achat ou de vente.",
+    "footer-disclaimer-text": "Ce site Web, les événements, les informations et les documents relatifs à THE Mining Investment Event ne constituent pas et ne doivent pas être interprétés comme une offre d'achat ou de vente, ou comme une sollicitation d'une offre d'achat ou de vente, ni comme un parrainage, une promotion, un soutien ou une recommandation, ni comme la prestation de conseils en investissement ou d'autres conseils pour tous produits, titres ou investissements réglementés. Aucune décision d'investir dans des produits réglementés ou non réglementés, y compris les monnaies numériques ou les actifs numériques rattachés, les titres ou les investissements, ne doit être prise en se fondant sur l'une quelconque des informations ou des documents présents sur le site Web ou lors de THE Mining Investment Event. Les investisseurs éventuels doivent solliciter les conseils de conseillers financiers, juridiques, fiscaux et comptables dûment qualifiés et agréés, en tenant compte de leurs besoins et de leur situation financière individuels et en évaluant soigneusement les risques associés à de telles décisions d'investissement.",
 
     // Navbar dropdown descriptions
     "nav-about-event-desc": "En savoir plus sur la première conférence minière du Canada",

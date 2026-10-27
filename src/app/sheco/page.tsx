@@ -291,17 +291,19 @@ export default function SheCoPage() {
                   </p>
 
                   {/* Cheque Presentation Photo Callout */}
-                  <div className="rounded-2xl overflow-hidden border border-neutral-200 dark:border-slate-800 shadow-md">
+                  <div className="rounded-2xl overflow-hidden border border-neutral-200 dark:border-slate-800 shadow-md group">
                     <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-900">
                       <img
-                        src="/MINING INVESTMENT EVENT 2026_DAY 1_MAIN EVENT-41.jpg"
+                        src="/PHOTO9.jpg"
                         alt="2026 SHE-Co Presentation Cheque to Moisson Rive-Sud"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                        decoding="async"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                       <div className="absolute bottom-3 left-4 right-4 text-white text-xs sm:text-sm font-bold flex items-center justify-between">
                         <span>{isFr ? "Remise officielle du chèque de 20 000 $ à L'Événement 2026" : "Official C$20,000 Cheque Presentation at THE Event 2026"}</span>
-                        <span className="text-[#C6112F] font-black uppercase text-[11px] bg-white px-2 py-0.5 rounded">C$20,000</span>
+                        <span className="text-[#C6112F] font-black uppercase text-[11px] bg-white px-2 py-0.5 rounded shadow-sm">C$20,000</span>
                       </div>
                     </div>
                   </div>

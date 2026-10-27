@@ -243,14 +243,21 @@ export default function Footer() {
 
         {/* Bottom Section: Copyright, Legal Disclaimer & Privacy Policy */}
         <div className="pt-8 text-left">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
             <h4 className="text-neutral-700 dark:text-zinc-300 font-extrabold text-xs sm:text-sm tracking-wider uppercase">
-              © 2026 THE MINING INVESTMENT EVENT | {t("footer-disclaimer", "DISCLAIMER")}
+              © 2027 THE Mining Investment Event
             </h4>
-            <span className="hidden sm:inline text-neutral-400 dark:text-zinc-600">|</span>
+            <span className="text-neutral-400 dark:text-zinc-600">|</span>
+            <Link
+              href="/privacy-policy#disclaimer"
+              className="text-neutral-700 dark:text-zinc-300 hover:text-[#C6112F] dark:hover:text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-colors underline-offset-4 hover:underline"
+            >
+              {t("footer-disclaimer", "Disclaimer")}
+            </Link>
+            <span className="text-neutral-400 dark:text-zinc-600">|</span>
             <Link
               href="/privacy-policy"
-              className="text-neutral-700 dark:text-zinc-300 hover:text-neutral-950 dark:hover:text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-colors inline-flex items-center gap-1.5"
+              className="text-neutral-700 dark:text-zinc-300 hover:text-[#C6112F] dark:hover:text-[#C6112F] font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-colors inline-flex items-center gap-1.5 underline-offset-4 hover:underline"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
@@ -258,8 +265,11 @@ export default function Footer() {
               {t("footer-privacy-policy", "Privacy Policy")}
             </Link>
           </div>
-          <p className="text-neutral-600 dark:text-white text-xs sm:text-[13px] leading-relaxed font-medium max-w-[1200px]">
-            {t("footer-disclaimer-text", "This website, the events, information and materials pertaining to and associated with THE Mining Investment Event, are not and should not be construed as an offer to buy or sell, or as a solicitation of an offer to buy or sell, sponsor, advocate, endorse, promote or be construed as making any recommendation or providing investment or other advice for any regulated products, securities or investments.")}
+          <p className="text-neutral-600 dark:text-zinc-300 text-xs sm:text-[13px] leading-relaxed font-medium max-w-[1200px]">
+            {t(
+              "footer-disclaimer-text",
+              "This website, the events, information and materials pertaining to and associated with THE Mining Investment Event, are not, and should not be construed as an offer to buy or sell, or as a solicitation of an offer to buy or sell, sponsor, advocate, endorse, promote or be construed as making any recommendation or providing investment or other advice for any regulated products, securities, or investments. A decision to invest in any regulated products, or any unregulated products, including digital currencies or digitally attached assets, securities or investments should not be made in reliance on any of the information or materials on the website, or at THE Mining investment Event. Prospective investors should seek advice from appropriately qualified and licensed financial, legal, tax and accounting advisors, taking into account their individual financial needs and circumstances and carefully considering the risks associated with any such investment decisions."
+            )}
           </p>
         </div>
       </div>

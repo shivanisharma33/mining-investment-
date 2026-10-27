@@ -16,6 +16,8 @@ export default function FeaturedEventCountdown() {
     seconds: "36",
   });
 
+
+
   useEffect(() => {
     const targetDate = new Date("2027-06-03T09:00:00").getTime();
 
