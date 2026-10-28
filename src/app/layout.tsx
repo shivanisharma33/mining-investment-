@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full antialiased"
+      className="dark h-full antialiased"
       suppressHydrationWarning
     >
       <head>
@@ -51,12 +51,8 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var stored = localStorage.getItem('theme');
-                  if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    document.documentElement.classList.add('dark');
-                  } else {
-                    document.documentElement.classList.remove('dark');
-                  }
+                  localStorage.setItem('theme', 'dark');
+                  document.documentElement.classList.add('dark');
                 } catch (e) {}
               })();
             `,
@@ -64,7 +60,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="min-h-full flex flex-col font-sans bg-white dark:bg-[#09090b] text-neutral-900 dark:text-white transition-colors duration-300"
+        className="min-h-full flex flex-col font-sans bg-[#09090b] text-white transition-colors duration-300"
         suppressHydrationWarning
       >
         <ThemeProvider>

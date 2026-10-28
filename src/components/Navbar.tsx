@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
-import { useTheme } from "@/context/ThemeContext";
 
 /* About dropdown sub-items */
 const aboutDropdown = [
@@ -188,7 +187,6 @@ export default function Navbar() {
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
   const [mobilePastYearsOpen, setMobilePastYearsOpen] = useState(false);
   const { lang, setLang, t } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -251,14 +249,18 @@ export default function Navbar() {
     >
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-4 xl:px-6 2xl:px-[40px] h-full flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center group py-1 mr-2 sm:mr-3 lg:mr-2 xl:mr-3 2xl:mr-8">
+        <Link href="/" className="flex-shrink-0 flex items-center group py-0.5 sm:py-1 mr-2 sm:mr-3 lg:mr-3 xl:mr-4 2xl:mr-8">
           <Image
             src="/MainPageLogo.webp"
             alt="THE Mining Investment Event"
-            width={240}
-            height={90}
+            width={252}
+            height={252}
             priority
-            className="object-contain h-[52px] sm:h-14 md:h-14 lg:h-[48px] xl:h-[50px] 2xl:h-[72px] max-h-[88%] w-auto group-hover:scale-105 transition-transform duration-300 dark:brightness-110"
+            className={`object-contain transition-all duration-300 w-auto max-h-[92%] group-hover:scale-105 dark:brightness-110 ${
+              scrolled
+                ? "h-[52px] sm:h-[64px] md:h-[70px] lg:h-[68px] xl:h-[72px] 2xl:h-[78px]"
+                : "h-[60px] sm:h-[74px] md:h-[82px] lg:h-[80px] xl:h-[84px] 2xl:h-[90px]"
+            }`}
           />
         </Link>
 
@@ -557,46 +559,6 @@ export default function Navbar() {
               FR
             </button>
           </div>
-
-          {/* Day / Night Mode Toggle Switch (Responsive compact sizing on mobile) */}
-          <button
-            onClick={toggleTheme}
-            className="relative flex items-center justify-between px-1.5 w-[62px] sm:w-[72px] lg:w-[68px] xl:w-[70px] 2xl:w-[82px] h-[30px] sm:h-[34px] lg:h-[32px] xl:h-[32px] 2xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm cursor-pointer transition-all duration-300 hover:scale-105 shadow-xs group overflow-hidden shrink-0"
-            aria-label={`Switch to ${theme === "light" ? "Night" : "Day"} mode`}
-            title={theme === "light" ? "Switch to Night mode" : "Switch to Day mode"}
-          >
-            {/* Sliding Indicator Circle */}
-            <span
-              className="absolute top-[2px] h-[22px] sm:h-[26px] lg:h-[24px] xl:h-[24px] 2xl:h-[28px] w-[22px] sm:w-[26px] lg:w-[24px] xl:w-[24px] 2xl:w-[28px] rounded-full bg-[#C6112F] transition-all duration-300 ease-in-out flex items-center justify-center text-white shadow-xs z-20"
-              style={{
-                left: theme === "light" ? "2px" : "calc(100% - 2px)",
-                transform: theme === "light" ? "translateX(0)" : "translateX(-100%)",
-              }}
-            >
-              {theme === "light" ? (
-                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-amber-300 fill-amber-300" viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="4" />
-                  <path stroke="currentColor" strokeWidth="2" strokeLinecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
-                </svg>
-              ) : (
-                <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 xl:w-4 xl:h-4 text-indigo-100 fill-indigo-100" viewBox="0 0 24 24">
-                  <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                </svg>
-              )}
-            </span>
-            {/* Sun Icon */}
-            <span className={`relative z-10 flex-1 flex justify-center transition-opacity duration-300 ${theme === "light" ? "opacity-0" : "opacity-70 text-amber-400"}`}>
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 2.78a1 1 0 011.415 0l.707.707a1 1 0 01-1.414 1.414l-.708-.707a1 1 0 010-1.414zm2.78 4.22a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-2.78 5.636a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.415 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-5.636-2.78a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM4 10a1 1 0 01-1-1V8a1 1 0 112 0v1a1 1 0 01-1 1zm2.78-5.636a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM10 6a4 4 0 100 8 4 4 0 000-8z" clipRule="evenodd" />
-              </svg>
-            </span>
-            {/* Moon Icon */}
-            <span className={`relative z-10 flex-1 flex justify-center transition-opacity duration-300 ${theme === "dark" ? "opacity-0" : "opacity-70 text-indigo-600"}`}>
-              <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-              </svg>
-            </span>
-          </button>
 
           {/* Mobile Menu Hamburger Button */}
           <button
