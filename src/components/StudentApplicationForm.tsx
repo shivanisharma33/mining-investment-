@@ -37,6 +37,7 @@ const DEGREE_LEVELS = [
   { id: "Bachelors", labelEn: "Bachelors", labelFr: "Baccalauréat" },
   { id: "Masters", labelEn: "Masters", labelFr: "Maîtrise" },
   { id: "PhD", labelEn: "PhD", labelFr: "Doctorat" },
+  { id: "Other", labelEn: "Other", labelFr: "Autre" },
 ];
 
 const LANGUAGE_OPTIONS = [
@@ -548,7 +549,7 @@ export default function StudentApplicationForm({
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
                 {isFr ? "Niveau d'études" : "Degree Level"} <span className="text-[#C6112F]">*</span>
               </label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {DEGREE_LEVELS.map((deg) => (
                   <button
                     key={deg.id}

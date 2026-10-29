@@ -56,7 +56,7 @@ const trackWinners = [
     trackTitle: "OR Royalties Track Winners",
     teamName: "Team 10",
     sponsorName: "OR Royalties",
-    sponsorLogo: "/or-royalties-logo.png",
+    sponsorLogo: "/lorroyalties.svg",
     isOverallWinner: false,
     members: [
       { name: "Erik Giswold", school: "Queen's University" },
@@ -145,12 +145,6 @@ export default function StudentPage() {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const scrollToCeoLetter = () => {
-    const el = document.getElementById("ceo-letter-section");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const scrollToApply = () => {
     const el = document.getElementById("apply");
@@ -219,8 +213,8 @@ export default function StudentPage() {
 
                 <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-8">
                   {isFr
-                    ? "Offrant aux étudiants universitaires et collégiaux en géologie, finance et génie un accès entièrement financé à l'événement mondial de niveau 1 sur l'investissement minier au Canada."
-                    : "Empowering university and college students in geology, finance and engineering with fully funded access to Canada's Tier 1 global mining investment event."}
+                    ? "Le Programme de partenariat étudiant réunit des étudiants universitaires et collégiaux à THE Mining Investment Event à Québec pour une expérience immersive les connectant avec des leaders de l'industrie, des investisseurs et d'autres étudiants."
+                    : "THE Student Partnership Program brings university and college students to THE Mining Investment Event in Quebec City for an immersive experience connecting them with industry leaders, investors and fellow students."}
                 </p>
 
                 {/* Hero Action Buttons */}
@@ -236,20 +230,10 @@ export default function StudentPage() {
                     </svg>
                   </button>
 
-                  <button
-                    onClick={scrollToCeoLetter}
-                    type="button"
-                    className="px-7 py-4 rounded-xl border border-neutral-700 hover:border-white text-neutral-200 hover:text-white text-xs sm:text-sm font-bold tracking-widest uppercase hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-sm cursor-pointer"
-                  >
-                    <span>{isFr ? "Lettre de notre PDG" : "Letter from our CEO"}</span>
-                    <svg className="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                    </svg>
-                  </button>
                 </div>
 
-                {/* 3 Program Sponsors (in one line) */}
-                <div className="pt-6 border-t border-neutral-800/80 max-w-2xl">
+                {/* Program Sponsors */}
+                <div className="pt-6 border-t border-neutral-800/80 max-w-3xl">
                   <span className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.25em] block mb-3">
                     {isFr ? "COMMANDITAIRES DU PROGRAMME" : "PROGRAM SPONSORS"}
                   </span>
@@ -284,6 +268,17 @@ export default function StudentPage() {
                         className="h-8 sm:h-10 max-w-full w-auto object-contain"
                       />
                     </div>
+                    {/* Hatch (2027) */}
+                    <div
+                      className="w-[185px] sm:w-[220px] h-16 sm:h-[72px] logo-white-bg !bg-white rounded-2xl px-5 py-2.5 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
+                      style={{ backgroundColor: "#ffffff" }}
+                    >
+                      <img
+                        src="/sponsors/2026/hatch.png"
+                        alt="Hatch Logo"
+                        className="h-8 sm:h-10 max-w-full w-auto object-contain"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -309,136 +304,113 @@ export default function StudentPage() {
           </div>
         </section>
 
-        {/* ═══════════════ 2. PROGRAM OVERVIEW TEXT SECTION ═══════════════ */}
+        {/* ═══════════════ 2. PROGRAM OVERVIEW & DETAILS ═══════════════ */}
         <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117]">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="max-w-4xl mx-auto bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-8 sm:p-12 shadow-xl">
+            {/* Main Program Description */}
+            <div className="max-w-4xl mx-auto text-center mb-14">
               <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-3 block">
                 {isFr ? "À PROPOS DU PROGRAMME" : "ABOUT THE PROGRAM"}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-6">
                 {isFr
-                  ? "Investir dans la Prochaine Génération de Leaders Miniers"
-                  : "Investing in the Next Generation of Mining Leaders"}
+                  ? "Une opportunité entièrement financée"
+                  : "A Fully Funded Opportunity"}
               </h2>
-              <div className="w-20 h-[3.5px] bg-[#C6112F] rounded-full mb-8" />
+              <div className="w-20 h-[3.5px] bg-[#C6112F] rounded-full mb-8 mx-auto" />
+              <p className="text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed font-normal max-w-3xl mx-auto">
+                {isFr
+                  ? "Une opportunité entièrement financée pour les étudiants de partout au Canada de découvrir l'industrie minière de première main."
+                  : "A fully funded opportunity for students across Canada to experience the mining industry firsthand."}
+              </p>
+            </div>
 
-              <div className="space-y-6 text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed font-normal">
-                <p>
-                  {isFr ? (
-                    <>
-                      <strong>Le Programme de Partenariat Étudiant</strong> vise à offrir une opportunité unique de découverte de l'industrie minière grâce à une participation à THE Mining Investment Event (THE Event), la seule conférence d'investissement minier de niveau 1 au Canada, qui se tient à Québec. Cet événement annuel sert de point de rencontre pour les chefs de file de l'industrie et les investisseurs, offrant une plateforme d'échange de connaissances, de réseautage et d'apprentissage immersif.
-                    </>
-                  ) : (
-                    <>
-                      <strong>THE Student Partnership Program</strong> aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada’s only Tier 1 global mining investment conference, held in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada.
-                    </>
-                  )}
-                </p>
-
-                <p>
-                  {isFr ? (
-                    <>
-                      Jusqu'à 50 étudiants universitaires ou collégiaux passionnés de géologie, finance, génie ou domaines connexes ont la chance d'assister à la conférence <strong>sans frais</strong>. Notre objectif est de favoriser un apprentissage concret en exposant les étudiants aux conférenciers d'honneur, panels de l'industrie, rencontres professionnelles, concours d'études de cas et diverses activités de réseautage.
-                    </>
-                  ) : (
-                    <>
-                      Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at <strong>no cost</strong>. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals.
-                    </>
-                  )}
-                </p>
+            {/* Video Placeholder Section */}
+            <div className="max-w-4xl mx-auto mb-14">
+              <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-xl group">
+                {/* 2025 Placeholder — will be replaced with Steel video */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#0b0f19] via-[#151821] to-[#0b0f19] text-white">
+                  <div className="w-20 h-20 rounded-full bg-[#C6112F]/20 border-2 border-[#C6112F]/50 flex items-center justify-center mb-4">
+                    <svg className="w-10 h-10 text-[#C6112F]" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <span className="text-xs font-black uppercase tracking-[0.25em] text-neutral-400 mb-1">
+                    {isFr ? "VIDÉO À VENIR" : "VIDEO COMING SOON"}
+                  </span>
+                  <span className="text-sm font-bold text-neutral-300">
+                    {isFr ? "Programme de partenariat étudiant 2025" : "Student Partnership Program 2025"}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* ═══════════════ 3. LETTER FROM THE CEO SECTION ═══════════════ */}
-        <section id="ceo-letter-section" className="relative w-full py-12 sm:py-14 md:py-16 bg-[#0b0f19] text-white overflow-hidden scroll-mt-28">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="relative bg-gradient-to-br from-neutral-900 via-[#151924] to-[#0b0f19] border border-neutral-800 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-[#C6112F]/10 blur-[100px] rounded-full pointer-events-none" />
-
-              <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                {/* Left Column: Letter & Quote Content */}
-                <div className="lg:col-span-7 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 mb-6">
-                      <span className="px-3.5 py-1 rounded-full bg-[#C6112F]/20 border border-[#C6112F]/40 text-[#ff4d6d] text-[11px] font-black uppercase tracking-widest">
-                        {isFr ? "PERSPECTIVE DE LA DIRECTION" : "EXECUTIVE PERSPECTIVE"}
+            {/* What's Included & Who Should Apply — 2-column grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* What's Included */}
+              <div className="bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-8 sm:p-10 shadow-xl">
+                <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-3 block">
+                  {isFr ? "CE QUI EST INCLUS" : "WHAT'S INCLUDED"}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-neutral-900 dark:text-white tracking-tight mb-6">
+                  {isFr ? "Qu'est-ce qui est inclus ?" : "What's Included?"}
+                </h3>
+                <div className="w-12 h-[3px] bg-[#C6112F] rounded-full mb-6" />
+                <ul className="space-y-4">
+                  {[
+                    { en: "Full access to THE Event", fr: "Accès complet à THE Event", icon: "🎟️" },
+                    { en: "Transportation between Montreal and Quebec City", fr: "Transport entre Montréal et Québec", icon: "🚌" },
+                    { en: "3 nights accommodation", fr: "3 nuits d'hébergement", icon: "🏨" },
+                    { en: "Student networking events", fr: "Événements de réseautage étudiants", icon: "🤝" },
+                    { en: "Team based case competition", fr: "Concours d'études de cas en équipe", icon: "📊" },
+                    { en: "Resume exposure with leading companies", fr: "Visibilité de votre CV auprès d'entreprises de premier plan", icon: "📄" },
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="w-8 h-8 rounded-xl bg-[#C6112F]/10 text-base flex items-center justify-center shrink-0 mt-0.5">
+                        {item.icon}
                       </span>
-                      <span className="text-xs text-neutral-400 font-semibold">
-                        THE Mining Investment Event
+                      <span className="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 font-semibold leading-snug">
+                        {isFr ? item.fr : item.en}
                       </span>
-                    </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-8">
-                      {isFr ? "Lettre de notre Fondatrice et PDG" : "Letter from our Founder & CEO"}
-                    </h2>
-
-                    <div className="relative pl-6 sm:pl-8 border-l-4 border-[#C6112F] space-y-6">
-                      <p className="text-neutral-200 text-base sm:text-lg font-normal leading-relaxed italic">
-                        {isFr
-                          ? 'Joanne Jobin, fondatrice et directrice générale, a déclaré : « Je suis profondément reconnaissante envers les partenaires du programme étudiant pour leur engagement à financer cette initiative et pour avoir pris le temps de rencontrer directement nos étudiants. Depuis son lancement en 2023, le programme a fait découvrir l\'industrie minière à environ 200 étudiants, dont plusieurs reviennent annuellement pour réseauter ou faire du bénévolat. Il est désormais reconnu comme l\'un des plus importants programmes de conférence entièrement financés en Amérique du Nord. »'
-                          : 'Joanne Jobin, Founder and CEO, stated, “I am deeply grateful to the Student Program Partners for their commitment to funding this program and for taking the time to meet and interact directly with our students. Since its launch in 2023, the program has introduced approximately 200 students to the mining industry, with many returning annually to network, learn more, or volunteer. It is now recognized as one of the largest fully funded conference programs in North America, offering students interested in mining a unique opportunity to participate in THE Event.”'}
-                      </p>
-
-                      <p className="text-neutral-200 text-base sm:text-lg font-normal leading-relaxed italic">
-                        {isFr
-                          ? 'Mme Jobin a ajouté : « Dans le cadre de notre dévouement envers la durabilité de l\'industrie par la formation de la prochaine génération de professionnels miniers, nous poursuivons nos efforts pour étendre ces opportunités exceptionnelles. »'
-                          : 'Jobin added, "As part of our ongoing dedication to industry sustainability through fostering the next generation of mining professionals, we plan to seek another partner to provide additional funding to create an opportunity for international students to participate in our program."'}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 pt-6 border-t border-neutral-800 flex items-center gap-4">
-                    <div
-                      className="w-12 h-12 rounded-full ring-2 ring-[#C6112F] shadow-md shrink-0 bg-[#0b0f19] overflow-hidden"
-                      style={{
-                        backgroundImage:
-                          "url('/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-15.jpg')",
-                        backgroundPosition: "50% 23%",
-                        backgroundSize: "420%",
-                      }}
-                      role="img"
-                      aria-label="Joanne Jobin"
-                    />
-                    <div>
-                      <h4 className="text-base font-extrabold text-white">Joanne Jobin</h4>
-                      <p className="text-xs text-neutral-400 font-medium">
-                        {isFr ? "Fondatrice & PDG, THE Mining Investment Event" : "Founder & CEO, THE Mining Investment Event"}
-                      </p>
-                    </div>
-                  </div>
+              {/* Who Should Apply */}
+              <div className="bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/90 dark:border-neutral-800 rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col justify-between">
+                <div>
+                  <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-3 block">
+                    {isFr ? "QUI DEVRAIT POSTULER" : "WHO SHOULD APPLY"}
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-black text-neutral-900 dark:text-white tracking-tight mb-6">
+                    {isFr ? "Qui devrait postuler ?" : "Who Should Apply?"}
+                  </h3>
+                  <div className="w-12 h-[3px] bg-[#C6112F] rounded-full mb-6" />
+                  <p className="text-neutral-700 dark:text-neutral-300 text-sm sm:text-base leading-relaxed font-medium">
+                    {isFr
+                      ? "Étudiants collégiaux et universitaires de partout au Canada. Toutes les disciplines d'études sont les bienvenues, qu'elles soient liées au secteur minier ou au-delà."
+                      : "College and University students from across Canada. All study disciplines welcome, connected to mining and beyond."}
+                  </p>
                 </div>
-
-                {/* Right Column: Live Event Keynote Photo */}
-                <div className="lg:col-span-5 flex flex-col justify-center">
-                  <div className="relative rounded-3xl overflow-hidden border border-neutral-800 shadow-2xl group bg-neutral-950">
-                    <div className="aspect-[4/3] sm:aspect-[16/11] relative overflow-hidden">
-                      <img
-                        src="/student/STUDENTS/MINING%20INVESTMENT%20EVENT%202026_DAY%201_STUDENTS-15.jpg"
-                        alt="Joanne Jobin addressing students at THE Mining Investment Event"
-                        className="w-full h-full object-cover object-[48%_38%] scale-[1.3] group-hover:scale-[1.34] transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/25 pointer-events-none" />
-
-                      <div className="absolute top-3.5 left-3.5 px-3 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-neutral-700/80 text-[10px] font-black uppercase tracking-wider text-white flex items-center gap-1.5 pointer-events-none shadow-md">
-                        <span className="w-2 h-2 rounded-full bg-[#C6112F]" />
-                        Student Program Address
-                      </div>
-
-                      <div className="absolute bottom-3 left-3 right-3 p-3 rounded-2xl bg-black/70 backdrop-blur-md border border-white/10 text-left pointer-events-none">
-                        <p className="text-xs text-neutral-200 font-medium leading-snug">
-                          Joanne Jobin delivering the address at THE Student Partnership Program in Québec City.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                <div className="mt-8">
+                  <button
+                    onClick={scrollToApply}
+                    type="button"
+                    className="w-full px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer"
+                  >
+                    <span>{isFr ? "Postuler Maintenant" : "Apply Now"}</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+
 
         {/* ═══════════════ 4. 2026 WINNERS & PHOTO GALLERY ═══════════════ */}
         <section className="relative w-full py-12 sm:py-14 md:py-16 bg-[#f8f9fa] dark:bg-[#12141c] border-t border-b border-neutral-200/80 dark:border-neutral-800">
@@ -458,170 +430,95 @@ export default function StudentPage() {
               </p>
             </div>
 
-            {/* Individual Honors: MVP & Outstanding Students */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-              {/* MVP Featured Card */}
-              <div className="lg:col-span-5 bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-transparent border-2 border-amber-500/30 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between">
-                <div className="absolute top-0 right-0 px-5 py-1.5 bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-widest rounded-bl-2xl shadow-md">
-                  {isFr ? "⭐ Gagnant MVP Étudiant" : "⭐ Student MVP Winner"}
-                </div>
-                <div>
-                  <span className="text-[10px] font-black tracking-[0.25em] uppercase text-amber-600 dark:text-amber-400 block mb-3">
-                    {isFr ? "SÉLECTION PAR LES PAIRS & DIRIGEANTS" : "PEER & EXECUTIVE SELECTION"}
+            {/* Simplified Winners Display */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+              {/* MVP Winner */}
+              <div className="bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/25 rounded-2xl p-5 hover:shadow-md transition-all">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-lg">🏆</span>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                    {isFr ? "MVP Étudiant 2026" : "Student MVP 2026"}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white mb-2">
-                    {mvpStudent.name}
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base font-semibold">
-                    {mvpStudent.school}
-                  </p>
                 </div>
-                <div className="mt-6 pt-4 border-t border-amber-500/20 flex items-center justify-between">
-                  <span className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-neutral-900 border border-amber-500/30 text-xs font-bold text-amber-600 dark:text-amber-400 shadow-2xs">
-                    {mvpStudent.award}
-                  </span>
-                  <span className="text-2xl">🏆</span>
-                </div>
+                <h4 className="text-base font-black text-neutral-900 dark:text-white mb-0.5">{mvpStudent.name}</h4>
+                <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">{mvpStudent.school}</p>
               </div>
 
-              {/* Outstanding Students Recognition */}
-              <div className="lg:col-span-7 bg-white dark:bg-[#181a24] border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-black tracking-[0.25em] uppercase text-[#C6112F] bg-[#C6112F]/10 px-3.5 py-1 rounded-full">
-                      {isFr ? "Reconnaissance Étudiante Remarquable" : "Outstanding Student Recognition"}
-                    </span>
-                    <span className="text-xs text-neutral-400 font-semibold hidden sm:inline">
-                      {isFr ? "Contributions Exceptionnelles" : "Exceptional Contributions"}
+              {/* Outstanding Students */}
+              {outstandingStudents.map((std, i) => (
+                <div
+                  key={i}
+                  className="bg-white dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800 rounded-2xl p-5 hover:shadow-md transition-all"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-lg">⭐</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F]">
+                      {isFr ? "Reconnaissance Remarquable" : "Outstanding Recognition"}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-black text-[#1a1f2c] dark:text-white mb-4">
-                    {isFr ? "Distinctions Académiques et de Leadership" : "Special Academic & Leadership Honors"}
-                  </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {outstandingStudents.map((std, i) => (
-                      <div
-                        key={i}
-                        className="p-5 rounded-2xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800 hover:border-[#C6112F]/40 transition-all"
-                      >
-                        <div className="w-8 h-8 rounded-full bg-[#C6112F]/10 text-[#C6112F] font-bold text-xs flex items-center justify-center mb-3">
-                          0{i + 1}
-                        </div>
-                        <div className="text-base sm:text-lg font-black text-[#1a1f2c] dark:text-white mb-1">
-                          {std.name}
-                        </div>
-                        <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                          {std.school}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <h4 className="text-base font-black text-neutral-900 dark:text-white mb-0.5">{std.name}</h4>
+                  <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">{std.school}</p>
                 </div>
-              </div>
+              ))}
             </div>
 
-            {/* Case Study Competition Track Winners Section */}
-            <div className="space-y-8 mb-14">
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-6 bg-[#C6112F] rounded-full" />
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#1a1f2c] dark:text-white tracking-tight">
-                    {isFr ? "Gagnants des Volets du Concours d'Études de Cas" : "Case Study Competition Track Winners"}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-medium mt-0.5">
-                    {isFr
-                      ? "Célébration des équipes étudiantes gagnantes pour chaque volet parrainé."
-                      : "Recognizing the winning student teams across the sponsor-led competition tracks."}
-                  </p>
-                </div>
+            {/* Compact Case Competition Winners */}
+            <div className="mb-14">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-1.5 h-5 bg-[#C6112F] rounded-full" />
+                <h3 className="text-lg sm:text-xl font-black text-neutral-900 dark:text-white tracking-tight">
+                  {isFr ? "Gagnants du Concours d'Études de Cas" : "Case Competition Winners"}
+                </h3>
               </div>
-
-              {trackWinners.map((track) => (
-                <div
-                  key={track.id}
-                  className={`bg-white dark:bg-[#181a24] rounded-3xl p-7 sm:p-9 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden ${
-                    track.isOverallWinner
-                      ? "border-2 border-amber-500/50 ring-1 ring-amber-500/20"
-                      : "border border-neutral-200/80 dark:border-neutral-800"
-                  }`}
-                >
-                  {/* Top Header Row of the Track Card */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-7 pb-5 border-b border-neutral-200/80 dark:border-neutral-800/80">
-                    <div className="flex flex-wrap items-center gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {trackWinners.map((track) => (
+                  <div
+                    key={track.id}
+                    className={`bg-white dark:bg-[#181a24] rounded-2xl p-5 shadow-sm hover:shadow-md transition-all ${
+                      track.isOverallWinner
+                        ? "border-2 border-amber-500/40"
+                        : "border border-neutral-200/80 dark:border-neutral-800"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-4 pb-3 border-b border-neutral-100 dark:border-neutral-800/80 gap-3">
                       <span
-                        className={`px-3.5 py-1.5 rounded-full font-black text-[11px] uppercase tracking-wider ${
+                        className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full ${
                           track.isOverallWinner
-                            ? "bg-amber-500 text-slate-950 shadow-sm"
+                            ? "bg-amber-500/15 text-amber-700 dark:text-amber-400"
                             : "bg-[#C6112F]/10 text-[#C6112F]"
                         }`}
                       >
-                        {track.trackTitle}
-                      </span>
-                      {track.isOverallWinner && (
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C6112F]/10 text-[#C6112F] text-[10px] font-extrabold uppercase tracking-wider">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] animate-pulse" />
-                          Overall Champions
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Track Sponsor Logo Badge */}
-                    <div className="flex items-center gap-2.5 self-start sm:self-auto shrink-0">
-                      <span className="text-[10px] uppercase font-extrabold text-neutral-400 tracking-wider">
-                        {isFr ? "Commanditaire du Volet" : "Track Sponsor"}
+                        {track.sponsorName}
+                        {track.isOverallWinner && " 🏆"}
                       </span>
                       <div
-                        className={`h-14 sm:h-16 rounded-xl border border-neutral-200 dark:border-neutral-700/60 shadow-2xs flex items-center justify-center logo-white-bg !bg-white overflow-hidden ${
-                          track.id === "or-royalties" ? "px-2.5 py-0.5 sm:px-3 sm:py-1" : "px-5 py-2"
-                        }`}
+                        className="logo-white-bg !bg-white h-10 sm:h-11 w-28 sm:w-32 px-2.5 py-1.5 rounded-xl border border-neutral-200 dark:border-white/20 shadow-xs flex items-center justify-center shrink-0 overflow-hidden"
                         style={{ backgroundColor: "#ffffff" }}
                       >
                         <img
                           src={track.sponsorLogo}
                           alt={`${track.sponsorName} Logo`}
-                          className={
+                          className={`object-contain ${
                             track.id === "or-royalties"
-                              ? "h-12 sm:h-14 max-w-[190px] w-auto object-contain scale-125 sm:scale-130 transition-transform"
-                              : "h-9 sm:h-11 max-w-[160px] w-auto object-contain"
-                          }
+                              ? "h-8 sm:h-9 w-auto max-w-[120px] scale-[1.45] origin-center"
+                              : track.id === "glencore"
+                              ? "h-4.5 sm:h-5 w-auto max-w-[100px]"
+                              : "h-5 sm:h-5.5 w-auto max-w-[100px]"
+                          }`}
                         />
                       </div>
                     </div>
+                    <ul className="space-y-1.5">
+                      {track.members.map((m, i) => (
+                        <li key={i} className="text-xs text-neutral-700 dark:text-neutral-300 font-medium">
+                          <span className="font-bold text-neutral-900 dark:text-white">{m.name}</span>
+                          <span className="text-neutral-400 ml-1">— {m.school}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  {/* Team Members Grid */}
-                  <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ${
-                    track.members.length === 5 ? "xl:grid-cols-5" : "xl:grid-cols-4"
-                  } gap-4`}>
-                    {track.members.map((member, i) => (
-                      <div
-                        key={i}
-                        className={`p-5 rounded-2xl transition-all ${
-                          track.isOverallWinner
-                            ? "bg-gradient-to-b from-amber-500/5 to-transparent border border-amber-500/30 hover:border-amber-500/60"
-                            : "bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/60 dark:border-neutral-800 hover:border-[#C6112F]/40"
-                        }`}
-                      >
-                        <div
-                          className={`w-8 h-8 rounded-full font-bold text-xs flex items-center justify-center mb-3 ${
-                            track.isOverallWinner
-                              ? "bg-amber-500/15 text-amber-700 dark:text-amber-400"
-                              : "bg-[#C6112F]/10 text-[#C6112F]"
-                          }`}
-                        >
-                          0{i + 1}
-                        </div>
-                        <div className="text-base font-black text-[#1a1f2c] dark:text-white mb-1 leading-snug">
-                          {member.name}
-                        </div>
-                        <div className="text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                          {member.school}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* 2026 Photo Gallery */}
