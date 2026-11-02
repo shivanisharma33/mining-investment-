@@ -16,7 +16,7 @@ export default function StudentApplyPage() {
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100 selection:bg-[#C6112F] selection:text-white">
         {/* ═══════ HERO SECTION ═══════ */}
-        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-28 sm:pt-30 md:pt-32 pb-12 sm:pb-14 md:pb-16 border-b border-neutral-800">
+        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-12 sm:pb-14 md:pb-16 border-b border-neutral-800">
           {/* Ambient Lighting & Pattern Effects */}
           <div
             className="absolute inset-0 opacity-[0.04] pointer-events-none"

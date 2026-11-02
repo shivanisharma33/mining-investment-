@@ -115,7 +115,7 @@ const SPONSORS_2026: SponsorItem[] = [
   {
     name: "Hatch",
     website: "https://www.hatch.com",
-    tier: "silver",
+    tier: "platinum",
     image: "/sponsors/2026/hatch.png",
   },
   {
@@ -1334,8 +1334,8 @@ export default function SponsorsView({ year = 2027, sponsors }: SponsorsViewProp
   const filterOptions = useMemo(() => {
     const baseOptions = [
       { id: "all", label: t("sp-all", "All Sponsors") },
-      { id: "platinum", label: t("sp-platinum", "Platinum Sponsors") },
       { id: "gold", label: t("sp-gold", "Gold Sponsors") },
+      { id: "platinum", label: t("sp-platinum", "Platinum Sponsors") },
       { id: "silver", label: t("sp-silver", "Silver Sponsors") },
       { id: "copper", label: t("sp-copper", "Copper Sponsors") },
       { id: "media", label: t("sp-partners", "Partners") },

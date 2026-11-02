@@ -97,7 +97,7 @@ export default function SheCoPage() {
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
 
         {/* ════════════════ HERO HEADER SECTION ════════════════ */}
-        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 border-b border-neutral-800">
+        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-10 sm:pb-12 md:pb-14 border-b border-neutral-800">
           {/* Subtle radial dot pattern overlay */}
           <div
             className="absolute inset-0 opacity-[0.06] pointer-events-none"

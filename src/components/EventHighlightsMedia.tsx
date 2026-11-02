@@ -80,17 +80,6 @@ export default function EventHighlightsMedia() {
               loading="lazy"
               decoding="async"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4 sm:p-6">
-              <span className="text-white text-xs sm:text-sm font-bold tracking-wide">
-                {photos[0].alt}
-              </span>
-              <span className="bg-[#C6112F] text-white text-[11px] font-extrabold uppercase px-3 py-1.5 rounded-lg flex items-center gap-1.5 shadow-md shrink-0">
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
-                </svg>
-                Enlarge
-              </span>
-            </div>
           </div>
 
           {/* 2 Stacked Photos (PHOTO3 & PHOTO 4) */}
@@ -106,14 +95,6 @@ export default function EventHighlightsMedia() {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 sm:p-4">
-                <span className="text-white text-xs font-bold tracking-wide truncate pr-2">
-                  {photos[1].alt}
-                </span>
-                <span className="bg-[#C6112F] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shrink-0 shadow-sm">
-                  Enlarge
-                </span>
-              </div>
             </div>
 
             <div
@@ -127,14 +108,6 @@ export default function EventHighlightsMedia() {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 sm:p-4">
-                <span className="text-white text-xs font-bold tracking-wide truncate pr-2">
-                  {photos[2].alt}
-                </span>
-                <span className="bg-[#C6112F] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shrink-0 shadow-sm">
-                  Enlarge
-                </span>
-              </div>
             </div>
           </div>
         </div>
@@ -155,14 +128,6 @@ export default function EventHighlightsMedia() {
                 loading="lazy"
                 decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 sm:p-4">
-                <span className="text-white text-xs font-bold tracking-wide truncate pr-2">
-                  {photo.alt}
-                </span>
-                <span className="bg-[#C6112F] text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shrink-0 shadow-sm">
-                  Enlarge
-                </span>
-              </div>
             </div>
           ))}
         </div>
@@ -225,9 +190,8 @@ export default function EventHighlightsMedia() {
               alt={photos[activeIndex].alt}
               className="max-w-full max-h-[78vh] object-contain rounded-xl shadow-2xl"
             />
-            <div className="mt-3 flex items-center justify-between w-full max-w-full px-2 text-xs sm:text-sm text-neutral-300">
-              <span className="font-medium">{photos[activeIndex].alt}</span>
-              <span className="text-neutral-400 font-mono">
+            <div className="mt-3 flex items-center justify-end w-full max-w-full px-2 text-xs sm:text-sm text-neutral-400 font-mono">
+              <span>
                 {activeIndex + 1} / {photos.length}
               </span>
             </div>

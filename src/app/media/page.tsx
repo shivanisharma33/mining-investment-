@@ -108,37 +108,7 @@ const galleryTiles = [
     img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/74684f59-c1d4-405c-a7b0-981e8fa31184/DSC00104.jpg",
     labelKey: "media-tile-investor-meetings",
     labelDefault: "Investor Meetings",
-  },
-  {
-    img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1ff55a68-c1a5-4823-b4e7-6717586459d5/DSC02529.jpg",
-    labelKey: "media-tile-award-ceremony",
-    labelDefault: "Award Ceremony",
-  },
-  {
-    img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/e5f393e3-6823-40bc-90c3-d87011c54575/DSC02621.jpg",
-    labelKey: "media-tile-quebec-experience",
-    labelDefault: "Quebec City Experience",
-  },
-  {
-    img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/d9a1704b-1e3b-4a93-add4-295499018c05/DSC02636.jpg",
-    labelKey: "media-tile-speakers-panels",
-    labelDefault: "Speakers & Panels",
-  },
-  {
-    img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/ce8bd16e-76fb-48e1-b917-3e73ff6593c4/DSC04766.jpg",
-    labelKey: "media-tile-behind-event",
-    labelDefault: "Behind THE Event",
-  },
-  {
-    img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/dd4e08d9-35eb-4a56-9c1e-4d92c9471f28/DSC05184.jpg",
-    labelKey: "media-tile-exhibitor-showcase",
-    labelDefault: "Exhibitor Showcase",
-  },
-  {
-    img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/6ed743f0-dba8-4a47-aa2a-2680eccb2d80/DSC05504.jpg",
-    labelKey: "media-tile-networking-dinner",
-    labelDefault: "Networking Dinner",
-  },
+  },
   {
     img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/1dd38bad-bcd7-4007-8ae6-9c1fb9b2df6f/DSC05529.jpg",
     labelKey: "media-tile-event-memories",
@@ -790,7 +760,7 @@ export default function MediaPage() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-[#09090b] text-white font-sans antialiased overflow-x-hidden pt-24 sm:pt-28 md:pt-32">
+      <main className="flex flex-col flex-grow w-full bg-[#09090b] text-white font-sans antialiased overflow-x-hidden pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px]">
 
         {/* ═══════════════ HERO BANNER ═══════════════ */}
         <section className="relative w-full bg-[#0f1117] overflow-hidden">
@@ -1064,7 +1034,6 @@ export default function MediaPage() {
         </section>
           </>
         )}
-
 
         <GetInTouchCTA />
         <Footer />

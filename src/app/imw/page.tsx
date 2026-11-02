@@ -126,7 +126,7 @@ export default function InternationalMiningWeekPage() {
         {/* ═════════════════════════════════════════════════════════════
             HERO SECTION
         ═════════════════════════════════════════════════════════════ */}
-        <section className="relative w-full min-h-[580px] sm:min-h-[640px] md:min-h-[680px] flex flex-col justify-between overflow-hidden bg-[#0a0d14] pt-24 sm:pt-28 pb-10">
+        <section className="relative w-full min-h-[580px] sm:min-h-[640px] md:min-h-[680px] flex flex-col justify-between overflow-hidden bg-[#0a0d14] pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-10">
           {/* Hero Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center transition-opacity duration-700 opacity-95"

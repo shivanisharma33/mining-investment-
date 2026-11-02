@@ -289,11 +289,11 @@ export default function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative py-1 text-[11px] lg:text-[11px] xl:text-[11.5px] 2xl:text-[13.5px] font-extrabold tracking-tight 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F] shrink-0"
+                  className="relative py-1 text-[11px] lg:text-[11px] xl:text-[11.5px] 2xl:text-[16px] font-extrabold tracking-tight 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 2xl:gap-1.5 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F] shrink-0"
                 >
                   <span className="whitespace-nowrap">{link.name}</span>
                   <svg
-                    className="w-3 h-3 text-neutral-400 group-hover:text-[#C6112F] transition-colors shrink-0"
+                    className="w-3 h-3 2xl:w-3.5 2xl:h-3.5 text-neutral-400 group-hover:text-[#C6112F] transition-colors shrink-0"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2.5"
@@ -301,18 +301,18 @@ export default function Navbar() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                   </svg>
-                  <span className="absolute bottom-0 left-0 h-[2px] bg-[#C6112F] transition-all duration-300 w-0 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 h-[2px] 2xl:h-[2.5px] bg-[#C6112F] transition-all duration-300 w-0 group-hover:w-full" />
                 </a>
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative py-1 text-[11px] lg:text-[11px] xl:text-[11.5px] 2xl:text-[13.5px] font-extrabold tracking-tight 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 shrink-0 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+                  className={`relative py-1 text-[11px] lg:text-[11px] xl:text-[11.5px] 2xl:text-[16px] font-extrabold tracking-tight 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 2xl:gap-1.5 shrink-0 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                     }`}
                 >
                   <span className="whitespace-nowrap">{link.name}</span>
                   {link.hasDropdown && (
                     <svg
-                      className={`w-3 h-3 transition-transform duration-200 ${(link.dropdownType === "about" && aboutOpen) ||
+                      className={`w-3 h-3 2xl:w-3.5 2xl:h-3.5 transition-transform duration-200 ${(link.dropdownType === "about" && aboutOpen) ||
                         (link.dropdownType === "programs" && programsOpen) ||
                         (link.dropdownType === "past-years" && pastYearsOpen)
                         ? "rotate-180 text-[#C6112F]"
@@ -328,7 +328,7 @@ export default function Navbar() {
                   )}
                   {/* Animated Underline Effect */}
                   <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-[#C6112F] transition-all duration-300 ${isLinkActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
+                    className={`absolute bottom-0 left-0 h-[2px] 2xl:h-[2.5px] bg-[#C6112F] transition-all duration-300 ${isLinkActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                   />
                 </Link>
@@ -513,9 +513,9 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             title="THE NOBLE MINING INVESTMENT CONFERENCE"
-            className="hidden xl:inline-flex px-2 py-1.5 xl:px-2.5 xl:py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[9.5px] xl:text-[10px] 2xl:text-[11.5px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
+            className="hidden xl:inline-flex px-2 py-1.5 xl:px-2.5 xl:py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[9.5px] xl:text-[10px] 2xl:text-[12px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
-            <span className="hidden 2xl:inline">THE NOBLE MINING INVESTMENT CONFERENCE</span>
+            <span className="hidden 2xl:inline">{t("nav-noble-btn", "THE NOBLE MINING INVESTMENT CONFERENCE")}</span>
             <span className="inline 2xl:hidden">NOBLE CONFERENCE</span>
           </a>
 
@@ -525,7 +525,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             title={lang === "FR" ? "Semaine Internationale des Mines" : "International Mining Week"}
-            className="hidden xl:inline-flex px-2 py-1.5 xl:px-2.5 xl:py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[9.5px] xl:text-[10px] 2xl:text-xs font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
+            className="hidden xl:inline-flex px-2 py-1.5 xl:px-2.5 xl:py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[9.5px] xl:text-[10px] 2xl:text-[12px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
             <span className="hidden 2xl:inline">{t("nav-imw-btn", "International Mining Week")}</span>
             <span className="inline 2xl:hidden">{lang === "FR" ? "SEMAINE DES MINES" : "MINING WEEK"}</span>

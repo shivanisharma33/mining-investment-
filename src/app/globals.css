@@ -768,3 +768,23 @@ figcaption {
 .sponsor-marquee-container:hover .animate-sponsor-roll {
   animation-play-state: paused;
 }
+
+@keyframes sponsorMarqueeReverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-sponsor-roll-reverse {
+  display: flex;
+  width: max-content;
+  animation: sponsorMarqueeReverse var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.sponsor-marquee-container:hover .animate-sponsor-roll-reverse {
+  animation-play-state: paused;
+}

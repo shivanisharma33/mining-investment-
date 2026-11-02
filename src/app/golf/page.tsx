@@ -19,7 +19,7 @@ export default function GolfPage() {
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-white dark:bg-[#0e1626] transition-colors duration-300">
         {/* ═══════ HERO SECTION WITH OUR GOLF DAY PHOTO ═══════ */}
-        <section className="relative w-full min-h-[580px] sm:min-h-[640px] md:min-h-[700px] flex items-center justify-start overflow-hidden bg-neutral-950 pt-24 sm:pt-28">
+        <section className="relative w-full min-h-[580px] sm:min-h-[640px] md:min-h-[700px] flex items-center justify-start overflow-hidden bg-neutral-950 pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px]">
           {/* Authentic Golf Day Photo Background */}
           <img
             src="/MINING INVESTMENT EVENT 2026_DAY 1_GOLF-19.jpg"

@@ -1291,7 +1291,7 @@ function SectionPressReleaseView({
   return (
     <div className="w-full flex flex-col min-h-screen bg-[#f4f7fa] dark:bg-[#090d16] text-neutral-900 dark:text-white transition-colors duration-300 relative">
       {/* Hero Header matching Press Release Page */}
-      <section className="relative w-full bg-[#0f1117] text-white overflow-hidden pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 px-4 sm:px-6 md:px-8">
+      <section className="relative w-full bg-[#0f1117] text-white overflow-hidden pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-10 sm:pb-12 md:pb-14 px-4 sm:px-6 md:px-8">
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -1875,7 +1875,7 @@ export default function NewsPage() {
       ) : (
         <main className="flex flex-col flex-grow w-full bg-[#f4f7fa] dark:bg-[#090d16] pb-16 sm:pb-24 transition-colors duration-300">
           {/* ═══════ HERO SLIDER SECTION ═══════ */}
-          <section className="relative w-full pt-28 sm:pt-30 md:pt-32 pb-6 sm:pb-8 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
+          <section className="relative w-full pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-6 sm:pb-8 px-4 sm:px-6 md:px-8 max-w-[1240px] mx-auto">
             <HeroNewsSlider lang={lang} />
           </section>
 

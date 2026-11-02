@@ -386,7 +386,7 @@ export default function SingleNewsDetailPage() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-[#f8fafc] dark:bg-[#090d16] text-left pt-24 sm:pt-28 pb-16 transition-colors duration-300">
+      <main className="flex flex-col flex-grow w-full bg-[#f8fafc] dark:bg-[#090d16] text-left pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-16 transition-colors duration-300">
         <div className="max-w-[1000px] mx-auto px-4 sm:px-6 md:px-8 w-full">
           {/* Top Header Actions / Breadcrumbs Bar */}
           <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">

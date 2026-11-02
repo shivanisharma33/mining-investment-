@@ -319,7 +319,7 @@ export default function NewsroomPage() {
         {/* ══════════════════════════════════════════════════════════════
             1. HERO HEADER SECTION
         ══════════════════════════════════════════════════════════════ */}
-        <section className="relative pt-32 sm:pt-36 md:pt-40 pb-16 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#f1f5f9] via-[#f8fafc] to-[#f8fafc] dark:from-[#0e1626] dark:via-[#0b101c] dark:to-[#090d16] border-b border-neutral-200/80 dark:border-[#1d273b]">
+        <section className="relative pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-16 sm:pb-20 overflow-hidden bg-gradient-to-b from-[#f1f5f9] via-[#f8fafc] to-[#f8fafc] dark:from-[#0e1626] dark:via-[#0b101c] dark:to-[#090d16] border-b border-neutral-200/80 dark:border-[#1d273b]">
           {/* Subtle Ambient Glow */}
           <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#C6112F]/10 dark:bg-[#C6112F]/15 rounded-full blur-3xl pointer-events-none" />
 

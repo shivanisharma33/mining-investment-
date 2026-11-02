@@ -303,7 +303,7 @@ export default function PrivacyPolicyPage() {
       <Navbar />
       <main className="flex flex-col flex-grow w-full bg-white dark:bg-[#0e1626] transition-colors duration-300">
         {/* ══════ HERO SECTION ══════ */}
-        <section className="relative w-full bg-[#0f1117] text-white pt-28 sm:pt-30 md:pt-32 pb-10 sm:pb-12 md:pb-14 border-b-[3px] border-[#C6112F]">
+        <section className="relative w-full bg-[#0f1117] text-white pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-10 sm:pb-12 md:pb-14 border-b-[3px] border-[#C6112F]">
           <div
             className="absolute inset-0 opacity-[0.05]"
             style={{
