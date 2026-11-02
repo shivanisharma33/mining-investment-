@@ -3,67 +3,67 @@
 import React, { useState, useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 
-type TierKey = "ALL" | "PLATINUM" | "GOLD" | "SILVER" | "COPPER" | "MEDIA";
+type TierKey = "ALL" | "GOLD" | "PLATINUM" | "SILVER" | "COPPER" | "MEDIA";
 
-const tiers: TierKey[] = ["ALL", "PLATINUM", "GOLD", "SILVER", "COPPER", "MEDIA"];
+const tiers: TierKey[] = ["ALL", "GOLD", "PLATINUM", "SILVER", "COPPER", "MEDIA"];
 
-const partnerData: Record<Exclude<TierKey, "ALL">, string[]> = {
-  PLATINUM: [
-    "/sponsors/2026/glencore.svg",
-    "/sponsor image/logo-capitalmarkets.svg",
-    "/Ventum.webp",
-    "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png",
-  ],
+interface PartnerItem {
+  name: string;
+  logo: string;
+  isTbd?: boolean;
+}
+
+const partnerData: Record<Exclude<TierKey, "ALL">, PartnerItem[]> = {
   GOLD: [
-    "/altitude.png",
-    "/Invest_Yukon.png",
-    "/sponsors/2026/maxit_capital.png",
-    "/peartree_0c7d9a1777.png",
-    "/sponsors/2026/the_money_channel_new_york_city.png",
+    { name: "Altitude Capital Partners", logo: "/altitude.png" },
+    { name: "THE MONEY CHANNEL NEW YORK CITY", logo: "/sponsors/2026/the_money_channel_new_york_city.png" },
+    { name: "MAXIT Capital", logo: "/sponsors/2026/maxit_capital.png", isTbd: true },
+    { name: "PearTree Canada", logo: "/peartree_0c7d9a1777.png", isTbd: true },
+    { name: "Epic Gold Corp", logo: "/sponsors/2026/epic_gold.webp" },
+    { name: "Noble Capital Markets", logo: "/sponsors/2026/noble_capital.png" },
+  ],
+  PLATINUM: [
+    { name: "Agnico Eagle", logo: "/sponsers/Platinum%20Partners/Agnico_Eagle_Logo.svg.png" },
+    { name: "Ventum Financial", logo: "/Ventum.webp" },
+    { name: "Glencore", logo: "/sponsors/2026/glencore.svg" },
+    { name: "National Bank Financial Markets", logo: "/sponsor image/logo-capitalmarkets.svg", isTbd: true },
   ],
   SILVER: [
-    "/sponsors/2026/atrium_research.png",
-    "/sponsors/2026/canadian_securities_exchange_cse.svg",
-    "/43.png",
-    "/sponsors/2026/crux_investor.svg",
-    "/sponsors/2026/hatch.png",
-    "/sponsor image/IAMGOLD-Logo-N.png",
-    "/sponsors/2026/government_of_newfoundland_labrador.svg",
-    "/lorroyalties.svg",
-    "/sponsers/LOGOS Mining (3).png",
-    "/sponsors/2026/stifel.svg",
-    "/sponsers/176.png",
+    { name: "Canadian Securities Exchange (CSE)", logo: "/sponsors/2026/canadian_securities_exchange_cse.svg" },
+    { name: "Caur Technologies", logo: "/43.png" },
+    { name: "OR Royalties", logo: "/lorroyalties.svg" },
+    { name: "Hatch", logo: "/sponsors/2026/hatch.png" },
+    { name: "TMX Group / TSX", logo: "/sponsers/176.png" },
+    { name: "Crux Investor", logo: "/sponsors/2026/crux_investor.svg" },
+    { name: "Atrium Research", logo: "/sponsors/2026/atrium_research.png", isTbd: true },
+    { name: "IAMGOLD", logo: "/sponsor image/IAMGOLD-Logo-N.png", isTbd: true },
+    { name: "Government of Newfoundland & Labrador", logo: "/sponsors/2026/government_of_newfoundland_labrador.svg", isTbd: true },
+    { name: "Red Cloud Securities", logo: "/sponsers/LOGOS Mining (3).png", isTbd: true },
+    { name: "Stifel", logo: "/sponsors/2026/stifel.svg", isTbd: true },
   ],
   COPPER: [
-    "/agp.webp",
-    "/apaton-finance-logo.svg",
-    "/brooks-nelson.png",
-    "/sponsers/128.png",
-    "/sponsers/cassels.svg",
-    "/sponsers/center.svg",
-    "/sponsor image/inforfg-logo-f.png",
-    "/sponsors/2026/la_caisse_cdpq.svg",
-    "/sponsers/38.png",
-    "/sponsers/pal_airlines.svg",
-    "/sponsors/2026/outside_the_box_capital.png",
-    "/151.png",
-    "/sponsors/2026/40.png",
+    { name: "Outside the Box Capital", logo: "/sponsors/2026/outside_the_box_capital.png" },
+    { name: "INFOR FINANCIAL INC.", logo: "/sponsor image/inforfg-logo-f.png", isTbd: true },
+    { name: "Brooks & Nelson", logo: "/brooks-nelson.png" },
+    { name: "La Caisse (CDPQ)", logo: "/sponsors/2026/la_caisse_cdpq.svg", isTbd: true },
+    { name: "Apaton Finance", logo: "/apaton-finance-logo.svg", isTbd: true },
+    { name: "VRIFY", logo: "/sponsors/2026/40.png", isTbd: true },
+    { name: "Cassels", logo: "/sponsers/cassels.svg", isTbd: true },
+    { name: "MNP", logo: "/139.png", isTbd: true },
+    { name: "Velocity Trade", logo: "/151.png", isTbd: true },
+    { name: "Mercury Group", logo: "/sponsers/38.png" },
+    { name: "Alliance Global Partners (AGP/ADP)", logo: "/agp.webp", isTbd: true },
+    { name: "Nebari Partners", logo: "/sponsors/2026/nebari.png" },
+    { name: "Maxum", logo: "/sponsors/2026/maxum.svg", isTbd: true },
   ],
   MEDIA: [
-    "/sponsors/2026/mining_discovery.webp",
-    "/btv.png",
-    "/ceo_ca.png",
-    "/sponsers/137.png",
-    "/sponsers/150.png",
-    "/sponsers/itg.png",
-    "/134.png",
-    "/sponsors/2026/sponsor_media_20.png",
-    "/sponsers/157.png",
-    "/ibn.png",
-    "/sponsors/2026/sponsor_media_26.png",
-    "/sponsors/2026/newsfile.png",
-    "/pros.png",
-    "/sponsors/2026/sponsor_media_54.png",
+    { name: "Newsfile", logo: "/sponsors/2026/newsfile.png" },
+    { name: "Mining Discovery", logo: "/sponsors/2026/mining_discovery.webp" },
+    { name: "Canadian Mining Magazine", logo: "/sponsers/137.png", isTbd: true },
+    { name: "RefinedSubstance", logo: "/sponsers/Refined-Substance-Logo2.png" },
+    { name: "Mining Hub", logo: "/sponsors/2026/mining_hub.svg", isTbd: true },
+    { name: "Independent Trading Group (ITG)", logo: "/sponsers/itg.png", isTbd: true },
+    { name: "DEL Communications", logo: "/sponsors/2026/del_communications.png", isTbd: true },
   ],
 };
 
@@ -79,11 +79,11 @@ export default function FeaturedPartners() {
   }, [activeTier]);
 
   const { marqueeLogos, duration } = useMemo(() => {
-    const list = baseLogos.filter(Boolean);
+    const list = baseLogos.filter((item) => Boolean(item && item.logo));
     if (list.length === 0) return { marqueeLogos: [], duration: 30 };
 
     // Build Set A with at least 16 items so it comfortably exceeds any screen width
-    let setA: string[] = [];
+    let setA: PartnerItem[] = [];
     while (setA.length < 16) {
       setA = [...setA, ...list];
     }
@@ -133,7 +133,7 @@ export default function FeaturedPartners() {
           </p>
         </div>
 
-        {/* Tier Selector Tabs Bar */}
+        {/* Tier Selector Tabs Bar (Ordered: ALL, GOLD, PLATINUM, SILVER, COPPER, MEDIA) */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 mb-8 sm:mb-10 relative z-20">
           {tiers.map((tier) => {
             const isActive = tier === activeTier;
@@ -161,15 +161,16 @@ export default function FeaturedPartners() {
           className="animate-sponsor-roll flex items-center gap-4 sm:gap-6"
           style={{ "--marquee-duration": `${duration}s` } as React.CSSProperties}
         >
-          {marqueeLogos.map((logoPath, idx) => (
+          {marqueeLogos.map((item, idx) => (
             <div
-              key={`${logoPath}-${idx}`}
+              key={`${item.logo}-${idx}`}
               style={{ backgroundColor: "#ffffff" }}
+              title={item.isTbd ? `${item.name} (TBD)` : item.name}
               className="shrink-0 w-44 sm:w-52 md:w-56 h-24 sm:h-28 rounded-2xl flex items-center justify-center p-4 border border-neutral-200/90 dark:border-neutral-300/40 shadow-xs hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
             >
               <img
-                src={logoPath}
-                alt={`Partner Logo ${idx + 1}`}
+                src={item.logo}
+                alt={item.name}
                 loading="lazy"
                 className="max-h-full max-w-full object-contain pointer-events-none"
               />

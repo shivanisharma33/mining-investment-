@@ -30,6 +30,7 @@ export default function RegisterPage() {
     aum: "",
     investorType: "Institutional Investor",
     tellUsAboutYourself: "",
+    referredBy: "",
     newsletterOptIn: true,
   });
 
@@ -43,6 +44,7 @@ export default function RegisterPage() {
     location: "",
     email: "",
     tellUsAboutYourself: "",
+    referredBy: "",
     newsletterOptIn: true,
   });
 
@@ -71,6 +73,7 @@ export default function RegisterPage() {
         assetsUnderManagement: investorFormData.aum,
         investorType: investorFormData.investorType,
         tellUsAboutYourself: investorFormData.tellUsAboutYourself.trim(),
+        referredBy: investorFormData.referredBy.trim(),
         signUpForNews: investorFormData.newsletterOptIn,
       });
 
@@ -88,6 +91,7 @@ export default function RegisterPage() {
         aum: "",
         investorType: "Institutional Investor",
         tellUsAboutYourself: "",
+        referredBy: "",
         newsletterOptIn: true,
       });
     } catch (err) {
@@ -121,6 +125,7 @@ export default function RegisterPage() {
         location: companyFormData.location.trim(),
         email: companyFormData.email.trim(),
         tellUsAboutYourself: companyFormData.tellUsAboutYourself.trim(),
+        referredBy: companyFormData.referredBy.trim(),
         signUpForNews: companyFormData.newsletterOptIn,
       });
 
@@ -135,6 +140,7 @@ export default function RegisterPage() {
         location: "",
         email: "",
         tellUsAboutYourself: "",
+        referredBy: "",
         newsletterOptIn: true,
       });
     } catch (err) {
@@ -219,7 +225,7 @@ export default function RegisterPage() {
 
 
         {/* ═══════ INTERACTIVE REGISTRATION FORM SECTION ═══════ */}
-        <section id="registration-form-section" className="relative w-full py-12 sm:py-16 md:py-20 bg-neutral-50 dark:bg-[#070709] border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
+        <section id="registration-form-section" className="relative w-full py-12 sm:py-16 md:py-20 bg-neutral-50 dark:bg-[#070709] border-t border-neutral-200 dark:border-neutral-800 transition-colors duration-300 scroll-mt-20 sm:scroll-mt-24">
           <div className="w-full max-w-[1360px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
             <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
               <span className="text-[#C6112F] text-xs sm:text-sm font-extrabold tracking-[0.25em] uppercase mb-2 block">
@@ -519,6 +525,26 @@ export default function RegisterPage() {
                       </span>
                     </div>
 
+                    {/* Referral / Who Referred You */}
+                    <div>
+                      <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
+                        {isFr ? "Qui vous a référé ? / Référence" : "Who referred you to attend? / Referral"}
+                      </label>
+                      <input
+                        type="text"
+                        value={investorFormData.referredBy}
+                        onChange={(e) =>
+                          setInvestorFormData({ ...investorFormData, referredBy: e.target.value })
+                        }
+                        placeholder={
+                          isFr
+                            ? "ex: Entreprise, partenaire, collègue ou groupe ayant référé"
+                            : "e.g. Referring firm, partner, colleague, or group name"
+                        }
+                        className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-semibold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white placeholder:text-neutral-400"
+                      />
+                    </div>
+
                     {/* Sign up for news and updates checkbox */}
                     <div className="pt-2">
                       <label className="flex items-center gap-3.5 cursor-pointer">
@@ -737,6 +763,26 @@ export default function RegisterPage() {
                       <span className="block text-xs text-neutral-500 font-semibold mt-1.5">
                         max. 5000 characters
                       </span>
+                    </div>
+
+                    {/* Referral / Who Referred You */}
+                    <div>
+                      <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
+                        {isFr ? "Qui vous a référé ? / Référence" : "Who referred you to attend? / Referral"}
+                      </label>
+                      <input
+                        type="text"
+                        value={companyFormData.referredBy}
+                        onChange={(e) =>
+                          setCompanyFormData({ ...companyFormData, referredBy: e.target.value })
+                        }
+                        placeholder={
+                          isFr
+                            ? "ex: Entreprise, partenaire, collègue ou groupe ayant référé"
+                            : "e.g. Referring firm, partner, colleague, or group name"
+                        }
+                        className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-semibold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white placeholder:text-neutral-400"
+                      />
                     </div>
 
                     {/* Sign up for news and updates */}

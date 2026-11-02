@@ -160,7 +160,7 @@ export default function Hero() {
   }, [isVideoModalOpen, closeVideoModal]);
 
   return (
-    <section className="relative flex-grow flex items-center justify-center overflow-hidden min-h-[85vh] md:min-h-[88vh] pt-24 pb-24 sm:pb-28">
+    <section className="relative flex-grow flex items-center justify-center overflow-hidden min-h-[85vh] md:min-h-[88vh] pt-28 sm:pt-32 md:pt-36 pb-24 sm:pb-28">
       {/* Bottom Accent Red Line */}
       <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C6112F] rounded-full z-20" />
       {/* Background Video (Clickable to open in full screen mode and in full colour) */}

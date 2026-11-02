@@ -244,8 +244,11 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${scrolled ? "shadow-md h-16 sm:h-20 md:h-22" : "h-18 sm:h-22 md:h-24"
-        }`}
+      className={`fixed top-0 z-50 w-full transition-all duration-300 bg-white/95 dark:bg-[#0e1626]/95 backdrop-blur-md border-b border-[#C6112F]/80 ${
+        scrolled
+          ? "shadow-md h-[72px] sm:h-[84px] md:h-[90px] lg:h-[96px] xl:h-[100px]"
+          : "h-[86px] sm:h-[100px] md:h-[110px] lg:h-[118px] xl:h-[124px]"
+      }`}
     >
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-4 xl:px-6 2xl:px-[40px] h-full flex items-center justify-between">
         {/* Logo */}
@@ -256,10 +259,10 @@ export default function Navbar() {
             width={252}
             height={252}
             priority
-            className={`object-contain transition-all duration-300 w-auto max-h-[92%] group-hover:scale-105 dark:brightness-110 ${
+            className={`object-contain transition-all duration-300 w-auto group-hover:scale-105 dark:brightness-110 drop-shadow-md ${
               scrolled
-                ? "h-[52px] sm:h-[64px] md:h-[70px] lg:h-[68px] xl:h-[72px] 2xl:h-[78px]"
-                : "h-[60px] sm:h-[74px] md:h-[82px] lg:h-[80px] xl:h-[84px] 2xl:h-[90px]"
+                ? "h-[64px] sm:h-[76px] md:h-[82px] lg:h-[88px] xl:h-[92px] 2xl:h-[96px]"
+                : "h-[78px] sm:h-[92px] md:h-[102px] lg:h-[110px] xl:h-[116px] 2xl:h-[120px]"
             }`}
           />
         </Link>
@@ -583,13 +586,23 @@ export default function Navbar() {
         <>
           {/* Clickable Backdrop overlay to close when tapping outside */}
           <div
-            className="fixed inset-0 top-[72px] sm:top-20 md:top-22 bg-black/40 backdrop-blur-xs z-40 lg:hidden"
+            className={`fixed inset-0 ${
+              scrolled
+                ? "top-[72px] sm:top-[84px] md:top-[90px]"
+                : "top-[86px] sm:top-[100px] md:top-[110px]"
+            } bg-black/40 backdrop-blur-xs z-40 lg:hidden`}
             onClick={() => setIsOpen(false)}
             aria-hidden="true"
           />
 
           {/* Mobile Drawer Menu */}
-          <div className="fixed top-[72px] sm:top-20 md:top-22 left-0 w-full max-h-[calc(100dvh-4.5rem)] sm:max-h-[calc(100dvh-5.5rem)] overflow-y-auto bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-slate-800 shadow-2xl px-4 sm:px-[40px] py-5 flex flex-col gap-4 z-50 lg:hidden">
+          <div
+            className={`fixed left-0 w-full ${
+              scrolled
+                ? "top-[72px] sm:top-[84px] md:top-[90px] max-h-[calc(100dvh-5rem)]"
+                : "top-[86px] sm:top-[100px] md:top-[110px] max-h-[calc(100dvh-6rem)]"
+            } overflow-y-auto bg-white/98 dark:bg-[#0e1626]/98 backdrop-blur-xl border-b border-neutral-200 dark:border-slate-800 shadow-2xl px-4 sm:px-[40px] py-5 flex flex-col gap-4 z-50 lg:hidden`}
+          >
             {/* Mobile Language Switcher Row */}
             <div className="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-neutral-100/80 dark:bg-slate-800/80 border border-neutral-200 dark:border-slate-700">
               <span className="text-xs font-extrabold tracking-wider uppercase text-neutral-600 dark:text-slate-300">

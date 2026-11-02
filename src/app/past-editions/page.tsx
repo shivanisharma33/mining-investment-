@@ -88,7 +88,7 @@ export default function PastEditionsPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100 font-sans antialiased overflow-x-hidden pt-20 sm:pt-24">
+      <main className="min-h-screen bg-white dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100 font-sans antialiased overflow-x-hidden pt-24 sm:pt-28 md:pt-32">
         {/* Hero Section */}
         <section className="relative w-full bg-white dark:bg-[#0c0d12] pt-2 pb-8 md:pt-4 md:pb-10 overflow-hidden border-b border-neutral-100 dark:border-neutral-800">
           <div className="w-full max-w-[96%] xl:max-w-[1650px] 2xl:max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

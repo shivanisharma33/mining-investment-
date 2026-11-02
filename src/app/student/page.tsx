@@ -189,15 +189,6 @@ export default function StudentPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               {/* Left Column - Content & Sponsors */}
               <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#C6112F]/15 border border-[#C6112F]/30 text-[#ff4d6d] text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
-                  <span className="w-2 h-2 rounded-full bg-[#C6112F] animate-pulse" />
-                  <span>
-                    {isFr
-                      ? "Parrainage Étudiant Minier de Premier Plan au Canada"
-                      : "Canada's Premier Student Mining Sponsorship"}
-                  </span>
-                </div>
-
                 {/* Main Heading */}
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] mb-6">
                   {isFr ? (
@@ -305,27 +296,9 @@ export default function StudentPage() {
         </section>
 
         {/* ═══════════════ 2. PROGRAM OVERVIEW & DETAILS ═══════════════ */}
-        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117]">
+        <section className="relative w-full pt-10 sm:pt-12 md:pt-14 pb-14 sm:pb-16 bg-white dark:bg-[#0f1117]">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            {/* Main Program Description */}
-            <div className="max-w-4xl mx-auto text-center mb-14">
-              <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-3 block">
-                {isFr ? "À PROPOS DU PROGRAMME" : "ABOUT THE PROGRAM"}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-6">
-                {isFr
-                  ? "Une opportunité entièrement financée"
-                  : "A Fully Funded Opportunity"}
-              </h2>
-              <div className="w-20 h-[3.5px] bg-[#C6112F] rounded-full mb-8 mx-auto" />
-              <p className="text-neutral-700 dark:text-neutral-300 text-base sm:text-lg leading-relaxed font-normal max-w-3xl mx-auto">
-                {isFr
-                  ? "Une opportunité entièrement financée pour les étudiants de partout au Canada de découvrir l'industrie minière de première main."
-                  : "A fully funded opportunity for students across Canada to experience the mining industry firsthand."}
-              </p>
-            </div>
-
-            {/* Video Placeholder Section */}
+            {/* Video Section — Directly below Sponsor Logos */}
             <div className="max-w-4xl mx-auto mb-14">
               <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-xl group">
                 {/* 2025 Placeholder — will be replaced with Steel video */}

@@ -2,11 +2,25 @@
 
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default function ProgramsGrid() {
   const { t } = useLanguage();
+  const router = useRouter();
+
+  const handleCardClick = (e: React.MouseEvent, link: string) => {
+    if (!link) return;
+    if ((e.target as HTMLElement).closest("a, button")) {
+      return;
+    }
+    if (link.startsWith("mailto:")) {
+      window.location.href = link;
+    } else {
+      router.push(link);
+    }
+  };
 
   const programs = [
     {
@@ -17,11 +31,11 @@ export default function ProgramsGrid() {
         "prog-meeting-desc",
         "Facilitating thousands of private, pre-scheduled one-on-one meetings connecting participating mining companies, global institutional investors and key decision-makers."
       ),
-      cta: t("prog-meeting-cta", "LEARN MORE"),
-      link: "",
-      image:
-        "/gallery%20photos/MAIN%20EVENT/MINING%20INVESTMENT%20EVENT%202026_DAY%201_MAIN%20EVENT-10.jpg",
-      imageAlt: "1x1 Meeting Program at THE Mining Investment Event",
+      cta: t("prog-meeting-cta", "REGISTER NOW"),
+      link: "/register#registration-form-section",
+      image: "/photo-8.webp",
+      imageAlt: "1x1 private meeting rooms in use at THE Mining Investment Event",
+      imagePosition: "object-center",
       imageOnLeft: true,
     },
     {
@@ -49,9 +63,9 @@ export default function ProgramsGrid() {
       ),
       cta: t("prog-lead-cta", "LEARN MORE"),
       link: "/sheco",
-      image: "/photo-10.webp",
-      imageAlt: "SHE-Co Initiative community engagement at Moisson Rive-Sud",
-      imagePosition: "object-[center_25%]",
+      image: "/photo-9.webp",
+      imageAlt: "SHE-Co Initiative cheque presentation on stage to Moisson Rive-Sud",
+      imagePosition: "object-[center_35%]",
       imageOnLeft: false,
     },
     {
@@ -92,6 +106,7 @@ export default function ProgramsGrid() {
         {programs.map((item) => (
           <div
             key={item.id}
+            onClick={(e) => handleCardClick(e, item.link)}
             className={`flex flex-col sm:flex-row w-full h-auto sm:min-h-[380px] lg:min-h-[420px] rounded-none group relative border-none card-shimmer ${item.link ? "cursor-pointer" : ""}`}
           >
             {item.imageOnLeft ? (

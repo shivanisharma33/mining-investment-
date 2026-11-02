@@ -40,7 +40,7 @@ export default function SheCoPage() {
       amount: "C$20,000",
       location: "Longueuil, QC",
       selectedBy: "Mathieu Savard (President & CEO, Vior Gold Corporation)",
-      image: "/photo-10.webp",
+      image: "/photo-9.webp",
       desc: "Moisson Rive-Sud is the primary non-profit food bank serving Longueuil, Quebec and nearby areas, dedicated to reducing food insecurity among local residents.",
       descFr: "Moisson Rive-Sud est la principale banque alimentaire à but non lucratif desservant Longueuil et ses environs, visant à réduire l'insécurité alimentaire.",
     },
@@ -204,16 +204,16 @@ export default function SheCoPage() {
                 <div className="sticky top-28 bg-white dark:bg-[#151c2c] border border-neutral-200 dark:border-slate-800 rounded-3xl overflow-hidden shadow-2xl group">
                   <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-900">
                     <img
-                      src="/photo-10.webp"
-                      alt="Moisson Rive-Sud Community Team with SHE-Co Initiative"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      src="/photo-9.webp"
+                      alt="Moisson Rive-Sud Cheque Presentation with SHE-Co Initiative"
+                      className="w-full h-full object-cover object-[center_35%] group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
 
                     {/* Badge Overlay */}
                     <div className="absolute top-4 left-4">
                       <span className="px-3.5 py-1.5 rounded-xl bg-[#C6112F] text-white font-black text-xs uppercase tracking-wider shadow-lg">
-                        MOISSON RIVE-SUD TEAM
+                        CHEQUE PRESENTATION
                       </span>
                     </div>
 
@@ -222,7 +222,7 @@ export default function SheCoPage() {
                         {isFr ? "Banque Alimentaire Longueuil, Québec" : "Food Bank – Longueuil, Quebec"}
                       </span>
                       <h4 className="text-lg font-black text-white">
-                        Moisson Rive-Sud Facility & Team
+                        Moisson Rive-Sud Cheque Presentation
                       </h4>
                     </div>
                   </div>

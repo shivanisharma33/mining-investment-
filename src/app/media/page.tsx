@@ -1,13 +1,58 @@
 "use client";
 
-import React, { useRef, useState, useMemo } from "react";
+import React, { useRef, useState, useMemo, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
-/* ─── 18 gallery tiles from live site ─── */
+/* ─── Gallery tiles including Photo 2 to 10 ─── */
 const galleryTiles = [
+  {
+    img: "/photo-2.webp",
+    labelKey: "media-tile-photo-2",
+    labelDefault: "Keynote & Executive Fireside Discussions",
+  },
+  {
+    img: "/photo-3.webp",
+    labelKey: "media-tile-photo-3",
+    labelDefault: "Global Mining Leaders Collaboration & Strategic Sessions",
+  },
+  {
+    img: "/photo-4.webp",
+    labelKey: "media-tile-photo-4",
+    labelDefault: "High-Level Networking & 1-on-1 Meetings",
+  },
+  {
+    img: "/photo-5.webp",
+    labelKey: "media-tile-photo-5",
+    labelDefault: "Industry Innovation, ESG Leadership & Diversity in Mining",
+  },
+  {
+    img: "/photo-6.webp",
+    labelKey: "media-tile-photo-6",
+    labelDefault: "Exploration Community & Institutional Capital Discussions",
+  },
+  {
+    img: "/photo-7.webp",
+    labelKey: "media-tile-photo-7",
+    labelDefault: "Premier Tier-1 Global Conference Floor Experience",
+  },
+  {
+    img: "/photo-8.webp",
+    labelKey: "media-tile-photo-8",
+    labelDefault: "Delegates, Investors & Mining Executives Exchange",
+  },
+  {
+    img: "/photo-9.webp",
+    labelKey: "media-tile-photo-9",
+    labelDefault: "Industry Keynote & Market Strategy Showcase",
+  },
+  {
+    img: "/photo-10.webp",
+    labelKey: "media-tile-photo-10",
+    labelDefault: "SHE-Co Initiative Community Engagement",
+  },
   {
     img: "https://images.squarespace-cdn.com/content/v1/6488de5c81dc1f389b3b26bd/dab2da2f-ef86-4d9d-b2cb-43ceb53bd983/DSC00774.jpg",
     labelKey: "media-tile-conference-floor",
@@ -718,6 +763,22 @@ export default function MediaPage() {
   const nextImage = () =>
     setLightboxIdx((p) => (p !== null ? (p + 1) % galleryTiles.length : null));
 
+  useEffect(() => {
+    if (lightboxIdx === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") prevImage();
+      else if (e.key === "ArrowRight") nextImage();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightboxIdx]);
+
   const handlePlayVideo = (videoId: string) => {
     setActiveVideoId(videoId);
     const playerEl = document.getElementById("main-featured-player");
@@ -729,7 +790,7 @@ export default function MediaPage() {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col flex-grow w-full bg-white font-sans antialiased overflow-x-hidden pt-20 sm:pt-24">
+      <main className="flex flex-col flex-grow w-full bg-[#09090b] text-white font-sans antialiased overflow-x-hidden pt-24 sm:pt-28 md:pt-32">
 
         {/* ═══════════════ HERO BANNER ═══════════════ */}
         <section className="relative w-full bg-[#0f1117] overflow-hidden">
@@ -756,14 +817,14 @@ export default function MediaPage() {
         </section>
 
         {/* ═══════════════ 1. PHOTO GALLERY GRID (VISIBLE FIRST) ═══════════════ */}
-        <section className="relative w-full bg-white py-12 sm:py-14 md:py-16">
+        <section className="relative w-full bg-white dark:bg-[#09090b] py-12 sm:py-14 md:py-16">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {galleryTiles.map((tile, i) => (
                 <div
                   key={i}
                   onClick={() => openLightbox(i)}
-                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-900 shadow-[0_8px_25px_rgba(0,0,0,0.06)] transition-all duration-500 hover:border-[#C6112F]/50 hover:shadow-[0_20px_45px_rgba(198,17,47,0.2)] hover:-translate-y-1 ${tile.featured ? "sm:col-span-2" : ""
+                  className={`group relative cursor-pointer overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-900 shadow-[0_8px_25px_rgba(0,0,0,0.06)] transition-all duration-500 hover:border-[#C6112F]/50 hover:shadow-[0_20px_45px_rgba(198,17,47,0.2)] hover:-translate-y-1 ${tile.featured ? "sm:col-span-2" : ""
                     }`}
                   style={{ aspectRatio: tile.featured ? "8/3" : "4/3" }}
                 >
@@ -1017,21 +1078,21 @@ export default function MediaPage() {
         >
           <button
             onClick={closeLightbox}
-            className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl z-10 transition-colors"
+            className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl z-10 transition-colors cursor-pointer"
             aria-label="Close preview"
           >
             ✕
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); prevImage(); }}
-            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#C6112F]/80 text-white flex items-center justify-center text-2xl transition-all z-10"
+            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#C6112F]/80 text-white flex items-center justify-center text-2xl transition-all z-10 cursor-pointer"
             aria-label="Previous image"
           >
             ‹
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); nextImage(); }}
-            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#C6112F]/80 text-white flex items-center justify-center text-2xl transition-all z-10"
+            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#C6112F]/80 text-white flex items-center justify-center text-2xl transition-all z-10 cursor-pointer"
             aria-label="Next image"
           >
             ›

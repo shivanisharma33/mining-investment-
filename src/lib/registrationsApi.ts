@@ -11,6 +11,7 @@ export interface InvestorRegistrationPayload {
   assetsUnderManagement?: string;
   investorType?: string;
   tellUsAboutYourself?: string;
+  referredBy?: string;
 }
 
 /** Values accepted by the backend's projectStage enum. */
@@ -31,6 +32,7 @@ export interface CompanyRegistrationPayload {
   location?: string;
   email: string;
   tellUsAboutYourself?: string;
+  referredBy?: string;
   signUpForNews?: boolean;
 }
 
