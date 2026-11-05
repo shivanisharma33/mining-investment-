@@ -4,6 +4,9 @@ export interface InvestorRegistrationPayload {
   lastName: string;
   businessTitle?: string;
   city?: string;
+  stateProvince?: string;
+  state?: string;
+  province?: string;
   country?: string;
   email: string;
   phone?: string;
@@ -29,6 +32,11 @@ export interface CompanyRegistrationPayload {
   primaryExchangeTicker?: string;
   commodity?: string;
   projectStage?: ProjectStage;
+  city?: string;
+  stateProvince?: string;
+  state?: string;
+  province?: string;
+  country?: string;
   location?: string;
   email: string;
   tellUsAboutYourself?: string;

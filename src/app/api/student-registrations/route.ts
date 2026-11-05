@@ -41,7 +41,8 @@ export async function POST(request: NextRequest) {
     }
 
     const collegeUniversity = text(body.collegeUniversity ?? body.schoolInstitution ?? body.currentSchool);
-    const province = text(body.province);
+    const city = text(body.city);
+    const province = text(body.province ?? body.stateProvince ?? body.state);
     const degreeLevel = text(body.degreeLevel);
     const areaOfStudy = text(body.areaOfStudy);
     const expectedGraduationDate = text(body.expectedGraduationDate);
@@ -70,7 +71,8 @@ export async function POST(request: NextRequest) {
 
     dossierSections.push(`### Schooling Details
 - College / University: ${collegeUniversity || "N/A"}
-- Province: ${province || "N/A"}
+- City: ${city || "N/A"}
+- State / Province: ${province || "N/A"}
 - Degree Level: ${degreeLevel || "N/A"}
 - Area of Study: ${areaOfStudy || "N/A"}
 - Expected Graduation Date: ${expectedGraduationDate || "N/A"}
@@ -108,7 +110,10 @@ ${futureGoals || "N/A"}`);
 
       // Pass all granular fields as well for custom schema attributes
       collegeUniversity,
+      city,
       province,
+      state: province,
+      stateProvince: province,
       degreeLevel,
       areaOfStudy,
       expectedGraduationDate,

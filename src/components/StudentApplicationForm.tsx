@@ -56,6 +56,7 @@ const EMPTY_FORM = {
 
   // 2. Schooling Details
   collegeUniversity: "",
+  city: "",
   province: "",
   degreeLevel: "Bachelors",
   areaOfStudy: "",
@@ -174,7 +175,9 @@ export default function StudentApplicationForm({
         preferredLanguage: formData.language,
         linkedinProfile: formData.linkedinProfile.trim(),
         collegeUniversity: formData.collegeUniversity.trim(),
+        city: formData.city.trim(),
         province: formData.province,
+        stateProvince: formData.province,
         degreeLevel: formData.degreeLevel,
         areaOfStudy: formData.areaOfStudy.trim(),
         expectedGraduationDate: formData.expectedGraduationDate.trim(),
@@ -510,7 +513,7 @@ export default function StudentApplicationForm({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {/* College / University */}
-            <div>
+            <div className="sm:col-span-2">
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
                 {isFr ? "Collège / Université" : "College / University"} <span className="text-[#C6112F]">*</span>
               </label>
@@ -524,10 +527,25 @@ export default function StudentApplicationForm({
               />
             </div>
 
-            {/* Province */}
+            {/* City */}
             <div>
               <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
-                {isFr ? "Province / Territoire" : "Province"} <span className="text-[#C6112F]">*</span>
+                {isFr ? "Ville" : "City"} <span className="text-[#C6112F]">*</span>
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.city}
+                onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                placeholder={isFr ? "ex. Montréal / Québec / Kingston" : "e.g. Toronto / Montreal / Vancouver"}
+                className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all"
+              />
+            </div>
+
+            {/* State / Province */}
+            <div>
+              <label className="block text-xs font-bold text-neutral-700 dark:text-neutral-300 uppercase tracking-wider mb-2">
+                {isFr ? "État / Province" : "State / Province"} <span className="text-[#C6112F]">*</span>
               </label>
               <select
                 required
@@ -535,7 +553,7 @@ export default function StudentApplicationForm({
                 onChange={(e) => setFormData({ ...formData, province: e.target.value })}
                 className="w-full px-4 py-3.5 rounded-xl border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white text-xs sm:text-sm font-medium focus:border-[#C6112F] focus:ring-2 focus:ring-[#C6112F]/20 outline-none transition-all cursor-pointer"
               >
-                <option value="">{isFr ? "Sélectionnez une province ou un territoire" : "Select Province / Territory"}</option>
+                <option value="">{isFr ? "Sélectionnez un état ou une province" : "Select State / Province"}</option>
                 {CANADIAN_PROVINCES.map((prov) => (
                   <option key={prov.en} value={prov.en}>
                     {isFr ? prov.fr : prov.en}

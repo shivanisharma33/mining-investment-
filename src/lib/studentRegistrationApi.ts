@@ -6,7 +6,10 @@ export interface StudentRegistrationPayload {
   phone?: string;
   schoolInstitution?: string;
   collegeUniversity?: string;
+  city?: string;
   province?: string;
+  stateProvince?: string;
+  state?: string;
   degreeLevel?: string;
   areaOfStudy?: string;
   expectedGraduationDate?: string;

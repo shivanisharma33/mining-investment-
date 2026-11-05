@@ -24,6 +24,7 @@ export default function RegisterPage() {
     lastName: "",
     businessTitle: "",
     city: "",
+    stateProvince: "",
     country: "",
     email: "",
     phone: "",
@@ -41,6 +42,9 @@ export default function RegisterPage() {
     ticker: "",
     commodity: "",
     projectStage: "Explorer",
+    city: "",
+    stateProvince: "",
+    country: "",
     location: "",
     email: "",
     tellUsAboutYourself: "",
@@ -67,6 +71,9 @@ export default function RegisterPage() {
         lastName: investorFormData.lastName.trim(),
         businessTitle: investorFormData.businessTitle.trim(),
         city: investorFormData.city.trim(),
+        stateProvince: investorFormData.stateProvince.trim(),
+        state: investorFormData.stateProvince.trim(),
+        province: investorFormData.stateProvince.trim(),
         country: investorFormData.country.trim(),
         email: investorFormData.email.trim(),
         phone: investorFormData.phone.trim(),
@@ -85,6 +92,7 @@ export default function RegisterPage() {
         lastName: "",
         businessTitle: "",
         city: "",
+        stateProvince: "",
         country: "",
         email: "",
         phone: "",
@@ -116,13 +124,24 @@ export default function RegisterPage() {
     setSubmitError("");
 
     try {
+      const locationString = [
+        companyFormData.city.trim(),
+        companyFormData.stateProvince.trim(),
+        companyFormData.country.trim(),
+      ].filter(Boolean).join(", ") || companyFormData.location.trim();
+
       const result = await submitCompanyRegistration({
         companyName: companyFormData.companyName.trim(),
         marketCap: companyFormData.marketCap.trim(),
         primaryExchangeTicker: companyFormData.ticker.trim(),
         commodity: companyFormData.commodity.trim(),
         projectStage: companyFormData.projectStage as ProjectStage,
-        location: companyFormData.location.trim(),
+        city: companyFormData.city.trim(),
+        stateProvince: companyFormData.stateProvince.trim(),
+        state: companyFormData.stateProvince.trim(),
+        province: companyFormData.stateProvince.trim(),
+        country: companyFormData.country.trim(),
+        location: locationString,
         email: companyFormData.email.trim(),
         tellUsAboutYourself: companyFormData.tellUsAboutYourself.trim(),
         referredBy: companyFormData.referredBy.trim(),
@@ -137,6 +156,9 @@ export default function RegisterPage() {
         ticker: "",
         commodity: "",
         projectStage: "Explorer",
+        city: "",
+        stateProvince: "",
+        country: "",
         location: "",
         email: "",
         tellUsAboutYourself: "",
@@ -382,8 +404,8 @@ export default function RegisterPage() {
                       />
                     </div>
 
-                    {/* City & Country */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                    {/* City, State / Province & Country */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                       <div>
                         <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
                           {isFr ? "Ville" : "City"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
@@ -396,6 +418,21 @@ export default function RegisterPage() {
                             setInvestorFormData({ ...investorFormData, city: e.target.value })
                           }
                           placeholder={isFr ? "ex: Montréal" : "e.g. Toronto"}
+                          className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-semibold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white placeholder:text-neutral-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
+                          {isFr ? "État / Province" : "State / Province"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={investorFormData.stateProvince}
+                          onChange={(e) =>
+                            setInvestorFormData({ ...investorFormData, stateProvince: e.target.value })
+                          }
+                          placeholder={isFr ? "ex: Québec ou QC" : "e.g. Ontario or ON"}
                           className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-semibold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white placeholder:text-neutral-400"
                         />
                       </div>
@@ -685,37 +722,69 @@ export default function RegisterPage() {
                       </div>
                     </div>
 
-                    {/* Project Stage & Location */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                    {/* Project Stage */}
+                    <div>
+                      <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
+                        {isFr ? "Stade du projet" : "Project Stage"}
+                      </label>
+                      <select
+                        value={companyFormData.projectStage}
+                        onChange={(e) =>
+                          setCompanyFormData({ ...companyFormData, projectStage: e.target.value })
+                        }
+                        className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-bold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white cursor-pointer"
+                      >
+                        <option value="Explorer">{isFr ? "Exploration" : "Explorer"}</option>
+                        <option value="Developer">{isFr ? "Développement" : "Developer"}</option>
+                        <option value="Producer">{isFr ? "Production" : "Producer"}</option>
+                        <option value="Royalty/Streaming">{isFr ? "Redevances / Streaming" : "Royalty/Streaming"}</option>
+                        <option value="Project Generator">{isFr ? "Générateur de projets" : "Project Generator"}</option>
+                      </select>
+                    </div>
+
+                    {/* City, State / Province & Country */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                       <div>
                         <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
-                          {isFr ? "Stade du projet" : "Project Stage"}
-                        </label>
-                        <select
-                          value={companyFormData.projectStage}
-                          onChange={(e) =>
-                            setCompanyFormData({ ...companyFormData, projectStage: e.target.value })
-                          }
-                          className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-bold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white cursor-pointer"
-                        >
-                          <option value="Explorer">{isFr ? "Exploration" : "Explorer"}</option>
-                          <option value="Developer">{isFr ? "Développement" : "Developer"}</option>
-                          <option value="Producer">{isFr ? "Production" : "Producer"}</option>
-                          <option value="Royalty/Streaming">{isFr ? "Redevances / Streaming" : "Royalty/Streaming"}</option>
-                          <option value="Project Generator">{isFr ? "Générateur de projets" : "Project Generator"}</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
-                          {isFr ? "Emplacement" : "Location"}
+                          {isFr ? "Ville" : "City"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
                         </label>
                         <input
                           type="text"
-                          value={companyFormData.location}
+                          required
+                          value={companyFormData.city}
                           onChange={(e) =>
-                            setCompanyFormData({ ...companyFormData, location: e.target.value })
+                            setCompanyFormData({ ...companyFormData, city: e.target.value })
                           }
-                          placeholder={isFr ? "ex: Québec, Canada" : "e.g. Quebec, Canada"}
+                          placeholder={isFr ? "ex: Val-d'Or" : "e.g. Vancouver"}
+                          className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-semibold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white placeholder:text-neutral-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
+                          {isFr ? "État / Province" : "State / Province"} <span className="text-[#C6112F] font-bold">{isFr ? "(requis)" : "(required)"}</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          value={companyFormData.stateProvince}
+                          onChange={(e) =>
+                            setCompanyFormData({ ...companyFormData, stateProvince: e.target.value })
+                          }
+                          placeholder={isFr ? "ex: Québec ou QC" : "e.g. British Columbia or BC"}
+                          className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-semibold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white placeholder:text-neutral-400"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs sm:text-sm font-black text-neutral-900 uppercase tracking-wider mb-2.5">
+                          {isFr ? "Pays" : "Country"}
+                        </label>
+                        <input
+                          type="text"
+                          value={companyFormData.country}
+                          onChange={(e) =>
+                            setCompanyFormData({ ...companyFormData, country: e.target.value })
+                          }
+                          placeholder={isFr ? "ex: Canada" : "e.g. Canada"}
                           className="w-full px-5 py-4 sm:py-4.5 rounded-2xl border-2 border-neutral-300 focus:border-[#C6112F] focus:ring-4 focus:ring-[#C6112F]/15 text-neutral-900 text-sm sm:text-base font-semibold outline-none transition-all bg-neutral-50/70 hover:bg-white focus:bg-white placeholder:text-neutral-400"
                         />
                       </div>
