@@ -202,10 +202,16 @@ export default function StudentPage() {
                   )}
                 </h1>
 
-                <p className="text-neutral-300 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl mb-8">
+                <p className="text-neutral-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl mb-5">
                   {isFr
-                    ? "Le Programme de partenariat étudiant réunit des étudiants universitaires et collégiaux à THE Mining Investment Event à Québec pour une expérience immersive les connectant avec des leaders de l'industrie, des investisseurs et d'autres étudiants."
-                    : "THE Student Partnership Program brings university and college students to THE Mining Investment Event in Quebec City for an immersive experience connecting them with industry leaders, investors and fellow students."}
+                    ? "Le Programme de partenariat étudiant vise à offrir une exposition unique à l'industrie minière grâce à la participation à THE Mining Investment Event (THE Event), la seule conférence mondiale de niveau 1 sur l'investissement minier au Canada, tenue à Québec. Cet événement annuel sert de carrefour pour les leaders de l'industrie et les investisseurs, offrant une plateforme d'échange de connaissances, de réseautage et d'apprentissage immersif. Le programme est désormais reconnu comme l'un des plus grands programmes de conférences entièrement financés au Canada."
+                    : "THE Student Partnership Program aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada’s only Tier 1 global mining investment conference, held in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada."}
+                </p>
+
+                <p className="text-neutral-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl mb-8">
+                  {isFr
+                    ? "Jusqu'à 50 étudiants universitaires ou collégiaux passionnés par la géologie, la finance, l'ingénierie ou des domaines connexes auront la chance d'assister à la conférence sans frais. Notre objectif est de favoriser l'apprentissage expérientiel en exposant les étudiants à des conférenciers principaux, des panels de l'industrie, des rencontres professionnelles, un concours d'études de cas et divers événements de réseautage. Grâce à ces voies, nous espérons insuffler un sentiment d'interconnexion mondiale au sein de l'industrie minière canadienne tout en investissant dans le développement de la prochaine génération de talents."
+                    : "Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at no cost. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals."}
                 </p>
 
                 {/* Hero Action Buttons */}

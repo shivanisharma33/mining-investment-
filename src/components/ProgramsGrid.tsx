@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default function ProgramsGrid() {
-  const { t } = useLanguage();
+  const { t, isFr } = useLanguage();
   const router = useRouter();
 
   const handleCardClick = (e: React.MouseEvent, link: string) => {
@@ -41,7 +41,7 @@ export default function ProgramsGrid() {
     {
       id: "education",
       category: t("prog-edu-cat", "E D U C A T I O N"),
-      title: t("prog-edu-title", "Student Sponsorship Program"),
+      title: t("prog-edu-title", "THE Student Partnership Program"),
       description: t(
         "prog-edu-desc",
         "Offering a one-of-a-kind exposure to the mining industry for up to 50 university and college students passionate about geology, finance and engineering."
@@ -59,7 +59,7 @@ export default function ProgramsGrid() {
       title: t("prog-lead-title", "SHE-Co Initiative"),
       description: t(
         "prog-lead-desc",
-        "Fostering industry-wide progress through ESG innovation and diversity, highlighting the achievements of women in the global mining sector."
+        "THE Event's SHE-Co initiative 2026 donated a portion of the conference proceeds to charities or community groups that fund start-ups, further education, or offer other worthwhile programs to assist people, particularly women and children. This year's charitable beneficiary was Moisson Rive-Sud, a large Quebec based food security charitable organization. Led this year by added private donations from Vior Gold's Mathieu Savard and Osisko Development's Sean Roosen, the program continues to encourage reach out and industry concern for people, as there is no part of life or the economy that is not connected somehow to the mining industry. Each year, a mining leader selects the charity or program who receives the donations, and in 2027 Mathieu Savard will be choosing the person who will select the group to receive the charitable/community initiative funds."
       ),
       cta: t("prog-lead-cta", "LEARN MORE"),
       link: "/sheco",
@@ -83,6 +83,36 @@ export default function ProgramsGrid() {
       imageOnLeft: false,
     },
   ];
+
+  function ProgramDescription({ text, isFr }: { text: string; isFr: boolean }) {
+    const [expanded, setExpanded] = useState(false);
+    const threshold = 180;
+    const isLong = text.length > threshold;
+
+    if (!isLong) {
+      return (
+        <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
+          {text}
+        </p>
+      );
+    }
+
+    return (
+      <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
+        {expanded ? text : `${text.slice(0, threshold).trim()}... `}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setExpanded((prev) => !prev);
+          }}
+          className="text-[#C6112F] hover:text-[#9e0d25] font-bold text-xs uppercase tracking-wider underline underline-offset-2 ml-1 cursor-pointer transition-colors"
+        >
+          {expanded ? (isFr ? "Lire moins" : "Read Less") : (isFr ? "Lire plus" : "Read More")}
+        </button>
+      </p>
+    );
+  }
 
   return (
     <section className="relative w-full bg-white dark:bg-[#090d16] py-12 sm:py-14 md:py-16 overflow-hidden transition-colors duration-300">
@@ -140,9 +170,7 @@ export default function ProgramsGrid() {
                       {item.title}
                     </h3>
                     <div className="w-12 group-hover:w-20 h-[2.5px] bg-[#C6112F] rounded-full mb-3 transition-all duration-300" />
-                    <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
-                      {item.description}
-                    </p>
+                    <ProgramDescription text={item.description} isFr={isFr} />
                   </div>
 
                   {/* Red Text Link / CTA with Arrow */}
@@ -195,9 +223,7 @@ export default function ProgramsGrid() {
                       {item.title}
                     </h3>
                     <div className="w-12 group-hover:w-20 h-[2.5px] bg-[#C6112F] rounded-full mb-3 transition-all duration-300" />
-                    <p className="text-neutral-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed font-medium mb-4 max-w-[480px]">
-                      {item.description}
-                    </p>
+                    <ProgramDescription text={item.description} isFr={isFr} />
                   </div>
 
                   {/* Red Text Link / CTA with Arrow */}

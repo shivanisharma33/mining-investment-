@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StatsAndGlimpse from "@/components/StatsAndGlimpse";
 import ProgramsGrid from "@/components/ProgramsGrid";
+import SnapshotReportSection from "@/components/SnapshotReportSection";
 import FeaturedEventCountdown from "@/components/FeaturedEventCountdown";
 import FeaturedPartners from "@/components/FeaturedPartners";
 import EventHighlightsMedia from "@/components/EventHighlightsMedia";
@@ -18,6 +19,7 @@ export default function Home() {
         <FeaturedEventCountdown />
         <StatsAndGlimpse />
         <ProgramsGrid />
+        <SnapshotReportSection />
         <EventHighlightsMedia />
         <GetInTouchCTA />
         <Footer />
@@ -25,13 +27,3 @@ export default function Home() {
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-

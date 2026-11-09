@@ -373,17 +373,24 @@ export default function PastEditionsPage() {
                 })}
             </div>
 
-            {/* Featured Snapshot Report Card (Requirement 30) */}
+            {/* Featured Snapshot Report Card (Official Event Publication) */}
             <div className="bg-gradient-to-r from-[#0f1117] via-[#1a1f2c] to-[#0f1117] text-white rounded-3xl p-8 sm:p-12 border border-neutral-800 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="max-w-2xl">
                 <span className="text-[#ff4d6d] text-xs font-extrabold tracking-widest uppercase mb-2 block">
-                  OFFICIAL EVENT PUBLICATION
+                  {isFr ? "PUBLICATION OFFICIELLE DE L'ÉVÉNEMENT" : "OFFICIAL EVENT PUBLICATION"}
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black mb-3">
                   THE Snapshot Report
                 </h3>
-                <p className="text-neutral-300 text-xs sm:text-sm font-light leading-relaxed mb-4">
-                  Read the official FlippingBook digital report featuring executive interviews, conference highlights, photo galleries and market statistics.
+                <p className="text-neutral-200 text-xs sm:text-sm font-medium leading-relaxed mb-2">
+                  {isFr
+                    ? "Produit par Atrium, le Rapport SnapShot met en lumière les entreprises participantes pour les commanditaires et investisseurs présents."
+                    : "Produced by Atrium, THE Snapshot Report highlights participating companies for the sponsors and investors attending."}
+                </p>
+                <p className="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed mb-4">
+                  {isFr
+                    ? "Lisez le rapport numérique officiel FlippingBook présentant des entrevues de dirigeants, les faits saillants de la conférence, des galeries photos et des statistiques du marché."
+                    : "Read the official FlippingBook digital report featuring executive interviews, conference highlights, photo galleries and market statistics."}
                 </p>
               </div>
 
@@ -393,7 +400,7 @@ export default function PastEditionsPage() {
                 rel="noopener noreferrer"
                 className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-wider uppercase transition-all shadow-lg hover:scale-105 shrink-0 inline-flex items-center gap-3"
               >
-                <span>Read Snapshot Report ↗</span>
+                <span>{isFr ? "Lire le Rapport SnapShot ↗" : "Read Snapshot Report ↗"}</span>
               </a>
             </div>
           </div>

@@ -156,7 +156,7 @@ export default function SheCoPage() {
             <div className="bg-gradient-to-r from-neutral-900 via-[#161c2b] to-[#0f1420] text-white p-8 sm:p-12 rounded-3xl border border-neutral-800 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-96 h-96 bg-[#C6112F]/10 blur-[100px] pointer-events-none rounded-full" />
 
-              <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+              <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-8">
                 {/* SHE-Co Logo Card */}
                 <div className="w-full md:w-auto max-w-[280px] sm:max-w-[320px] p-5 sm:p-6 bg-white rounded-2xl border border-white/30 shadow-2xl shrink-0">
                   <img
@@ -170,10 +170,25 @@ export default function SheCoPage() {
                   <span className="text-[#ff4d6d] text-xs font-black tracking-[0.25em] uppercase block">
                     {isFr ? "À PROPOS DE L'INITIATIVE SHE-CO" : "WHAT SHE-CO IS ABOUT"}
                   </span>
-                  <p className="text-base sm:text-xl font-medium leading-relaxed text-neutral-200">
+                  <p className="text-base sm:text-lg font-medium leading-relaxed text-neutral-200">
                     {isFr
                       ? "« Chaque année, une portion des bénéfices de L'Événement est versée à des groupes à but non lucratif et caritatifs qualifiés. Les dons seront axés sur le soutien aux individus, groupes, institutions et/ou projets communautaires apportant une contribution positive dans la vie des gens. »"
                       : "“Each year a portion of THE Event proceeds are donated to qualified non-profit and charitable groups. Donations will be focused on support to individuals, groups, institutions and/or community projects making a positive difference in the lives of people.”"}
+                  </p>
+                  <p className="text-sm sm:text-base font-normal leading-relaxed text-neutral-300">
+                    {isFr
+                      ? "L'initiative She-Co de THE Event est notre façon de continuer à faire une différence positive dans diverses communautés, reconnaissant que les sociétés minières opèrent partout et que l'industrie minière touche presque tous les aspects de la vie d'une manière ou d'une autre."
+                      : "THE Event’s She-Co Initiative is our way to continue making a positive difference in various communities, recognizing that mining companies operate everywhere and that mining touches almost every aspect of life in some way."}
+                  </p>
+                  <p className="text-sm sm:text-base font-normal leading-relaxed text-neutral-300">
+                    {isFr
+                      ? "Chaque année, un nouveau PDG est sélectionné pour choisir une cause, une œuvre caritative ou un programme communautaire significatif, où les bénéfices de THE Event et d'autres dons peuvent faire une réelle différence dans le monde concret."
+                      : "Each year, a new CEO is selected to choose a meaningful cause, charity, or community program, where proceeds from THE Event and other donations can make real-world differences."}
+                  </p>
+                  <p className="text-sm sm:text-base font-normal leading-relaxed text-neutral-300">
+                    {isFr
+                      ? "Cette année, Mathieu Savard, président et chef de la direction de Corporation Vior Gold, a choisi Moisson Rive-Sud, une banque alimentaire sans but lucratif desservant Longueuil (Québec) et les régions avoisinantes. L'objectif principal de la banque alimentaire est de réduire l'insécurité alimentaire parmi les résidents locaux."
+                      : "This year, Mathieu Savard, President and CEO of Vior Gold Corporation, selected Moisson Rive-Sud, a non-profit food bank serving Longueil, Quebec and nearby areas. The food bank's primary focus is to reduce food insecurity among the local residents."}
                   </p>
                 </div>
               </div>

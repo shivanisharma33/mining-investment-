@@ -87,7 +87,7 @@ export default function StatsAndGlimpse() {
             <div className="w-16 group-hover:w-24 h-[3.5px] heading-underline rounded-full mb-6" />
 
             <p className="text-neutral-800 dark:text-slate-200 text-base sm:text-lg md:text-[19px] lg:text-xl leading-relaxed sm:leading-[1.7] mb-8 font-normal sm:font-medium">
-              {t("glimpse-desc", "THE Mining Investment Event (THE Event) is an exclusive, invitation-only conference centered on mining investments. THE Event brings together investors, mining companies, supply chain partners, governments and industry experts. THE Event promotes idea exchange and discussions in a private environment, fostering open dialogue on geopolitics, trade and investment.")}
+              {t("glimpse-desc", "THE Mining Investment Event (“THE Event”) is an exclusive, invitation only conference recognized as Canada’s Only Global Tier 1, Mining Investment Conference.  Held annually in Québec City, THE Event has worked with our sponsor partners since 2022 to bring together investors, issuers, governments, supply chain partners and industry experts in a private setting.  Our goal is to bring attention to the global mining industry via targeted investment meetings, presentations and open dialogue.")}
             </p>
 
 

@@ -6,10 +6,9 @@ import GetInTouchCTA from "@/components/GetInTouchCTA";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
-
 /* ───────── Quick Facts Data ───────── */
 const quickFacts = [
-  "Canada's Only Tier I Global Mining Investment Conference",
+  "Canada’s Only Tier 1 Global Mining Investment Conference©",
   "Held annually in Québec City, Canada",
   "200+ participating mining companies",
   "Invitation only — walk-ins not accepted",
@@ -18,7 +17,7 @@ const quickFacts = [
 ];
 
 const quickFactsFr = [
-  "La seule conférence mondiale de niveau I sur l'investissement minier au Canada",
+  "La seule conférence mondiale de niveau 1 sur l'investissement minier au Canada©",
   "Se tient annuellement à Québec, Canada",
   "200+ sociétés minières participantes",
   "Sur invitation uniquement — les visiteurs sans invitation ne sont pas acceptés",
@@ -35,7 +34,7 @@ const features = [
       </svg>
     ),
     titleKey: "about-feat1-title",
-    titleDefault: "Tier I Investment Conference",
+    titleDefault: "Tier 1 Investment Conference",
     descKey: "about-feat1-desc",
     descDefault:
       "An invitation-only gathering independently sponsored by various financial and industry groups as well as domestic and international governments.",
@@ -62,14 +61,15 @@ const features = [
     titleDefault: "Sustainability",
     descKey: "about-feat3-desc",
     descDefault:
-      "THE Event is committed to promoting diversity, equality, and sustainability in the mining industry through education and innovation, through its unique Student Partnership Program and SHE-Co Initiatives.",
+      "THE Event is committed to promoting diversity, equality and sustainability in the mining industry through education and innovation, supported by its unique Student Partnership Program and THE SHE-Co Initiative.",
   },
 ];
 
 export default function AboutPage() {
   const { t, lang } = useLanguage();
+  const isFr = lang === "FR";
 
-  const facts = lang === "FR" ? quickFactsFr : quickFacts;
+  const facts = isFr ? quickFactsFr : quickFacts;
 
   return (
     <>
@@ -118,7 +118,7 @@ export default function AboutPage() {
               {/* Left Column: Lead Content */}
               <div className="flex flex-col">
                 <p className="text-base sm:text-lg md:text-xl font-normal text-neutral-800 dark:text-zinc-200 leading-relaxed mb-6">
-                  {lang === "FR" ? (
+                  {isFr ? (
                     <>
                       <strong className="font-extrabold text-neutral-900 dark:text-white">
                         THE Mining Investment Event—La seule conférence mondiale de niveau 1 sur l&apos;investissement minier au Canada© se tient annuellement à Québec, Canada.
@@ -140,6 +140,13 @@ export default function AboutPage() {
                     "about-body-2",
                     "THE Event is a founding member of International Mining Week (“IMW”), also taking place in Quebec City. IMW promotes other industry-focused conferences and activities that unite global mining companies, related businesses, supply chain experts, investors and government officials in one location for discussions and collaborative meetings across the industry."
                   )}
+                  {" "}
+                  <a
+                    href="#international-mining-week"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#C6112F] hover:text-[#a80d26] dark:text-[#ff6b81] dark:hover:text-white uppercase tracking-wider transition-colors ml-1"
+                  >
+                    <span>{isFr ? "Découvrir l'IMW ↓" : "Explore IMW Section ↓"}</span>
+                  </a>
                 </p>
 
                 {/* Quote Section Right Below */}
@@ -250,7 +257,7 @@ export default function AboutPage() {
                       </div>
                       <div className="min-w-0 flex flex-col">
                         <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400">
-                          {lang === "FR" ? "Téléphone" : "Phone"}
+                          {isFr ? "Téléphone" : "Phone"}
                         </span>
                         <span className="text-lg sm:text-xl font-bold text-white group-hover/contact:text-[#ff6b81] transition-colors whitespace-nowrap">
                           +1-905-515-3508
@@ -263,7 +270,265 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        {/* ═══════════════ SECTION 3: WHAT MAKES US DIFFERENT ═══════════════ */}
+
+        {/* ═══════════════ SECTION 3: INTERNATIONAL MINING WEEK (NEW SECTION) ═══════════════ */}
+        <section
+          id="international-mining-week"
+          className="relative w-full bg-[#f8fafc] dark:bg-[#0c0f17] py-16 sm:py-20 md:py-24 border-t border-b border-neutral-200/90 dark:border-zinc-800 transition-colors duration-300"
+        >
+          {/* Subtle Background Accent Wash */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#C6112F]/[0.03] via-transparent to-transparent pointer-events-none" />
+
+          <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
+            {/* Section Header */}
+            <div className="max-w-3xl mb-12 sm:mb-16">
+              <span className="text-[#C6112F] text-xs sm:text-sm font-bold tracking-[0.22em] uppercase block mb-3">
+                {isFr ? "INITIATIVE FONDATRICE & PARTENARIATS" : "FOUNDING INITIATIVE & PARTNERSHIPS"}
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#1a1f2c] dark:text-white tracking-tight leading-tight mb-4">
+                International Mining Week{" "}
+                <span className="text-[#C6112F]">(“IMW”)</span>
+              </h2>
+              <div className="w-20 h-[3px] bg-[#C6112F] rounded-full mb-5" />
+              <p className="text-base sm:text-lg text-neutral-700 dark:text-zinc-300 leading-relaxed font-normal">
+                {isFr
+                  ? "THE Event est un membre fondateur de la Semaine Internationale de la Mine (« IMW »), se déroulant également à Québec. L'IMW promeut d'autres conférences et activités axées sur l'industrie qui rassemblent des sociétés minières mondiales, des entreprises connexes, des experts de la chaîne d'approvisionnement, des investisseurs et des représentants gouvernementaux en un même lieu pour des discussions et réunions collaboratives dans l'ensemble du secteur."
+                  : "THE Event is a founding member of International Mining Week (“IMW”), also taking place in Quebec City. IMW promotes other industry-focused conferences and activities that unite global mining companies, related businesses, supply chain experts, investors and government officials in one location for discussions and collaborative meetings across the industry."}
+              </p>
+            </div>
+
+            {/* Launch & Vision Overview Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              {/* Card 1: Launch & Backing */}
+              <div className="bg-white dark:bg-[#121622] rounded-2xl p-7 sm:p-9 border border-neutral-200/90 dark:border-zinc-800 shadow-sm flex flex-col justify-between hover:border-[#C6112F]/40 transition-all duration-300">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-10 h-10 rounded-xl bg-[#C6112F]/10 dark:bg-[#C6112F]/20 text-[#C6112F] dark:text-[#ff6b81] flex items-center justify-center shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m0 0l-4.5-4.5m4.5 4.5l-4.5-4.5" />
+                      </svg>
+                    </span>
+                    <h3 className="text-xl font-bold text-[#1a1f2c] dark:text-white tracking-tight">
+                      {isFr ? "Le Lancement & Les Partenaires Clés" : "The Launch & Strategic Support"}
+                    </h3>
+                  </div>
+
+                  <p className="text-neutral-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    {isFr ? (
+                      <>
+                        En octobre 2026, <strong>THE Event</strong> a lancé la « Semaine Internationale de la Mine » avec le soutien de l&apos;<strong>International Trade and Forfaiting Association (ITFA)</strong>, qui représente les droits et intérêts des banques, institutions financières et prestataires de services impliqués dans le risque commercial et l&apos;origination et distribution d&apos;actifs, et de l&apos;<strong>Association minière du Québec (AMQ)</strong> dont font partie certains des plus grands émetteurs miniers internationaux et fournisseurs adjacents tels que <strong>Rio Tinto, Glencore, Hecla Mining Company, IAMGOLD Corporation et Agnico Eagle</strong>.
+                      </>
+                    ) : (
+                      <>
+                        In October, 2026, <strong>THE Event</strong> launched “International Mining Week” with the support of the <strong>International Trade and Forfaiting Association (ITFA)</strong>, who represent the rights and interests of banks, financial institutions and service providers involved in trade risk and asset origination and distribution, and the <strong>Association Minière du Québec (AMQ)</strong> who count as members some of the largest international mining issuers and adjacent suppliers such as, <strong>Rio Tinto, Glencore, Hecla Mining Company, IAMGOLD Corporation and Agnico Eagle</strong>.
+                      </>
+                    )}
+                  </p>
+                </div>
+
+                {/* Key Issuer Badges */}
+                <div className="pt-4 border-t border-neutral-100 dark:border-zinc-800">
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-zinc-400 mb-2">
+                    {isFr ? "Membres Émetteurs & Fournisseurs Représentés" : "Represented Issuers & Adjacent Suppliers"}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {["Rio Tinto", "Glencore", "Hecla Mining Company", "IAMGOLD Corporation", "Agnico Eagle"].map((co, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-1 text-xs font-semibold rounded-md bg-neutral-100 dark:bg-zinc-800 text-neutral-800 dark:text-zinc-200 border border-neutral-200 dark:border-zinc-700"
+                      >
+                        {co}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: Vision & Coalition Expansion */}
+              <div className="bg-white dark:bg-[#121622] rounded-2xl p-7 sm:p-9 border border-neutral-200/90 dark:border-zinc-800 shadow-sm flex flex-col justify-between hover:border-[#C6112F]/40 transition-all duration-300">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="w-10 h-10 rounded-xl bg-[#C6112F]/10 dark:bg-[#C6112F]/20 text-[#C6112F] dark:text-[#ff6b81] flex items-center justify-center shrink-0">
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </span>
+                    <h3 className="text-xl font-bold text-[#1a1f2c] dark:text-white tracking-tight">
+                      {isFr ? "La Vision & L'Élargissement 2027" : "The Vision & 2027 Expansion"}
+                    </h3>
+                  </div>
+
+                  <p className="text-neutral-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    {isFr ? (
+                      <>
+                        La vision de la Semaine Internationale de la Mine est de créer et développer des partenariats collaboratifs qui rassembleront des sociétés minières internationales, des entreprises adjacentes au secteur minier, des experts de la chaîne d&apos;approvisionnement, des investisseurs et des entités gouvernementales en un même lieu en parallèle de <strong>THE Event</strong>.
+                      </>
+                    ) : (
+                      <>
+                        The vision for International Mining Week is to create and grow collaborative partnerships that will bring together international mining companies, mining adjacent companies, supply chain expertise, investors and government entities in one location concurrent to <strong>THE Event</strong>.
+                      </>
+                    )}
+                  </p>
+                </div>
+
+                {/* 2027 Partner Addition Callout */}
+                <div className="p-4 rounded-xl bg-[#fff5f6] dark:bg-[#C6112F]/10 border border-[#C6112F]/20 dark:border-[#C6112F]/30">
+                  <div className="flex items-start gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#C6112F] mt-2 shrink-0" />
+                    <p className="text-xs sm:text-sm font-semibold text-neutral-900 dark:text-zinc-100 leading-relaxed">
+                      {isFr ? (
+                        <>
+                          <strong className="text-[#C6112F] dark:text-[#ff6b81]">Partenariat 2027 :</strong> L&apos;<strong>Association de l’exploration minière du Québec (AEMQ)</strong> rejoint le partenariat de la Semaine Internationale de la Mine en 2027, dont les membres comprennent de nombreuses sociétés minières et entreprises adjacentes participantes à THE Event.
+                        </>
+                      ) : (
+                        <>
+                          <strong className="text-[#C6112F] dark:text-[#ff6b81]">2027 Partnership:</strong> Joining the International Mining Week partnership in 2027 is the <strong>Association de l’exploration minière du Québec (AEMQ)</strong>, whose membership includes many of THE Event’s participating mining and mining adjacent companies.
+                        </>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* In-Depth Editions Grid: 2026 Recap vs 2027 Outlook */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              {/* International Mining Week 2026 Recap */}
+              <div className="relative bg-white dark:bg-[#121622] rounded-2xl p-7 sm:p-9 border border-neutral-200/90 dark:border-zinc-800 shadow-sm flex flex-col justify-between hover:border-[#C6112F]/40 transition-all duration-300">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-zinc-800 text-[#C6112F] dark:text-[#ff6b81] text-xs font-black tracking-wider uppercase mb-4">
+                    <span>{isFr ? "Édition Inaugurale 2026" : "2026 Inaugural Edition"}</span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-4">
+                    {isFr ? "Symposium des Entreprises Autochtones & Sessions Clés" : "Indigenous Business Symposium & Key Plenaries"}
+                  </h3>
+
+                  <p className="text-neutral-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    {isFr ? (
+                      <>
+                        La Semaine Internationale de la Mine 2026 a mis en avant un <strong>Symposium des entreprises autochtones</strong>, abordant des thématiques telles que <em>« La réconciliation par la propriété »</em> animée par <strong>Madame Yvonne Jones</strong>, ancienne députée du Labrador. Le <strong>ministre Jagrup Brar</strong>, ministre des Mines et des Minéraux critiques de la Colombie-Britannique, a prononcé le discours d&apos;ouverture des panels.
+                      </>
+                    ) : (
+                      <>
+                        International Mining Week 2026 featured an <strong>Indigenous Business Symposium</strong>, covering topics such as <em>“Reconciliation through Ownership”</em> hosted by <strong>Madame Yvonne Jones</strong>, the former Member of Parliament from Labrador. <strong>Minister Jagrup Brar</strong>, British Columbia Minister of Mines and Critical Minerals was the opening keynote for the panels.
+                      </>
+                    )}
+                  </p>
+
+                  {/* Panel participants list */}
+                  <div className="mb-6 p-4 rounded-xl bg-neutral-50 dark:bg-[#161b29] border border-neutral-200/80 dark:border-zinc-800">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-zinc-400 block mb-2.5">
+                      {isFr ? "Intervenants & Panélistes Notables" : "Notable Panel Participants"}
+                    </span>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-neutral-800 dark:text-zinc-200 font-medium">
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0" />
+                        <span>Sebastian Labelle (Canada Dev Agency)</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0" />
+                        <span>Brendan Bell (CEO, West Kitikmeot)</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0" />
+                        <span>Ehren Cory (CEO, Canada Infra Bank)</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#C6112F] shrink-0" />
+                        <span>The Hon. Sandy Silver (Former Premier, Yukon)</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Plenary topics */}
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-500 dark:text-zinc-400 block mb-2">
+                      {isFr ? "Thématiques des Panels 2026" : "2026 Panel Focus Areas"}
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {[
+                        isFr ? "Investissement minier japonais" : "Japanese Mining Investment",
+                        isFr ? "Enjeux climatiques & géopolitiques" : "Geopolitical Climate Issues for Investment",
+                        isFr ? "Petits réacteurs modulaires (PRM)" : "Small Modular Reactors for Remote Mining",
+                      ].map((topic, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 text-xs font-semibold rounded-lg bg-[#C6112F]/10 text-[#C6112F] dark:bg-[#C6112F]/20 dark:text-[#ff6b81]"
+                        >
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* International Mining Week 2027 & Beyond */}
+              <div className="relative bg-white dark:bg-[#121622] rounded-2xl p-7 sm:p-9 border border-neutral-200/90 dark:border-zinc-800 shadow-sm flex flex-col justify-between hover:border-[#C6112F]/40 transition-all duration-300">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C6112F]/10 text-[#C6112F] dark:bg-[#C6112F]/20 dark:text-[#ff6b81] text-xs font-black tracking-wider uppercase mb-4">
+                    <span>{isFr ? "Vision 2027 & Au-Delà" : "2027 & Beyond Outlook"}</span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-black text-[#1a1f2c] dark:text-white tracking-tight mb-4">
+                    {isFr ? "Corridors Stratégiques, Marchés Émergents & Ring of Fire" : "Strategic Corridors, Emerging Markets & Ring of Fire"}
+                  </h3>
+
+                  <p className="text-neutral-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    {isFr ? (
+                      <>
+                        La Semaine Internationale de la Mine 2027 continuera d&apos;offrir à notre public des sujets stimulants, notamment des panels pour discuter de l&apos;importance d&apos;acheminer les matières premières minières vers les marchés via les ports maritimes et le développement d&apos;un <strong>corridor maritime atlantique</strong>. Une session sur les marchés émergents sera également proposée par le <strong>gouvernement pakistanais</strong>, ainsi qu&apos;un panel sur le <strong>Ring of Fire</strong> consacré à l&apos;avenir du développement dans cette région de l&apos;Ontario.
+                      </>
+                    ) : (
+                      <>
+                        International Mining Week 2027 will continue to bring to our audience interesting topics including panels to discuss the importance of bringing mining commodities to market using the sea ports and the development of an <strong>Atlantic shipping corridor</strong>. There will also be an emerging market session put on by the <strong>Pakistani government</strong> and a <strong>Ring of Fire</strong> panel to discuss the future of development in that area of Ontario.
+                      </>
+                    )}
+                  </p>
+
+                  <p className="text-neutral-700 dark:text-zinc-300 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+                    {isFr ? (
+                      <>
+                        Ces séances plénières et d&apos;autres mettront en lumière les réalités géopolitiques actuelles et rappelleront l&apos;importance d&apos;investissements et de politiques adéquats pour garantir la durabilité et la stabilité du secteur minier.
+                      </>
+                    ) : (
+                      <>
+                        These and other plenary sessions will underline current geopolitical realities and reflect on the importance of proper investment and policy to secure sustainability and stability in the mining industry.
+                      </>
+                    )}
+                  </p>
+
+                  {/* Open Invitation Banner */}
+                  <div className="p-4 rounded-xl bg-gradient-to-r from-neutral-900 to-[#1a1f2c] text-white shadow-md">
+                    <div className="flex items-start gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-[#C6112F] flex items-center justify-center shrink-0 mt-0.5 text-white">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                      </span>
+                      <div>
+                        <span className="text-xs font-black uppercase tracking-wider text-[#ff6b81] block mb-1">
+                          {isFr ? "Appel aux Partenaires 2027" : "Join the 2027 Initiative"}
+                        </span>
+                        <p className="text-xs sm:text-sm font-medium text-neutral-200 leading-relaxed">
+                          {isFr
+                            ? "Nous invitons d'autres entités gouvernementales, entreprises, associations représentatives, institutions financières, groupes communautaires miniers et juridictions à se joindre à cette initiative pour 2027 et au-delà."
+                            : "We welcome other government entities, companies, representative associations, financial institutions, mining community groups and jurisdictions to join this initiative for 2027 and beyond."}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </section>
+
+        {/* ═══════════════ SECTION 4: WHAT MAKES US DIFFERENT ═══════════════ */}
         <section className="relative w-full bg-[#f4f7fa] dark:bg-[#09090b] py-16 sm:py-20 md:py-24 overflow-hidden transition-colors duration-300">
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             {/* Section Header */}

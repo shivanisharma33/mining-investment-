@@ -133,7 +133,7 @@ const programsDropdown = [
   },
   {
     titleKey: "nav-snapshot-report",
-    titleDefault: "Snapshot Report",
+    titleDefault: "THE Snapshot Report",
     descKey: "nav-snapshot-report-desc",
     descDefault: "Read the official event snapshot report",
     href: "https://online.flippingbook.com/view/213558062/",
@@ -250,9 +250,9 @@ export default function Navbar() {
           : "h-[86px] sm:h-[100px] md:h-[110px] lg:h-[118px] xl:h-[124px]"
       }`}
     >
-      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-4 xl:px-6 2xl:px-[40px] h-full flex items-center justify-between">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-6 xl:px-8 2xl:px-[40px] h-full flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center group py-0.5 sm:py-1 mr-2 sm:mr-3 lg:mr-3 xl:mr-4 2xl:mr-8">
+        <Link href="/" className="flex-shrink-0 flex items-center group py-0.5 sm:py-1 mr-2 sm:mr-3 lg:mr-3 xl:mr-5 2xl:mr-8">
           <Image
             src="/MainPageLogo.webp"
             alt="THE Mining Investment Event"
@@ -261,14 +261,14 @@ export default function Navbar() {
             priority
             className={`object-contain transition-all duration-300 w-auto group-hover:scale-105 dark:brightness-110 drop-shadow-md ${
               scrolled
-                ? "h-[64px] sm:h-[76px] md:h-[82px] lg:h-[88px] xl:h-[92px] 2xl:h-[96px]"
-                : "h-[78px] sm:h-[92px] md:h-[102px] lg:h-[110px] xl:h-[116px] 2xl:h-[120px]"
+                ? "h-[64px] sm:h-[76px] md:h-[82px] lg:h-[80px] xl:h-[84px] 2xl:h-[96px]"
+                : "h-[78px] sm:h-[92px] md:h-[102px] lg:h-[98px] xl:h-[104px] 2xl:h-[120px]"
             }`}
           />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-1.5 lg:gap-2 xl:gap-2.5 2xl:gap-6 shrink-0">
+        <nav className="hidden lg:flex items-center lg:gap-3.5 xl:gap-5 2xl:gap-6 shrink-0">
           {visibleNavLinks.map((link) => (
             <div
               key={link.name}
@@ -289,11 +289,11 @@ export default function Navbar() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative py-1 text-[11px] lg:text-[11px] xl:text-[11.5px] 2xl:text-[16px] font-extrabold tracking-tight 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 2xl:gap-1.5 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F] shrink-0"
+                  className="relative py-1 text-[11px] lg:text-[13px] xl:text-[14.5px] 2xl:text-[16px] font-extrabold tracking-tight lg:tracking-normal xl:tracking-wide 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 xl:gap-1.5 2xl:gap-1.5 text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F] shrink-0"
                 >
                   <span className="whitespace-nowrap">{link.name}</span>
                   <svg
-                    className="w-3 h-3 2xl:w-3.5 2xl:h-3.5 text-neutral-400 group-hover:text-[#C6112F] transition-colors shrink-0"
+                    className="w-3 h-3 lg:w-3.5 lg:h-3.5 2xl:w-3.5 2xl:h-3.5 text-neutral-400 group-hover:text-[#C6112F] transition-colors shrink-0"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2.5"
@@ -301,18 +301,18 @@ export default function Navbar() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                   </svg>
-                  <span className="absolute bottom-0 left-0 h-[2px] 2xl:h-[2.5px] bg-[#C6112F] transition-all duration-300 w-0 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 h-[2px] xl:h-[2.5px] 2xl:h-[2.5px] bg-[#C6112F] transition-all duration-300 w-0 group-hover:w-full" />
                 </a>
               ) : (
                 <Link
                   href={link.href}
-                  className={`relative py-1 text-[11px] lg:text-[11px] xl:text-[11.5px] 2xl:text-[16px] font-extrabold tracking-tight 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 2xl:gap-1.5 shrink-0 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
+                  className={`relative py-1 text-[11px] lg:text-[13px] xl:text-[14.5px] 2xl:text-[16px] font-extrabold tracking-tight lg:tracking-normal xl:tracking-wide 2xl:tracking-wider whitespace-nowrap uppercase transition-colors duration-200 group inline-flex items-center gap-1 xl:gap-1.5 2xl:gap-1.5 shrink-0 ${isLinkActive(link.href) ? "text-[#C6112F]" : "text-neutral-900 dark:text-slate-100 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                     }`}
                 >
                   <span className="whitespace-nowrap">{link.name}</span>
                   {link.hasDropdown && (
                     <svg
-                      className={`w-3 h-3 2xl:w-3.5 2xl:h-3.5 transition-transform duration-200 ${(link.dropdownType === "about" && aboutOpen) ||
+                      className={`w-3 h-3 lg:w-3.5 lg:h-3.5 2xl:w-3.5 2xl:h-3.5 transition-transform duration-200 ${(link.dropdownType === "about" && aboutOpen) ||
                         (link.dropdownType === "programs" && programsOpen) ||
                         (link.dropdownType === "past-years" && pastYearsOpen)
                         ? "rotate-180 text-[#C6112F]"
@@ -328,7 +328,7 @@ export default function Navbar() {
                   )}
                   {/* Animated Underline Effect */}
                   <span
-                    className={`absolute bottom-0 left-0 h-[2px] 2xl:h-[2.5px] bg-[#C6112F] transition-all duration-300 ${isLinkActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
+                    className={`absolute bottom-0 left-0 h-[2px] xl:h-[2.5px] 2xl:h-[2.5px] bg-[#C6112F] transition-all duration-300 ${isLinkActive(link.href) ? "w-full" : "w-0 group-hover:w-full"
                       }`}
                   />
                 </Link>
@@ -506,14 +506,14 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop & Action Buttons Container */}
-        <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-1.5 xl:gap-2 2xl:gap-3.5 shrink-0 ml-2 lg:ml-2 xl:ml-3 2xl:ml-6">
+        <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2 xl:gap-2.5 2xl:gap-3.5 shrink-0 ml-2 lg:ml-3 xl:ml-4 2xl:ml-6">
           {/* The Noble Mining Investment Conference Button - only visible on xl+ to keep mobile/tablet navbar uncrowded */}
           <a
             href="https://www.thenoblemininginvestmentconference.com/"
             target="_blank"
             rel="noopener noreferrer"
             title="THE NOBLE MINING INVESTMENT CONFERENCE"
-            className="hidden xl:inline-flex px-2 py-1.5 xl:px-2.5 xl:py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white text-[9.5px] xl:text-[10px] 2xl:text-[12px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
+            className="hidden xl:inline-flex xl:px-3.5 xl:py-2 2xl:px-4 2xl:py-2.5 rounded-lg bg-neutral-900 hover:bg-[#C6112F] dark:bg-zinc-800 dark:hover:bg-[#C6112F] text-white xl:text-[11px] 2xl:text-[12px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
             <span className="hidden 2xl:inline">{t("nav-noble-btn", "THE NOBLE MINING INVESTMENT CONFERENCE")}</span>
             <span className="inline 2xl:hidden">NOBLE CONFERENCE</span>
@@ -525,7 +525,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             title={lang === "FR" ? "Semaine Internationale des Mines" : "International Mining Week"}
-            className="hidden xl:inline-flex px-2 py-1.5 xl:px-2.5 xl:py-1.5 2xl:px-4 2xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white text-[9.5px] xl:text-[10px] 2xl:text-[12px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
+            className="hidden xl:inline-flex xl:px-3.5 xl:py-2 2xl:px-4 2xl:py-2.5 rounded-lg bg-[#C6112F] hover:bg-[#a80d26] text-white xl:text-[11px] 2xl:text-[12px] font-extrabold tracking-wider uppercase items-center justify-center shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 shrink-0 cursor-pointer whitespace-nowrap"
           >
             <span className="hidden 2xl:inline">{t("nav-imw-btn", "International Mining Week")}</span>
             <span className="inline 2xl:hidden">{lang === "FR" ? "SEMAINE DES MINES" : "MINING WEEK"}</span>
@@ -533,14 +533,14 @@ export default function Navbar() {
 
           {/* English / French Language Switcher Button */}
           <div
-            className="inline-flex items-center p-0.5 sm:p-1 h-[30px] sm:h-[34px] lg:h-[32px] xl:h-[32px] 2xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm shadow-xs shrink-0"
+            className="inline-flex items-center p-0.5 sm:p-1 h-[30px] sm:h-[34px] lg:h-[32px] xl:h-[34px] 2xl:h-[36px] rounded-full border-2 border-[#C6112F] bg-white/70 dark:bg-slate-800/80 backdrop-blur-sm shadow-xs shrink-0"
             role="group"
             aria-label="Language selection"
           >
             <button
               type="button"
               onClick={() => setLang("EN")}
-              className={`px-2 sm:px-2.5 h-full rounded-full text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${lang === "EN"
+              className={`px-2 sm:px-2.5 xl:px-2.5 2xl:px-3 h-full rounded-full text-[10px] sm:text-[11px] xl:text-[11.5px] 2xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${lang === "EN"
                 ? "bg-[#C6112F] text-white shadow-xs"
                 : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                 }`}
@@ -552,7 +552,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setLang("FR")}
-              className={`px-2 sm:px-2.5 h-full rounded-full text-[10px] sm:text-[11px] xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${lang === "FR"
+              className={`px-2 sm:px-2.5 xl:px-2.5 2xl:px-3 h-full rounded-full text-[10px] sm:text-[11px] xl:text-[11.5px] 2xl:text-xs font-extrabold tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center ${lang === "FR"
                 ? "bg-[#C6112F] text-white shadow-xs"
                 : "text-neutral-700 dark:text-slate-300 hover:text-[#C6112F] dark:hover:text-[#C6112F]"
                 }`}
