@@ -76,7 +76,7 @@ export default function TravelPage() {
                   <h3 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white">
                     {t(
                       "travel-event-welcome",
-                      "Welcome to THE Mining Investment EVENT, taking place at the Centre des congrès de Québec (“QCC”)"
+                      "Welcome to THE Mining Investment EVENT, taking place Tuesday, June 1 to Thursday, June 3, 2027 at the Centre des congrès de Québec (“QCC”)"
                     )}
                   </h3>
                   <p className="text-neutral-700 dark:text-slate-300 text-sm sm:text-base font-medium leading-relaxed">
@@ -85,6 +85,16 @@ export default function TravelPage() {
                       "Welcome to the Centre des congrès de Québec, where elegance meets innovation. Nestled within the charming historic district of Old Quebec, this world-class facility seamlessly blends modern amenities with the rich tapestry of Quebecois culture."
                     )}
                   </p>
+
+                  {/* Important Block Code & Lodging Notice */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#C6112F]/10 dark:bg-[#C6112F]/15 border border-[#C6112F]/30 text-neutral-900 dark:text-white">
+                    <p className="text-xs sm:text-sm font-semibold text-neutral-800 dark:text-slate-200 leading-relaxed">
+                      {t(
+                        "travel-block-policy",
+                        "Discounted block rates available for registered participants only. Block Codes can only be received directly from THE Mining Investment Event after registration. Please book directly with partner hotels using our official codes. We do NOT use any third party booking agents."
+                      )}
+                    </p>
+                  </div>
 
                   <div className="pt-2 flex flex-wrap items-center gap-4">
                     <a
@@ -168,15 +178,15 @@ export default function TravelPage() {
               {/* HILTON HOTEL */}
               <div className="bg-white dark:bg-[#131b2e] border-2 border-neutral-200 dark:border-[#233049] hover:border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-md shrink-0">
-                      <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    </div>
-                    <span className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-neutral-700 dark:text-slate-300 text-[10px] font-black uppercase tracking-wider">
+                  <div className="w-full h-48 rounded-2xl overflow-hidden bg-neutral-900 mb-6 relative shrink-0 border border-neutral-200/80 dark:border-slate-700/80 shadow-inner group">
+                    <img
+                      src="/hotel-hilton-quebec.jpg"
+                      alt="Hilton Québec"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border border-white/20">
                       WALKING DISTANCE
-                    </span>
+                    </div>
                   </div>
 
                   <h3 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white mb-2">
@@ -211,16 +221,19 @@ export default function TravelPage() {
 
               {/* DELTA HOTEL (RECOMMENDED PARTNER HOTEL) */}
               <div className="bg-white dark:bg-[#131b2e] border-2 border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-[#C6112F] text-white text-[9.5px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl shadow-md">
+                <div className="absolute top-0 right-0 bg-[#C6112F] text-white text-[9.5px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-2xl shadow-md z-10">
                   RECOMMENDED PARTNER HOTEL
                 </div>
 
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-md shrink-0">
-                      <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
+                  <div className="w-full h-48 rounded-2xl overflow-hidden bg-neutral-900 mb-6 relative shrink-0 border border-neutral-200/80 dark:border-slate-700/80 shadow-inner group">
+                    <img
+                      src="/hotel-delta-quebec.jpg"
+                      alt="Delta Hotels by Marriott Québec"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#C6112F]/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border border-white/20">
+                      RECOMMENDED HOTEL
                     </div>
                   </div>
 
@@ -260,15 +273,15 @@ export default function TravelPage() {
               {/* FAIRMONT LE CHÂTEAU FRONTENAC */}
               <div className="bg-white dark:bg-[#131b2e] border-2 border-neutral-200 dark:border-[#233049] hover:border-[#C6112F] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#C6112F] text-white flex items-center justify-center shadow-md shrink-0">
-                      <svg className="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    </div>
-                    <span className="px-3 py-1 rounded-full bg-[#C6112F]/10 dark:bg-[#C6112F]/20 text-[#C6112F] dark:text-[#ff4d6d] border border-[#C6112F]/30 text-[10px] font-black uppercase tracking-wider">
+                  <div className="w-full h-48 rounded-2xl overflow-hidden bg-neutral-900 mb-6 relative shrink-0 border border-neutral-200/80 dark:border-slate-700/80 shadow-inner group">
+                    <img
+                      src="/hotel-fairmont-quebec.jpg"
+                      alt="Fairmont Le Château Frontenac"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3 bg-[#C6112F]/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border border-white/20">
                       HISTORIC LUXURY HOTEL
-                    </span>
+                    </div>
                   </div>
 
                   <h3 className="text-xl sm:text-2xl font-black text-neutral-900 dark:text-white mb-2">
@@ -336,7 +349,7 @@ export default function TravelPage() {
                   <p className="text-white text-base sm:text-lg md:text-xl font-bold leading-relaxed">
                     {t(
                       "travel-notice-1",
-                      "Discounted block rates available for registered participants only."
+                      "Discounted block rates available for registered participants only. Block Codes can only be received directly from THE Mining Investment Event after registration. Please book directly with partner hotels using our official codes. We do NOT use any third party booking agents."
                     )}
                   </p>
 

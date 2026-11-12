@@ -159,7 +159,7 @@ export default function StudentPage() {
       <main className="flex flex-col flex-grow w-full bg-[#fcfcfd] dark:bg-[#0c0d12] text-neutral-900 dark:text-neutral-100">
 
         {/* ═══════════════ 1. HERO SECTION ═══════════════ */}
-        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-28 sm:pt-32 md:pt-36 lg:pt-[152px] xl:pt-[160px] pb-10 sm:pb-12 md:pb-14 border-b border-neutral-800">
+        <section className="relative w-full bg-[#0b0f19] overflow-hidden text-white pt-24 sm:pt-28 md:pt-30 lg:pt-32 pb-6 sm:pb-8 border-b border-neutral-800">
           {/* Background Grid Pattern */}
           <div
             className="absolute inset-0 opacity-[0.05] pointer-events-none"
@@ -173,7 +173,7 @@ export default function StudentPage() {
 
           <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             {/* Breadcrumbs */}
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-neutral-400 mb-6">
+            <div className="flex items-center gap-2 text-xs font-medium text-neutral-400 mb-3 sm:mb-4">
               <a href="/" className="hover:text-white transition-colors">
                 {t("nav-home", "Home")}
               </a>
@@ -186,11 +186,11 @@ export default function StudentPage() {
             </div>
 
             {/* 2-Column Main Hero Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
               {/* Left Column - Content & Sponsors */}
               <div className="lg:col-span-7">
                 {/* Main Heading */}
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.08] mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-[42px] lg:text-5xl font-black tracking-tight leading-[1.1] mb-3 sm:mb-4">
                   {isFr ? (
                     <>
                       LE Programme de <span className="text-[#C6112F]">Partenariat Étudiant</span>
@@ -202,78 +202,77 @@ export default function StudentPage() {
                   )}
                 </h1>
 
-                <p className="text-neutral-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl mb-5">
+                <p className="text-neutral-300 text-sm sm:text-base font-normal leading-relaxed max-w-2xl mb-2.5 sm:mb-3">
                   {isFr
                     ? "Le Programme de partenariat étudiant vise à offrir une exposition unique à l'industrie minière grâce à la participation à THE Mining Investment Event (THE Event), la seule conférence mondiale de niveau 1 sur l'investissement minier au Canada, tenue à Québec. Cet événement annuel sert de carrefour pour les leaders de l'industrie et les investisseurs, offrant une plateforme d'échange de connaissances, de réseautage et d'apprentissage immersif. Le programme est désormais reconnu comme l'un des plus grands programmes de conférences entièrement financés au Canada."
                     : "THE Student Partnership Program aims to offer a one-of-a-kind exposure to the mining industry through participation in THE Mining Investment Event (THE Event), Canada’s only Tier 1 global mining investment conference, held in Quebec City. This annual event serves as a nexus for industry leaders and investors, providing a platform for knowledge exchange, networking and immersive learning. The Program is now recognized as one of the largest fully funded conference programs in Canada."}
                 </p>
 
-                <p className="text-neutral-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl mb-8">
+                <p className="text-neutral-300 text-sm sm:text-base font-normal leading-relaxed max-w-2xl mb-4 sm:mb-5">
                   {isFr
                     ? "Jusqu'à 50 étudiants universitaires ou collégiaux passionnés par la géologie, la finance, l'ingénierie ou des domaines connexes auront la chance d'assister à la conférence sans frais. Notre objectif est de favoriser l'apprentissage expérientiel en exposant les étudiants à des conférenciers principaux, des panels de l'industrie, des rencontres professionnelles, un concours d'études de cas et divers événements de réseautage. Grâce à ces voies, nous espérons insuffler un sentiment d'interconnexion mondiale au sein de l'industrie minière canadienne tout en investissant dans le développement de la prochaine génération de talents."
                     : "Up to 50 university or college students with a passion for geology, finance, engineering, or related fields will have the chance to attend the conference at no cost. Our goal is to foster experiential learning by exposing students to keynote speakers, industry panels, professional meet-and-greets, a case study competition and various networking events. Through these avenues, we hope to instill a sense of global interconnectedness within the Canadian mining industry while investing in the development of the next generation of talented individuals."}
                 </p>
 
                 {/* Hero Action Buttons */}
-                <div className="flex flex-wrap items-center gap-4 mb-10">
+                <div className="flex flex-wrap items-center gap-4 mb-5 sm:mb-6">
                   <button
                     onClick={scrollToApply}
                     type="button"
-                    className="px-8 py-4 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center gap-3 cursor-pointer"
+                    className="px-6 py-3 rounded-xl bg-[#C6112F] hover:bg-[#a50e27] text-white text-xs sm:text-sm font-extrabold tracking-widest uppercase shadow-xl shadow-[#C6112F]/30 hover:scale-[1.02] transition-all duration-300 flex items-center gap-2.5 cursor-pointer"
                   >
                     <span>{isFr ? "Postuler Maintenant" : "Apply Now"}</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
                   </button>
-
                 </div>
 
                 {/* Program Sponsors */}
-                <div className="pt-6 border-t border-neutral-800/80 max-w-3xl">
-                  <span className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.25em] block mb-3">
+                <div className="pt-4 border-t border-neutral-800/80 max-w-3xl">
+                  <span className="text-[10px] font-black text-neutral-400 uppercase tracking-[0.25em] block mb-2.5">
                     {isFr ? "COMMANDITAIRES DU PROGRAMME" : "PROGRAM SPONSORS"}
                   </span>
-                  <div className="flex items-center gap-4 sm:gap-5 flex-wrap sm:flex-nowrap">
+                  <div className="flex items-center gap-3 sm:gap-4 flex-wrap sm:flex-nowrap">
                     {/* Glencore */}
                     <div
-                      className="w-[185px] sm:w-[220px] h-16 sm:h-[72px] logo-white-bg !bg-white rounded-2xl px-5 py-2.5 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
+                      className="w-[140px] sm:w-[160px] h-12 sm:h-14 logo-white-bg !bg-white rounded-xl px-3.5 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
                       style={{ backgroundColor: "#ffffff" }}
                     >
                       <img
                         src="/sponsors/2026/glencore.svg"
                         alt="Glencore Logo"
-                        className="h-8 sm:h-10 max-w-full w-auto object-contain"
+                        className="h-6 sm:h-7 max-w-full w-auto object-contain"
                       />
                     </div>
                     {/* OR Royalties */}
-                    <div className="w-[185px] sm:w-[220px] h-16 sm:h-[72px] bg-[#0b0e19] rounded-2xl flex items-center justify-center border border-[#d7a032]/40 shadow-sm shrink-0 overflow-hidden">
+                    <div className="w-[140px] sm:w-[160px] h-12 sm:h-14 bg-[#0b0e19] rounded-xl flex items-center justify-center border border-[#d7a032]/40 shadow-sm shrink-0 overflow-hidden">
                       <img
                         src="/sponsors/2026/or_royalties_osisko_royalties.svg"
                         alt="OR Royalties Logo"
-                        className="h-12 sm:h-14 w-auto object-contain scale-[1.55]"
+                        className="h-9 sm:h-10 w-auto object-contain scale-[1.55]"
                       />
                     </div>
                     {/* IAMGOLD */}
                     <div
-                      className="w-[185px] sm:w-[220px] h-16 sm:h-[72px] logo-white-bg !bg-white rounded-2xl px-5 py-2.5 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
+                      className="w-[140px] sm:w-[160px] h-12 sm:h-14 logo-white-bg !bg-white rounded-xl px-3.5 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
                       style={{ backgroundColor: "#ffffff" }}
                     >
                       <img
                         src="/sponsor image/IAMGOLD-Logo-N.png"
                         alt="IAMGOLD Logo"
-                        className="h-8 sm:h-10 max-w-full w-auto object-contain"
+                        className="h-6 sm:h-7 max-w-full w-auto object-contain"
                       />
                     </div>
                     {/* Hatch (2027) */}
                     <div
-                      className="w-[185px] sm:w-[220px] h-16 sm:h-[72px] logo-white-bg !bg-white rounded-2xl px-5 py-2.5 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
+                      className="w-[140px] sm:w-[160px] h-12 sm:h-14 logo-white-bg !bg-white rounded-xl px-3.5 py-2 flex items-center justify-center border border-white/20 shadow-sm shrink-0"
                       style={{ backgroundColor: "#ffffff" }}
                     >
                       <img
                         src="/sponsors/2026/hatch.png"
                         alt="Hatch Logo"
-                        className="h-8 sm:h-10 max-w-full w-auto object-contain"
+                        className="h-6 sm:h-7 max-w-full w-auto object-contain"
                       />
                     </div>
                   </div>
@@ -282,18 +281,18 @@ export default function StudentPage() {
 
               {/* Right Column - Student Delegation Photo */}
               <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-                <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-3xl overflow-hidden border-2 border-[#C6112F]/40 shadow-2xl shadow-[#C6112F]/20 group">
+                <div className="relative w-full max-w-[420px] lg:max-w-[440px] aspect-[4/3] rounded-2xl overflow-hidden border-2 border-[#C6112F]/40 shadow-2xl shadow-[#C6112F]/20 group">
                   <img
                     src="/MINING%20INVESTMENT%20EVENT%202026_DAY%204_STUDENTS-25.jpg"
                     alt="Mining Investment Event Student Sponsorship Delegation"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs font-bold">
-                    <span className="bg-[#C6112F] text-white text-[10px] uppercase font-black tracking-widest px-3 py-1 rounded-full shadow-md">
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs font-bold">
+                    <span className="bg-[#C6112F] text-white text-[10px] uppercase font-black tracking-widest px-2.5 py-0.5 rounded-full shadow-md">
                       STUDENT DELEGATION
                     </span>
-                    <span className="text-neutral-300 font-semibold">Quebec City</span>
+                    <span className="text-neutral-300 font-semibold text-[11px]">Quebec City</span>
                   </div>
                 </div>
               </div>
@@ -613,188 +612,6 @@ export default function StudentPage() {
                 </div>
               </div>
             )}
-          </div>
-        </section>
-
-        {/* ═══════════════ 5. PREVIOUS YEARS SECTION (TEMPORARILY HIDDEN) ═══════════════ */}
-        {/* Hidden until team confirms details about previous years' student program winners & photos */}
-        {/*
-        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117] border-b border-neutral-200/80 dark:border-neutral-800">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                PROGRAM ARCHIVES
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-3">
-                Previous Years
-              </h2>
-              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mx-auto mb-4" />
-              <p className="text-neutral-600 dark:text-neutral-400 text-sm font-medium">
-                Explore past student delegations, case study archives and award recipient honors since the program's inaugural launch in 2023.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link
-                href="/past-editions/2025"
-                className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-xs font-extrabold text-[#C6112F] uppercase tracking-widest mb-2">
-                    EDITION ARCHIVE
-                  </div>
-                  <h3 className="text-2xl font-black text-neutral-900 dark:text-white mb-2 group-hover:text-[#C6112F] transition-colors">
-                    2025 Student Program
-                  </h3>
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
-                    Over 50 delegates attended, featuring case studies and mentorship with Tier 1 mining executives in Québec City.
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between text-xs font-bold text-[#C6112F]">
-                  <span>Explore 2025 Archive</span>
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </Link>
-
-              <Link
-                href="/past-editions/2024"
-                className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-xs font-extrabold text-[#C6112F] uppercase tracking-widest mb-2">
-                    EDITION ARCHIVE
-                  </div>
-                  <h3 className="text-2xl font-black text-neutral-900 dark:text-white mb-2 group-hover:text-[#C6112F] transition-colors">
-                    2024 Student Program
-                  </h3>
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
-                    Expanded national student outreach bringing geology and finance students together for experiential learning.
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between text-xs font-bold text-[#C6112F]">
-                  <span>Explore 2024 Archive</span>
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </Link>
-
-              <Link
-                href="/past-editions/2023"
-                className="group p-8 rounded-3xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200 dark:border-neutral-800 hover:border-[#C6112F] hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-xs font-extrabold text-[#C6112F] uppercase tracking-widest mb-2">
-                    INAUGURAL EDITION
-                  </div>
-                  <h3 className="text-2xl font-black text-neutral-900 dark:text-white mb-2 group-hover:text-[#C6112F] transition-colors">
-                    2023 Student Program
-                  </h3>
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed font-medium">
-                    The launch of Canada's fully funded student mining conference initiative in Quebec City.
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between text-xs font-bold text-[#C6112F]">
-                  <span>Explore 2023 Archive</span>
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-              </Link>
-            </div>
-          </div>
-        </section>
-        */}
-
-        {/* ═══════════════ 5. STUDENT PROGRAM CONSULTANTS SECTION ═══════════════ */}
-        <section className="relative w-full py-12 sm:py-14 md:py-16 bg-white dark:bg-[#0f1117] border-t border-b border-neutral-200/80 dark:border-neutral-800">
-          <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-            <div className="max-w-3xl mb-10">
-              <span className="text-[#C6112F] text-xs font-extrabold tracking-[0.25em] uppercase mb-2 block">
-                {isFr ? "RAYONNEMENT & LEADERSHIP DU PROGRAMME" : "STUDENT PROGRAM OUTREACH & LEADERSHIP"}
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-black text-neutral-900 dark:text-white tracking-tight mb-3">
-                {isFr ? "Consultants du Programme Étudiant" : "Student Program Consultants"}
-              </h2>
-              <div className="w-16 h-[3.5px] bg-[#C6112F] rounded-full mb-4" />
-              <p className="text-neutral-600 dark:text-neutral-300 text-sm sm:text-base">
-                {isFr
-                  ? "Dirigeant le rayonnement étudiant national, l'engagement communautaire et les campagnes pour le Programme de Partenariat Étudiant."
-                  : "Leading national student outreach, community engagement, and candidate campaigns for THE Student Partnership Program."}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Dalena Vo */}
-              <div className="bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl shrink-0 shadow-md">
-                      DV
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#C6112F]/10 px-2.5 py-0.5 rounded-full inline-block mb-1">
-                        {isFr ? "Consultante du Programme Étudiant" : "Student Program Consultant"}
-                      </span>
-                      <h3 className="text-2xl font-black text-neutral-900 dark:text-white tracking-tight">
-                        Dalena Vo
-                      </h3>
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400 font-semibold mt-0.5">
-                        Queen’s Mining Engineering '24
-                      </p>
-                    </div>
-                  </div>
-                  <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
-                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
-                    {isFr
-                      ? "Dalena (aux côtés d'Adam) dirige le rayonnement étudiant national. Diplômée de la première cohorte du Programme et ancienne agente de liaison (2024–2026), elle allie expérience technique de terrain et engagement soutenu pour former la relève."
-                      : "Dalena (alongside Adam) leads national student outreach and campaigns. As a graduate of THE Student Partnership Program in its inaugural year and former Student Liaison (2024–2026), she combines technical field experience with a strong commitment to cultivating the next generation of industry talent."}
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 flex items-center justify-between">
-                  <Link
-                    href="/team"
-                    className="text-xs font-bold text-[#C6112F] dark:text-[#ff4d6d] hover:underline flex items-center gap-1"
-                  >
-                    <span>{isFr ? "Lire la bio complète sur la page Équipe" : "Read Full Bio in Team Page"}</span>
-                    <span>→</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Adam Nouri */}
-              <div className="bg-neutral-50 dark:bg-neutral-900/70 border border-neutral-200/80 dark:border-neutral-800 rounded-3xl p-7 sm:p-8 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0f1117] to-[#1a1f2c] border-2 border-[#C6112F]/30 flex items-center justify-center text-white font-black text-xl shrink-0 shadow-md">
-                      AN
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-black uppercase tracking-wider text-[#C6112F] bg-[#C6112F]/10 px-2.5 py-0.5 rounded-full inline-block mb-1">
-                        {isFr ? "Consultant du Programme Étudiant" : "Student Program Consultant"}
-                      </span>
-                      <h3 className="text-2xl font-black text-neutral-900 dark:text-white tracking-tight">
-                        Adam Nouri
-                      </h3>
-                      <p className="text-xs text-neutral-500 dark:text-neutral-400 font-semibold mt-0.5">
-                        Polytechnique Montréal • CFA Level I
-                      </p>
-                    </div>
-                  </div>
-                  <div className="w-10 h-[2.5px] bg-[#C6112F] rounded-full mb-4" />
-                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
-                    {isFr
-                      ? "Adam (aux côtés de Dalena) dirige le rayonnement étudiant national. Diplômé de la cohorte inaugurale et ancien agent de liaison (2024–2026), il apporte une solide expertise en opérations minières et analyse financière."
-                      : "Adam (alongside Dalena) leads national student outreach and campaigns. As an inaugural graduate of THE Student Partnership Program and former Student Liaison (2024–2026), he brings a strong foundation in both technical mining operations and financial analysis."}
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-neutral-200/80 dark:border-neutral-800 flex items-center justify-between">
-                  <Link
-                    href="/team"
-                    className="text-xs font-bold text-[#C6112F] dark:text-[#ff4d6d] hover:underline flex items-center gap-1"
-                  >
-                    <span>{isFr ? "Lire la bio complète sur la page Équipe" : "Read Full Bio in Team Page"}</span>
-                    <span>→</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
