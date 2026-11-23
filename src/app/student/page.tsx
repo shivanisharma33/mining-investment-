@@ -305,21 +305,19 @@ export default function StudentPage() {
           <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
             {/* Video Section — Directly below Sponsor Logos */}
             <div className="max-w-4xl mx-auto mb-14">
-              <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-200/80 dark:border-neutral-800 shadow-xl group">
-                {/* 2025 Placeholder — will be replaced with Steel video */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-[#0b0f19] via-[#151821] to-[#0b0f19] text-white">
-                  <div className="w-20 h-20 rounded-full bg-[#C6112F]/20 border-2 border-[#C6112F]/50 flex items-center justify-center mb-4">
-                    <svg className="w-10 h-10 text-[#C6112F]" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                  <span className="text-xs font-black uppercase tracking-[0.25em] text-neutral-400 mb-1">
-                    {isFr ? "VIDÉO À VENIR" : "VIDEO COMING SOON"}
-                  </span>
-                  <span className="text-sm font-bold text-neutral-300">
-                    {isFr ? "Programme de partenariat étudiant 2025" : "Student Partnership Program 2025"}
-                  </span>
-                </div>
+              <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-black border border-neutral-200/80 dark:border-neutral-800 shadow-2xl">
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                >
+                  <source
+                    src="/the_student_video_-_the_mining_event%20(1080p).mp4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
 
