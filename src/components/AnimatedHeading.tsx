@@ -9,6 +9,7 @@ interface AnimatedHeadingProps {
   delayStep?: number;
 }
 
+
 export default function AnimatedHeading({
   text,
   tag = "h2",
